@@ -1,3 +1,4 @@
+/* === Theme Variables from feat/dark-mode-toggle === */
 :root {
   --bg: #ffffff;
   --text: #0b0b0b;
@@ -24,6 +25,7 @@
   --bar-compare: #fbbf24;
 }
 
+/* Base Layout and Elements */
 body {
   font-family: Arial, sans-serif;
   background-color: var(--bg);
@@ -109,3 +111,148 @@ footer {
   color: var(--text);
   border-top: 1px solid var(--border);
 }
+
+/* === Navbar Redesign from master === */
+.av-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 26, 0.6);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.av-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.logo a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand-mono {
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #9ecbff;
+}
+
+.brand-highlight {
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    font-weight: 600;
+    background: linear-gradient(90deg, #66ccff, #4da6ff, #6f7cff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-links a {
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    color: #cfd9e6;
+    text-decoration: none;
+    font-size: 0.98rem;
+    font-weight: 500;
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition: all .2s ease;
+    border: 1px solid transparent;
+}
+
+.nav-links a:hover {
+    color: #eaf2ff;
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav-links a.active {
+    color: #0b1c3d;
+    background: linear-gradient(90deg, #8dd5ff, #80a7ff);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 6px 22px rgba(125, 170, 255, .25);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: #dce7ff;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all .2s ease;
+}
+
+.github-btn:hover {
+    color: #0b1c3d;
+    background: linear-gradient(90deg, #8dd5ff, #80a7ff);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hamburger .bar {
+    width: 22px;
+    height: 2px;
+    background: #cfe1ff;
+    border-radius: 2px;
+}
+
+@media (max-width: 900px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 12px;
+        flex-direction: column;
+        min-width: 220px;
+        padding: 10px;
+        background: rgba(10, 10, 26, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    }
+
+    .nav-links.nav-active { display: flex; }
+
+    .hamburger { display: inline-flex; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.av-header { animation: fadeIn .35s ease-out; }
