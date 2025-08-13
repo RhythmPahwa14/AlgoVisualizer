@@ -1,8 +1,5 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Import Global Dark Theme Override */
-@import './global-dark-theme.css';
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Import Navbar and Footer Styles */
 @import './navbar.css';
@@ -11,49 +8,47 @@
 
 /* Reset default browser styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Force dark theme */
+/* Variable-based theming */
 html {
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%) !important;
-    min-height: 100vh;
+  background: var(--bg);
+  min-height: 100vh;
 }
 
 body, html {
-    height: 100%;
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%) !important;
-    color: #e0e6ed !important;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
 }
 
 body {
-    font-family: 'Poppins', sans-serif !important;
-    line-height: 1.6;
-    margin: 0 !important;
-    padding: 0 !important;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
 }
 
 #root {
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%) !important;
-    min-height: 100vh;
+  background: var(--bg);
+  min-height: 100vh;
 }
 
 .app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%) !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
 }
 
 .main-content {
-    flex: 1;
-    padding: 0;
-    background: transparent !important;
-    margin: 0;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
+  flex: 1;
+  padding: 0;
+  background: transparent;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
 }
 

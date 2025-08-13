@@ -1,8 +1,8 @@
-/* Global Dark Theme Override */
+/* Global Dark Theme Override
 /* This file ensures dark theme is applied everywhere */
 
 /* Force dark theme on root elements */
-* {
+/* * {
     box-sizing: border-box;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 /* Override any existing light backgrounds */
-div,
+/* div,
 section,
 main,
 article {
@@ -35,7 +35,7 @@ article {
 }
 
 /* Text readability */
-p,
+/* p,
 h1,
 h2,
 h3,
@@ -45,30 +45,30 @@ h6,
 span,
 a {
     color: inherit !important;
-}
+} */
 
 /* Ensure all buttons use dark theme */
-button:not(.cta-button):not(.btn) {
+/* button:not(.cta-button):not(.btn) {
     background: rgba(255, 255, 255, 0.1) !important;
     color: #e0e6ed !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
-}
+} */
 
 /* Input fields dark theme */
-input,
+/* input,
 select,
 textarea {
     background: rgba(255, 255, 255, 0.05) !important;
     color: #e0e6ed !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
+} */
 
 /* Link colors */
-a {
+/* a {
     color: #66ccff !important;
     text-decoration: none;
-}
+} */
 
-a:hover {
+/* a:hover {
     color: #4da6ff !important;
-}
+}   */

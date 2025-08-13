@@ -1,28 +1,50 @@
+/* Theme Variables */
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --button-text: #000000;
+    --button-bg: #61dafb;
+    --array-bar-color: #61dafb;
+}
+
+[data-theme="dark"] {
+    --bg: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+    --text: #e0e6ed;
+    --button-text: #000000;
+    --button-bg: #61dafb;
+    --array-bar-color: #61dafb;
+}
+
+/* Body styling */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%) !important;
-    color: #e0e6ed !important;
+    background: var(--bg) !important;
+    color: var(--text) !important;
     margin: 0;
     padding: 0;
     overflow-y: scroll;
 }
 
+/* Searching container */
 .searching-container {
     text-align: center;
     padding: 20px;
 }
 
+/* Searching controls */
 .searching-controls {
     margin-top: 20px;
 }
 
+/* Searching buttons */
 .searching-button {
     padding: 10px 20px;
     margin: 5px;
     font-size: 16px;
-    border-radius: 10px; /* Rounded edges */
+    border-radius: 10px;
     cursor: pointer;
-    color: black; /* Ensure button text is black */
+    color: var(--button-text);
+    background-color: var(--button-bg);
 }
 
 .searching-button:disabled {
@@ -30,10 +52,12 @@ body {
     cursor: not-allowed;
 }
 
+/* Algorithm selection */
 .algorithm-selection {
     margin-top: 20px;
 }
 
+/* Array container */
 .array-container {
     display: flex;
     justify-content: center;
@@ -42,10 +66,11 @@ body {
     margin-top: 10px;
 }
 
+/* Array bars */
 .array-bar {
     width: 30px;
     margin: 0 2px;
-    background-color: #61dafb;
+    background-color: var(--array-bar-color);
     text-align: center;
     color: rgb(39, 38, 38);
 }

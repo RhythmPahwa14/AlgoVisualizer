@@ -1,97 +1,122 @@
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --link: #0066cc;
+  --link-hover: #004999;
+  --button-bg: #f0f0f0;
+  --button-text: #000000;
+  --disabled-bg: grey;
+  --array-bar-bg: #61dafb;
+}
+
+[data-theme='dark'] {
+  --bg: #0a0a1a;
+  --text: #e0e6ed;
+  --link: #66ccff;
+  --link-hover: #4da6ff;
+  --button-bg: rgba(255, 255, 255, 0.1);
+  --button-text: #e0e6ed;
+  --disabled-bg: #555;
+  --array-bar-bg: #61dafb; /* same in dark mode */
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
-    color: #e0e6ed;
-    margin: 0;
-    padding: 0;
-    overflow-y: scroll;
-    min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Searching Component Styles */
 .searching-container {
-    text-align: center;
-    padding: 20px;
+  text-align: center;
+  padding: 20px;
 }
 
 .searching-controls {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .searching-button {
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 16px;
-    border-radius: 10px; /* Rounded edges */
-    cursor: pointer;
-    color: black; /* Ensure button text is black */
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: var(--button-bg);
+  color: var(--button-text);
 }
 
 .searching-button:disabled {
-    background-color: grey;
-    cursor: not-allowed;
+  background-color: var(--disabled-bg);
+  cursor: not-allowed;
 }
 
 .searching-algorithm-selection {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .searching-array-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100px;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100px;
+  margin-top: 10px;
 }
 
 .searching-array-bar {
-    width: 30px;
-    margin: 0 2px;
-    background-color: #61dafb;
-    text-align: center;
-    color: rgb(39, 38, 38);
+  width: 30px;
+  margin: 0 2px;
+  background-color: var(--array-bar-bg);
+  text-align: center;
+  color: var(--text);
 }
 
 /* Sorting Component Styles */
 .sorting-container {
-    text-align: center;
-    padding: 20px;
+  text-align: center;
+  padding: 20px;
 }
 
 .sorting-controls {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .sorting-button {
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 16px;
-    border-radius: 10px; /* Rounded edges */
-    cursor: pointer;
-    color: black; /* Ensure button text is black */
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: var(--button-bg);
+  color: var(--button-text);
 }
 
 .sorting-button:disabled {
-    background-color: grey;
-    cursor: not-allowed;
+  background-color: var(--disabled-bg);
+  cursor: not-allowed;
 }
 
 .sorting-algorithm-selection {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .sorting-array-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100px;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100px;
+  margin-top: 10px;
 }
 
 .sorting-array-bar {
-    width: 30px;
-    margin: 0 2px;
-    background-color: #61dafb;
-    text-align: center;
-    color: rgb(39, 38, 38);
+  width: 30px;
+  margin: 0 2px;
+  background-color: var(--array-bar-bg);
+  text-align: center;
+  color: var(--text);
 }

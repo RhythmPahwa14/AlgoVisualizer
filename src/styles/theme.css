@@ -1,0 +1,100 @@
+
+:root {
+  /* Light theme */
+  --bg: #ffffff;
+  --text: #0b0b0b;
+  --muted: #f6f7f9;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --accent: #2563eb;
+
+  /* Visualization bars */
+  --bar: #60a5fa;
+  --bar-active: #34d399;
+  --bar-compare: #f59e0b;
+
+  /* Buttons */
+  --button-bg: var(--accent);
+  --button-text: #ffffff;
+  --button-disabled-bg: #cbd5e1;
+  --reset-bg: #f97316;
+}
+
+:root[data-theme='dark'] {
+  /* Dark theme */
+  --bg: #0b0f19;
+  --text: #e5e7eb;
+  --muted: #111827;
+  --card: #111827;
+  --border: #1f2937;
+  --accent: #60a5fa;
+
+  /* Visualization bars */
+  --bar: #93c5fd;
+  --bar-active: #34d399;
+  --bar-compare: #fbbf24;
+
+  /* Buttons */
+  --button-bg: var(--accent);
+  --button-text: #0b0b0b;
+  --button-disabled-bg: #374151;
+  --reset-bg: #f97316;
+}
+
+/* Global resets */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Form elements */
+button, input, select {
+  color: var(--text);
+  background: var(--muted);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+/* Buttons */
+button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 14px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+button:disabled {
+  background: var(--button-disabled-bg);
+  cursor: not-allowed;
+}
+
+/* Special reset button */
+button.reset-btn {
+  background: var(--reset-bg);
+  color: #fff;
+  border-radius: 10px;
+}
+
+/* Array bars */
+.array-bar {
+  background-color: var(--bar);
+}
+
+.array-bar.active {
+  background-color: var(--bar-active);
+}
+
+.array-bar.compare {
+  background-color: var(--bar-compare);
+}

@@ -1,21 +1,22 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Dark Theme Navbar Styles */
+/* Navbar Styles */
 header {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background-color: var(--bg);
     padding: 20px;
-    color: white;
+    color: var(--text);
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 20px rgba(15, 52, 96, 0.4);
+    box-shadow: 0 4px 20px var(--accent-light);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border);
     position: relative;
     z-index: 1000;
+    animation: fadeIn 0.6s ease-out;
 }
 
 /* Logo Styles */
@@ -27,7 +28,7 @@ header {
 
 .logo a:hover h1 {
     transform: scale(1.05);
-    filter: drop-shadow(0 4px 15px rgba(102, 204, 255, 0.4));
+    filter: drop-shadow(0 4px 15px var(--accent-light));
 }
 
 header h1 {
@@ -35,11 +36,11 @@ header h1 {
     font-size: 2.2em;
     font-family: 'Dancing Script', cursive;
     font-weight: bold;
-    background: linear-gradient(45deg, #66ccff, #4da6ff, #3385ff);
+    background: linear-gradient(45deg, var(--accent), #4da6ff, #3385ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 2px 10px rgba(102, 204, 255, 0.3);
+    text-shadow: 0 2px 10px var(--accent-light);
 }
 
 /* Navigation Links */
@@ -49,7 +50,7 @@ header h1 {
 }
 
 .nav-links a {
-    color: #e0e6ed;
+    color: var(--text);
     text-decoration: none;
     font-size: 1.1em;
     font-weight: 500;
@@ -58,25 +59,25 @@ header h1 {
     border-radius: 25px;
     transition: all 0.3s ease;
     position: relative;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-secondary);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
 }
 
 .nav-links a:hover {
-    color: #040450 !important;
-    background: linear-gradient(45deg, #66ccff, #4da6ff);
+    color: var(--bg) !important;
+    background: linear-gradient(45deg, var(--accent), #4da6ff);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 204, 255, 0.3);
-    border: 1px solid rgba(102, 204, 255, 0.5);
+    box-shadow: 0 8px 25px var(--accent-light);
+    border: 1px solid var(--accent-light);
 }
 
 /* Active link styles */
 .nav-links a.active {
-    color: #040450 !important;
-    background: linear-gradient(45deg, #66ccff, #4da6ff);
-    box-shadow: 0 4px 15px rgba(102, 204, 255, 0.2);
+    color: var(--bg) !important;
+    background: linear-gradient(45deg, var(--accent), #4da6ff);
+    box-shadow: 0 4px 15px var(--accent-light);
 }
 
 /* Hamburger Menu */
@@ -87,21 +88,21 @@ header h1 {
     gap: 5px;
     padding: 10px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
     transition: all 0.3s ease;
 }
 
 .hamburger:hover {
-    background: rgba(102, 204, 255, 0.1);
+    background: var(--accent-light);
     transform: scale(1.05);
-    border: 1px solid rgba(102, 204, 255, 0.3);
+    border: 1px solid var(--accent);
 }
 
 .hamburger .bar {
     width: 25px;
     height: 3px;
-    background: linear-gradient(90deg, #66ccff, #4da6ff);
+    background: linear-gradient(90deg, var(--accent), #4da6ff);
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -122,12 +123,12 @@ header h1 {
         position: absolute;
         top: 80px;
         right: 20px;
-        background: linear-gradient(135deg, rgba(26, 26, 46, 0.98), rgba(22, 33, 62, 0.98));
+        background: var(--bg);
         padding: 25px;
         width: 220px;
         border-radius: 15px;
-        box-shadow: 0 10px 40px rgba(15, 52, 96, 0.5);
-        border: 1px solid rgba(102, 204, 255, 0.2);
+        box-shadow: 0 10px 40px var(--accent-light);
+        border: 1px solid var(--accent-light);
         -webkit-backdrop-filter: blur(20px);
         backdrop-filter: blur(20px);
         gap: 15px;
@@ -141,17 +142,17 @@ header h1 {
     .nav-links a {
         margin: 0;
         text-align: center;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
         padding: 12px 16px;
         font-size: 1em;
     }
 
     .nav-links a:hover {
-        background: linear-gradient(45deg, #66ccff, #4da6ff);
-        color: #040450 !important;
+        background: linear-gradient(45deg, var(--accent), #4da6ff);
+        color: var(--bg) !important;
         transform: translateY(-1px);
-        border: 1px solid rgba(102, 204, 255, 0.5);
+        border: 1px solid var(--accent-light);
     }
 
     .hamburger {
@@ -168,20 +169,4 @@ header h1 {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Navbar animation for smooth transitions */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-header {
-    animation: fadeIn 0.6s ease-out;
 }

@@ -1,13 +1,13 @@
-/* Dark Theme Footer Styles */
 .footer-container {
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+    background: var(--bg);
     padding: 20px 0 10px 0;
-    color: #e0e6ed;
+    color: var(--text);
     text-align: center;
     margin-top: auto;
     width: 100%;
     border-top: 1px solid rgba(102, 204, 255, 0.2);
     box-shadow: 0 -4px 20px rgba(15, 52, 96, 0.3);
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .footer-content {
@@ -30,7 +30,7 @@
 
 .footer-description {
     font-size: 0.9em;
-    color: #b8c5d1;
+    color: var(--text-muted);
     margin-bottom: 15px;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
@@ -50,7 +50,7 @@
 
 .footer-links a,
 .footer-links Link {
-    color: #e0e6ed;
+    color: var(--text);
     margin: 0 5px;
     font-size: 0.85em;
     cursor: pointer;
@@ -60,7 +60,7 @@
     font-weight: 400;
     padding: 4px 8px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-secondary);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -73,7 +73,6 @@
     border: 1px solid rgba(102, 204, 255, 0.5);
 }
 
-/* Social Media Icons Section */
 .footer-social {
     margin: 15px 0 10px 0;
 }
@@ -89,12 +88,12 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-secondary);
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #e0e6ed;
+    color: var(--text);
     text-decoration: none;
     transition: all 0.3s ease;
     font-size: 0.9em;
@@ -108,13 +107,12 @@
     border: 1px solid rgba(102, 204, 255, 0.5);
 }
 
-/* Footer Bottom Section */
 .footer-bottom {
     margin-top: 15px;
     padding-top: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.8rem;
-    color: #b8c5d1;
+    color: var(--text-muted);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -133,7 +131,7 @@
 .footer-bottom .footer-links span {
     margin: 0 10px;
     cursor: pointer;
-    color: #b8c5d1;
+    color: var(--text-muted);
     transition: all 0.3s ease;
     padding: 5px 10px;
     border-radius: 15px;
@@ -145,57 +143,47 @@
     transform: translateY(-1px);
 }
 
-/* Copyright Section */
 .copyright {
     margin-top: 8px;
     padding-top: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     font-size: 0.75em;
-    color: #8a9ba8;
+    color: var(--text-muted);
     font-family: 'Poppins', sans-serif;
 }
 
-/* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .footer-container {
         padding: 15px 0 8px 0;
     }
-
     .footer-heading {
         font-size: 1.3em;
     }
-
     .footer-description {
         font-size: 0.85em;
         margin-bottom: 12px;
     }
-
     .footer-links {
         gap: 8px;
         margin-top: 8px;
     }
-
     .footer-links a {
         font-size: 0.8em;
         padding: 3px 6px;
         margin: 2px;
     }
-
     .social-icons {
         gap: 8px;
     }
-
     .social-icon {
         width: 28px;
         height: 28px;
         font-size: 0.8em;
     }
-
     .footer-bottom {
         margin-top: 12px;
         padding-top: 8px;
     }
-
     .footer-bottom .footer-links {
         flex-direction: column;
         gap: 5px;
@@ -210,7 +198,6 @@
     }
 }
 
-/* Animation for footer on load */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -222,11 +209,6 @@
     }
 }
 
-.footer-container {
-    animation: fadeInUp 0.8s ease-out;
-}
-
-/* Hover effect for the entire footer */
 .footer-container:hover {
     box-shadow: 0 -6px 30px rgba(102, 204, 255, 0.2);
 }

@@ -1,8 +1,33 @@
+/* Theme Variables */
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --bar-color: dodgerblue;
+    --button-bg: #007bff;
+    --button-text: #ffffff;
+    --button-disabled-bg: grey;
+    --reset-bg: orange;
+}
+
+[data-theme="dark"] {
+    --bg: #1a1a2e;
+    --text: #e0e6ed;
+    --bar-color: dodgerblue;
+    --button-bg: #3399ff;
+    --button-text: #000000;
+    --button-disabled-bg: #555;
+    --reset-bg: orange;
+}
+
+/* Page container */
 .container {
     text-align: center;
     margin-top: 30px;
+    background: var(--bg);
+    color: var(--text);
 }
 
+/* Array display */
 .array-container {
     display: flex;
     justify-content: center;
@@ -12,40 +37,35 @@
 
 .array-bar {
     display: inline-block;
-    background-color: dodgerblue;
+    background-color: var(--bar-color);
     margin: 0 1px;
     width: 20px;
 }
 
+/* Controls section */
 .controls {
     margin-top: 20px;
 }
 
-button {
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 16px;
-}
-
-button:disabled {
-    background-color: grey;
-    cursor: not-allowed;
-}
-
+/* Buttons */
 button {
     padding: 10px 20px;
     margin: 5px;
     font-size: 16px;
     border-radius: 14px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    cursor: pointer;
+    border: none;
 }
 
 button:disabled {
-    background-color: grey;
+    background-color: var(--button-disabled-bg);
     cursor: not-allowed;
 }
 
 button:last-child {
-    background-color: orange; /* Change color for reset button */
+    background-color: var(--reset-bg);
     border-radius: 10px;
     color: white;
 }

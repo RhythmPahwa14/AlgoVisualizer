@@ -1,34 +1,43 @@
-.contact h1{
+
+ .contact h1 {
     text-align: center;
     margin-top: 20px;
     font-size: 2.5rem;
+    color: var(--text);
 }
-.contact{
+
+.contact {
     margin-bottom: 50px;
 }
-.contact p{
+
+.contact p {
     text-align: center;
     font-size: 1.2rem;
     margin-top: 10px;
     max-width: 85%;
     margin-left: auto;
     margin-right: auto;
+    color: var(--text);
 }
 
-.contact h3{
+.contact h3 {
     text-align: center;
     margin-top: 30px;
     font-size: 1.8rem;
-}
-.links p{
-    margin-top: 30px;
+    color: var(--text);
 }
 
-.connection{
+.links p {
+    margin-top: 30px;
+    color: var(--text);
+}
+
+.connection {
     margin-top: 50px;
     text-align: center;
 }
-.connection input{
+
+.connection input {
     width: 30%;
     height: 40px;
     margin-top: 17px;
@@ -39,16 +48,19 @@
     border-radius: 5px;
     outline: none;
     transition: all 0.3s ease-in-out;
-
+    background-color: var(--bg);
+    color: var(--text);
 }
-.connection label{
+
+.connection label {
     font-size: 1.2rem;
-    color: rgb(8, 179, 231);
+    color: var(--text);
     margin-right: 10px;
     margin-top: 20px;
     display: inline-block;
 }
-.connection textarea{
+
+.connection textarea {
     width: 28%;
     height: 100px;
     margin-top: 17px;
@@ -60,28 +72,33 @@
     border-radius: 5px;
     outline: none;
     transition: all 0.3s ease-in-out;
+    background-color: var(--bg);
+    color: var(--text);
 }
-button{
-    width : 100px;
+
+button {
+    width: 100px;
     height: 35px;
     margin-top: 17px;
     box-shadow: 2px 5px 5px rgba(8, 179, 231, 0.5);
     border-radius: 5px;
     border: none;
     background-color: rgb(8, 179, 231);
-    color: white;
+    color: var(--text);
     font-size: 1rem;
     transition: all 0.3s ease-in-out;
-
 }
 
-.social-icons a{
+.social-icons a {
     margin-top: 10px;
     margin-left: 5px;
     font-size: large;
+    color: var(--text);
 }
-.links h4{
+
+.links h4 {
     text-align: center;
     margin-top: 50px;
     font-size: 1.5rem;
+    color: var(--text);
 }
