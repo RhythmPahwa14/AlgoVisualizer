@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../styles/navbar.css';
-import { useTheme } from '../hooks/useTheme';
-
-// const Header = () => {
-//     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-//     const { theme, toggle } = useTheme();
-// import { useTheme } from '../ThemeContext'; // ← import useTheme
-
+import { useTheme } from '../ThemeContext'; // ✅ single import, at the top
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const { theme, toggleTheme } = useTheme(); // ← access theme context
+    const { theme, toggleTheme } = useTheme(); // ✅ correct destructuring
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -27,7 +21,10 @@ const Header = () => {
                     </Link>
                 </div>
 
-                <nav className={`nav-links ${isMobileMenuOpen ? 'nav-active' : ''}`} aria-label="Primary">
+                <nav
+                    className={`nav-links ${isMobileMenuOpen ? 'nav-active' : ''}`}
+                    aria-label="Primary"
+                >
                     <NavLink to="/" onClick={toggleMobileMenu} end className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
                     <NavLink to="/sorting" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Sorting</NavLink>
                     <NavLink to="/searching" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Searching</NavLink>
@@ -38,7 +35,7 @@ const Header = () => {
                 <div className="nav-actions">
                     {/* Theme toggle button */}
                     <button
-                        onClick={toggle}
+                        onClick={toggleTheme}
                         aria-label="Toggle dark mode"
                         style={{
                             padding: '6px 10px',
@@ -67,7 +64,6 @@ const Header = () => {
             </div>
         </header>
     );
-
 };
 
 export default Header;

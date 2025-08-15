@@ -1,39 +1,8 @@
-<<<<<<< HEAD
 /* Page-specific styles for dark theme consistency */
 
-/* General page container */
-.page-container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 40px 20px;
-    background: var(--bg-secondary);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    border: 1px solid var(--border);
-    box-shadow: 0 8px 32px var(--accent-light);
-    min-height: calc(100vh - 200px);
-=======
 /* =========================
    Theme Variables
 ========================= */
-:root {
-    --bg-color: rgba(255, 255, 255, 0.02);
-    --container-bg: rgba(255, 255, 255, 0.02);
-    --text-color: #e0e6ed;
-    --bar-color: dodgerblue;
-    --btn-bg: #66ccff;
-    --btn-text: #1a1a2e;
-    --btn-hover: #4da6ff;
-    --secondary-btn-bg: rgba(255, 255, 255, 0.1);
-    --secondary-btn-text: #e0e6ed;
-    --input-bg: rgba(255, 255, 255, 0.05);
-    --input-text: #e0e6ed;
-    --border-color: rgba(102, 204, 255, 0.1);
-    --shadow-color: rgba(102, 204, 255, 0.2);
->>>>>>> upstream/master
-}
-
 [data-theme="light"] {
     --bg-color: #f6f0d6;
     --container-bg: #ffffff;
@@ -48,6 +17,10 @@
     --input-text: #1a1a1a;
     --border-color: rgba(0, 119, 204, 0.3);
     --shadow-color: rgba(0, 119, 204, 0.2);
+    --accent: #0077cc;
+    --accent-light: rgba(0, 119, 204, 0.15);
+    --bg-secondary: #f6f0d6;
+    --bg-tertiary: #f0ead2;
 }
 
 /* =========================
@@ -79,141 +52,14 @@
     -webkit-text-fill-color: transparent;
     text-align: center;
     margin-bottom: 30px;
-<<<<<<< HEAD
     text-shadow: 0 2px 10px var(--accent-light);
-=======
-    text-shadow: 0 2px 10px var(--shadow-color);
->>>>>>> upstream/master
 }
 
 /* =========================
    Visualization Area
 ========================= */
 .visualization-area {
-<<<<<<< HEAD
-    background: var(--bg-tertiary) !important;
-    padding: 40px !important;
-    border-radius: 15px !important;
-    border: 1px solid var(--border) !important;
-    margin: 30px 0 !important;
-    min-height: 400px !important;
-    display: flex !important;
-    align-items: flex-end !important;
-    justify-content: center !important;
-    overflow-x: auto !important;
-}
-
-/* Controls section */
-.controls-section {
     background: var(--bg-tertiary);
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid var(--border);
-    margin-bottom: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Buttons */
-.btn {
-    background: linear-gradient(45deg, var(--accent), #4da6ff);
-    color: var(--bg);
-    border: none;
-    padding: 12px 24px;
-    font-size: 1em;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px var(--accent-light);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.btn:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 25px var(--accent-light);
-    background: linear-gradient(45deg, #4da6ff, #3385ff);
-}
-
-.btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: 0 2px 8px var(--accent-light);
-}
-
-.btn-secondary {
-    background: var(--bg-secondary);
-    color: var(--text);
-    border: 1px solid var(--border);
-}
-
-.btn-secondary:hover {
-    background: var(--accent-light);
-    color: var(--accent);
-    border-color: var(--accent);
-}
-
-/* Select dropdowns */
-.select {
-    background: var(--bg-secondary);
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 10px 15px;
-    border-radius: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.select:focus {
-    outline: none;
-    border-color: var(--accent);
-    background: var(--bg-tertiary);
-    box-shadow: 0 0 15px var(--accent-light);
-}
-
-.select option {
-    background: var(--bg);
-    color: var(--text);
-}
-
-/* Input fields */
-.input {
-    background: var(--bg-secondary);
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 10px 15px;
-    border-radius: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1em;
-    transition: all 0.3s ease;
-}
-
-.input:focus {
-    outline: none;
-    border-color: var(--accent);
-    background: var(--bg-tertiary);
-    box-shadow: 0 0 15px var(--accent-light);
-}
-
-/* Labels */
-.label {
-    font-family: 'Poppins', sans-serif;
-    color: var(--text-muted);
-    font-weight: 500;
-    margin-right: 10px;
-}
-
-/* Array bars for sorting visualization */
-=======
-    background: var(--container-bg);
     padding: 40px;
     border-radius: 15px;
     border: 1px solid var(--border-color);
@@ -223,22 +69,6 @@
     align-items: flex-end;
     justify-content: center;
     overflow-x: auto;
-}
-
-/* =========================
-   Array Bars
-========================= */
->>>>>>> upstream/master
-.array-bar {
-    margin: 0 2px;
-    border-radius: 4px 4px 0 0;
-    transition: all 0.3s ease;
-<<<<<<< HEAD
-    box-shadow: 0 2px 8px var(--accent-light);
-=======
-    background-color: var(--bar-color);
-    box-shadow: 0 2px 8px var(--shadow-color);
->>>>>>> upstream/master
 }
 
 /* =========================
@@ -257,6 +87,9 @@
     justify-content: center;
 }
 
+/* =========================
+   Buttons
+========================= */
 .btn {
     background: var(--btn-bg);
     color: var(--btn-text);
@@ -300,7 +133,8 @@
 /* =========================
    Inputs & Selects
 ========================= */
-.input, .select {
+.input,
+.select {
     background: var(--input-bg);
     color: var(--input-text);
     border: 1px solid var(--border-color);
@@ -310,7 +144,8 @@
     transition: all 0.3s ease;
 }
 
-.input:focus, .select:focus {
+.input:focus,
+.select:focus {
     outline: none;
     border-color: rgba(102, 204, 255, 0.5);
     background: rgba(255, 255, 255, 0.08);
@@ -320,6 +155,26 @@
 .select option {
     background: var(--container-bg);
     color: var(--text-color);
+}
+
+/* =========================
+   Labels
+========================= */
+.label {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+/* =========================
+   Sorting Array Bars
+========================= */
+.array-bar {
+    margin: 0 2px;
+    border-radius: 4px 4px 0 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--accent-light);
 }
 
 /* =========================
@@ -337,80 +192,70 @@
 }
 
 .algorithm-info {
-<<<<<<< HEAD
     background: var(--bg-tertiary);
     padding: 30px;
     border-radius: 15px;
-    border: 1px solid var(--border);
-=======
-    background: var(--container-bg);
-    padding: 30px;
-    border-radius: 15px;
     border: 1px solid var(--border-color);
->>>>>>> upstream/master
     margin-top: 30px;
 }
 
 .algorithm-info h3 {
-<<<<<<< HEAD
     font-family: 'Poppins', sans-serif;
     color: var(--accent);
-=======
-    color: #66ccff;
->>>>>>> upstream/master
     font-size: 1.3em;
     margin-bottom: 15px;
 }
 
 .algorithm-info p {
-<<<<<<< HEAD
     font-family: 'Poppins', sans-serif;
     color: var(--text-muted);
-=======
-    color: #b8c5d1;
->>>>>>> upstream/master
     line-height: 1.6;
     margin-bottom: 10px;
 }
 
-/* Complexity badges */
+/* =========================
+   Complexity Badges
+========================= */
 .complexity-badge {
     display: inline-block;
     background: linear-gradient(45deg, var(--accent), #4da6ff);
-    color: var(--bg);
+    color: var(--bg-color);
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.9em;
     font-weight: 600;
     margin: 5px;
 }
-/* Mobile responsive */
+
+/* =========================
+   Responsive
+========================= */
 @media (max-width: 768px) {
     .page-container {
         margin: 10px;
         padding: 20px;
     }
-    
+
     .page-title {
         font-size: 2em;
         margin-bottom: 20px;
     }
-    
+
     .controls-section {
         padding: 20px;
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .btn {
         margin: 5px 0;
     }
-    
+
     .visualization-area {
         padding: 20px;
         min-height: 300px;
     }
-    
+
     .controls-section > div {
         grid-template-columns: 1fr !important;
         gap: 15px !important;

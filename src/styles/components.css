@@ -1,11 +1,7 @@
 
-<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Import Navbar and Footer Styles */
-=======
-/* Import other component styles */
->>>>>>> upstream/master
 @import './navbar.css';
 @import './footer.css';
 @import './pages.css';
@@ -32,7 +28,6 @@
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
 /* Variable-based theming */
 html {
   background: var(--bg);
@@ -60,32 +55,10 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background: var(--bg);
-=======
-/* ----------------- Global body and container ----------------- */
-html, body, #root, .app-container {
-    background: var(--bg-gradient);
-    color: var(--text-color);
-    min-height: 100vh;
-    height: 100%;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    transition: all 0.3s ease;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-.app-container {
-    display: flex;
-    flex-direction: column;
->>>>>>> upstream/master
 }
 
 /* ----------------- Main content ----------------- */
 .main-content {
-<<<<<<< HEAD
   flex: 1;
   padding: 0;
   background: transparent;
@@ -93,15 +66,6 @@ body {
   border-radius: 0;
   border: none;
   box-shadow: none;
-=======
-    flex: 1;
-    padding: 0;
-    background: transparent;
-    margin: 0;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
->>>>>>> upstream/master
 }
 
 /* ----------------- Header background ----------------- */

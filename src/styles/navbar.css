@@ -175,6 +175,13 @@ footer {
     border-radius: 10px;
     transition: all .2s ease;
     border: 1px solid transparent;
+    font-size: 0.90rem;
+    font-weight: 500;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    /* smoother transitions */
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Hover state: subtle change */
@@ -215,6 +222,7 @@ footer {
     border-color: rgba(255, 255, 255, 0.18);
 }
 
+    
 
 /* Active state: toned‑down accent with high contrast */
 .nav-links a.active {
