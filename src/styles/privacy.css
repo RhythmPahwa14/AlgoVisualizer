@@ -1,0 +1,137 @@
+/* privacy.css - OSHub Style */
+
+.privacy-policy-container {
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.privacy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 12px;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.privacy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.privacy-header h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.privacy-header .last-updated {
+    color: #9ca3af;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.privacy-sections {
+    margin-top: 2rem;
+}
+
+.privacy-section {
+    margin-bottom: 3rem;
+}
+
+.privacy-section h2 {
+    color: #ffffff;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgb(8, 179, 231,0.3) !important;
+}
+
+.privacy-section p {
+    color: #d1d5db;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.privacy-list {
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.privacy-list li {
+    color: #d1d5db;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.privacy-list li::before {
+    content: "•";
+    color: rgb(8, 179, 231) !important;;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.privacy-list strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+a {
+    color: #4ade80;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #86efac;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .privacy-content {
+        padding: 1.5rem;
+    }
+    
+    .privacy-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .privacy-header h1 {
+        font-size: 2rem;
+    }
+    
+    .privacy-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .privacy-content {
+        padding: 1.25rem;
+    }
+    
+    .privacy-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .privacy-list {
+        padding-left: 1rem;
+    }
+}

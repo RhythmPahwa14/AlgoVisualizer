@@ -1,18 +1,38 @@
 
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Import Navbar and Footer Styles */
+=======
+/* Import other component styles */
+>>>>>>> upstream/master
 @import './navbar.css';
 @import './footer.css';
 @import './pages.css';
 
-/* Reset default browser styles */
+/* ----------------- Theme Variables ----------------- */
+/* Dark mode as default */
+:root {
+    --bg-gradient: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+    --text-color: #e0e6ed;
+    --header-bg: #1a1a2e;
+}
+
+/* Light mode */
+[data-theme="light"] {
+    --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #e0e0e0 100%);
+    --text-color: #000000;
+    --header-bg: #f2f2f2;
+}
+
+/* ----------------- Reset Default Styles ----------------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 /* Variable-based theming */
 html {
   background: var(--bg);
@@ -40,9 +60,32 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background: var(--bg);
+=======
+/* ----------------- Global body and container ----------------- */
+html, body, #root, .app-container {
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    min-height: 100vh;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    transition: all 0.3s ease;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+>>>>>>> upstream/master
+}
+
+/* ----------------- Main content ----------------- */
 .main-content {
+<<<<<<< HEAD
   flex: 1;
   padding: 0;
   background: transparent;
@@ -50,5 +93,78 @@ body {
   border-radius: 0;
   border: none;
   box-shadow: none;
+=======
+    flex: 1;
+    padding: 0;
+    background: transparent;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+>>>>>>> upstream/master
 }
 
+/* ----------------- Header background ----------------- */
+.av-header {
+    background-color: var(--header-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ----------------- Theme Toggle Button ----------------- */
+.theme-toggle-btn {
+    margin-left: 15px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #d9e4ff;
+    border-radius: 9999px;
+    background: #eef3ff;
+    box-shadow: 0 2px 10px rgba(23, 37, 84, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(23, 37, 84, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+.av-header [data-theme="dark"] .theme-toggle-btn,
+[data-theme="dark"] .theme-toggle-btn {
+    background: #1d2230;
+    border-color: #2b3244;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.theme-toggle-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(23, 37, 84, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.theme-toggle-btn:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(99, 123, 255, 0.35), 0 6px 16px rgba(23, 37, 84, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.theme-toggle-btn svg {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+/* ----------------- Links, buttons, navbar ----------------- */
+a, button, .nav-links a {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Mobile menu background */
+.nav-links.nav-active {
+    background-color: var(--header-bg);
+}

@@ -6,29 +6,43 @@ import Home from './pages/Home';
 import Sorting from './pages/Sorting';
 import Searching from './pages/Searching';
 import DataStructures from './pages/DataStructures';
-import ScrollToTop from './ScrollToTop';  // ← NEW LINE 1
-import './styles/components.css';
+import Contributors from './components/Contributors';
+import ScrollToTop from './ScrollToTop'; 
 import About from './components/about';
 import Contact from './components/contact';
+import PrivacyPolicy from './components/Privacy';
+import TermsOfService from './components/terms';
+import Doubt from './components/Doubt';
+import AlgorithmDocumentation from './pages/Documentation';
+import './styles/components.css';
+import { ThemeProvider } from './ThemeContext'; // ← import ThemeProvider
+
 const App = () => {
     return (
-        <Router>
-            <div className="app-container">
-                <Header />
-                <main className="main-content">
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/sorting" element={<Sorting />} />
-                        <Route path="/searching" element={<Searching />} />
-                        <Route path="/data-structures" element={<DataStructures />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/contact" element={<Contact />} />
-                    </Routes>
-                </main>
-                <Footer />
-                <ScrollToTop />  {/* ← NEW LINE 2 */}
-            </div>
-        </Router>
+        <ThemeProvider> {/* ← Wrap entire app with ThemeProvider */}
+            <Router>
+                <div className="app-container">
+                    <Header />
+                    <main className="main-content">
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/sorting" element={<Sorting />} />
+                            <Route path="/searching" element={<Searching />} />
+                            <Route path="/data-structures" element={<DataStructures />} />
+                            <Route path="/contributors" element={<Contributors />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/terms" element={<TermsOfService />} />
+                            <Route path="/privacy" element={<PrivacyPolicy />} />
+                            <Route path="/documentation" element={<AlgorithmDocumentation />} />
+                        </Routes>
+                    </main>
+                    <Doubt />
+                    <Footer />
+                    <ScrollToTop />
+                </div>
+            </Router>
+        </ThemeProvider>
     );
 };
 

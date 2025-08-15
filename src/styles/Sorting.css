@@ -28,11 +28,50 @@
 }
 
 /* Array display */
+/* =========================
+   Theme Variables
+========================= */
+:root {
+    --bg-color: #0f1923;
+    --text-color: #e0e6ed;
+    --bar-color: dodgerblue;
+    --button-bg: #66ccff;
+    --button-text: #0f1923;
+    --button-hover: #4da6ff;
+    --reset-bg: orange;
+}
+
+[data-theme="light"] {
+    --bg-color: #f6f0d6;
+    --text-color: #1a1a1a;
+    --bar-color: #0077cc;
+    --button-bg: #0077cc;
+    --button-text: #f6f0d6;
+    --button-hover: #005fa3;
+    --reset-bg: #ff6600;
+}
+
+/* =========================
+   Container
+========================= */
+.container {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+/* =========================
+   Array Bars
+========================= */
 .array-container {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     height: 260px;
+    gap: 2px;
 }
 
 .array-bar {
@@ -40,9 +79,14 @@
     background-color: var(--bar-color);
     margin: 0 1px;
     width: 20px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
 }
 
 /* Controls section */
+/* =========================
+   Controls / Buttons
+========================= */
 .controls {
     margin-top: 20px;
 }
@@ -57,6 +101,16 @@ button {
     color: var(--button-text);
     cursor: pointer;
     border: none;
+    border: none;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
 }
 
 button:disabled {
@@ -64,6 +118,7 @@ button:disabled {
     cursor: not-allowed;
 }
 
+/* Reset button styling */
 button:last-child {
     background-color: var(--reset-bg);
     border-radius: 10px;

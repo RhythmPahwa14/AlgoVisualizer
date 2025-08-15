@@ -1,0 +1,237 @@
+/* Export Demo Styles */
+.export-demo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    /* color:#667eea; */
+    color:#2c3e50;
+    line-height: 1.6;
+}
+
+.export-demo h2 {
+    text-align: center;
+    /* color:red; */
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.demo-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.demo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+}
+
+.demo-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.demo-card h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.demo-card p {
+    margin-bottom: 20px;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.demo-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.feature-tag {
+    background: rgba(102, 126, 234, 0.2);
+    border: 1px solid rgba(102, 126, 234, 0.4);
+    color: #2c3e50;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.usage-steps {
+    /* background-color: red; */
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    color:white;
+}
+
+.usage-steps h3 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    /* background-color: white; */
+}
+
+.steps-container {
+     /* background-color: aliceblue; */
+    display: grid;
+    gap: 25px;
+   
+}
+
+.step {
+
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.step-number {
+
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.step-content p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.export-tips {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.export-tips h3 {
+    margin: 0 0 20px 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.export-tips ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.export-tips li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.95rem;
+}
+
+.export-tips li:last-child {
+    border-bottom: none;
+}
+
+.export-tips strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .export-demo {
+        padding: 20px 15px;
+    }
+    
+    .export-demo h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .demo-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .demo-card {
+        padding: 25px;
+    }
+    
+    .usage-steps {
+        padding: 25px 20px;
+    }
+    
+    .step {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .step-number {
+        align-self: center;
+    }
+    
+    .export-tips {
+        padding: 25px 20px;
+    }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+    .export-demo {
+        color: #e0e6ed;
+    }
+    
+    .export-demo h2 {
+        color: #66ccff;
+    }
+    
+    .usage-steps {
+        background: #2c3e50;
+    }
+    
+    .usage-steps h3 {
+        color: #66ccff;
+    }
+    
+    .step {
+        background: #34495e;
+    }
+    
+    .step-content h4 {
+        color: #e0e6ed;
+    }
+    
+    .step-content p {
+        color: #bdc3c7;
+    }
+}

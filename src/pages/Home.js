@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ExportDemo from '../components/ExportDemo';
+import Contributors from '../components/Contributors';
 import '../styles/home.css';
 
 export default function Home() {
@@ -92,13 +94,13 @@ export default function Home() {
                         <div className="card-header">
                             <div className="card-icon">🔄</div>
                             <div className="card-stats">
-                                <span className="stat-number">4</span>
+                                <span className="stat-number">5</span>
                                 <span className="stat-label">Algorithms</span>
                             </div>
                         </div>
                         <h3 className="card-title">Sorting Algorithms</h3>
                         <p className="card-description">
-                            Watch how Bubble Sort, Quick Sort, Merge Sort, and Selection Sort organize data step by step.
+                            Watch how Bubble Sort, Quick Sort, Merge Sort, Selection Sort, and Insertion Sort organize data step by step.
                         </p>
                         <div className="card-features">
                             <span className="feature-tag">Interactive</span>
@@ -120,7 +122,7 @@ export default function Home() {
                         </div>
                         <h3 className="card-title">Search Algorithms</h3>
                         <p className="card-description">
-                            Discover how Binary Search, Linear Search, and other algorithms find elements efficiently.
+                            Discover how Binary Search, Linear Search, Jump Search, and Exponential Search find elements efficiently.
                         </p>
                         <div className="card-features">
                             <span className="feature-tag">Fast</span>
@@ -136,13 +138,13 @@ export default function Home() {
                         <div className="card-header">
                             <div className="card-icon">🏗️</div>
                             <div className="card-stats">
-                                <span className="stat-number">3</span>
+                                <span className="stat-number">4</span>
                                 <span className="stat-label">Structures</span>
                             </div>
                         </div>
                         <h3 className="card-title">Data Structures</h3>
                         <p className="card-description">
-                            Explore Linked Lists, Trees, and Graphs with interactive visualizations and operations.
+                            Explore Linked Lists, Stacks, Queues, and Binary Trees with interactive visualizations and operations.
                         </p>
                         <div className="card-features">
                             <span className="feature-tag">Dynamic</span>
@@ -151,6 +153,28 @@ export default function Home() {
                         </div>
                         <div className="card-action">
                             Explore Structures <span>→</span>
+                        </div>
+                    </Link>
+
+                    <Link to="/documentation" className="quick-card documentation">
+                        <div className="card-header">
+                            <div className="card-icon">📚</div>
+                            <div className="card-stats">
+                                <span className="stat-number">13</span>
+                                <span className="stat-label">References</span>
+                            </div>
+                        </div>
+                        <h3 className="card-title">Algorithm Reference</h3>
+                        <p className="card-description">
+                            Complete documentation with complexity analysis, use cases, and implementation details for all algorithms.
+                        </p>
+                        <div className="card-features">
+                            <span className="feature-tag">Comprehensive</span>
+                            <span className="feature-tag">Detailed</span>
+                            <span className="feature-tag">Searchable</span>
+                        </div>
+                        <div className="card-action">
+                            Browse Docs <span>→</span>
                         </div>
                     </Link>
                 </div>
@@ -216,6 +240,11 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* Export Features Section */}
+            <section className="export-features-section">
+                <ExportDemo />
+            </section>
+
             {/* Statistics Section */}
             <section className="stats-section">
                 <div className="stats-container">
@@ -236,6 +265,8 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+            {/* Contributors Section */}    
+            <Contributors />
 
             {/* Call to Action */}
             <section className="final-cta">
@@ -250,7 +281,7 @@ export default function Home() {
                             <span>🚀</span> Begin Learning
                         </Link>
                         <a 
-                            href="https://github.com/SandeepVashishtha/AlgoVisualizer" 
+                            href="https://github.com/RhythmPahwa14/AlgoVisualizer" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="cta-secondary"

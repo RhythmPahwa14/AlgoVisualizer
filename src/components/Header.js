@@ -3,9 +3,15 @@ import { Link, NavLink } from 'react-router-dom';
 import '../styles/navbar.css';
 import { useTheme } from '../hooks/useTheme';
 
+// const Header = () => {
+//     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+//     const { theme, toggle } = useTheme();
+// import { useTheme } from '../ThemeContext'; // ← import useTheme
+
+
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const { theme, toggle } = useTheme();
+    const { theme, toggleTheme } = useTheme(); // ← access theme context
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -61,6 +67,7 @@ const Header = () => {
             </div>
         </header>
     );
+
 };
 
 export default Header;

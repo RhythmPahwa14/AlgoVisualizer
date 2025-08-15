@@ -1,0 +1,50 @@
+.doubt-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.doubt-section h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.doubt-section p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.doubt-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.doubt-section input,
+.doubt-section textarea {
+    width: 80%;
+    max-width: 500px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.doubt-section button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.doubt-section button:hover {
+    background-color: #0056b3;
+}

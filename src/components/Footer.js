@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/footer.css';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
@@ -8,42 +8,42 @@ const Footer = () => {
             <div className="footer-content">
                 <h3 className="footer-heading">AlgoVisualizer</h3>
                 <p className="footer-description">
-                    Visualize and understand algorithms in an interactive way! 
-                    Master data structures and algorithms with beautiful, step-by-step visualizations.
+                    Visualize and understand algorithms interactively.<br />
+                    Master data structures and algorithms with step-by-step visualizations.
                 </p>
 
                 <div className="footer-social">
-                    <h4 style={{ color: '#b8c5d1', marginBottom: '15px', fontFamily: 'Poppins, sans-serif' }}>Connect with us</h4>
+                    <h4 className="footer-social-title">Connect with us</h4>
                     <div className="social-icons">
-                        <a href="https://github.com/SandeepVashishtha/AlgoVisualizer" target="_blank" rel="noopener noreferrer" className="social-icon">
+                        <a href="https://github.com/RhythmPahwa14/AlgoVisualizer" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub">
                             <FaGithub />
                         </a>
-                        <a href="https://linkedin.com/in/sandeep-vashishtha" target="_blank" rel="noopener noreferrer" className="social-icon">
+                        <a href="https://linkedin.com/in/sandeepvashishtha" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
                             <FaLinkedin />
-                        </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                            <FaTwitter />
-                        </a>
-                        <a href="mailto:contact@algovisualizer.com" className="social-icon">
-                            <FaEnvelope />
                         </a>
                     </div>
                 </div>
 
-                <div className="footer-links">
-                    <a href="/privacy">Privacy Policy</a>
-                    <a href="/terms">Terms of Service</a>
-                    <Link to="/about" className="about-link">About </Link>
+                <nav className="footer-links" aria-label="Footer navigation">
+                    <Link to="/privacy">Privacy Policy</Link>
+                    <Link to="/terms">Terms of Service</Link>
+                    <Link to="/about" className="about-link">About</Link>
                     <Link to="/contact" className="contact-link">Contact Us</Link>
                     <a href="/contribute">Contribute</a>
-                </div>
+                </nav>
             </div>
 
             <div className="footer-bottom">
                 <p>&copy; {new Date().getFullYear()} AlgoVisualizer. All rights reserved.</p>
-                <p>Developed with ❤️ by <strong>Sandeep Vashishtha</strong></p>
+                <p>
+                    Developed with <span role="img" aria-label="love">❤️</span> by&nbsp;
+                    <a href="https://github.com/sandeepvashishtha" target="_blank" rel="noopener noreferrer" className="footer-author">
+                        Sandeep Vashishtha
+                    </a>
+                    &nbsp;and amazing open source contributors
+                </p>
                 <div className="copyright">
-                    <span>Made with React & JavaScript</span> • <span>Open Source</span> • <span>Educational Purpose</span>
+                    <span>Made with React &amp; JavaScript</span> • <span>Open Source</span> • <span>Educational Purpose</span>
                 </div>
             </div>
         </footer>
