@@ -10,6 +10,13 @@
   --bar: #60a5fa;
   --bar-active: #34d399;
   --bar-compare: #f59e0b;
+
+  --nav-text: #0b0b0b;
+  --nav-bg: transparent;
+  --nav-hover-text: #2563eb;
+  --nav-hover-bg: rgba(37, 99, 235, 0.1);
+  --nav-active-text: #ffffff;
+  --nav-active-bg: rgba(37, 99, 235, 0.35);
 }
 
 [data-theme="dark"] {
@@ -23,9 +30,16 @@
   --bar: #3b82f6;
   --bar-active: #10b981;
   --bar-compare: #fbbf24;
+
+  --nav-text: #cfd9e6;
+  --nav-bg: transparent;
+  --nav-hover-text: #ffffff;
+  --nav-hover-bg: rgba(59, 130, 246, 0.25);
+  --nav-active-text: #ffffff;
+  --nav-active-bg: rgba(59, 130, 246, 0.35);
 }
 
-/* Base Layout and Elements */
+/* Base Layout */
 body {
   font-family: Arial, sans-serif;
   background-color: var(--bg);
@@ -36,340 +50,128 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-header {
-  background-color: var(--accent);
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background-color: var(--card);
-  border-radius: 8px;
-  border: 1px solid var(--border);
-}
-
-h1, h2, h3 {
-  margin-bottom: 1rem;
-}
-
-.progress-bar {
-  background-color: var(--bar);
-  height: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-
-.progress {
-  background-color: var(--bar-active);
-  height: 100%;
-  transition: width 0.3s;
-}
-
-.progress-compare {
-  background-color: var(--bar-compare);
-  height: 100%;
-  transition: width 0.3s;
-}
-
-button {
-  background-color: var(--accent);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: var(--muted);
-  color: var(--text);
-  border-top: 1px solid var(--border);
-}
-
-/* === Navbar Redesign from master === */
+/* Navbar */
 .av-header {
-    position: -webkit-sticky;
-/* Navbar redesign: glass header, brand fonts, improved active styles */
-.av-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(10, 10, 26, 0.6);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 26, 0.6);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .av-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .logo a {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 6px;
-    text-decoration: none;
-    color: inherit;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
 }
 
-.brand-mono {
-    font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #9ecbff;
-}
-
-.brand-highlight {
-    font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-    font-weight: 600;
-    background: linear-gradient(90deg, #66ccff, #4da6ff, #6f7cff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
+/* Nav Links */
 .nav-links {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .nav-links a {
-    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-    color: #cfd9e6;
-    text-decoration: none;
-    font-size: 0.98rem;
-    font-weight: 500;
-    padding: 10px 12px;
-    border-radius: 10px;
-    transition: all .2s ease;
-    border: 1px solid transparent;
-    font-size: 0.90rem;
-    font-weight: 500;
-    padding: 10px 12px;
-    border-radius: 10px;
-    border: 1px solid transparent;
-    /* smoother transitions */
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  color: var(--nav-text);
+  text-decoration: none;
+  font-size: 0.90rem;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  background: var(--nav-bg);
 }
 
-/* Hover state: subtle change */
 .nav-links a:hover {
-    /* Keep master’s lighter text color */
-    color: #d4e8ff;
-
-    /* Keep dark-mode's subtle background */
-    background: rgba(255, 255, 255, 0.06);
-
-    /* Keep master’s border color */
-    border-color: rgba(59, 130, 246, 0.25);
+  color: var(--nav-hover-text);
+  background: var(--nav-hover-bg);
+  border-color: rgba(59, 130, 246, 0.25);
 }
-
 
 .nav-links a.active {
-    color: #0b1c3d;
-    background: linear-gradient(90deg, #8dd5ff, #80a7ff);
-    border-color: rgba(255, 255, 255, 0.14);
-    box-shadow: 0 6px 22px rgba(125, 170, 255, .25);
+  color: var(--nav-active-text);
+  background: var(--nav-active-bg);
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
 }
 
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
+/* GitHub Button */
 .github-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border-radius: 10px;
-    color: #dce7ff;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all .2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--nav-text);
+  background: var(--nav-bg);
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .github-btn:hover {
-    color: #0b1c3d;
-    background: linear-gradient(90deg, #8dd5ff, #80a7ff);
-    border-color: rgba(255, 255, 255, 0.18);
-}
-
-    
-
-/* Active state: toned‑down accent with high contrast */
-.nav-links a.active {
-    color: #ffffff;                       /* white text for maximum contrast */
-    background: rgba(59, 130, 246, 0.35); /* semi‑transparent accent */
-    /* If you prefer a solid gradient instead, comment out the line above and uncomment the next line */
-    /* background: linear-gradient(90deg, #4fa7f8, #3b82f6); */
-    border-color: rgba(59, 130, 246, 0.45);
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+  color: var(--nav-hover-text);
+  background: var(--nav-hover-bg);
+  border-color: rgba(59, 130, 246, 0.45);
 }
 
 .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-/* GitHub star button – base appearance */
-.github-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border-radius: 10px;
-    color: #cfd9e6;                       /* match the nav link colour */
-    background: rgba(59, 130, 246, 0.15); /* subtle accent background */
-    border: 1px solid rgba(59, 130, 246, 0.25);
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Hover state for the star button */
-.github-btn:hover {
-    color: #f8f9fa;                       /* off-white text on hover */
-    background: rgba(59, 130, 246, 0.35); /* slightly stronger accent */
-    /* Or use a darker gradient if you want a solid colour:
-       background: linear-gradient(90deg, #4fa7f8, #3b82f6);
-    */
-    border-color: rgba(59, 130, 246, 0.45);
-}
-
-
+/* Hamburger Menu */
 .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    padding: 10px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .hamburger .bar {
-    width: 22px;
-    height: 2px;
-    background: #cfe1ff;
-    border-radius: 2px;
+  width: 22px;
+  height: 2px;
+  background: #cfe1ff;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
 }
 
+/* Responsive */
 @media (max-width: 900px) {
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        right: 12px;
-        flex-direction: column;
-        min-width: 220px;
-        padding: 10px;
-        background: rgba(10, 10, 26, 0.9);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        box-shadow: 0 12px 40px rgba(0,0,0,.5);
-    }
-
-    .nav-links.nav-active { display: flex; }
-
-    .hamburger { display: inline-flex; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.av-header { animation: fadeIn .35s ease-out; }
-    cursor: pointer;
-    border: none;
-    background: none;
-    padding: 0;
-}
-
-.bar {
-    width: 20px;
-    height: 2px;
-    margin: 4px 0;
-    background-color: #cfd9e6;
-    transition: background-color 0.3s ease;
-}
-
-/* Responsive Styles for Mobile */
-@media screen and (max-width: 768px) {
-    /* Mobile logo adjustments */
-    .navbar-heading {
-        font-size: 1.4em;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 64px;
-        right: -100%;
-        height: calc(100vh - 64px);
-        width: 100%;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        background: rgba(10, 10, 26, 0.9);
-        backdrop-filter: blur(6px);
-        padding: 20px;
-        transition: right 0.3s ease;
-    }
-
-    .nav-links.nav-active {
-        right: 0;
-    }
-
-    .nav-links a {
-        display: block;
-        width: 100%;
-    }
-
-    .nav-actions {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-}
-
-/* Extra small devices */
-@media screen and (max-width: 480px) {
-    .navbar-heading {
-        font-size: 1.3em;
-    }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 12px;
+    flex-direction: column;
+    min-width: 220px;
+    padding: 10px;
+    background: rgba(10, 10, 26, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  }
+  .nav-links.nav-active { display: flex; }
+  .hamburger { display: inline-flex; }
 }
