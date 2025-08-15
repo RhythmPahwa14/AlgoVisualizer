@@ -47,18 +47,6 @@ const Header = () => {
                         {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
                     </button>
 
-                    {/* GitHub button */}
-                    <a
-                        className="github-btn"
-                        href="https://github.com/RhythmPahwa14/AlgoVisualizer"
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        aria-label="Open GitHub repository"
-                    >
-                        <span>Star</span>
-                    </a>
-
-                    {/* Hamburger menu for mobile */}
                     <button
                         className="hamburger"
                         onClick={toggleMobileMenu}
