@@ -186,10 +186,16 @@ footer {
 
 /* Hover state: subtle change */
 .nav-links a:hover {
-    color: #eaf2ff;
+    /* Keep master’s lighter text color */
+    color: #d4e8ff;
+
+    /* Keep dark-mode's subtle background */
     background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.08);
+
+    /* Keep master’s border color */
+    border-color: rgba(59, 130, 246, 0.25);
 }
+
 
 .nav-links a.active {
     color: #0b1c3d;
