@@ -19,12 +19,16 @@ body {
 }
 
 .searching-button {
+    white-space: nowrap;    /* keep label on one line */
+    width: auto;
     padding: 10px 20px;
     margin: 5px;
     font-size: 16px;
-    border-radius: 10px; /* Rounded edges */
+    border-radius: 10px;
+    /* Rounded edges */
     cursor: pointer;
-    color: black; /* Ensure button text is black */
+    color: black;
+    /* Ensure button text is black */
 }
 
 .searching-button:disabled {
@@ -66,9 +70,11 @@ body {
     padding: 10px 20px;
     margin: 5px;
     font-size: 16px;
-    border-radius: 10px; /* Rounded edges */
+    border-radius: 10px;
+    /* Rounded edges */
     cursor: pointer;
-    color: black; /* Ensure button text is black */
+    color: black;
+    /* Ensure button text is black */
 }
 
 .sorting-button:disabled {
