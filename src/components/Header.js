@@ -40,35 +40,27 @@ const Header = () => {
                     {/* Dark/Light mode toggle */}
                     <button onClick={toggleTheme} className="theme-toggle-btn" aria-label="Toggle dark/light mode">
                         {theme === 'light' ? (
-                            <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-                                <circle cx="16" cy="16" r="12.4" fill="currentColor"/>
-                                <circle cx="22.5" cy="16" r="12.9" fill="currentColor"/>
-                            </svg>
-                        ) : (
-                            <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-                                <defs>
-                                    <filter id="btnGlow" x="-50%" y="-50%" width="200%" height="200%">
-                                        <feDropShadow dx="0" dy="0" stdDeviation="2.8" floodColor="#0b3a57" floodOpacity="0.55"/>
-                                    </filter>
-                                </defs>
-                                <g filter="url(#btnGlow)">
-                                    <circle cx="16" cy="16" r="15" fill="#0b0e13"/>
-                                </g>
-                                <circle cx="16" cy="16" r="14" fill="none" stroke="#3b414c" strokeWidth="2"/>
-                                <circle cx="16" cy="16" r="12" fill="#2a2f39"/>
-                                <circle cx="16" cy="16" r="6.2" fill="#b9c8ff"/>
-                                <g fill="#b9c8ff">
-                                    <rect x="15" y="5" width="2" height="5" rx="1"/>
-                                    <rect x="15" y="22" width="2" height="5" rx="1"/>
-                                    <rect x="22" y="15" width="5" height="2" rx="1"/>
-                                    <rect x="5" y="15" width="5" height="2" rx="1"/>
-                                    <rect x="20.2" y="8.2" width="2" height="5" rx="1" transform="rotate(45 21.2 10.7)"/>
-                                    <rect x="9.8" y="18.8" width="2" height="5" rx="1" transform="rotate(45 10.8 21.3)"/>
-                                    <rect x="9.8" y="8.2" width="2" height="5" rx="1" transform="rotate(-45 10.8 10.7)"/>
-                                    <rect x="20.2" y="18.8" width="2" height="5" rx="1" transform="rotate(-45 21.2 21.3)"/>
-                                </g>
-                            </svg>
-                        )}
+                                // ☀️ Sun icon for Light mode
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="5" fill="#fbbf24"/>
+                                    <g stroke="#fbbf24" strokeWidth="2">
+                                        <line x1="12" y1="1" x2="12" y2="4"/>
+                                        <line x1="12" y1="20" x2="12" y2="23"/>
+                                        <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/>
+                                        <line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/>
+                                        <line x1="1" y1="12" x2="4" y2="12"/>
+                                        <line x1="20" y1="12" x2="23" y2="12"/>
+                                        <line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/>
+                                        <line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/>
+                                    </g>
+                                </svg>
+                            ) : 
+                            (
+                                // 🌙 Moon icon for Dark mode
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                                    <path fill="#93c5fd" d="M21 12.79A9 9 0 0111.21 3 7 7 0 1012 21a9 9 0 009-8.21z"/>
+                                </svg>
+                            )}
                     </button>
 
                     <button className="hamburger" onClick={toggleMobileMenu} aria-label="Toggle menu" aria-expanded={isMobileMenuOpen}>

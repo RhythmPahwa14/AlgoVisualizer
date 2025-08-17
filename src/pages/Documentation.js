@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Search, Clock, Database, BookOpen, Zap, Users, Star } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
+import { style } from 'framer-motion/client';
 
 const AlgorithmDocumentation = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -483,8 +484,8 @@ const AlgorithmDocumentation = () => {
                     </div>
                     <div style={{ 
                         fontSize: '12px', 
-                        color: '#b8c5d1', 
-                        background: `${algorithm.categoryColor}15`,
+                        color: '#6c757d', 
+                        background: `${algorithm.categoryColor}27`,
                         padding: '4px 8px',
                         borderRadius: '12px',
                         display: 'inline-block'
@@ -525,7 +526,7 @@ const AlgorithmDocumentation = () => {
 
             {/* Description */}
             <p style={{ 
-                color: '#e0e6ed', 
+                color: '#6c757d', 
                 fontSize: '14px', 
                 lineHeight: '1.5', 
                 marginBottom: '20px',
@@ -548,7 +549,7 @@ const AlgorithmDocumentation = () => {
                             color: getComplexityColor(algorithm.timeComplexity.best),
                             padding: '6px 10px',
                             borderRadius: '6px',
-                            fontSize: '11px',
+                            fontSize: '12px',
                             fontWeight: '600',
                             border: `1px solid ${getComplexityColor(algorithm.timeComplexity.best)}40`
                         }}>
@@ -559,7 +560,7 @@ const AlgorithmDocumentation = () => {
                             color: getComplexityColor(algorithm.timeComplexity.average),
                             padding: '6px 10px',
                             borderRadius: '6px',
-                            fontSize: '11px',
+                            fontSize: '12px',
                             fontWeight: '600',
                             border: `1px solid ${getComplexityColor(algorithm.timeComplexity.average)}40`
                         }}>
@@ -570,7 +571,7 @@ const AlgorithmDocumentation = () => {
                             color: getComplexityColor(algorithm.timeComplexity.worst),
                             padding: '6px 10px',
                             borderRadius: '6px',
-                            fontSize: '11px',
+                            fontSize: '12px',
                             fontWeight: '600',
                             border: `1px solid ${getComplexityColor(algorithm.timeComplexity.worst)}40`
                         }}>
@@ -585,7 +586,7 @@ const AlgorithmDocumentation = () => {
                                 color: getComplexityColor(complexity),
                                 padding: '6px 10px',
                                 borderRadius: '6px',
-                                fontSize: '11px',
+                                fontSize: '12px',
                                 fontWeight: '600',
                                 border: `1px solid ${getComplexityColor(complexity)}40`
                             }}>
@@ -597,13 +598,13 @@ const AlgorithmDocumentation = () => {
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '8px' }}>
                     <Database size={14} style={{ color: algorithm.categoryColor }} />
-                    <span style={{ fontSize: '12px', color: '#b8c5d1' }}>Space: </span>
+                    <span style={{ fontSize: '12px', color: '#6c757d' }}>Space: </span>
                     <span style={{ 
                         background: getComplexityColor(algorithm.spaceComplexity) + '20',
                         color: getComplexityColor(algorithm.spaceComplexity),
                         padding: '4px 8px',
                         borderRadius: '4px',
-                        fontSize: '11px',
+                        fontSize: '12px',
                         fontWeight: '600',
                         border: `1px solid ${getComplexityColor(algorithm.spaceComplexity)}40`
                     }}>
@@ -623,9 +624,9 @@ const AlgorithmDocumentation = () => {
                             <span style={{
                                 background: algorithm.stability === 'Stable' ? 'rgba(74, 222, 128, 0.2)' : 'rgba(255, 107, 107, 0.2)',
                                 color: algorithm.stability === 'Stable' ? '#4ade80' : '#ff6b6b',
-                                padding: '4px 8px',
+                                padding: '4px 9px',
                                 borderRadius: '12px',
-                                fontSize: '10px',
+                                fontSize: '11px',
                                 fontWeight: '600'
                             }}>
                                 {algorithm.stability}
@@ -636,8 +637,8 @@ const AlgorithmDocumentation = () => {
                                 background: algorithm.inPlace ? 'rgba(74, 222, 128, 0.2)' : 'rgba(255, 107, 107, 0.2)',
                                 color: algorithm.inPlace ? '#4ade80' : '#ff6b6b',
                                 padding: '4px 8px',
-                                borderRadius: '12px',
-                                fontSize: '10px',
+                                borderRadius: '11px',
+                                fontSize: '11px',
                                 fontWeight: '600'
                             }}>
                                 {algorithm.inPlace ? 'In-place' : 'Not in-place'}
@@ -649,7 +650,7 @@ const AlgorithmDocumentation = () => {
                                 color: algorithm.adaptivity === 'Adaptive' ? '#4ade80' : '#ff6b6b',
                                 padding: '4px 8px',
                                 borderRadius: '12px',
-                                fontSize: '10px',
+                                fontSize: '11px',
                                 fontWeight: '600'
                             }}>
                                 {algorithm.adaptivity}
@@ -661,7 +662,7 @@ const AlgorithmDocumentation = () => {
                                 color: '#66ccff',
                                 padding: '4px 8px',
                                 borderRadius: '12px',
-                                fontSize: '10px',
+                                fontSize: '11px',
                                 fontWeight: '600'
                             }}>
                                 {algorithm.dataRequirement}
@@ -683,8 +684,8 @@ const AlgorithmDocumentation = () => {
                 }}>
                     {algorithm.useCases.slice(0, 3).map((useCase, index) => (
                         <div key={index} style={{
-                            fontSize: '12px',
-                            color: '#e0e6ed',
+                            fontSize: '12.5px',
+                            color: '#6c757d',
                             marginBottom: '4px',
                             paddingLeft: '12px',
                             position: 'relative'
@@ -715,8 +716,8 @@ const AlgorithmDocumentation = () => {
                     }}>
                         {algorithm.specialNotes.slice(0, 2).map((note, index) => (
                             <div key={index} style={{
-                                fontSize: '12px',
-                                color: '#b8c5d1',
+                                fontSize: '12.5px',
+                                color: '#6c757d',
                                 marginBottom: index < algorithm.specialNotes.slice(0, 2).length - 1 ? '6px' : '0',
                                 paddingLeft: '12px',
                                 position: 'relative'
@@ -904,7 +905,8 @@ const AlgorithmDocumentation = () => {
                                     key={category.key}
                                     onClick={() => setSelectedCategory(category.key)}
                                     style={{
-                                        padding: '12px 20px',
+                                        padding: '20px 20px',
+                                        minWidth: '140px',
                                         background: isActive 
                                             ? (theme === 'light' ? 'linear-gradient(45deg, #0077cc, #005fa3)' : 'linear-gradient(45deg, #66ccff, #4da6ff)')
                                             : (theme === 'light' ? 'rgba(0, 119, 204, 0.1)' : 'rgba(102, 204, 255, 0.1)'),
@@ -977,7 +979,7 @@ const AlgorithmDocumentation = () => {
 
             {/* Algorithms Grid */}
             <div style={{
-                padding: '0 20px 60px 20px'
+                padding: '20px 20px 60px 20px'
             }}>
                 <div style={{
                     maxWidth: '1200px',
@@ -1106,16 +1108,16 @@ const AlgorithmDocumentation = () => {
                                 Algorithm Properties
                             </h4>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-start' }}>
-                                <div style={{ fontSize: '12px', color: themeStyles.color }}>
+                                <div style={{ fontSize: '12px', color: '#e0e6ed' }}>
                                     <span style={{ color: '#4ade80' }}>●</span> Stable - maintains relative order
                                 </div>
-                                <div style={{ fontSize: '12px', color: themeStyles.color }}>
+                                <div style={{ fontSize: '12px', color: '#e0e6ed' }}>
                                     <span style={{ color: '#4ade80' }}>●</span> In-place - uses O(1) extra space
                                 </div>
-                                <div style={{ fontSize: '12px', color: themeStyles.color }}>
+                                <div style={{ fontSize: '12px', color: '#e0e6ed' }}>
                                     <span style={{ color: '#4ade80' }}>●</span> Adaptive - faster on sorted data
                                 </div>
-                                <div style={{ fontSize: '12px', color: themeStyles.color }}>
+                                <div style={{ fontSize: '12px', color: '#e0e6ed' }}>
                                     <span style={{ color: '#ff6b6b' }}>●</span> Unstable - may change relative order
                                 </div>
                             </div>
@@ -1134,9 +1136,9 @@ const AlgorithmDocumentation = () => {
                             margin: 0, 
                             lineHeight: '1.6' 
                         }}>
-                            <strong style={{ color: theme === 'light' ? '#0077cc' : '#66ccff' }}>Note:</strong> Complexities shown are theoretical worst-case scenarios. 
+                            <strong style={{ color: theme === 'light' ? '#0085cc' : '#66ccff' }}>Note:</strong> <span style={{color: '#e0e6ed'}}>Complexities shown are theoretical worst-case scenarios. 
                             Actual performance may vary based on input data, implementation details, and system architecture. 
-                            Use this documentation as a guide for understanding algorithm characteristics and choosing the right tool for your needs.
+                            Use this documentation as a guide for understanding algorithm characteristics and choosing the right tool for your needs.</span>
                         </p>
                     </div>
                 </div>
