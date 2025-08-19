@@ -32,6 +32,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    flex-wrap: nowrap; /* Prevent wrapping */
 }
 
 /* ----------------- Logo ----------------- */
@@ -73,6 +74,9 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-shrink: 1;       /* Allow nav links to shrink */
+    min-width: 0;         /* Fix overflow in flex container */
+    overflow: hidden;     /* Hide overflowing links */
 }
 
 .nav-links a {
@@ -88,6 +92,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     transition: all 0.25s ease;
+    flex-shrink: 1;       /* Allow links to shrink */
+    min-width: 0;
 }
 
 .nav-links a:hover {
@@ -201,6 +207,13 @@
 }
 
 /* ----------------- Responsive ----------------- */
+@media screen and (max-width: 1024px) {
+    .nav-links a {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .navbar-heading {
         font-size: 1.4em;
@@ -252,3 +265,10 @@
     }
 }
 
+/* Ensure nav-actions do not shrink */
+.nav-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+    align-items: center;
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../styles/navbar.css';
 import { useTheme } from '../ThemeContext'; // ← import useTheme
+import { UserButton, SignedIn, SignedOut, SignInButton } from '@clerk/clerk-react';
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -36,6 +37,15 @@ const Header = () => {
                         </svg>
                         <span>Star</span>
                     </a>
+
+<SignedIn>
+  <UserButton afterSignOutUrl="/" />
+</SignedIn>
+<SignedOut>
+  <SignInButton />
+</SignedOut>
+
+
 
                     {/* Dark/Light mode toggle */}
                     <button onClick={toggleTheme} className="theme-toggle-btn" aria-label="Toggle dark/light mode">

@@ -1,9 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './styles/components.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import { ClerkProvider } from "@clerk/clerk-react";
+import App from "./App";
+
+const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
 
 ReactDOM.render(
-    <App />,
-    document.getElementById('root')
+  <ClerkProvider publishableKey={clerkPubKey}>
+    <App />
+  </ClerkProvider>,
+  document.getElementById("root")
 );
