@@ -468,6 +468,8 @@ select:focus {
   padding: 60px 20px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
+  margin: 0 auto;      
+  text-align: center;  
 }
 
 /* CTA Buttons */
