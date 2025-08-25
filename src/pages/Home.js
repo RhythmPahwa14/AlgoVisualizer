@@ -4,6 +4,7 @@ import ExportDemo from "../components/ExportDemo";
 import Contributors from "../components/Contributors";
 import "../styles/home.css";
 import visual from "../assets/statistics.gif";
+import FaqChatbot from "../components/FaqChatbot";
 
 export default function Home() {
   const [typedText, setTypedText] = useState("");
@@ -607,6 +608,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <FaqChatbot />
     </div>
   );
 }
