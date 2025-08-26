@@ -12,39 +12,40 @@ const GraphVisualizer = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
+    
+    const drawGraph = (ctx) => {
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+      // Draw edges
+      edges.forEach(edge => {
+        const start = nodes[edge.start];
+        const end = nodes[edge.end];
+        if (start && end) {
+          ctx.beginPath();
+          ctx.moveTo(start.x, start.y);
+          ctx.lineTo(end.x, end.y);
+          ctx.strokeStyle = '#66ccff';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+      });
+
+      // Draw nodes
+      nodes.forEach((node, index) => {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, 20, 0, 2 * Math.PI);
+        ctx.fillStyle = '#66ccff';
+        ctx.fill();
+        ctx.fillStyle = '#0f3460';
+        ctx.font = '16px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(index, node.x, node.y);
+      });
+    };
+    
     drawGraph(ctx);
   }, [nodes, edges]);
-
-  const drawGraph = (ctx) => {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
-    // Draw edges
-    edges.forEach(edge => {
-      const start = nodes[edge.start];
-      const end = nodes[edge.end];
-      if (start && end) {
-        ctx.beginPath();
-        ctx.moveTo(start.x, start.y);
-        ctx.lineTo(end.x, end.y);
-        ctx.strokeStyle = '#66ccff';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-      }
-    });
-
-    // Draw nodes
-    nodes.forEach((node, index) => {
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, 20, 0, 2 * Math.PI);
-      ctx.fillStyle = '#66ccff';
-      ctx.fill();
-      ctx.fillStyle = '#0f3460';
-      ctx.font = '16px Arial';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(index, node.x, node.y);
-    });
-  };
 
   const handleCanvasClick = (event) => {
     const canvas = canvasRef.current;
