@@ -24,19 +24,18 @@
 }
 
 .demo-card {
-    background: #21262d;
-    color: #e6edf3;
+    background: var(--card-bg);
+    color: var(--text-color);
     padding: 30px;
     border-radius: 15px;
     text-align: center;
-    border: 1px solid #30363d;
-    box-shadow: 0 8px 24px rgba(33, 38, 45, 0.35);
+    box-shadow: 0 0 12px 0 rgba(33, 38, 45, 0.35);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .demo-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.45);
+    box-shadow: 0 0 12px 4px rgba(33, 38, 45, 0.35);
 }
 
 .demo-icon {
@@ -66,9 +65,9 @@
 }
 
 .feature-tag {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--card-bg);
+    color: var(--text-color);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
     padding: 4px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
@@ -91,31 +90,37 @@
     font-size: 1.8rem;
     color: var(--primary-color);
 }
+
 .step:nth-child(1) .step-number {
-  background: #E0E7FF; /* Soft Indigo */
-  color: #3730A3;
+    background: #E0E7FF;
+    /* Soft Indigo */
+    color: #3730A3;
 }
 
 .step:nth-child(2) .step-number {
-  background: #CCFBF1; /* Soft Teal */
-  color: #0F766E;
+    background: #CCFBF1;
+    /* Soft Teal */
+    color: #0F766E;
 }
 
 .step:nth-child(3) .step-number {
-  background: #FEF3C7; /* Soft Amber */
-  color: #B45309;
+    background: #FEF3C7;
+    /* Soft Amber */
+    color: #B45309;
 }
 
 .step:nth-child(4) .step-number {
-  background: #FFE4E6; /* Soft Rose */
-  color: #BE123C;
+    background: #FFE4E6;
+    /* Soft Rose */
+    color: #BE123C;
 }
 
 
 .step-number:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
 }
+
 .steps-container {
     display: grid;
     gap: 25px;
@@ -123,7 +128,7 @@
 
 .step {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 20px;
     padding: 20px;
     border-radius: 10px;
@@ -148,31 +153,48 @@
     font-weight: bold;
     font-size: 1.2rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 10px rgba(0 , 0, 0, 0.2);
-     animation: pop 0.6s ease forwards, floatRotate 3s ease-in-out infinite, glow 3s ease-in-out infinite;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: pop 0.6s ease forwards, glow 3s ease-in-out infinite;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
 }
+
 /* Pop-in animation */
 @keyframes pop {
-  0% { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* Floating + Rotation animation */
 @keyframes floatRotate {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-5px) rotate(5deg); }
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(5deg);
+    }
 }
+
 /* Glow Animation */
 @keyframes glow {
-  0%, 100% { filter: drop-shadow(0 0 5px currentColor); }
-  50% { filter: drop-shadow(0 0 15px currentColor); }
-}
-/* Hover Effect */
-.step-number:hover{
-    transform: scale(1.2);
-    box-shadow:  0 0 23px rgba(255, 255, 255, 0.8);
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 5px currentColor);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px currentColor);
+    }
 }
 
 .step-content h4 {
@@ -185,17 +207,17 @@
     margin: 0;
     color: #666;
     font-size: 0.95rem;
- 
+
 }
-.step-content{
+
+.step-content {
     text-align: left;
 }
 
 /* ---- Export Tips ---- */
 .export-tips {
-    background: #21262d;
-    color: #e6edf3;
-    border: 1px solid #30363d;
+    background: var(--card-bg);
+    color: var(--text-color);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
@@ -214,13 +236,18 @@
 }
 
 .export-tips li {
+    position: relative;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     font-size: 0.95rem;
 }
 
-.export-tips li:last-child {
-    border-bottom: none;
+.export-tips li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  border-bottom: 1px solid #838383;
 }
 
 [data-theme="light"] .export-tips strong {
