@@ -166,30 +166,6 @@ const Header = () => {
             {/* Mobile Navigation */}
             <nav className={`nav-links-mobile ${isMobileMenuOpen ? 'active' : ''}`} aria-label="Mobile Navigation">
                 <div className="mobile-nav-content">
-                    <div className="mobile-nav-header">
-
-                        <div className="mobile-nav-actions">
-                            <a 
-                                className="mobile-github-btn" 
-                                href="https://github.com/RhythmPahwa14/AlgoVisualizer" 
-                                target="_blank" 
-                                rel="noreferrer noopener"
-                                onClick={toggleMobileMenu}
-                            >
-                                <FaGithub />
-                                <span>Star on GitHub</span>
-                            </a>
-                            
-                            <button 
-                                onClick={toggleTheme} 
-                                className="mobile-theme-toggle"
-                                aria-label="Toggle theme"
-                            >
-                                {theme === 'light' ? <FaMoon /> : <FaSun />}
-                            </button>
-                        </div>
-                    </div>
-
                     <div className="mobile-nav-groups">
                         <div className="mobile-nav-group">
                             <div className="mobile-group-header">
