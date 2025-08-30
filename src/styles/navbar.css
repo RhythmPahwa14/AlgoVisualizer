@@ -196,6 +196,7 @@
     color: var(--text-primary);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(88, 166, 255, 0.15);
+    text-decoration: none;
 }
 
 .nav-link.active {
@@ -272,6 +273,7 @@
     border-color: rgba(88, 166, 255, 0.4);
     transform: translateY(-1px);
     box-shadow: 0 4px 15px rgba(88, 166, 255, 0.25);
+    text-decoration: none;
 }
 
 .github-icon {
@@ -318,7 +320,7 @@
 }
 
 .theme-toggle-btn:hover .theme-icon {
-    transform: translate(-50%, -50%) rotate(180deg) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 /* Hamburger Menu */
@@ -528,6 +530,7 @@
     color: var(--text-primary);
     background: rgba(88, 166, 255, 0.1);
     transform: translateX(4px);
+    text-decoration: none;
 }
 
 .mobile-nav-link.active {
@@ -563,7 +566,7 @@
     }
 }
 
- screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .av-container {
         padding: 0 16px;
         gap: 12px;
@@ -587,7 +590,7 @@
     }
 }
 
- screen and (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .navbar-heading {
         font-size: 1.4rem;
     }
@@ -614,7 +617,7 @@
 }
 
 /* Reduce motion for users who prefer it */
- (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
