@@ -21,6 +21,60 @@ export default function Home() {
     "Graph Traversal",
   ];
 
+  // Add the Card Info here
+  const quickStartCardInfo = [
+    {
+      icon: "🔄",
+      linkTo: '/sorting',
+      statNumber: 5,
+      label: "Algorithms",
+      title: "Sorting Algorithms",
+      description: "Watch how Bubble Sort, Quick Sort, Merge Sort, Selection Sort, and Insertion Sort organize data step by step.",
+      features: ["Interactive", "Real-time", "Statistics"],
+      action: "Start Sorting"
+    },
+    {
+      icon: "🔍",
+      linkTo: '/searching',
+      statNumber: 4,
+      label: "Algorithms",
+      title: "Search Algorithms",
+      description: "Discover how Binary Search, Linear Search, Jump Search, and Exponential Search find elements efficiently.",
+      features: ["Fast", "Efficient", "Comparative"],
+      action: "Start Searching"
+    },
+    {
+      icon: "🏗️",
+      linkTo: '/data-structures',
+      statNumber: 4,
+      label: "Structures",
+      title: "Data Structures",
+      description: "Explore Linked Lists, Stacks, Queues, and Binary Trees with interactive visualizations and operations.",
+      features: ["Dynamic", "Visual", "Hands-on"],
+      action: "Explore Structures"
+    },
+    {
+      icon: "📚",
+      linkTo: '/documentation',
+      statNumber: 13,
+      label: "References",
+      title: "Algorithm Reference",
+      description: "Complete documentation with complexity analysis, use cases, and implementation details for all algorithms.",
+      features: ["Comprehensive", "Detailed", "Searchable"],
+      action: "Browse Docs"
+    },
+    {
+      icon: "🧠",
+      linkTo: '/documentation',
+      statNumber: 15,
+      label: "Questions",
+      title: "Algorithm Quiz",
+      description: "Test your knowledge with interactive quizzes covering sorting, searching, and data structures with detailed explanations.",
+      features: ["Interactive", "Timed Mode", "Feedback"],
+      action: "Take Quiz"
+    },
+  ];
+
   useEffect(() => {
     const text = "Visualize. Learn. Master.";
     let index = 0;
@@ -48,7 +102,7 @@ export default function Home() {
     <div className="home-container">
       {/* Top Badge */}
       <div className="hero-badge">
-        <span style={{ color: "white" }}>🚀 Interactive Learning Platform</span>
+        <span>🚀 Interactive Learning Platform</span>
       </div>
 
       {/* Hero Section */}
@@ -267,141 +321,38 @@ export default function Home() {
         >
           Choose Your Learning Path
         </h2>
+
         <div className="quick-start-grid">
-          <Link to="/sorting" className="quick-card sorting">
-            <div className="card-left">
-              <div className="card-header">
-                <div className="card-icon">🔄</div>
-                <div className="card-stats">
-                  <span className="stat-number">5</span>
-                  <span className="stat-label">Algorithms</span>
+          {quickStartCardInfo.map((info, index) => (
+            <div key={index} className="quick-card">
+              <Link to={info.linkTo} className="card-left">
+                <div className="card-header">
+                  <div className="card-icon">{info.icon}</div>
+                  <div className="card-stats">
+                    <span className="stat-number">{info.statNumber}</span>
+                    <span className="stat-label">{info.label}</span>
+                  </div>
                 </div>
-              </div>
-              <h3 className="card-title">Sorting Algorithms</h3>
-              <p className="card-description">
-                Watch how Bubble Sort, Quick Sort, Merge Sort, Selection Sort,
-                and Insertion Sort organize data step by step.
-              </p>
-            </div>
-            <div className="card-right">
-              <div className="card-features">
-                <span className="feature-tag">Interactive</span>
-                <span className="feature-tag">Real-time</span>
-                <span className="feature-tag">Statistics</span>
-              </div>
-              <div className="card-action">
-                Start Sorting <span>→</span>
-              </div>
-            </div>
-          </Link>
+                <h3 className="card-title">{info.title}</h3>
+                <p className="card-description">{info.description}</p>
+              </Link>
 
-          <Link to="/searching" className="quick-card searching">
-            <div className="card-left">
-              <div className="card-header">
-                <div className="card-icon">🔍</div>
-                <div className="card-stats">
-                  <span className="stat-number">4</span>
-                  <span className="stat-label">Algorithms</span>
+              <Link to={info.linkTo} className="card-right">
+                <div className="card-features">
+                  {info.features.map((feature, featureNum) => (
+                    <span className="feature-tag" key={featureNum}>
+                      {feature}
+                    </span>
+                  ))}
                 </div>
-              </div>
-              <h3 className="card-title">Search Algorithms</h3>
-              <p className="card-description">
-                Discover how Binary Search, Linear Search, Jump Search, and
-                Exponential Search find elements efficiently.
-              </p>
-            </div>
-            <div className="card-right">
-              <div className="card-features">
-                <span className="feature-tag">Fast</span>
-                <span className="feature-tag">Efficient</span>
-                <span className="feature-tag">Comparative</span>
-              </div>
-              <div className="card-action">
-                Start Searching <span>→</span>
-              </div>
-            </div>
-          </Link>
-
-          <Link to="/data-structures" className="quick-card structures">
-            <div className="card-left">
-              <div className="card-header">
-                <div className="card-icon">🏗️</div>
-                <div className="card-stats">
-                  <span className="stat-number">4</span>
-                  <span className="stat-label">Structures</span>
+                <div className="card-action">
+                  {info.action} <span>→</span>
                 </div>
-              </div>
-              <h3 className="card-title">Data Structures</h3>
-              <p className="card-description">
-                Explore Linked Lists, Stacks, Queues, and Binary Trees with
-                interactive visualizations and operations.
-              </p>
+              </Link>
             </div>
-            <div className="card-right">
-              <div className="card-features">
-                <span className="feature-tag">Dynamic</span>
-                <span className="feature-tag">Visual</span>
-                <span className="feature-tag">Hands-on</span>
-              </div>
-              <div className="card-action">
-                Explore Structures <span>→</span>
-              </div>
-            </div>
-          </Link>
-
-          <Link to="/documentation" className="quick-card documentation">
-            <div className="card-left">
-              <div className="card-header">
-                <div className="card-icon">📚</div>
-                <div className="card-stats">
-                  <span className="stat-number">13</span>
-                  <span className="stat-label">References</span>
-                </div>
-              </div>
-              <h3 className="card-title">Algorithm Reference</h3>
-              <p className="card-description">
-                Complete documentation with complexity analysis, use cases, and
-                implementation details for all algorithms.
-              </p>
-            </div>
-            <div className="card-right">
-              <div className="card-features">
-                <span className="feature-tag">Comprehensive</span>
-                <span className="feature-tag">Detailed</span>
-                <span className="feature-tag">Searchable</span>
-              </div>
-              <div className="card-action">
-                Browse Docs <span>→</span>
-              </div>
-            </div>
-          </Link>
-
-          <Link to="/quiz" className="quick-card quiz">
-            <div className="card-left">
-              <div className="card-header">
-                <div className="card-icon">🧠</div>
-                <div className="card-stats">
-                  <span className="stat-number">15</span>
-                  <span className="stat-label">Questions</span>
-                </div>
-              </div>
-              <h3 className="card-title">Algorithm Quiz</h3>
-              <p className="card-description">
-                Test your knowledge with interactive quizzes covering sorting, searching, and data structures with detailed explanations.
-              </p>
-            </div>
-            <div className="card-right">
-              <div className="card-features">
-                <span className="feature-tag">Interactive</span>
-                <span className="feature-tag">Timed Mode</span>
-                <span className="feature-tag">Feedback</span>
-              </div>
-              <div className="card-action">
-                Take Quiz <span>→</span>
-              </div>
-            </div>
-          </Link>
+          ))}
         </div>
+
       </section>
 
       {/* Features Showcase */}
@@ -555,7 +506,7 @@ export default function Home() {
           <div className="stat-card">
             <lord-icon
               src="https://cdn.lordicon.com/ayhtotha.json"
-              delay = "2000"
+              delay="2000"
               trigger="hover"
               colors="primary:#121331,secondary:#08a88a"
               style={{ width: "70px", height: "70px" }}
@@ -571,7 +522,7 @@ export default function Home() {
               src="https://cdn.lordicon.com/hwuyodym.json"
               trigger="loop"
               colors="primary:#121331,secondary:#08a88a"
-              style={{width:"70px" ,height:"70px"}}
+              style={{ width: "70px", height: "70px" }}
             ></lord-icon>
             <div className="stat-number">∞</div>
             <div className="stat-label">Learning</div>
@@ -595,7 +546,7 @@ export default function Home() {
           </p>
           <div className="cta-buttons">
             <Link to="/sorting" className="btn-primary">
-              <span style={{marginRight: '8px'}}>🚀</span> Begin Learning
+              <span style={{ marginRight: '8px' }}>🚀</span> Begin Learning
             </Link>
             <a
               href="https://github.com/RhythmPahwa14/AlgoVisualizer"
@@ -603,7 +554,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="btn-secondary"
             >
-              <span style={{marginRight: '8px'}}>⭐</span> Star on GitHub
+              <span style={{ marginRight: '8px' }}>⭐</span> Star on GitHub
             </a>
           </div>
         </div>
