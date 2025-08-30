@@ -416,6 +416,10 @@ select:focus {
 /* =========================
    Feature Items
 ========================= */
+.features-showcase {
+  margin-top: 5rem;
+}
+
 .features-grid,
 .stats-container {
   display: grid;
