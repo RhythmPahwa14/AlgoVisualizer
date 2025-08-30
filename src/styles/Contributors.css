@@ -51,7 +51,7 @@
 .contributors-section .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px 20px;
 }
 
 .contributors-section::before {
@@ -129,7 +129,6 @@
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
   transition: all 0.3s ease;
   border: 1px solid var(--card-border);
-  position: relative;
   overflow: hidden;
   min-width: 300px;
   max-width: 300px;
@@ -137,16 +136,6 @@
   flex-shrink: 0;
   box-sizing: border-box;
   word-wrap: break-word;
-}
-
-.contributor-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--contribution-bg);
 }
 
 .contributor-card:hover {
@@ -277,18 +266,7 @@
   border-radius: 16px;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
   border: 1px solid var(--card-border);
-  position: relative;
   overflow: hidden;
-}
-
-.contribute-cta::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--highlight);
 }
 
 .contribute-cta h3 {
