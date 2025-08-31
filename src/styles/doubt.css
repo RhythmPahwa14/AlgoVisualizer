@@ -125,30 +125,81 @@
     flex-shrink: 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .doubt-section input,
-    .doubt-section textarea,
-    .doubt-section button {
-        width: 90%;
-    }
-}
+/* =========================
+   Enhanced Responsive Tweaks
+========================= */
 
-@media (max-width: 480px) {
+/* Tablets */
+@media (max-width: 768px) {
     .doubt-section {
-        padding: 30px 15px;
+        padding: 35px 18px;
     }
 
     .doubt-section h2 {
-        font-size: 1.75em;
+        font-size: 1.8em;
     }
 
     .doubt-section p {
-        font-size: 1.1em;
+        font-size: 1.05em;
+    }
+
+    .doubt-section input,
+    .doubt-section textarea {
+        font-size: 0.95em;
+        padding: 10px 14px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .doubt-section {
+        padding: 25px 12px;
+    }
+
+    .doubt-section h2 {
+        font-size: 1.5em;
+    }
+
+    .doubt-section p {
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+
+    .doubt-section input,
+    .doubt-section textarea {
+        width: 100%;
+        font-size: 0.9em;
+        padding: 10px 12px;
     }
 
     .doubt-section button {
-        padding: 10px 20px;
-        font-size: 0.95em;
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .error-message {
+        font-size: 0.85em;
+        width: 100%;
+    }
+}
+
+/* Landscape orientation on mobiles */
+@media (max-width: 768px) and (orientation: landscape) {
+    .doubt-section form {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .doubt-section input,
+    .doubt-section textarea {
+        width: 45%;
+        min-width: 200px;
+    }
+
+    .doubt-section button {
+        width: auto;
     }
 }

@@ -64,7 +64,7 @@ const FaqChatbot = () => {
         </div>
       )}
       <button className="chat-toggle-btn" onClick={handleToggle}>
-        {isOpen ? <X size={24} /> : <MessageSquare size={24} />}
+        <MessageSquare size={24} />
       </button>
     </div>
   );

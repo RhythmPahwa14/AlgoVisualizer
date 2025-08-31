@@ -227,4 +227,37 @@
         max-height: 80vh;
         overflow-y: auto;
     }
+    .export-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .export-toggle-btn,
+    .start-recording-btn,
+    .snapshot-btn,
+    .stop-recording-btn,
+    .capture-frame-btn {
+        width: 100%;   /* Buttons full width */
+        height: auto;  /* Allow flexible height */
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .option-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .option-group select {
+        width: 100%; /* Dropdown full width */
+    }
+
+    .export-info {
+        font-size: 14px;
+    }
 }
+

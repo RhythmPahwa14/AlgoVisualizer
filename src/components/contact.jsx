@@ -1,6 +1,9 @@
 import React from "react";
 import "../styles/contact.css";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+// Import the FaqChatbot component you provided
+import FaqChatbot from './FaqChatbot';
+
 export default function Contact() {
     return (
         <div className="contact">
@@ -40,6 +43,9 @@ export default function Contact() {
                 </div>
                 <p>Thank you for reaching out! Your message is important to us, and we’ll do our best to respond as soon as possible. If your inquiry is urgent, feel free to connect with us. We appreciate your time and look forward to connecting with you!!</p>
             </div>
+            
+            {/* Add the FaqChatbot component here */}
+            <FaqChatbot />
         </div>
-    )
+    );
 }

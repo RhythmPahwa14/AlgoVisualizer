@@ -94,12 +94,9 @@ button:disabled {
     box-shadow: none;
 }
 
-
-
 /* =========================
-   Algorithm Selection Section
+   Algorithm Selection
 ========================= */
-
 .algorithm-selector-title {
     color: #66ccff;
     font-family: 'Poppins', 'sans-serif';
@@ -113,7 +110,6 @@ button:disabled {
 }
 
 .algorithm-button {
-    /* Base button styles - inherits from existing .btn class */
     transition: all 0.3s ease;
 }
 
@@ -162,23 +158,14 @@ button:disabled {
 }
 
 @keyframes progress {
-    0% {
-        transform: translateX(-60%);
-    }
-
-    50% {
-        transform: translateX(60%);
-    }
-
-    100% {
-        transform: translateX(-60%);
-    }
+    0% { transform: translateX(-60%); }
+    50% { transform: translateX(60%); }
+    100% { transform: translateX(-60%); }
 }
 
 /* =========================
-   Step Navigation and Algorithm Panel Layout
+   Layout: Visualization & Code
 ========================= */
-
 .visualization-wrapper {
     flex: 1 1 auto;
     min-width: 300px;
@@ -213,35 +200,8 @@ button:disabled {
     padding: 20px 10px 50px 10px;
     position: relative;
     flex-wrap: nowrap;
-
     max-width: 100%;
     width: 100%;
-}
-
-.array-display-container.large-array {
-    gap: 2px;
-}
-
-.array-display-container.large-array .array-bar-element {
-    max-width: 20px;
-}
-
-.array-display-container.xlarge-array {
-    gap: 1px;
-}
-
-.array-display-container.xlarge-array .array-bar-element {
-    max-width: 12px;
-    min-width: 3px;
-}
-
-.array-display-container.tablet-spacing {
-    gap: 0.5px;
-}
-
-.array-display-container.tablet-spacing .array-bar-element {
-    max-width: 8px;
-    min-width: 2px;
 }
 
 .array-bar-element {
@@ -254,7 +214,6 @@ button:disabled {
     padding: 4px 2px;
     transition: all 0.3s ease;
     position: relative;
-    cursor: default;
     flex: 1 1 0;
     min-width: 4px;
     max-width: 40px;
@@ -291,7 +250,6 @@ button:disabled {
     display: flex;
     align-items: center;
     gap: 15px;
-    flex-direction: row;
     justify-content: space-between;
     margin: 30px 0;
     width: 100%;
@@ -308,6 +266,7 @@ button:disabled {
     font-size: 14px;
 }
 
+/* Pseudo panel */
 .pseudo-panel {
     flex: 0 0 fit-content;
     min-width: 280px;
@@ -357,162 +316,8 @@ button:disabled {
     min-height: 40px;
 }
 
-
-@media (max-width:1024px) {
-    .vis-pseudo-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .vis-main-section {
-        width: 100%;
-    }
-
-    .code-explaination-wrapper {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        flex-wrap: wrap;
-
-
-    }
-
-    .pseudo-code-block {
-        width: 100%;
-        margin-bottom: 0;
-    }
-
-    .pseudo-explanation {
-        width: 100%;
-    }
-
-}
-
-@media (max-width:768px) {
-    .vis-pseudo-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .step-nav-container {
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 10px;
-    }
-
-    .vis-main-section {
-        width: 100%;
-    }
-
-    .code-explaination-wrapper {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-
-    .pseudo-explanation {
-        width: 100%;
-    }
-
-    /* Mobile array visualization optimizations */
-    .array-display-container {
-        height: 350px;
-        padding: 15px 5px 35px 5px;
-    }
-
-    .array-bar-element {
-        max-width: 25px;
-        min-width: 3px;
-    }
-
-    .array-bar-element .bar-number-display {
-        font-size: 10px;
-    }
-
-    .visualization-area {
-        min-height: 400px;
-        padding: 15px;
-    }
-}
-
 /* =========================
-   Mobile-specific optimizations
-========================= */
-@media (max-width: 600px) {
-    .main-page-container {
-        padding: 15px;
-    }
-
-    .array-display-container {
-        height: 320px;
-        padding: 10px 3px 30px 3px;
-        gap: 2px;
-    }
-
-    .array-bar-element {
-        max-width: 20px;
-        min-width: 2px;
-        padding: 2px 1px;
-    }
-
-    .array-bar-element .bar-number-display {
-        font-size: 9px;
-    }
-
-    .visualization-area {
-        min-height: 370px;
-        padding: 12px;
-    }
-
-    .step-nav-btn {
-        min-width: 90px;
-        font-size: 12px;
-        padding: 8px 12px;
-    }
-
-    .step-counter {
-        font-size: 12px;
-    }
-
-    .array-info-display {
-        font-size: 11px;
-        padding: 4px 8px;
-    }
-
-    .stats-grid {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .stat-card {
-        min-width: 120px;
-        padding: 12px;
-    }
-
-    .controls-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .action-buttons-group {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .algo-info-header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .complexity-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-}
-
-/* =========================
-   Controls Section & Record-Export section
+   Controls Section
 ========================= */
 .controls-section-container {
     width: 100%;
@@ -535,13 +340,6 @@ button:disabled {
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-}
-
-.sort-button-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
 }
 
 .controls-grid {
@@ -572,10 +370,6 @@ button:disabled {
     text-align: center;
 }
 
-.control-value.speed {
-    min-width: 50px;
-}
-
 .control-hint {
     font-size: 11px;
     color: #b8c5d1;
@@ -583,7 +377,7 @@ button:disabled {
 }
 
 /* =========================
-   Performance Statistics Section
+   Stats Section
 ========================= */
 .stats-section {
     width: 100%;
@@ -592,7 +386,6 @@ button:disabled {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-
 }
 
 .stats-title {
@@ -618,62 +411,25 @@ button:disabled {
     text-align: center;
 }
 
-.stat-card.comparisons {
-    background: rgba(102, 204, 255, 0.1);
-    border: 1px solid rgba(102, 204, 255, 0.3);
-}
+.stat-card.comparisons { background: rgba(102, 204, 255, 0.1); border: 1px solid rgba(102, 204, 255, 0.3); }
+.stat-card.swaps { background: rgba(255, 215, 61, 0.1); border: 1px solid rgba(255, 215, 61, 0.3); }
+.stat-card.time { background: rgba(74, 222, 128, 0.1); border: 1px solid rgba(74, 222, 128, 0.3); }
+.stat-card.array-size { background: rgba(255, 107, 107, 0.1); border: 1px solid rgba(255, 107, 107, 0.3); }
 
-.stat-card.swaps {
-    background: rgba(255, 215, 61, 0.1);
-    border: 1px solid rgba(255, 215, 61, 0.3);
-}
+.stat-label { font-size: 14px; margin-bottom: 5px; }
+.stat-label.comparisons { color: #66ccff; }
+.stat-label.swaps { color: #ffd93d; }
+.stat-label.time { color: #4ade80; }
+.stat-label.array-size { color: #ff6b6b; }
 
-.stat-card.time {
-    background: rgba(74, 222, 128, 0.1);
-    border: 1px solid rgba(74, 222, 128, 0.3);
-}
+.stat-value { color: #e0e6ed; font-size: 20px; font-weight: bold; }
 
-.stat-card.array-size {
-    background: rgba(255, 107, 107, 0.1);
-    border: 1px solid rgba(255, 107, 107, 0.3);
-}
-
-.stat-label {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-.stat-label.comparisons {
-    color: #66ccff;
-}
-
-.stat-label.swaps {
-    color: #ffd93d;
-}
-
-.stat-label.time {
-    color: #4ade80;
-}
-
-.stat-label.array-size {
-    color: #ff6b6b;
-}
-
-.stat-value {
-    color: #e0e6ed;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* Contributed By Devika Harshey */
 @media (prefers-color-scheme: dark) {
-    .stat-value {
-        color: #000000;
-    }
+    .stat-value { color: #000000; }
 }
 
 /* =========================
-   Algorithm Information Section
+   Algorithm Information
 ========================= */
 .algo-info-header {
     display: flex;
@@ -703,18 +459,10 @@ button:disabled {
     gap: 15px;
 }
 
-.complexity-row {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.complexity-label {
-    color: #66ccff;
-}
+.complexity-label { color: #66ccff; }
 
 /* =========================
-   Main Container and Header
+   Main Container
 ========================= */
 .main-page-container {
     max-width: 1500px;
@@ -728,9 +476,119 @@ button:disabled {
 }
 
 
-@media (max-width: 480px) {
-    .algo-buttons {
-        flex-direction: column;
-        align-items: center;
+/* =======================================================
+   📱 Responsive Breakpoints
+======================================================= */
+
+/* Tablets / small laptops */
+@media (max-width: 1024px) {
+    .vis-pseudo-container { flex-direction: column; }
+    .vis-main-section { width: 100%; }
+
+    .code-explaination-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        flex-wrap: wrap;
     }
+
+    .pseudo-code-block,
+    .pseudo-explanation { width: 100%; }
+
+    /* Controls grid adjusts on tablets */
+    .controls-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .control-input-group {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .control-input {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .control-value {
+        text-align: left;
+        min-width: auto;
+    }
+}
+
+/* Large phones & tablets */
+@media (max-width: 768px) {
+    .step-nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .array-display-container {
+        height: 350px;
+        padding: 15px 5px 35px 5px;
+    }
+
+    .array-bar-element { max-width: 25px; min-width: 3px; }
+    .bar-number-display { font-size: 10px; }
+
+    .visualization-area { min-height: 400px; padding: 15px; }
+
+    /* Controls responsive */
+    .controls-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .control-input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .control-input {
+        width: 100%;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .main-page-container { padding: 15px; }
+
+    .array-display-container {
+        height: 320px;
+        padding: 10px 3px 30px 3px;
+        gap: 2px;
+    }
+
+    .array-bar-element { max-width: 20px; min-width: 2px; padding: 2px 1px; }
+    .bar-number-display { font-size: 9px; }
+
+    .visualization-area { min-height: 370px; padding: 12px; }
+
+    .step-nav-btn { min-width: 90px; font-size: 12px; padding: 8px 12px; }
+    .step-counter { font-size: 12px; }
+
+    .array-info-display { font-size: 11px; padding: 4px 8px; }
+
+    .stats-grid { flex-direction: column; gap: 10px; }
+    .stat-card { min-width: 120px; padding: 12px; }
+
+    .controls-grid { flex-direction: column; gap: 15px; }
+    .action-buttons-group { flex-direction: column; gap: 12px; }
+
+    .control-input-group {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .control-input {
+        width: 100%;
+    }
+
+    .algo-info-header { flex-direction: column; text-align: center; }
+    .complexity-grid { grid-template-columns: 1fr; gap: 10px; }
+
+    .algorithm-buttons-wrapper { flex-direction: column; align-items: center; }
 }

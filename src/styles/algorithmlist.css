@@ -7,6 +7,8 @@
 
 .algorithm-card {
   position: relative;
+  flex: 1 1 calc(25% - 20px); /* 4 cards per row on large screens */
+  min-width: 200px;
   padding: 15px 20px;
   border-radius: 8px;
   background-color: #f2f2f2;
@@ -44,4 +46,40 @@
 .algorithm-card:hover .tooltip {
   visibility: visible;
   opacity: 1;
+}
+
+/* =========================
+   Mobile Responsiveness
+========================= */
+@media (max-width: 1024px) {
+  .algorithm-card {
+    flex: 1 1 calc(33.33% - 20px); /* 3 cards per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .algorithm-card {
+    flex: 1 1 calc(50% - 20px); /* 2 cards per row */
+  }
+
+  .tooltip {
+    width: 160px; /* smaller tooltip */
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .algorithm-card {
+    flex: 1 1 100%; /* 1 card per row */
+  }
+
+  .algorithm-name {
+    font-size: 14px;
+  }
+
+  .tooltip {
+    width: 140px;
+    font-size: 12px;
+    padding: 8px;
+  }
 }

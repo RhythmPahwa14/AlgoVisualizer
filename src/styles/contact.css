@@ -157,38 +157,59 @@ button:disabled {
 }
 
 /* =========================
-   Responsive
+   Responsive Enhancements
 ========================= */
-@media (max-width: 768px) {
-    .connection input,
-    .connection textarea {
-        width: 80%;
-    }
+@media (max-width: 1024px) {
+  .contact h1 {
+    font-size: 2.2rem;
+  }
+  .contact p {
+    font-size: 1.1rem;
+  }
+}
 
-    button {
-        width: 80%;
-    }
+@media (max-width: 768px) {
+  .connection {
+    margin-top: 30px;
+    padding: 0 15px;
+  }
+
+  .connection input,
+  .connection textarea {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .connection .input-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  button {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
-    .contact h1 {
-        font-size: 2rem;
-    }
+  .contact h1 {
+    font-size: 1.8rem;
+  }
 
-    .contact h3 {
-        font-size: 1.5rem;
-    }
+  .contact h3 {
+    font-size: 1.4rem;
+  }
 
-    .links h4 {
-        font-size: 1.2rem;
-    }
+  .contact p {
+    font-size: 1rem;
+  }
 
-    .connection .input-group {
-        gap: 10px;
-        flex-direction: column;
-    }
+  .links h4 {
+    font-size: 1rem;
+  }
 
-    label {
-        text-align: start;
-    }
+  .social-icons a {
+    font-size: medium;
+    margin: 8px 4px;
+  }
 }

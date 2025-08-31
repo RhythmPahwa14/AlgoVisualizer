@@ -24,7 +24,7 @@ const Footer = () => {
             <Link to="/terms">Terms of Service</Link>
             <Link to="/about">About</Link>
             <Link to="/contact">Contact Us</Link>
-            <Link to="/contribute">Contribute</Link>
+            <Link to="https://github.com/RhythmPahwa14/AlgoVisualizer">Contribute</Link>
           </nav>
         </section>
 

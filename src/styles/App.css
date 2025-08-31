@@ -127,24 +127,37 @@ body {
     border-radius: 4px;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
 /* =========================
    Responsive Design
 ========================= */
+@media (max-width: 1024px) {
+    .searching-container,
+    .sorting-container {
+        padding: 18px;
+        max-width: 95%;
+    }
+
+    .searching-array-bar,
+    .sorting-array-bar {
+        width: 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .searching-container,
     .sorting-container {
         padding: 15px;
+        max-width: 100%;
     }
     
     .searching-array-bar,
     .sorting-array-bar {
-        width: 18px;
+        width: 14px;
     }
 
     .searching-button,
     .sorting-button {
-        padding: 8px 16px;
+        padding: 8px 14px;
         font-size: 14px;
     }
 }
@@ -153,58 +166,20 @@ body {
     .searching-array-container,
     .sorting-array-container {
         flex-wrap: wrap;
-        gap: 1px;
-        height: 120px;
+        gap: 2px;
+        height: auto; /* let bars define height */
+        min-height: 100px;
     }
     
     .searching-array-bar,
     .sorting-array-bar {
-        width: 12px;
+        width: 10px;
+        min-height: 40px; /* ensures visibility even with many bars */
     }
 
-.sorting-array-bar {
-    width: 30px;
-    margin: 0 2px;
-    background-color: #61dafb;
-    text-align: center;
-    color: rgb(39, 38, 38);
-    }
-}
-
-/* Global button sizing and spacing rules
-   - Buttons auto-size to text (no fixed widths)
-   - Consistent padding: 10px top/bottom, 20px left/right
-   - Prevent text wrap inside buttons
-   - For containers that already use flex/grid, a gap of 10px will ensure equal spacing
-   NOTE: We intentionally do NOT set background or color here so existing colors/hover remain unchanged.
-*/
-:where(button, input[type="button"], input[type="submit"], .button, .btn, [role="button"]) {
-    padding: 10px 20px;
-    white-space: nowrap;
-    display: inline-block; /* allow auto width based on content */
-    width: auto;
-    min-width: max-content; /* ensure text is never cut off */
-    box-sizing: border-box;
-    vertical-align: middle;
-}
-
-/* Apply gap to common controls containers when they are flex/grid (gap has no effect otherwise) */
-:where(.searching-controls, .sorting-controls, .controls, .export-controls, .simple-export-controls, .button-group, .btn-group, .controls-row, .control-row) {
-    gap: 10px;
-}
-
-/* Prevent buttons inside flex/grid control containers from shrinking and ensure equal spacing */
-:where(.searching-controls, .sorting-controls, .controls, .export-controls, .simple-export-controls, .button-group, .btn-group, .controls-row, .control-row) :where(button, input[type="button"], input[type="submit"], .button, .btn, [role="button"]) {
-    /* in case the container is a flex/grid, stop buttons from shrinking */
-    flex: 0 0 auto;
-    -ms-flex: 0 0 auto; /* IE10 fallback */
-}
-
-/* Utility: keep buttons visually consistent inside small screens while preserving responsiveness */
-@media (max-width: 480px) {
-    :where(button, input[type="button"], input[type="submit"], .button, .btn) {
-        padding: 8px 14px; /* slightly smaller on very small screens */
-        /* keep nowrap but allow buttons to remain readable; min-width remains max-content to avoid cutting text */
-        min-width: max-content;
+    .searching-button,
+    .sorting-button {
+        font-size: 13px;
+        padding: 6px 12px;
     }
 }

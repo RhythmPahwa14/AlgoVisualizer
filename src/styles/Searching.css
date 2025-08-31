@@ -223,3 +223,153 @@ body {
   box-shadow: 0 6px 14px rgba(248, 81, 73, 0.5);
 }
 
+/* =========================
+   Responsive Design
+========================= */
+@media (max-width: 768px) {
+    .searching-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .searching-container h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Controls section */
+    .searching-controls {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .searching-controls input {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .searching-controls .export-container {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Buttons */
+    .searching-button {
+        width: 100%;
+        max-width: 250px;
+        height: 55px;
+        font-size: 14px;
+    }
+
+    /* Algorithm selection */
+    .searching-algorithm-selection {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .searching-algorithm-selection .searching-button {
+        width: 100%;
+        max-width: 220px;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    /* Array bars */
+    .searching-array-container {
+        height: 150px;
+        gap: 5px;
+    }
+
+    .searching-array-bar {
+        width: 20px;
+        font-size: 10px;
+        padding-bottom: 3px;
+    }
+
+    /* Learn box */
+    .learn-box {
+        padding: 25px 15px;
+        max-width: 95%;
+    }
+
+    .learn-box h3 {
+        font-size: 1.3rem;
+    }
+
+    .learn-box p {
+        font-size: 0.95rem;
+    }
+
+    .explanation-button {
+        width: 100%;
+        max-width: 220px;
+        height: 50px;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .searching-container h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Controls */
+    .searching-controls {
+        gap: 8px;
+    }
+
+    .searching-controls input {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .searching-controls label {
+        font-size: 0.9rem;
+    }
+
+    /* Buttons */
+    .searching-button {
+        height: 50px;
+        font-size: 13px;
+    }
+
+    /* Algorithm buttons */
+    .searching-algorithm-selection .searching-button {
+        height: 45px;
+        font-size: 13px;
+    }
+
+    /* Array bars */
+    .searching-array-container {
+        height: 120px;
+        gap: 4px;
+    }
+
+    .searching-array-bar {
+        width: 15px;
+        font-size: 9px;
+        padding-bottom: 2px;
+    }
+
+    /* Learn box */
+    .learn-box {
+        padding: 20px 10px;
+    }
+
+    .learn-box h3 {
+        font-size: 1.2rem;
+    }
+
+    .learn-box p {
+        font-size: 0.9rem;
+    }
+
+    .explanation-button {
+        width: 100%;
+        max-width: 200px;
+        height: 45px;
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+}

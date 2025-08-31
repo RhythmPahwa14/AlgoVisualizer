@@ -7,6 +7,7 @@ import CodeExplanation from '../components/CodeExplanation';
 import SimpleExportControls from '../components/SimpleExportControls';
 import '../styles/App.css';
 import '../styles/pages.css';
+import { useMediaQuery } from "react-responsive";
 
 // Pseudocode for searching algorithms
 const ALGORITHM_PSEUDOCODE = {
@@ -81,12 +82,12 @@ const Searching = () => {
   const [showCodeExplanation, setShowCodeExplanation] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
 
+
   // Step mode (Binary Search)
   const [steps, setSteps] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
-
-  const isTabletOrBelow = typeof window !== 'undefined' && window.innerWidth < 1024;
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 800;
+  const isTabletOrBelow = useMediaQuery({ query: "(max-width: 1024px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 800px)" });
   const gapValue = getGap(arraySize, isTabletOrBelow);
   const barFontSize = getBarFontSize(arraySize);
 
@@ -167,7 +168,7 @@ const Searching = () => {
   const handleSearch = async () => {
     const targetValue = parseInt(target, 10);
     if (isNaN(targetValue)) {
-      setMessage('Enter a valid number.');
+      alert('Enter a valid number as target.');
       return;
     }
 
@@ -197,6 +198,7 @@ const Searching = () => {
   };
 
   const getAlgorithmName = () => getAlgoLabel(algorithm);
+
 
   return (
     <div className="page-container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
@@ -233,42 +235,121 @@ const Searching = () => {
       </div>
 
       {/* Controls & Export cards */}
-      <div className="controls-section" style={{ display: 'grid', gridTemplateColumns: isTabletOrBelow ? '1fr' : '1fr 1fr', gap: '24px', marginBottom: '12px' }}>
-        <div style={{ background: 'rgba(15, 52, 96, 0.1)', borderRadius: '15px', border: '1px solid rgba(102,204,255,0.2)', padding: '20px' }}>
-          <h3 style={{ color: '#66ccff', marginBottom: '12px' }}>Visualization Controls</h3>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'space-between', marginBottom: '14px' }}>
-            <label className="label" htmlFor="arraySizeRange" style={{ minWidth: '110px' }}>Array Size:</label>
-            <input
-              id="arraySizeRange"
-              type="range"
-              min="10"
-              max="50"
-              value={arraySize}
-              onChange={(e) => setArraySize(parseInt(e.target.value))}
-              disabled={isSearching}
-              className="input"
-              style={{ width: '200px' }}
-            />
-            <div style={{ color: '#66ccff', fontWeight: 600, minWidth: '140px', textAlign: 'right' }}>{arraySize} <span style={{ color: '#9bb3c7', fontWeight: 400 }}>(with values)</span></div>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'space-between' }}>
-            <label className="label" htmlFor="speedRange" style={{ minWidth: '110px' }}>Speed:</label>
-            <input
-              id="speedRange"
-              type="range"
-              min="50"
-              max="1000"
-              value={delay}
-              onChange={(e) => setDelay(parseInt(e.target.value))}
-              disabled={isSearching}
-              className="input"
-              style={{ width: '200px' }}
-            />
-            <div style={{ color: '#66ccff', fontWeight: 600, minWidth: '140px', textAlign: 'right' }}>{delay}ms <span style={{ color: '#9bb3c7', fontWeight: 400 }}>(fast)</span></div>
+       <div
+      className="controls-section"
+      style={{
+        display: "grid",
+        gridTemplateColumns: isTabletOrBelow ? "1fr" : "1fr 1fr",
+        gap: "24px",
+        marginBottom: "12px",
+      }}
+    >
+      {/* Controls Box */}
+      <div
+        style={{
+          background: "rgba(15, 52, 96, 0.1)",
+          borderRadius: "15px",
+          border: "1px solid rgba(102,204,255,0.2)",
+          padding: "20px",
+        }}
+      >
+        <h3 style={{ color: "#66ccff", marginBottom: "12px" }}>
+          Visualization Controls
+        </h3>
+
+        {/* Array Size Control */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isTabletOrBelow ? "column" : "row",
+            alignItems: isTabletOrBelow ? "flex-start" : "center",
+            gap: "10px",
+            justifyContent: "space-between",
+            marginBottom: "14px",
+          }}
+        >
+          <label
+            className="label"
+            htmlFor="arraySizeRange"
+            style={{ minWidth: isTabletOrBelow ? "auto" : "110px" }}
+          >
+            Array Size:
+          </label>
+          <input
+            id="arraySizeRange"
+            type="range"
+            min="10"
+            max="50"
+            value={arraySize}
+            onChange={(e) => setArraySize(parseInt(e.target.value))}
+            disabled={isSearching}
+            className="input"
+            style={{
+              width: isTabletOrBelow ? "100%" : "200px",
+            }}
+          />
+          <div
+            style={{
+              color: "#66ccff",
+              fontWeight: 600,
+              minWidth: isTabletOrBelow ? "auto" : "140px",
+              textAlign: isTabletOrBelow ? "left" : "right",
+            }}
+          >
+            {arraySize}{" "}
+            <span style={{ color: "#9bb3c7", fontWeight: 400 }}>
+              (with values)
+            </span>
           </div>
         </div>
-  <SimpleExportControls containerId="search-visualization-container" />
+
+        {/* Speed Control */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isTabletOrBelow ? "column" : "row",
+            alignItems: isTabletOrBelow ? "flex-start" : "center",
+            gap: "10px",
+            justifyContent: "space-between",
+          }}
+        >
+          <label
+            className="label"
+            htmlFor="speedRange"
+            style={{ minWidth: isTabletOrBelow ? "auto" : "110px" }}
+          >
+            Speed:
+          </label>
+          <input
+            id="speedRange"
+            type="range"
+            min="50"
+            max="1000"
+            value={delay}
+            onChange={(e) => setDelay(parseInt(e.target.value))}
+            disabled={isSearching}
+            className="input"
+            style={{
+              width: isTabletOrBelow ? "100%" : "200px",
+            }}
+          />
+          <div
+            style={{
+              color: "#66ccff",
+              fontWeight: 600,
+              minWidth: isTabletOrBelow ? "auto" : "140px",
+              textAlign: isTabletOrBelow ? "left" : "right",
+            }}
+          >
+            {delay}ms{" "}
+            <span style={{ color: "#9bb3c7", fontWeight: 400 }}>(fast)</span>
+          </div>
+        </div>
       </div>
+
+      {/* Export Controls Box */}
+      <SimpleExportControls containerId="search-visualization-container" />
+    </div>
 
       {/* Status message line */}
       {message && (

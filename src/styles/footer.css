@@ -121,9 +121,16 @@
     text-align: center;
     gap: 2rem;
   }
+
+  .footer-mid {
+    width: 100%;
+    align-items: center;
+  }
+
   .footer-links {
     align-items: center;
   }
+
   .social-icons {
     flex-direction: row;
     justify-content: center;

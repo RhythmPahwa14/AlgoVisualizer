@@ -857,6 +857,7 @@
     color: #0969da;
 }
 
+
 /* =========================
    Responsive Design
 ========================= */
@@ -877,6 +878,7 @@
     
     .topic-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     .difficulty-buttons {
@@ -885,8 +887,14 @@
     
     .difficulty-btn {
         text-align: center;
+        width: 100%;
     }
     
+    .mode-options {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
     .quiz-controls {
         gap: 1rem;
     }
@@ -903,7 +911,7 @@
         font-size: 0.95rem;
     }
     
-    /* Quiz start page - keep single column on mobile */
+    /* Quiz start page - single column */
     .quiz-start .quiz-controls {
         flex-direction: column;
     }
@@ -930,14 +938,24 @@
     }
     
     .question-text {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     .option-label {
-        padding: 0.75rem 1rem;
+        padding: 0.6rem 1rem;
         font-size: 0.9rem;
     }
     
+    .option-radio {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .option-radio.selected::after {
+        width: 8px;
+        height: 8px;
+    }
+
     .progress-info {
         flex-direction: column;
         gap: 0.5rem;
@@ -951,9 +969,12 @@
     
     .quiz-btn {
         width: 100%;
-        max-width: 280px;
+        min-width: unset;
+        max-width: unset;
+        font-size: 0.95rem;
+        padding: 0.75rem 1rem;
     }
-    
+
     /* Keep result page buttons side by side on very small screens if they fit */
     .result-page .quiz-controls {
         flex-direction: row;
@@ -966,5 +987,25 @@
         max-width: 150px;
         font-size: 0.9rem;
         padding: 0.75rem 1rem;
+    }
+
+    .topic-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .score-display {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .score-item {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .question-result {
+        padding: 1rem;
     }
 }

@@ -135,43 +135,102 @@ button {
 
 button:hover {
     background: var(--accent-color);
-    color: #fff;
+    color: var(--text-color);
 }
 
 /* ----------------- Responsive Design ----------------- */
-@media (max-width: 768px) {
+
+/* Tablet and below */
+@media (max-width: 1024px) {
     .privacy-content {
-        padding: 1.5rem;
+        padding: 2rem 1.25rem;
     }
-    
+
     .privacy-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
     }
-    
+
     .privacy-header h1 {
         font-size: 2rem;
     }
-    
+
     .privacy-section h2 {
         font-size: 1.5rem;
     }
 }
 
-@media (max-width: 480px) {
+/* Mobile Large (up to 768px) */
+@media (max-width: 768px) {
     .privacy-content {
-        padding: 1.25rem;
+        padding: 1.5rem 1rem;
     }
-    
+
     .privacy-header h1 {
         font-size: 1.75rem;
     }
-    
+
+    .privacy-section h2 {
+        font-size: 1.25rem;
+    }
+
+    .privacy-section p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
     .privacy-list {
         padding-left: 1rem;
     }
+
+    button, input, textarea, select {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.8rem;
+    }
 }
+
+/* Mobile Small (up to 480px) */
+@media (max-width: 480px) {
+    .privacy-content {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .privacy-header {
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .privacy-header h1 {
+        font-size: 1.5rem;
+        text-align: left;
+    }
+
+    .privacy-header .last-updated {
+        font-size: 0.8rem;
+    }
+
+    .privacy-section h2 {
+        font-size: 1.1rem;
+    }
+
+    .privacy-section p {
+        font-size: 0.9rem;
+    }
+
+    .privacy-list li {
+        font-size: 0.9rem;
+        margin-bottom: 0.6rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+}
+
 
 /* ----------------- Light & Dark Theme Variables ----------------- */
 :root {

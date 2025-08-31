@@ -49,7 +49,7 @@ const algorithmDatabase = {
       {
         name: "Merge Sort",
         id: "mergeSort",
-        description: "Divides array into halves, sorts recursively, and merges them.",
+        description: "Divides array into halves, sorts recursively, and merges them. Now includes a note on stability.",
         timeComplexity: { best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)" },
         spaceComplexity: "O(n)",
         stability: "Stable",
@@ -87,7 +87,7 @@ const algorithmDatabase = {
       {
         name: "Binary Search",
         id: "binarySearch",
-        description: "Searches sorted array by repeatedly dividing search interval in half.",
+        description: "Searches sorted array by repeatedly dividing search interval in half. Updated to note efficiency.",
         timeComplexity: { best: "O(1)", average: "O(log n)", worst: "O(log n)" },
         spaceComplexity: "O(1)",
         dataRequirement: "Sorted array",
@@ -103,7 +103,7 @@ const algorithmDatabase = {
       {
         name: "Linked List",
         id: "linkedList",
-        description: "Linear data structure where elements are stored in nodes.",
+        description: "Linear data structure where elements are stored in nodes. Now includes traversal note.",
         timeComplexity: { insertion: "O(1)", deletion: "O(1)", search: "O(n)", access: "O(n)" },
         spaceComplexity: "O(n)",
         implemented: false
@@ -153,15 +153,26 @@ const getComplexityColor = (complexity) => {
 // ============================================================================
 
 function AlgorithmCard({ algorithm, themeStyles }) {
+  // Generate a unique color for each card based on its id
+  const getCardColor = (id) => {
+    const hash = id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const r = (hash * 23) % 256;
+    const g = (hash * 17) % 256;
+    const b = (hash * 31) % 256;
+    return `rgb(${r}, ${g}, ${b})`;
+  };
+
+  const cardColor = getCardColor(algorithm.id);
+
   return (
-    <div className="algorithm-card" title={algorithm.description}>
+    <div className="algorithm-card" style={{ borderColor: `${cardColor}30` }} title={algorithm.description}>
       <div className="card-header">
         <div>
           <div className="card-title-group">
-            <span className="card-icon">{algorithm.categoryIcon}</span>
-            <h3 style={{ color: algorithm.categoryColor }}>{algorithm.name}</h3>
+            <span className="card-icon" style={{ color: cardColor }}>{algorithm.categoryIcon}</span>
+            <h3 style={{ color: cardColor }}>{algorithm.name}</h3>
           </div>
-          <div className="card-category-badge" style={{ background: `${algorithm.categoryColor}15` }}>
+          <div className="card-category-badge" style={{ background: `${cardColor}15` }}>
             {algorithm.categoryTitle}
           </div>
         </div>
@@ -243,8 +254,11 @@ function AlgorithmDocumentation() {
       {/* Search and Filter Section */}
       <div className="filters-section">
         <div className="search-bar">
-          <Search size={20} />
+          <label htmlFor="search" style={{display: "flex"}}>
+            <Search size={20} />
+          </label>
           <input
+            id="search"
             type="text"
             placeholder="Search algorithms..."
             value={searchTerm}

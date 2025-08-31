@@ -276,13 +276,14 @@ select, .select { color-scheme: var(--select-color-scheme, auto); }
     margin-bottom: 10px;
 } */
  .algorithm-info p {
+    color: rgb(15, 15, 15);
     line-height: 1.6;
     margin-bottom: 10px;
 }
 
 /* Light theme - darker text for readability */
 :root .algorithm-info p {
-    color: #374151;
+    color: #2d2d2e;
 }
 
 /* Dark theme - your preferred light text */
@@ -304,44 +305,80 @@ select, .select { color-scheme: var(--select-color-scheme, auto); }
     transition: all 0.3s ease;
 }
 
-/* Mobile responsive */
+
+/* Tablet & below (<=768px) */
 @media (max-width: 768px) {
-    .page-container {
-        margin: 10px;
-        padding: 20px;
-    }
+  .page-container {
+    margin: 10px;
+    padding: 20px;
+  }
 
-    .page-title {
-        font-size: 2em;
-    }
+  .page-title {
+    font-size: 2em;
+    text-align: center;
+  }
 
-    .controls-section {
-        padding: 20px;
-        flex-direction: column;
-        align-items: stretch;
-    }
+  .controls-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    padding: 20px;
+  }
 
-    .btn {
-        margin: 5px 0;
-    }
+  .btn,
+  .input,
+  .select {
+    width: 100%;
+    margin: 5px 0;
+  }
 
-    .visualization-area {
-        padding: 20px;
-        min-height: 300px;
-    }
-}
-/* =========================
-   Mobile responsive
-========================= */
-@media (max-width: 768px) {
-    .page-container { margin: 10px; padding: 20px; }
-    .page-title { font-size: 2em; }
-    .controls-section { padding: 20px; flex-direction: column; align-items: stretch; }
-    .btn { margin: 5px 0; }
-    .visualization-area { padding: 20px; min-height: 300px; }
+  .visualization-area {
+    padding: 20px;
+    min-height: 300px;
+    overflow-x: auto; /* prevent clipping on small screens */
+  }
 }
 
+/* Small screens (<=480px) */
 @media (max-width: 480px) {
-    .page-title { font-size: 1.8em; }
+  .page-title {
+    font-size: 1.6em;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.9em;
+    height: auto;
+  }
+
+  .input,
+  .select {
+    font-size: 0.9em;
+    padding: 8px 12px;
+  }
+
+  .status-message {
+    font-size: 1em;
+    padding: 10px;
+  }
+
+  .algorithm-info {
+    padding: 20px;
+  }
 }
 
+/* Extra small screens (<=320px) */
+@media (max-width: 320px) {
+  .page-title {
+    font-size: 1.4em;
+  }
+
+  .btn {
+    font-size: 0.8em;
+    padding: 8px 14px;
+  }
+
+  .status-message {
+    font-size: 0.9em;
+  }
+}

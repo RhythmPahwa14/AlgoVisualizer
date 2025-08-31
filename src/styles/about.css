@@ -108,6 +108,44 @@ body {
     .need h2,
     .mission h2,
     .feature h2 {
-        font-size: large;
+        font-size: 1.5rem; /* ~large */
+    }
+
+    .need h3,
+    .sorting h3,
+    .searching h3 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .welcome,
+    .need p,
+    .mission p,
+    .list {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .enter h2,
+    .need h2,
+    .mission h2,
+    .feature h2 {
+        font-size: 1.2rem;
+    }
+
+    .need h3,
+    .sorting h3,
+    .searching h3 {
+        font-size: 1rem;
+    }
+
+    .welcome,
+    .need p,
+    .mission p,
+    .list {
+        font-size: 0.9rem;
+        max-width: 100%;
+        padding: 0 10px;
     }
 }

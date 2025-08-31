@@ -103,3 +103,91 @@
   margin-top: 12px;
   border-left: 4px solid #0ea5e9;
 }
+
+/* =========================
+   Responsive Design
+========================= */
+@media (max-width: 1024px) {
+  .code-explanation-modal {
+    width: 90%;
+    max-width: 700px;
+    padding: 16px;
+  }
+
+  .lang-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .code-explanation-modal {
+    width: 95%;
+    max-width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .code-block {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .line-number {
+    width: 24px;
+    margin-right: 8px;
+    font-size: 12px;
+  }
+
+  .step-controls button {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .code-explanation-modal {
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .code-explanation-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .lang-tabs {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .code-block {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .line-number {
+    width: 20px;
+    margin-right: 6px;
+    font-size: 11px;
+  }
+
+  .step-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .step-controls button {
+    flex: 1 1 auto;
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}

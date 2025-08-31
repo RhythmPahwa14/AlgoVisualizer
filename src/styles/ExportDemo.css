@@ -297,4 +297,28 @@
     .export-tips {
         padding: 25px 20px;
     }
+
+    .demo-card h3 {
+        font-size: 1.3rem; /* Slightly smaller for mobile */
+    }
+
+    .demo-card p {
+        font-size: 0.9rem;
+    }
+
+    .step-content h4 {
+        font-size: 1.05rem;
+    }
+
+    .step-content p {
+        font-size: 0.85rem;
+    }
+
+    .export-tips h3 {
+        font-size: 1.3rem;
+    }
+
+    .export-tips li {
+        font-size: 0.9rem;
+    }
 }

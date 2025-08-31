@@ -1,18 +1,113 @@
-.graph-visualizer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  /* 📱 Mobile Responsiveness */
+@media (max-width: 768px) {
+  .graph-visualizer-container {
+    gap: 15px;
+    padding: 0 10px;
   }
-  
+
   .graph-controls {
-    display: flex;
-    gap: 12px;
+    flex-wrap: wrap;         /* Stack controls if needed */
+    justify-content: center; /* Center them */
+    gap: 8px;
   }
-  
+
   .graph-canvas {
-    background: rgba(15, 52, 96, 0.1);
-    border-radius: 15px;
-    border: 1px solid rgba(102, 204, 255, 0.2);
-    cursor: crosshair;
+    width: 100%;             /* Scale to screen */
+    max-width: 100%;
+    height: auto;            /* Keep proportional height */
   }
+}
+
+@media (max-width: 480px) {
+  .graph-visualizer-container {
+    gap: 10px;
+  }
+
+  .graph-controls {
+    
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.graph-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.graph-canvas {
+  background: rgba(15, 52, 96, 0.1);
+  border-radius: 15px;
+  border: 1px solid rgba(102, 204, 255, 0.2);
+  cursor: crosshair;
+}
+
+.algorithm-controls {
+  display: flex;
+  justify-content: space-between; /* This pushes items to the sides */
+  align-items: flex-start;
+  gap: 20px;
+  padding: 15px;
+  background-color: rgba(15, 52, 96, 0.1);
+  border: 1px solid rgba(102, 204, 255, 0.2);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  min-height: 100px;
+}
+
+.controls-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.algorithm-controls label {
+  color: #b8c5d1;
+  font-weight: 600;
+}
+
+.algorithm-controls select {
+  background-color: #0f3460;
+  color: #e0e6ed;
+  border: 1px solid #66ccff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  min-width: 100px;
+}
+
+.result-box {
+  background-color: rgba(102, 204, 255, 0.1);
+  border: 1px solid rgba(102, 204, 255, 0.3);
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: #e0e6ed;
+  min-width: 250px;
+}
+
+.result-box h4 {
+  margin: 0 0 8px 0;
+  color: #66ccff;
+  font-size: 16px;
+}
+
+.result-box p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.message-bar {
+  text-align: center;
+  color: #66ccff;
+  font-weight: 600;
+  min-height: 24px;
+}
+}

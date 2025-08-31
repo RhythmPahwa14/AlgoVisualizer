@@ -548,22 +548,21 @@
 /* =========================
    Responsive Design
 ========================= */
+
+/* Tablet and below */
 @media screen and (max-width: 1024px) {
-    .nav-links-desktop {
-        display: none;
-    }
-    
-    .hamburger {
-        display: flex;
-    }
-    
-    .nav-group-label {
-        display: none;
-    }
-    
-    .nav-separator {
-        display: none;
-    }
+  .nav-links-desktop {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-group-label,
+  .nav-separator {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -613,7 +612,7 @@
 .github-btn,
 .theme-toggle-btn,
 .hamburger {
-    will-change: transform;
+  will-change: transform;
 }
 
 /* Reduce motion for users who prefer it */

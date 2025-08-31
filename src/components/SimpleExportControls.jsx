@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import SimpleVisualizationExporter from '../utils/simpleExporter';
+import '../styles/Sorting.css';
+
 
 const SimpleExportControls = ({ containerId }) => {
   const [exporter] = useState(() => new SimpleVisualizationExporter());

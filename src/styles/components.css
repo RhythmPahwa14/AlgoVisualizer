@@ -180,21 +180,53 @@ button:disabled {
 /* =========================
    Responsive
 ========================= */
+@media (max-width: 1024px) {
+    .main-content {
+        padding: 10px;
+    }
+}
+
 @media (max-width: 768px) {
-    .theme-toggle-btn {
-        width: 36px;
-        height: 36px;
+    .av-header {
+        padding: 10px;
     }
 
-    button {
-        padding: 8px 16px;
-        font-size: 14px;
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .theme-toggle-btn svg {
+        width: 24px;
+        height: 24px;
     }
 }
 
 @media (max-width: 480px) {
+    .av-header {
+        padding: 8px;
+    }
+
+    .nav-links {
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+    }
+
     button {
-        padding: 6px 12px;
-        font-size: 13px;
+        white-space: nowrap; /* prevent line breaks */
+        min-width: auto; /* allow smaller buttons */
+    }
+
+    .theme-toggle-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .theme-toggle-btn svg {
+        width: 20px;
+        height: 20px;
     }
 }
+
