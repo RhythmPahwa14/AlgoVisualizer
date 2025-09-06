@@ -250,6 +250,8 @@
   border: 1px solid var(--border-accent);
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
+  text-align: center;
+  min-width: fit-content !important;
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition-fast);
