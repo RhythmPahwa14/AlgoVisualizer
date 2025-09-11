@@ -87,23 +87,19 @@
     padding: 10px 12px;
     border-radius: 10px;
     border: 1px solid transparent;
-    /* smoother transitions */
+    white-space: nowrap; /* prevents breaking of Sign In / Sign Up */
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Hover state: subtle change */
 .nav-links a:hover {
-    color: #d4e8ff;                     /* lighter text on hover */
-    background: rgba(59, 130, 246, 0.15); /* light blue tint */
+    color: #d4e8ff;
+    background: rgba(59, 130, 246, 0.15);
     border-color: rgba(59, 130, 246, 0.25);
 }
 
-/* Active state: toned-down accent with high contrast */
 .nav-links a.active {
-    color: #ffffff;                       /* white text for maximum contrast */
-    background: rgba(59, 130, 246, 0.35); /* semi-transparent accent */
-    /* If you prefer a solid gradient instead, comment out the line above and uncomment the next line */
-    /* background: linear-gradient(90deg, #4fa7f8, #3b82f6); */
+    color: #ffffff;
+    background: rgba(59, 130, 246, 0.35);
     border-color: rgba(59, 130, 246, 0.45);
     box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
 }
@@ -114,26 +110,21 @@
     gap: 10px;
 }
 
-/* GitHub star button – base appearance */
 .github-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
     border-radius: 10px;
-    color: #cfd9e6;                       /* match the nav link colour */
-    background: rgba(59, 130, 246, 0.15); /* subtle accent background */
+    color: #cfd9e6;
+    background: rgba(59, 130, 246, 0.15);
     border: 1px solid rgba(59, 130, 246, 0.25);
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Hover state for the star button */
 .github-btn:hover {
-    color: #ffffff;                       /* white text on hover */
-    background: rgba(59, 130, 246, 0.35); /* slightly stronger accent */
-    /* Or use a darker gradient if you want a solid colour:
-       background: linear-gradient(90deg, #4fa7f8, #3b82f6);
-    */
+    color: #ffffff;
+    background: rgba(59, 130, 246, 0.35);
     border-color: rgba(59, 130, 246, 0.45);
 }
 
@@ -188,33 +179,3 @@
         display: flex;
     }
 }
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #222;
-  padding: 12px 24px;
-}
-
-.logo {
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.nav-links {
-  display: flex;
-  gap: 18px; /* even spacing */
-}
-
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  white-space: nowrap; /* prevents Sign In / Sign Up from breaking into two lines */
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
