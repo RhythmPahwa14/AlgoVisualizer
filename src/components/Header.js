@@ -14,6 +14,7 @@ const Header = () => {
     return (
         <header className="av-header">
             <div className="av-container">
+                {/* Logo */}
                 <div className="logo">
                     <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
                         <span className="brand-mono">ALGO</span>
@@ -21,15 +22,26 @@ const Header = () => {
                     </Link>
                 </div>
 
-                <nav className={`nav-links ${isMobileMenuOpen ? 'nav-active' : ''}`} aria-label="Primary">
-                    <NavLink to="/" onClick={toggleMobileMenu} end className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
-                    <NavLink to="/sorting" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Sorting</NavLink>
-                    <NavLink to="/searching" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Searching</NavLink>
-                    <NavLink to="/data-structures" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Data Structures</NavLink>
-                    <NavLink to="/contributors" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Contributors</NavLink>
-                    <NavLink to="/documentation" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Documentation</NavLink>
-                </nav>
+                {/* Main Navigation */}
+                <div className={`nav-links ${isMobileMenuOpen ? 'nav-active' : ''}`} aria-label="Primary">
+                    <div className="nav-left">
+                        <NavLink to="/" onClick={toggleMobileMenu} end className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
+                        <NavLink to="/sorting" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Sorting</NavLink>
+                        <NavLink to="/searching" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Searching</NavLink>
+                        <NavLink to="/data-structures" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Data Structures</NavLink>
+                        <NavLink to="/contributors" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Contributors</NavLink>
+                        <NavLink to="/documentation" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Documentation</NavLink>
+                        <NavLink to="/about" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink>
+                        <NavLink to="/contact" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink>
+                    </div>
 
+                    <div className="nav-right">
+                        <NavLink to="/signin" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Sign In</NavLink>
+                        <NavLink to="/signup" onClick={toggleMobileMenu} className={({ isActive }) => isActive ? 'active' : ''}>Sign Up</NavLink>
+                    </div>
+                </div>
+
+                {/* Actions */}
                 <div className="nav-actions">
                     <a className="github-btn" href="https://github.com/RhythmPahwa14/AlgoVisualizer" target="_blank" rel="noreferrer noopener" aria-label="Open GitHub repository">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

@@ -62,7 +62,20 @@
 /* Navigation links container */
 .nav-links {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     gap: 8px;
+}
+
+.nav-left {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-right {
+    display: flex;
+    gap: 1rem;
 }
 
 .nav-links a {
@@ -85,10 +98,10 @@
     border-color: rgba(59, 130, 246, 0.25);
 }
 
-/* Active state: toned‑down accent with high contrast */
+/* Active state: toned-down accent with high contrast */
 .nav-links a.active {
     color: #ffffff;                       /* white text for maximum contrast */
-    background: rgba(59, 130, 246, 0.35); /* semi‑transparent accent */
+    background: rgba(59, 130, 246, 0.35); /* semi-transparent accent */
     /* If you prefer a solid gradient instead, comment out the line above and uncomment the next line */
     /* background: linear-gradient(90deg, #4fa7f8, #3b82f6); */
     border-color: rgba(59, 130, 246, 0.45);
@@ -123,7 +136,6 @@
     */
     border-color: rgba(59, 130, 246, 0.45);
 }
-
 
 .hamburger {
     display: none;
@@ -176,3 +188,33 @@
         display: flex;
     }
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 12px 24px;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px; /* even spacing */
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap; /* prevents Sign In / Sign Up from breaking into two lines */
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
