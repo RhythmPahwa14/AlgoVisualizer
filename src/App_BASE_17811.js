@@ -14,15 +14,12 @@ import PrivacyPolicy from './components/Privacy';
 import TermsOfService from './components/terms';
 import Doubt from './components/Doubt';
 import AlgorithmDocumentation from './pages/Documentation';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-
 import './styles/components.css';
-import { ThemeProvider } from './ThemeContext'; // Wrap app with ThemeProvider
+import { ThemeProvider } from './ThemeContext'; // ← import ThemeProvider
 
 const App = () => {
     return (
-        <ThemeProvider>
+        <ThemeProvider> {/* ← Wrap entire app with ThemeProvider */}
             <Router>
                 <div className="app-container">
                     <Header />
@@ -38,8 +35,6 @@ const App = () => {
                             <Route path="/terms" element={<TermsOfService />} />
                             <Route path="/privacy" element={<PrivacyPolicy />} />
                             <Route path="/documentation" element={<AlgorithmDocumentation />} />
-                            <Route path="/signin" element={<SignIn />} />
-                            <Route path="/signup" element={<SignUp />} />
                         </Routes>
                     </main>
                     <Doubt />
