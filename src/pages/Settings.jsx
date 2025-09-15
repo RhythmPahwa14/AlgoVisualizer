@@ -58,7 +58,7 @@ const Settings = () => {
             style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}
           >
             <Palette size={24} />
-            <h3>Appearance</h3>
+            <h3 style={{ margin: 0 }}>Appearance</h3>
           </motion.div>
 
           <motion.div
@@ -141,7 +141,7 @@ const Settings = () => {
             style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}
           >
             <Earth size={24} />
-            <h3>Langauge Selection </h3>
+            <h3 style={{ margin: 0 }}>Langauge Selection </h3>
           </motion.div>
 
           <motion.div
@@ -182,7 +182,7 @@ const Settings = () => {
             style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}
           >
             <SliceIcon size={24} />
-            <h3>Font Selection </h3>
+            <h3 style={{ margin: 0 }}>Font Selection </h3>
           </motion.div>
 
           <motion.div
@@ -222,7 +222,7 @@ const Settings = () => {
             style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}
           >
             <Palette size={24} />
-            <h3>Color Customization </h3>
+            <h3 style={{ margin: 0 }}>Color Customization </h3>
           </motion.div>
 
           <motion.div
