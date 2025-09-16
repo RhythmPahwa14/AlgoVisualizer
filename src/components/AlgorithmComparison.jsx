@@ -206,9 +206,10 @@ function AlgoVisualizer({
           </>
         )}
 
+        <p>
         Select whether you want to compare sorting or searching algorithms, then
         choose two algorithms to compare side by side.
-      </p>
+        </p>
 
       {/* Select algorithm type */}
       <div
@@ -255,6 +256,7 @@ function AlgoVisualizer({
       </div>
     </div>
   );
+}
 }
 
 function Legend({ color, label }) {
