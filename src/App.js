@@ -37,7 +37,8 @@ import SignUp from './pages/SignUp';
                              <Route path="/terms" element={<TermsOfService />} />
                              <Route path="/privacy" element={<PrivacyPolicy />} />
                              <Route path="/documentation" element={<AlgorithmDocumentation />} />
-                           <Route path="/signin" element={<SignIn />} />                            <Route path="/signup" element={<SignUp />} />
+                             <Route path="/signin" element={<SignIn />} />
+                             <Route path="/signup" element={<SignUp />} />
                          </Routes>
                      </main>
                      <Doubt />
