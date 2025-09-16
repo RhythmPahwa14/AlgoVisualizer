@@ -31,6 +31,8 @@ import LinkedListPage from "./components/pages/LinkedListPage";
 import AlgorithmComparison from "./components/AlgorithmComparison";
 import Blog from "./pages/Blog";
 import CommunityLanding from "./pages/CommunityLanding";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import "./styles/components.css";
 
 const App = () => {
@@ -101,6 +103,10 @@ const App = () => {
             path="/ContributorLeaderboard"
             element={<ContributorLeaderboard />}
           />
+          
+          {/* Authentication Routes */}
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
 
         {showComplexityBoxOn.includes(location.pathname) && (

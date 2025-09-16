@@ -13,6 +13,8 @@ import {
   X,
   ChevronDown,
   BookOpen,
+  LogIn,
+  UserPlus,
 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import logo from "/public/logo.jpg";
@@ -166,6 +168,18 @@ const Navbar = () => {
             ))}
           </div>
 
+          {/* Auth Actions */}
+          <div className="navbar-auth">
+            <Link to="/signin" className="auth-link signin">
+              <LogIn size={18} />
+              <span>Sign In</span>
+            </Link>
+            <Link to="/signup" className="auth-link signup">
+              <UserPlus size={18} />
+              <span>Sign Up</span>
+            </Link>
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             className="mobile-menu-button"
@@ -230,6 +244,26 @@ const Navbar = () => {
               )}
             </div>
           ))}
+          
+          {/* Mobile Auth Links */}
+          <div className="mobile-auth-section">
+            <Link
+              to="/signin"
+              className="mobile-auth-link signin"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <LogIn size={18} />
+              <span>Sign In</span>
+            </Link>
+            <Link
+              to="/signup"
+              className="mobile-auth-link signup"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <UserPlus size={18} />
+              <span>Sign Up</span>
+            </Link>
+          </div>
         </div>
       </nav>
 

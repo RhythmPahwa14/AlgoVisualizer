@@ -219,6 +219,93 @@
   color: var(--primary-color);
 }
 
+/* Authentication Styles */
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.auth-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.auth-link.signin {
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  background: transparent;
+}
+
+.auth-link.signin:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background: var(--primary-color-alpha);
+}
+
+.auth-link.signup {
+  color: white;
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.auth-link.signup:hover {
+  background: var(--primary-hover-color);
+  border-color: var(--primary-hover-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Mobile Auth Section */
+.mobile-auth-section {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-auth-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  color: var(--text-color);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.mobile-auth-link.signin:hover {
+  color: var(--primary-color);
+  background: var(--primary-color-alpha);
+}
+
+.mobile-auth-link.signup {
+  color: var(--primary-color);
+  background: var(--primary-color-alpha);
+  border-color: var(--primary-color);
+}
+
+.mobile-auth-link.signup:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
 /* Mobile Menu Button */
 .mobile-menu-button {
   display: none;
@@ -331,7 +418,8 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .navbar-menu {
+  .navbar-menu,
+  .navbar-auth {
     display: none;
   }
   

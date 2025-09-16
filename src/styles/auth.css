@@ -1,0 +1,121 @@
+/* src/styles/auth.css */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 12px;
+  min-height: calc(100vh - 100px);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg, #ffffff);
+  padding: 22px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(7, 9, 25, 0.06);
+  border: 1px solid var(--border-color, #e5e7eb);
+}
+
+.auth-card h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  color: var(--text-primary, #1f2937);
+  text-align: center;
+}
+
+.auth-label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.auth-label span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-primary, #222);
+  font-weight: 500;
+}
+
+.auth-label input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: var(--input-bg, #fff);
+  color: var(--text-primary, #000);
+  transition: border-color 0.2s ease;
+}
+
+.auth-label input:focus {
+  outline: none;
+  border-color: var(--primary-color, #0b6efd);
+  box-shadow: 0 0 0 3px rgba(11, 110, 253, 0.1);
+}
+
+.auth-error {
+  color: #b00020;
+  margin: 8px 0;
+  font-size: 14px;
+  text-align: center;
+  padding: 8px;
+  background: rgba(176, 0, 32, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(176, 0, 32, 0.2);
+}
+
+.auth-button {
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color, #0b6efd);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.auth-button:hover {
+  background: var(--primary-hover, #0a5fd4);
+}
+
+.auth-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-footer {
+  margin-top: 12px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--text-secondary, #6b7280);
+}
+
+.auth-footer a {
+  color: var(--primary-color, #0b6efd);
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .auth-card {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .auth-label input {
+  background: var(--input-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .auth-label input:focus {
+  border-color: var(--primary-color);
+}
