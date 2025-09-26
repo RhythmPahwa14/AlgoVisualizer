@@ -3597,8 +3597,124 @@ void quickSort(vector<int>& arr, int low, int high){
     return Math.max(left,right,leftSum+rightSum);
 }`
   }
-}
+};
 
 
 
+export const mathAlgorithms = {
+  gcdEuclidean: {
+    java: `public class GCD {
+    public static int gcd(int a, int b){
+        if(b == 0) return a;
+        return gcd(b, a % b);
+    }
+}`,
+    python: `def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)`,
+    cpp: `int gcd(int a, int b){
+    if(b == 0) return a;
+    return gcd(b, a % b);
+}`
+  },
 
+  sieveOfEratosthenes: {
+    java: `import java.util.*;
+public class Sieve {
+    public static boolean[] sieve(int n){
+        boolean prime[] = new boolean[n+1];
+        Arrays.fill(prime, true);
+        prime[0] = prime[1] = false;
+        for(int p=2; p*p <= n; p++){
+            if(prime[p]){
+                for(int i=p*p; i<=n; i+=p) prime[i] = false;
+            }
+        }
+        return prime;
+    }
+}`,
+    python: `def sieve(n):
+    prime = [True]*(n+1)
+    prime[0] = prime[1] = False
+    for p in range(2, int(n**0.5)+1):
+        if prime[p]:
+            for i in range(p*p, n+1, p):
+                prime[i] = False
+    return prime`,
+    cpp: `vector<bool> sieve(int n){
+    vector<bool> prime(n+1, true);
+    prime[0] = prime[1] = false;
+    for(int p=2; p*p <= n; p++){
+        if(prime[p]){
+            for(int i=p*p; i<=n; i+=p) prime[i] = false;
+        }
+    }
+    return prime;
+}`
+  },
+
+  modularExponentiation: {
+    java: `public class ModExp {
+    public static long modExp(long a, long b, long mod){
+        long result = 1;
+        a = a % mod;
+        while(b > 0){
+            if((b & 1) == 1) result = (result * a) % mod;
+            a = (a * a) % mod;
+            b >>= 1;
+        }
+        return result;
+    }
+}`,
+    python: `def mod_exp(a, b, mod):
+    result = 1
+    a = a % mod
+    while b > 0:
+        if b & 1:
+            result = (result * a) % mod
+        a = (a * a) % mod
+        b >>= 1
+    return result`,
+    cpp: `long long modExp(long long a, long long b, long long mod){
+    long long result = 1;
+    a %= mod;
+    while(b > 0){
+        if(b & 1) result = (result * a) % mod;
+        a = (a * a) % mod;
+        b >>= 1;
+    }
+    return result;
+}`
+  },
+
+  fft: {
+    java: `// FFT implementation in Java (simplified placeholder)
+public class FFT {
+    // Implementation depends on complex numbers library
+}`,
+    python: `import numpy as np
+def fft(arr):
+    return np.fft.fft(arr)`,
+    cpp: `#include <complex>
+#include <vector>
+using namespace std;
+typedef complex<double> cd;
+
+void fft(vector<cd> &a){
+    int n = a.size();
+    if(n <= 1) return;
+    vector<cd> a0(n/2), a1(n/2);
+    for(int i=0;i<n/2;i++){
+        a0[i] = a[i*2];
+        a1[i] = a[i*2+1];
+    }
+    fft(a0); fft(a1);
+    for(int i=0;i<n/2;i++){
+        cd t = polar(1.0, -2 * M_PI * i / n) * a1[i];
+        a[i] = a0[i] + t;
+        a[i+n/2] = a0[i] - t;
+    }
+}`
+  }
+};

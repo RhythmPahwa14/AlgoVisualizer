@@ -57,6 +57,9 @@ import TreePage from "./pages/TreePage";
 import DCOverview from "./pages/DCOverview";
 import DCPage from "./pages/DCPage";
 
+import MathOverview from "./pages/MathOverview";
+import MathPage from "./pages/MathPage";
+
 import Queue from "./components/Queue/Queue";
 import Stack from "./components/Stack/Stack";
 
@@ -162,6 +165,10 @@ const App = () => {
   {/* Divide & Conquer */}
   <Route path="/dc-overview" element={<DCOverview />} />
   <Route path="/dc" element={<DCPage />} />
+
+    {/* Mathematical Algorithms */}
+  <Route path="/math-overview" element={<MathOverview />} />
+  <Route path="/math" element={<MathPage />} />
 
 
 

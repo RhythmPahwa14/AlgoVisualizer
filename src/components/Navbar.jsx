@@ -9,6 +9,7 @@ import {
   Users,
   Trophy,
   Settings,
+  Calculator,
   X,
   ChevronDown,
   BookOpen,
@@ -132,6 +133,15 @@ const Navbar = () => {
         { path: "/tree", label: "Algorithms" },
       ],
     },
+     {
+    label: "Mathematics",
+    icon: Calculator, // use a suitable icon from lucide-react
+    dropdown: [
+      { path: "/math-overview", label: "Overview" },
+      { path: "/math", label: "Algorithms" },
+    ],
+  },
+    
     { path: "/quiz", icon: Trophy, label: "Quiz" },
     {
       label: "Community",
