@@ -10,6 +10,7 @@ import {
   Trophy,
   Settings,
   X,
+  
   ChevronDown,
   BookOpen,
   Cpu,
@@ -17,8 +18,11 @@ import {
   Hash,
   Zap,
   TreeDeciduous,
+  Type,
   Menu,
 } from "lucide-react";
+
+
 import { useTheme } from "../ThemeContext";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -132,6 +136,16 @@ const Navbar = () => {
         { path: "/tree", label: "Algorithms" },
       ],
     },
+
+      {
+    label: "Strings",
+     icon: Type,  // choose any appropriate icon
+    dropdown: [
+      { path: "/string-overview", label: "Overview" },
+      { path: "/string", label: "Algorithms" },
+    ],
+  },
+
     { path: "/quiz", icon: Trophy, label: "Quiz" },
     {
       label: "Community",

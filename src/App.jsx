@@ -60,6 +60,12 @@ import DCPage from "./pages/DCPage";
 import Queue from "./components/Queue/Queue";
 import Stack from "./components/Stack/Stack";
 
+
+// Add these imports at the top with other page imports
+import StringOverview from "./pages/StringOverview";
+import StringPage from "./pages/StringPage";
+
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
  
@@ -162,6 +168,11 @@ const App = () => {
   {/* Divide & Conquer */}
   <Route path="/dc-overview" element={<DCOverview />} />
   <Route path="/dc" element={<DCPage />} />
+
+  {/* String Algorithms */}
+<Route path="/string-overview" element={<StringOverview />} />
+<Route path="/string" element={<StringPage />} />
+
 
 
 
