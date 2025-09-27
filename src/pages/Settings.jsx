@@ -22,7 +22,7 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
-import { useSettings, AVAILABLE_LANGUAGES, COLOR_SCHEMES, FONT_SIZES } from '../contexts/SettingsContext';
+import { useSettings, AVAILABLE_LANGUAGES, COLOR_SCHEMES, FONT_SIZES, FONT_FAMILIES } from '../contexts/SettingsContext';
 import '../styles/settings.css';
 
 const Settings = () => {
@@ -177,6 +177,30 @@ const Settings = () => {
             <div className="settings-card-header">
               <Type size={24} />
               <h3>Typography & Language</h3>
+            </div>
+
+            <div className="settings-control-group">
+              <label className="settings-label" htmlFor="font-family">
+                Font Family
+              </label>
+              <select
+                id="font-family"
+                className="settings-select"
+                value={settings.fontFamily}
+                onChange={(e) => handleSettingChange('fontFamily', e.target.value)}
+              >
+                {Object.entries(FONT_FAMILIES).map(([key, config]) => (
+                  <option key={key} value={key}>{config.name}</option>
+                ))}
+              </select>
+              <div className="font-family-preview">
+                <p className="font-family-preview-text">
+                  The quick brown fox jumps over the lazy dog. 1234567890
+                </p>
+              </div>
+              <p className="settings-description">
+                Choose your preferred font family for the interface
+              </p>
             </div>
 
             <div className="settings-control-group">

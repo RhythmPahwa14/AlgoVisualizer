@@ -28,7 +28,6 @@
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
   transition: var(--transition-normal);
-  margin-bottom: var(--space-xl);
 }
 
 .theme-card-header {
@@ -379,19 +378,12 @@
 
 :root {
   --page-max: 1200px;
-  --gap: 16px;
+  --gap: 24px;
   --gap-sm: 12px;
-
-  --surface-bg: #0b0f14;    /* already referenced inline */
-  --surface: #0f1520;
-  --border: #1f2a38;
-  --text: #e8eef7;
-  --muted: #a9b4c1;
-  --accent: #4da3ff;
 }
 
 body {
-  color: var(--text);
+  color: var(--text-primary);
 }
 
 /* ---------- Page layout ---------- */
@@ -532,8 +524,6 @@ body {
   font-weight: 600;
 }
 
-.btn-secondary {}
-
 /* ---------- Viz ---------- */
 .viz-canvas {
   display: flex;
@@ -544,7 +534,7 @@ body {
   border: 1px dashed var(--border);
   border-radius: 10px;
   overflow: hidden;              /* keeps bars inside */
-  background: #0c1118;
+  background: var(--surface-bg);
 }
 
 /* ---------- Stats / Complexity grids ---------- */
@@ -659,21 +649,8 @@ body {
   box-sizing: border-box;
 }
 
-:root {
-  --page-max: 1200px;
-  --gap: 16px;
-  --gap-sm: 12px;
-
-  --surface-bg: #0b0f14;
-  --surface: #0f1520;
-  --border: #1f2a38;
-  --text: #e8eef7;
-  --muted: #a9b4c1;
-  --accent: #4da3ff;
-}
-
 body {
-  color: var(--text);
+  color: var(--text-primary);
 }
 
 /* ---------- Page layout ---------- */
@@ -829,8 +806,6 @@ body {
   font-weight: 600;
 }
 
-.btn-secondary {}
-
 /* ---------- Viz ---------- */
 .viz-canvas {
   display: flex;
@@ -973,3 +948,23 @@ body {
   max-height: 180px;   /* adjust as you like */
   overflow-y: auto;    /* adds scrollbar if content overflows */
 }
+/* --- Fix dark box + dark text and ensure good contrast --- */
+.code-like {
+  background: #0c1118;         /* or var(--surface-bg) */
+  color: var(--text);          /* <<< readable text */
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.code-like strong { color: var(--text); }
+
+/* Light theme safety */
+:root[data-theme="light"] .code-like {
+  background: #f9fafb;
+  color: #111827;
+  border-color: #e5e7eb;
+}
+
+/* Make the card header always readable */
+.theme-card-header h3 { color: var(--text); }

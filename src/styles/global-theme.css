@@ -1324,3 +1324,37 @@ body {
   line-height: 1.6;
   padding: 0; 
 }
+/* Boxed sequence grid with step highlight */
+.dp-seq {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: .5rem;
+  margin: 1rem 0;
+}
+
+.dp-cell {
+  border: 1px solid var(--border, rgba(255,255,255,.12));
+  border-radius: 10px;
+  padding: .5rem .25rem;
+  background: var(--surface-bg, rgba(255,255,255,.03));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .25rem;
+}
+
+.dp-cell-index {
+  font-size: .7rem;
+  opacity: .65;
+}
+
+.dp-cell-value {
+  font-weight: 600;
+}
+
+.dp-cell.is-active {
+  outline: 2px solid var(--accent-primary, #7aa2f7);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-primary, #7aa2f7) 25%, transparent);
+}
+

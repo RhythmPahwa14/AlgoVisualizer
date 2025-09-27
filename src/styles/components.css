@@ -33,7 +33,7 @@ html, body, #root, .app-container {
     color: var(--text-primary);
     min-height: 100vh;
     height: 100%;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-family, 'Poppins', sans-serif);
     line-height: 1.6;
     transition: var(--transition-normal);
 }

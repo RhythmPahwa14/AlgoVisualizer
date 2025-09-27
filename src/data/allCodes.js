@@ -3600,7 +3600,6 @@ void quickSort(vector<int>& arr, int low, int high){
 };
 
 
-
 export const stringAlgorithms = {
   kmp: {
     java: `public class KMP {
@@ -3696,7 +3695,33 @@ vector<int> computeLPS(string pattern){
         }
     }
     return lps;
+
+export const branchBoundAlgorithms = {
+  knapsack01: {
+    java: `class Item {
+    int weight, value;
+    Item(int w, int v){ weight=w; value=v; }
+
 }
+int bound(int uVal, int uWt, int idx, Item[] items, int W){
+    if(uWt>=W) return 0;
+    int profitBound=uVal, totWt=uWt;
+    for(int i=idx;i<items.length;i++){
+        if(totWt+items[i].weight<=W){
+            totWt+=items[i].weight;
+            profitBound+=items[i].value;
+        } else {
+            profitBound+=(W-totWt)*items[i].value/items[i].weight;
+            break;
+        }
+    }
+    return profitBound;
+}`,
+    python: `class Item:
+    def __init__(self, w, v):
+        self.weight=w
+        self.value=v
+
 
 void KMPSearch(string text, string pattern){
     int N = text.length(), M = pattern.length();
@@ -3872,5 +3897,78 @@ vector<int> buildSuffixArray(string s){
 }`  
   }
 };
+
+def bound(val, wt, idx, items, W):
+    if wt>=W: return 0
+    profit_bound=val
+    totWt=wt
+    for i in range(idx,len(items)):
+        if totWt+items[i].weight<=W:
+            totWt+=items[i].weight
+            profit_bound+=items[i].value
+        else:
+            profit_bound+=(W-totWt)*(items[i].value/items[i].weight)
+            break
+    return profit_bound`,
+    cpp: `struct Item{
+    int weight,value;
+};
+int bound(int uVal,int uWt,int idx,vector<Item>& items,int W){
+    if(uWt>=W) return 0;
+    int profitBound=uVal, totWt=uWt;
+    for(int i=idx;i<items.size();i++){
+        if(totWt+items[i].weight<=W){
+            totWt+=items[i].weight;
+            profitBound+=items[i].value;
+        } else {
+            profitBound+=(W-totWt)*items[i].value/items[i].weight;
+            break;
+        }
+    }
+    return profitBound;
+}`,
+    javascript: `class Item{
+  constructor(w,v){ this.weight=w; this.value=v; }
+}
+function bound(val,wt,idx,items,W){
+  if(wt>=W) return 0;
+  let profitBound=val, totWt=wt;
+  for(let i=idx;i<items.length;i++){
+    if(totWt+items[i].weight<=W){
+      totWt+=items[i].weight;
+      profitBound+=items[i].value;
+    } else {
+      profitBound+=(W-totWt)*(items[i].value/items[i].weight);
+      break;
+    }
+  }
+  return profitBound;
+}`
+  },
+
+  tsp: {
+    java: `int tspBound(int cost, int level, int[] reducedMatrix){
+    // cost = path cost till now, reducedMatrix = current reduced cost matrix
+    // Typically bound = cost + sum of two minimum edges from each unvisited node
+    return cost + level; // placeholder for actual bound calculation
+}`,
+    python: `def tsp_bound(cost, level, reduced_matrix):
+    # cost = path cost till now
+    # reduced_matrix = current reduced cost matrix
+    # bound = cost + heuristic estimate
+    return cost + level  # placeholder`,
+    cpp: `int tspBound(int cost, int level, vector<vector<int>>& reducedMatrix){
+    // cost = path cost till now
+    // reducedMatrix = current reduced cost matrix
+    return cost + level; // placeholder
+}`,
+    javascript: `function tspBound(cost, level, reducedMatrix){
+  // cost = path cost till now
+  // reducedMatrix = current reduced cost matrix
+  return cost + level; // placeholder
+}`
+  }
+}
+
 
 

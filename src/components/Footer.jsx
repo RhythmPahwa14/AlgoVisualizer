@@ -100,6 +100,9 @@ const Footer = () => {
                   src={logo}
                   alt="AlgoVisualizer Logo"
                   className="logo-image"
+                  onError={(e) => {
+                    e.target.style.display = "none";
+                  }}
                 />
                 <span className="logo-text">AlgoVisualizer</span>
               </div>
@@ -150,28 +153,31 @@ const Footer = () => {
             <ul className="footer-links">
               <li>
                 <Link to="/" className="link-icon">
-                  
+                  <FaRocket className="link-icon" />
                   Home
                 </Link>
               </li>
               <li>
                 <Link to="/data-structures" className="link-icon">
-
+                  <FaCode className="link-icon" />
                   Algorithms
                 </Link>
               </li>
               <li>
                 <Link to="/data-structures" className="link-icon">
+                  <FaGraduationCap className="link-icon" />
                   Data Structures
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="link-icon">
+                  <FaGraduationCap className="link-icon" />
                   About Us
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="link-icon">
+                  <FaEnvelope className="link-icon" />
                   Contact
                 </Link>
               </li>
@@ -184,27 +190,31 @@ const Footer = () => {
             <ul className="footer-links">
               <li>
                 <Link to="/documentation" className="link-icon">
-                 
+                  <FaGraduationCap className="link-icon" />
                   Documentation
                 </Link>
               </li>
               <li>
                 <Link to="/faq" className="link-icon">
+                  <FaGraduationCap className="link-icon" />
                   FAQ
                 </Link>
               </li>
               <li>
                 <Link to="/data-structures" className="link-icon">
+                  <FaGraduationCap className="link-icon" />
                   Tutorials
                 </Link>
               </li>
               <li>
                 <Link to="/blog" className="link-icon">
+                  <FaGraduationCap className="link-icon" />
                   Blog
                 </Link>
               </li>
               <li>
                 <Link to="/community" className="link-icon">
+                  <FaGraduationCap className="link-icon" />
                   Community
                 </Link>
               </li>
@@ -213,11 +223,12 @@ const Footer = () => {
                   href="https://github.com/RhythmPahwa14/AlgoVisualizer"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="link-icon"
                 >
+                  <FaCode className="link-icon" />
                   Contribute
                 </a>
               </li>
-
             </ul>
           </div>
 
@@ -337,8 +348,7 @@ const Footer = () => {
                 <span className="legal-separator">|</span>
                 <Link to="/terms">Terms of Service</Link>
                 <span className="legal-separator">|</span>
-                <Link to="/cookies">Cookie Policy</Link>{" "}
-                {/* fixed cookies page */}
+                <Link to="/cookies">Cookie Policy</Link>
               </div>
             </div>
           </div>

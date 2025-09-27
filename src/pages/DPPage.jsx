@@ -1,5 +1,5 @@
 // src/pages/DPPage.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DPVisualizer from "../components/DPVisualizer";
 import { dpAlgorithms } from "../data/allCodes"; // make sure dpAlgorithms exists in allCodes.js
 import "../styles/global-theme.css";
@@ -10,7 +10,11 @@ const DPPage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("java");
   const [selectedAlgorithm, setSelectedAlgorithm] = useState("fibonacci"); // default algorithm
 
-  const algorithmData = dpAlgorithms[selectedAlgorithm] || {};
+  const algorithmData = (dpAlgorithms && dpAlgorithms[selectedAlgorithm]) || {};
+
+  useEffect(() => {
+    AOS.init({ duration: 600, once: true });
+  }, []);
 
   // Default problem sizes for visualizer
   const defaultSizes = {

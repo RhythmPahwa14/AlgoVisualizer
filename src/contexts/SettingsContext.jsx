@@ -7,6 +7,7 @@ const SettingsContext = createContext();
 const DEFAULT_SETTINGS = {
   // Appearance
   fontSize: 'medium', // 'small', 'medium', 'large'
+  fontFamily: 'inter', // 'inter', 'space-grotesk', 'system', 'serif', 'mono'
   colorScheme: 'default', // 'default', 'blue', 'green', 'purple', 'orange'
   customAccentColor: '#58a6ff',
   
@@ -44,6 +45,10 @@ export const COLOR_SCHEMES = {
   purple: { name: 'Royal Purple', primary: '#7c3aed', secondary: '#8b5cf6' },
   orange: { name: 'Sunset Orange', primary: '#ea580c', secondary: '#f97316' },
   pink: { name: 'Cherry Blossom', primary: '#db2777', secondary: '#ec4899' },
+  red: { name: 'Crimson Red', primary: '#dc2626', secondary: '#ef4444' },
+  teal: { name: 'Teal Wave', primary: '#0d9488', secondary: '#14b8a6' },
+  indigo: { name: 'Deep Indigo', primary: '#3730a3', secondary: '#4f46e5' },
+  amber: { name: 'Golden Amber', primary: '#d97706', secondary: '#f59e0b' },
 };
 
 // Font size configurations
@@ -51,6 +56,15 @@ export const FONT_SIZES = {
   small: { name: 'Small', scale: 0.875, baseSize: '14px' },
   medium: { name: 'Medium', scale: 1, baseSize: '16px' },
   large: { name: 'Large', scale: 1.125, baseSize: '18px' },
+};
+
+// Font family configurations
+export const FONT_FAMILIES = {
+  inter: { name: 'Inter', family: "'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" },
+  'space-grotesk': { name: 'Space Grotesk', family: "'Space Grotesk', ui-sans-serif, system-ui, sans-serif" },
+  system: { name: 'System Default', family: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" },
+  serif: { name: 'Serif', family: "Georgia, 'Times New Roman', serif" },
+  mono: { name: 'Monospace', family: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" },
 };
 
 export const SettingsProvider = ({ children }) => {
@@ -91,6 +105,14 @@ export const SettingsProvider = ({ children }) => {
       document.documentElement.style.setProperty('--font-scale', fontConfig.scale);
     }
   }, [settings.fontSize]);
+
+  // Apply font family to document root
+  useEffect(() => {
+    const fontFamilyConfig = FONT_FAMILIES[settings.fontFamily];
+    if (fontFamilyConfig) {
+      document.documentElement.style.setProperty('--font-family', fontFamilyConfig.family);
+    }
+  }, [settings.fontFamily]);
 
   // Apply color scheme to document root
   useEffect(() => {
@@ -189,6 +211,11 @@ export const SettingsProvider = ({ children }) => {
     return FONT_SIZES[settings.fontSize] || FONT_SIZES.medium;
   }, [settings.fontSize]);
 
+  // Get current font family configuration
+  const getCurrentFontFamily = useCallback(() => {
+    return FONT_FAMILIES[settings.fontFamily] || FONT_FAMILIES.inter;
+  }, [settings.fontFamily]);
+
   const value = useMemo(() => ({
     settings,
     isLoading,
@@ -200,8 +227,10 @@ export const SettingsProvider = ({ children }) => {
     getCurrentLanguage,
     getCurrentColorScheme,
     getCurrentFontSize,
+    getCurrentFontFamily,
     // Helper getters
     fontSize: settings.fontSize,
+    fontFamily: settings.fontFamily,
     colorScheme: settings.colorScheme,
     language: settings.language,
     emailNotifications: settings.emailNotifications,
@@ -219,6 +248,7 @@ export const SettingsProvider = ({ children }) => {
     getCurrentLanguage,
     getCurrentColorScheme,
     getCurrentFontSize,
+    getCurrentFontFamily,
   ]);
 
   return (

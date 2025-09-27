@@ -21,15 +21,22 @@ const DPVisualizer = ({
   const fibonacci = (n) => {
     const stepsArr = [];
     const memo = Array(n + 1).fill(-1);
+    // Correct bases so UI never shows -1 leading entries
+    if (n >= 0) memo[0] = 0;
+    if (n >= 1) memo[1] = 1; // switch to 1 if you want the 1,1,2,3… variant
 
-    const fib = (k) => {
-      if (k <= 1) return k;
-      if (memo[k] !== -1) return memo[k];
-      stepsArr.push({ board: copySteps(memo), message: `Computing fib(${k})` });
-      memo[k] = fib(k - 1) + fib(k - 2);
-      stepsArr.push({ board: copySteps(memo), message: `fib(${k}) = ${memo[k]}` });
-      return memo[k];
-    };
+     const fib = (k) => {
+      if (k <= 1) {
+        // show base usage
+        stepsArr.push({ board: copySteps(memo), message: `Base: fib(${k}) = ${memo[k]}`, focusIndex: k });
+        return memo[k];
+      }
+       if (memo[k] !== -1) return memo[k];
+      stepsArr.push({ board: copySteps(memo), message: `Computing fib(${k})`, focusIndex: k });
+       memo[k] = fib(k - 1) + fib(k - 2);
+      stepsArr.push({ board: copySteps(memo), message: `fib(${k}) = ${memo[k]}`, focusIndex: k });
+       return memo[k];
+     };
 
     fib(n);
     return stepsArr;
@@ -165,21 +172,30 @@ const DPVisualizer = ({
     setMessage("Select an algorithm and run.");
   };
 
-  // ================= Render =================
-  const renderBoard = () => {
-    if (!steps[currentStep]) return null;
+   // ================= Render =================
+   const renderBoard = () => {
+     if (!steps[currentStep]) return null;
     const stepBoard = steps[currentStep].board;
+    const focusIndex = steps[currentStep].focusIndex;
 
-    // Array of numbers
-    if (Array.isArray(stepBoard) && !Array.isArray(stepBoard[0])) {
-      return (
-        <div className="list-visualizer">
-          {stepBoard.map((num, i) => (
-            <span key={i} className="list-item">{num === Infinity ? "∞" : num}</span>
-          ))}
-        </div>
-      );
-    }
+     // Array of numbers
+     if (Array.isArray(stepBoard) && !Array.isArray(stepBoard[0])) {
+       return (
+        <div className="list-visualizer dp-seq">
+           {stepBoard.map((num, i) => (
+            <span
+              key={i}
+              className={`list-item dp-cell ${i === focusIndex ? "is-active" : ""}`}
+              title={i === focusIndex ? "Current step" : undefined}
+            >
+              <span className="dp-cell-index">{i}</span>
+              <span className="dp-cell-value">{num === Infinity ? "∞" : num}</span>
+            </span>
+           ))}
+         </div>
+       );
+     }
+
 
     return (
       <div className="board">

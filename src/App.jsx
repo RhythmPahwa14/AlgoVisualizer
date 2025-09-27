@@ -68,7 +68,11 @@ import StringPage from "./pages/StringPage";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import BinaryTreeVisualizer from "./components/BinaryTree/BinaryTreeVisualizer";
  
+import BranchBoundOverview from "./pages/BranchBoundOverview";
+import BranchBoundPage from "./pages/BranchBoundPage";
+
 
 
 const App = () => {
@@ -172,6 +176,13 @@ const App = () => {
   {/* String Algorithms */}
 <Route path="/string-overview" element={<StringOverview />} />
 <Route path="/string" element={<StringPage />} />
+
+
+
+  {/* Branch & Bound */}
+<Route path="/branchbound-overview" element={<BranchBoundOverview />} />
+<Route path="/branchbound" element={<BranchBoundPage />} />
+<Route path="/binary-tree" element={<BinaryTreeVisualizer />} />
 
 
 

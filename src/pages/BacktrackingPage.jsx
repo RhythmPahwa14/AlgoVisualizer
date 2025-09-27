@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import BacktrackingVisualizer from "../components/BacktrackingVisualizer";
 import { backtrackingAlgorithms } from "../data/allCodes";
 import "../styles/global-theme.css";
-import AOS from 'aos';
+
 import 'aos/dist/aos.css';
 
 const BacktrackingPage = () => {

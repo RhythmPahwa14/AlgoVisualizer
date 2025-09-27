@@ -468,7 +468,7 @@
     }
 }
 
-.quiz-btn:disabled {
+{/*}.quiz-btn:disabled {
     background: var(--disabled-bg);
     cursor: not-allowed;
     transform: none;
@@ -479,7 +479,16 @@
 
 [data-theme="light"] .quiz-btn:disabled {
     color: #656d76;
+}*/}
+.quiz-btn:disabled {
+    background: #83a6da;
+    border: 1px solid #30363d;
 }
+[data-theme="light"] .quiz-btn:disabled {
+    background: #83a6da;
+    border: 1px solid #d1d9e0;
+}
+
 
 .quiz-btn.secondary {
     background: #21262d;

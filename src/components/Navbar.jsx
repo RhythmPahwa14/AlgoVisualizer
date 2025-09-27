@@ -34,6 +34,7 @@ const Navbar = () => {
   const location = useLocation();
   const { theme } = useTheme();
   const navbarRef = useRef(null);
+  
 
   // Detect mobile screen
   useEffect(() => {
@@ -74,6 +75,8 @@ const Navbar = () => {
 
         { path: "/data-structures/queue", label: "Queue visualization" },
         { path: "/data-structures/stack", label: "Stack visualization" },
+        { path: "/binary-tree", label: "Binary Tree visualization" },
+
 
       ],
     },
@@ -137,6 +140,7 @@ const Navbar = () => {
       ],
     },
 
+
       {
     label: "Strings",
      icon: Type,  // choose any appropriate icon
@@ -145,6 +149,17 @@ const Navbar = () => {
       { path: "/string", label: "Algorithms" },
     ],
   },
+
+    {
+  label: "Branch & Bound",
+  icon: BookOpen,
+  dropdown: [
+    { path: "/branchbound-overview", label: "Overview" },
+    { path: "/branchbound", label: "Algorithms" },
+  ],
+},
+
+
 
     { path: "/quiz", icon: Trophy, label: "Quiz" },
     {
