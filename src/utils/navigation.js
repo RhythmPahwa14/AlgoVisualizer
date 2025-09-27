@@ -1,48 +1,50 @@
-// Unified navigation structure for the entire application
+// Unified navigation structure
+
 export const headerNavigationItems = [
   { path: '/', label: 'Home', icon: null, group: 'main' },
-  { path: '/sorting', label: 'Sorting', icon: 'FaCode', group: 'learn' },
-  { path: '/searching', label: 'Searching', icon: 'FaSearch', group: 'learn' },
-  { path: '/data-structures', label: 'Data Structures', icon: 'FaDatabase', group: 'learn' },
-  { path: '/graph', label: 'Graph', icon: 'FaProjectDiagram', group: 'learn' },
+  { path: '/documentation', label: 'Documentation', icon: 'FaBook', group: 'help' },
+  { path: '/ContributorLeaderboard', label: 'Contributors', icon: 'FaUsers', group: 'community' },
   { path: '/quiz', label: 'Quiz', icon: 'FaBrain', group: 'test' },
-  { path: '/contributors', label: 'Contributors', icon: 'FaUsers', group: 'community' },
-  { path: '/documentation', label: 'Documentation', icon: 'FaBook', group: 'help' }
 ];
 
 export const navbarNavigationItems = [
   { path: "/", label: "Home", icon: "Home" },
+  { path: "/learn", label: "Learn", icon: "BookOpen" }, // ← simple link now
+  { path: "/quiz", label: "Quiz", icon: "Trophy" },
+  { path: "/ContributorLeaderboard", label: "Contributors", icon: "Users" },
+  { path: "/data-structures", label: "Documentation", icon: "BookOpen" },
+  { path: "/settings", label: "Settings", icon: "Settings" },
+];
+
+// Optional: structured data for the Learn page
+export const learnSections = [
   {
-    label: "Sorting",
-    icon: "BarChart3",
-    dropdown: [
+    heading: "Data Structures",
+    items: [
+      { path: "/data-structures", label: "Overview" },
+      { path: "/data-structures/linked-list", label: "Linked List" },
+      { path: "/data-structures/queue", label: "Queue visualization" },
+      { path: "/data-structures/stack", label: "Stack visualization" },
+      { path: "/data-structures/binary-tree", label: "Binary Tree visualization" },
+    ],
+  },
+  {
+    heading: "Sorting",
+    items: [
       { path: "/sorting", label: "Overview" },
       { path: "/components/AlgorithmComparison", label: "Algorithm Comparison" },
     ],
   },
   {
-    label: "Searching",
-    icon: "Search",
-    dropdown: [
+    heading: "Searching",
+    items: [
       { path: "/searchingOverview", label: "Overview" },
       { path: "/searching", label: "Searching Algorithm" },
     ],
   },
   {
-    label: "Data Structures",
-    icon: "Database",
-    dropdown: [
-      { path: "/data-structures", label: "Overview" },
-      { path: "/data-structures/linked-list", label: "Linked List" },
-      { path: "/data-structures/queue", label: "Queue visualization" },
-      { path: "/data-structures/stack", label: "Stack visualization" },
-      { path: "/binary-tree", label: "Binary Tree visualization" },
-    ],
-  },
-  {
-    label: "Graph",
-    icon: "GitBranch",
-    dropdown: [
+    heading: "Graphs",
+    items: [
       { path: "/graph", label: "Overview" },
       { path: "/graph/bfs", label: "BFS" },
       { path: "/graph/dfs", label: "DFS" },
@@ -51,81 +53,29 @@ export const navbarNavigationItems = [
     ],
   },
   {
-    label: "Backtracking",
-    icon: "BookOpen",
-    dropdown: [
-      { path: "/backtracking-overview", label: "Overview" },
-      { path: "/backtracking", label: "Algorithms" },
+    heading: "Paradigms",
+    items: [
+      { path: "/backtracking-overview", label: "Backtracking (Overview)" },
+      { path: "/backtracking", label: "Backtracking Algorithms" },
+      { path: "/dp-overview", label: "Dynamic Programming (Overview)" },
+      { path: "/dp", label: "Dynamic Programming" },
+      { path: "/greedy-overview", label: "Greedy (Overview)" },
+      { path: "/greedy", label: "Greedy Algorithms" },
+      { path: "/dc-overview", label: "Divide & Conquer (Overview)" },
+      { path: "/dc", label: "Divide & Conquer" },
     ],
   },
   {
-    label: "Dynamic Programming",
-    icon: "Cpu",
-    dropdown: [
-      { path: "/dp-overview", label: "Overview" },
-      { path: "/dp", label: "Algorithms" },
+    heading: "Other Topics",
+    items: [
+      { path: "/hashing-overview", label: "Hashing (Overview)" },
+      { path: "/hashing", label: "Hashing Algorithms" },
+      { path: "/tree-overview", label: "Trees (Overview)" },
+      { path: "/tree", label: "Tree Algorithms" },
+      { path: "/game-search-overview", label: "Game Search (Overview)" },
+      { path: "/game-search", label: "Game Search Algorithms" },
+      { path: "/branchbound-overview", label: "Branch & Bound (Overview)" },
+      { path: "/branchbound", label: "Branch & Bound" },
     ],
   },
-  {
-    label: "Hashing",
-    icon: "Hash",
-    dropdown: [
-      { path: "/hashing-overview", label: "Overview" },
-      { path: "/hashing", label: "Algorithms" },
-    ],
-  },
-  {
-    label: "Greedy Algorithms",
-    icon: "Zap",
-    dropdown: [
-      { path: "/greedy-overview", label: "Overview" },
-      { path: "/greedy", label: "Algorithms" },
-    ],
-  },
-  {
-    label: "Divide & Conquer",
-    icon: "Code",
-    dropdown: [
-      { path: "/dc-overview", label: "Overview" },
-      { path: "/dc", label: "Algorithms" },
-    ],
-  },
-  {
-    label: "Trees",
-    icon: "TreeDeciduous",
-    dropdown: [
-      { path: "/tree-overview", label: "Overview" },
-      { path: "/tree", label: "Algorithms" },
-    ],
-  },
-  {
-    label: "Game Search",
-    icon: "Gamepad",
-    dropdown: [
-      { path: "/game-search-overview", label: "Overview" },
-      { path: "/game-search", label: "Algorithms" },
-    ],
-  },
-  {
-    label: "Branch & Bound",
-    icon: "BookOpen",
-    dropdown: [
-      { path: "/branchbound-overview", label: "Overview" },
-      { path: "/branchbound", label: "Algorithms" },
-    ],
-  },
-  {
-    label: "Strings",
-    icon: "Type",
-    dropdown: [
-      { path: "/string-overview", label: "Overview" },
-      { path: "/string", label: "Algorithms" },
-    ],
-  },
-  { path: "/quiz", label: "Quiz", icon: "Trophy" },
-  { path: "/settings", label: "Settings", icon: "Settings" },
 ];
-
-// Helper function to get icon component names
-export const getHeaderIconName = (icon) => icon;
-export const getNavbarIconName = (icon) => icon;

@@ -75,6 +75,9 @@ import BinaryTreeVisualizer from "./components/BinaryTree/BinaryTreeVisualizer";
  
 import BranchBoundOverview from "./pages/BranchBoundOverview";
 import BranchBoundPage from "./pages/BranchBoundPage";
+import LearnLanding from "./pages/LearnLanding";
+
+// ...
 
 
 
@@ -184,13 +187,13 @@ const App = () => {
   {/* Branch & Bound */}
 <Route path="/branchbound-overview" element={<BranchBoundOverview />} />
 <Route path="/branchbound" element={<BranchBoundPage />} />
-<Route path="/binary-tree" element={<BinaryTreeVisualizer />} />
+<Route path="/data-structures/binary-tree" element={<BinaryTreeVisualizer />} />
 
 
 {/* String Algorithms */}
 <Route path="/string-overview" element={<StringOverview />} />
 <Route path="/string" element={<StringPage />} />
-
+<Route path="/learn" element={<LearnLanding />} />
 
 
             {/* Other Pages */}
