@@ -135,6 +135,7 @@ const Navbar = () => {
       ],
     },
     {
+
       label: "Strings",
       icon: Type,
       dropdown: [
@@ -144,7 +145,8 @@ const Navbar = () => {
     },
     {
       label: "Game Search",
-      icon: Gamepad,
+      icon: Gamepad, // You can import an appropriate icon from lucide-react
+
       dropdown: [
         { path: "/game-search-overview", label: "Overview" },
         { path: "/game-search", label: "Algorithms" },
@@ -158,6 +160,7 @@ const Navbar = () => {
         { path: "/branchbound", label: "Algorithms" },
       ],
     },
+
     { path: "/quiz", icon: Trophy, label: "Quiz" },
     {
       label: "Community",
