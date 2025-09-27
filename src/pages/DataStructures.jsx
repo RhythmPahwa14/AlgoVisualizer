@@ -261,7 +261,7 @@ const algorithmDatabase = {
           search: "O(n)",
         },
         spaceComplexity: "O(n)",
-        implemented: false,
+        implemented: true,
       },
       {
         name: "Queue",
@@ -274,7 +274,7 @@ const algorithmDatabase = {
           search: "O(n)",
         },
         spaceComplexity: "O(n)",
-        implemented: false,
+        implemented: true,
       },
       {
         name: "Binary Tree",
@@ -288,7 +288,7 @@ const algorithmDatabase = {
           traversal: "O(n)",
         },
         spaceComplexity: "O(n)",
-        implemented: false,
+        implemented: true,
       },
     ],
   },
@@ -338,6 +338,7 @@ function AlgorithmCard({ algorithm }) {
         if (algorithm.id === "exponentialSearch") {
         navigate("/searching/exponentialSearch");
         }
+       
       } else if (algorithm.category === "dataStructures") {
         navigate(`/data-structures/${algorithm.id}`);
       }
