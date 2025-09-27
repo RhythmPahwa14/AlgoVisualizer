@@ -10,7 +10,6 @@ import {
   Trophy,
   Settings,
   X,
-  
   ChevronDown,
   BookOpen,
   Cpu,
@@ -23,7 +22,6 @@ import {
   Menu,
 } from "lucide-react";
 
-
 import { useTheme } from "../ThemeContext";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -35,7 +33,6 @@ const Navbar = () => {
   const location = useLocation();
   const { theme } = useTheme();
   const navbarRef = useRef(null);
-  
 
   // Detect mobile screen
   useEffect(() => {
@@ -73,12 +70,9 @@ const Navbar = () => {
       dropdown: [
         { path: "/data-structures", label: "Overview" },
         { path: "/data-structures/linked-list", label: "Linked List" },
-
         { path: "/data-structures/queue", label: "Queue visualization" },
         { path: "/data-structures/stack", label: "Stack visualization" },
         { path: "/binary-tree", label: "Binary Tree visualization" },
-
-
       ],
     },
     {
@@ -140,36 +134,30 @@ const Navbar = () => {
         { path: "/tree", label: "Algorithms" },
       ],
     },
-
-
-      {
-    label: "Strings",
-     icon: Type,  // choose any appropriate icon
-    dropdown: [
-      { path: "/string-overview", label: "Overview" },
-      { path: "/string", label: "Algorithms" },
-    ],
-  },
-
     {
-
-  label: "Game Search",
-  icon: Gamepad, // You can import an appropriate icon from lucide-react
-  dropdown: [
-    { path: "/game-search-overview", label: "Overview" },
-    { path: "/game-search", label: "Algorithms" },
-
-  label: "Branch & Bound",
-  icon: BookOpen,
-  dropdown: [
-    { path: "/branchbound-overview", label: "Overview" },
-    { path: "/branchbound", label: "Algorithms" },
-
-  ],
-},
-
-
-
+      label: "Strings",
+      icon: Type,
+      dropdown: [
+        { path: "/string-overview", label: "Overview" },
+        { path: "/string", label: "Algorithms" },
+      ],
+    },
+    {
+      label: "Game Search",
+      icon: Gamepad,
+      dropdown: [
+        { path: "/game-search-overview", label: "Overview" },
+        { path: "/game-search", label: "Algorithms" },
+      ],
+    },
+    {
+      label: "Branch & Bound",
+      icon: BookOpen,
+      dropdown: [
+        { path: "/branchbound-overview", label: "Overview" },
+        { path: "/branchbound", label: "Algorithms" },
+      ],
+    },
     { path: "/quiz", icon: Trophy, label: "Quiz" },
     {
       label: "Community",
