@@ -7,14 +7,17 @@
     /* Primary Colors */
     --primary-bg: #0a0a1a;
     --secondary-bg: rgba(26, 26, 46, 0.95);
-    --card-bg: rgba(33, 38, 45, 0.95);
-    --surface-bg: rgba(255, 255, 255, 0.05);
+    --card-bg: #1a1a1a;
+    --surface-bg: #000000;
     
     /* Text Colors */
     --text-primary: #e6edf3;
     --text-secondary: rgba(230, 237, 243, 0.8);
     --text-muted: rgba(230, 237, 243, 0.6);
     --text-inverse: #0a0a1a;
+    
+    /* Font Settings */
+    --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     
     /* Accent Colors */
     --accent-primary: #58a6ff;
@@ -79,13 +82,16 @@
     --primary-bg: #ffffff;
     --secondary-bg: #f6f8fa;
     --card-bg: #ffffff;
-    --surface-bg: rgba(0, 0, 0, 0.05);
+    --surface-bg: #ffffff;
     
     /* Text Colors */
     --text-primary: #24292f;
     --text-secondary: rgba(36, 41, 47, 0.8);
     --text-muted: rgba(36, 41, 47, 0.6);
     --text-inverse: #ffffff;
+    
+    /* Font Settings */
+    --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     
     /* Accent Colors */
     --accent-primary: #0969da;

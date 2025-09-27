@@ -118,8 +118,24 @@ const QuizStart = ({
         >
           <FaPlay /> Start Quiz
         </button>
+        {/* Warning */}
+  {!selectedTopic || !selectedDifficulty ? (
+    <p className="warning-msg">Please select a topic, difficulty and mode.</p>
+  ) : null}
 
-        {error && <p className="error-msg">{error}</p>}
+  {selectedTopic && selectedDifficulty && (
+    <p className="quiz-info">
+      Get ready for{" "}
+      <strong>
+        {selectedTopic === "all"
+          ? "All Topics"
+          : topics.find((t) => t.id === selectedTopic)?.name}
+      </strong>{" "}
+      at <strong>{selectedDifficulty}</strong> difficulty{" "}
+      {timedMode ? "(Timed)" : "(Practice)"}.
+    </p>
+  )}
+        {/*{error && <p className="error-msg">{error}</p>}
 
         {selectedTopic && selectedDifficulty && (
           <p className="quiz-info">
@@ -132,7 +148,7 @@ const QuizStart = ({
             at <strong>{selectedDifficulty}</strong> difficulty{" "}
             {timedMode ? "(Timed)" : "(Practice)"}.
           </p>
-        )}
+        )}*/}
       </div>
     </div>
   );

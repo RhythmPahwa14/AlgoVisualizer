@@ -728,6 +728,22 @@
   .footer-separator {
     display: none;
   }
+  
+  /* Fix legal links wrapping on mobile */
+  .legal-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .legal-links a {
+    padding: 8px 16px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .legal-separator {
+    display: none;
+  }
 }
 
 @media (max-width: 576px) {
@@ -829,6 +845,16 @@
   .footer-divider {
     margin-bottom: 15px;
   }
+  
+  /* Improve legal links on small screens */
+  .legal-links {
+    gap: 6px;
+  }
+  
+  .legal-links a {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
 }
 
 /* Additional Mobile Improvements */
@@ -920,6 +946,16 @@
   
   .footer-links a {
     font-size: 14px;
+  }
+  
+  /* Further improve legal links on very small screens */
+  .legal-links {
+    gap: 4px;
+  }
+  
+  .legal-links a {
+    font-size: 11px;
+    padding: 4px 8px;
   }
 }
 

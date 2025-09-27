@@ -17,6 +17,7 @@ import {
   Code,
   Hash,
   Zap,
+  Gamepad,
   TreeDeciduous,
   Menu,
 } from "lucide-react";
@@ -31,6 +32,7 @@ const Navbar = () => {
   const location = useLocation();
   const { theme } = useTheme();
   const navbarRef = useRef(null);
+  
 
   // Detect mobile screen
   useEffect(() => {
@@ -71,6 +73,8 @@ const Navbar = () => {
 
         { path: "/data-structures/queue", label: "Queue visualization" },
         { path: "/data-structures/stack", label: "Stack visualization" },
+        { path: "/binary-tree", label: "Binary Tree visualization" },
+
 
       ],
     },
@@ -133,6 +137,7 @@ const Navbar = () => {
         { path: "/tree", label: "Algorithms" },
       ],
     },
+
      {
     label: "Mathematics",
     icon: Calculator, // use a suitable icon from lucide-react
@@ -142,6 +147,25 @@ const Navbar = () => {
     ],
   },
     
+
+    {
+      label: "Game Search",
+      icon: Gamepad, // You can import an appropriate icon from lucide-react
+      dropdown: [
+        { path: "/game-search-overview", label: "Overview" },
+        { path: "/game-search", label: "Algorithms" },
+      ],
+    },
+    {
+      label: "Branch & Bound",
+      icon: BookOpen,
+      dropdown: [
+        { path: "/branchbound-overview", label: "Overview" },
+        { path: "/branchbound", label: "Algorithms" },
+      ],
+    },
+
+
     { path: "/quiz", icon: Trophy, label: "Quiz" },
     {
       label: "Community",

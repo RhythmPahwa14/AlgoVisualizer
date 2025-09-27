@@ -63,9 +63,17 @@ import MathPage from "./pages/MathPage";
 import Queue from "./components/Queue/Queue";
 import Stack from "./components/Stack/Stack";
 
+import GameSearchOverview from "./pages/GameSearchOverview";
+import GameSearchPage from "./pages/GameSearchPage";
+
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import BinaryTreeVisualizer from "./components/BinaryTree/BinaryTreeVisualizer";
  
+import BranchBoundOverview from "./pages/BranchBoundOverview";
+import BranchBoundPage from "./pages/BranchBoundPage";
+
 
 
 const App = () => {
@@ -166,9 +174,22 @@ const App = () => {
   <Route path="/dc-overview" element={<DCOverview />} />
   <Route path="/dc" element={<DCPage />} />
 
+
     {/* Mathematical Algorithms */}
   <Route path="/math-overview" element={<MathOverview />} />
   <Route path="/math" element={<MathPage />} />
+
+{/* Game Search */}
+<Route path="/game-search-overview" element={<GameSearchOverview />} />
+<Route path="/game-search" element={<GameSearchPage />} />
+
+
+  {/* Branch & Bound */}
+<Route path="/branchbound-overview" element={<BranchBoundOverview />} />
+<Route path="/branchbound" element={<BranchBoundPage />} />
+<Route path="/binary-tree" element={<BinaryTreeVisualizer />} />
+
+
 
 
 

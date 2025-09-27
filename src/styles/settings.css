@@ -319,6 +319,7 @@
   border-radius: 4px;
   background: var(--theme-border);
   outline: none;
+  appearance: none;
   -webkit-appearance: none;
   transition: var(--settings-transition);
 }
@@ -435,6 +436,22 @@
   color: var(--theme-text-primary);
   line-height: 1.5;
   font-size: calc(var(--base-font-size, 16px) * var(--font-scale, 1));
+}
+
+/* Font Family Preview */
+.font-family-preview {
+  padding: 1rem;
+  background: var(--theme-bg);
+  border-radius: 12px;
+  border: 1px solid var(--theme-border);
+  margin-top: 0.75rem;
+  transition: var(--settings-transition);
+}
+
+.font-family-preview-text {
+  color: var(--theme-text-primary);
+  line-height: 1.5;
+  font-family: var(--font-family, 'Inter', system-ui, sans-serif);
 }
 
 /* Language Options */
