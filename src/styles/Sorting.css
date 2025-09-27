@@ -191,7 +191,7 @@
   gap: var(--space-md);
 }
 
-.stat-card {
+.stat-card {The footer now displays properly across all device sizes with consiste
   padding: var(--space-lg);
   border-radius: var(--radius-lg);
   text-align: center;

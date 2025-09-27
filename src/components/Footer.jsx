@@ -11,6 +11,20 @@ import {
   FaDiscord,
   FaRocket,
   FaArrowRight,
+  FaBars,
+  FaTimes,
+  FaHome,
+  FaChartBar,
+  FaSearch,
+  FaDatabase,
+  FaGitBranch,
+  FaUsers,
+  FaTrophy,
+  FaCogs,
+  FaBook,
+  FaHash,
+  FaBolt,
+  FaTree,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -18,6 +32,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../styles/footer.css";
 import logo from "/public/logo.jpg";
 import { FaXTwitter } from "react-icons/fa6";
+import { useMobileMenu } from "../contexts/MobileMenuContext";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -26,6 +41,7 @@ const Footer = () => {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const { isFooterMenuOpen, openFooterMenu, closeFooterMenu } = useMobileMenu();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
@@ -74,6 +90,107 @@ const Footer = () => {
     }
   };
 
+  // Navigation items for mobile menu
+  const navigationItems = [
+    { path: "/", icon: FaHome, label: "Home" },
+    {
+      label: "Sorting",
+      icon: FaChartBar,
+      dropdown: [
+        { path: "/sorting", label: "Overview" },
+        { path: "/components/AlgorithmComparison", label: "Algorithm Comparison" },
+      ],
+    },
+    {
+      label: "Searching",
+      icon: FaSearch,
+      dropdown: [
+        { path: "/searchingOverview", label: "Overview" },
+        { path: "/searching", label: "Searching Algorithm" },
+      ],
+    },
+    {
+      label: "Data Structures",
+      icon: FaDatabase,
+      dropdown: [
+        { path: "/data-structures", label: "Overview" },
+        { path: "/data-structures/linked-list", label: "Linked List" },
+        { path: "/data-structures/queue", label: "Queue visualization" },
+        { path: "/data-structures/stack", label: "Stack visualization" },
+      ],
+    },
+    {
+      label: "Graph",
+      icon: FaGitBranch,
+      dropdown: [
+        { path: "/graph", label: "Overview" },
+        { path: "/graph/bfs", label: "BFS" },
+        { path: "/graph/dfs", label: "DFS" },
+        { path: "/graph/dijkstra", label: "Dijkstra" },
+        { path: "/graph/comparison", label: "Graph Comparison" },
+      ],
+    },
+    {
+      label: "Backtracking",
+      icon: FaBook,
+      dropdown: [
+        { path: "/backtracking-overview", label: "Overview" },
+        { path: "/backtracking", label: "Algorithms" },
+      ],
+    },
+    {
+      label: "Dynamic Programming",
+      icon: FaCogs,
+      dropdown: [
+        { path: "/dp-overview", label: "Overview" },
+        { path: "/dp", label: "Algorithms" },
+      ],
+    },
+    {
+      label: "Hashing",
+      icon: FaHash,
+      dropdown: [
+        { path: "/hashing-overview", label: "Overview" },
+        { path: "/hashing", label: "Algorithms" },
+      ],
+    },
+    {
+      label: "Greedy Algorithms",
+      icon: FaBolt,
+      dropdown: [
+        { path: "/greedy-overview", label: "Overview" },
+        { path: "/greedy", label: "Algorithms" },
+      ],
+    },
+    {
+      label: "Divide & Conquer",
+      icon: FaCode,
+      dropdown: [
+        { path: "/dc-overview", label: "Overview" },
+        { path: "/dc", label: "Algorithms" },
+      ],
+    },
+    {
+      label: "Trees",
+      icon: FaTree,
+      dropdown: [
+        { path: "/tree-overview", label: "Overview" },
+        { path: "/tree", label: "Algorithms" },
+      ],
+    },
+    { path: "/quiz", icon: FaTrophy, label: "Quiz" },
+    {
+      label: "Community",
+      icon: FaUsers,
+      dropdown: [
+        { path: "/community", label: "Overview" },
+        { path: "/contributors", label: "Contributors" },
+        { path: "/ContributorLeaderboard", label: "Leaderboard" },
+      ],
+    },
+    { path: "/settings", icon: FaCogs, label: "Settings" },
+  ];
+
   return (
     <>
       <footer className={`footer-container ${isVisible ? "visible" : ""}`}>
@@ -90,6 +207,15 @@ const Footer = () => {
             ></path>
           </svg>
         </div>
+
+        {/* Mobile Navigation Menu Button */}
+        <button 
+          className="mobile-nav-toggle"
+          onClick={isFooterMenuOpen ? closeFooterMenu : openFooterMenu}
+          aria-label={isFooterMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+        >
+          {isFooterMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
 
         <div className="footer-content">
           {/* Brand Section */}
@@ -153,13 +279,18 @@ const Footer = () => {
             <ul className="footer-links">
               <li>
                 <Link to="/" className="link-icon">
+
+
                   <FaRocket className="link-icon" />
+
                   Home
                 </Link>
               </li>
               <li>
                 <Link to="/data-structures" className="link-icon">
+
                   <FaCode className="link-icon" />
+
                   Algorithms
                 </Link>
               </li>
@@ -190,7 +321,9 @@ const Footer = () => {
             <ul className="footer-links">
               <li>
                 <Link to="/documentation" className="link-icon">
+
                   <FaGraduationCap className="link-icon" />
+
                   Documentation
                 </Link>
               </li>
@@ -308,6 +441,71 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        <div className={`mobile-nav-menu ${isFooterMenuOpen ? "open" : ""}`}>
+          <div className="mobile-nav-header">
+            <div className="mobile-nav-header-content">
+              <h3 className="mobile-nav-title">
+                <FaBars />
+                Navigation
+              </h3>
+              <button
+                className="mobile-nav-close-btn"
+                onClick={closeFooterMenu}
+                aria-label="Close navigation menu"
+              >
+                <FaTimes />
+              </button>
+            </div>
+            <p className="mobile-nav-subtitle">
+              Explore algorithms & data structures
+            </p>
+          </div>
+
+          <div className="mobile-nav-content">
+            {navigationItems.map((item, index) =>
+              item.dropdown ? (
+                <div key={index} className="mobile-nav-dropdown">
+                  <div className="mobile-nav-dropdown-header">
+                    <item.icon />
+                    <span>{item.label}</span>
+                  </div>
+                  <div className="mobile-nav-dropdown-content">
+                    {item.dropdown.map((subItem, subIndex) => (
+                      <Link
+                        key={subIndex}
+                        to={subItem.path}
+                        className="mobile-nav-dropdown-item"
+                        onClick={closeFooterMenu}
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={index}
+                  to={item.path}
+                  className="mobile-nav-link"
+                  onClick={closeFooterMenu}
+                >
+                  <item.icon />
+                  <span>{item.label}</span>
+                </Link>
+              )
+            )}
+          </div>
+        </div>
+
+        {/* Mobile Navigation Backdrop */}
+        {isFooterMenuOpen && (
+          <div
+            className="mobile-nav-backdrop"
+            onClick={closeFooterMenu}
+          />
+        )}
 
         <div className="footer-bottom">
           <div className="footer-divider"></div>
