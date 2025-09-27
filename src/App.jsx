@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import FeedbackWidget from "./components/FeedbackWidget"; 
 
@@ -42,23 +41,23 @@ import BacktrackingOverview from "./pages/BacktrackingOverview";
 import BacktrackingPage from "./pages/BacktrackingPage";
 import DPOverview from "./pages/DPOverview";
 import DPPage from "./pages/DPPage";
-
 import HashingOverview from "./pages/HashingOverview";
 import HashingPage from "./pages/HashingPage";
-
 import GreedyOverview from "./pages/GreedyOverview";
 import GreedyPage from "./pages/GreedyPage";
 // Tree Algorithms
 import TreeOverview from "./pages/TreeOverview";
 import TreePage from "./pages/TreePage";
-
-
 // Divide & Conquer
 import DCOverview from "./pages/DCOverview";
 import DCPage from "./pages/DCPage";
-
 import Queue from "./components/Queue/Queue";
 import Stack from "./components/Stack/Stack";
+import AOS from "aos";
+
+
+// ✅ New Code Editor Page
+import CodeEditor from "./pages/CodeEditor";
 
 import GameSearchOverview from "./pages/GameSearchOverview";
 import GameSearchPage from "./pages/GameSearchPage";
@@ -75,7 +74,6 @@ import BinaryTreeVisualizer from "./components/BinaryTree/BinaryTreeVisualizer";
  
 import BranchBoundOverview from "./pages/BranchBoundOverview";
 import BranchBoundPage from "./pages/BranchBoundPage";
-
 
 
 const App = () => {
@@ -153,28 +151,21 @@ const App = () => {
             <Route path="/backtracking" element={<BacktrackingPage />} />
 
             {/* Dynamic Programming */}
-<Route path="/dp-overview" element={<DPOverview />} />
-<Route path="/dp" element={<DPPage />} />
+            <Route path="/dp-overview" element={<DPOverview />} />
+            <Route path="/dp" element={<DPPage />} />
 
-
-
-              {/* Hashing */}
-<Route path="/hashing-overview" element={<HashingOverview />} />
-<Route path="/hashing" element={<HashingPage />} />
+            {/* Hashing */}
+            <Route path="/hashing-overview" element={<HashingOverview />} />
+            <Route path="/hashing" element={<HashingPage />} />
 
             {/* Greedy Algorithms */}
-<Route path="/greedy-overview" element={<GreedyOverview />} />
-<Route path="/greedy" element={<GreedyPage />} />
+            <Route path="/greedy-overview" element={<GreedyOverview />} />
+            <Route path="/greedy" element={<GreedyPage />} />
 
 
-          {/* Trees */}
-<Route path="/tree-overview" element={<TreeOverview />} />
-<Route path="/tree" element={<TreePage />} />
-
-
-  {/* Divide & Conquer */}
-  <Route path="/dc-overview" element={<DCOverview />} />
-  <Route path="/dc" element={<DCPage />} />
+            {/* Trees */}
+            <Route path="/tree-overview" element={<TreeOverview />} />
+            <Route path="/tree" element={<TreePage />} />
 
 {/* Game Search */}
 <Route path="/game-search-overview" element={<GameSearchOverview />} />
@@ -192,6 +183,9 @@ const App = () => {
 <Route path="/string" element={<StringPage />} />
 
 
+            {/* Divide & Conquer */}
+            <Route path="/dc-overview" element={<DCOverview />} />
+            <Route path="/dc" element={<DCPage />} />
 
             {/* Other Pages */}
             <Route path="/quiz" element={<Quiz />} />
@@ -210,6 +204,9 @@ const App = () => {
               path="/ContributorLeaderboard"
               element={<ContributorLeaderboard />}
             />
+
+            {/* ✅ New Code Editor Route */}
+            <Route path="/editor" element={<CodeEditor />} />
           </Routes>
 
           {showComplexityBoxOn.includes(location.pathname) && (
