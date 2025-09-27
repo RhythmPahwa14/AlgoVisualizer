@@ -3970,5 +3970,239 @@ function bound(val,wt,idx,items,W){
   }
 }
 
+;
+
+export const gameSearch = {
+  minimax: {
+    java: `public class Minimax {
+    public int minimax(int[] board, boolean isMaximizing){
+        if(isGameOver(board)) return evaluate(board);
+        if(isMaximizing){
+            int best = Integer.MIN_VALUE;
+            for(int move : getAvailableMoves(board)){
+                board[move] = 1;
+                best = Math.max(best, minimax(board, false));
+                board[move] = 0;
+            }
+            return best;
+        } else {
+            int best = Integer.MAX_VALUE;
+            for(int move : getAvailableMoves(board)){
+                board[move] = -1;
+                best = Math.min(best, minimax(board, true));
+                board[move] = 0;
+            }
+            return best;
+        }
+    }
+}`,
+    python: `def minimax(board, is_maximizing):
+    if game_over(board): return evaluate(board)
+    if is_maximizing:
+        best = float('-inf')
+        for move in available_moves(board):
+            board[move] = 1
+            best = max(best, minimax(board, False))
+            board[move] = 0
+        return best
+    else:
+        best = float('inf')
+        for move in available_moves(board):
+            board[move] = -1
+            best = min(best, minimax(board, True))
+            board[move] = 0
+        return best`,
+    cpp: `int minimax(vector<int>& board, bool isMaximizing){
+    if(gameOver(board)) return evaluate(board);
+    if(isMaximizing){
+        int best = INT_MIN;
+        for(int move : getAvailableMoves(board)){
+            board[move] = 1;
+            best = max(best, minimax(board, false));
+            board[move] = 0;
+        }
+        return best;
+    } else {
+        int best = INT_MAX;
+        for(int move : getAvailableMoves(board)){
+            board[move] = -1;
+            best = min(best, minimax(board, true));
+            board[move] = 0;
+        }
+        return best;
+    }
+}`
+  },
+
+  alphaBetaPruning: {
+    java: `public class AlphaBeta {
+    public int alphaBeta(int[] board, int alpha, int beta, boolean isMaximizing){
+        if(isGameOver(board)) return evaluate(board);
+        if(isMaximizing){
+            int best = Integer.MIN_VALUE;
+            for(int move : getAvailableMoves(board)){
+                board[move] = 1;
+                best = Math.max(best, alphaBeta(board, alpha, beta, false));
+                board[move] = 0;
+                alpha = Math.max(alpha, best);
+                if(beta <= alpha) break;
+            }
+            return best;
+        } else {
+            int best = Integer.MAX_VALUE;
+            for(int move : getAvailableMoves(board)){
+                board[move] = -1;
+                best = Math.min(best, alphaBeta(board, alpha, beta, true));
+                board[move] = 0;
+                beta = Math.min(beta, best);
+                if(beta <= alpha) break;
+            }
+            return best;
+        }
+    }
+}`,
+    python: `def alpha_beta(board, alpha, beta, is_maximizing):
+    if game_over(board): return evaluate(board)
+    if is_maximizing:
+        best = float('-inf')
+        for move in available_moves(board):
+            board[move] = 1
+            best = max(best, alpha_beta(board, alpha, beta, False))
+            board[move] = 0
+            alpha = max(alpha, best)
+            if beta <= alpha: break
+        return best
+    else:
+        best = float('inf')
+        for move in available_moves(board):
+            board[move] = -1
+            best = min(best, alpha_beta(board, alpha, beta, True))
+            board[move] = 0
+            beta = min(beta, best)
+            if beta <= alpha: break
+        return best`,
+    cpp: `int alphaBeta(vector<int>& board, int alpha, int beta, bool isMaximizing){
+    if(gameOver(board)) return evaluate(board);
+    if(isMaximizing){
+        int best = INT_MIN;
+        for(int move : getAvailableMoves(board)){
+            board[move] = 1;
+            best = max(best, alphaBeta(board, alpha, beta, false));
+            board[move] = 0;
+            alpha = max(alpha, best);
+            if(beta <= alpha) break;
+        }
+        return best;
+    } else {
+        int best = INT_MAX;
+        for(int move : getAvailableMoves(board)){
+            board[move] = -1;
+            best = min(best, alphaBeta(board, alpha, beta, true));
+            board[move] = 0;
+            beta = min(beta, best);
+            if(beta <= alpha) break;
+        }
+        return best;
+    }
+}`
+  },
+
+  expectimax: {
+    java: `public class Expectimax {
+    public double expectimax(int[] board, boolean isMax){
+        if(isGameOver(board)) return evaluate(board);
+        if(isMax){
+            double best = Double.NEGATIVE_INFINITY;
+            for(int move : getAvailableMoves(board)){
+                board[move] = 1;
+                best = Math.max(best, expectimax(board, false));
+                board[move] = 0;
+            }
+            return best;
+        } else {
+            double total = 0;
+            int[] moves = getAvailableMoves(board);
+            for(int move : moves){
+                board[move] = -1;
+                total += expectimax(board, true);
+                board[move] = 0;
+            }
+            return moves.length > 0 ? total/moves.length : 0;
+        }
+    }
+}`,
+    python: `def expectimax(board, is_max):
+    if game_over(board): return evaluate(board)
+    if is_max:
+        best = float('-inf')
+        for move in available_moves(board):
+            board[move] = 1
+            best = max(best, expectimax(board, False))
+            board[move] = 0
+        return best
+    else:
+        total = 0
+        moves = available_moves(board)
+        for move in moves:
+            board[move] = -1
+            total += expectimax(board, True)
+            board[move] = 0
+        return total/len(moves) if moves else 0`,
+    cpp: `double expectimax(vector<int>& board, bool isMax){
+    if(gameOver(board)) return evaluate(board);
+    if(isMax){
+        double best = -DBL_MAX;
+        for(int move : getAvailableMoves(board)){
+            board[move] = 1;
+            best = max(best, expectimax(board, false));
+            board[move] = 0;
+        }
+        return best;
+    } else {
+        double total = 0;
+        vector<int> moves = getAvailableMoves(board);
+        for(int move : moves){
+            board[move] = -1;
+            total += expectimax(board, true);
+            board[move] = 0;
+        }
+        return moves.size() ? total/moves.size() : 0;
+    }
+}`
+  },
+
+  mcts: {
+    java: `public class MCTSNode {
+    int[] state;
+    int visits = 0;
+    double value = 0;
+    List<MCTSNode> children = new ArrayList<>();
+    
+    public void expand(){ for(int move : getAvailableMoves(state)) children.add(new MCTSNode(applyMove(state, move))); }
+    public MCTSNode bestChild(){ return Collections.max(children, Comparator.comparingDouble(c -> c.value/c.visits)); }
+}`,
+    python: `class MCTSNode:
+    def __init__(self, state):
+        self.state = state
+        self.visits = 0
+        self.value = 0
+        self.children = []
+
+    def expand(self):
+        for move in available_moves(self.state):
+            self.children.append(MCTSNode(apply_move(self.state, move)))
+
+    def best_child(self):
+        return max(self.children, key=lambda c: c.value/c.visits if c.visits else 0)`,
+    cpp: `struct MCTSNode{
+    vector<int> state;
+    int visits=0;
+    double value=0;
+    vector<MCTSNode*> children;
+    void expand(){ for(int move : getAvailableMoves(state)) children.push_back(new MCTSNode(applyMove(state, move))); }
+    MCTSNode* bestChild(){ return *max_element(children.begin(), children.end(), [](MCTSNode* a,MCTSNode* b){ return a->value/a->visits < b->value/b->visits; }); }
+};`
+  }
+};
 
 
