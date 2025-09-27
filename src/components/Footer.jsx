@@ -11,6 +11,11 @@ import {
   FaDiscord,
   FaRocket,
   FaArrowRight,
+  FaDatabase,
+  FaBook,
+  FaQuestionCircle,
+  FaUsers,
+  FaBlog
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -76,7 +81,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className={`footer-container ${isVisible ? "visible" : ""}`}>
+      <footer className={`footer-container ${isVisible ? "visible" : ""}`} role="contentinfo">
         <div className="footer-wave" data-aos="fade-up" data-aos-duration="1000">
           <svg
             data-name="Layer 1"
@@ -152,31 +157,52 @@ const Footer = () => {
             <h3 className="column-title">Navigate</h3>
             <ul className="footer-links">
               <li>
+
+                <Link to="/" className="footer-link">
+
                 <Link to="/" className="link-icon">
+
                   <FaRocket className="link-icon" />
                   Home
                 </Link>
               </li>
               <li>
+
+                <Link to="/sorting" className="footer-link">
+
                 <Link to="/data-structures" className="link-icon">
+
                   <FaCode className="link-icon" />
                   Algorithms
                 </Link>
               </li>
               <li>
+
+                <Link to="/data-structures" className="footer-link">
+                  <FaDatabase className="link-icon" />
+
                 <Link to="/data-structures" className="link-icon">
                   <FaGraduationCap className="link-icon" />
+
                   Data Structures
                 </Link>
               </li>
               <li>
+
+                <Link to="/about" className="footer-link">
+
                 <Link to="/about" className="link-icon">
+
                   <FaGraduationCap className="link-icon" />
                   About Us
                 </Link>
               </li>
               <li>
+
+                <Link to="/contact" className="footer-link">
+
                 <Link to="/contact" className="link-icon">
+
                   <FaEnvelope className="link-icon" />
                   Contact
                 </Link>
@@ -189,43 +215,73 @@ const Footer = () => {
             <h3 className="column-title">Resources</h3>
             <ul className="footer-links">
               <li>
+
+                <Link to="/documentation" className="footer-link">
+                  <FaBook className="link-icon" />
+
                 <Link to="/documentation" className="link-icon">
                   <FaGraduationCap className="link-icon" />
+
                   Documentation
                 </Link>
               </li>
               <li>
+
+                <Link to="/faq" className="footer-link">
+                  <FaQuestionCircle className="link-icon" />
+
                 <Link to="/faq" className="link-icon">
                   <FaGraduationCap className="link-icon" />
+
                   FAQ
                 </Link>
               </li>
               <li>
+
+                <Link to="/data-structures" className="footer-link">
+
                 <Link to="/data-structures" className="link-icon">
+
                   <FaGraduationCap className="link-icon" />
                   Tutorials
                 </Link>
               </li>
               <li>
+
+                <Link to="/blog" className="footer-link">
+                  <FaBlog className="link-icon" />
+
                 <Link to="/blog" className="link-icon">
                   <FaGraduationCap className="link-icon" />
+
                   Blog
                 </Link>
               </li>
               <li>
+
+                <Link to="/community" className="footer-link">
+                  <FaUsers className="link-icon" />
+
                 <Link to="/community" className="link-icon">
                   <FaGraduationCap className="link-icon" />
+
                   Community
                 </Link>
               </li>
-              <li className="link-icon">
+              <li>
                 <a
                   href="https://github.com/RhythmPahwa14/AlgoVisualizer"
                   target="_blank"
                   rel="noopener noreferrer"
+
+                  className="footer-link"
+                >
+                  <FaGithub className="link-icon" />
+
                   className="link-icon"
                 >
                   <FaCode className="link-icon" />
+
                   Contribute
                 </a>
               </li>
@@ -251,15 +307,17 @@ const Footer = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className="newsletter-input"
                     disabled={isLoading}
+                    aria-label="Email for newsletter subscription"
                   />
                 </div>
                 <button
                   type="submit"
                   className={`newsletter-btn ${isLoading ? "loading" : ""}`}
                   disabled={isLoading}
+                  aria-label="Subscribe to newsletter"
                 >
                   {isLoading ? (
-                    <div className="btn-spinner"></div>
+                    <div className="btn-spinner" aria-hidden="true"></div>
                   ) : (
                     <>
                       Subscribe <FaArrowRight className="btn-icon" />
@@ -284,25 +342,48 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="social-link"
                 title="GitHub"
+                aria-label="Visit our GitHub repository"
               >
                 <FaGithub />
               </a>
               <a
-                href="https://linkedin.com/in/sandeepvashishtha"
+                href="https://www.linkedin.com/in/rhythmpahwa/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
                 title="LinkedIn"
+                aria-label="Visit our LinkedIn profile"
               >
                 <FaLinkedin />
               </a>
-              <a href="#" className="social-link" title="Twitter">
+              <a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="social-link" 
+                title="Twitter"
+                aria-label="Visit our Twitter profile"
+              >
                 <FaXTwitter />
               </a>
-              <a href="#" className="social-link" title="Discord">
+              <a 
+                href="https://discord.gg" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="social-link" 
+                title="Discord"
+                aria-label="Join our Discord community"
+              >
                 <FaDiscord />
               </a>
-              <a href="#" className="social-link" title="YouTube">
+              <a 
+                href="https://youtube.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="social-link" 
+                title="YouTube"
+                aria-label="Visit our YouTube channel"
+              >
                 <FaYoutube />
               </a>
             </div>

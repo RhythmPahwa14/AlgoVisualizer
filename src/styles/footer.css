@@ -293,6 +293,8 @@
   font-size: 12px;
   opacity: 0.7;
   transition: all 0.3s ease;
+  min-width: 16px;
+  text-align: center;
 }
 
 .footer-links a:hover .link-icon {
@@ -330,6 +332,7 @@
   color: var(--text-muted, rgba(230, 237, 243, 0.6));
   font-size: 16px;
   transition: color 0.3s ease;
+  z-index: 1;
 }
 
 .newsletter-input {
@@ -342,6 +345,7 @@
   border-radius: 8px;
   font-size: 14px;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .newsletter-input:focus + .input-icon,
@@ -506,6 +510,7 @@
   border: 1px solid var(--border-primary, rgba(240, 246, 252, 0.1));
   position: relative;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .social-link::before {
@@ -674,6 +679,10 @@
   .footer-links a {
     justify-content: center;
   }
+  
+  .link-icon {
+    margin-right: 8px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -729,6 +738,10 @@
     display: none;
   }
   
+
+  .link-icon {
+    margin-right: 8px;
+
   /* Fix legal links wrapping on mobile */
   .legal-links {
     flex-direction: column;
@@ -743,6 +756,7 @@
   
   .legal-separator {
     display: none;
+
   }
 }
 
@@ -846,6 +860,11 @@
     margin-bottom: 15px;
   }
   
+
+  .link-icon {
+    margin-right: 6px;
+    font-size: 11px;
+
   /* Improve legal links on small screens */
   .legal-links {
     gap: 6px;
@@ -854,6 +873,7 @@
   .legal-links a {
     font-size: 12px;
     padding: 6px 10px;
+
   }
 }
 
@@ -948,6 +968,11 @@
     font-size: 14px;
   }
   
+
+  .link-icon {
+    margin-right: 6px;
+    font-size: 10px;
+
   /* Further improve legal links on very small screens */
   .legal-links {
     gap: 4px;
@@ -956,6 +981,7 @@
   .legal-links a {
     font-size: 11px;
     padding: 4px 8px;
+
   }
 }
 
@@ -1007,6 +1033,11 @@
   
   .newsletter-column {
     order: 3;
+  }
+  
+  .link-icon {
+    margin-right: 5px;
+    font-size: 9px;
   }
 }
 
@@ -1119,6 +1150,7 @@
   .link-icon {
     font-size: 14px;
     overflow: visible;
+    margin-right: 10px;
   }
   
   .newsletter-description {
@@ -1247,5 +1279,10 @@
   /* Show legal links section on mobile landscape */
   .footer-legal-row {
     display: flex;
+  }
+  
+  .link-icon {
+    margin-right: 6px;
+    font-size: 11px;
   }
 }
