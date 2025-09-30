@@ -418,6 +418,7 @@ const Searching = () => {
               <button className="btn btn-secondary" onClick={handlePrevStep} disabled={currentStep === 0}>Previous Step</button>
               <button className="btn btn-secondary" onClick={handleNextStep} disabled={currentStep >= steps.length - 1}>Next Step</button>
             </div>
+            
             <span style={{ color: "var(--theme-text-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
               Step {currentStep + 1} / {steps.length}
             </span>
@@ -429,9 +430,9 @@ const Searching = () => {
       <div className="form-grid" data-aos="fade-up" data-aos-delay="500">
         <div className="visualization-area" id="search-visualization-container" style={{ gridColumn: 'span 2' }}>
           {/* ⛔️ Removed the duplicate AlgorithmVisualizer */}
-
+          
           {/* ✅ Keep ONLY the step visualization for Binary */}
-          {algorithm === "binarySearch" && steps.length > 0 && (
+          {algorithm === "binarySearch" && (
             <div
               style={{
                 position: "relative", /* anchor overlay */

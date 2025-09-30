@@ -1359,6 +1359,7 @@ body {
 }
 
 
+
 /* Algorithm Comparison Styles */
 .algorithm-comparison {
   max-width: 1400px;
@@ -1607,5 +1608,10 @@ body {
   .reset-button,
   .swap-button {
     width: 100%;
+
+.cycle-visualize{
+  @media (max-width:630px) {
+    flex-direction: column;
+
   }
 }

@@ -1791,15 +1791,17 @@ display: flex;
   outline-offset: 2px;
 }
 :root{
-  --btn-bg: #ffffff;
-  --btn-text:#000000;
+--btn-text: #ffffff;
+  --btn-bg: linear-gradient(135deg, #8dc2f0, #00f2fe);
+  --btn-border: transparent;
 }
 @media(prefers-color-scheme: dark){
- :root{
-  --btn-bg:#1f1f1f;
-  --btn-text:#ffffff;
-  --btn-border:#ffffff;
- }
+:root {
+    /* Dark mode colors */
+    --btn-text: #ffffff;
+    --btn-bg: linear-gradient(135deg, #1f1f1f, #2c2c2c);
+    --btn-border: transparent;
+  }
 }
 .algorithm-buttons{
  display: flex;
@@ -1811,22 +1813,25 @@ display: flex;
  flex-wrap: wrap;
  
 }
-.clean-button-link{
-  display: flex;
-  justify-content: center;
+
+.clean-button-link {
+display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  width: 140px;
-  height: 120px;
-  padding: 10px;
-  border-radius: 20px;
-  border: 1px solid #e9ecef;
-  box-shadow: 0px 8px 16px rgba(0, 0,0,0.7);
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--btn-text);
-  text-decoration: none;
+  justify-content: center;
+  width: 220px; /* equal width */
+  height: 140px; /* equal height like Learning paths */
+  padding: 20px;
+  border-radius: 20px; /* smooth round corners */
+  border: 1px solid var(--btn-border);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: var(--btn-text);
+  background: var(--btn-bg);
+  font-weight: 600;
+  text-align: center;
 }
 .button-icon{
   display: flex;
@@ -1834,9 +1839,8 @@ display: flex;
   justify-content: center;
 }
 .clean-button-link:hover{
-  transform: translateY(-5px);
-  box-shadow: 0px 12px 24px rgba(0,0,0,0.6);
-  border-color: #dee2e6;
+ transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 .vertical-steps-container{
   display: flex;
@@ -2017,20 +2021,31 @@ body.dark-mode .step-duration-tag {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .clean-button-link {
-  display: flex;
+ display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  text-decoration: none;
-  background: #fff;   /* white card */
+  justify-content: center;
+  width: 250px;
+  height: 180px; 
+  border: 1px solid var(--btn-border);
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: var(--btn-text);
+  background: var(--btn-bg);
+  text-align: center;
+  flex-direction: column;
+  background: linear-gradient(90deg, #8492a7, #5f7db4); /* gradient */
+
 }
 
+
+
 .clean-button-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .feature-title {

@@ -5,11 +5,12 @@
 ------------------------ */
 .contribute-page {
   min-height: 100vh;
-  background: var(--bg-color);
-  color: var(--text-color);
+  background: var(--primary-bg);
+  color: var(--text-primary);
   position: relative;
   overflow-x: hidden;
   transition: background 0.3s ease, color 0.3s ease;
+  font-family: var(--font-family);
 }
 
 .contribute-page::before {
@@ -20,31 +21,15 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(14, 165, 233, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(88, 166, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
-  animation: backgroundShift 25s ease-in-out infinite;
-}
-
-@keyframes backgroundShift {
-  0%, 100% { 
-    background: 
-      radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 40% 80%, rgba(14, 165, 233, 0.08) 0%, transparent 50%);
-  }
-  50% { 
-    background: 
-      radial-gradient(circle at 60% 60%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 30% 40%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 70% 20%, rgba(14, 165, 233, 0.12) 0%, transparent 50%);
-  }
 }
 
 /* ------------------------
-   Back Button (reuse from Contributors)
+   Back Button
 ------------------------ */
 .back-button {
   position: fixed;
@@ -55,26 +40,26 @@
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border-primary);
   border-radius: 12px;
-  color: var(--text-color);
+  color: var(--text-primary);
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-md);
   z-index: 100;
   text-decoration: none;
 }
 
 .back-button:hover {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
-  color: var(--btn-text);
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--button-primary-text);
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 8px 30px rgba(88, 166, 255, 0.3);
 }
 
 /* ------------------------
@@ -93,7 +78,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
-  background: linear-gradient(135deg, #6366f1, #ec4899, #0ea5e9);
+  background: linear-gradient(135deg, var(--accent-primary), #ec4899, var(--info));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -125,7 +110,7 @@
   font-size: 4rem;
   font-weight: 800;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, #6366f1, #ec4899, #0ea5e9, #10b981);
+  background: linear-gradient(135deg, var(--accent-primary), #ec4899, var(--info), var(--success));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -143,7 +128,7 @@
 
 .hero-subtitle {
   font-size: 1.4rem;
-  color: var(--subtext-color);
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 3rem;
   max-width: 600px;
@@ -166,7 +151,7 @@
   gap: 0.5rem;
   padding: 1.5rem;
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border-primary);
   border-radius: 16px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -188,7 +173,7 @@
 .stat-value {
   font-size: 2rem;
   font-weight: 800;
-  color: var(--primary-color);
+  color: var(--accent-primary);
 }
 
 .stat-label {
@@ -259,7 +244,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 .feature-card p {
@@ -292,7 +277,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  color: var(--primary-color);
+  color: var(--accent-primary);
 }
 
 .tech-grid {
@@ -306,7 +291,7 @@
   align-items: center;
   gap: 1rem;
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border-primary);
   border-radius: 16px;
   padding: 1.5rem;
   text-align: left;
@@ -334,11 +319,11 @@
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 .tech-description {
-  color: var(--subtext-color);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -445,7 +430,7 @@
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 .examples ul {
@@ -454,7 +439,7 @@
 }
 
 .examples li {
-  color: var(--subtext-color);
+  color: var(--text-secondary);
   margin-bottom: 0.5rem;
   padding-left: 1.5rem;
   position: relative;
@@ -465,7 +450,7 @@
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--primary-color);
+  color: var(--accent-primary);
   font-weight: bold;
 }
 
@@ -546,11 +531,11 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 .step-description {
-  color: var(--subtext-color);
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -608,18 +593,28 @@
 
 .repo-icon {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: var(--accent-primary);
 }
 
 .repo-info h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-color);
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .repo-info p {
-  color: var(--subtext-color);
+  color: var(--accent-primary);
+}
+
+.repo-info h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.repo-info p {
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
@@ -674,7 +669,7 @@
 
 .cta-content p {
   font-size: 1.2rem;
-  color: var(--subtext-color);
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 3rem;
 }
@@ -724,21 +719,21 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-color), #7c3aed);
-  color: var(--btn-text);
+  background: linear-gradient(135deg, var(--accent-primary), #7c3aed);
+  color: var(--button-primary-text);
   border-color: transparent;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #5b21b6, var(--primary-color));
+  background: linear-gradient(135deg, #5b21b6, var(--accent-primary));
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
 }
 
 .btn-secondary {
-  background: var(--hover-bg);
-  color: var(--text-color);
-  border-color: var(--card-border);
+  background: var(--button-secondary-bg);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
 }
 
 .btn-secondary:hover {

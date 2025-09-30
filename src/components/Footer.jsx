@@ -15,7 +15,7 @@ import {
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../styles/footer.css";
+import "../styles/footer-improved.css";
 import logo from "/public/logo.jpg";
 import { FaXTwitter } from "react-icons/fa6";
 import AOS from 'aos';

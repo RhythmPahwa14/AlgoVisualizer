@@ -28,9 +28,9 @@ export const sortingAlgorithms = {
             }
         }
     }
-}`
+}`,
   },
-  
+
   selectionSort: {
     java: `public static void selectionSort(int[] arr) {
     int n = arr.length;
@@ -66,7 +66,7 @@ export const sortingAlgorithms = {
         }
         swap(arr[minIdx], arr[i]);
     }
-}`
+}`,
   },
 
   insertionSort: {
@@ -102,7 +102,7 @@ export const sortingAlgorithms = {
         }
         arr[j + 1] = key;
     }
-}`
+}`,
   },
 
   mergeSort: {
@@ -225,7 +225,7 @@ void mergeSort(vector<int>& arr, int left, int right) {
         mergeSort(arr, mid + 1, right);
         merge(arr, left, mid, right);
     }
-}`
+}`,
   },
 
   quickSort: {
@@ -293,7 +293,7 @@ void quickSort(vector<int>& arr, int low, int high) {
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
     }
-}`
+}`,
   },
 
   radixSort: {
@@ -386,7 +386,7 @@ void radixSort(vector<int>& arr) {
     int max = getMax(arr);
     for (int exp = 1; max / exp > 0; exp *= 10)
         countSort(arr, exp);
-}`
+}`,
   },
 
   bucketSort: {
@@ -452,7 +452,7 @@ void radixSort(vector<int>& arr) {
             arr[index++] = buckets[i][j];
         }
     }
-}`
+}`,
   },
 
   heapSort: {
@@ -541,7 +541,7 @@ void heapSort(vector<int>& arr) {
         swap(arr[0], arr[i]);
         heapify(arr, i, 0);
     }
-}`
+}`,
   },
 
   timSort: {
@@ -562,7 +562,7 @@ def tim_sort(arr):
 // Manual implementation using stable_sort as approximation
 void timSort(vector<int>& arr) {
     stable_sort(arr.begin(), arr.end());
-}`
+}`,
   },
 
   introSort: {
@@ -637,12 +637,11 @@ void introSortUtil(vector<int>& arr, int low, int high, int depthLimit) {
             arr[j + 1] = key;
         }
     }
-}`
+}`,
   },
 
-
-cycleSort: {
-        java: `
+  cycleSort: {
+    java: `
         void cycleSort(int arr[]) {
         int n = arr.length;
         for (int cycle_start = 0; cycle_start <= n - 2; cycle_start++) {
@@ -663,7 +662,7 @@ cycleSort: {
         }
         }
         `,
-        python: `
+    python: `
         def cycle_sort(arr):
             n = len(arr)
             for cycle_start in range(0, n - 1):
@@ -686,7 +685,7 @@ cycleSort: {
                         pos += 1
                     arr[pos], item = item, arr[pos]
         `,
-        cpp: `
+    cpp: `
         void cycleSort(int arr[], int n) {
         for (int cycle_start = 0; cycle_start <= n - 2; cycle_start++) {
             int item = arr[cycle_start];
@@ -706,10 +705,7 @@ cycleSort: {
         }
         }
         `,
-        },
-
-
-
+  },
 
   shellSort: {
     java: `public static void shellSort(int[] arr) {
@@ -754,7 +750,7 @@ cycleSort: {
             arr[j] = temp;
         }
     }
-}`
+}`,
   },
 
   countingSort: {
@@ -825,10 +821,8 @@ cycleSort: {
     }
     
     arr = output;
-}`
-  }
-
-  
+}`,
+  },
 };
 
 export const searchAlgorithms = {
@@ -853,7 +847,7 @@ export const searchAlgorithms = {
         }
     }
     return -1;
-}`
+}`,
   },
 
   binarySearch: {
@@ -904,8 +898,401 @@ export const searchAlgorithms = {
     }
     
     return -1;
-}`
-  }
+}`,
+  },
+};
+
+// cycle detection in directed
+export const cycleDetectionDirected = {
+  // using dfs
+  dfs: {
+    java: `public static boolean hasCycleDFS(ArrayList<ArrayList<Integer>> adj) {
+    boolean[] visited = new boolean[adj.size()];
+    boolean[] recStack = new boolean[adj.size()];
+
+    for (int i = 0; i < adj.size(); i++) {
+        if (!visited[i]) {
+            if (dfsCycle(adj, i, visited, recStack)) return true;
+        }
+    }
+    return false;
+}
+
+private static boolean dfsCycle(ArrayList<ArrayList<Integer>> adj, int node,
+                                boolean[] visited, boolean[] recStack) {
+    visited[node] = true;
+    recStack[node] = true;
+
+    for (int neighbor : adj.get(node)) {
+        if (!visited[neighbor] && dfsCycle(adj, neighbor, visited, recStack))
+            return true;
+        else if (recStack[neighbor])
+            return true;
+    }
+    recStack[node] = false;
+    return false;
+}`,
+    python: `def has_cycle_dfs(graph):
+    visited = set()
+    rec_stack = set()
+
+    def dfs(node):
+        visited.add(node)
+        rec_stack.add(node)
+
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                if dfs(neighbor):
+                    return True
+            elif neighbor in rec_stack:
+                return True
+
+        rec_stack.remove(node)
+        return False
+
+    for v in graph:
+        if v not in visited:
+            if dfs(v):
+                return True
+    return False`,
+
+    cpp: `bool dfsCycle(int node,
+              const vector<vector<int>>& adj,
+              vector<bool>& visited,
+              vector<bool>& recStack) {
+    visited[node] = true;
+    recStack[node] = true;
+
+    for (int neighbor : adj[node]) {
+        if (!visited[neighbor] && dfsCycle(neighbor, adj, visited, recStack))
+            return true;
+        else if (recStack[neighbor])
+            return true;
+    }
+    recStack[node] = false;
+    return false;
+}
+
+bool hasCycleDFS(const vector<vector<int>>& adj) {
+    vector<bool> visited(adj.size(), false);
+    vector<bool> recStack(adj.size(), false);
+
+    for (int i = 0; i < (int)adj.size(); i++) {
+        if (!visited[i]) {
+            if (dfsCycle(i, adj, visited, recStack))
+                return true;
+        }
+    }
+    return false;
+}`,
+    javascript: `function hasCycleDFS(adj) {
+    const visited = new Array(adj.length).fill(false);
+    const recStack = new Array(adj.length).fill(false);
+
+    function dfs(node) {
+        visited[node] = true;
+        recStack[node] = true;
+
+        for (const neighbor of adj[node]) {
+            if (!visited[neighbor] && dfs(neighbor)) return true;
+            else if (recStack[neighbor]) return true;
+        }
+        recStack[node] = false;
+        return false;
+    }
+
+    for (let i = 0; i < adj.length; i++) {
+        if (!visited[i] && dfs(i)) return true;
+    }
+    return false;
+}`,
+  },
+
+  //using bfs --> kaha's algo
+  bfs: {
+    java: `public static boolean hasCycleBFS(ArrayList<ArrayList<Integer>> adj) {
+    int V = adj.size();
+    int[] indegree = new int[V];
+    for (int u = 0; u < V; u++) {
+        for (int v : adj.get(u)) indegree[v]++;
+    }
+
+    Queue<Integer> q = new LinkedList<>();
+    for (int i = 0; i < V; i++) if (indegree[i] == 0) q.offer(i);
+
+    int count = 0;
+    while (!q.isEmpty()) {
+        int node = q.poll();
+        count++;
+        for (int v : adj.get(node)) {
+            if (--indegree[v] == 0) q.offer(v);
+        }
+    }
+    return count != V; // if not all vertices processed => cycle
+}`,
+
+    python: `from collections import deque
+
+def has_cycle_bfs(graph):
+    indegree = {u: 0 for u in graph}
+    for u in graph:
+        for v in graph[u]:
+            indegree[v] += 1
+
+    q = deque([u for u in graph if indegree[u] == 0])
+    count = 0
+
+    while q:
+        node = q.popleft()
+        count += 1
+        for v in graph[node]:
+            indegree[v] -= 1
+            if indegree[v] == 0:
+                q.append(v)
+
+    return count != len(graph)`,
+
+    cpp: `bool hasCycleBFS(const vector<vector<int>>& adj) {
+    int V = adj.size();
+    vector<int> indegree(V, 0);
+    for (int u = 0; u < V; u++) {
+        for (int v : adj[u]) indegree[v]++;
+    }
+
+    queue<int> q;
+    for (int i = 0; i < V; i++)
+        if (indegree[i] == 0) q.push(i);
+
+    int count = 0;
+    while (!q.empty()) {
+        int node = q.front(); q.pop();
+        count++;
+        for (int v : adj[node]) {
+            if (--indegree[v] == 0) q.push(v);
+        }
+    }
+    return count != V;
+}`,
+
+    javascript: `function hasCycleBFS(adj) {
+    const V = adj.length;
+    const indegree = new Array(V).fill(0);
+
+    for (let u = 0; u < V; u++) {
+        for (const v of adj[u]) indegree[v]++;
+    }
+
+    const q = [];
+    for (let i = 0; i < V; i++) if (indegree[i] === 0) q.push(i);
+
+    let count = 0;
+    while (q.length) {
+        const node = q.shift();
+        count++;
+        for (const v of adj[node]) {
+            if (--indegree[v] === 0) q.push(v);
+        }
+    }
+    return count !== V;
+}`,
+  },
+};
+
+// cycle detection in undirected
+export const cycleDetectionUndirected = {
+  dfs: {
+    java: `public static boolean hasCycleDFS(ArrayList<ArrayList<Integer>> adj) {
+    boolean[] visited = new boolean[adj.size()];
+    for (int i = 0; i < adj.size(); i++) {
+        if (!visited[i]) {
+            if (dfsCycle(adj, i, -1, visited)) return true;
+        }
+    }
+    return false;
+}
+
+private static boolean dfsCycle(ArrayList<ArrayList<Integer>> adj,
+                                int node, int parent,
+                                boolean[] visited) {
+    visited[node] = true;
+    for (int neighbor : adj.get(node)) {
+        if (!visited[neighbor]) {
+            if (dfsCycle(adj, neighbor, node, visited)) return true;
+        } else if (neighbor != parent) {
+            return true;
+        }
+    }
+    return false;
+}`,
+
+    python: `def has_cycle_dfs(graph):
+    visited = set()
+
+    def dfs(node, parent):
+        visited.add(node)
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                if dfs(neighbor, node):
+                    return True
+            elif neighbor != parent:
+                return True
+        return False
+
+    for v in graph:
+        if v not in visited:
+            if dfs(v, -1):
+                return True
+    return False`,
+
+    cpp: `bool dfsCycle(int node, int parent,
+              const vector<vector<int>>& adj,
+              vector<bool>& visited) {
+    visited[node] = true;
+    for (int neighbor : adj[node]) {
+        if (!visited[neighbor]) {
+            if (dfsCycle(neighbor, node, adj, visited))
+                return true;
+        } else if (neighbor != parent) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool hasCycleDFS(const vector<vector<int>>& adj) {
+    vector<bool> visited(adj.size(), false);
+    for (int i = 0; i < (int)adj.size(); i++) {
+        if (!visited[i]) {
+            if (dfsCycle(i, -1, adj, visited))
+                return true;
+        }
+    }
+    return false;
+}`,
+
+    javascript: `function hasCycleDFS(adj) {
+    const visited = new Array(adj.length).fill(false);
+
+    function dfs(node, parent) {
+        visited[node] = true;
+        for (const neighbor of adj[node]) {
+            if (!visited[neighbor]) {
+                if (dfs(neighbor, node)) return true;
+            } else if (neighbor !== parent) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    for (let i = 0; i < adj.length; i++) {
+        if (!visited[i] && dfs(i, -1)) return true;
+    }
+    return false;
+}`,
+  },
+
+  bfs: {
+    java: `public static boolean hasCycleBFS(ArrayList<ArrayList<Integer>> adj) {
+    boolean[] visited = new boolean[adj.size()];
+
+    for (int start = 0; start < adj.size(); start++) {
+        if (visited[start]) continue;
+
+        Queue<int[]> q = new LinkedList<>();
+        q.offer(new int[]{start, -1});
+        visited[start] = true;
+
+        while (!q.isEmpty()) {
+            int[] cur = q.poll();
+            int node = cur[0], parent = cur[1];
+
+            for (int neighbor : adj.get(node)) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    q.offer(new int[]{neighbor, node});
+                } else if (neighbor != parent) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}`,
+
+    python: `from collections import deque
+
+def has_cycle_bfs(graph):
+    visited = set()
+
+    for start in graph:
+        if start in visited:
+            continue
+        queue = deque([(start, -1)])
+        visited.add(start)
+
+        while queue:
+            node, parent = queue.popleft()
+            for neighbor in graph[node]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append((neighbor, node))
+                elif neighbor != parent:
+                    return True
+    return False`,
+
+    cpp: `bool hasCycleBFS(const vector<vector<int>>& adj) {
+    vector<bool> visited(adj.size(), false);
+
+    for (int start = 0; start < (int)adj.size(); start++) {
+        if (visited[start]) continue;
+
+        queue<pair<int,int>> q;
+        q.push({start, -1});
+        visited[start] = true;
+
+        while (!q.empty()) {
+            auto [node, parent] = q.front();
+            q.pop();
+
+            for (int neighbor : adj[node]) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    q.push({neighbor, node});
+                } else if (neighbor != parent) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}`,
+
+    javascript: `function hasCycleBFS(adj) {
+    const visited = new Array(adj.length).fill(false);
+
+    for (let start = 0; start < adj.length; start++) {
+        if (visited[start]) continue;
+
+        const q = [[start, -1]];
+        visited[start] = true;
+
+        while (q.length) {
+            const [node, parent] = q.shift();
+
+            for (const neighbor of adj[node]) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    q.push([neighbor, node]);
+                } else if (neighbor !== parent) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}`,
+  },
 };
 
 export const graphAlgorithms = {
@@ -968,7 +1355,7 @@ def bfs(graph, start):
         }
     }
 }`,
-javascript: `function BFS(adj, start) {
+    javascript: `function BFS(adj, start) {
     let visited = new Array(adj.length).fill(false);
     let q = [];
 
@@ -987,7 +1374,7 @@ javascript: `function BFS(adj, start) {
         }
     }
 }
-`
+`,
   },
 
   dfs: {
@@ -1022,7 +1409,7 @@ javascript: `function BFS(adj, start) {
             DFS(adj, neighbor, visited);
         }
     }
-}`
+}`,
   },
 
   dijkstra: {
@@ -1094,7 +1481,7 @@ def dijkstra(graph, start):
     }
     
     return dist;
-}`
+}`,
   },
 
   bellmanFord: {
@@ -1158,7 +1545,7 @@ def dijkstra(graph, start):
     }
     
     return true;
-}`
+}`,
   },
 
   floydWarshall: {
@@ -1212,8 +1599,8 @@ def dijkstra(graph, start):
             }
         }
     }
-}`
-  }
+}`,
+  },
 };
 
 export const otherAlgorithms = {
@@ -1263,7 +1650,7 @@ struct Node {
         this->data = data;
         this->next = nullptr;
     }
-};`
+};`,
   },
 
   insertAtEnd: {
@@ -1314,7 +1701,7 @@ struct Node {
     
     current->next = newNode;
     size++;
-}`
+}`,
   },
 
   insertAtPosition: {
@@ -1376,7 +1763,7 @@ struct Node {
     newNode->next = current->next;
     current->next = newNode;
     size++;
-}`
+}`,
   },
 
   deleteNode: {
@@ -1446,7 +1833,7 @@ struct Node {
     }
     
     return false; // Node not found
-}`
+}`,
   },
 
   deleteAtPosition: {
@@ -1512,7 +1899,7 @@ struct Node {
     delete temp;
     size--;
     return true;
-}`
+}`,
   },
 
   traverse: {
@@ -1577,7 +1964,7 @@ void traverseRecursive(Node* node) {
     
     cout << node->data << " -> ";
     traverseRecursive(node->next);
-}`
+}`,
   },
 
   reverse: {
@@ -1665,7 +2052,7 @@ Node* reverseRecursive(Node* node) {
     node->next = nullptr;
     
     return newHead;
-}`
+}`,
   },
 
   search: {
@@ -1718,7 +2105,7 @@ def contains(self, data):
 
 bool contains(int data) {
     return search(data) != -1;
-}`
+}`,
   },
 
   getSize: {
@@ -1763,7 +2150,7 @@ int getSizeByTraversal() {
     }
     
     return count;
-}`
+}`,
   },
 
   clear: {
@@ -1792,8 +2179,8 @@ def is_empty(self):
 
 bool isEmpty() {
     return head == nullptr;
-}`
-  }
+}`,
+  },
 };
 
 // src/data/allCodes.js
@@ -1878,7 +2265,7 @@ bool solveNQueens(vector<int>& board, int row, int n){
         return true;
     }
     return placeQueens(0);
-}`
+}`,
   },
 
   sudoku: {
@@ -1987,7 +2374,7 @@ function isSafe(board,row,col,num){
         for(let j=0;j<3;j++)
             if(board[startRow+i][startCol+j]===num) return false;
     return true;
-}`
+}`,
   },
 
   ratInMaze: {
@@ -2069,7 +2456,7 @@ bool solveMazeUtil(vector<vector<int>>& maze, int x, int y, vector<vector<int>>&
     }
     solve(0,0);
     return sol;
-}`
+}`,
   },
 
   combinationSum: {
@@ -2127,7 +2514,7 @@ vector<vector<int>> combinationSum(vector<int>& nums, int target){
     }
     backtrack([], target, 0);
     return res;
-}`
+}`,
   },
 
   wordSearch: {
@@ -2202,8 +2589,8 @@ bool exist(vector<vector<char>>& board, string word){
         for(let j=0;j<n;j++)
             if(backtrack(i,j,0)) return true;
     return false;
-}`
-}
+}`,
+  },
 };
 
 // src/data/allCodes.js
@@ -2242,7 +2629,7 @@ export const dpAlgorithms = {
     for(let i=2;i<=n;i++)
         dp[i]=dp[i-1]+dp[i-2];
     return dp[n];
-}`
+}`,
   },
 
   zeroOneKnapsack: {
@@ -2296,7 +2683,7 @@ export const dpAlgorithms = {
         }
     }
     return dp[n][W];
-}`
+}`,
   },
 
   coinChange: {
@@ -2340,7 +2727,7 @@ export const dpAlgorithms = {
         }
     }
     return dp[amount]>amount?-1:dp[amount];
-}`
+}`,
   },
 
   longestCommonSubsequence: {
@@ -2394,7 +2781,7 @@ export const dpAlgorithms = {
         }
     }
     return dp[m][n];
-}`
+}`,
   },
 
   matrixChainMultiplication: {
@@ -2451,7 +2838,7 @@ export const dpAlgorithms = {
         }
     }
     return dp[1][n-1];
-}`
+}`,
   },
 
   minimumPathSum: {
@@ -2499,7 +2886,7 @@ export const dpAlgorithms = {
         for(let j=1;j<n;j++)
             dp[i][j]=Math.min(dp[i-1][j], dp[i][j-1])+grid[i][j];
     return dp[m-1][n-1];
-}`
+}`,
   },
 
   subsetSum: {
@@ -2557,8 +2944,8 @@ export const dpAlgorithms = {
         }
     }
     return dp[n][sum];
-}`
-  }
+}`,
+  },
 };
 
 export const hashingAlgorithms = {
@@ -2593,7 +2980,7 @@ export const hashingAlgorithms = {
     insert(key){ this.table[key % this.table.length] = key; }
     search(key){ return this.table[key % this.table.length] === key; }
     delete(key){ if(this.table[key % this.table.length]===key) this.table[key % this.table.length]=-1; }
-}`
+}`,
   },
 
   chainingHash: {
@@ -2636,7 +3023,7 @@ class ChainingHashTable {
         const idx = bucket.indexOf(key);
         if(idx>-1) bucket.splice(idx,1);
     }
-}`
+}`,
   },
 
   openAddressing: {
@@ -2717,7 +3104,7 @@ class ChainingHashTable {
     insert(key){ for(let i=0;i<this.table.length;i++){ const idx=this.hash(key,i); if(this.table[idx]===-1){ this.table[idx]=key; return; } } }
     search(key){ for(let i=0;i<this.table.length;i++){ const idx=this.hash(key,i); if(this.table[idx]===key) return true; if(this.table[idx]===-1) return false; } return false; }
     delete(key){ for(let i=0;i<this.table.length;i++){ const idx=this.hash(key,i); if(this.table[idx]===key){ this.table[idx]=-1; return; } if(this.table[idx]===-1) return; } }
-}`
+}`,
   },
 
   rollingHash: {
@@ -2744,7 +3131,7 @@ class ChainingHashTable {
     let hash=0;
     for(let c of s) hash=(hash*p + c.charCodeAt(0))%m;
     return hash;
-}`
+}`,
   },
 
   applications: {
@@ -2784,7 +3171,7 @@ class ChainingHashTable {
         map.set(nums[i],i);
     }
     return [];
-}`
+}`,
     },
 
     countingFrequencies: {
@@ -2806,11 +3193,10 @@ def count_freq(arr): return dict(Counter(arr))`,
     const freq={};
     for(const x of arr) freq[x]=(freq[x]||0)+1;
     return freq;
-}`
-    }
-  }
-}
-
+}`,
+    },
+  },
+};
 
 // src/data/allCodes.js
 
@@ -2872,7 +3258,7 @@ int maxActivities(vector<int>& start, vector<int>& end){
         }
     }
     return count;
-}`
+}`,
   },
 
   fractionalKnapsack: {
@@ -2941,7 +3327,7 @@ double fractionalKnapsack(vector<int>& val, vector<int>& wt, int W){
         }
     }
     return total;
-}`
+}`,
   },
 
   huffmanEncoding: {
@@ -3008,7 +3394,7 @@ function huffman(freqMap){
         pq.sort((a,b)=>a.freq-b.freq);
     }
     return pq[0];
-}`
+}`,
   },
 
   jobScheduling: {
@@ -3077,7 +3463,7 @@ int jobScheduling(vector<Job>& jobs){
         }
     }
     return profit;
-}`
+}`,
   },
 
   primKruskalMST: {
@@ -3150,8 +3536,8 @@ int kruskalMST(int n, vector<Edge>& edges){
         }
     }
     return mstWeight;
-}`
-  }
+}`,
+  },
 };
 // src/data/allCodes.js
 
@@ -3180,7 +3566,7 @@ export const treeAlgorithms = {
     console.log(root.val);
     preorder(root.left);
     preorder(root.right);
-}`
+}`,
     },
     inorder: {
       java: `public void inorder(TreeNode root){
@@ -3205,7 +3591,7 @@ export const treeAlgorithms = {
     inorder(root.left);
     console.log(root.val);
     inorder(root.right);
-}`
+}`,
     },
     postorder: {
       java: `public void postorder(TreeNode root){
@@ -3230,7 +3616,7 @@ export const treeAlgorithms = {
     postorder(root.left);
     postorder(root.right);
     console.log(root.val);
-}`
+}`,
     },
     levelOrder: {
       java: `public void levelOrder(TreeNode root){
@@ -3273,8 +3659,8 @@ def levelOrder(root):
         if(node.left) q.push(node.left);
         if(node.right) q.push(node.right);
     }
-}`
-    }
+}`,
+    },
   },
 
   bstOperations: {
@@ -3301,7 +3687,7 @@ def levelOrder(root):
     if(val<root.val) root.left=insert(root.left,val);
     else root.right=insert(root.right,val);
     return root;
-}`
+}`,
     },
     search: {
       java: `public boolean search(TreeNode root,int val){
@@ -3326,7 +3712,7 @@ def levelOrder(root):
     if(root.val===val) return true;
     if(val<root.val) return search(root.left,val);
     return search(root.right,val);
-}`
+}`,
     },
     deleteNode: {
       java: `public TreeNode deleteNode(TreeNode root,int key){
@@ -3382,13 +3768,10 @@ def levelOrder(root):
         root.right=deleteNode(root.right,temp.val);
     }
     return root;
-}`
-    }
-  }
-}
-
-
-;
+}`,
+    },
+  },
+};
 export const divideConquerAlgorithms = {
   mergeSort: {
     java: `public class MergeSort {
@@ -3454,7 +3837,7 @@ void mergeSort(vector<int>& arr, int l, int r){
         merged.push(left[i]<=right[j]?left[i++]:right[j++]);
     }
     return merged.concat(left.slice(i)).concat(right.slice(j));
-}`
+}`,
   },
 
   quickSort: {
@@ -3502,7 +3885,7 @@ void quickSort(vector<int>& arr, int low, int high){
     const left=arr.slice(0,-1).filter(x=>x<=pivot);
     const right=arr.slice(0,-1).filter(x=>x>pivot);
     return [...quickSort(left),pivot,...quickSort(right)];
-}`
+}`,
   },
 
   binarySearch: {
@@ -3545,7 +3928,7 @@ void quickSort(vector<int>& arr, int low, int high){
         else r=m-1;
     }
     return -1;
-}`
+}`,
   },
 
   maximumSubarraySum: {
@@ -3595,11 +3978,9 @@ void quickSort(vector<int>& arr, int low, int high){
     sum=0;
     for(let i=m+1;i<=r;i++){ sum+=arr[i]; rightSum=Math.max(rightSum,sum); }
     return Math.max(left,right,leftSum+rightSum);
-}`
-  }
+}`,
+  },
 };
-
-
 
 export const branchBoundAlgorithms = {
   knapsack01: {
@@ -3671,7 +4052,7 @@ function bound(val,wt,idx,items,W){
     }
   }
   return profitBound;
-}`
+}`,
   },
 
   tsp: {
@@ -3694,11 +4075,9 @@ function bound(val,wt,idx,items,W){
   // cost = path cost till now
   // reducedMatrix = current reduced cost matrix
   return cost + level; // placeholder
-}`
-  }
-}
-
-;
+}`,
+  },
+};
 
 export const gameSearch = {
   minimax: {
@@ -3759,7 +4138,7 @@ export const gameSearch = {
         }
         return best;
     }
-}`
+}`,
   },
 
   alphaBetaPruning: {
@@ -3832,7 +4211,7 @@ export const gameSearch = {
         }
         return best;
     }
-}`
+}`,
   },
 
   expectimax: {
@@ -3896,7 +4275,7 @@ export const gameSearch = {
         }
         return moves.size() ? total/moves.size() : 0;
     }
-}`
+}`,
   },
 
   mcts: {
@@ -3929,8 +4308,8 @@ export const gameSearch = {
     vector<MCTSNode*> children;
     void expand(){ for(int move : getAvailableMoves(state)) children.push_back(new MCTSNode(applyMove(state, move))); }
     MCTSNode* bestChild(){ return *max_element(children.begin(), children.end(), [](MCTSNode* a,MCTSNode* b){ return a->value/a->visits < b->value/b->visits; }); }
-};`
-  }
+};`,
+  },
 };
 export const mathAlgorithms = {
   gcdEuclidean: {
@@ -3947,7 +4326,7 @@ export const mathAlgorithms = {
     cpp: `int gcd(int a, int b){
     if(b == 0) return a;
     return gcd(b, a % b);
-}`
+}`,
   },
 
   sieveOfEratosthenes: {
@@ -3982,7 +4361,7 @@ public class Sieve {
         }
     }
     return prime;
-}`
+}`,
   },
 
   modularExponentiation: {
@@ -4016,7 +4395,7 @@ public class Sieve {
         b >>= 1;
     }
     return result;
-}`
+}`,
   },
 
   fft: {
@@ -4046,8 +4425,8 @@ void fft(vector<cd> &a){
         a[i] = a0[i] + t;
         a[i+n/2] = a0[i] - t;
     }
-}`
-  }
+}`,
+  },
 };
 
 export const stringAlgorithms = {
@@ -4163,7 +4542,7 @@ void KMPSearch(string text, string pattern){
             else i++;
         }
     }
-}`  
+}`,
   },
 
   rabinKarp: {
@@ -4195,7 +4574,7 @@ void KMPSearch(string text, string pattern){
             }
         }
     }
-}`, 
+}`,
 
     python: `def rabin_karp(pattern, text, q=101):
     d = 256
@@ -4244,7 +4623,7 @@ void search(string pattern, string text, int q) {
             if(t < 0) t += q;
         }
     }
-}`  
+}`,
   },
 
   zAlgorithm: {
@@ -4267,7 +4646,7 @@ public class ZAlgorithm {
         }
         return Z;
     }
-}`, 
+}`,
 
     python: `def compute_z(s):
     n = len(s)
@@ -4301,7 +4680,7 @@ vector<int> computeZ(string s) {
         }
     }
     return Z;
-}`  
+}`,
   },
 
   suffixArray: {
@@ -4319,7 +4698,7 @@ public class SuffixArray {
             sa[i] = n - suffixes[i].length();
         return sa;
     }
-}`, 
+}`,
 
     python: `def build_suffix_array(s):
     suffixes = [(s[i:], i) for i in range(len(s))]
@@ -4340,8 +4719,6 @@ vector<int> buildSuffixArray(string s) {
     vector<int> sa;
     for(auto &p : suffixes) sa.push_back(p.second);
     return sa;
-}`  
-  }
+}`,
+  },
 };
-
-
