@@ -13,7 +13,8 @@ import {
   FileText,
   Menu,
   X,
-  ChevronRight
+  ChevronRight,
+  Star
 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import "../styles/sidebar-modern.css";
@@ -33,8 +34,7 @@ const Sidebar = () => {
     if (sidebarRef.current && activeLink) {
       const containerRect = sidebarRef.current.getBoundingClientRect();
       const linkRect = activeLink.getBoundingClientRect();
-      const indicatorHeight = 48;
-      const top = linkRect.top - containerRect.top + linkRect.height / 2 - indicatorHeight / 2;
+      const top = linkRect.top - containerRect.top + linkRect.height / 2 - linkRect.height / 2;
       setIndicatorPos({ top });
     }
   }, [activeTab]);
@@ -45,14 +45,13 @@ const Sidebar = () => {
   }, [activeTab]);
 
   const SidebarLink = React.forwardRef(
-    ({ to, IconComponent, label, badge, isActive, end = false }, ref) => {
+    ({ to, IconComponent, label, badge, isActive }, ref) => {
       return (
         <div
           ref={ref}
           className={`sidebar-link ${isActive ? 'active' : ''}`}
           onClick={() => {
             setActiveTab(to);
-            setIsMobileMenuOpen(false);
             navigate(to);
           }}
         >
@@ -72,35 +71,15 @@ const Sidebar = () => {
     {
       group: "main",
       items: [
-        {
-          path: "/",
-          icon: Home,
-          label: "Dashboard",
-          end: true
-        }
+        { path: "/", icon: Home, label: "Dashboard" }
       ]
     },
     {
       group: "Algorithms",
       items: [
-        {
-          path: "/sorting",
-          icon: BarChart3,
-          label: "Sorting",
-          badge: "12"
-        },
-        {
-          path: "/searching",
-          icon: Search,
-          label: "Search",
-          badge: "8"
-        },
-        {
-          path: "/data-structures",
-          icon: Database,
-          label: "Data Structures",
-          badge: "15"
-        },
+        { path: "/sorting", icon: BarChart3, label: "Sorting", badge: "12" },
+        { path: "/searching", icon: Search, label: "Search", badge: "8" },
+        { path: "/data-structures", icon: Database, label: "Data Structures", badge: "15" },
         {
           path: "/graph",
           icon: Share2,
@@ -114,37 +93,20 @@ const Sidebar = () => {
         }
       ]
     },
-    
     {
       group: "Learning",
       items: [
-        {
-          path: "/quiz",
-          icon: Brain,
-          label: "Interactive Quiz"
-        },
-        {
-          path: "/documentation",
-          icon: FileText,
-          label: "Documentation"
-        },
-        {
-          path: "/contributors",
-          icon: Users,
-          label: "Contributors"
-        },
-        {
-          path: "/ContributorLeaderboard",
-          icon: Users,
-          label: "LeaderBoard"
-        }
+        { path: "/quiz", icon: Brain, label: "Interactive Quiz" },
+        { path: "/documentation", icon: FileText, label: "Documentation" },
+        { path: "/contributors", icon: Users, label: "Contributors" },
+        { path: "/ContributorLeaderboard", icon: Star, label: "LeaderBoard" } // Changed icon for clarity
       ]
     }
   ];
 
   return (
     <div className="sidebar-container">
-      {/* Enhanced Mobile Menu Button with Animation */}
+      {/* Mobile Menu Button */}
       <button 
         className={`mobile-menu-button ${isMobileMenuOpen ? 'active' : ''}`}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -153,26 +115,21 @@ const Sidebar = () => {
         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Backdrop with blur effect */}
+      {/* Backdrop */}
       <div 
         className={`sidebar-backdrop ${isMobileMenuOpen ? 'active' : ''}`}
         onClick={() => setIsMobileMenuOpen(false)}
       />
 
-      {/* Modern Sidebar */}
+      {/* Sidebar */}
       <nav 
         ref={sidebarRef} 
         className={`app-sidebar ${isMobileMenuOpen ? 'mobile-open' : ''}`}
       >
-        {/* Enhanced Logo Section */}
+        {/* Logo */}
         <div className="sidebar-header">
-          <div className="sidebar-logo" onClick={() => {
-            setActiveTab('/');
-            setIsMobileMenuOpen(false);
-          }}>
-            <div className="logo-icon">
-              <Code size={28} />
-            </div>
+          <div className="sidebar-logo" onClick={() => { setActiveTab('/'); navigate('/'); }}>
+            <div className="logo-icon"><Code size={28} /></div>
             <div className="logo-text">
               <span className="logo-main">Algo</span>
               <span className="logo-highlight">Visualizer</span>
@@ -183,7 +140,7 @@ const Sidebar = () => {
 
         {/* Navigation Groups */}
         <div className="sidebar-content">
-          {sidebarItems.map((group, groupIndex) => (
+          {sidebarItems.map((group) => (
             <div key={group.group} className="sidebar-group">
               {group.group !== "main" && (
                 <div className="sidebar-group-header">
@@ -199,8 +156,7 @@ const Sidebar = () => {
                       IconComponent={item.icon}
                       label={item.label}
                       badge={item.badge}
-                      isActive={activeTab === item.path}
-                      end={item.end}
+                      isActive={activeTab.startsWith(item.path)}
                       ref={(el) => (linkRefs.current[item.path] = el)}
                     />
                     {item.children && item.children.length > 0 && (
@@ -209,7 +165,7 @@ const Sidebar = () => {
                           <SidebarLink
                             key={child.path}
                             to={child.path}
-                            IconComponent={ChevronRight}
+                            IconComponent={ChevronRight} // small arrow for child
                             label={child.label}
                             isActive={activeTab === child.path}
                             ref={(el) => (linkRefs.current[child.path] = el)}
@@ -224,21 +180,13 @@ const Sidebar = () => {
           ))}
         </div>
 
-        {/* Enhanced Settings at Bottom */}
+        {/* Footer */}
         <div className="sidebar-footer">
           <div className="user-profile">
-            <div className="user-avatar">
-              <div className="avatar-placeholder">
-                <Users size={16} />
-              </div>
-            </div>
+            <div className="user-avatar"><div className="avatar-placeholder"><Users size={16} /></div></div>
             <div className="user-info">
-              <div className="user-name">
-                Guest User
-              </div>
-              <div className="user-status">
-                Learning Mode
-              </div>
+              <div className="user-name">Guest User</div>
+              <div className="user-status">Learning Mode</div>
             </div>
           </div>
           <SidebarLink
@@ -250,7 +198,7 @@ const Sidebar = () => {
           />
         </div>
 
-        {/* Enhanced Active Indicator */}
+        {/* Active Indicator */}
         <div
           className="sidebar-indicator"
           style={{
