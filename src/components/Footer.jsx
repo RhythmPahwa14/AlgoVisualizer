@@ -152,31 +152,31 @@ const Footer = () => {
             <h3 className="column-title">Navigate</h3>
             <ul className="footer-links">
               <li>
-                <Link to="/" className="link-icon">
+                <Link to="/" className="footer-link">
                   <FaRocket className="link-icon" />
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/data-structures" className="link-icon">
+                <Link to="/data-structures" className="footer-link">
                   <FaCode className="link-icon" />
                   Algorithms
                 </Link>
               </li>
               <li>
-                <Link to="/data-structures" className="link-icon">
+                <Link to="/data-structures" className="footer-link">
                   <FaGraduationCap className="link-icon" />
                   Data Structures
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="link-icon">
+                <Link to="/about" className="footer-link">
                   <FaGraduationCap className="link-icon" />
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="link-icon">
+                <Link to="/contact" className="footer-link">
                   <FaEnvelope className="link-icon" />
                   Contact
                 </Link>
@@ -189,37 +189,37 @@ const Footer = () => {
             <h3 className="column-title">Resources</h3>
             <ul className="footer-links">
               <li>
-                <Link to="/documentation" className="link-icon">
+                <Link to="/documentation" className="footer-link">
                   <FaGraduationCap className="link-icon" />
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="link-icon">
+                <Link to="/faq" className="footer-link">
                   <FaGraduationCap className="link-icon" />
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link to="/data-structures" className="link-icon">
+                <Link to="/data-structures" className="footer-link">
                   <FaGraduationCap className="link-icon" />
                   Tutorials
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="link-icon">
+                <Link to="/blog" className="footer-link">
                   <FaGraduationCap className="link-icon" />
                   Blog
                 </Link>
               </li>
               <li>
-                <Link to="/community" className="link-icon">
+                <Link to="/community" className="footer-link">
                   <FaGraduationCap className="link-icon" />
                   Community
                 </Link>
               </li>
               <li>
-                <Link to="/contribute" className="link-icon">
+                <Link to="/contribute" className="footer-link">
                   <FaCode className="link-icon" />
                   Contribute
                 </Link>
@@ -291,13 +291,31 @@ const Footer = () => {
               >
                 <FaLinkedin />
               </a>
-              <a href="#" className="social-link" title="Twitter">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="Twitter"
+              >
                 <FaXTwitter />
               </a>
-              <a href="#" className="social-link" title="Discord">
+              <a
+                href="https://discord.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="Discord"
+              >
                 <FaDiscord />
               </a>
-              <a href="#" className="social-link" title="YouTube">
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="YouTube"
+              >
                 <FaYoutube />
               </a>
             </div>

@@ -1200,57 +1200,39 @@ body {
   color: var(--theme-accent);
 }
 
-/* -----------------
-   Theme Toggle Switch
------------------ */
-.theme-switch-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--theme-text-secondary);
-}
+/* =======================================================
+   14. Quiz Overlay Styles
+======================================================= */
 
-.theme-switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 28px;
-}
-
-.theme-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.theme-switch-slider {
-  position: absolute;
-  cursor: pointer;
+.quiz-overlay {
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--theme-border);
-  transition: 0.4s;
-  border-radius: 28px;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-text-primary);
 }
 
-.theme-switch-slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+.quiz-overlay-pause {
+  backdrop-filter: blur(4px);
 }
 
-.theme-switch input:checked + .theme-switch-slider {
-  background-color: var(--theme-accent);
+.overlay-content {
+  background: var(--theme-card-bg);
+  border: 1px solid var(--theme-border);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 90%;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
+
 
 .theme-switch input:checked + .theme-switch-slider:before {
   transform: translateX(22px);
@@ -1295,10 +1277,17 @@ body {
 [data-theme="dark"] .table tbody td {
   color:#ffffff;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+.overlay-content h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--theme-text-primary);
+
 }
 
-.algo {
+.overlay-buttons {
   display: flex;
+
   align-items: center;
   gap: 12px;
 }
@@ -1348,25 +1337,29 @@ body {
   border-radius: 10px;
   padding: .5rem .25rem;
   background: var(--surface-bg, rgba(255, 255, 255, .03));
+
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.quiz-controls-top {
+
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .25rem;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 1rem;
 }
 
-.dp-cell-index {
-  font-size: .7rem;
-  opacity: .65;
-}
-
-.dp-cell-value {
-  font-weight: 600;
-}
-
-.dp-cell.is-active {
-  outline: 2px solid var(--accent-primary, #7aa2f7);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-primary, #7aa2f7) 25%, transparent);
+@media (max-width: 480px) {
+  .overlay-buttons {
+    flex-direction: column;
+  }
+  
+  .overlay-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
 }
 
 
@@ -1500,3 +1493,4 @@ body {
 
   }
 }
+

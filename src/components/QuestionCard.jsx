@@ -23,6 +23,10 @@ const QuestionCard = ({
     onAnswerSelect(question.id, optionIndex);
   };
 
+  if (!question) {
+    return <div className="question-container">Loading question...</div>;
+  }
+
   return (
     <div className="question-container">
       {/* Progress Bar */}
@@ -32,13 +36,13 @@ const QuestionCard = ({
             Question {questionNumber} of {totalQuestions}
           </span>
           {timedMode && timeRemaining !== null && (
-            <span className="timer">
+            <span className="timer" aria-live="polite">
               <FaClock />
               {formatTime(timeRemaining)}
             </span>
           )}
         </div>
-        <div className="progress-bar">
+        <div className="progress-bar" role="progressbar" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
           <div className="progress-fill" style={{ width: `${progress}%` }}></div>
         </div>
       </div>
@@ -57,12 +61,16 @@ const QuestionCard = ({
         
         <h2 className="question-text">{question.question}</h2>
         
-        <ul className="options-list">
+        <ul className="options-list" role="radiogroup" aria-label="Answer options">
           {question.options.map((option, index) => (
             <li key={index} className="option-item">
               <label 
                 className={`option-label ${userAnswer === index ? 'selected' : ''}`}
                 onClick={() => handleOptionSelect(index)}
+                onKeyDown={(e) => e.key === 'Enter' && handleOptionSelect(index)}
+                tabIndex={0}
+                role="radio"
+                aria-checked={userAnswer === index}
               >
                 <div className={`option-radio ${userAnswer === index ? 'selected' : ''}`}></div>
                 <span className="option-text">{option}</span>
@@ -76,7 +84,11 @@ const QuestionCard = ({
       <div className="question-navigation">
         <div className="nav-left">
           {canGoPrevious && (
-            <button className="quiz-btn secondary" onClick={onPrevious}>
+            <button 
+              className="quiz-btn secondary" 
+              onClick={onPrevious}
+              aria-label="Previous question"
+            >
               <FaArrowLeft />
               Previous
             </button>
@@ -89,6 +101,7 @@ const QuestionCard = ({
               className="quiz-btn" 
               onClick={onNext}
               disabled={userAnswer === undefined}
+              aria-label="Next question"
             >
               Next
               <FaArrowRight />
@@ -103,6 +116,7 @@ const QuestionCard = ({
                 background: '#3fb950',
                 borderColor: '#3fb950'
               }}
+              aria-label="Submit quiz"
             >
               <FaCheck />
               Submit Quiz

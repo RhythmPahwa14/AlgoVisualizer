@@ -1,7 +1,7 @@
 // Unified navigation structure
 
 export const headerNavigationItems = [
-  { path: '/', label: 'Home', icon: null, group: 'main' },
+  { path: '/', label: 'Home', icon: 'FaCode', group: 'main' },
   { path: '/documentation', label: 'Documentation', icon: 'FaBook', group: 'help' },
   { path: '/ContributorLeaderboard', label: 'Contributors', icon: 'FaUsers', group: 'community' },
   { path: '/quiz', label: 'Quiz', icon: 'FaBrain', group: 'test' },

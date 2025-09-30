@@ -152,4 +152,6 @@
     /* Components.css compatibility */
     --bg-gradient: var(--primary-bg);
     --header-bg: var(--secondary-bg);
+    --navbar-bg: var(--secondary-bg);
+    --mega-bg: var(--card-bg);
 }

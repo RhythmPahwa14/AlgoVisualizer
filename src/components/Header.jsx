@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import '../styles/navbar.css';
+import '../styles/header.css';
 import { useTheme } from '../ThemeContext';
 import { FaGithub, FaMoon, FaSun, FaCode, FaSearch, FaDatabase, FaBrain, FaUsers, FaBook, FaProjectDiagram, FaQuestionCircle } from 'react-icons/fa';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import { headerNavigationItems } from '../utils/navigation';
-import { getHeaderIconComponent } from '../utils/navigation';
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -60,10 +57,10 @@ const Header = () => {
 
     return (
         <>
-            <header className={`av-header ${isScrolled ? 'scrolled' : ''}`} data-aos="fade-down" data-aos-duration="1000">
+            <header className={`av-header ${isScrolled ? 'scrolled' : ''}`}>
                 <div className="av-container">
                     {/* Logo Section */}
-                    <div className="logo" data-aos="fade-right" data-aos-delay="200">
+                    <div className="logo">
                         <Link to="/" className="logo-link">
                             <div className="logo-icon">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -77,7 +74,7 @@ const Header = () => {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <nav className="nav-links-desktop" aria-label="Primary" data-aos="fade-down" data-aos-delay="400">
+                    <nav className="nav-links-desktop" aria-label="Primary">
                         <div className="nav-group main-nav">
                             {headerNavigationItems.filter(item => item.group === 'main').map(item => (
                                 <NavLink 
@@ -125,7 +122,7 @@ const Header = () => {
                     </nav>
 
                     {/* Action Buttons */}
-                    <div className="nav-actions" data-aos="fade-left" data-aos-delay="200">
+                    <div className="nav-actions">
                         <a 
                             className="github-btn" 
                             href="https://github.com/RhythmPahwa14/AlgoVisualizer" 
