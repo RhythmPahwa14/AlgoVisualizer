@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { navbarNavigationItems } from "../utils/navigation";
-import UserDropdown from "./UserDropdown"; // 👈 Import UserDropdown
+import UserDropdown from "./UserDropdown";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -228,8 +228,47 @@ const Navbar = () => {
               )
             )}
 
+            {/* ✅ Notes Dropdown */}
+            <div className="navbar-item dropdown">
+              <button
+                className="dropdown-toggle"
+                onClick={() => handleDropdownToggle("notes")}
+              >
+                <BookOpen size={18} className="drop-icon" />
+                <span>Notes</span>
+                <ChevronDown
+                  size={16}
+                  className={`dropdown-arrow ${
+                    isDropdownOpen === "notes" ? "rotated" : ""
+                  }`}
+                />
+              </button>
+              {isDropdownOpen === "notes" && (
+                <div className="dropdown-menu">
+                  <Link
+                    to="/notes/java"
+                    className={`dropdown-item ${
+                      isActive("/notes/java") ? "active" : ""
+                    }`}
+                    onClick={() => setIsDropdownOpen(null)}
+                  >
+                    Java
+                  </Link>
+                  <Link
+                    to="/notes/python"
+                    className={`dropdown-item ${
+                      isActive("/notes/python") ? "active" : ""
+                    }`}
+                    onClick={() => setIsDropdownOpen(null)}
+                  >
+                    Python
+                  </Link>
+                </div>
+              )}
+            </div>
+
             {/* User Dropdown */}
-            <UserDropdown /> {/* 👈 Added here for desktop */}
+            <UserDropdown />
           </div>
         )}
 
@@ -293,7 +332,9 @@ const Navbar = () => {
                 <Link
                   key={index}
                   to={item.path}
-                  className={`mobile-menu-link ${isActive(item.path) ? "active" : ""}`}
+                  className={`mobile-menu-link ${
+                    isActive(item.path) ? "active" : ""
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.icon &&
@@ -306,7 +347,49 @@ const Navbar = () => {
               )
             )}
 
-            {/* User Dropdown for mobile */}
+            {/* ✅ Notes dropdown in mobile */}
+            <div className="mobile-dropdown">
+              <button
+                className={`mobile-dropdown-toggle ${
+                  isDropdownOpen === "notes" ? "active" : ""
+                }`}
+                onClick={() => handleDropdownToggle("notes")}
+              >
+                <BookOpen size={18} className="icon" />
+                <span>Notes</span>
+                <ChevronDown
+                  size={16}
+                  className={`dropdown-arrow ${
+                    isDropdownOpen === "notes" ? "rotated" : ""
+                  }`}
+                />
+              </button>
+              {isDropdownOpen === "notes" && (
+                <div className="mobile-dropdown-menu">
+                  <Link
+                    to="/notes/java"
+                    className="mobile-dropdown-item"
+                    onClick={() => {
+                      setIsDropdownOpen(null);
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    Java
+                  </Link>
+                  <Link
+                    to="/notes/python"
+                    className="mobile-dropdown-item"
+                    onClick={() => {
+                      setIsDropdownOpen(null);
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    Python
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <div className="mobile-user-dropdown mt-4">
               <UserDropdown />
             </div>

@@ -22,6 +22,7 @@ import SearchingOverview from "./pages/SearchingOverview";
 import DataStructures from "./pages/DataStructures";
 import Graph from "./pages/Graph";
 import GraphBFS from "./pages/GraphBFS";
+import GraphCycleDetection from "./pages/GraphCycleDetection";
 import GraphDFS from "./pages/GraphDFS";
 import GraphDijkstra from "./pages/GraphDijkstra";
 import Quiz from "./pages/Quiz";
@@ -81,7 +82,9 @@ import CodeEditor from "./pages/CodeEditor";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./styles/components.css";
+import "./styles/footer-improved.css";
 import LearnLanding from "./pages/LearnLanding";
+
 const App = () => {
   const location = useLocation();
   const selectedAlgorithm = "bubbleSort";
@@ -116,17 +119,29 @@ const App = () => {
               {/* Sorting */}
               <Route path="/sorting" element={<Sorting />} />
               <Route path="/sorting/:algoId/docs" element={<SortingDoc />} />
-              <Route path="/sorting/comparison" element={<AlgorithmComparison />} />
+              <Route
+                path="/sorting/comparison"
+                element={<AlgorithmComparison />}
+              />
 
               {/* Searching */}
               <Route path="/searching" element={<Searching />} />
               <Route path="/searching/:id" element={<Searching />} />
-              <Route path="/searching/comparison" element={<AlgorithmComparison />} />
-              <Route path="/searchingOverview" element={<SearchingOverview />} />
+              <Route
+                path="/searching/comparison"
+                element={<AlgorithmComparison />}
+              />
+              <Route
+                path="/searchingOverview"
+                element={<SearchingOverview />}
+              />
 
               {/* Data Structures */}
               <Route path="/data-structures" element={<DataStructures />} />
-              <Route path="/data-structures/linked-list" element={<LinkedListPage />} />
+              <Route
+                path="/data-structures/linked-list"
+                element={<LinkedListPage />}
+              />
               <Route path="/data-structures/queue" element={<Queue />} />
               <Route path="/data-structures/stack" element={<Stack />} />
               <Route path="/binary-tree" element={<BinaryTreeVisualizer />} />
@@ -137,9 +152,13 @@ const App = () => {
               <Route path="/graph/dfs" element={<GraphDFS />} />
               <Route path="/graph/dijkstra" element={<GraphDijkstra />} />
               <Route path="/graph/comparison" element={<GraphComparison />} />
+              <Route path="Graph/cycleDetection" element={<GraphCycleDetection/>}/>
 
               {/* Algorithm Pages */}
-              <Route path="/backtracking-overview" element={<BacktrackingOverview />} />
+              <Route
+                path="/backtracking-overview"
+                element={<BacktrackingOverview />}
+              />
               <Route path="/backtracking" element={<BacktrackingPage />} />
               <Route path="/dp-overview" element={<DPOverview />} />
               <Route path="/dp" element={<DPPage />} />
@@ -151,13 +170,18 @@ const App = () => {
               <Route path="/tree" element={<TreePage />} />
               <Route path="/dc-overview" element={<DCOverview />} />
               <Route path="/dc" element={<DCPage />} />
-              <Route path="/game-search-overview" element={<GameSearchOverview />} />
+              <Route
+                path="/game-search-overview"
+                element={<GameSearchOverview />}
+              />
               <Route path="/game-search" element={<GameSearchPage />} />
-              <Route path="/branchbound-overview" element={<BranchBoundOverview />} />
+              <Route
+                path="/branchbound-overview"
+                element={<BranchBoundOverview />}
+              />
               <Route path="/branchbound" element={<BranchBoundPage />} />
               <Route path="/string-overview" element={<StringOverview />} />
               <Route path="/string" element={<StringPage />} />
-              
 
               {/* Other Pages */}
               <Route path="/quiz" element={<Quiz />} />
@@ -170,25 +194,46 @@ const App = () => {
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/cookies" element={<CookiePolicy />} />
-              <Route path="/documentation" element={<AlgorithmDocumentation />} />
+              <Route
+                path="/documentation"
+                element={<AlgorithmDocumentation />}
+              />
               <Route path="/faq" element={<FAQ />} />
-              <Route path="/contributor-leaderboard" element={<ContributorLeaderboard />} />
+              <Route
+                path="/contributor-leaderboard"
+                element={<ContributorLeaderboard />}
+              />
               <Route path="/editor" element={<CodeEditor />} />
 
-              {/* Java Notes */}
-              <Route path="/notes/java" element={<Navigate to="/notes/java/fundamentals" replace />} />
+              {/* Notes Routes */}
+              {/* Java */}
+              <Route
+                path="/notes/java"
+                element={<Navigate to="/notes/java/fundamentals" replace />}
+              />
               <Route path="/notes/java/fundamentals" element={<Fundamentals />} />
-              <Route path="/notes/java/variables-and-data-types" element={<VariablesAndDataTypes />} />
+              <Route
+                path="/notes/java/variables-and-data-types"
+                element={<VariablesAndDataTypes />}
+              />
 
+              {/* Python */}
+              <Route
+                path="/notes/python"
+                element={<Navigate to="/notes/python/fundamentals" replace />}
+              />
+              <Route
+                path="/notes/python/fundamentals"
+                element={<PythonFundamentals />}
+              />
+              <Route
+                path="/notes/python/variables-and-data-types"
+                element={<PythonVariablesAndDataTypes />}
+              />
 
-              {/* Python Notes */}
-              <Route path="/notes/python" element={<Navigate to="/notes/python/fundamentals" replace />} />
-              <Route path="/notes/python/fundamentals" element={<PythonFundamentals />} />
-              <Route path="/notes/python/variables-and-data-types" element={<PythonVariablesAndDataTypes />} />
-
+              {/* Learning & Settings */}
               <Route path="/learn" element={<LearnLanding />} />
               <Route path="/settings" element={<Settings />} />
-
             </Routes>
 
             {/* Show ComplexityBox only on selected pages */}

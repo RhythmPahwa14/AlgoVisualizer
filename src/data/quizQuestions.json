@@ -36,13 +36,13 @@
         "difficulty": "Medium",
         "question": "What is the average case time complexity of Bubble Sort?",
         "options": [
-            "O(n)",
+            "O(n^2)",
             "O(n log n)",
             "O(n\u00b2)",
             "O(log n)"
         ],
-        "correctAnswer": 1,
-        "explanation": "Typically, Bubble Sort has an average case of O(n log n)."
+        "correctAnswer": 0,
+        "explanation": "Typically, Bubble Sort has an average case of O(n^2)."
     },
     {
         "id": 4,
@@ -219,10 +219,10 @@
             "O(n)",
             "O(n log n)",
             "O(n\u00b2)",
-            "O(log n)"
+            "O(n^2)"
         ],
-        "correctAnswer": 1,
-        "explanation": "Typically, Insertion Sort has an average case of O(n log n)."
+        "correctAnswer": 3,
+        "explanation": "Typically, Insertion Sort has an average case of O(n^2)."
     },
     {
         "id": 16,
@@ -746,8 +746,8 @@
             "O(n log n)",
             "O(n\u00b2)"
         ],
-        "correctAnswer": 1,
-        "explanation": "In the best case, Linear Search can often achieve O(n), especially when data is already partially structured."
+        "correctAnswer": 0,
+        "explanation": "In the best case, Linear Search can often achieve O(1), especially when target is the first element in array."
     },
     {
         "id": 51,
@@ -761,8 +761,8 @@
             "O(n\u00b2)",
             "O(log n)"
         ],
-        "correctAnswer": 1,
-        "explanation": "Typically, Linear Search has an average case of O(n\u00b2)."
+        "correctAnswer": 0,
+        "explanation": "Typically, Linear Search has an average case of O(n)."
     },
     {
         "id": 52,
@@ -784,15 +784,15 @@
         "topic": "Searching",
         "algorithm": "Linear Search",
         "difficulty": "Hard",
-        "question": "What is the worst case space complexity of Linear Search?",
+        "question": "What is the worst case time complexity of Linear Search?",
         "options": [
             "O(1)",
             "O(log n)",
             "O(n)",
             "O(n\u00b2)"
         ],
-        "correctAnswer": 0,
-        "explanation": "Linear Search requires O(1) extra space in the worst case."
+        "correctAnswer": 2,
+        "explanation": "Linear Search takes O(n) time to search through the entire array in the worst case."
     },
     {
         "id": 54,
@@ -837,7 +837,7 @@
             "O(n\u00b2)"
         ],
         "correctAnswer": 1,
-        "explanation": "In the best case, Binary Search can often achieve O(n), especially when data is already partially structured."
+        "explanation": "In the best case, Binary Search can often achieve O(1), especially when data is already partially structured."
     },
     {
         "id": 57,
@@ -851,8 +851,8 @@
             "O(n\u00b2)",
             "O(log n)"
         ],
-        "correctAnswer": 1,
-        "explanation": "Typically, Binary Search has an average case of O(n\u00b2)."
+        "correctAnswer": 3,
+        "explanation": "Typically, Binary Search has an average case of O(log n)."
     },
     {
         "id": 58,
@@ -881,8 +881,8 @@
             "O(n)",
             "O(n\u00b2)"
         ],
-        "correctAnswer": 0,
-        "explanation": "Binary Search requires O(1) extra space in the worst case."
+        "correctAnswer": 1,
+        "explanation": "Binary Search requires O(log n) time complexity in the worst case."
     },
     {
         "id": 60,

@@ -1369,6 +1369,7 @@ body {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-primary, #7aa2f7) 25%, transparent);
 }
 
+
 /* Searching Component Styles */
 .overview-description {
   text-align: center;
@@ -1492,5 +1493,10 @@ body {
   .algo {
     flex-direction: column;
     align-items: flex-start;
+
+.cycle-visualize{
+  @media (max-width:630px) {
+    flex-direction: column;
+
   }
 }

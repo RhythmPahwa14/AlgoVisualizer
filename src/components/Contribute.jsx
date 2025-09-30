@@ -334,9 +334,9 @@ const Contribute = () => {
         </div>
       </motion.section>
 
-      {/* GitHub Repository Embed */}
+      {/* GitHub Repository Info */}
       <motion.section 
-        className="repo-embed-section"
+        className="repo-info-section"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -344,9 +344,9 @@ const Contribute = () => {
       >
         <div className="section-content">
           <h2 className="section-title" data-aos="fade-up">Repository</h2>
-          <div className="repo-embed" data-aos="fade-up" data-aos-delay="200">
+          <div className="repo-info" data-aos="fade-up" data-aos-delay="200">
             <div className="repo-header">
-              <div className="repo-info">
+              <div className="repo-info-content">
                 <div className="repo-icon">📁</div>
                 <div>
                   <h3>RhythmPahwa14/AlgoVisualizer</h3>
@@ -376,14 +376,21 @@ const Contribute = () => {
               </div>
             </div>
             <div className="repo-content">
-              <iframe
-                src="https://github.com/RhythmPahwa14/AlgoVisualizer"
-                width="100%"
-                height="600"
-                frameBorder="0"
-                title="AlgoVisualizer GitHub Repository"
-                style={{ borderRadius: '12px' }}
-              />
+              <p>AlgoVisualizer is an open-source project that helps students and developers understand algorithms through interactive visualizations. We welcome contributions from the community to make learning algorithms more accessible and engaging.</p>
+              <div className="repo-stats-inline">
+                <div className="stat-inline">
+                  <span className="stat-label">Stars</span>
+                  <span className="stat-value">{repoStats.stars}</span>
+                </div>
+                <div className="stat-inline">
+                  <span className="stat-label">Forks</span>
+                  <span className="stat-value">{repoStats.forks}</span>
+                </div>
+                <div className="stat-inline">
+                  <span className="stat-label">Issues</span>
+                  <span className="stat-value">{repoStats.issues}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

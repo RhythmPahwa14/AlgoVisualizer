@@ -50,6 +50,7 @@ export const learnSections = [
       { path: "/graph/dfs", label: "DFS" },
       { path: "/graph/dijkstra", label: "Dijkstra" },
       { path: "/graph/comparison", label: "Graph Comparison" },
+      { path: "/graph/cycleDetection", label: "Cycle Detection" },
     ],
   },
   {

@@ -39,7 +39,7 @@ cd AlgoVisualizer
 **⚙️ Install dependencies:**
 npm install
 **▶️ Start the development server:**
-npm start
+npm run dev
 
 ![Setup GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmxpNzEyMjhzb2k3eDc1MWFzM3lhZnFrZXJxZDVpMDZ2am9wZHhzcCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/LESpNIDaNBUcRIPzng/giphy.gif)
 

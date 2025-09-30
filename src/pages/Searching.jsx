@@ -434,6 +434,7 @@ const Searching = () => {
 
       {/* Step Navigation (Binary only) */}
       {algorithm === "binarySearch" && steps.length > 0 && (
+
         <div className="theme-card step-navigation" data-aos="fade-up" data-aos-delay="400">
           <div className="step-controls">
             <button 
@@ -453,6 +454,16 @@ const Searching = () => {
               Next Step
             </button>
             <span className="step-counter">
+
+        <div className="theme-card" style={{ padding: '1rem', marginBottom: '1rem' }} data-aos="fade-up" data-aos-delay="400">
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <button className="btn btn-secondary" onClick={handlePrevStep} disabled={currentStep === 0}>Previous Step</button>
+              <button className="btn btn-secondary" onClick={handleNextStep} disabled={currentStep >= steps.length - 1}>Next Step</button>
+            </div>
+            
+            <span style={{ color: "var(--theme-text-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
+
               Step {currentStep + 1} / {steps.length}
             </span>
           </div>
@@ -461,6 +472,7 @@ const Searching = () => {
 
       {/* Visualization & Pseudocode */}
       <div className="form-grid" data-aos="fade-up" data-aos-delay="500">
+
         <div className="visualization-area" id="search-visualization-container">
           {/* Use AlgorithmVisualizer for consistent visualization */}
           <AlgorithmVisualizer
@@ -472,6 +484,87 @@ const Searching = () => {
             colorArray={algorithm === "binarySearch" && steps.length > 0 ? getStepColorArray() : undefined}
           />
           
+
+        <div className="visualization-area" id="search-visualization-container" style={{ gridColumn: 'span 2' }}>
+          {/* ⛔️ Removed the duplicate AlgorithmVisualizer */}
+          
+          {/* ✅ Keep ONLY the step visualization for Binary */}
+          {algorithm === "binarySearch" && (
+            <div
+              style={{
+                position: "relative", /* anchor overlay */
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "flex-end",
+                height: "100%",
+                gap: gapValue,
+                marginTop: "2rem"
+              }}
+            >
+              {(() => {
+                const data = steps[currentStep]?.array || array;
+                const maxVal = Math.max(...data, 1);
+                return data.map((num, idx) => {
+                  const maxBarWidth = isTabletOrBelow ? 20 : 28;
+                  const baseWidth = Math.floor((isTabletOrBelow ? 360 : 600) / Math.max(data.length, 1));
+                  const barWidth = Math.max(isTabletOrBelow ? 10 : 12, Math.min(maxBarWidth, baseWidth));
+                  const showNumbers = data.length <= 25;
+                  const stepColors = steps.length > 0 ? getStepColorArray() : [];
+                  const heightPx = Math.max(40, Math.round((num / maxVal) * 200));
+                  return (
+                    <div
+                      key={`${num}-${idx}`}
+                      style={{
+                        height: `${heightPx}px`,
+                        width: `${barWidth}px`,
+                        backgroundColor: stepColors[idx] || "#66ccff",
+                        border: `1px solid ${stepColors[idx] || "#66ccff"}`,
+                        borderRadius: "6px 6px 0 0",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                        fontWeight: "bold",
+                        fontSize: barFontSize,
+                        padding: "4px 2px",
+                        transition: "all 0.3s ease",
+                        boxShadow: `0 4px 12px ${(stepColors[idx] || "#66ccff")}30`,
+                        position: "relative",
+                        cursor: "default",
+                        color: "#ffffff",
+                      }}
+                      title={`Value: ${num}, Index: ${idx}`}
+                    >
+                      {showNumbers && (
+                        <div style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.8)", fontWeight: "bold", fontSize: "inherit", minHeight: "14px", display: "flex", alignItems: "center" }}>
+                          {num}
+                        </div>
+                      )}
+                    </div>
+                  );
+                });
+              })()}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  color: "#66ccff",
+                  fontSize: "12px",
+                  fontWeight: "600",
+                  background: "rgba(26, 26, 46, 0.8)",
+                  padding: "6px 12px",
+                  borderRadius: "6px",
+                  border: "1px solid rgba(102, 204, 255, 0.3)",
+                }}
+              >
+                Array Size: {steps[currentStep]?.array?.length ?? array.length} | Step Mode
+              </div>
+            </div>
+          )}
+
+
           {algorithm === "binarySearch" && steps[currentStep]?.text && (
             <div className="step-text">{steps[currentStep].text}</div>
           )}
