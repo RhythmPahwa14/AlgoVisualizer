@@ -1,8 +1,8 @@
 /* ----------------- Modern Responsive Footer Styles ----------------- */
 .footer-container {
   position: relative;
-  background: var(--card-bg, #21262d);
-  color: var(--text-primary, #e6edf3);
+  background: var(--card-bg);
+  color: var(--text-primary);
   padding: 60px 0 20px;
   opacity: 0;
   transform: translateY(20px);
@@ -35,7 +35,7 @@
 }
 
 .footer-wave .shape-fill {
-  fill: var(--card-bg, #21262d); 
+  fill: var(--card-bg);
   transition: fill 0.3s ease;
 }
 
@@ -53,7 +53,6 @@
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
-  overflow: visible;
 }
 
 .footer-container.visible .footer-content {
@@ -65,25 +64,21 @@
 .footer-column {
   display: flex;
   flex-direction: column;
-  overflow: visible;
 }
 
 .brand-column {
   padding-right: 20px;
-  overflow: visible;
 }
 
 /* Brand Section */
 .brand-header {
   margin-bottom: 25px;
-  overflow: visible;
 }
 
 .logo-wrapper {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-  overflow: visible;
 }
 
 .logo-icon {
@@ -96,7 +91,7 @@
 .logo-text {
   font-size: 24px;
   font-weight: 700;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-color));
+  background: linear-gradient(90deg, var(--text-primary), var(--accent-primary));
   -webkit-background-clip: text;
   background-clip: text;
   color: var(--primary-color); /* fallback if gradient doesn't render */
@@ -120,7 +115,7 @@
 }
 
 .brand-tagline {
-  color: var(--text-secondary, rgba(230, 237, 243, 0.8));
+  color: var(--text-secondary);
   font-size: 15px;
   line-height: 1.6;
   margin: 0;
@@ -133,21 +128,19 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 25px;
-  overflow: visible;
 }
 
 .tech-pill {
-  background: var(--surface-bg, rgba(255, 255, 255, 0.05));
-  color: var(--accent-primary, #58a6ff);
+  background: var(--surface-bg);
+  color: var(--accent-primary);
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 500;
-  border: 1px solid var(--border-primary, rgba(240, 246, 252, 0.1));
+  border: 1px solid var(--border-primary);
   transition: all 0.3s ease;
   text-decoration: none;
   position: relative;
-  overflow: hidden;
 }
 
 .tech-pill::before {
@@ -166,9 +159,9 @@
 }
 
 .tech-pill:hover {
-  background: var(--accent-light, rgba(88, 166, 255, 0.1));
+  background: var(--accent-light);
   transform: translateY(-2px);
-  border-color: var(--accent-primary, #58a6ff);
+  border-color: var(--accent-primary);
   box-shadow: 0 4px 12px rgba(88, 166, 255, 0.15);
 }
 
@@ -220,7 +213,7 @@
 .column-title {
   font-size: 18px;
   font-weight: 600;
-  color: var(--text-primary, #e6edf3);
+  color: var(--text-primary);
   margin-bottom: 20px;
   position: relative;
   padding-bottom: 10px;
@@ -234,7 +227,7 @@
   left: 0;
   width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-primary, #58a6ff), var(--accent-hover, #79c0ff));
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-hover));
   border-radius: 3px;
 }
 
@@ -246,7 +239,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  overflow: visible;
 }
 
 .footer-links li {
@@ -256,7 +248,7 @@
 }
 
 .footer-links a {
-  color: var(--text-secondary, rgba(230, 237, 243, 0.8));
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 15px;
   display: flex;
@@ -265,7 +257,6 @@
   transition: all 0.3s ease;
   padding: 4px 0;
   position: relative;
-  overflow: hidden;
 }
 
 .footer-links a::before {
@@ -275,7 +266,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--accent-primary, #58a6ff);
+  background: var(--accent-primary);
   transition: width 0.3s ease;
 }
 
@@ -284,7 +275,7 @@
 }
 
 .footer-links a:hover {
-  color: var(--accent-primary, #58a6ff);
+  color: var(--accent-primary);
   transform: translateX(5px);
 }
 
@@ -302,24 +293,21 @@
 
 /* Newsletter Section */
 .newsletter-description {
-  color: var(--text-secondary, rgba(230, 237, 243, 0.8));
+  color: var(--text-secondary);
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 20px;
   text-align: left;
-  overflow: visible;
 }
 
 .newsletter-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  overflow: visible;
 }
 
 .input-container {
   position: relative;
-  overflow: visible;
 }
 
 .input-icon {
@@ -327,7 +315,7 @@
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-muted, rgba(230, 237, 243, 0.6));
+  color: var(--text-muted);
   font-size: 16px;
   transition: color 0.3s ease;
 }
@@ -336,9 +324,9 @@
   width: 100%;
   padding: 14px 15px 14px 45px;
   border: none;
-  background: var(--surface-bg, rgba(255, 255, 255, 0.05));
-  border: 1px solid var(--border-primary, rgba(240, 246, 252, 0.1));
-  color: var(--text-primary, #e6edf3);
+  background: var(--surface-bg);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
   border-radius: 8px;
   font-size: 14px;
   transition: all 0.3s ease;
@@ -346,17 +334,17 @@
 
 .newsletter-input:focus + .input-icon,
 .newsletter-input:valid + .input-icon {
-  color: var(--accent-primary, #58a6ff);
+  color: var(--accent-primary);
 }
 
 .newsletter-input:focus {
   outline: none;
-  border-color: var(--accent-primary, #58a6ff);
-  box-shadow: 0 0 0 3px var(--accent-light, rgba(88, 166, 255, 0.1));
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-light);
 }
 
 .newsletter-input::placeholder {
-  color: var(--text-muted, rgba(230, 237, 243, 0.6));
+  color: var(--text-muted);
 }
 
 .newsletter-btn {
@@ -365,8 +353,8 @@
   justify-content: center;
   gap: 8px;
   padding: 14px 20px;
-  background: var(--button-primary-bg, #58a6ff);
-  color: var(--button-primary-text, #0a0a1a);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -375,7 +363,6 @@
   transition: all 0.3s ease;
   width: 100%;
   position: relative;
-  overflow: hidden;
 }
 
 .newsletter-btn::before {
@@ -394,9 +381,9 @@
 }
 
 .newsletter-btn:hover:not(.loading) {
-  background: var(--button-primary-hover, #79c0ff);
+  background: var(--button-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px var(--shadow-md, 0 4px 6px rgba(0, 0, 0, 0.15));
+  box-shadow: 0 6px 15px var(--shadow-md);
 }
 
 .newsletter-btn.loading {
@@ -425,11 +412,10 @@
 .subscription-success {
   text-align: center;
   padding: 20px 0;
-  background: var(--surface-bg, rgba(255, 255, 255, 0.05));
+  background: var(--surface-bg);
   border-radius: 8px;
-  border: 1px solid var(--border-primary, rgba(240, 246, 252, 0.1));
+  border: 1px solid var(--border-primary);
   animation: fadeIn 0.5s ease;
-  overflow: visible;
 }
 
 @keyframes fadeIn {
@@ -471,13 +457,13 @@
 }
 
 .subscription-success h4 {
-  color: var(--text-primary, #e6edf3);
+  color: var(--text-primary);
   margin: 0 0 8px 0;
   font-size: 16px;
 }
 
 .subscription-success p {
-  color: var(--text-secondary, rgba(230, 237, 243, 0.8));
+  color: var(--text-secondary);
   margin: 0;
   font-size: 14px;
 }
@@ -489,7 +475,6 @@
   margin-top: 20px;
   justify-content: center;
   flex-wrap: wrap;
-  overflow: visible;
 }
 
 .social-link {
@@ -498,14 +483,13 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: var(--surface-bg, rgba(255, 255, 255, 0.05));
+  background: var(--surface-bg);
   border-radius: 50%;
-  color: var(--text-secondary, rgba(230, 237, 243, 0.8));
+  color: var(--text-secondary);
   font-size: 16px;
   transition: all 0.3s ease;
-  border: 1px solid var(--border-primary, rgba(240, 246, 252, 0.1));
+  border: 1px solid var(--border-primary);
   position: relative;
-  overflow: hidden;
 }
 
 .social-link::before {
@@ -524,21 +508,20 @@
 }
 
 .social-link:hover {
-  background: var(--accent-primary, #58a6ff);
-  color: var(--button-primary-text, #0a0a1a);
+  background: var(--accent-primary);
+  color: var(--button-primary-text);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px var(--shadow-md, 0 4px 6px rgba(0, 0, 0, 0.15));
+  box-shadow: 0 5px 15px var(--shadow-md);
 }
 
 /* Footer Bottom */
 .footer-bottom {
   margin-top: auto;
-  overflow: visible;
 }
 
 .footer-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-primary, rgba(240, 246, 252, 0.1)), transparent);
+  background: linear-gradient(90deg, transparent, var(--border-primary), transparent);
   margin-bottom: 24px;
 }
 
@@ -550,7 +533,6 @@
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
-  overflow: visible;
 }
 
 /* Footer Main Row */
@@ -560,25 +542,24 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  overflow: visible;
 }
 
 .footer-separator {
-  color: var(--text-muted, rgba(230, 237, 243, 0.6));
+  color: var(--text-muted);
   font-size: 18px;
   opacity: 0.6;
   margin: 0 4px;
 }
 
 .copyright p {
-  color: var(--text-secondary, rgba(230, 237, 243, 0.8));
+  color: var(--text-secondary);
   font-size: 14px;
   margin: 0;
   font-weight: 500;
 }
 
 .footer-credits p {
-  color: var(--text-secondary, rgba(230, 237, 243, 0.8));
+  color: var(--text-secondary);
   font-size: 14px;
   margin: 0;
   font-weight: 500;
@@ -591,7 +572,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 8px;
-  overflow: visible;
   flex-wrap: wrap;
 }
 
@@ -601,11 +581,10 @@
   gap: 0;
   justify-content: center;
   flex-wrap: wrap;
-  overflow: visible;
 }
 
 .legal-links a {
-  color: var(--text-secondary, rgba(230, 237, 243, 0.8));
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
@@ -613,7 +592,6 @@
   border-radius: 6px;
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
 }
 
 .legal-links a::after {
@@ -623,7 +601,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--accent-primary, #58a6ff);
+  background: var(--accent-primary);
   transition: width 0.3s ease;
 }
 
@@ -632,13 +610,13 @@
 }
 
 .legal-links a:hover {
-  color: var(--accent-primary, #58a6ff);
-  background: var(--surface-bg, rgba(255, 255, 255, 0.05));
+  color: var(--accent-primary);
+  background: var(--surface-bg);
   transform: translateY(-1px);
 }
 
 .legal-separator {
-  color: var(--text-muted, rgba(230, 237, 243, 0.6));
+  color: var(--text-muted);
   font-size: 13px;
   opacity: 0.5;
   margin: 0 8px;
@@ -692,7 +670,7 @@
     text-align: center;
     order: 1;
     padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-primary, rgba(240, 246, 252, 0.1));
+    border-bottom: 1px solid var(--border-primary);
   }
   
   /* Show sections on mobile with grid layout */
@@ -768,7 +746,7 @@
   .brand-column {
     order: 1;
     padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-primary, rgba(240, 246, 252, 0.1));
+    border-bottom: 1px solid var(--border-primary);
   }
   
   .links-column,
@@ -1008,9 +986,8 @@
 @media (min-width: 769px) {
   .footer-container {
     padding: 80px 0 30px;
-    background: linear-gradient(180deg, var(--card-bg, #21262d) 0%, var(--card-bg, #21262d) 90%, transparent 100%);
+    background: linear-gradient(180deg, var(--card-bg) 0%, var(--card-bg) 90%, transparent 100%);
     position: relative;
-    overflow: visible;
   }
   
   .footer-container::before {
@@ -1020,7 +997,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent-primary, #58a6ff), var(--accent-hover, #79c0ff), var(--accent-primary, #58a6ff));
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-hover), var(--accent-primary));
     background-size: 200% 100%;
     animation: gradientShift 3s linear infinite;
   }
@@ -1039,23 +1016,19 @@
   
   .brand-column {
     padding-right: 30px;
-    overflow: visible;
   }
   
   .brand-header {
     margin-bottom: 30px;
-    overflow: visible;
   }
   
   .logo-wrapper {
     margin-bottom: 20px;
-    overflow: visible;
   }
   
   .logo-text {
     font-size: 28px;
     letter-spacing: -0.8px;
-    overflow: visible;
   }
   
  .logo-image {
@@ -1068,13 +1041,11 @@
     font-size: 16px;
     max-width: 100%;
     line-height: 1.7;
-    overflow: visible;
   }
   
   .tech-pills {
     margin-bottom: 30px;
     gap: 10px;
-    overflow: visible;
   }
   
   .tech-pill {
@@ -1083,53 +1054,44 @@
     font-weight: 600;
     border-radius: 25px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: visible;
   }
   
   .column-title {
     font-size: 20px;
     margin-bottom: 25px;
     padding-bottom: 12px;
-    overflow: visible;
   }
   
   .column-title::after {
     width: 50px;
     height: 4px;
-    overflow: visible;
   }
   
   .footer-links li {
     margin-bottom: 15px;
-    overflow: visible;
   }
   
   .footer-links a {
     font-size: 16px;
     padding: 6px 0;
-    overflow: visible;
   }
   
   .link-icon {
     font-size: 14px;
-    overflow: visible;
   }
   
   .newsletter-description {
     font-size: 15px;
     margin-bottom: 25px;
     line-height: 1.7;
-    overflow: visible;
   }
   
   .newsletter-form {
     gap: 18px;
-    overflow: visible;
   }
   
   .input-container {
     position: relative;
-    overflow: visible;
   }
   
   .newsletter-input {
@@ -1137,13 +1099,11 @@
     border-radius: 12px;
     font-size: 15px;
     transition: all 0.4s ease;
-    overflow: visible;
   }
   
   .input-icon {
     left: 20px;
     font-size: 18px;
-    overflow: visible;
   }
   
   .newsletter-btn {
@@ -1153,13 +1113,11 @@
     font-weight: 700;
     letter-spacing: 0.5px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    overflow: visible;
   }
   
   .social-links {
     margin-top: 25px;
     gap: 15px;
-    overflow: visible;
   }
   
   .social-link {
@@ -1168,13 +1126,11 @@
     font-size: 20px;
     border-radius: 14px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    overflow: visible;
   }
   
   .footer-divider {
     margin-bottom: 30px;
     height: 2px;
-    overflow: visible;
   }
   
   .bottom-content {
@@ -1185,31 +1141,26 @@
   
   .footer-main-row {
     gap: 15px;
-    overflow: visible;
   }
   
   .copyright p,
   .footer-credits p {
     font-size: 15px;
     font-weight: 600;
-    overflow: visible;
   }
   
   .footer-legal-row {
     margin-top: 12px;
-    overflow: visible;
   }
   
   .legal-links a {
     font-size: 14px;
     padding: 6px 15px;
     border-radius: 8px;
-    overflow: visible;
   }
   
   .legal-separator {
     margin: 0 12px;
-    overflow: visible;
   }
 }
 

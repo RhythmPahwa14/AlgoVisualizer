@@ -56,14 +56,6 @@ body {
 }
 
 /* =========================
-   Header
-========================= */
-.av-header {
-    background-color: var(--header-bg);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* =========================
    Theme Toggle Button
 ========================= */
 .theme-toggle-btn {
@@ -168,10 +160,6 @@ button:disabled {
 }
 
 @media (max-width: 768px) {
-    .av-header {
-        padding: 10px;
-    }
-
     .nav-links {
         flex-direction: column;
         align-items: flex-start;
@@ -185,10 +173,6 @@ button:disabled {
 }
 
 @media (max-width: 480px) {
-    .av-header {
-        padding: 8px;
-    }
-
     .nav-links {
         width: 100%;
         padding: 10px 0;
@@ -210,4 +194,3 @@ button:disabled {
         height: 20px;
     }
 }
-

@@ -1200,136 +1200,50 @@ body {
   color: var(--theme-accent);
 }
 
-/* -----------------
-   Theme Toggle Switch
------------------ */
-.theme-switch-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--theme-text-secondary);
-}
+/* =======================================================
+   14. Quiz Overlay Styles
+======================================================= */
 
-.theme-switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 28px;
-}
-
-.theme-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.theme-switch-slider {
-  position: absolute;
-  cursor: pointer;
+.quiz-overlay {
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--theme-border);
-  transition: 0.4s;
-  border-radius: 28px;
-}
-
-.theme-switch-slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.theme-switch input:checked + .theme-switch-slider {
-  background-color: var(--theme-accent);
-}
-
-.theme-switch input:checked + .theme-switch-slider:before {
-  transform: translateX(22px);
-}
-  
-.highlight {
-  font-weight: 800;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: var(--primary-color);
-  -webkit-text-fill-color: transparent;
-}
-.search-points {
-  margin: 0 2rem;
-}
-.search-points li {
-  color: var(--theme-text-secondary);
-  line-height: 1.6;
-}
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16px; 
-}
-.table thead th {
-  text-align: left;
-  font-size: 24px;
-  padding: 8px 12px;
-}
-.table tbody td {
-  padding: 12px;
-  color: #000000;
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
-}
-[data-theme="dark"] .table tbody td {
-  color:#ffffff;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.algo {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  color: var(--theme-text-primary);
 }
-.badge {
-  min-width: 40px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(104, 101, 101, 0.3);
-  font-size: 12px;
+
+.quiz-overlay-pause {
+  backdrop-filter: blur(4px);
+}
+
+.overlay-content {
+  background: var(--theme-card-bg);
+  border: 1px solid var(--theme-border);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 90%;
+  width: 400px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(104, 101, 101, 0.01);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
-.badge:hover{
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(104, 101, 101, 0.3);
+
+.overlay-content h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--theme-text-primary);
 }
-.muted {
-  color: #94a3b8;
-  font-size: 13px; 
-}
-.theme-card pre,
-.theme-card code {
-  background: var(--code-bg) !important;
-  color: var(--code-text) !important;
-  border-radius: 8px;
-  font-family: Consolas, Monaco, "Courier New", monospace;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  padding: 0; 
-}
-/* Boxed sequence grid with step highlight */
-.dp-seq {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-  gap: .5rem;
-  margin: 1rem 0;
+
+.overlay-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .dp-cell {
@@ -1337,25 +1251,23 @@ body {
   border-radius: 10px;
   padding: .5rem .25rem;
   background: var(--surface-bg, rgba(255, 255, 255, .03));
+}
+
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .25rem;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 1rem;
 }
 
-.dp-cell-index {
-  font-size: .7rem;
-  opacity: .65;
-}
-
-.dp-cell-value {
-  font-weight: 600;
-}
-
-.dp-cell.is-active {
-  outline: 2px solid var(--accent-primary, #7aa2f7);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-primary, #7aa2f7) 25%, transparent);
+@media (max-width: 480px) {
+  .overlay-buttons {
+    flex-direction: column;
+  }
+  
+  .overlay-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
 }
 
 
@@ -1615,3 +1527,4 @@ body {
 
   }
 }
+

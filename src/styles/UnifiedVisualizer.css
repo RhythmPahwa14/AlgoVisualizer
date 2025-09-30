@@ -25,6 +25,7 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.2s;
+  font-weight: 500;
 }
 
 .visualization-controls button:disabled {
@@ -34,6 +35,14 @@
 
 .visualization-controls button:hover:not(:disabled) {
   background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.visualization-controls input[type="number"] {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100px;
 }
 
 .speed-control {
@@ -69,7 +78,9 @@
   color: white;
   font-size: 10px;
   font-weight: bold;
+  transition: transform 0.2s ease;
 }
+
 .array-bar {
   background-color: initial !important; /* lets their own color rules win */
 }
@@ -114,4 +125,29 @@
   font-weight: bold;
   margin: 0.5rem 0;
   color: #007bff;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .visualization-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .visualization-controls button {
+    width: 100%;
+  }
+  
+  .speed-control {
+    align-items: center;
+  }
+  
+  .visualization-container {
+    gap: 8px;
+  }
+  
+  .visualization-bar {
+    width: 20px !important;
+    font-size: 8px;
+  }
 }

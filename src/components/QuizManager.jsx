@@ -42,14 +42,15 @@ const QuizManager = () => {
 
   // Timer effect
   useEffect(() => {
+    let timer;
     if (timedMode && timeRemaining > 0 && currentStep === 'quiz' && !isPaused) {
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         setTimeRemaining(time => time - 1);
       }, 1000);
-      return () => clearTimeout(timer);
     } else if (timedMode && timeRemaining === 0 && currentStep === 'quiz') {
       handleSubmitQuiz();
     }
+    return () => clearTimeout(timer);
   }, [timeRemaining, timedMode, currentStep, isPaused]);
 
   const startQuiz = (topic, difficulty, timed = false) => {
@@ -160,6 +161,8 @@ const QuizManager = () => {
     setTimedMode(false);
     setQuizStartTime(null);
     setQuizEndTime(null);
+    setIsPaused(false);
+    setShowExitConfirm(false);
   };
 
   const goHome = () => {
@@ -207,31 +210,60 @@ const QuizManager = () => {
     return (
       <div className="theme-container">
         {/* Pause/Exit Buttons */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginBottom: 10 }}>
-          <button onClick={handlePause} disabled={isPaused}>Pause</button>
-          <button onClick={handleExit}>Exit</button>
+        <div className="quiz-controls-top">
+          <button 
+            className="quiz-btn secondary"
+            onClick={handlePause} 
+            disabled={isPaused}
+            aria-label="Pause quiz"
+          >
+            Pause
+          </button>
+          <button 
+            className="quiz-btn secondary"
+            onClick={handleExit}
+            aria-label="Exit quiz"
+          >
+            Exit
+          </button>
         </div>
         {/* Pause Overlay */}
         {isPaused && (
-          <div style={{
-            position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-            background: 'rgba(0,0,0,0.6)', zIndex: 1000, display: 'flex', flexDirection: 'column',
-            alignItems: 'center', justifyContent: 'center', color: '#fff'
-          }}>
-            <h2>Quiz Paused</h2>
-            <button onClick={handleResume}>Resume</button>
+          <div className="quiz-overlay quiz-overlay-pause" role="dialog" aria-modal="true" aria-labelledby="pause-title">
+            <div className="overlay-content">
+              <h2 id="pause-title">Quiz Paused</h2>
+              <button 
+                className="quiz-btn"
+                onClick={handleResume}
+                aria-label="Resume quiz"
+              >
+                Resume
+              </button>
+            </div>
           </div>
         )}
         {/* Exit Confirmation */}
         {showExitConfirm && (
-          <div style={{
-            position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-            background: 'rgba(0,0,0,0.6)', zIndex: 1000, display: 'flex', flexDirection: 'column',
-            alignItems: 'center', justifyContent: 'center', color: '#fff'
-          }}>
-            <h2>Are you sure you want to exit the quiz?</h2>
-            <button onClick={confirmExit}>Yes, Exit</button>
-            <button onClick={cancelExit}>Cancel</button>
+          <div className="quiz-overlay quiz-overlay-confirm" role="dialog" aria-modal="true" aria-labelledby="exit-title">
+            <div className="overlay-content">
+              <h2 id="exit-title">Are you sure you want to exit the quiz?</h2>
+              <div className="overlay-buttons">
+                <button 
+                  className="quiz-btn"
+                  onClick={confirmExit}
+                  aria-label="Confirm exit"
+                >
+                  Yes, Exit
+                </button>
+                <button 
+                  className="quiz-btn secondary"
+                  onClick={cancelExit}
+                  aria-label="Cancel exit"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           </div>
         )}
         <QuestionCard

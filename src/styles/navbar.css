@@ -406,8 +406,8 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* push page content down so navbar doesn’t overlap */
+/* push page content down so navbar doesn't overlap */
 body {
   margin: 0;
-  padding-top: 72px; /* adjust to your navbar’s actual height */
+  padding-top: 72px; /* adjust to your navbar's actual height */
 }

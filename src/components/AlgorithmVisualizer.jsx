@@ -1,5 +1,5 @@
 // src/components/AlgorithmVisualizer.jsx
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import algorithmsData from "../algorithms/algorithms.json";
 import "../styles/UnifiedVisualizer.css";
 
@@ -25,11 +25,11 @@ export default function AlgorithmVisualizer({
   const [barMotion, setBarMotion] = useState(true); // enable/disable smooth bar animation
 
   // Determine algorithm type using centralized runner
-  const resolveAlgoType = (name) => getAlgorithmType(name);
+  const resolveAlgoType = useCallback((name) => getAlgorithmType(name), []);
   const controlled = useMemo(() => Array.isArray(externalArray), [externalArray]);
  
   // Generate new array
-  const generateArray = () => {
+  const generateArray = useCallback(() => {
     if (controlled) return;
     const newArr = Array.from(
       { length: 15 },
@@ -46,7 +46,7 @@ export default function AlgorithmVisualizer({
     } else {
       setTarget(null);
     }
-  };
+  }, [controlled, algorithmName]);
 
   // Apply initialArray from props when provided/changed
   useEffect(() => {
@@ -79,7 +79,7 @@ export default function AlgorithmVisualizer({
 
   // Run the algorithm and generate steps
   useEffect(() => {
-    if (visualOnly || coontrolled) {
+    if (visualOnly || controlled) {
       setSteps([]);
       setCurrentStep(0);
       return;
@@ -87,17 +87,17 @@ export default function AlgorithmVisualizer({
     // Do not auto-run; wait for Start
   }, [visualOnly, controlled]);
 
-  const handleStart = () => {
-    if (visualOnly|| controlled) return; // nothing to animate in visual-only
+  const handleStart = useCallback(() => {
+    if (visualOnly || controlled) return; // nothing to animate in visual-only
     (async () => {
       const result = await runAlgorithmAsync(algorithmName, array, target);
       setSteps(result.steps || []);
       setCurrentStep(0);
       setIsAnimating(true);
     })();
-  };
+  }, [visualOnly, controlled, algorithmName, array, target]);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setSteps([]);
     setCurrentStep(0);
     setIsAnimating(false);
@@ -107,7 +107,7 @@ export default function AlgorithmVisualizer({
     } else {
       if (!controlled) generateArray();
     }
-  };
+  }, [controlled, initialArray, generateArray]);
 
   // Animate steps
   useEffect(() => {
@@ -135,8 +135,55 @@ export default function AlgorithmVisualizer({
     return () => clearInterval(interval);
   }, [isAnimating, steps, animationSpeedMs, controlled]);
 
-  const algoType = resolveAlgoType(algorithmName);
-  const displayArray = controlled ? externalArray ?? [] : array;
+  const algoType = useMemo(() => resolveAlgoType(algorithmName), [algorithmName, resolveAlgoType]);
+  const displayArray = useMemo(() => controlled ? externalArray ?? [] : array, [controlled, externalArray, array]);
+
+  // Memoize the bar rendering to prevent unnecessary re-renders
+  const renderBars = useMemo(() => {
+    return displayArray.map((val, idx) => {
+      let colorClass = "bar-default";
+      let isHighlighted = false;
+      const step = steps[currentStep];
+      if (!visualOnly && !controlled && step) {
+        if (step.type === "compare" && Array.isArray(step.indices)) {
+          isHighlighted = step.indices.includes(idx);
+          if (isHighlighted) colorClass = "bar-compare";
+        } else if (step.type === "swap") {
+          isHighlighted = step.indices && step.indices.includes(idx);
+          if (isHighlighted) colorClass = "bar-swap";
+        } else if (step.type === "move") {
+          isHighlighted = step.indices && step.indices.includes(idx);
+          if (isHighlighted) colorClass = "bar-move";
+        } else if (step.type === "cycle") {
+          isHighlighted = step.indices && step.indices.includes(idx);
+          if (isHighlighted) colorClass = "bar-cycle";
+        } else if (step.type === "probe") {
+          isHighlighted = step.index === idx;
+          if (isHighlighted) colorClass = "bar-probe";
+        } else if (step.type === "done") {
+          colorClass = "bar-done";
+        }
+      }
+
+      return (
+        <div
+          key={idx}
+          className={`visualization-bar ${colorClass}`}
+          style={{
+            height: `${Math.max(val, 2) * 2.2}px`,
+            width: "26px",
+            backgroundColor: Array.isArray(colorArray) ? colorArray[idx] : undefined,
+            transition: barMotion
+              ? `height ${animationSpeedMs}ms cubic-bezier(.2,.8,.2,1), background-color 180ms ease`
+              : "none",
+            transform: isHighlighted ? "scaleY(1.12)" : "scaleY(1)",
+          }}
+        >
+          <span className="bar-value" style={{ fontSize: fontSize ?? undefined }}>{val}</span>
+        </div>
+      );
+    });
+  }, [displayArray, visualOnly, controlled, steps, currentStep, colorArray, barMotion, animationSpeedMs, fontSize]);
 
   return (
     <div className="unified-visualizer">
@@ -147,22 +194,30 @@ export default function AlgorithmVisualizer({
       )}
       {!visualOnly && !controlled && (
         <div className="visualization-controls">
-          <button onClick={generateArray}>
+          <button 
+            onClick={generateArray}
+            aria-label="Generate new array"
+          >
             Generate Array
           </button>
           <button
             onClick={handleStart}
             disabled={isAnimating}
+            aria-label={isAnimating ? "Running algorithm" : "Start algorithm"}
           >
             {isAnimating ? "Running..." : "Start"}
           </button>
           <button
             onClick={() => setIsAnimating(false)}
             disabled={!isAnimating}
+            aria-label="Stop algorithm"
           >
             Stop
           </button>
-          <button onClick={handleReset}>
+          <button 
+            onClick={handleReset}
+            aria-label="Reset visualization"
+          >
             Reset
           </button>
           {algorithmsData.find((a) => a.name === algorithmName)?.type ===
@@ -172,6 +227,7 @@ export default function AlgorithmVisualizer({
               value={target ?? ""}
               onChange={(e) => setTarget(Number(e.target.value))}
               placeholder="Target"
+              aria-label="Search target value"
             />
           )}
           <div className="speed-control">
@@ -183,6 +239,7 @@ export default function AlgorithmVisualizer({
               step="20"
               value={animationSpeedMs}
               onChange={(e) => setAnimationSpeedMs(Number(e.target.value))}
+              aria-label="Animation speed control"
             />
           </div>
           <label>
@@ -190,6 +247,7 @@ export default function AlgorithmVisualizer({
               type="checkbox"
               checked={barMotion}
               onChange={(e) => setBarMotion(e.target.checked)}
+              aria-label="Toggle smooth animation"
             />
             Smooth animation
           </label>
@@ -203,49 +261,7 @@ export default function AlgorithmVisualizer({
         className="visualization-container"
         style={{ gap: barGap ? barGap : undefined }}
       >
-        {displayArray.map((val, idx) => {
-          let colorClass = "bar-default";
-          let isHighlighted = false;
-          const step = steps[currentStep];
-          if (!visualOnly && !controlled && step) {
-            if (step.type === "compare" && Array.isArray(step.indices)) {
-              isHighlighted = step.indices.includes(idx);
-              if (isHighlighted) colorClass = "bar-compare";
-            } else if (step.type === "swap") {
-              isHighlighted = step.indices && step.indices.includes(idx);
-              if (isHighlighted) colorClass = "bar-swap";
-            } else if (step.type === "move") {
-              isHighlighted = step.indices && step.indices.includes(idx);
-              if (isHighlighted) colorClass = "bar-move";
-            } else if (step.type === "cycle") {
-              isHighlighted = step.indices && step.indices.includes(idx);
-              if (isHighlighted) colorClass = "bar-cycle";
-            } else if (step.type === "probe") {
-              isHighlighted = step.index === idx;
-              if (isHighlighted) colorClass = "bar-probe";
-            } else if (step.type === "done") {
-              colorClass = "bar-done";
-            }
-          }
-
-          return (
-            <div
-              key={idx}
-              className={`visualization-bar ${colorClass}`}
-              style={{
-                height: `${Math.max(val, 2) * 2.2}px`,
-                width: "26px",
-                backgroundColor: Array.isArray(colorArray) ? colorArray[idx] : undefined,
-                transition: barMotion
-                  ? `height ${animationSpeedMs}ms cubic-bezier(.2,.8,.2,1), background-color 180ms ease`
-                  : "none",
-                transform: isHighlighted ? "scaleY(1.12)" : "scaleY(1)",
-              }}
-            >
-               <span className="bar-value" style={{ fontSize: fontSize ?? undefined }}>{val}</span>
-            </div>
-          );
-        })}
+        {renderBars}
       </div>
     </div>
   );
