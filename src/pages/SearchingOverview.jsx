@@ -1,48 +1,28 @@
 import "../styles/global-theme.css";
 import Searching from "./Searching";
+
 const SearchingOverview = () => {
   return (
-    <div className="theme -container">
+    <div className="theme-container">
       <h1 className="theme-title" style={{ marginTop: "4rem" }}>
         Guide to <span className="highlight">Searching</span>{" "}
       </h1>
-      <p
-        style={{
-          textAlign: "center",
-          maxWidth: "700px",
-          margin: "-2rem auto 2rem auto",
-          color: "var(--theme-text-secondary)",
-        }}
-      >
+      <p className="overview-description">
         Searching means finding the location of a target (key) in a collection
         of data (like an array, list, tree, graph, etc.).
       </p>
-      <p
-        style={{
-          textAlign: "center",
-          maxWidth: "700px",
-          margin: "-2rem auto 2rem auto",
-          color: "var(--text-color)",
-        }}
-      >
-        {" "}
-        <span
-          style={{
-            fontWeight: "600",
-            fontSize: "1.5rem",
-            color: "var(--accent-primary)",
-          }}
-        >
+      <p className="overview-goal">
+        <span className="goal-label">
           Goal
         </span>{" "}
         : Return the position/index or confirm if the element exists.
       </p>
 
-      <div className="theme-card" style={{ width: "1300px" }}>
+      <div className="theme-card">
         <div className="theme-card-header">
           <h3>What is Searching?</h3>
         </div>
-        <p style={{ color: "var(--theme-text-secondary)", lineHeight: 1.6 }}>
+        <p className="card-description">
           In Data Structures and Algorithms (DSA), searching refers to the
           systematic technique of finding a target value among stored data. It
           determines whether the element exists and, if so, where it is located,
@@ -50,7 +30,7 @@ const SearchingOverview = () => {
         </p>
       </div>
 
-      <div className="theme-card" style={{ width: "1300px" }}>
+      <div className="theme-card">
         <div className="theme-card-header">
           <h3>🌱 Key Takeaways</h3>
         </div>
@@ -64,7 +44,8 @@ const SearchingOverview = () => {
           </li>
         </ul>
       </div>
-      <div className="theme-card" style={{ width: "1300px" }}>
+      
+      <div className="theme-card">
         <div className="theme-card-header">
           <h3>⚡Complexity Comparison</h3>
         </div>
@@ -73,7 +54,7 @@ const SearchingOverview = () => {
             <tr>
               <th>Algorithm</th>
               <th>Best</th>
-              <th>Wrost</th>
+              <th>Worst</th>
               <th>Average</th>
               <th>Space</th>
             </tr>
@@ -81,11 +62,11 @@ const SearchingOverview = () => {
           <tbody>
             <tr>
               <td>
-                <div class="algo">
-                  <div class="badge">Linear</div>
+                <div className="algo">
+                  <div className="badge">Linear</div>
                   <div>
                     <div>Linear Search</div>
-                    <div class="muted">Works on unsorted arrays/lists</div>
+                    <div className="muted">Works on unsorted arrays/lists</div>
                   </div>
                 </div>
               </td>
@@ -96,41 +77,41 @@ const SearchingOverview = () => {
             </tr>
             <tr>
               <td>
-                <div class="algo">
-                  <div class="badge">Binary</div>
+                <div className="algo">
+                  <div className="badge">Binary</div>
                   <div>
                     <div>Binary Search</div>
-                    <div class="muted">Requires sorted arrays</div>
+                    <div className="muted">Requires sorted arrays</div>
                   </div>
                 </div>
               </td>
               <td>O(1)</td>
-              <td>O(logn)</td>
-              <td>O(logn)</td>
+              <td>O(log n)</td>
+              <td>O(log n)</td>
               <td>O(1)</td>
             </tr>
             <tr>
               <td>
-                <div class="algo">
-                  <div class="badge">Hash</div>
+                <div className="algo">
+                  <div className="badge">Hash</div>
                   <div>
                     <div>Hash Table Lookup</div>
-                    <div class="muted">Average O(1) with good hashing</div>
+                    <div className="muted">Average O(1) with good hashing</div>
                   </div>
                 </div>
               </td>
               <td>O(1)</td>
               <td>O(1)</td>
-              <td class="bad">O(n)</td>
+              <td className="bad">O(n)</td>
               <td>O(n)</td>
             </tr>
             <tr>
               <td>
-                <div class="algo">
-                  <div class="badge">BST</div>
+                <div className="algo">
+                  <div className="badge">BST</div>
                   <div>
                     <div>Binary Search Tree</div>
-                    <div class="muted">
+                    <div className="muted">
                       Balanced trees (AVL/Red–Black) give log n
                     </div>
                   </div>
@@ -138,12 +119,13 @@ const SearchingOverview = () => {
               </td>
               <td>O(log n)</td>
               <td>O(log n)</td>
-              <td class="bad">O(n)</td>
+              <td className="bad">O(n)</td>
               <td>O(1)</td>
             </tr>
           </tbody>
         </table>
       </div>
+      
       <Searching/>
     </div>
   );

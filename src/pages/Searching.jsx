@@ -1,12 +1,11 @@
 // src/pages/Searching.jsx
-import React, { useState, useEffect, useRef } from "react";
-// ⬇️ removed: import AlgorithmVisualizer from "../components/AlgorithmVisualizer";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import AlgorithmVisualizer from "../components/AlgorithmVisualizer";
 import CodeExplanation from "../components/CodeExplanation";
 import SimpleExportControls from "../components/SimpleExportControls";
 import "../styles/global-theme.css";
 import { useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-// ⬇️ removed: AOS imports (AOS is initialized in App.jsx)
 
 const ALGORITHM_PSEUDOCODE = {
   binarySearch: [
@@ -95,14 +94,13 @@ function getGap(arraySize, isTabletOrBelow) {
   if (arraySize > 25) return "3px";
   return "6px";
 }
+
 function getBarFontSize(arraySize) {
   if (arraySize > 40) return "8px";
   if (arraySize > 30) return "9px";
   if (arraySize > 20) return "10px";
   return "11px";
 }
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const buildBinarySearchSteps = (array, t) => {
   const s = [];
@@ -129,7 +127,6 @@ const buildBinarySearchSteps = (array, t) => {
   return s;
 };
 
-
 const Searching = () => {
   const { id } = useParams();
   const playRef = useRef(false);
@@ -151,8 +148,8 @@ const Searching = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const isTabletOrBelow = useMediaQuery({ query: "(max-width: 1024px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 800px)" });
-  const gapValue = getGap(arraySize, isTabletOrBelow);
-  const barFontSize = getBarFontSize(arraySize);
+  const gapValue = useMemo(() => getGap(arraySize, isTabletOrBelow), [arraySize, isTabletOrBelow]);
+  const barFontSize = useMemo(() => getBarFontSize(arraySize), [arraySize]);
 
   useEffect(() => {
     generateArray();
@@ -165,23 +162,23 @@ const Searching = () => {
     if (id && allowed.has(id)) setAlgorithm(id);
   }, [id]);
 
-  const generateArray = () => {
+  const generateArray = useCallback(() => {
     const randomArray = Array.from({ length: arraySize }, () => Math.floor(Math.random() * 100));
     const sorted = randomArray.sort((a, b) => a - b);
     setArray(sorted);
     setMessage("New array generated. Ready to search!");
     setCustomArrayInput("");
     setInputError("");
-  };
+  }, [arraySize]);
 
-  const getAlgoLabel = (algo) =>
+  const getAlgoLabel = useCallback((algo) =>
     ({
       ternarySearch: "Ternary Search",
       binarySearch: "Binary Search",
       linearSearch: "Linear Search",
       jumpSearch: "Jump Search",
       exponentialSearch: "Exponential Search",
-    }[algo] || algo);
+    }[algo] || algo), []);
 
   // Generate steps for Binary Search when target is valid
   useEffect(() => {
@@ -221,7 +218,7 @@ const Searching = () => {
   }, [algorithm]);
 
   // ✅ FIX: size highlights from the *step’s* array
-  const getStepColorArray = () => {
+  const getStepColorArray = useCallback(() => {
     if (!steps[currentStep]) return [];
     const step = steps[currentStep];
     const refArr = Array.isArray(step.array) ? step.array : array;
@@ -237,69 +234,78 @@ const Searching = () => {
     }
     if (step.type === "notFound") return new Array(n).fill("#ff6b6b");
     return cols;
-  };
+  }, [steps, currentStep, array]);
 
-  const handleNextStep = () => setCurrentStep((s) => Math.min(s + 1, steps.length - 1));
-  const handlePrevStep = () => setCurrentStep((s) => Math.max(s - 1, 0));
+  const handleNextStep = useCallback(() => setCurrentStep((s) => Math.min(s + 1, steps.length - 1)), [steps.length]);
+  const handlePrevStep = useCallback(() => setCurrentStep((s) => Math.max(s - 1, 0)), []);
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  const handleSearch = async () => {
-  let searchArray = array;
+  const handleSearch = useCallback(async () => {
+    let searchArray = array;
 
-  if (customArrayInput.trim() !== "") {
-    const parsedArray = customArrayInput
-      .split(",")
-      .map((s) => s.trim())
-      .filter((s) => s !== "")
-      .map(Number);
+    if (customArrayInput.trim() !== "") {
+      const parsedArray = customArrayInput
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => s !== "")
+        .map(Number);
 
-    if (parsedArray.some(isNaN)) { setInputError("Invalid array. Please enter comma-separated numbers only."); return; }
-    if (parsedArray.length === 0) { setInputError("Custom array cannot be empty."); return; }
+      if (parsedArray.some(isNaN)) { 
+        setInputError("Invalid array. Please enter comma-separated numbers only."); 
+        return; 
+      }
+      if (parsedArray.length === 0) { 
+        setInputError("Custom array cannot be empty."); 
+        return; 
+      }
 
-    parsedArray.sort((a, b) => a - b);
-    setArray(parsedArray);
-    searchArray = parsedArray;
+      parsedArray.sort((a, b) => a - b);
+      setArray(parsedArray);
+      searchArray = parsedArray;
+      setInputError("");
+    }
+
+    // --- from here: auto-play binary search steps ---
+    const targetValue = parseInt(target, 10);
+    if (Number.isNaN(targetValue)) {
+      setInputError("Enter a valid number as the target.");
+      return;
+    }
     setInputError("");
-  }
+    if (algorithm !== "binarySearch") {
+      setMessage(`Autoplay is enabled for Binary Search. (${algorithm} will keep current behavior)`);
+      return;
+    }
 
-  // --- from here: auto-play binary search steps ---
-  const targetValue = parseInt(target, 10);
-  if (Number.isNaN(targetValue)) {
-    setInputError("Enter a valid number as the target.");
-    return;
-  }
-  setInputError("");
-  if (algorithm !== "binarySearch") {
-    setMessage(`Autoplay is enabled for Binary Search. (${algorithm} will keep current behavior)`);
-    return;
-  }
+    // Build steps *now* (don’t wait for useEffect) and auto-play them
+    const s = buildBinarySearchSteps(searchArray, targetValue);
+    setSteps(s);
+    setCurrentStep(0);
+    setIsSearching(true);
+    playRef.current = true;
+    setMessage(`Searching for ${targetValue}...`);
 
-  // Build steps *now* (don’t wait for useEffect) and auto-play them
-  const s = buildBinarySearchSteps(searchArray, targetValue);
-  setSteps(s);
-  setCurrentStep(0);
-  setIsSearching(true);
-  playRef.current = true;
-  setMessage(`Searching for ${targetValue}...`);
+    for (let i = 0; i < s.length; i++) {
+      if (!playRef.current) break;                 // respect Stop
+      setCurrentStep(i);
+      // stop immediately when found / finished
+      if (s[i].type === "found" || s[i].type === "notFound") break;
+      await sleep(delay);
+    }
 
-  for (let i = 0; i < s.length; i++) {
-    if (!playRef.current) break;                 // respect Stop
-    setCurrentStep(i);
-    // stop immediately when found / finished
-    if (s[i].type === "found" || s[i].type === "notFound") break;
-    await sleep(delay);
-  }
+    playRef.current = false;
+    setIsSearching(false);
+    const last = s[Math.min(currentStep, s.length - 1)] || s[s.length - 1];
+    if (s.some(st => st.type === "found")) setMessage("Search complete: target found.");
+    else setMessage("Search complete: target not found.");
+  }, [algorithm, array, customArrayInput, delay, target, currentStep]);
 
-  playRef.current = false;
-  setIsSearching(false);
-  const last = s[Math.min(currentStep, s.length - 1)] || s[s.length - 1];
-  if (s.some(st => st.type === "found")) setMessage("Search complete: target found.");
-  else setMessage("Search complete: target not found.");
-};
+  const getAlgorithmName = useCallback(() => getAlgoLabel(algorithm), [algorithm, getAlgoLabel]);
 
-
-  const getAlgorithmName = () => getAlgoLabel(algorithm);
+  // Memoize algorithm details to prevent unnecessary re-renders
+  const algorithmDetails = useMemo(() => SEARCHING_DETAILS[algorithm] || {}, [algorithm]);
+  const algorithmPseudocode = useMemo(() => ALGORITHM_PSEUDOCODE[algorithm] || [], [algorithm]);
 
   return (
     <div className="theme-container" data-aos="fade-up" data-aos-duration="1000">
@@ -316,6 +322,7 @@ const Searching = () => {
               onChange={(e) => setAlgorithm(e.target.value)}
               disabled={isSearching}
               className="form-select"
+              aria-label="Select searching algorithm"
             >
               {["binarySearch", "linearSearch", "jumpSearch", "ternarySearch", "exponentialSearch"].map((algo) => (
                 <option key={algo} value={algo}>{getAlgoLabel(algo)}</option>
@@ -333,6 +340,7 @@ const Searching = () => {
               onChange={(e) => setCustomArrayInput(e.target.value)}
               disabled={isSearching}
               className="form-control"
+              aria-label="Enter custom sorted array values separated by commas"
             />
           </div>
 
@@ -346,11 +354,17 @@ const Searching = () => {
               onChange={(e) => setTarget(e.target.value)}
               disabled={isSearching}
               className="form-control"
+              aria-label="Enter target value to search for"
             />
           </div>
 
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-            <button className="btn btn-primary" onClick={handleSearch} disabled={isSearching}>
+            <button 
+              className="btn btn-primary" 
+              onClick={handleSearch} 
+              disabled={isSearching}
+              aria-label={isSearching ? "Searching in progress" : "Run search"}
+            >
               {isSearching ? "Searching..." : "Run Search"}
             </button>
             <button
@@ -361,16 +375,22 @@ const Searching = () => {
                 setMessage("Search stopped.");
               }}
               disabled={!isSearching}
+              aria-label="Stop search"
             >
               Stop
             </button>
 
-            <button className="btn btn-secondary" onClick={generateArray} disabled={isSearching}>
+            <button 
+              className="btn btn-secondary" 
+              onClick={generateArray} 
+              disabled={isSearching}
+              aria-label="Generate new random array"
+            >
               Generate Array
             </button>
           </div>
         </div>
-        {inputError && <div style={{ color: "var(--theme-status-danger)", textAlign: "center", marginTop: "1rem" }}>{inputError}</div>}
+        {inputError && <div className="inline-error" role="alert">{inputError}</div>}
       </div>
 
       {/* Controls & Export */}
@@ -389,6 +409,7 @@ const Searching = () => {
               onChange={(e) => setArraySize(parseInt(e.target.value))}
               disabled={isSearching}
               className="form-range"
+              aria-label="Adjust array size"
             />
           </div>
           <div className="form-group">
@@ -401,6 +422,7 @@ const Searching = () => {
               onChange={(e) => setDelay(parseInt(e.target.value))}
               disabled={isSearching}
               className="form-range"
+              aria-label="Adjust animation speed"
             />
           </div>
         </div>
@@ -408,17 +430,29 @@ const Searching = () => {
         <SimpleExportControls containerId="search-visualization-container" />
       </div>
 
-      {message && <div style={{ textAlign: "center", color: "var(--theme-status-info)", fontWeight: 600, margin: "1rem 0" }}>{message}</div>}
+      {message && <div className="status-message" role="status">{message}</div>}
 
       {/* Step Navigation (Binary only) */}
       {algorithm === "binarySearch" && steps.length > 0 && (
-        <div className="theme-card" style={{ padding: '1rem', marginBottom: '1rem' }} data-aos="fade-up" data-aos-delay="400">
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <button className="btn btn-secondary" onClick={handlePrevStep} disabled={currentStep === 0}>Previous Step</button>
-              <button className="btn btn-secondary" onClick={handleNextStep} disabled={currentStep >= steps.length - 1}>Next Step</button>
-            </div>
-            <span style={{ color: "var(--theme-text-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
+        <div className="theme-card step-navigation" data-aos="fade-up" data-aos-delay="400">
+          <div className="step-controls">
+            <button 
+              className="btn btn-secondary" 
+              onClick={handlePrevStep} 
+              disabled={currentStep === 0}
+              aria-label="Previous step"
+            >
+              Previous Step
+            </button>
+            <button 
+              className="btn btn-secondary" 
+              onClick={handleNextStep} 
+              disabled={currentStep >= steps.length - 1}
+              aria-label="Next step"
+            >
+              Next Step
+            </button>
+            <span className="step-counter">
               Step {currentStep + 1} / {steps.length}
             </span>
           </div>
@@ -427,89 +461,19 @@ const Searching = () => {
 
       {/* Visualization & Pseudocode */}
       <div className="form-grid" data-aos="fade-up" data-aos-delay="500">
-        <div className="visualization-area" id="search-visualization-container" style={{ gridColumn: 'span 2' }}>
-          {/* ⛔️ Removed the duplicate AlgorithmVisualizer */}
-
-          {/* ✅ Keep ONLY the step visualization for Binary */}
-          {algorithm === "binarySearch" && steps.length > 0 && (
-            <div
-              style={{
-                position: "relative", /* anchor overlay */
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "flex-end",
-                height: "100%",
-                gap: gapValue,
-                marginTop: "2rem"
-              }}
-            >
-              {(() => {
-                const data = steps[currentStep]?.array || array;
-                const maxVal = Math.max(...data, 1);
-                return data.map((num, idx) => {
-                  const maxBarWidth = isTabletOrBelow ? 20 : 28;
-                  const baseWidth = Math.floor((isTabletOrBelow ? 360 : 600) / Math.max(data.length, 1));
-                  const barWidth = Math.max(isTabletOrBelow ? 10 : 12, Math.min(maxBarWidth, baseWidth));
-                  const showNumbers = data.length <= 25;
-                  const stepColors = steps.length > 0 ? getStepColorArray() : [];
-                  const heightPx = Math.max(40, Math.round((num / maxVal) * 200));
-                  return (
-                    <div
-                      key={`${num}-${idx}`}
-                      style={{
-                        height: `${heightPx}px`,
-                        width: `${barWidth}px`,
-                        backgroundColor: stepColors[idx] || "#66ccff",
-                        border: `1px solid ${stepColors[idx] || "#66ccff"}`,
-                        borderRadius: "6px 6px 0 0",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "flex-end",
-                        fontWeight: "bold",
-                        fontSize: barFontSize,
-                        padding: "4px 2px",
-                        transition: "all 0.3s ease",
-                        boxShadow: `0 4px 12px ${(stepColors[idx] || "#66ccff")}30`,
-                        position: "relative",
-                        cursor: "default",
-                        color: "#ffffff",
-                      }}
-                      title={`Value: ${num}, Index: ${idx}`}
-                    >
-                      {showNumbers && (
-                        <div style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.8)", fontWeight: "bold", fontSize: "inherit", minHeight: "14px", display: "flex", alignItems: "center" }}>
-                          {num}
-                        </div>
-                      )}
-                    </div>
-                  );
-                });
-              })()}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "10px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  color: "#66ccff",
-                  fontSize: "12px",
-                  fontWeight: "600",
-                  background: "rgba(26, 26, 46, 0.8)",
-                  padding: "6px 12px",
-                  borderRadius: "6px",
-                  border: "1px solid rgba(102, 204, 255, 0.3)",
-                }}
-              >
-                Array Size: {steps[currentStep]?.array?.length ?? array.length} | Step Mode
-              </div>
-            </div>
-          )}
-
+        <div className="visualization-area" id="search-visualization-container">
+          {/* Use AlgorithmVisualizer for consistent visualization */}
+          <AlgorithmVisualizer
+            algorithmName={getAlgorithmName()}
+            initialArray={array}
+            visualOnly={true}
+            barGap={gapValue}
+            fontSize={barFontSize}
+            colorArray={algorithm === "binarySearch" && steps.length > 0 ? getStepColorArray() : undefined}
+          />
+          
           {algorithm === "binarySearch" && steps[currentStep]?.text && (
-            <div style={{ color: "#66ccff", fontWeight: 600, marginTop: "8px" }}>
-              {steps[currentStep].text}
-            </div>
+            <div className="step-text">{steps[currentStep].text}</div>
           )}
         </div>
 
@@ -517,8 +481,8 @@ const Searching = () => {
           <div className="theme-card-header">
             <h3>{getAlgorithmName()} Pseudocode</h3>
           </div>
-          <pre style={{ background: 'var(--theme-bg)', borderRadius: '8px', padding: '1rem', color: 'var(--theme-text-secondary)', overflowX: 'auto' }}>
-            {(ALGORITHM_PSEUDOCODE[algorithm] || []).map((line) => (
+          <pre className="algorithm-pseudocode">
+            {algorithmPseudocode.map((line) => (
               <div key={line.code}>{line.code}</div>
             ))}
           </pre>
@@ -527,25 +491,31 @@ const Searching = () => {
 
       {/* Algorithm Details */}
       <div className="theme-card" data-aos="fade-up" data-aos-delay="700">
-        <div className="theme-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+        <div className="theme-card-header algorithm-details-header">
           <h3>{getAlgorithmName()} - Algorithm Details</h3>
-          <button className="btn btn-secondary" onClick={() => setShowCodeExplanation(true)}>View Code Explanation</button>
+          <button 
+            className="btn btn-secondary" 
+            onClick={() => setShowCodeExplanation(true)}
+            aria-label="View code explanation"
+          >
+            View Code Explanation
+          </button>
         </div>
         <div>
           <div className="complexity-grid">
             <div className="complexity-item">
               <span className="complexity-label">Time Complexity:</span>
-              <span className="complexity-value">{SEARCHING_DETAILS[algorithm]?.time}</span>
+              <span className="complexity-value">{algorithmDetails.time}</span>
             </div>
             <div className="complexity-item">
               <span className="complexity-label">Space Complexity:</span>
-              <span className="complexity-value">{SEARCHING_DETAILS[algorithm]?.space}</span>
+              <span className="complexity-value">{algorithmDetails.space}</span>
             </div>
           </div>
-          <div style={{ marginTop: '1.5rem' }}>
-            <h4 style={{ color: 'var(--theme-text-primary)', marginBottom: '0.5rem' }}>Real-life Uses:</h4>
-            <ul style={{ margin: 0, paddingLeft: "18px", color: "var(--theme-text-secondary)" }}>
-              {(SEARCHING_DETAILS[algorithm]?.uses || []).map((use) => (<li key={use}>{use}</li>))}
+          <div className="algorithm-uses">
+            <h4>Real-life Uses:</h4>
+            <ul>
+              {(algorithmDetails.uses || []).map((use) => (<li key={use}>{use}</li>))}
             </ul>
           </div>
         </div>

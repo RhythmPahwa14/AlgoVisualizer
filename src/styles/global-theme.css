@@ -1255,7 +1255,7 @@ body {
 .theme-switch input:checked + .theme-switch-slider:before {
   transform: translateX(22px);
 }
-  
+
 .highlight {
   font-weight: 800;
   background: linear-gradient(90deg, var(--text-primary), var(--accent-color));
@@ -1264,28 +1264,34 @@ body {
   color: var(--primary-color);
   -webkit-text-fill-color: transparent;
 }
+
 .search-points {
   margin: 0 2rem;
 }
+
 .search-points li {
   color: var(--theme-text-secondary);
   line-height: 1.6;
 }
+
 .table {
   width: 100%;
   border-collapse: collapse;
   font-size: 16px; 
 }
+
 .table thead th {
   text-align: left;
   font-size: 24px;
   padding: 8px 12px;
 }
+
 .table tbody td {
   padding: 12px;
   color: #000000;
   border-top: 1px solid rgba(255, 255, 255, 0.03);
 }
+
 [data-theme="dark"] .table tbody td {
   color:#ffffff;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -1296,6 +1302,7 @@ body {
   align-items: center;
   gap: 12px;
 }
+
 .badge {
   min-width: 40px;
   padding: 6px 10px;
@@ -1306,14 +1313,17 @@ body {
   box-shadow: 0 4px 12px rgba(104, 101, 101, 0.01);
   transition: all 0.3s ease;
 }
+
 .badge:hover{
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(104, 101, 101, 0.3);
 }
+
 .muted {
   color: #94a3b8;
   font-size: 13px; 
 }
+
 .theme-card pre,
 .theme-card code {
   background: var(--code-bg) !important;
@@ -1324,6 +1334,7 @@ body {
   line-height: 1.6;
   padding: 0; 
 }
+
 /* Boxed sequence grid with step highlight */
 .dp-seq {
   display: grid;
@@ -1333,10 +1344,10 @@ body {
 }
 
 .dp-cell {
-  border: 1px solid var(--border, rgba(255,255,255,.12));
+  border: 1px solid var(--border, rgba(255, 255, 255, .12));
   border-radius: 10px;
   padding: .5rem .25rem;
-  background: var(--surface-bg, rgba(255,255,255,.03));
+  background: var(--surface-bg, rgba(255, 255, 255, .03));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1358,3 +1369,128 @@ body {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-primary, #7aa2f7) 25%, transparent);
 }
 
+/* Searching Component Styles */
+.overview-description {
+  text-align: center;
+  max-width: 700px;
+  margin: -2rem auto 2rem auto;
+  color: var(--theme-text-secondary);
+}
+
+.overview-goal {
+  text-align: center;
+  max-width: 700px;
+  margin: -2rem auto 2rem auto;
+  color: var(--text-color);
+}
+
+.goal-label {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--accent-primary);
+}
+
+.card-description {
+  color: var(--theme-text-secondary);
+  line-height: 1.6;
+}
+
+.algorithm-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.algorithm-uses {
+  margin-top: 1.5rem;
+}
+
+.algorithm-uses h4 {
+  color: var(--theme-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.algorithm-uses ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--theme-text-secondary);
+}
+
+.step-navigation {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.step-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.step-counter {
+  color: var(--theme-text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.step-text {
+  color: #66ccff;
+  font-weight: 600;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.algorithm-pseudocode {
+  background: var(--theme-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  color: var(--theme-text-secondary);
+  overflow-x: auto;
+}
+
+.status-message {
+  text-align: center;
+  color: var(--theme-status-info);
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.inline-error {
+  color: var(--theme-status-danger);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Responsive improvements for searching components */
+@media (max-width: 768px) {
+  .overview-description,
+  .overview-goal {
+    padding: 0 1rem;
+  }
+  
+  .algorithm-details-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .step-controls {
+    flex-direction: column;
+  }
+  
+  .table {
+    font-size: 14px;
+  }
+  
+  .table thead th {
+    font-size: 18px;
+  }
+  
+  .algo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
