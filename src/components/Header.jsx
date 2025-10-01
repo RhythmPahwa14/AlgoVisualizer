@@ -5,12 +5,84 @@ import { useTheme } from '../ThemeContext';
 import { FaGithub, FaMoon, FaSun, FaCode, FaSearch, FaDatabase, FaBrain, FaUsers, FaBook, FaProjectDiagram, FaQuestionCircle } from 'react-icons/fa';
 import { headerNavigationItems } from '../utils/navigation';
 
+// Icon mapping utility for consistent icon handling across navigation items
+const getIconComponent = (iconName) => {
+    const iconMap = {
+        'FaCode': FaCode,
+        'FaSearch': FaSearch,
+        'FaDatabase': FaDatabase,
+        'FaProjectDiagram': FaProjectDiagram,
+        'FaBrain': FaBrain,
+        'FaUsers': FaUsers,
+        'FaBook': FaBook,
+        'FaQuestionCircle': FaQuestionCircle
+    };
+    return iconMap[iconName] || null;
+};
+
+// Sub-component for rendering grouped navigation items
+const NavGroup = ({ groupKey, title, items, isMobile = false }) => {
+    const groupItems = items.filter(item => item.group === groupKey);
+    
+    if (groupItems.length === 0) return null;
+    
+    return (
+        <div className={`nav-group ${groupKey}-nav`}>
+            {title && <span className="nav-group-label">{title}</span>}
+            {groupItems.map((item, index) => (
+                <NavLink 
+                    key={item.path}
+                    to={item.path}
+                    end={item.path === '/'}
+                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                >
+                    {item.icon && React.createElement(getIconComponent(item.icon), { 
+                        className: isMobile ? "mobile-nav-icon" : "nav-icon" 
+                    })}
+                    <span>{item.label}</span>
+                </NavLink>
+            ))}
+        </div>
+    );
+};
+
+// Sub-component for mobile navigation groups
+const MobileNavGroup = ({ groupKey, title, items, toggleMobileMenu }) => {
+    const groupItems = items.filter(item => item.group === groupKey);
+    
+    if (groupItems.length === 0) return null;
+    
+    return (
+        <div className="mobile-nav-group">
+            <div className="mobile-group-header">
+                <span>{title}</span>
+            </div>
+            {groupItems.map((item, index) => (
+                <NavLink 
+                    key={item.path}
+                    to={item.path}
+                    end={item.path === '/'}
+                    className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+                    onClick={toggleMobileMenu}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                    {item.icon && React.createElement(getIconComponent(item.icon), { 
+                        className: "mobile-nav-icon" 
+                    })}
+                    <span>{item.label}</span>
+                </NavLink>
+            ))}
+        </div>
+    );
+};
+
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { theme, toggleTheme } = useTheme();
     const location = useLocation();
 
+    // Handle scroll effect for header styling
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
@@ -20,10 +92,12 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Close mobile menu when location changes
     useEffect(() => {
         setIsMobileMenuOpen(false);
     }, [location]);
 
+    // Handle body overflow when mobile menu is open
     useEffect(() => {
         if (isMobileMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -40,20 +114,10 @@ const Header = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
-    // Map string icon names to actual icon components
-    const getIconComponent = (iconName) => {
-        const iconMap = {
-            'FaCode': FaCode,
-            'FaSearch': FaSearch,
-            'FaDatabase': FaDatabase,
-            'FaProjectDiagram': FaProjectDiagram,
-            'FaBrain': FaBrain,
-            'FaUsers': FaUsers,
-            'FaBook': FaBook,
-            'FaQuestionCircle': FaQuestionCircle
-        };
-        return iconMap[iconName] || null;
-    };
+    // Filter navigation items by group for better organization
+    const mainNavItems = headerNavigationItems.filter(item => item.group === 'main');
+    const learnNavItems = headerNavigationItems.filter(item => item.group === 'learn');
+    const otherNavItems = headerNavigationItems.filter(item => ['test', 'community', 'help'].includes(item.group));
 
     return (
         <>
@@ -75,50 +139,15 @@ const Header = () => {
 
                     {/* Desktop Navigation */}
                     <nav className="nav-links-desktop" aria-label="Primary">
-                        <div className="nav-group main-nav">
-                            {headerNavigationItems.filter(item => item.group === 'main').map(item => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path} 
-                                    end={item.path === '/'}
-                                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
-                        </div>
+                        <NavGroup groupKey="main" items={headerNavigationItems} />
                         
                         <div className="nav-separator"></div>
                         
-                        <div className="nav-group learn-nav">
-                            <span className="nav-group-label">Learn</span>
-                            {headerNavigationItems.filter(item => item.group === 'learn').map(item => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path}
-                                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
-                        </div>
+                        <NavGroup groupKey="learn" title="Learn" items={headerNavigationItems} />
                         
                         <div className="nav-separator"></div>
                         
-                        <div className="nav-group other-nav">
-                            {headerNavigationItems.filter(item => ['test', 'community', 'help'].includes(item.group)).map(item => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path}
-                                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
-                        </div>
+                        <NavGroup groupKey="other" title="" items={headerNavigationItems} />
                     </nav>
 
                     {/* Action Buttons */}
@@ -192,60 +221,26 @@ const Header = () => {
                     </div>
 
                     <div className="mobile-nav-groups">
-                        <div className="mobile-nav-group">
-                            <div className="mobile-group-header">
-                                <span>Main</span>
-                            </div>
-                            {headerNavigationItems.filter(item => item.group === 'main').map((item, index) => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path}
-                                    end={item.path === '/'}
-                                    className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
-                                    onClick={toggleMobileMenu}
-                                    style={{ animationDelay: `${index * 0.1}s` }}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "mobile-nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
-                        </div>
-
-                        <div className="mobile-nav-group">
-                            <div className="mobile-group-header">
-                                <span>Learn Algorithms</span>
-                            </div>
-                            {headerNavigationItems.filter(item => item.group === 'learn').map((item, index) => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path}
-                                    className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
-                                    onClick={toggleMobileMenu}
-                                    style={{ animationDelay: `${(index + 1) * 0.1}s` }}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "mobile-nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
-                        </div>
-
-                        <div className="mobile-nav-group">
-                            <div className="mobile-group-header">
-                                <span>More</span>
-                            </div>
-                            {headerNavigationItems.filter(item => ['test', 'community', 'help'].includes(item.group)).map((item, index) => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path}
-                                    className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
-                                    onClick={toggleMobileMenu}
-                                    style={{ animationDelay: `${(index + 4) * 0.1}s` }}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "mobile-nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
-                        </div>
+                        <MobileNavGroup 
+                            groupKey="main" 
+                            title="Main" 
+                            items={headerNavigationItems} 
+                            toggleMobileMenu={toggleMobileMenu} 
+                        />
+                        
+                        <MobileNavGroup 
+                            groupKey="learn" 
+                            title="Learn Algorithms" 
+                            items={headerNavigationItems} 
+                            toggleMobileMenu={toggleMobileMenu} 
+                        />
+                        
+                        <MobileNavGroup 
+                            groupKey="other" 
+                            title="More" 
+                            items={headerNavigationItems} 
+                            toggleMobileMenu={toggleMobileMenu} 
+                        />
                     </div>
                 </div>
             </nav>
