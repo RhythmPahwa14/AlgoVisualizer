@@ -1258,5 +1258,545 @@
         ],
         "correctAnswer": 3,
         "explanation": "Binary Tree is often less efficient due to multiple factors like higher time complexity, space usage, and lack of adaptability."
+    },
+    {
+        "id": 85,
+        "topic": "Data Structures",
+        "algorithm": "Hashing",
+        "difficulty": "Easy",
+        "question": "What is the main purpose of hashing?",
+        "options": [
+            "Store data sequentially",
+            "Map data to fixed-size values for fast access",
+            "Sort data efficiently",
+            "Compress data to smaller size"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Hashing maps arbitrary-sized data to fixed-size values (hash codes) to allow fast insertion, deletion, and lookup."
+    },
+    {
+        "id": 86,
+        "topic": "Data Structures",
+        "algorithm": "Hashing",
+        "difficulty": "Easy",
+        "question": "Which data structure commonly uses hashing for fast access?",
+        "options": [
+            "Array",
+            "Linked List",
+            "Hash Table",
+            "Stack"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Hash tables use hashing to map keys to indices, allowing O(1) average-time lookup."
+    },
+    {
+        "id": 87,
+        "topic": "Data Structures",
+        "algorithm": "Hashing",
+        "difficulty": "Medium",
+        "question": "Which of the following is a collision resolution technique in hashing?",
+        "options": [
+            "Binary Search",
+            "Chaining",
+            "Heapify",
+            "Merge Sort"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Chaining is used to store multiple elements at the same index in case of a collision."
+    },
+    {
+        "id": 88,
+        "topic": "Data Structures",
+        "algorithm": "Hashing",
+        "difficulty": "Medium",
+        "question": "What is a hash function?",
+        "options": [
+            "A function that sorts elements",
+            "A function that maps keys to integer indices",
+            "A function that compares two arrays",
+            "A function that computes factorial"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A hash function converts a key into an integer index for storage in a hash table."
+    },
+    {
+        "id": 89,
+        "topic": "Data Structures",
+        "algorithm": "Hashing",
+        "difficulty": "Hard",
+        "question": "Why is the choice of a good hash function important?",
+        "options": [
+            "To ensure fewer collisions and uniform distribution",
+            "To make the table smaller",
+            "To sort the keys automatically",
+            "To compress data efficiently"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A good hash function reduces collisions and distributes keys uniformly, ensuring O(1) performance."
+    },
+    {
+        "id": 90,
+        "topic": "Data Structures",
+        "algorithm": "Hashing",
+        "difficulty": "Hard",
+        "question": "What can happen if all keys hash to the same index?",
+        "options": [
+            "The hash table becomes empty",
+            "The hash table degenerates into a linked list",
+            "The hash table sorts automatically",
+            "Nothing significant"
+        ],
+        "correctAnswer": 1,
+        "explanation": "If all keys collide to the same index, chaining will make a long list, degrading performance to O(n)."
+    },
+    {
+        "id": 91,
+        "topic": "Data Structures",
+        "algorithm": "Hash Table",
+        "difficulty": "Easy",
+        "question": "What is stored at each index of a hash table?",
+        "options": [
+            "Elements or key-value pairs",
+            "Only keys",
+            "Only indices",
+            "Sorted arrays"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each index of a hash table stores elements, usually as key-value pairs."
+    },
+    {
+        "id": 92,
+        "topic": "Data Structures",
+        "algorithm": "Hash Table",
+        "difficulty": "Easy",
+        "question": "Hash tables provide which average time complexity for search operations?",
+        "options": [
+            "O(n)",
+            "O(log n)",
+            "O(1)",
+            "O(n log n)"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Search in hash tables is O(1) on average due to direct mapping by hash codes."
+    },
+    {
+        "id": 93,
+        "topic": "Data Structures",
+        "algorithm": "Hash Table",
+        "difficulty": "Medium",
+        "question": "Which of the following affects hash table performance?",
+        "options": [
+            "Load factor",
+            "Hash function quality",
+            "Collision resolution technique",
+            "All of the above"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Load factor, hash function, and collision resolution all impact hash table efficiency."
+    },
+    {
+        "id": 94,
+        "topic": "Data Structures",
+        "algorithm": "Hash Table",
+        "difficulty": "Medium",
+        "question": "What happens when the load factor exceeds a threshold in a hash table?",
+        "options": [
+            "The table resizes",
+            "Elements are deleted",
+            "The hash function changes",
+            "Nothing"
+        ],
+        "correctAnswer": 0,
+        "explanation": "When the load factor is high, the table is resized to reduce collisions and maintain O(1) performance."
+    },
+    {
+        "id": 95,
+        "topic": "Data Structures",
+        "algorithm": "Hash Table",
+        "difficulty": "Hard",
+        "question": "Worst-case time complexity of search in a hash table using chaining is?",
+        "options": [
+            "O(1)",
+            "O(log n)",
+            "O(n)",
+            "O(n log n)"
+        ],
+        "correctAnswer": 2,
+        "explanation": "In the worst case, all keys hash to the same index, forming a list of size n, giving O(n) search time."
+    },
+    {
+        "id": 96,
+        "topic": "Data Structures",
+        "algorithm": "Hash Table",
+        "difficulty": "Hard",
+        "question": "Which of the following is NOT a valid collision resolution technique?",
+        "options": [
+            "Chaining",
+            "Linear probing",
+            "Heap sort",
+            "Double hashing"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Heap sort is unrelated to collision resolution in hash tables."
+    },
+    {
+        "id": 97,
+        "topic": "Data Structures",
+        "algorithm": "chainingHash",
+        "difficulty": "Easy",
+        "question": "In chaining, where are colliding elements stored?",
+        "options": [
+            "In a separate hash table",
+            "In a linked list at the same index",
+            "In a stack",
+            "In an array sorted by key"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Chaining stores multiple colliding elements in a linked list at the same table index."
+    },
+    {
+        "id": 98,
+        "topic": "Data Structures",
+        "algorithm": "chainingHash",
+        "difficulty": "Easy",
+        "question": "Which data structure is commonly used in chaining?",
+        "options": [
+            "Queue",
+            "Linked List",
+            "Binary Tree",
+            "Heap"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Linked lists are used at each index to store multiple colliding elements."
+    },
+    {
+        "id": 99,
+        "topic": "Data Structures",
+        "algorithm": "chainingHash",
+        "difficulty": "Medium",
+        "question": "What is the average search complexity in chaining with a low load factor?",
+        "options": [
+            "O(1)",
+            "O(log n)",
+            "O(n)",
+            "O(n log n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "With a low load factor, most indices have very few elements, giving O(1) average search time."
+    },
+    {
+        "id": 100,
+        "topic": "Data Structures",
+        "algorithm": "chainingHash",
+        "difficulty": "Medium",
+        "question": "If a hash table uses chaining and all keys hash to the same index, what is the worst-case search time?",
+        "options": [
+            "O(1)",
+            "O(log n)",
+            "O(n)",
+            "O(n^2)"
+        ],
+        "correctAnswer": 2,
+        "explanation": "All keys in one linked list give O(n) search in the worst case."
+    },
+    {
+        "id": 101,
+        "topic": "Data Structures",
+        "algorithm": "chainingHash",
+        "difficulty": "Hard",
+        "question": "Which of the following improves search efficiency in chaining?",
+        "options": [
+            "Using balanced BSTs instead of linked lists",
+            "Increasing table size",
+            "Reducing load factor",
+            "All of the above"
+        ],
+        "correctAnswer": 3,
+        "explanation": "All options help: BSTs improve lookup, larger table reduces collisions, lower load factor reduces chain length."
+    },
+    {
+        "id": 102,
+        "topic": "Data Structures",
+        "algorithm": "chainingHash",
+        "difficulty": "Hard",
+        "question": "Which is a disadvantage of chaining?",
+        "options": [
+            "Wastes memory due to pointers",
+            "Cannot handle collisions",
+            "Always slower than open addressing",
+            "Does not allow deletion"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Chaining requires extra memory for pointers in linked lists, which is a trade-off for simpler collision handling."
+    },
+    {
+        "id": 103,
+        "topic": "Data Structures",
+        "algorithm": "Open Addressing",
+        "difficulty": "Easy",
+        "question": "In open addressing, where is a colliding element stored?",
+        "options": [
+            "In a linked list",
+            "In another empty table slot",
+            "At the same index",
+            "In a separate array"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Open addressing finds another empty slot in the table to store the colliding element."
+    },
+    {
+        "id": 104,
+        "topic": "Data Structures",
+        "algorithm": "Open Addressing",
+        "difficulty": "Easy",
+        "question": "Which is NOT an open addressing method?",
+        "options": [
+            "Linear probing",
+            "Quadratic probing",
+            "Double hashing",
+            "Chaining"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Chaining is a separate collision handling technique, not open addressing."
+    },
+    {
+        "id": 105,
+        "topic": "Data Structures",
+        "algorithm": "Open Addressing",
+        "difficulty": "Medium",
+        "question": "What is primary clustering in open addressing?",
+        "options": [
+            "When multiple elements hash to the same index",
+            "When clusters of occupied slots form, slowing insert/search",
+            "When the hash table resizes",
+            "When hash function fails"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Primary clustering occurs when clusters of consecutive occupied slots form, increasing probe length."
+    },
+    {
+        "id": 106,
+        "topic": "Data Structures",
+        "algorithm": "Open Addressing",
+        "difficulty": "Medium",
+        "question": "What is the average search complexity of open addressing with low load factor?",
+        "options": [
+            "O(n)",
+            "O(log n)",
+            "O(1)",
+            "O(n log n)"
+        ],
+        "correctAnswer": 2,
+        "explanation": "With a low load factor, most searches find their element quickly, giving O(1) average complexity."
+    },
+    {
+        "id": 107,
+        "topic": "Data Structures",
+        "algorithm": "Open Addressing",
+        "difficulty": "Hard",
+        "question": "What is the worst-case search time in open addressing?",
+        "options": [
+            "O(1)",
+            "O(log n)",
+            "O(n)",
+            "O(n log n)"
+        ],
+        "correctAnswer": 2,
+        "explanation": "If all elements form a cluster or table is nearly full, worst-case search can take O(n)."
+    },
+    {
+        "id": 108,
+        "topic": "Data Structures",
+        "algorithm": "Open Addressing",
+        "difficulty": "Hard",
+        "question": "Which of these helps reduce clustering in open addressing?",
+        "options": [
+            "Linear probing",
+            "Quadratic probing or double hashing",
+            "Always resizing table",
+            "Using linked lists"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Quadratic probing and double hashing reduce clustering by spreading keys more uniformly."
+    },
+    {
+        "id": 109,
+        "topic": "Data Structures",
+        "algorithm": "Rolling Hash",
+        "difficulty": "Easy",
+        "question": "Rolling hash is used primarily in which type of algorithms?",
+        "options": [
+            "Sorting algorithms",
+            "Substring search algorithms",
+            "Graph traversal algorithms",
+            "Dynamic programming"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Rolling hash allows fast substring search, used in algorithms like Rabin-Karp."
+    },
+    {
+        "id": 110,
+        "topic": "Data Structures",
+        "algorithm": "Rolling Hash",
+        "difficulty": "Easy",
+        "question": "What is the advantage of rolling hash over normal hash in string matching?",
+        "options": [
+            "Faster hash recomputation when sliding window",
+            "No collisions",
+            "Uses less memory",
+            "Automatically sorts substrings"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Rolling hash lets you compute the next hash by updating the previous one, avoiding full recomputation."
+    },
+    {
+        "id": 111,
+        "topic": "Data Structures",
+        "algorithm": "Rolling Hash",
+        "difficulty": "Medium",
+        "question": "Which problem is solved efficiently using rolling hash?",
+        "options": [
+            "Merge Sort",
+            "Rabin-Karp string search",
+            "DFS on trees",
+            "Binary search"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Rabin-Karp uses rolling hash for fast substring matching."
+    },
+    {
+        "id": 112,
+        "topic": "Data Structures",
+        "algorithm": "Rolling Hash",
+        "difficulty": "Medium",
+        "question": "What is the time complexity of substring search using Rabin-Karp with rolling hash?",
+        "options": [
+            "O(N × M)",
+            "O(N + M)",
+            "O(N log M)",
+            "O(1)"
+        ],
+        "correctAnswer": 1,
+        "explanation": "With rolling hash, Rabin-Karp runs in O(N + M) average time for pattern matching."
+    },
+    {
+        "id": 113,
+        "topic": "Data Structures",
+        "algorithm": "Rolling Hash",
+        "difficulty": "Hard",
+        "question": "Which property of rolling hash is critical for efficient substring matching?",
+        "options": [
+            "Incremental hash computation",
+            "No collisions",
+            "Sorting substrings",
+            "Dynamic memory allocation"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Incremental update of hash values enables efficient sliding window substring search."
+    },
+    {
+        "id": 114,
+        "topic": "Data Structures",
+        "algorithm": "Rolling Hash",
+        "difficulty": "Hard",
+        "question": "Which problem arises if the rolling hash is not designed carefully?",
+        "options": [
+            "Increased memory usage",
+            "Hash collisions causing false positives",
+            "Slower sorting",
+            "Unable to store keys"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Poor hash design can cause collisions, resulting in false matches during substring search."
+    },
+    {
+        "id": 115,
+        "topic": "Data Structures",
+        "algorithm": "Applications",
+        "difficulty": "Easy",
+        "question": "Which of the following is a common use of hashing?",
+        "options": [
+            "Sorting arrays",
+            "Finding duplicates",
+            "DFS traversal",
+            "Dynamic programming"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Hashing is often used to find duplicates efficiently using sets or hash maps."
+    },
+    {
+        "id": 116,
+        "topic": "Data Structures",
+        "algorithm": "Applications",
+        "difficulty": "Easy",
+        "question": "Which data structure is typically implemented using hashing?",
+        "options": [
+            "Queue",
+            "Stack",
+            "Map or Dictionary",
+            "Binary Tree"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Maps or dictionaries use hashing to map keys to values with O(1) access."
+    },
+    {
+        "id": 117,
+        "topic": "Data Structures",
+        "algorithm": "Applications",
+        "difficulty": "Medium",
+        "question": "Hashing is often used in which common algorithmic problem?",
+        "options": [
+            "Two-sum problem",
+            "Merge sort",
+            "Binary search",
+            "DFS traversal"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Hashing allows checking complements efficiently, solving the two-sum problem in O(n) time."
+    },
+    {
+        "id": 118,
+        "topic": "Data Structures",
+        "algorithm": "Applications",
+        "difficulty": "Medium",
+        "question": "Which application benefits from counting frequencies using hashing?",
+        "options": [
+            "Finding duplicates",
+            "Word frequency in documents",
+            "Histogram generation",
+            "All of the above"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Hashing can efficiently count frequencies for all these applications."
+    },
+    {
+        "id": 119,
+        "topic": "Data Structures",
+        "algorithm": "Applications",
+        "difficulty": "Hard",
+        "question": "Which problem requires careful hash function design to avoid collisions?",
+        "options": [
+            "Counting frequencies",
+            "Two-sum problem",
+            "Substring matching",
+            "All of the above"
+        ],
+        "correctAnswer": 3,
+        "explanation": "All listed problems can be impacted by hash collisions, requiring good hash functions."
+    },
+    {
+        "id": 120,
+        "topic": "Data Structures",
+        "algorithm": "Applications",
+        "difficulty": "Hard",
+        "question": "Which of these algorithms heavily rely on hashing?",
+        "options": [
+            "Rabin-Karp string search",
+            "Frequency counter in data streams",
+            "Hash-based caches and memoization",
+            "All of the above"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Hashing is crucial in substring search, frequency counting, and cache/memoization implementations."
     }
 ]

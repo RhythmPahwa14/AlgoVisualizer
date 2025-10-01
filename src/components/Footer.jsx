@@ -20,6 +20,7 @@ import logo from "/public/logo.jpg";
 import { FaXTwitter } from "react-icons/fa6";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { navigationLinks, resourceLinks, socialLinks, techPills } from "../utils/footerData";
 
 // Sub-component for rendering footer links
 const FooterLink = ({ to, icon: Icon, children }) => (
@@ -172,41 +173,21 @@ const Footer = () => {
     }, 1000);
   };
 
-  // Navigation links data
-  const navigationLinks = [
-    { to: "/", icon: FaRocket, label: "Home" },
-    { to: "/data-structures", icon: FaCode, label: "Algorithms" },
-    { to: "/data-structures", icon: FaGraduationCap, label: "Data Structures" },
-    { to: "/about", icon: FaGraduationCap, label: "About Us" },
-    { to: "/contact", icon: FaEnvelope, label: "Contact" },
-  ];
-
-  // Resource links data
-  const resourceLinks = [
-    { to: "/documentation", icon: FaGraduationCap, label: "Documentation" },
-    { to: "/faq", icon: FaGraduationCap, label: "FAQ" },
-    { to: "/data-structures", icon: FaGraduationCap, label: "Tutorials" },
-    { to: "/blog", icon: FaGraduationCap, label: "Blog" },
-    { to: "/community", icon: FaGraduationCap, label: "Community" },
-    { to: "/contribute", icon: FaCode, label: "Contribute" },
-  ];
-
-  // Social media links data
-  const socialLinks = [
-    { href: "https://github.com/RhythmPahwa14/AlgoVisualizer", icon: FaGithub, title: "GitHub" },
-    { href: "https://linkedin.com/in/sandeepvashishtha", icon: FaLinkedin, title: "LinkedIn" },
-    { href: "https://twitter.com", icon: FaXTwitter, title: "Twitter" },
-    { href: "https://discord.com", icon: FaDiscord, title: "Discord" },
-    { href: "https://youtube.com", icon: FaYoutube, title: "YouTube" },
-  ];
-
-  // Technology pills data
-  const techPills = [
-    { href: "https://react.dev/", label: "React" },
-    { href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", label: "JavaScript" },
-    { href: "https://d3js.org/", label: "D3.js" },
-    { href: "https://nodejs.org/", label: "Node.js" },
-  ];
+  // Icon mapping helper
+  const getIconComponent = (iconName) => {
+    const iconMap = {
+      "FaRocket": FaRocket,
+      "FaCode": FaCode,
+      "FaGraduationCap": FaGraduationCap,
+      "FaEnvelope": FaEnvelope,
+      "FaGithub": FaGithub,
+      "FaLinkedin": FaLinkedin,
+      "FaXTwitter": FaXTwitter,
+      "FaDiscord": FaDiscord,
+      "FaYoutube": FaYoutube,
+    };
+    return iconMap[iconName] || null;
+  };
 
   return (
     <>
@@ -273,7 +254,11 @@ const Footer = () => {
             <h3 className="column-title">Navigate</h3>
             <ul className="footer-links">
               {navigationLinks.map((link, index) => (
-                <FooterLink key={index} to={link.to} icon={link.icon}>
+                <FooterLink 
+                  key={index} 
+                  to={link.to} 
+                  icon={getIconComponent(link.icon)}
+                >
                   {link.label}
                 </FooterLink>
               ))}
@@ -290,7 +275,11 @@ const Footer = () => {
             <h3 className="column-title">Resources</h3>
             <ul className="footer-links">
               {resourceLinks.map((link, index) => (
-                <FooterLink key={index} to={link.to} icon={link.icon}>
+                <FooterLink 
+                  key={index} 
+                  to={link.to} 
+                  icon={getIconComponent(link.icon)}
+                >
                   {link.label}
                 </FooterLink>
               ))}
@@ -323,7 +312,7 @@ const Footer = () => {
                 <SocialLink
                   key={index}
                   href={link.href}
-                  icon={link.icon}
+                  icon={getIconComponent(link.icon)}
                   title={link.title}
                 />
               ))}

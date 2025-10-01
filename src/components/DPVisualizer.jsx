@@ -2,47 +2,41 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global-theme.css";
 
-const DPVisualizer = ({
-  defaultAlgorithm = "Fibonacci",
-  autoLoadExample = false,
-  size = 10
-}) => {
+const DPVisualizer = ({ defaultAlgorithm = "Fibonacci", size = 10 }) => {
   const [algorithm, setAlgorithm] = useState(defaultAlgorithm);
   const [steps, setSteps] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [isVisualizing, setIsVisualizing] = useState(false);
   const [message, setMessage] = useState("Select an algorithm and run.");
 
-  const copySteps = (arr) => arr.map((row) => Array.isArray(row) ? [...row] : row);
+  const copySteps = (arr) => arr.map((row) => (Array.isArray(row) ? [...row] : row));
 
-  // ================= DP Algorithms =================
+  // ================= DP ALGORITHMS =================
 
   // 1️⃣ Fibonacci (Top-Down)
   const fibonacci = (n) => {
     const stepsArr = [];
     const memo = Array(n + 1).fill(-1);
-    // Correct bases so UI never shows -1 leading entries
     if (n >= 0) memo[0] = 0;
-    if (n >= 1) memo[1] = 1; // switch to 1 if you want the 1,1,2,3… variant
+    if (n >= 1) memo[1] = 1;
 
-     const fib = (k) => {
+    const fib = (k) => {
       if (k <= 1) {
-        // show base usage
         stepsArr.push({ board: copySteps(memo), message: `Base: fib(${k}) = ${memo[k]}`, focusIndex: k });
         return memo[k];
       }
-       if (memo[k] !== -1) return memo[k];
+      if (memo[k] !== -1) return memo[k];
       stepsArr.push({ board: copySteps(memo), message: `Computing fib(${k})`, focusIndex: k });
-       memo[k] = fib(k - 1) + fib(k - 2);
+      memo[k] = fib(k - 1) + fib(k - 2);
       stepsArr.push({ board: copySteps(memo), message: `fib(${k}) = ${memo[k]}`, focusIndex: k });
-       return memo[k];
-     };
+      return memo[k];
+    };
 
     fib(n);
     return stepsArr;
   };
 
-  // 2️⃣ Coin Change (Minimum Coins)
+  // 2️⃣ Coin Change (Minimum Coins) 
   const coinChange = (coins = [1, 2, 5], target = 11) => {
     const stepsArr = [];
     const dp = Array(target + 1).fill(Infinity);
@@ -60,10 +54,11 @@ const DPVisualizer = ({
     return stepsArr;
   };
 
-  // 3️⃣ Longest Common Subsequence (LCS)
+  // 3️⃣ Longest Common Subsequence (LCS) 
   const lcs = (str1 = "ABCBDAB", str2 = "BDCAB") => {
     const stepsArr = [];
-    const m = str1.length, n = str2.length;
+    const m = str1.length,
+      n = str2.length;
     const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
 
     for (let i = 1; i <= m; i++) {
@@ -77,7 +72,7 @@ const DPVisualizer = ({
     return stepsArr;
   };
 
-  // 4️⃣ 0-1 Knapsack
+  // 4️⃣ 0-1 Knapsack 
   const knapsack = (values = [60, 100, 120], weights = [10, 20, 30], W = 50) => {
     const stepsArr = [];
     const n = values.length;
@@ -95,7 +90,7 @@ const DPVisualizer = ({
     return stepsArr;
   };
 
-  // 5️⃣ Matrix Chain Multiplication
+  // 5️⃣ Matrix Chain Multiplication 
   const matrixChain = (dims = [10, 30, 5, 60]) => {
     const stepsArr = [];
     const n = dims.length - 1;
@@ -141,10 +136,6 @@ const DPVisualizer = ({
         setMessage("Algorithm not implemented!");
         return;
     }
-    if (generatedSteps.length === 0) {
-      setMessage("No steps generated. Check input.");
-      return;
-    }
     setSteps(generatedSteps);
     setCurrentStep(0);
     setIsVisualizing(true);
@@ -172,17 +163,17 @@ const DPVisualizer = ({
     setMessage("Select an algorithm and run.");
   };
 
-   // ================= Render =================
-   const renderBoard = () => {
-     if (!steps[currentStep]) return null;
+  // ================= Render =================
+  const renderBoard = () => {
+    if (!steps[currentStep]) return null;
     const stepBoard = steps[currentStep].board;
-    const focusIndex = steps[currentStep].focusIndex;
+    const focusIndex = steps[currentStep]?.focusIndex;
 
-     // Array of numbers
-     if (Array.isArray(stepBoard) && !Array.isArray(stepBoard[0])) {
-       return (
+    // 1D array visualization (Fibonacci & Coin Change)
+    if (Array.isArray(stepBoard) && !Array.isArray(stepBoard[0])) {
+      return (
         <div className="list-visualizer dp-seq">
-           {stepBoard.map((num, i) => (
+          {stepBoard.map((num, i) => (
             <span
               key={i}
               className={`list-item dp-cell ${i === focusIndex ? "is-active" : ""}`}
@@ -191,18 +182,18 @@ const DPVisualizer = ({
               <span className="dp-cell-index">{i}</span>
               <span className="dp-cell-value">{num === Infinity ? "∞" : num}</span>
             </span>
-           ))}
-         </div>
-       );
-     }
+          ))}
+        </div>
+      );
+    }
 
-
+    // 2D grid visualization (Knapsack, LCS, Matrix Chain)
     return (
       <div className="board">
         {stepBoard.map((row, i) => (
           <div key={i} className="board-row">
             {row.map((cell, j) => (
-              <div key={j} className={`cell ${cell !== 0 ? "active" : ""}`}>
+              <div key={j} className={`cell ${cell !== 0 && cell !== Infinity ? "active" : ""}`}>
                 {cell !== 0 && cell !== Infinity ? cell : ""}
               </div>
             ))}

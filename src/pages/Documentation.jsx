@@ -284,8 +284,399 @@ const algorithmDatabase = {
   trees: {
     title: "Trees",
     icon: "🌳",
+
+
     color: "#4ade80",
     algorithms: [
+
+      {
+        name: "Postorder Traversal",
+        id: "postorder-traversal",
+        description:
+          "Tree traversal method that visits the left subtree, then the right subtree, and finally the root node (Left → Right → Root).",
+        timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
+        spaceComplexity: "O(h) (where h is the height of the tree, O(n) in worst case for a skewed tree)",
+        implemented: true,
+      },
+    ],
+  },
+  backtracking: {
+    title: "Backtracking Algorithms",
+    icon: "🧩",
+    color: "#f9a825",
+    algorithms: [
+      {
+        name: "N-Queens",
+        id: "nQueens",
+        description:
+          "Place N queens on an N×N chessboard so that no two queens attack each other. Explores all possible placements using backtracking.",
+        timeComplexity: { best: "O(N!)", average: "O(N!)", worst: "O(N!)" },
+        spaceComplexity: "O(N^2)",
+        implemented: false,
+        subType: "nQueens",
+      },
+      {
+        name: "Sudoku Solver",
+        id: "sudoku",
+        description:
+          "Solve a 9×9 Sudoku puzzle by filling empty cells following Sudoku rules using backtracking.",
+        timeComplexity: { best: "O(1)", average: "O(9^(N*N))", worst: "O(9^(N*N))" },
+        spaceComplexity: "O(N^2)",
+        implemented: false,
+        subType: "sudoku",
+      },
+      {
+        name: "Rat in a Maze",
+        id: "ratInMaze",
+        description:
+          "Find a path for a rat from start to finish in a maze represented as a grid. Backtracking tries all possible paths.",
+        timeComplexity: { best: "O(2^(N*M))", average: "O(2^(N*M))", worst: "O(2^(N*M))" },
+        spaceComplexity: "O(N*M)",
+        implemented: false,
+        subType: "ratInMaze",
+      },
+      {
+        name: "Combination Sum",
+        id: "combinationSum",
+        description:
+          "Find all unique combinations of numbers that sum up to a target value. Uses backtracking to explore all possibilities.",
+        timeComplexity: { best: "O(2^N)", average: "O(2^N)", worst: "O(2^N)" },
+        spaceComplexity: "O(N)",
+        implemented: false,
+        subType: "combinationSum",
+      },
+      {
+        name: "Word Search",
+        id: "wordSearch",
+        description:
+          "Find a given word in a 2D grid of letters by moving horizontally or vertically. Backtracking explores all paths.",
+        timeComplexity: { best: "O(M*N*4^L)", average: "O(M*N*4^L)", worst: "O(M*N*4^L)" },
+        spaceComplexity: "O(L)",
+        implemented: false,
+        subType: "wordSearch",
+      },
+    ],
+  },
+  dynamicProgramming: {
+    title: "Dynamic Programming",
+    icon: "📊",
+    color: "#f97316",
+    algorithms: [
+      {
+        name: "Fibonacci Sequence",
+        id: "fibonacci",
+        description: "Computes Fibonacci numbers efficiently using dynamic programming (memoization or tabulation).",
+        timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
+        spaceComplexity: "O(n) or O(1) optimized",
+        implemented: true,
+        subType: "fibonacci",
+      },
+      {
+        name: "0/1 Knapsack",
+        id: "zeroOneKnapsack",
+        description: "Solves the classic 0/1 Knapsack problem using DP to maximize value within a weight limit.",
+        timeComplexity: { best: "O(n*W)", average: "O(n*W)", worst: "O(n*W)" },
+        spaceComplexity: "O(n*W)",
+        implemented: true,
+        subType: "zeroOneKnapsack",
+      },
+      {
+        name: "Coin Change",
+        id: "coinChange",
+        description: "Finds the minimum number of coins needed to make a given amount using DP.",
+        timeComplexity: { best: "O(n*amount)", average: "O(n*amount)", worst: "O(n*amount)" },
+        spaceComplexity: "O(amount)",
+        implemented: true,
+        subType: "coinChange",
+      },
+      {
+        name: "Longest Common Subsequence (LCS)",
+        id: "longestCommonSubsequence",
+        description: "Finds the length of the longest subsequence present in two sequences using DP.",
+        timeComplexity: { best: "O(m*n)", average: "O(m*n)", worst: "O(m*n)" },
+        spaceComplexity: "O(m*n)",
+        implemented: true,
+        subType: "lcs",
+      },
+      {
+        name: "Matrix Chain Multiplication",
+        id: "matrixChainMultiplication",
+        description: "Finds the most efficient way to multiply a sequence of matrices using DP.",
+        timeComplexity: { best: "O(n^3)", average: "O(n^3)", worst: "O(n^3)" },
+        spaceComplexity: "O(n^2)",
+        implemented: true,
+        subType: "matrixChainMultiplication",
+      },
+      {
+        name: "Minimum Path Sum",
+        id: "minimumPathSum",
+        description: "Finds the minimum sum path from top-left to bottom-right in a grid using DP.",
+        timeComplexity: { best: "O(m*n)", average: "O(m*n)", worst: "O(m*n)" },
+        spaceComplexity: "O(m*n) or O(n) optimized",
+        implemented: true,
+        subType: "minimumPathSum",
+      },
+      {
+        name: "Subset Sum",
+        id: "subsetSum",
+        description: "Determines if there is a subset with a given sum using DP.",
+        timeComplexity: { best: "O(n*sum)", average: "O(n*sum)", worst: "O(n*sum)" },
+        spaceComplexity: "O(n*sum)",
+        implemented: true,
+        subType: "subsetSum",
+      },
+    ],
+  },
+  greedy: {
+    title: "Greedy Algorithms",
+    icon: "💰",
+    color: "#f97316",
+    algorithms: [
+      {
+        name: "Activity Selection",
+        id: "activitySelection",
+        description:
+          "Selects the maximum number of non-overlapping activities from a set based on finish times.",
+        timeComplexity: { best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)" },
+        spaceComplexity: "O(n)",
+        implemented: false,
+      },
+      {
+        name: "Fractional Knapsack",
+        id: "fractionalKnapsack",
+        description:
+          "Selects items to maximize value with fractional weights allowed. Greedy choice based on value/weight ratio.",
+        timeComplexity: { best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)" },
+        spaceComplexity: "O(1)",
+        implemented: false,
+      },
+      {
+        name: "Huffman Encoding",
+        id: "huffmanEncoding",
+        description:
+          "Constructs an optimal prefix code tree for data compression using a greedy approach.",
+        timeComplexity: { best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)" },
+        spaceComplexity: "O(n)",
+        implemented: false,
+      },
+      {
+        name: "Job Scheduling",
+        id: "jobScheduling",
+        description:
+          "Schedules jobs to maximize profit using greedy strategy based on deadlines and profits.",
+        timeComplexity: { best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)" },
+        spaceComplexity: "O(n)",
+        implemented: false,
+      },
+    ],
+  },
+  divideAndConquer: {
+    title: "Divide & Conquer",
+    icon: "🪓",
+    color: "#a78bfa",
+    algorithms: [
+      {
+        name: "Merge Sort",
+        id: "mergeSortDC",
+        description:
+          "Divides array into halves, sorts recursively, and merges them.",
+        timeComplexity: { best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)" },
+        spaceComplexity: "O(n)",
+        implemented: true,
+      },
+      {
+        name: "Quick Sort",
+        id: "quickSortDC",
+        description:
+          "Partitions array around a pivot and recursively sorts subarrays.",
+        timeComplexity: { best: "O(n log n)", average: "O(n log n)", worst: "O(n²)" },
+        spaceComplexity: "O(log n)",
+        implemented: true,
+      },
+      {
+        name: "Binary Search",
+        id: "binarySearchDC",
+        description:
+          "Searches sorted array by repeatedly halving search space.",
+        timeComplexity: { best: "O(1)", average: "O(log n)", worst: "O(log n)" },
+        spaceComplexity: "O(1)",
+        implemented: true,
+      },
+      {
+        name: "Maximum Subarray Sum",
+        id: "maximumSubarraySumDC",
+        description:
+          "Finds the contiguous subarray with maximum sum using divide & conquer.",
+        timeComplexity: { best: "O(n)", average: "O(n log n)", worst: "O(n log n)" },
+        spaceComplexity: "O(log n)",
+        implemented: true,
+      },
+    ],
+  },
+  hashing: {
+    title: "Hashing",
+    icon: "🔑",
+    color: "#ff6b6b",
+    algorithms: [
+      {
+        name: "Hash Table",
+        id: "hashTable",
+        description: "Implements key-value storage using hashing techniques.",
+        timeComplexity: { best: "O(1)", average: "O(1)", worst: "O(n)" },
+        spaceComplexity: "O(n)",
+        implemented: true,
+      },
+      {
+        name: "Chaining Hash",
+        id: "chainingHash",
+        description: "Collision resolution using linked lists in hash table.",
+        timeComplexity: { best: "O(1)", average: "O(1)", worst: "O(n)" },
+        spaceComplexity: "O(n)",
+        implemented: true,
+      },
+      {
+        name: "Open Addressing",
+        id: "openAddressing",
+        description: "Collision resolution by probing alternative positions.",
+        timeComplexity: { best: "O(1)", average: "O(1)", worst: "O(n)" },
+        spaceComplexity: "O(n)",
+        implemented: true,
+      },
+      {
+        name: "Rolling Hash",
+        id: "rollingHash",
+        description: "Efficient substring hashing technique for string matching.",
+        timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
+        spaceComplexity: "O(1)",
+        implemented: true,
+      },
+    ],
+  },
+  trees: {
+    title: "Trees",
+    icon: "🌳",
+
+    color: "#4ade80",
+    algorithms: [
+      {
+        name: "Preorder Traversal",
+        id: "preorderTraversal",
+        description: "Visits root, left subtree, then right subtree (Root → Left → Right).",
+        timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
+        spaceComplexity: "O(h)",
+        implemented: true,
+      },
+      {
+        name: "Inorder Traversal",
+        id: "inorderTraversal",
+        description: "Visits left subtree, root, then right subtree (Left → Root → Right).",
+        timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
+        spaceComplexity: "O(h)",
+        implemented: true,
+      },
+      {
+        name: "Postorder Traversal",
+        id: "postorderTraversal",
+        description: "Visits left subtree, right subtree, then root (Left → Right → Root).",
+        timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
+        spaceComplexity: "O(h)",
+        implemented: true,
+      },
+      {
+        name: "Level Order Traversal",
+        id: "levelOrderTraversal",
+        description: "Visits nodes level by level using BFS.",
+        timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
+        spaceComplexity: "O(n)",
+        implemented: true,
+      },
+      {
+        name: "BST Insert",
+        id: "bstInsert",
+        description: "Inserts a node into a binary search tree maintaining BST property.",
+        timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
+        spaceComplexity: "O(h)",
+        implemented: true,
+      },
+      {
+        name: "BST Search",
+        id: "bstSearch",
+        description: "Searches for a value in a binary search tree.",
+        timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
+        spaceComplexity: "O(h)",
+        implemented: true,
+      },
+      {
+        name: "BST Delete",
+        id: "bstDelete",
+        description: "Deletes a node from a binary search tree while maintaining BST property.",
+        timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
+        spaceComplexity: "O(h)",
+        implemented: true,
+      },
+    ],
+  },
+  gameSearch: {
+    title: "Game Search",
+    icon: "🎮",
+    color: "#f9a825",
+    algorithms: [
+      {
+        name: "Minimax",
+        id: "minimax",
+        description: "Decision-making algorithm for 2-player games to minimize the possible loss.",
+        timeComplexity: { best: "O(b^d)", average: "O(b^d)", worst: "O(b^d)" },
+        spaceComplexity: "O(d)",
+        implemented: false,
+      },
+      {
+        name: "Alpha-Beta Pruning",
+        id: "alphaBetaPruning",
+        description: "Optimization of minimax that prunes branches that cannot affect the final decision.",
+        timeComplexity: { best: "O(b^(d/2))", average: "O(b^d)", worst: "O(b^d)" },
+        spaceComplexity: "O(d)",
+        implemented: false,
+      },
+      {
+        name: "Expectimax",
+        id: "expectimax",
+        description: "Variation of minimax for games involving chance elements.",
+        timeComplexity: { best: "O(b^d)", average: "O(b^d)", worst: "O(b^d)" },
+        spaceComplexity: "O(d)",
+        implemented: false,
+      },
+      {
+        name: "Monte Carlo Tree Search",
+        id: "monteCarloTreeSearch",
+        description: "Uses random simulations to make decisions in large state-space games.",
+        timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
+        spaceComplexity: "O(n)",
+        implemented: false,
+      },
+    ],
+  },
+  branchAndBound: {
+    title: "Branch & Bound",
+    icon: "📦",
+    color: "#34d399",
+    algorithms: [
+      {
+        name: "0/1 Knapsack",
+        id: "knapsack01",
+        description: "Solves 0/1 Knapsack problem using branch and bound to prune unfeasible solutions.",
+        timeComplexity: { best: "O(n)", average: "O(2^n)", worst: "O(2^n)" },
+        spaceComplexity: "O(n)",
+        implemented: false,
+      },
+      {
+        name: "Traveling Salesman (TSP)",
+        id: "tsp",
+        description: "Finds shortest Hamiltonian cycle using branch and bound pruning.",
+        timeComplexity: { best: "O(n!)", average: "O(n!)", worst: "O(n!)" },
+        spaceComplexity: "O(n^2)",
+        implemented: false,
+      },
+
 {
 name: "Postorder Traversal",
 id: "postorder-traversal",
@@ -312,9 +703,11 @@ implemented: true
 },
 
 
+
     ],
   },
 };
+
 
 const getComplexityColor = (complexity) => {
   const colors = {
@@ -392,8 +785,19 @@ function AlgorithmDocumentation() {
       { key: "graph", label: "Graph", icon: GitBranch, count: algorithmDatabase.graph?.algorithms.length || 0 },
       { key: "backtracking", label: "Backtracking", icon: Code, count: algorithmDatabase.backtracking?.algorithms.length || 0 },
       { key: "dynamicProgramming", label: "Dynamic Programming", icon: BookOpen, count: algorithmDatabase.dynamicProgramming?.algorithms.length || 0 },
+
     ];
   }, [getAllAlgorithms]);
+
+      { key: "greedy", label: "Greedy", icon: Star, count: algorithmDatabase.greedy?.algorithms.length || 0 },
+      { key: "divideAndConquer", label: "Divide & Conquer", icon: Star, count: algorithmDatabase.divideAndConquer?.algorithms.length || 0 },
+      { key: "hashing", label: "Hashing", icon: Star, count: algorithmDatabase.hashing?.algorithms.length || 0 },
+      { key: "trees", label: "Tree", icon: Star, count: algorithmDatabase.trees?.algorithms.length || 0 },
+      { key: "gameSearch", label: "Game Search", icon: Star, count: algorithmDatabase.gameSearch?.algorithms.length || 0 },
+      { key: "branchAndBound", label: "Branch & Bound", icon: Star, count: algorithmDatabase.branchAndBound?.algorithms.length || 0 },
+    ];
+  }, [getAllAlgorithms]);
+
 
   const graphCounts = useMemo(() => {
     const list = algorithmDatabase.graph?.algorithms || [];

@@ -1271,3 +1271,77 @@ body {
   }
 }
 
+/* DP */
+
+.dp-visualizer {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.controls select,
+.controls button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.board {
+  display: inline-block;
+  border: 2px solid #333;
+  margin-top: 15px;
+}
+
+.board-row {
+  display: flex;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, color 0.3s;
+  font-weight: bold;
+}
+
+.cell.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.list-visualizer {
+  display: flex;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.list-item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #aaa;
+  transition: background 0.3s, color 0.3s;
+  font-weight: bold;
+}
+
+.list-item.active {
+  background-color: #2196f3;
+  color: white;
+}
+
+.message-bar {
+  margin-top: 15px;
+  font-weight: bold;
+  font-family: monospace;
+}

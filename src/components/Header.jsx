@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import '../styles/header.css';
 import { useTheme } from '../ThemeContext';
-import { FaGithub, FaMoon, FaSun, FaCode, FaSearch, FaDatabase, FaBrain, FaUsers, FaBook, FaProjectDiagram, FaQuestionCircle } from 'react-icons/fa';
+import { FaGithub, FaMoon, FaSun, FaCode, FaSearch, FaDatabase, FaBrain, FaUsers, FaBook, FaProjectDiagram, FaQuestionCircle, FaRocket, FaGraduationCap, FaEnvelope } from 'react-icons/fa';
 import { headerNavigationItems } from '../utils/navigation';
+import { headerIconMap, headerNavigationStructure } from '../utils/headerData';
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -50,9 +51,18 @@ const Header = () => {
             'FaBrain': FaBrain,
             'FaUsers': FaUsers,
             'FaBook': FaBook,
-            'FaQuestionCircle': FaQuestionCircle
+            'FaQuestionCircle': FaQuestionCircle,
+            'FaRocket': FaRocket,
+            'FaGraduationCap': FaGraduationCap,
+            'FaEnvelope': FaEnvelope,
         };
         return iconMap[iconName] || null;
+    };
+
+    // Get navigation items by group
+    const getNavigationItemsByGroup = (groupName) => {
+        const group = headerNavigationStructure.find(g => g.group === groupName);
+        return group ? group.items : [];
     };
 
     return (
@@ -76,7 +86,7 @@ const Header = () => {
                     {/* Desktop Navigation */}
                     <nav className="nav-links-desktop" aria-label="Primary">
                         <div className="nav-group main-nav">
-                            {headerNavigationItems.filter(item => item.group === 'main').map(item => (
+                            {getNavigationItemsByGroup('main').map(item => (
                                 <NavLink 
                                     key={item.path}
                                     to={item.path} 
@@ -93,7 +103,7 @@ const Header = () => {
                         
                         <div className="nav-group learn-nav">
                             <span className="nav-group-label">Learn</span>
-                            {headerNavigationItems.filter(item => item.group === 'learn').map(item => (
+                            {getNavigationItemsByGroup('learn').map(item => (
                                 <NavLink 
                                     key={item.path}
                                     to={item.path}
@@ -108,7 +118,27 @@ const Header = () => {
                         <div className="nav-separator"></div>
                         
                         <div className="nav-group other-nav">
-                            {headerNavigationItems.filter(item => ['test', 'community', 'help'].includes(item.group)).map(item => (
+                            {getNavigationItemsByGroup('test').map(item => (
+                                <NavLink 
+                                    key={item.path}
+                                    to={item.path}
+                                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                                >
+                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "nav-icon" })}
+                                    <span>{item.label}</span>
+                                </NavLink>
+                            ))}
+                            {getNavigationItemsByGroup('community').map(item => (
+                                <NavLink 
+                                    key={item.path}
+                                    to={item.path}
+                                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                                >
+                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "nav-icon" })}
+                                    <span>{item.label}</span>
+                                </NavLink>
+                            ))}
+                            {getNavigationItemsByGroup('help').map(item => (
                                 <NavLink 
                                     key={item.path}
                                     to={item.path}
@@ -186,7 +216,7 @@ const Header = () => {
                                 className="mobile-theme-toggle"
                                 aria-label="Toggle theme"
                             >
-                                {theme === 'light' ? <FaMoon /> : <FaSun />}
+                                {theme === 'light' ? <FaMoon /> : <FaSun /> }
                             </button>
                         </div>
                     </div>
@@ -196,7 +226,7 @@ const Header = () => {
                             <div className="mobile-group-header">
                                 <span>Main</span>
                             </div>
-                            {headerNavigationItems.filter(item => item.group === 'main').map((item, index) => (
+                            {getNavigationItemsByGroup('main').map((item, index) => (
                                 <NavLink 
                                     key={item.path}
                                     to={item.path}
@@ -215,7 +245,7 @@ const Header = () => {
                             <div className="mobile-group-header">
                                 <span>Learn Algorithms</span>
                             </div>
-                            {headerNavigationItems.filter(item => item.group === 'learn').map((item, index) => (
+                            {getNavigationItemsByGroup('learn').map((item, index) => (
                                 <NavLink 
                                     key={item.path}
                                     to={item.path}
@@ -233,13 +263,37 @@ const Header = () => {
                             <div className="mobile-group-header">
                                 <span>More</span>
                             </div>
-                            {headerNavigationItems.filter(item => ['test', 'community', 'help'].includes(item.group)).map((item, index) => (
+                            {getNavigationItemsByGroup('test').map((item, index) => (
                                 <NavLink 
                                     key={item.path}
                                     to={item.path}
                                     className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
                                     onClick={toggleMobileMenu}
                                     style={{ animationDelay: `${(index + 4) * 0.1}s` }}
+                                >
+                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "mobile-nav-icon" })}
+                                    <span>{item.label}</span>
+                                </NavLink>
+                            ))}
+                            {getNavigationItemsByGroup('community').map((item, index) => (
+                                <NavLink 
+                                    key={item.path}
+                                    to={item.path}
+                                    className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+                                    onClick={toggleMobileMenu}
+                                    style={{ animationDelay: `${(index + 5) * 0.1}s` }}
+                                >
+                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "mobile-nav-icon" })}
+                                    <span>{item.label}</span>
+                                </NavLink>
+                            ))}
+                            {getNavigationItemsByGroup('help').map((item, index) => (
+                                <NavLink 
+                                    key={item.path}
+                                    to={item.path}
+                                    className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+                                    onClick={toggleMobileMenu}
+                                    style={{ animationDelay: `${(index + 6) * 0.1}s` }}
                                 >
                                     {item.icon && React.createElement(getIconComponent(item.icon), { className: "mobile-nav-icon" })}
                                     <span>{item.label}</span>

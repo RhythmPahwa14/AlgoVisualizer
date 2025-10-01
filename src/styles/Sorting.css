@@ -185,6 +185,7 @@
 }
 
 .stats-grid {
+    
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -192,6 +193,8 @@
 }
 
 .stat-card {
+  height: 190px;
+  width: 150px;
   padding: var(--space-lg);
   border-radius: var(--radius-lg);
   text-align: center;
