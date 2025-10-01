@@ -78,8 +78,8 @@ export default function Queue() {
           <span className="legend-box rear" /> Rear
         </div>
       </div>
-          
-      {/* --- Documentation / Info Panel --- */}
+
+      {/* ---- Documentation / Info Panel ---- */}
       <section className="ds-info">
         <h2>About Queue</h2>
         <p>
@@ -87,7 +87,7 @@ export default function Queue() {
           <em>First In, First Out (FIFO)</em> principle. Elements are inserted at
           the <strong>rear</strong> and removed from the <strong>front</strong>.
         </p>
-          
+
         <h3>Key Operations</h3>
         <ul>
           <li>
@@ -153,8 +153,43 @@ export default function Queue() {
             <strong>Priority Queue</strong> – elements dequeued by priority.
           </li>
         </ul>
-          
-        <h3>Pseudo-code</h3>
+
+        {/* --- Code snippets panel --- */}
+        <h3>Code Snippets</h3>
+
+        <h4>Enqueue</h4>
+        <pre className="ds-code">
+{`const enqueue = () => {
+  const val = input.trim();
+  if (!val) return;
+  setItems(prev => [...prev, val]);
+  setInput("");
+};`}
+        </pre>
+
+        <h4>Dequeue</h4>
+        <pre className="ds-code">
+{`const dequeue = () => {
+  if (!items.length) return;
+  setItems(prev => prev.slice(1));
+};`}
+        </pre>
+
+        <h4>Peek</h4>
+        <pre className="ds-code">
+{`const peek = () => {
+  if (!items.length) return;
+  setPeekIndex(0);
+  setTimeout(() => setPeekIndex(null), 600); // highlight front
+};`}
+        </pre>
+
+        <h4>Reset</h4>
+        <pre className="ds-code">
+{`const reset = () => setItems([]);`}
+        </pre>
+
+        <h4>Pseudo-code</h4>
         <pre className="ds-code">
 {`init queue Q = []
 enqueue(x): append x to Q
