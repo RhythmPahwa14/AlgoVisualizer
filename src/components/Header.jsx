@@ -1,9 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import '../styles/header.css';
 import { useTheme } from '../ThemeContext';
 import { FaGithub, FaMoon, FaSun, FaCode, FaSearch, FaDatabase, FaBrain, FaUsers, FaBook, FaProjectDiagram, FaQuestionCircle } from 'react-icons/fa';
 import { headerNavigationItems } from '../utils/navigation';
+
+// Helper function to get icon components
+const getIconComponent = (iconName) => {
+    const iconMap = {
+        'FaCode': FaCode,
+        'FaSearch': FaSearch,
+        'FaDatabase': FaDatabase,
+        'FaProjectDiagram': FaProjectDiagram,
+        'FaBrain': FaBrain,
+        'FaUsers': FaUsers,
+        'FaBook': FaBook,
+        'FaQuestionCircle': FaQuestionCircle
+    };
+    return iconMap[iconName] || null;
+};
+
+// Helper component for desktop navigation links
+const DesktopNavLink = ({ item, isActive }) => (
+    <NavLink 
+        key={item.path}
+        to={item.path} 
+        end={item.path === '/'}
+        className={`nav-link ${isActive ? 'active' : ''}`}
+    >
+        {item.icon && React.createElement(getIconComponent(item.icon), { className: "nav-icon" })}
+        <span>{item.label}</span>
+    </NavLink>
+);
+
+// Helper component for mobile navigation links
+const MobileNavLink = ({ item, isActive, onClick }) => (
+    <NavLink 
+        key={item.path}
+        to={item.path}
+        end={item.path === '/'}
+        className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+        onClick={onClick}
+    >
+        {item.icon && React.createElement(getIconComponent(item.icon), { className: "mobile-nav-icon" })}
+        <span>{item.label}</span>
+    </NavLink>
+);
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -11,6 +53,7 @@ const Header = () => {
     const { theme, toggleTheme } = useTheme();
     const location = useLocation();
 
+    // Handle scroll effect
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
@@ -20,10 +63,12 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Close mobile menu when location changes
     useEffect(() => {
         setIsMobileMenuOpen(false);
     }, [location]);
 
+    // Handle body overflow when mobile menu is open
     useEffect(() => {
         if (isMobileMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -36,24 +81,15 @@ const Header = () => {
         };
     }, [isMobileMenuOpen]);
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-    };
+    // Toggle mobile menu with useCallback for performance
+    const toggleMobileMenu = useCallback(() => {
+        setIsMobileMenuOpen(prev => !prev);
+    }, []);
 
-    // Map string icon names to actual icon components
-    const getIconComponent = (iconName) => {
-        const iconMap = {
-            'FaCode': FaCode,
-            'FaSearch': FaSearch,
-            'FaDatabase': FaDatabase,
-            'FaProjectDiagram': FaProjectDiagram,
-            'FaBrain': FaBrain,
-            'FaUsers': FaUsers,
-            'FaBook': FaBook,
-            'FaQuestionCircle': FaQuestionCircle
-        };
-        return iconMap[iconName] || null;
-    };
+    // Close mobile menu callback
+    const closeMobileMenu = useCallback(() => {
+        setIsMobileMenuOpen(false);
+    }, []);
 
     return (
         <>
@@ -76,48 +112,47 @@ const Header = () => {
                     {/* Desktop Navigation */}
                     <nav className="nav-links-desktop" aria-label="Primary">
                         <div className="nav-group main-nav">
-                            {headerNavigationItems.filter(item => item.group === 'main').map(item => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path} 
-                                    end={item.path === '/'}
-                                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
+                            {headerNavigationItems
+                                .filter(item => item.group === 'main')
+                                .map(item => (
+                                    <DesktopNavLink 
+                                        key={item.path}
+                                        item={item}
+                                        isActive={location.pathname === item.path}
+                                    />
+                                ))
+                            }
                         </div>
                         
                         <div className="nav-separator"></div>
                         
                         <div className="nav-group learn-nav">
                             <span className="nav-group-label">Learn</span>
-                            {headerNavigationItems.filter(item => item.group === 'learn').map(item => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path}
-                                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
+                            {headerNavigationItems
+                                .filter(item => item.group === 'learn')
+                                .map(item => (
+                                    <DesktopNavLink 
+                                        key={item.path}
+                                        item={item}
+                                        isActive={location.pathname === item.path}
+                                    />
+                                ))
+                            }
                         </div>
                         
                         <div className="nav-separator"></div>
                         
                         <div className="nav-group other-nav">
-                            {headerNavigationItems.filter(item => ['test', 'community', 'help'].includes(item.group)).map(item => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path}
-                                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
+                            {headerNavigationItems
+                                .filter(item => ['test', 'community', 'help'].includes(item.group))
+                                .map(item => (
+                                    <DesktopNavLink 
+                                        key={item.path}
+                                        item={item}
+                                        isActive={location.pathname === item.path}
+                                    />
+                                ))
+                            }
                         </div>
                     </nav>
 
@@ -175,14 +210,17 @@ const Header = () => {
                                 href="https://github.com/RhythmPahwa14/AlgoVisualizer" 
                                 target="_blank" 
                                 rel="noreferrer noopener"
-                                onClick={toggleMobileMenu}
+                                onClick={closeMobileMenu}
                             >
                                 <FaGithub />
                                 <span>Star on GitHub</span>
                             </a>
                             
                             <button 
-                                onClick={toggleTheme} 
+                                onClick={() => {
+                                    toggleTheme();
+                                    closeMobileMenu();
+                                }} 
                                 className="mobile-theme-toggle"
                                 aria-label="Toggle theme"
                             >
@@ -196,55 +234,48 @@ const Header = () => {
                             <div className="mobile-group-header">
                                 <span>Main</span>
                             </div>
-                            {headerNavigationItems.filter(item => item.group === 'main').map((item, index) => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path}
-                                    end={item.path === '/'}
-                                    className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
-                                    onClick={toggleMobileMenu}
-                                    style={{ animationDelay: `${index * 0.1}s` }}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "mobile-nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
+                            {headerNavigationItems
+                                .filter(item => item.group === 'main')
+                                .map((item, index) => (
+                                    <MobileNavLink 
+                                        key={item.path}
+                                        item={item}
+                                        onClick={closeMobileMenu}
+                                    />
+                                ))
+                            }
                         </div>
 
                         <div className="mobile-nav-group">
                             <div className="mobile-group-header">
                                 <span>Learn Algorithms</span>
                             </div>
-                            {headerNavigationItems.filter(item => item.group === 'learn').map((item, index) => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path}
-                                    className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
-                                    onClick={toggleMobileMenu}
-                                    style={{ animationDelay: `${(index + 1) * 0.1}s` }}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "mobile-nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
+                            {headerNavigationItems
+                                .filter(item => item.group === 'learn')
+                                .map((item, index) => (
+                                    <MobileNavLink 
+                                        key={item.path}
+                                        item={item}
+                                        onClick={closeMobileMenu}
+                                    />
+                                ))
+                            }
                         </div>
 
                         <div className="mobile-nav-group">
                             <div className="mobile-group-header">
                                 <span>More</span>
                             </div>
-                            {headerNavigationItems.filter(item => ['test', 'community', 'help'].includes(item.group)).map((item, index) => (
-                                <NavLink 
-                                    key={item.path}
-                                    to={item.path}
-                                    className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
-                                    onClick={toggleMobileMenu}
-                                    style={{ animationDelay: `${(index + 4) * 0.1}s` }}
-                                >
-                                    {item.icon && React.createElement(getIconComponent(item.icon), { className: "mobile-nav-icon" })}
-                                    <span>{item.label}</span>
-                                </NavLink>
-                            ))}
+                            {headerNavigationItems
+                                .filter(item => ['test', 'community', 'help'].includes(item.group))
+                                .map((item, index) => (
+                                    <MobileNavLink 
+                                        key={item.path}
+                                        item={item}
+                                        onClick={closeMobileMenu}
+                                    />
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
