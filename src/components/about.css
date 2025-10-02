@@ -22,7 +22,7 @@ body.dark,
   --shadow-hover: 0 16px 40px rgba(0,0,0,0.35);
   --accent: #4f8cff;
 }
-[data-theme="dark"] .about {
+[data-me="dark"] .about {
   --background: linear-gradient(135deg, #181c24 60%, #23283a 100%);
   --card-bg: #23283a;
   --text-main: #f3f6fa;

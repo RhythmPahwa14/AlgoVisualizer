@@ -1,10 +1,36 @@
 // src/components/AlgorithmVisualizer.jsx
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useMemo, useCallback, useRef, useLayoutEffect } from "react";
 import algorithmsData from "../algorithms/algorithms.json";
 import "../styles/UnifiedVisualizer.css";
 
 // Import all your algorithm functions here
 import { runAlgorithmAsync, getAlgorithmType } from "../algorithms/runner";
+
+// Configuration constants for better maintainability
+const DEFAULT_ARRAY_SIZE = 15;
+const DEFAULT_ANIMATION_SPEED = 300;
+const MIN_ANIMATION_SPEED = 50;
+const MAX_ANIMATION_SPEED = 1200;
+const BAR_HEIGHT_MULTIPLIER = 2.2;
+const MIN_BAR_HEIGHT = 2;
+
+// Utility functions for better code organization
+const arrayUtils = {
+  generateRandomArray: (size) => Array.from(
+    { length: size },
+    () => Math.floor(Math.random() * 50) + 5
+  ),
+  
+  getRandomElement: (arr) => arr[Math.floor(Math.random() * arr.length)]
+};
+
+// Visualization configuration
+const VISUALIZATION_CONFIG = {
+  barWidth: "26px",
+  motionTransition: "height {speed}ms cubic-bezier(.2,.8,.2,1), background-color 180ms ease",
+  highlightScale: "scaleY(1.12)",
+  normalScale: "scaleY(1)"
+};
 
 export default function AlgorithmVisualizer({
   algorithmName,
@@ -16,55 +42,82 @@ export default function AlgorithmVisualizer({
   barGap,
   fontSize,
 }) {
-  const [array, setArray] = useState([]);
-  const [steps, setSteps] = useState([]);
-  const [currentStep, setCurrentStep] = useState(0);
-  const [target, setTarget] = useState(null); // For searching
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [animationSpeedMs, setAnimationSpeedMs] = useState(300); // configurable speed
-  const [barMotion, setBarMotion] = useState(true); // enable/disable smooth bar animation
+  // Consolidated state management
+  const [state, setState] = useState({
+    array: [],
+    steps: [],
+    currentStep: 0,
+    target: null,
+    isAnimating: false,
+    animationSpeedMs: DEFAULT_ANIMATION_SPEED,
+    barMotion: true
+  });
+  // ✅ Responsive bar width calculation
+const containerRef = useRef(null);
+const [computedBarWidth, setComputedBarWidth] = useState(26); // default width
 
-  // Determine algorithm type using centralized runner
-  const resolveAlgoType = useCallback((name) => getAlgorithmType(name), []);
+const computeBarWidth = useCallback(() => {
+  const container = containerRef.current;
+  if (!container) return;
+
+  const numBars = state.array?.length || 0;
+  const gap = 8; // space between bars
+  const containerWidth = container.clientWidth;
+  const totalGap = gap * (numBars - 1);
+  const availableWidth = containerWidth - totalGap;
+
+  // Minimum and maximum bar width limits
+  const minWidth = 6;
+  const maxWidth = 60;
+
+  let width = numBars > 0 ? Math.floor(availableWidth / numBars) : 26;
+  width = Math.max(minWidth, Math.min(maxWidth, width));
+
+  setComputedBarWidth(width);
+}, [state.array]);
+
+// ✅ Recompute bar width on mount and window resize
+useLayoutEffect(() => {
+  computeBarWidth();
+  window.addEventListener("resize", computeBarWidth);
+  return () => window.removeEventListener("resize", computeBarWidth);
+}, [computeBarWidth]);
+
+
+  // Determine if component is controlled by external array
   const controlled = useMemo(() => Array.isArray(externalArray), [externalArray]);
  
   // Generate new array
   const generateArray = useCallback(() => {
     if (controlled) return;
-    const newArr = Array.from(
-      { length: 15 },
-      () => Math.floor(Math.random() * 50) + 5
-    );
-    setArray(newArr);
-    setSteps([]);
-    setCurrentStep(0);
-
-    // For searching, pick a random target
-    const algoType = algorithmsData.find((a) => a.name === algorithmName)?.type;
-    if (algoType === "searching") {
-      setTarget(newArr[Math.floor(Math.random() * newArr.length)]);
-    } else {
-      setTarget(null);
-    }
+    
+    const newArr = arrayUtils.generateRandomArray(DEFAULT_ARRAY_SIZE);
+    
+    setState(prev => ({
+      ...prev,
+      array: newArr,
+      steps: [],
+      currentStep: 0,
+      target: algorithmsData.find((a) => a.name === algorithmName)?.type === "searching" 
+        ? arrayUtils.getRandomElement(newArr) 
+        : null
+    }));
   }, [controlled, algorithmName]);
 
   // Apply initialArray from props when provided/changed
   useEffect(() => {
     if (controlled) return;
+    
     if (Array.isArray(initialArray) && initialArray.length > 0) {
-      setArray([...initialArray]);
-      setSteps([]);
-      setCurrentStep(0);
-      const algoType = algorithmsData.find(
-        (a) => a.name === algorithmName
-      )?.type;
-      if (algoType === "searching") {
-        setTarget(
-          initialArray[Math.floor(Math.random() * initialArray.length)]
-        );
-      } else {
-        setTarget(null);
-      }
+      setState(prev => ({
+        ...prev,
+        array: [...initialArray],
+        steps: [],
+        currentStep: 0,
+        target: algorithmsData.find((a) => a.name === algorithmName)?.type === "searching"
+          ? arrayUtils.getRandomElement(initialArray)
+          : null
+      }));
     }
   }, [initialArray, algorithmName, controlled]);
 
@@ -80,8 +133,7 @@ export default function AlgorithmVisualizer({
   // Run the algorithm and generate steps
   useEffect(() => {
     if (visualOnly || controlled) {
-      setSteps([]);
-      setCurrentStep(0);
+      setState(prev => ({ ...prev, steps: [], currentStep: 0 }));
       return;
     }
     // Do not auto-run; wait for Start
@@ -89,21 +141,29 @@ export default function AlgorithmVisualizer({
 
   const handleStart = useCallback(() => {
     if (visualOnly || controlled) return; // nothing to animate in visual-only
+    
     (async () => {
-      const result = await runAlgorithmAsync(algorithmName, array, target);
-      setSteps(result.steps || []);
-      setCurrentStep(0);
-      setIsAnimating(true);
+      const result = await runAlgorithmAsync(algorithmName, state.array, state.target);
+      setState(prev => ({ 
+        ...prev, 
+        steps: result.steps || [],
+        currentStep: 0,
+        isAnimating: true
+      }));
     })();
-  }, [visualOnly, controlled, algorithmName, array, target]);
+  }, [visualOnly, controlled, algorithmName, state.array, state.target]);
 
   const handleReset = useCallback(() => {
-    setSteps([]);
-    setCurrentStep(0);
-    setIsAnimating(false);
+    setState(prev => ({ 
+      ...prev, 
+      steps: [],
+      currentStep: 0,
+      isAnimating: false
+    }));
+    
     // Reset array to original state
     if (!controlled && Array.isArray(initialArray) && initialArray.length > 0) {
-      setArray([...initialArray]);
+      setState(prev => ({ ...prev, array: [...initialArray] }));
     } else {
       if (!controlled) generateArray();
     }
@@ -112,38 +172,62 @@ export default function AlgorithmVisualizer({
   // Animate steps
   useEffect(() => {
     if (controlled) return;
-    if (!isAnimating || steps.length === 0) return;
+    if (!state.isAnimating || state.steps.length === 0) return;
+    
     const interval = setInterval(() => {
-      setCurrentStep((prev) => {
-        const next = prev + 1;
-        const step = steps[next];
+      setState(prev => {
+        const next = prev.currentStep + 1;
+        const step = prev.steps[next];
+        
         if (step && step.type === "swap" && Array.isArray(step.array)) {
-          setArray(step.array);
+          return { ...prev, array: step.array, currentStep: next };
         } else if (step && step.type === "move" && Array.isArray(step.array)) {
-          setArray(step.array);
+          return { ...prev, array: step.array, currentStep: next };
         } else if (step && step.type === "cycle" && Array.isArray(step.array)) {
-          setArray(step.array);
+          return { ...prev, array: step.array, currentStep: next };
         } else if (step && step.type === "done" && Array.isArray(step.array)) {
-          setArray(step.array);
+          return { ...prev, array: step.array, currentStep: next };
         }
-        if (next < steps.length - 1) return next;
+        
+        if (next < prev.steps.length - 1) return { ...prev, currentStep: next };
+        
         clearInterval(interval);
-        setIsAnimating(false);
-        return next;
+        return { ...prev, isAnimating: false, currentStep: next };
       });
-    }, Math.max(50, animationSpeedMs));
+    }, Math.max(MIN_ANIMATION_SPEED, state.animationSpeedMs));
+    
     return () => clearInterval(interval);
-  }, [isAnimating, steps, animationSpeedMs, controlled]);
+  }, [state.isAnimating, state.steps, state.animationSpeedMs, controlled]);
 
+  // Determine algorithm type using centralized runner
+  const resolveAlgoType = useCallback((name) => getAlgorithmType(name), []);
   const algoType = useMemo(() => resolveAlgoType(algorithmName), [algorithmName, resolveAlgoType]);
-  const displayArray = useMemo(() => controlled ? externalArray ?? [] : array, [controlled, externalArray, array]);
+  const displayArray = useMemo(() => controlled ? externalArray ?? [] : state.array, [controlled, externalArray, state.array]);
+
+  // Handler functions for state updates
+  const updateState = useCallback((key, value) => {
+    setState(prev => ({ ...prev, [key]: value }));
+  }, []);
+
+  const updateTarget = useCallback((value) => {
+    updateState('target', Number(value));
+  }, [updateState]);
+
+  const updateAnimationSpeed = useCallback((value) => {
+    updateState('animationSpeedMs', Number(value));
+  }, [updateState]);
+
+  const toggleBarMotion = useCallback(() => {
+    updateState('barMotion', !state.barMotion);
+  }, [state.barMotion, updateState]);
 
   // Memoize the bar rendering to prevent unnecessary re-renders
   const renderBars = useMemo(() => {
     return displayArray.map((val, idx) => {
       let colorClass = "bar-default";
       let isHighlighted = false;
-      const step = steps[currentStep];
+      const step = state.steps[state.currentStep];
+      
       if (!visualOnly && !controlled && step) {
         if (step.type === "compare" && Array.isArray(step.indices)) {
           isHighlighted = step.indices.includes(idx);
@@ -170,20 +254,20 @@ export default function AlgorithmVisualizer({
           key={idx}
           className={`visualization-bar ${colorClass}`}
           style={{
-            height: `${Math.max(val, 2) * 2.2}px`,
-            width: "26px",
+            height: `${Math.max(val, MIN_BAR_HEIGHT) * BAR_HEIGHT_MULTIPLIER}px`,
+            width: `${computedBarWidth}px`,
             backgroundColor: Array.isArray(colorArray) ? colorArray[idx] : undefined,
-            transition: barMotion
-              ? `height ${animationSpeedMs}ms cubic-bezier(.2,.8,.2,1), background-color 180ms ease`
+            transition: state.barMotion
+              ? VISUALIZATION_CONFIG.motionTransition.replace('{speed}', state.animationSpeedMs)
               : "none",
-            transform: isHighlighted ? "scaleY(1.12)" : "scaleY(1)",
+            transform: isHighlighted ? VISUALIZATION_CONFIG.highlightScale : VISUALIZATION_CONFIG.normalScale,
           }}
         >
           <span className="bar-value" style={{ fontSize: fontSize ?? undefined }}>{val}</span>
         </div>
       );
     });
-  }, [displayArray, visualOnly, controlled, steps, currentStep, colorArray, barMotion, animationSpeedMs, fontSize]);
+  }, [displayArray, visualOnly, controlled, state.steps, state.currentStep, colorArray, state.barMotion, state.animationSpeedMs, fontSize]);
 
   return (
     <div className="unified-visualizer">
@@ -202,14 +286,14 @@ export default function AlgorithmVisualizer({
           </button>
           <button
             onClick={handleStart}
-            disabled={isAnimating}
-            aria-label={isAnimating ? "Running algorithm" : "Start algorithm"}
+            disabled={state.isAnimating}
+            aria-label={state.isAnimating ? "Running algorithm" : "Start algorithm"}
           >
-            {isAnimating ? "Running..." : "Start"}
+            {state.isAnimating ? "Running..." : "Start"}
           </button>
           <button
-            onClick={() => setIsAnimating(false)}
-            disabled={!isAnimating}
+            onClick={() => updateState('isAnimating', false)}
+            disabled={!state.isAnimating}
             aria-label="Stop algorithm"
           >
             Stop
@@ -224,29 +308,29 @@ export default function AlgorithmVisualizer({
             "searching" && (
             <input
               type="number"
-              value={target ?? ""}
-              onChange={(e) => setTarget(Number(e.target.value))}
+              value={state.target ?? ""}
+              onChange={(e) => updateTarget(e.target.value)}
               placeholder="Target"
               aria-label="Search target value"
             />
           )}
           <div className="speed-control">
-            <label>Speed: {animationSpeedMs}ms</label>
+            <label>Speed: {state.animationSpeedMs}ms</label>
             <input
               type="range"
-              min="60"
-              max="1200"
+              min={MIN_ANIMATION_SPEED}
+              max={MAX_ANIMATION_SPEED}
               step="20"
-              value={animationSpeedMs}
-              onChange={(e) => setAnimationSpeedMs(Number(e.target.value))}
+              value={state.animationSpeedMs}
+              onChange={(e) => updateAnimationSpeed(e.target.value)}
               aria-label="Animation speed control"
             />
           </div>
           <label>
             <input
               type="checkbox"
-              checked={barMotion}
-              onChange={(e) => setBarMotion(e.target.checked)}
+              checked={state.barMotion}
+              onChange={toggleBarMotion}
               aria-label="Toggle smooth animation"
             />
             Smooth animation
@@ -254,11 +338,11 @@ export default function AlgorithmVisualizer({
         </div>
       )}
 
-      {algoType === "searching" && target && (
-        <p className="target-display">Target: {target}</p>
+      {algoType === "searching" && state.target && (
+        <p className="target-display">Target: {state.target}</p>
       )}
       <div
-        className="visualization-container"
+        className="visualization-container" ref={containerRef}
         style={{ gap: barGap ? barGap : undefined }}
       >
         {renderBars}

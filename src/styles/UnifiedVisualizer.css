@@ -57,28 +57,23 @@
 
 .visualization-container {
   display: flex;
-  flex-direction: row;
   align-items: flex-end;
-  gap: 12px;
-  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 8px;
   overflow-x: auto;
-  padding: 1rem;
-  min-height: 200px;
-  background-color: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  padding: 0.5rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .visualization-bar {
+  flex: 0 0 auto;
+  min-width: 6px;
+  max-width: 60px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  position: relative;
-  border-radius: 4px 4px 0 0;
-  color: white;
-  font-size: 10px;
-  font-weight: bold;
-  transition: transform 0.2s ease;
+  box-sizing: border-box;
 }
 
 .array-bar {

@@ -138,3 +138,14 @@
   transform: scale(1.05);
   transition: all 0.3s ease;
 }
+.ds-code-section {
+  margin-top: 1rem;
+}
+
+.ds-code {
+  background: inherit; /* keeps current background */
+  color: inherit;      /* keeps current text color */
+  padding: 0.5rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}

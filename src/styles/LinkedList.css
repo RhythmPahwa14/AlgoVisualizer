@@ -506,9 +506,9 @@
   margin: 0;
   padding: 2rem;
   min-height: 500px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .visualization-header {

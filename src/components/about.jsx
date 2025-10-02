@@ -82,6 +82,51 @@ export default function About() {
               </li>
             </ul>
           </div>
+          <div className="about-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+            <h3 className="about-card-title">Data Structures</h3>
+            <ul className="about-list">
+              <li>Stack– Last-in First Out(LIFO) data structure</li>
+              <li>Queue– First-in First Out data structure</li>
+              <li>
+                Linked List– Linear data structure where elements are stored in nodes
+              </li>
+              <li>
+                 Binary Tree – Hierarchial data structure where each node has at most two children
+                ranges.
+              </li>
+            </ul>
+          </div>
+          <div className="about-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+            <h3 className="about-card-title">Graph Algorithms</h3>
+            <ul className="about-list">
+              <li>Breadth First Search(BFS) – Level order graph traversal</li>
+              <li>Depth First Search(DFS) – Depth wise graph traversal</li>
+              <li>
+                Djikstra – Shortest path in weighted graphs
+              </li>
+            </ul>
+          </div>
+          <div className="about-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+            <h3 className="about-card-title">Paradigms</h3>
+            <ul className="about-list">
+              <li>Backtracking – Tries all possibilities,undoing choices when they lead to dead ends.</li>
+              <li>Dynamic Programming(DP)– Reuse subproblem results.</li>
+              <li>
+                Greedy Algorithms– Choose the locally optimal solution.
+              </li>
+              <li>
+                Divide & Conquer– Split,Solve,Combine
+              </li>
+            </ul>
+          </div>
+          <div className="about-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+            <h3 className="about-card-title">Other Topics</h3>
+            <ul className="about-list">
+              <li>Hashing – Fast key-based lookup.</li>
+              <li>Branch & Bound – Explore and prune bad paths.</li>
+              <li>Game Search – Explores future game moves to pick the best one.</li>
+            </ul>
+          </div>
         </div>
       </div>
 

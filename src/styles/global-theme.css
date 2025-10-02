@@ -462,6 +462,10 @@ body {
 }
 
 .algorithm-card .card-description {
+  margin: 0; 
+  padding: 0;
+  width: 100%;
+  text-align: justify;
   color: var(--theme-text-secondary);
   line-height: 1.6;
   font-size: 0.9rem;
@@ -1271,3 +1275,131 @@ body {
   }
 }
 
+/* DP */
+
+.dp-visualizer {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.controls select,
+.controls button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.board {
+  display: inline-block;
+  border: 2px solid #333;
+  margin-top: 15px;
+}
+
+.board-row {
+  display: flex;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, color 0.3s;
+  font-weight: bold;
+}
+
+.cell.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.list-visualizer {
+  display: flex;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.list-item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #aaa;
+  transition: background 0.3s, color 0.3s;
+  font-weight: bold;
+}
+
+.list-item.active {
+  background-color: #2196f3;
+  color: white;
+}
+
+.message-bar {
+  margin-top: 15px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+/* Hash Chanining */
+.board {
+  display: table;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  width: max-content;
+  background-color: var(--background-color);
+}
+
+.board-row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  text-align: center;
+  min-width: 40px;
+  vertical-align: middle;
+  font-family: monospace;
+  background-color: var(--cell-background);
+  color: var(--text-color);
+}
+
+.cell.header {
+  background-color: transparent;
+  font-weight: normal;
+  padding: 0 8px;
+  border: none;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--header-text-color);
+}
+.cell.is-focus {
+  outline: 2px solid #f59e0b;  /* amber for splits */
+  outline-offset: -2px;
+  background-color: #fbbf24 !important;
+  color: #111;
+  font-weight: bold;
+}
+.result-box {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: rgba(16, 185, 129, 0.1); /* teal tint */
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #d1fae5;
+}
+
+
+/*  */

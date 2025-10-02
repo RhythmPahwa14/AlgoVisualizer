@@ -7,7 +7,6 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
-  min-height: 400px;
   z-index: 1;
 }
 
@@ -81,6 +80,7 @@
 
 .logo-wrapper {
   display: flex;
+  justify-content: center;
   align-items: center;
   margin-bottom: 15px;
   overflow: visible;
@@ -130,6 +130,7 @@
 
 .tech-pills {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 25px;
@@ -148,21 +149,6 @@
   text-decoration: none;
   position: relative;
   overflow: hidden;
-}
-
-.tech-pill::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: 0.5s;
-}
-
-.tech-pill:hover::before {
-  left: 100%;
 }
 
 .tech-pill:hover {
@@ -224,7 +210,6 @@
   margin-bottom: 20px;
   position: relative;
   padding-bottom: 10px;
-  text-align: left;
 }
 
 .column-title::after {
@@ -239,6 +224,7 @@
 }
 .para-text {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 6px;              /* spacing between items */
@@ -322,12 +308,16 @@
 }
 
 /* Newsletter Section */
+.newsletter-column {
+align-items: center;
+}
+
 .newsletter-description {
   color: var(--text-secondary, rgba(230, 237, 243, 0.8));
+  text-align: center;
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 20px;
-  text-align: left;
   overflow: visible;
 }
 
@@ -384,6 +374,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
   gap: 8px;
   padding: 14px 20px;
   background: var(--button-primary-bg, #58a6ff);
@@ -396,21 +387,6 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-}
-
-.newsletter-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: 0.5s;
-}
-
-.newsletter-btn:hover::before {
-  left: 100%;
 }
 
 .newsletter-btn:hover:not(.loading) {
@@ -526,21 +502,6 @@
   border: 1px solid var(--border-primary, rgba(240, 246, 252, 0.1));
   position: relative;
   overflow: hidden;
-}
-
-.social-link::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: 0.5s;
-}
-
-.social-link:hover::before {
-  left: 100%;
 }
 
 .social-link:hover {
@@ -982,13 +943,11 @@
   }
 }
 
-/* Desktop Enhancements - Make footer more attractive on desktop */
+/* Mobile Responsiveness */
 @media (min-width: 769px) {
   .footer-container {
     padding: 80px 0 30px;
-    background: linear-gradient(180deg, var(--card-bg, #21262d) 0%, var(--card-bg, #21262d) 90%, transparent 100%);
     position: relative;
-    overflow: visible;
   }
   
   .footer-container::before {
