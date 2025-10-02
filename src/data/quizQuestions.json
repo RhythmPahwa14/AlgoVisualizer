@@ -1261,7 +1261,7 @@
     },
     {
         "id": 85,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hashing",
         "difficulty": "Easy",
         "question": "What is the main purpose of hashing?",
@@ -1276,7 +1276,7 @@
     },
     {
         "id": 86,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hashing",
         "difficulty": "Easy",
         "question": "Which data structure commonly uses hashing for fast access?",
@@ -1291,7 +1291,7 @@
     },
     {
         "id": 87,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hashing",
         "difficulty": "Medium",
         "question": "Which of the following is a collision resolution technique in hashing?",
@@ -1306,7 +1306,7 @@
     },
     {
         "id": 88,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hashing",
         "difficulty": "Medium",
         "question": "What is a hash function?",
@@ -1321,7 +1321,7 @@
     },
     {
         "id": 89,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hashing",
         "difficulty": "Hard",
         "question": "Why is the choice of a good hash function important?",
@@ -1336,7 +1336,7 @@
     },
     {
         "id": 90,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hashing",
         "difficulty": "Hard",
         "question": "What can happen if all keys hash to the same index?",
@@ -1351,7 +1351,7 @@
     },
     {
         "id": 91,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hash Table",
         "difficulty": "Easy",
         "question": "What is stored at each index of a hash table?",
@@ -1366,7 +1366,7 @@
     },
     {
         "id": 92,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hash Table",
         "difficulty": "Easy",
         "question": "Hash tables provide which average time complexity for search operations?",
@@ -1381,7 +1381,7 @@
     },
     {
         "id": 93,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hash Table",
         "difficulty": "Medium",
         "question": "Which of the following affects hash table performance?",
@@ -1396,7 +1396,7 @@
     },
     {
         "id": 94,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hash Table",
         "difficulty": "Medium",
         "question": "What happens when the load factor exceeds a threshold in a hash table?",
@@ -1411,7 +1411,7 @@
     },
     {
         "id": 95,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hash Table",
         "difficulty": "Hard",
         "question": "Worst-case time complexity of search in a hash table using chaining is?",
@@ -1426,7 +1426,7 @@
     },
     {
         "id": 96,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Hash Table",
         "difficulty": "Hard",
         "question": "Which of the following is NOT a valid collision resolution technique?",
@@ -1441,7 +1441,7 @@
     },
     {
         "id": 97,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "chainingHash",
         "difficulty": "Easy",
         "question": "In chaining, where are colliding elements stored?",
@@ -1456,7 +1456,7 @@
     },
     {
         "id": 98,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "chainingHash",
         "difficulty": "Easy",
         "question": "Which data structure is commonly used in chaining?",
@@ -1471,7 +1471,7 @@
     },
     {
         "id": 99,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "chainingHash",
         "difficulty": "Medium",
         "question": "What is the average search complexity in chaining with a low load factor?",
@@ -1486,7 +1486,7 @@
     },
     {
         "id": 100,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "chainingHash",
         "difficulty": "Medium",
         "question": "If a hash table uses chaining and all keys hash to the same index, what is the worst-case search time?",
@@ -1501,7 +1501,7 @@
     },
     {
         "id": 101,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "chainingHash",
         "difficulty": "Hard",
         "question": "Which of the following improves search efficiency in chaining?",
@@ -1516,7 +1516,7 @@
     },
     {
         "id": 102,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "chainingHash",
         "difficulty": "Hard",
         "question": "Which is a disadvantage of chaining?",
@@ -1531,7 +1531,7 @@
     },
     {
         "id": 103,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Open Addressing",
         "difficulty": "Easy",
         "question": "In open addressing, where is a colliding element stored?",
@@ -1546,7 +1546,7 @@
     },
     {
         "id": 104,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Open Addressing",
         "difficulty": "Easy",
         "question": "Which is NOT an open addressing method?",
@@ -1561,7 +1561,7 @@
     },
     {
         "id": 105,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Open Addressing",
         "difficulty": "Medium",
         "question": "What is primary clustering in open addressing?",
@@ -1576,7 +1576,7 @@
     },
     {
         "id": 106,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Open Addressing",
         "difficulty": "Medium",
         "question": "What is the average search complexity of open addressing with low load factor?",
@@ -1591,7 +1591,7 @@
     },
     {
         "id": 107,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Open Addressing",
         "difficulty": "Hard",
         "question": "What is the worst-case search time in open addressing?",
@@ -1606,7 +1606,7 @@
     },
     {
         "id": 108,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Open Addressing",
         "difficulty": "Hard",
         "question": "Which of these helps reduce clustering in open addressing?",
@@ -1621,7 +1621,7 @@
     },
     {
         "id": 109,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Rolling Hash",
         "difficulty": "Easy",
         "question": "Rolling hash is used primarily in which type of algorithms?",
@@ -1636,7 +1636,7 @@
     },
     {
         "id": 110,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Rolling Hash",
         "difficulty": "Easy",
         "question": "What is the advantage of rolling hash over normal hash in string matching?",
@@ -1651,7 +1651,7 @@
     },
     {
         "id": 111,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Rolling Hash",
         "difficulty": "Medium",
         "question": "Which problem is solved efficiently using rolling hash?",
@@ -1666,7 +1666,7 @@
     },
     {
         "id": 112,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Rolling Hash",
         "difficulty": "Medium",
         "question": "What is the time complexity of substring search using Rabin-Karp with rolling hash?",
@@ -1681,7 +1681,7 @@
     },
     {
         "id": 113,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Rolling Hash",
         "difficulty": "Hard",
         "question": "Which property of rolling hash is critical for efficient substring matching?",
@@ -1696,7 +1696,7 @@
     },
     {
         "id": 114,
-        "topic": "Data Structures",
+        "topic": "Other Topics",
         "algorithm": "Rolling Hash",
         "difficulty": "Hard",
         "question": "Which problem arises if the rolling hash is not designed carefully?",
@@ -1711,8 +1711,8 @@
     },
     {
         "id": 115,
-        "topic": "Data Structures",
-        "algorithm": "Applications",
+        "topic": "Other Topics",
+        "algorithm": "Hash - Applications",
         "difficulty": "Easy",
         "question": "Which of the following is a common use of hashing?",
         "options": [
@@ -1726,8 +1726,8 @@
     },
     {
         "id": 116,
-        "topic": "Data Structures",
-        "algorithm": "Applications",
+        "topic": "Other Topics",
+        "algorithm": "Hash - Applications",
         "difficulty": "Easy",
         "question": "Which data structure is typically implemented using hashing?",
         "options": [
@@ -1741,8 +1741,8 @@
     },
     {
         "id": 117,
-        "topic": "Data Structures",
-        "algorithm": "Applications",
+        "topic": "Other Topics",
+        "algorithm": "Hash - Applications",
         "difficulty": "Medium",
         "question": "Hashing is often used in which common algorithmic problem?",
         "options": [
@@ -1756,8 +1756,8 @@
     },
     {
         "id": 118,
-        "topic": "Data Structures",
-        "algorithm": "Applications",
+        "topic": "Other Topics",
+        "algorithm": "Hash - Applications",
         "difficulty": "Medium",
         "question": "Which application benefits from counting frequencies using hashing?",
         "options": [
@@ -1771,8 +1771,8 @@
     },
     {
         "id": 119,
-        "topic": "Data Structures",
-        "algorithm": "Applications",
+        "topic": "Other Topics",
+        "algorithm": "Hash - Applications",
         "difficulty": "Hard",
         "question": "Which problem requires careful hash function design to avoid collisions?",
         "options": [
@@ -1786,8 +1786,8 @@
     },
     {
         "id": 120,
-        "topic": "Data Structures",
-        "algorithm": "Applications",
+        "topic": "Other Topics",
+        "algorithm": "Hash - Applications",
         "difficulty": "Hard",
         "question": "Which of these algorithms heavily rely on hashing?",
         "options": [

@@ -1,5 +1,5 @@
 // src/components/AlgorithmVisualizer.jsx
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useMemo, useCallback, useRef, useLayoutEffect } from "react";
 import algorithmsData from "../algorithms/algorithms.json";
 import "../styles/UnifiedVisualizer.css";
 
@@ -52,6 +52,37 @@ export default function AlgorithmVisualizer({
     animationSpeedMs: DEFAULT_ANIMATION_SPEED,
     barMotion: true
   });
+  // ✅ Responsive bar width calculation
+const containerRef = useRef(null);
+const [computedBarWidth, setComputedBarWidth] = useState(26); // default width
+
+const computeBarWidth = useCallback(() => {
+  const container = containerRef.current;
+  if (!container) return;
+
+  const numBars = state.array?.length || 0;
+  const gap = 8; // space between bars
+  const containerWidth = container.clientWidth;
+  const totalGap = gap * (numBars - 1);
+  const availableWidth = containerWidth - totalGap;
+
+  // Minimum and maximum bar width limits
+  const minWidth = 6;
+  const maxWidth = 60;
+
+  let width = numBars > 0 ? Math.floor(availableWidth / numBars) : 26;
+  width = Math.max(minWidth, Math.min(maxWidth, width));
+
+  setComputedBarWidth(width);
+}, [state.array]);
+
+// ✅ Recompute bar width on mount and window resize
+useLayoutEffect(() => {
+  computeBarWidth();
+  window.addEventListener("resize", computeBarWidth);
+  return () => window.removeEventListener("resize", computeBarWidth);
+}, [computeBarWidth]);
+
 
   // Determine if component is controlled by external array
   const controlled = useMemo(() => Array.isArray(externalArray), [externalArray]);
@@ -224,7 +255,7 @@ export default function AlgorithmVisualizer({
           className={`visualization-bar ${colorClass}`}
           style={{
             height: `${Math.max(val, MIN_BAR_HEIGHT) * BAR_HEIGHT_MULTIPLIER}px`,
-            width: VISUALIZATION_CONFIG.barWidth,
+            width: `${computedBarWidth}px`,
             backgroundColor: Array.isArray(colorArray) ? colorArray[idx] : undefined,
             transition: state.barMotion
               ? VISUALIZATION_CONFIG.motionTransition.replace('{speed}', state.animationSpeedMs)
@@ -311,7 +342,7 @@ export default function AlgorithmVisualizer({
         <p className="target-display">Target: {state.target}</p>
       )}
       <div
-        className="visualization-container"
+        className="visualization-container" ref={containerRef}
         style={{ gap: barGap ? barGap : undefined }}
       >
         {renderBars}

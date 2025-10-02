@@ -601,14 +601,12 @@ const Sorting = () => {
         </div>
         <AlgorithmVisualizer
           algorithmName={algorithmName}
-          initialArray={array}
+          initialArray={state.array}
           visualOnly={true}
           barGap={computeGap()}
           fontSize={computeBarFontSize()}
         />
       </div>
-
-
       <CodeExplanation
         algorithm={state.algorithm}
         pseudocode={ALGORITHM_PSEUDOCODE[state.algorithm]}

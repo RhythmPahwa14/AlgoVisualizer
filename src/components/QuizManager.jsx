@@ -22,7 +22,17 @@ const TOPICS = [
     id: 'data-structures',
     name: 'Data Structures',
     description: 'Explore fundamental data structures like Arrays, Linked Lists, Stacks, and Queues.'
-  }
+  },
+  {
+    id: "paradigms",
+    name: "Paradigms",
+    description: "Dive into problem-solving approaches including  Backtracking Algorithms, Dynamic Programming, Greedy Algorithms, and Divide & Conquer."
+  },
+  {
+    id: "otherTopics",
+    name: "Other Topics",
+    description:  "Explore specialized areas including Hashing Algorithms, Tree Algorithms, Game Search Algorithms, and Branch & Bound."
+  }
 ];
 
 // Quiz step constants
@@ -80,6 +90,8 @@ const QuizHelpers = {
     'sorting': 'Sorting',
     'searching': 'Searching', 
     'data-structures': 'Data Structures',
+    'paradigms': 'Paradigms',
+    'otherTopics': 'Other Topics',
     'all': 'all'
   }),
 

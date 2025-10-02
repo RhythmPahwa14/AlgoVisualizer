@@ -23,7 +23,7 @@ import {
   Menu,
 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
-import { navbarNavigationItems } from "../utils/navigation";
+import { navbarNavigationItems, learnSections } from "../utils/navigation";
 import UserDropdown from "./UserDropdown";
 
 // Icon mapping for navigation items
@@ -217,19 +217,19 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
   const handleDropdownToggle = (index) => setIsDropdownOpen(index === isDropdownOpen ? null : index);
 
-
-  // Fuse.js setup
-  const fuse = new Fuse(
-    navbarNavigationItems.flatMap((item) =>
-      item.dropdown ? item.dropdown : item
-    ),
-    {
-      keys: ["label", "path", "keywords"],
-      threshold: 0.3, // fuzziness level
-    }
+  // ===================== Fuse.js Setup for Notes Search with Tags =====================
+  const searchableNotes = learnSections.flatMap((section) =>
+    section.items.map((note) => ({
+      ...note,
+      keywords: note.tags ? note.tags.join(" ") : "", // Use tags for search
+      category: section.heading,
+    }))
   );
 
-  // Handle search
+  const fuse = new Fuse(searchableNotes, {
+    keys: ["label", "path", "keywords"],
+    threshold: 0.3,
+  });
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -242,14 +242,13 @@ const Navbar = () => {
 
     const results = fuse
       .search(query)
-      .map((result) => result.item)
-      .filter(
-        (item) => categoryFilter === "All" || item.category === categoryFilter
-      );
+      .map((res) => res.item)
+      .filter((item) => categoryFilter === "All" || item.category === categoryFilter);
 
     setSearchResults(results);
     setIsSearchOpen(results.length > 0);
   };
+  // ====================================================================================
 
   // Render notes dropdown for desktop
   const renderNotesDropdown = () => (
@@ -368,10 +367,11 @@ const Navbar = () => {
             onChange={(e) => setCategoryFilter(e.target.value)}
           >
             <option value="All">All</option>
-            <option value="Java">Java</option>
-            <option value="Python">Python</option>
-            <option value="Sorting">Sorting</option>
-            <option value="Graph">Graph</option>
+            {learnSections.map((section, idx) => (
+              <option key={idx} value={section.heading}>
+                {section.heading}
+              </option>
+            ))}
           </select>
 
           {isSearchOpen && (
@@ -407,7 +407,7 @@ const Navbar = () => {
                 getIconComponent={getIconComponent}
               />
             ))}
-            
+
             {/* Notes Dropdown */}
             {renderNotesDropdown()}
 

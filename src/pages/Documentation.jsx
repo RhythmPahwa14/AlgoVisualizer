@@ -281,6 +281,7 @@ const algorithmDatabase = {
       },
     ],
   },
+
   trees: {
     title: "Trees",
     icon: "🌳",
@@ -300,6 +301,7 @@ const algorithmDatabase = {
       },
     ],
   },
+
   backtracking: {
     title: "Backtracking Algorithms",
     icon: "🧩",
@@ -552,6 +554,7 @@ const algorithmDatabase = {
       },
     ],
   },
+
   trees: {
     title: "Trees",
     icon: "🌳",
@@ -616,6 +619,32 @@ const algorithmDatabase = {
       },
     ],
   },
+
+  plants: {
+  title: "Trees",
+  icon: "🌳",
+  color: "#4ade80",
+  algorithms: [
+    {
+      name: "Postorder Traversal",
+      id: "postorder-traversal",
+      description: "Tree traversal method that visits the left subtree, then the right subtree, and finally the root node (Left → Right → Root).",
+      timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
+      spaceComplexity: "O(h) (where h is the height of the tree, O(n) in worst case for a skewed tree)",
+      implemented: true,
+    },
+    {
+      name: "Inorder Traversal",
+      id: "inorder-traversal",
+      description: "Tree traversal method that visits the left subtree, then the root node, and finally the right subtree (Left → Root → Right).",
+      timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
+      spaceComplexity: "O(h) (where h is the height of the tree, O(n) in worst case for a skewed tree)",
+      implemented: true,
+    },
+  ],
+},
+
+
   gameSearch: {
     title: "Game Search",
     icon: "🎮",
@@ -676,50 +705,24 @@ const algorithmDatabase = {
         spaceComplexity: "O(n^2)",
         implemented: false,
       },
-
-{
-name: "Postorder Traversal",
-id: "postorder-traversal",
-description: "Tree traversal method that visits the left subtree, then the right subtree, and finally the root node (Left → Right → Root).",
-timeComplexity: {
-best: "O(n)",
-average: "O(n)",
-worst: "O(n)"
-},
-spaceComplexity: "O(h) (where h is the height of the tree, O(n) in worst case for a skewed tree)",
-implemented: true
-},
-{
-name: "Inorder Traversal",
-id: "inorder-traversal",
-description: "Tree traversal method that visits the left subtree, then the root node, and finally the right subtree (Left → Root → Right).",
-timeComplexity: {
-best: "O(n)",
-average: "O(n)",
-worst: "O(n)"
-},
-spaceComplexity: "O(h) (where h is the height of the tree, O(n) in worst case for a skewed tree)",
-implemented: true
-},
-
-
-
     ],
   },
 };
 
 
 const getComplexityColor = (complexity) => {
-  const colors = {
-    "O(1)": "#4ade80",
-    "O(log n)": "#66ccff",
-    "O(n)": "#ffd93d",
-    "O(n log n)": "#ff9500",
-    "O(n²)": "#ff6b6b",
-    "O(√n)": "#a78bfa",
-  };
-  return colors[complexity] || "#e0e6ed";
+  if (!complexity) return "#e0e6ed";
+
+  if (complexity.includes("O(1)")) return "#4ade80";
+  if (complexity.includes("O(log")) return "#66ccff";
+  if (complexity.includes("O(n²)")) return "#ff6b6b";
+  if (complexity.includes("O(n log n)")) return "#ff9500";
+  if (complexity.includes("O(n)")) return "#ffd93d";
+  if (complexity.includes("O(√n)")) return "#a78bfa";
+
+  return "#e0e6ed"; // default color
 };
+
 
 // ============================================================================
 // 2. SUB-COMPONENTS
@@ -797,6 +800,7 @@ function AlgorithmDocumentation() {
       { key: "branchAndBound", label: "Branch & Bound", icon: Star, count: algorithmDatabase.branchAndBound?.algorithms.length || 0 },
     ];
   }, [getAllAlgorithms]);
+
 
 
   const graphCounts = useMemo(() => {

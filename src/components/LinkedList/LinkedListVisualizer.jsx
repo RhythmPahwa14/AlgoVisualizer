@@ -449,6 +449,23 @@ const LinkedListVisualizer = () => {
   };
 
   const nodes = getVisualizationArray();
+  // Helper function to get explanation of operation
+function getOperationExplanation(operation) {
+  const explanations = {
+    insertAtBeginning: 'The new node is created and its next pointer is set to the current head. Then the head pointer is updated to this new node.',
+    insertAtEnd: 'Traverse the list until the last node, then set its next pointer to the new node. If the list is empty, the new node becomes the head.',
+    insertAtPosition: 'Traverse to the desired position, link the new node with the next node, and update the previous node to point to the new node.',
+    deleteNode: 'Find the first node with the target value, update the previous node to skip it, and free memory.',
+    deleteAtPosition: 'Traverse to the position, update the previous node to skip the target node, and remove it.',
+    traverse: 'Start from head and visit each node sequentially until the end of the list.',
+    reverse: 'Iteratively change the next pointers of each node to point to the previous node, then update head to the last node.',
+    search: 'Start from head and compare each node\'s value with the target value until found or end is reached.',
+    getSize: 'Count all nodes starting from head until null is reached.',
+    clear: 'Set head to null, effectively removing all nodes.'
+  };
+  return explanations[operation] || 'Explanation not available.';
+}
+
 
   return (
     <div className="algorithm-container">
@@ -774,6 +791,23 @@ const LinkedListVisualizer = () => {
                 {getOperationDescription(selectedOperation)}
               </div>
             </div>
+            {/* Explanation Section */}
+<div style={{ marginTop: '1.5rem' }}>
+  <h4 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>
+    Explanation
+  </h4>
+  <div style={{
+    padding: '1rem',
+    background: 'var(--theme-bg)',
+    borderRadius: '6px',
+    border: '1px solid var(--accent-primary)',
+    color: 'var(--text-secondary)',
+    lineHeight: '1.6'
+  }}>
+    {getOperationExplanation(selectedOperation)}
+  </div>
+</div>
+
           </div>
         </div>
       </div>
@@ -813,6 +847,7 @@ const LinkedListVisualizer = () => {
     };
     return descriptions[operation] || 'Operation description not available.';
   }
+  
 };
 
 export default LinkedListVisualizer;

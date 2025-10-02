@@ -462,6 +462,10 @@ body {
 }
 
 .algorithm-card .card-description {
+  margin: 0; 
+  padding: 0;
+  width: 100%;
+  text-align: justify;
   color: var(--theme-text-secondary);
   line-height: 1.6;
   font-size: 0.9rem;
@@ -1345,3 +1349,69 @@ body {
   font-weight: bold;
   font-family: monospace;
 }
+
+/* Hash Chanining */
+.board {
+  display: table;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  width: max-content;
+  background-color: var(--background-color);
+}
+
+.board-row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  text-align: center;
+  min-width: 40px;
+  vertical-align: middle;
+  font-family: monospace;
+  background-color: var(--cell-background);
+  color: var(--text-color);
+}
+
+.cell.header {
+  background-color: transparent;
+  font-weight: normal;
+  padding: 0 8px;
+  border: none;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--header-text-color);
+}
+
+/* Highlight the current DP cell being updated */
+.cell.is-focus {
+  outline: 2px solid #60a5fa;   /* blue ring */
+  outline-offset: -2px;         /* keep ring inside the cell */
+  background-color: #3b82f6 !important; /* blue fill to stand out */
+  color: #fff;                  /* white text on blue */
+  font-weight: bold;
+  z-index: 1;                   /* ensure it appears above neighbors */
+}
+
+.cell.is-focus {
+  outline: 2px solid #f59e0b;  /* amber for splits */
+  outline-offset: -2px;
+  background-color: #fbbf24 !important;
+  color: #111;
+  font-weight: bold;
+}
+.result-box {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: rgba(16, 185, 129, 0.1); /* teal tint */
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #d1fae5;
+}
+
+
+
+/*  */

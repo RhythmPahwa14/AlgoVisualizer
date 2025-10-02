@@ -4,7 +4,8 @@ import "./Stack.css";
 export default function Stack() {
   const [items, setItems] = useState([]);
   const [input, setInput] = useState("");
-  const [peekTick, setPeekTick] = useState(0); // used to trigger a brief highlight on peek
+  const [peekTick, setPeekTick] = useState(0); // brief highlight on peek
+  const [codeSnippet, setCodeSnippet] = useState(""); // dynamic code snippet
   const topIndex = items.length - 1;
 
   // brief animation toggle for Peek
@@ -14,29 +15,55 @@ export default function Stack() {
     return () => clearTimeout(t);
   }, [peekTick]);
 
+  // ----- code snippets for operations -----
+  const STACK_CODE = {
+    push: `function push(stack, value) {
+  stack.push(value);
+}`,
+    pop: `function pop(stack) {
+  if(stack.length === 0) return null;
+  return stack.pop();
+}`,
+    peek: `function peek(stack) {
+  if(stack.length === 0) return null;
+  return stack[stack.length - 1];
+}`,
+    reset: `function reset(stack) {
+  stack.length = 0;
+}`,
+  };
+
+  // ----- stack operations -----
   const push = () => {
     const val = input.trim();
     if (!val) return;
     setItems(prev => [...prev, val]);
     setInput("");
+    setCodeSnippet(STACK_CODE.push);
   };
 
   const pop = () => {
     if (!items.length) return;
     setItems(prev => prev.slice(0, -1));
+    setCodeSnippet(STACK_CODE.pop);
   };
 
   const peek = () => {
     if (!items.length) return;
     setPeekTick(peekTick + 1);
+    setCodeSnippet(STACK_CODE.peek);
   };
 
-  const reset = () => setItems([]);
+  const reset = () => {
+    setItems([]);
+    setCodeSnippet(STACK_CODE.reset);
+  };
 
   // convenience actions
   const pushSample = () => {
     const sample = ["A", "B", "C", "D"];
     setItems(sample);
+    setCodeSnippet(STACK_CODE.push);
   };
 
   return (
@@ -67,9 +94,7 @@ export default function Stack() {
               "stack-item",
               isTop ? "top" : "",
               isTop && peekTick ? "peek" : "",
-            ]
-              .filter(Boolean)
-              .join(" ");
+            ].filter(Boolean).join(" ");
 
             return (
               <div
@@ -95,6 +120,14 @@ export default function Stack() {
           <span className="legend-box normal" /> Element
         </div>
       </div>
+
+      {/* Dynamic Code Snippet */}
+      {codeSnippet && (
+        <section className="ds-code-section" aria-label="Stack operation code">
+          <h3>Code Snippet</h3>
+          <pre className="ds-code">{codeSnippet}</pre>
+        </section>
+      )}
 
       {/* ---- Info Panel ---- */}
       <section className="ds-info">
@@ -149,23 +182,6 @@ export default function Stack() {
               </tr>
             </tbody>
           </table>
-
-          <div className="ds-note">
-            <h4>Implementation Notes</h4>
-            <ul>
-              <li><strong>Array-based</strong> stack: simple &amp; cache-friendly; pushes/pops at the end are O(1).</li>
-              <li><strong>Linked-list</strong> stack: no resize cost; each node has pointer overhead.</li>
-              <li><strong>Space complexity:</strong> O(n) to store n items.</li>
-            </ul>
-
-            <h4>Common Uses</h4>
-            <ul>
-              <li>Function call stack / recursion</li>
-              <li>Undo / Redo</li>
-              <li>Balanced parentheses, expression evaluation</li>
-              <li>Depth-First Search (DFS)</li>
-            </ul>
-          </div>
         </div>
 
         <h3 style={{ marginTop: "1rem" }}>Pseudo-code</h3>
