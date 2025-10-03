@@ -190,3 +190,24 @@
   font-weight:700;
   user-select:none;
 }
+.btv-explanations {
+  margin: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.btv-explain-list {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.btv-explain-item {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: #333;
+}

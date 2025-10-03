@@ -1,18 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
-import tailwindcss from '@tailwindcss/vite'
-
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [react(), tailwindcss(), svgr()],
   build: {
     outDir: "build",
-    rollupOptions: {
-      external: ['vis-data/peer/esm/vis-data.js'],
-    },
   },
   optimizeDeps: {
-    include: ['vis-network', 'vis-data']
-  }
+    include: ['vis-network', 'vis-data'],
+  },
 });
