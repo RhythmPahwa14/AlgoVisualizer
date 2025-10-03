@@ -102,4 +102,17 @@ export const ALGORITHM_PSEUDOCODE = {
     { code: "swap(item, arr[pos])", explain: "Place item at its correct position" },
   ],
 
+    pancakeSort: [
+    { code: "function flip(arr, k)", explain: "Helper function to reverse the order of the first k elements." },
+    { code: "function findMaxIndex(arr, n)", explain: "Helper function to find the index of the maximum element in arr[0..n-1]." },
+    { code: "while n > 1", explain: "Repeat until the entire array is sorted." },
+    { code: "  maxIndex = findMaxIndex(arr, n)", explain: "Find the index of the maximum element in the current unsorted portion." },
+    { code: "  if maxIndex != n-1", explain: "If the maximum element is not already in its correct position." },
+    { code: "    if maxIndex != 0", explain: "If the maximum element is not at the front, flip it to the front." },
+    { code: "      flip(arr, maxIndex)", explain: "Flip the maximum element to the front." },
+    { code: "    flip(arr, n-1)", explain: "Flip the maximum element to its correct position at the end of the unsorted portion." },
+    { code: "  n = n - 1", explain: "Reduce the size of the unsorted portion." },
+  ],
+
 };
+     
