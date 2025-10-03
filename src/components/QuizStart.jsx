@@ -20,11 +20,13 @@ const QuizStart = ({
   ];
 
   const handleStartQuiz = () => {
+    // Allow both topic and difficulty to be 'all'
     if (!selectedTopic || !selectedDifficulty) {
       setError("Please choose both a topic and difficulty.");
       return;
     }
     setError("");
+    // Pass the selected options directly without modification
     onStartQuiz(selectedTopic, selectedDifficulty, timedMode);
   };
 

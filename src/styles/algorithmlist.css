@@ -1,46 +1,57 @@
+/* =========================
+   Algorithm Cards Section
+========================= */
 .algorithm-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 20px;
+  padding: 24px;
+  justify-content: center; /* Center align rows */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .algorithm-card {
   position: relative;
-  flex: 1 1 calc(25% - 20px); /* 4 cards per row on large screens */
-  min-width: 200px;
-  padding: 15px 20px;
-  border-radius: 8px;
-  background-color: #f2f2f2;
+  flex: 1 1 calc(25% - 20px); /* 4 cards per row */
+  min-width: 220px;
+  max-width: 280px;
+  padding: 18px 20px;
+  border-radius: 10px;
+  background-color: #f3f4f6;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.25s ease, background 0.3s;
+  text-align: center;
 }
 
 .algorithm-card:hover {
-  transform: translateY(-5px);
-  background-color: #e0e0e0;
+  transform: translateY(-6px);
+  background-color: #e5e7eb;
 }
 
 .algorithm-name {
-  font-weight: bold;
+  font-weight: 600;
   font-size: 16px;
+  margin-bottom: 6px;
 }
 
 .tooltip {
   visibility: hidden;
-  width: 200px;
-  background-color: #333;
-  color: #fff;
+  width: 220px;
+  background-color: #111827;
+  color: #f9fafb;
   text-align: left;
-  border-radius: 6px;
-  padding: 10px;
+  border-radius: 8px;
+  padding: 10px 12px;
   position: absolute;
   z-index: 1;
-  bottom: 120%;
+  bottom: 115%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
   transition: opacity 0.3s;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .algorithm-card:hover .tooltip {
@@ -61,10 +72,9 @@
   .algorithm-card {
     flex: 1 1 calc(50% - 20px); /* 2 cards per row */
   }
-
   .tooltip {
-    width: 160px; /* smaller tooltip */
-    font-size: 14px;
+    width: 180px;
+    font-size: 13px;
   }
 }
 
@@ -72,20 +82,18 @@
   .algorithm-card {
     flex: 1 1 100%; /* 1 card per row */
   }
-
   .algorithm-name {
     font-size: 14px;
   }
-
   .tooltip {
-    width: 140px;
+    width: 160px;
     font-size: 12px;
-    padding: 8px;
+    padding: 8px 10px;
   }
 }
-/* Make first two cards align evenly */
+
+/* Optional tweak: make first two cards equal width on wide screens */
 .algorithm-container .algorithm-card:nth-child(1),
 .algorithm-container .algorithm-card:nth-child(2) {
-  flex: 1 1 calc(50% - 20px); /* Two cards per row */
-  max-width: 400px;           /* Optional: prevent over-stretch */
+  flex: 1 1 calc(50% - 20px);
 }

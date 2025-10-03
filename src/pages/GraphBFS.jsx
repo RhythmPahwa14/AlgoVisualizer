@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import GraphVisualizer from "../components/GraphVisualizer";
+import InputPanel from "../components/InputPanel";
 import { graphAlgorithms } from "../data/allCodes";
+import { getSampleData, getValidationRule } from "../data/sampleData";
 import "../styles/global-theme.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -10,7 +12,12 @@ const GraphBFS = () => {
   const [customGraph, setCustomGraph] = useState(null);
   const [inputText, setInputText] = useState("");
 
-  // Handler to parse input
+  // Enhanced handler for InputPanel
+  const handleGraphDataLoaded = (graphData) => {
+    setCustomGraph(graphData);
+  };
+
+  // Legacy handler to parse input (kept for backward compatibility)
   const handleInputChange = (e) => {
     setInputText(e.target.value);
   };
@@ -32,16 +39,30 @@ const GraphBFS = () => {
     <div className="theme-container" data-aos="fade-up" data-aos-duration="1000">
       <h1 className="theme-title">Breadth-First Search (BFS)</h1>
       <p style={{ textAlign: 'center', maxWidth: '700px', margin: '-2rem auto 2rem auto', color: 'var(--theme-text-secondary)' }}>
-        Visualize BFS traversal on a graph. You can edit the graph JSON below and click "Load Graph".
+        Visualize BFS traversal on a graph. Use the input panel below to load your own graph data or sample graphs.
       </p>
 
-      {/* ✅ Custom Input Section */}
+      {/* Enhanced Input Panel */}
+      <InputPanel
+        dataType="graph"
+        placeholder='Enter graph JSON: {"nodes":[{"id": 0, "label": "A"}, {"id": 1, "label": "B"}], "edges":[{"id": "0-1", "from": 0, "to": 1}]}'
+        acceptedFormats={['json']}
+        sampleData={getSampleData('graph', 'simple')}
+        validationRules={getValidationRule('graph')}
+        onDataLoaded={handleGraphDataLoaded}
+        className="graph-input-panel"
+      />
+
+      {/* Legacy Custom Input Section (kept for backward compatibility) */}
       <div style={{
         background: 'var(--surface-bg)',
         padding: '1rem',
         borderRadius: '8px',
         marginBottom: '1.5rem'
       }} data-aos="fade-up" data-aos-delay="200">
+        <label style={{ fontWeight: 500, marginBottom: '0.5rem', display: 'block' }}>
+          Legacy Text Input (use Input Panel above for better experience):
+        </label>
         <textarea
           value={inputText}
           onChange={handleInputChange}
@@ -69,7 +90,7 @@ const GraphBFS = () => {
             cursor: 'pointer'
           }}
         >
-          Load Graph
+          Load Graph (Legacy)
         </button>
       </div>
 

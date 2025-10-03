@@ -32,6 +32,38 @@
   --theme-status-danger: #ef4444;
 }
 
+/* ---------- UI helper variables (used by home section polish) ---------- */
+:root {
+  --ui-space-sm: 8px;
+  --ui-space-md: 16px;
+  --ui-space-lg: 24px;
+  --ui-space-xl: 32px;
+
+  --ui-muted: #6b7280; /* for secondary text */
+  --ui-accent-1: #4f6ef6; /* primary accent */
+  --ui-accent-2: #8bc7ff; /* soft secondary */
+  --ui-card-border: rgba(15,23,42,.06);
+
+  --ui-shadow-soft: 0 8px 24px rgba(16,24,40,0.06);
+  --ui-shadow-stacked: 0 10px 30px rgba(16,24,40,0.08);
+  --ui-radius-sm: 8px;
+  --ui-radius-md: 14px;
+  --ui-radius-pill: 9999px;
+}
+
+/* Alias variables used by individual page inline styles
+   These provide a stable set of names (with fallbacks) so pages that
+   reference --card-bg, --text-title, etc. pick up the theme correctly. */
+:root {
+  --card-bg: var(--theme-card-bg, #ffffff);
+  --card-border: var(--theme-border, rgba(15,23,42,.06));
+  --card-shadow: var(--theme-card-shadow, 0 6px 18px rgba(16,24,40,0.04));
+  --text-title: var(--theme-text-primary, #0f172a);
+  --text-muted: var(--theme-text-muted, #374151);
+  --code-color: var(--code-text, #222);
+  --brand: var(--theme-accent, #4f46e5);
+}
+
 [data-theme="dark"] {
   /* Dark Theme */
   --theme-bg: #0d1117;
@@ -59,6 +91,30 @@
   --theme-status-danger: #da3633;
 }
 
+/* Dark aliases */
+[data-theme="dark"] {
+  --card-bg: var(--theme-card-bg, #21262d);
+  --card-border: var(--theme-border, rgba(255,255,255,0.04));
+  --card-shadow: var(--theme-card-shadow, 0 8px 28px rgba(0,0,0,0.45));
+  --text-title: var(--theme-text-primary, #e6edf3);
+  --text-muted: var(--theme-text-muted, #8b949e);
+  --code-color: var(--code-text, #f8f8f2);
+  --brand: var(--theme-accent, #58a6ff);
+}
+
+/* Respect user's OS preference when data-theme attribute isn't used */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: var(--card-bg, #0f1720);
+    --card-border: var(--card-border, rgba(255,255,255,0.03));
+    --card-shadow: var(--card-shadow, 0 8px 28px rgba(0,0,0,0.45));
+    --text-title: var(--text-title, #e6edf3);
+    --text-muted: var(--text-muted, #8b949e);
+    --code-color: var(--code-color, #f8f8f2);
+    --brand: var(--brand, #58a6ff);
+  }
+}
+
 /* Theme-aware code block styles */
 :root {
   --code-bg: #f5f5f7;
@@ -68,6 +124,36 @@
 [data-theme="dark"], .dark-theme {
   --code-bg: #23272e;
   --code-text: #f8f8f2;
+}
+
+/* Code block container with copy button */
+.code-container {
+  position: relative;
+}
+.copy-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(16,24,40,0.06);
+  color: var(--text-title, #0f172a);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  backdrop-filter: blur(4px);
+}
+.copy-btn:hover {
+  transform: translateY(-2px);
+}
+.copy-btn:active {
+  transform: translateY(0);
+}
+.copy-btn.copied {
+  background: var(--brand, #4f46e5);
+  color: white;
+  border-color: transparent;
 }
 
 /* Add this to your CSS module or stylesheet */
@@ -1384,6 +1470,23 @@ body {
   white-space: nowrap;
   color: var(--header-text-color);
 }
+.cell.is-focus {
+  outline: 2px solid #f59e0b;  /* amber for splits */
+  outline-offset: -2px;
+  background-color: #fbbf24 !important;
+  color: #111;
+  font-weight: bold;
+}
+.result-box {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: rgba(16, 185, 129, 0.1); /* teal tint */
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #d1fae5;
+}
+
 
 /* Highlight the current DP cell being updated */
 .cell.is-focus {

@@ -98,6 +98,16 @@
 - **Responsive Design**: Seamless experience across desktop, tablet, and mobile devices
 - **Smooth Animations**: Powered by Framer Motion for engaging user experience
 
+### 📝 **User Input System**
+
+- **📊 Custom Data Visualization**: Upload your own arrays, graphs, and data structures
+- **🎯 Multiple Input Methods**: Text input, file upload (JSON/CSV/TXT), and sample data
+- **✅ Smart Validation**: Real-time data validation with helpful error messages
+- **📋 Format Support**: JSON, CSV, comma-separated values, and structured data
+- **🔧 Auto-Processing**: Automatic sorting for search algorithms, ID generation for graphs
+- **📚 Sample Library**: Built-in examples for all algorithm types (arrays, graphs, trees)
+- **📄 File Export**: Download sample data or save your custom datasets
+
 ### 🧠 **Algorithm Visualizations**
 
 - **Step-by-Step Visualization**: Watch algorithms execute in real-time with clear visual feedback
@@ -302,6 +312,20 @@ The code implementations are ideal for:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
+<h2 id="visualization-logic-explained"> Visualization Logic Explained</h2>
+
+### The heart of this project is **AlgorithmVisualizer.jsx.** Here’s how it works:
+
+- State Management: Handles the array of numbers to be sorted and updates the UI as the algorithm progresses.
+
+- Dynamic Bar Width: Bar size is now calculated dynamically based on screen size and the number of elements — so the visualizer is fully responsive.
+
+- Sorting Algorithms: The algorithms (Bubble Sort, Merge Sort, Quick Sort, etc.) are imported from the  **src/algorithms/** folder. Each runs step-by-step with animated transitions.
+
+- Styling: The visualization container and bars are styled in **UnifiedVisualizer.css** for a clean, responsive layout.
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
 <h2 id="quick-start"> Quick Start</h2>
 
 ### Prerequisites
@@ -314,6 +338,8 @@ The code implementations are ideal for:
 1. **Clone the repository:**
 
     ```bash
+   git clone https://github.com/<your-username>/AlgoVisualizer.git 
+   Example:
    git clone https://github.com/RhythmPahwa14/AlgoVisualizer.git
    cd AlgoVisualizer
    ```
@@ -353,25 +379,53 @@ npm run preview
 
 ### 📊 **Sorting Algorithms**
 
-1. Select your preferred sorting algorithm
-2. Generate or input custom array data
+1. **Load Your Data**: Use the enhanced input panel to:
+   - Enter numbers directly: `64, 34, 25, 12, 22, 11, 90`
+   - Upload a JSON file: `[64, 34, 25, 12, 22, 11, 90]`
+   - Try sample data with different characteristics
+2. Select your preferred sorting algorithm
 3. Adjust visualization speed
 4. Click "Start Sorting" to begin
 5. Use export controls to capture or record the process
 
 ### 🔍 **Searching Algorithms**
 
-1. Choose a searching algorithm
-2. Set up your data array
+1. **Input Your Array**: Load custom data (auto-sorted for searching):
+   - Direct input: `5, 12, 19, 23, 45, 67, 89`
+   - File upload: CSV or JSON format
+   - Sample sorted arrays available
+2. Choose a searching algorithm
 3. Specify the target value to search
 4. Watch the step-by-step search process
 5. Export visualizations for educational use
 
-### �️ **Data Structures**
+### 🕸️ **Graph Algorithms**
+
+1. **Create Your Graph**: Use the input panel to define:
+   ```json
+   {
+     "nodes": [{"id": 0, "label": "A"}, {"id": 1, "label": "B"}],
+     "edges": [{"id": "0-1", "from": 0, "to": 1, "weight": 5}]
+   }
+   ```
+2. Load sample graphs (simple, complex, weighted, cycle detection)
+3. Select algorithm (BFS, DFS, Dijkstra)
+4. Watch the traversal or pathfinding in action
+
+### 🌳 **Data Structures**
 
 - Explore interactive data structure operations
+- Load custom tree/linked list data
 - Visualize insertions, deletions, and traversals
 - Understand structural relationships and properties
+
+### 📝 **Custom Data Input Features**
+
+- **Multiple Formats**: JSON, CSV, TXT file support
+- **Real-time Validation**: Instant feedback on data format
+- **Sample Data Library**: Examples for every algorithm type
+- **Auto-correction**: Missing IDs and labels auto-generated
+- **Error Guidance**: Clear instructions for fixing data issues
 
 ### 🎓 **Quiz Section**
 
@@ -559,7 +613,7 @@ We love contributions from the community! Whether it's a bug report, a new featu
 
 ***How to Contribute***
 
-1.  **Fork the repository** and create a new branch for your changes.
+1.  **Fork and clone the repository** and create a new branch for your changes.
 2.  **Make your changes** and ensure everything is working as expected.
 3.  **Submit a pull request** with a clear description of your changes.
 
@@ -692,3 +746,4 @@ This project is licensed under the MIT License - see the [`License`](https://git
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 > Ready to show off your coding achievements? Get started with **AlgoVisualizer** today! 🚀
+<!-- Thank you -->

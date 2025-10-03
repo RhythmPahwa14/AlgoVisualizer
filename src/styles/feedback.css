@@ -8,7 +8,7 @@
   height: 56px;
   border-radius: 50%;
   border: none;
-  background: #2575fc;
+  background: var(--user-accent-primary);
   color: #fff;
   font-size: 24px;
   cursor: pointer;
@@ -22,7 +22,7 @@
 
 .feedback-fab:hover {
   transform: scale(1.07);
-  background: #1f63d6;
+  background: var(--user-accent-primary);
   box-shadow: 0 10px 28px rgba(37, 117, 252, 0.45);
 }
 

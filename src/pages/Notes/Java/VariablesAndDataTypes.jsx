@@ -3,7 +3,7 @@ import React from "react";
 
 const VariablesAndDataTypes = () => {
   return (
-    <div className="notes-page" style={{ padding: "2rem", maxWidth: "900px", margin: "0 auto" }}>
+  <div className="notes-page" style={{ padding: "2rem", maxWidth: "1100px", margin: "0 auto" }}>
       <h1 style={{ textAlign: "center", marginBottom: "1.5rem", color: "#4f46e5" }}>
         Variables & Data Types in Java
       </h1>

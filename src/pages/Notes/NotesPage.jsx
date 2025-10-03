@@ -1,17 +1,48 @@
 // src/pages/NotesPage.jsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
+
+// Map of languages to topics and their paths
+const notesMap = {
+  java: [
+    { name: "Fundamentals", path: "/notes/java/fundamentals" },
+    { name: "Variables & Data Types", path: "/notes/java/variables-and-data-types" },
+    // Add more Java topics here
+  ],
+  python: [
+    { name: "Fundamentals", path: "/notes/python/fundamentals" },
+    { name: "Variables & Data Types", path: "/notes/python/variables-and-data-types" },
+    { name: "Basics", path: "/notes/python/basics" },
+    // Add more Python topics here
+  ],
+  cpp: [
+    { name: "Fundamentals", path: "/notes/cpp/fundamentals" },
+    { name: "Variables & Data Types", path: "/notes/cpp/variables-and-data-types" },
+    // Add more C++ topics here
+  ],
+};
 
 const NotesPage = () => {
-  const topics = [
-    { name: "Fundamentals", path: "/notes/java/fundamentals" },
-    // You can add more topics later
-  ];
+  const { language } = useParams();
+
+  // If language is invalid, redirect to home
+  if (!notesMap[language]) {
+    return <Navigate to="/" replace />;
+  }
+
+  const topics = notesMap[language];
 
   return (
     <div style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "1.5rem", color: "#4f46e5" }}>
-        Notes
+      <h1
+        style={{
+          textAlign: "center",
+          marginBottom: "1.5rem",
+          color: "#4f46e5",
+          textTransform: "capitalize",
+        }}
+      >
+        {language} Notes
       </h1>
       <ul style={{ listStyle: "none", padding: 0 }}>
         {topics.map((topic, idx) => (

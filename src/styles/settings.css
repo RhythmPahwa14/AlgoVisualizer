@@ -39,7 +39,7 @@
   gap: 1.5rem;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
-  background: var(--settings-gradient);
+  background: var(--user-accent-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -58,7 +58,7 @@
 }
 
 .settings-title svg {
-  color: var(--theme-accent);
+  color: var(--user-accent-primary);
   animation: settingsIconPulse 3s ease-in-out infinite;
   filter: drop-shadow(0 0 20px rgba(var(--theme-accent-rgb, 88, 166, 255), 0.3));
 }
@@ -97,7 +97,7 @@
   inset: 0;
   border-radius: var(--settings-border-radius);
   padding: 2px;
-  background: var(--settings-gradient);
+  background: var(--user-accent-primary);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: xor;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -113,7 +113,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--settings-gradient);
+  background: var(--user-accent-primary);
   transform: scaleX(0);
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -150,12 +150,12 @@
   left: 0;
   width: 40px;
   height: 2px;
-  background: var(--settings-gradient);
+  background: var(--user-accent-primary);
   border-radius: 2px;
 }
 
 .settings-card-header svg {
-  color: var(--theme-accent);
+  color: var(--user-accent-secondary);
   font-size: var(--settings-icon-size);
   padding: 8px;
   background: rgba(var(--theme-accent-rgb, 88, 166, 255), 0.1);
@@ -230,7 +230,7 @@
 
 .settings-select:hover,
 .settings-input:hover {
-  border-color: var(--theme-accent);
+  border-color: var(--user-accent-primary);
 }
 
 /* Color Input Specific */
@@ -293,7 +293,7 @@
 }
 
 .settings-toggle.active {
-  background: var(--theme-accent);
+  background: var(--user-accent-primary);
 }
 
 .settings-toggle-slider {
@@ -538,7 +538,7 @@
 }
 
 .notification-icon {
-  color: var(--theme-accent);
+  color: var(--user-accent-primary);
 }
 
 .notification-details h4 {

@@ -26,7 +26,6 @@ import { useTheme } from "../ThemeContext";
 import { navbarNavigationItems, learnSections } from "../utils/navigation";
 import UserDropdown from "./UserDropdown";
 
-// Icon mapping for navigation items
 const ICON_COMPONENTS = {
   Home,
   BarChart3,
@@ -47,42 +46,54 @@ const ICON_COMPONENTS = {
   Menu,
 };
 
-// Sub-component for rendering desktop navigation items
-const DesktopNavItem = ({ 
-  item, 
-  index, 
-  isDropdownOpen, 
-  handleDropdownToggle, 
+const DesktopNavItem = ({
+  item,
+  index,
+  isDropdownOpen,
+  handleDropdownToggle,
   isActive,
-  getIconComponent 
+  getIconComponent,
 }) => {
   if (item.dropdown) {
     return (
-      <div key={index} className="navbar-item dropdown">
+      <div key={index} className="navbar-item dropdown relative flex-shrink-0">
         <button
-          className={`dropdown-toggle ${isDropdownOpen === index ? "active" : ""}`}
+          type="button"
+          aria-expanded={isDropdownOpen === index}
+          className={`dropdown-toggle inline-flex items-center !gap-1 !px-1 !py-1 !text-xs !leading-none !whitespace-nowrap ${
+            isDropdownOpen === index ? "active" : ""
+          }`}
           onClick={() => handleDropdownToggle(index)}
         >
-          {item.icon && React.createElement(getIconComponent(item.icon), {
-            size: 18,
-            className: "drop-icon",
-          })}
-          <span>{item.label}</span>
+          {item.icon &&
+            React.createElement(getIconComponent(item.icon), {
+              size: 12,
+              className: "drop-icon shrink-0",
+            })}
+          <span className="!whitespace-nowrap">{item.label}</span>
           <ChevronDown
-            size={16}
-            className={`dropdown-arrow ${isDropdownOpen === index ? "rotated" : ""}`}
+            size={10}
+            className={`dropdown-arrow shrink-0 ${
+              isDropdownOpen === index ? "rotate-180" : ""
+            }`}
           />
         </button>
+
         {isDropdownOpen === index && (
-          <div className="dropdown-menu">
+          <div
+            className="dropdown-menu absolute left-0 top-full mt-2 z-[9999] !max-h-none !overflow-visible"
+            style={{ maxHeight: "none", overflow: "visible" }}
+          >
             {item.dropdown.map((subItem, subIndex) => (
               <Link
                 key={subIndex}
                 to={subItem.path}
-                className={`dropdown-item ${isActive(subItem.path) ? "active" : ""}`}
+                className={`dropdown-item !text-xs !px-2 !py-1 ${
+                  isActive(subItem.path) ? "active" : ""
+                }`}
                 onClick={() => handleDropdownToggle(null)}
               >
-                {subItem.label}
+                <span className="!whitespace-nowrap">{subItem.label}</span>
               </Link>
             ))}
           </div>
@@ -95,26 +106,28 @@ const DesktopNavItem = ({
     <Link
       key={index}
       to={item.path}
-      className={`navbar-link ${isActive(item.path) ? "active" : ""}`}
+      className={`navbar-link inline-flex items-center !gap-1 !px-1 !py-1 !text-xs !leading-none !whitespace-nowrap flex-shrink-0 ${
+        isActive(item.path) ? "active" : ""
+      }`}
     >
-      {item.icon && React.createElement(getIconComponent(item.icon), {
-        size: 18,
-        className: "icon",
-      })}
-      <span>{item.label}</span>
+      {item.icon &&
+        React.createElement(getIconComponent(item.icon), {
+          size: 12,
+          className: "icon shrink-0",
+        })}
+      <span className="!whitespace-nowrap">{item.label}</span>
     </Link>
   );
 };
 
-// Sub-component for rendering mobile navigation items
-const MobileNavItem = ({ 
-  item, 
-  index, 
-  isDropdownOpen, 
-  handleDropdownToggle, 
+const MobileNavItem = ({
+  item,
+  index,
+  isDropdownOpen,
+  handleDropdownToggle,
   isActive,
   getIconComponent,
-  setIsMobileMenuOpen
+  setIsMobileMenuOpen,
 }) => {
   if (item.dropdown) {
     return (
@@ -123,10 +136,11 @@ const MobileNavItem = ({
           className={`mobile-dropdown-toggle ${isDropdownOpen === index ? "active" : ""}`}
           onClick={() => handleDropdownToggle(index)}
         >
-          {item.icon && React.createElement(getIconComponent(item.icon), {
-            size: 18,
-            className: "icon",
-          })}
+          {item.icon &&
+            React.createElement(getIconComponent(item.icon), {
+              size: 18,
+              className: "icon",
+            })}
           <span>{item.label}</span>
           <ChevronDown
             size={16}
@@ -161,10 +175,11 @@ const MobileNavItem = ({
       className={`mobile-menu-link ${isActive(item.path) ? "active" : ""}`}
       onClick={() => setIsMobileMenuOpen(false)}
     >
-      {item.icon && React.createElement(getIconComponent(item.icon), {
-        size: 18,
-        className: "icon",
-      })}
+      {item.icon &&
+        React.createElement(getIconComponent(item.icon), {
+          size: 18,
+          className: "icon",
+        })}
       <span>{item.label}</span>
     </Link>
   );
@@ -184,10 +199,15 @@ const Navbar = () => {
   const navbarRef = useRef(null);
   const searchRef = useRef(null);
 
-  // Get icon component by name
+  const notesBtnRef = useRef(null);
+  const [notesMenuPos, setNotesMenuPos] = useState({
+    top: 0,
+    left: 0,
+    minWidth: 0,
+  });
+
   const getIconComponent = (iconName) => ICON_COMPONENTS[iconName] || null;
 
-  // Detect mobile screen
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth <= 768;
@@ -199,7 +219,6 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Handle click outside for dropdowns & search
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (navbarRef.current && !navbarRef.current.contains(event.target)) {
@@ -213,15 +232,54 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Navigation helpers
   const isActive = (path) => location.pathname === path;
-  const handleDropdownToggle = (index) => setIsDropdownOpen(index === isDropdownOpen ? null : index);
+  const handleDropdownToggle = (index) =>
+    setIsDropdownOpen(index === isDropdownOpen ? null : index);
 
-  // ===================== Fuse.js Setup for Notes Search with Tags =====================
+  // updated positioning for Notes dropdown
+  const updateNotesMenuPos = () => {
+    if (!notesBtnRef.current) return;
+    const rect = notesBtnRef.current.getBoundingClientRect();
+    const docLeft = rect.left + window.scrollX;
+    const docTop = rect.bottom + window.scrollY;
+    const triggerW = rect.width;
+
+    const maxLeft = window.scrollX + window.innerWidth - triggerW - 8;
+    const clampedLeft = Math.max(window.scrollX + 8, Math.min(docLeft, maxLeft));
+
+    setNotesMenuPos({
+      top: docTop,
+      left: clampedLeft,
+      minWidth: triggerW,
+    });
+  };
+
+  const toggleNotes = () => {
+    const willOpen = isDropdownOpen !== "notes";
+    handleDropdownToggle("notes");
+    if (willOpen) {
+      requestAnimationFrame(updateNotesMenuPos);
+    }
+  };
+
+  useEffect(() => {
+    if (isDropdownOpen === "notes") {
+      updateNotesMenuPos();
+      const onScroll = () => updateNotesMenuPos();
+      const onResize = () => updateNotesMenuPos();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onResize);
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onResize);
+      };
+    }
+  }, [isDropdownOpen]);
+
   const searchableNotes = learnSections.flatMap((section) =>
     section.items.map((note) => ({
       ...note,
-      keywords: note.tags ? note.tags.join(" ") : "", // Use tags for search
+      keywords: note.tags ? note.tags.join(" ") : "",
       category: section.heading,
     }))
   );
@@ -248,34 +306,43 @@ const Navbar = () => {
     setSearchResults(results);
     setIsSearchOpen(results.length > 0);
   };
-  // ====================================================================================
 
-  // Render notes dropdown for desktop
   const renderNotesDropdown = () => (
-    <div className="navbar-item dropdown">
+    <div className="navbar-item dropdown relative">
       <button
-        className="dropdown-toggle"
-        onClick={() => handleDropdownToggle("notes")}
+        ref={notesBtnRef}
+        className="dropdown-toggle inline-flex items-center !gap-1 !px-1 !py-1 !text-xs !leading-none !whitespace-nowrap"
+        onClick={toggleNotes}
       >
-        <BookOpen size={18} className="drop-icon" />
-        <span>Notes</span>
+        <BookOpen size={12} className="drop-icon shrink-0" />
+        <span className="!whitespace-nowrap">Notes</span>
         <ChevronDown
-          size={16}
-          className={`dropdown-arrow ${isDropdownOpen === "notes" ? "rotated" : ""}`}
+          size={10}
+          className={`dropdown-arrow shrink-0 ${isDropdownOpen === "notes" ? "rotate-180" : ""}`}
         />
       </button>
       {isDropdownOpen === "notes" && (
-        <div className="dropdown-menu">
+        <div
+          className="dropdown-menu z-[9999] !max-h-none !overflow-visible bg-white rounded-md shadow-xl border"
+          style={{
+            position: "fixed",
+            top: notesMenuPos.top,
+            left: notesMenuPos.left,
+            minWidth: notesMenuPos.minWidth,
+            maxHeight: "none",
+            overflow: "visible",
+          }}
+        >
           <Link
             to="/notes/java"
-            className={`dropdown-item ${isActive("/notes/java") ? "active" : ""}`}
+            className={`dropdown-item !text-xs !px-2 !py-1 ${isActive("/notes/java") ? "active" : ""}`}
             onClick={() => handleDropdownToggle(null)}
           >
             Java
           </Link>
           <Link
             to="/notes/python"
-            className={`dropdown-item ${isActive("/notes/python") ? "active" : ""}`}
+            className={`dropdown-item !text-xs !px-2 !py-1 ${isActive("/notes/python") ? "active" : ""}`}
             onClick={() => handleDropdownToggle(null)}
           >
             Python
@@ -285,7 +352,6 @@ const Navbar = () => {
     </div>
   );
 
-  // Render notes dropdown for mobile
   const renderMobileNotesDropdown = () => (
     <div className="mobile-dropdown">
       <button
@@ -327,9 +393,8 @@ const Navbar = () => {
   );
 
   return (
-    <nav className={`navbar ${theme}`} ref={navbarRef}>
-      <div className="navbar-container">
-        {/* Logo */}
+    <nav className={`navbar ${theme}`} ref={navbarRef} style={{ overflow: "visible" }}>
+      <div className="navbar-container relative overflow-visible">
         <Link to="/" className="navbar-logo">
           <img src="/logo.jpg" alt="AlgoVisualizer Logo" className="logo-img" />
           <span className="logo-text">
@@ -337,7 +402,6 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Search Bar */}
         <div className="navbar-search" ref={searchRef}>
           <input
             type="text"
@@ -359,8 +423,6 @@ const Navbar = () => {
             </button>
           )}
           <Search size={18} className="search-icon" />
-
-          {/* Category Filter */}
           <select
             className="category-filter"
             value={categoryFilter}
@@ -373,7 +435,6 @@ const Navbar = () => {
               </option>
             ))}
           </select>
-
           {isSearchOpen && (
             <div className="search-results">
               {searchResults.map((item, index) => (
@@ -393,9 +454,11 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Desktop Navigation */}
         {!isMobile && (
-          <div className="navbar-menu">
+          <div
+            className="navbar-menu flex items-center !gap-1 flex-nowrap overflow-visible"
+            style={{ overflowY: "hidden" }}
+          >
             {navbarNavigationItems.map((item, index) => (
               <DesktopNavItem
                 key={index}
@@ -407,16 +470,11 @@ const Navbar = () => {
                 getIconComponent={getIconComponent}
               />
             ))}
-
-            {/* Notes Dropdown */}
             {renderNotesDropdown()}
-
-            {/* User Dropdown */}
             <UserDropdown />
           </div>
         )}
 
-        {/* Mobile Menu Button */}
         {isMobile && (
           <button
             className="mobile-menu-button"
@@ -427,7 +485,6 @@ const Navbar = () => {
           </button>
         )}
 
-        {/* Mobile Navigation */}
         {isMobile && isMobileMenuOpen && (
           <div className="mobile-menu">
             {navbarNavigationItems.map((item, index) => (
@@ -442,10 +499,7 @@ const Navbar = () => {
                 setIsMobileMenuOpen={setIsMobileMenuOpen}
               />
             ))}
-
-            {/* Notes dropdown in mobile */}
             {renderMobileNotesDropdown()}
-
             <div className="mobile-user-dropdown mt-4">
               <UserDropdown />
             </div>

@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState, useCallback, useMemo } from "react"
 import AlgorithmVisualizer from "./AlgorithmVisualizer";
 import CodeExplanation from "./CodeExplanation";
 import SimpleExportControls from "./SimpleExportControls";
+import InputPanel from "./InputPanel";
 import "../styles/Sorting.css";
 import { useMediaQuery } from "react-responsive";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { getSampleData, getValidationRule } from "../data/sampleData";
 
 import { ALGORITHM_PSEUDOCODE } from "../data/pseudocode";
 import { ALGORITHM_INFO } from "../data/algorithmInfo";
@@ -209,6 +211,30 @@ const Sorting = () => {
     }
   }, [state.customArrayInput]);
 
+  // Enhanced custom array handler for InputPanel
+  const handleInputPanelData = useCallback((data) => {
+    try {
+      // Validate that data is an array
+      if (!Array.isArray(data)) {
+        setState(prev => ({ ...prev, inputError: "Data must be an array of numbers" }));
+        return;
+      }
+
+      skipNextGenerateRef.current = true;
+      setState(prev => ({
+        ...prev,
+        array: data,
+        arraySize: data.length,
+        statistics: performanceTracker.init(),
+        message: `Loaded custom array with ${data.length} elements`,
+        inputError: "",
+        customArrayInput: ""
+      }));
+    } catch (err) {
+      setState(prev => ({ ...prev, inputError: err.message }));
+    }
+  }, []);
+
   // Sorting control functions
   const handleStop = useCallback(() => {
     sortingControls.stop(stopSortingRef);
@@ -339,6 +365,17 @@ const Sorting = () => {
   return (
     <div className="theme-container" data-aos="fade-up" data-aos-duration="1000">
       <h1 className="theme-title">Sorting Algorithms</h1>
+
+      {/* Enhanced Input Panel */}
+      <InputPanel
+        dataType="array"
+        placeholder="Enter numbers separated by commas (e.g., 64, 34, 25, 12, 22, 11, 90) or JSON array format"
+        acceptedFormats={['json', 'csv', 'txt']}
+        sampleData={getSampleData('array', 'medium')}
+        validationRules={getValidationRule('array')}
+        onDataLoaded={handleInputPanelData}
+        className="sorting-input-panel"
+      />
 
       <div className="sorting-grid">
         {/* LEFT COLUMN - Controls and Information */}

@@ -133,114 +133,137 @@ select:focus {
   padding: 0 var(--space-lg);
 }
 
+/* =========================
+   Hero Section
+========================= */
+
+.home-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
 .hero-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
+  gap: var(--space-xl);
   align-items: center;
-  min-height: 20vh;
-  padding: var(--space-lg) 0 0px;
+  min-height: 85vh;
+  padding: var(--space-xl) 0;
 }
 
 .hero-content {
-  overflow: visible;
-  padding: 2rem;
-  /* add padding left */
-  padding-left: 9rem;
-  margin-top: 2rem;
+  padding: 2rem 3rem;
+  margin-top: 1rem;
 }
+
 .hero-visual {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 8rem;
-  margin-bottom: 7rem;
+  margin: 0; /* responsive-friendly */
 }
 
 .hero-badge {
-  display: block;
-  width: fit-content;
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 25px;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
   background: var(--accent-color);
-  color: var(--btn-text);
+  color: #fff;
   animation: pulse 2s infinite;
-  transform-origin: center;
-  will-change: transform;
-  margin: 30px auto 20px auto;
-  text-align: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 @keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
 .hero-title {
-  font-size: 4.5em;
-  font-family: "Georgia", bold;
-  font-weight: bold;
-  color: var(--text-color);
-  margin-bottom: 20px;
-  line-height: 1.1;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .hero-title .highlight {
-  color: var(--primary-color);
+  color: var(--primary-purple);
 }
 
 [data-theme="light"] .hero-title .highlight {
-  color: var(--primary-color);
-}
-
-.hero-subtitle {
-  font-size: 2.2em;
-  color: var(--primary-color);
-  font-family: "Arial", bold;
-  font-weight: 600;
-  margin-bottom: 20px;
-  min-height: 60px;
-}
-
-[data-theme="light"] .hero-subtitle {
   color: var(--accent-color);
 }
 
+.hero-subtitle {
+  font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
 .hero-description {
-  font-size: 1.2em;
-  color: var(--subtext-color);
+  font-size: 1.1rem;
+  color: var(--text-muted);
   line-height: 1.7;
-  margin-bottom: 40px;
-  max-width: 500px;
+  margin-bottom: 2.5rem;
+  max-width: 550px;
 }
 
 .hero-actions {
-  position: relative;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-  font-size: 1.3rem;
 }
+
 .hero-actions a {
-  text-decoration: none !important;
-}
-.hero-actions a p {
-  padding: 0.2rem 0.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px var(--accent-color);
-  margin-left: 12px;
-}
-.hero-actions a:hover p {
-  color: #fff;
   text-decoration: none;
-  background: var(--accent-color);
-  box-shadow: 0 6px 20px var(--accent-color);
 }
+
+.hero-actions a p {
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(88,166,255,0.4);
+}
+
+.hero-actions a:hover p {
+  background: var(--primary-purple);
+  box-shadow: 0 6px 20px rgba(156,39,176,0.45);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Responsive Fixes
+========================= */
+@media (max-width: 1024px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-content {
+    padding: 2rem 1.5rem;
+    margin-top: 0;
+  }
+
+  .hero-description {
+    margin: 0 auto 2rem auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
 .algorithm-showcase {
   position: relative;
   display: flex;
@@ -1239,8 +1262,6 @@ font-weight: 1000;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  box-shadow:  4px 12px rgba(0, 0, 0, 0.3);
-  border-radius: 75px;
 }
 
 .activity-item {
@@ -1427,7 +1448,7 @@ display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 28px;
-  margin: 16px 0;
+  margin: 16px 0 36px 0;
   background: linear-gradient(90deg, #143e81, #0e7789); /* gradient */
   color:white;
   font-size: 15px;
@@ -1892,6 +1913,17 @@ display: flex;
   width: 100%;
   padding-left: 15px ;
 }
+
+/* Remove the decorative pseudo-element that added a second colored strip on the left.
+   We want only the original 8px `border-left` color (defined by .step-1/.step-2/.step-3). */
+.step-button::before,
+.step-button.step-1::before,
+.step-button.step-2::before,
+.step-button.step-3::before {
+  display: none !important;
+  width: 0 !important;
+  background: none !important;
+}
 .step-next{
   flex-grow: 1;
   margin: 15px;
@@ -1957,7 +1989,7 @@ body.dark-mode .step-duration-tag {
   align-items: center;
   justify-content: space-between;
   padding: 14px 28px;
-  margin: 16px 0;
+  margin: 16px 0 8px 0;
   background: linear-gradient(90deg, #143e81, #0e7789); /* gradient */
   color:white;
   font-size: 15px;
@@ -1993,23 +2025,13 @@ body.dark-mode .step-duration-tag {
   margin-left: 12px;
 }
 
-.algo-learning-updates-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  width: 100%;
-  flex-wrap: wrap;
-  padding: 20px;
-  box-sizing: border-box;
-}
+/* `.algo-learning-updates-container` layout is defined later in this file (grid-based). */
 .buttons-heading{
  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 28px;
-  margin: 16px 0;
+  margin: 0px 0 16px 0;
   background: linear-gradient(90deg, #143e81, #0e7789); /* gradient */
   color:white;
   font-size: 15px;
@@ -2019,6 +2041,22 @@ body.dark-mode .step-duration-tag {
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Strong override: force pill headings to white text and ensure nested elements/links inherit it */
+.algo-learning-updates-container .buttons-heading,
+.algo-learning-updates-container .steps-heading,
+.algo-learning-updates-container .activity-title,
+.algo-learning-updates-container .buttons-heading *,
+.algo-learning-updates-container .steps-heading *,
+.algo-learning-updates-container .activity-title *,
+.algo-learning-updates-container .buttons-heading a,
+.algo-learning-updates-container .steps-heading a,
+.algo-learning-updates-container .activity-title a,
+.algo-learning-updates-container .buttons-heading a *,
+.algo-learning-updates-container .steps-heading a *,
+.algo-learning-updates-container .activity-title a * {
+  color: #ffffff !important;
 }
 .clean-button-link {
  display: flex;
@@ -2052,4 +2090,221 @@ body.dark-mode .step-duration-tag {
   font-size: 1rem;
   font-weight: 600;
   color: #111827; /* dark text */
+}
+
+/* =========================
+   Polished Home Section Styles
+   (left feature buttons, center learning cards, right updates feed)
+   Add below existing home styles for overriding earlier rules
+========================= */
+
+.algo-learning-updates-container {
+  display: grid !important;
+  grid-template-columns: 260px minmax(560px, 1fr) 320px;
+  gap: var(--ui-space-xl);
+  align-items: start;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  padding: var(--ui-space-lg) 1.5rem;
+  grid-auto-rows: minmax(0, auto);
+  align-content: start;
+}
+
+@media (max-width: 1000px) {
+  .algo-learning-updates-container {
+    grid-template-columns: 1fr;
+    gap: var(--ui-space-lg);
+    padding: var(--ui-space-md);
+  }
+}
+
+.algorithm-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-md);
+  align-items: stretch;
+}
+
+/* Ensure left column occupies first grid column */
+.algo-learning-updates-container > .algorithm-buttons { grid-column: 1; }
+
+.algo-learning-updates-container > .vertical-steps-container { grid-column: 2; }
+
+/* Force activity feed into the 3rd column and prevent odd positioning */
+.algo-learning-updates-container > .activity-feed {
+  grid-column: 3;
+  position: relative !important;
+  width: 100%;
+  max-width: 320px;
+  margin: 0;
+  align-self: start;
+  margin-top: 0 !important;
+}
+
+/* Also make sure the left and center columns align to top */
+.algo-learning-updates-container > .algorithm-buttons,
+.algo-learning-updates-container > .vertical-steps-container {
+  align-self: start;
+  margin-top: 0 !important;
+}
+
+.algorithm-buttons .clean-button-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(180deg, rgba(79,110,246,0.14), rgba(139,199,255,0.06));
+  border-radius: var(--ui-radius-md);
+  padding: 18px;
+  color: var(--theme-text-primary);
+  min-height: 72px;
+  text-decoration: none;
+  box-shadow: var(--ui-shadow-soft);
+  border: 1px solid rgba(79,110,246,0.12);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.algorithm-buttons .clean-button-link .button-icon {
+  flex: 0 0 48px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+}
+
+.algorithm-buttons .clean-button-link:hover,
+.algorithm-buttons .clean-button-link:focus {
+  transform: translateY(-4px);
+  box-shadow: var(--ui-shadow-stacked);
+  outline: none;
+}
+
+.algorithm-buttons .clean-button-link:focus-visible {
+  box-shadow: 0 0 0 4px rgba(79,110,246,0.12), var(--ui-shadow-stacked);
+}
+
+.algorithm-buttons .feature-title { font-weight: 700; color: var(--theme-text-primary); }
+
+.vertical-steps-container { display: grid; gap: var(--ui-space-lg); }
+.step-button { background: var(--theme-card-bg); border-radius: var(--ui-radius-md); padding: 22px; display: grid; align-items: center; box-shadow: var(--ui-shadow-soft); border-left: 8px solid transparent; transition: transform .18s ease, box-shadow .18s ease; }
+.step-1 { border-left-color: #f59e0b; }
+.step-2 { border-left-color: #ef4444; }
+.step-3 { border-left-color: #10b981; }
+.step-button:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(16,24,40,0.09); }
+.step-title { font-size: 1.1rem; font-weight: 800; color: var(--theme-text-primary); margin-bottom: 6px; }
+.step-description { color: var(--ui-muted); margin-bottom: 10px; }
+
+.activity-feed { 
+  background: transparent; 
+  border-radius: 0; 
+  padding: 0; 
+  box-shadow: none; 
+  border: none; 
+}
+.activity-items { display: grid; gap: 12px; }
+.activity-item { display: flex; gap: 12px; align-items: flex-start; background: #fff; padding: 12px; border-radius: 10px; border: 1px solid rgba(15,23,42,0.03); box-shadow: 0 6px 18px rgba(16,24,40,0.04); }
+.activity-item .activity-icon { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; flex-shrink: 0; }
+.activity-item .activity-icon.new { background: #ecfdf5; color: #059669; }
+.activity-item .activity-icon.update { background: #eef2ff; color: #4f46e5; }
+.activity-item .activity-icon.feature { background: #fff7ed; color: #f97316; }
+.activity-item .activity-icon.community { background: #fff1f2; color: #db2777; }
+.activity-item-title { font-weight: 700; margin-bottom: 6px; }
+.activity-description { color: var(--ui-muted); font-size: .95rem; }
+
+/* Keep the Recent Updates column anchored to the top of the row and scrollable */
+.algo-learning-updates-container > .activity-feed {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: calc(var(--header-height, 72px) + 16px);
+  z-index: 10;
+  max-height: calc(100vh - (var(--header-height, 72px) + 80px));
+  overflow: auto;
+}
+
+/* ----- Override: revert to original three-column layout (flex) ----- */
+/* Use a more specific selector to ensure these rules win over earlier grid/placement styles */
+.home-dashboard .algo-learning-updates-container,
+.algo-learning-updates-container.override-flex {
+  display: flex !important;
+  gap: var(--ui-space-xl) !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important; /* keep same row on wide screens */
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--ui-space-lg) 1.5rem;
+}
+
+/* Column sizing that mimics the original layout */
+.algo-learning-updates-container > .algorithm-buttons { flex: 0 0 260px; max-width: 260px; }
+.algo-learning-updates-container > .vertical-steps-container { flex: 1 1 560px; min-width: 560px; }
+.algo-learning-updates-container > .activity-feed { flex: 0 0 320px; max-width: 320px; position: relative !important; top: auto !important; margin: 0 !important; overflow: visible !important; z-index: 1; }
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 1000px) {
+  .home-dashboard .algo-learning-updates-container,
+  .algo-learning-updates-container.override-flex { 
+    flex-wrap: wrap !important; 
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .algo-learning-updates-container > .algorithm-buttons,
+  .algo-learning-updates-container > .vertical-steps-container,
+  .algo-learning-updates-container > .activity-feed { 
+    flex: 0 0 100% !important; 
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  
+  /* Center-align Resources column on mobile */
+  .algo-learning-updates-container > .algorithm-buttons {
+    align-items: center !important;
+    margin: 0 auto !important;
+    max-width: 500px !important;
+  }
+  
+  /* Ensure vertical steps container doesn't have left margin on mobile */
+  .vertical-steps-container {
+    margin-left: 0 !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+  }
+  
+  .algo-learning-updates-container > .activity-feed { 
+    position: relative !important; 
+    top: auto !important; 
+    max-height: none !important; 
+    overflow: visible !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Stack order */
+  .algorithm-buttons { order: 1; }
+  .vertical-steps-container { order: 2; }
+  .activity-feed { order: 3; }
+}
+
+/* Mobile: make pill headings span full width like other headings */
+@media (max-width: 1000px) {
+  .algo-learning-updates-container .buttons-heading,
+  .algo-learning-updates-container .steps-heading,
+  .algo-learning-updates-container .activity-title {
+    width: 100% !important;
+    max-width: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 12px 0 !important;
+    padding: 14px 18px !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .algorithm-buttons .clean-button-link,
+  .step-button { transition: none; transform: none; }
 }

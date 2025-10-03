@@ -79,23 +79,76 @@ const DPVisualizer = ({ defaultAlgorithm = "Fibonacci", size = 10 }) => {
   };
 
 
-  // 4️⃣ 0-1 Knapsack 
-  const knapsack = (values = [60, 100, 120], weights = [10, 20, 30], W = 50) => {
+
+// 4️⃣ 0-1 Knapsack 
+  const knapsack = (values = [60, 100, 120], weights = [10, 20, 30], W = 15) => {
+
     const stepsArr = [];
     const n = values.length;
+
+    // dp[i][w] = best value using first i items and capacity w
     const dp = Array.from({ length: n + 1 }, () => Array(W + 1).fill(0));
+    // choice[i][w] = whether we took item i at capacity w
+    const choice = Array.from({ length: n + 1 }, () => Array(W + 1).fill(false));
 
     for (let i = 1; i <= n; i++) {
-      for (let w = 1; w <= W; w++) {
-        if (weights[i - 1] <= w)
-          dp[i][w] = Math.max(dp[i - 1][w], values[i - 1] + dp[i - 1][w - weights[i - 1]]);
-        else dp[i][w] = dp[i - 1][w];
-        stepsArr.push({ board: copySteps(dp), message: `dp[${i}][${w}] = ${dp[i][w]}` });
+      const wt = weights[i - 1];
+      const val = values[i - 1];
+
+      for (let w = 0; w <= W; w++) {
+        let take = -Infinity, skip = dp[i - 1][w];
+
+        if (wt <= w) {
+          take = val + dp[i - 1][w - wt];
+        }
+
+        if (take > skip) {
+          dp[i][w] = take;
+          choice[i][w] = true;
+          stepsArr.push({
+            board: dp.map(row => [...row]),
+            message: `dp[${i}][${w}] = ${dp[i][w]} (include item ${i}: val=${val}, wt=${wt}; from dp[${i-1}][${w-wt}] + ${val} vs dp[${i-1}][${w}])`,
+            focus: [i, w],
+            meta: { decision: "include", item: i, wt, val, take, skip }
+          });
+        } else {
+          dp[i][w] = skip;
+          choice[i][w] = false;
+          stepsArr.push({
+            board: dp.map(row => [...row]),
+            message: `dp[${i}][${w}] = ${dp[i][w]} (exclude item ${i}: keep dp[${i-1}][${w}] = ${skip})`,
+            focus: [i, w],
+            meta: { decision: "exclude", item: i, wt, val, take, skip }
+          });
+        }
       }
     }
-    stepsArr.push({ board: copySteps(dp), message: `Max value = ${dp[n][W]}` });
+
+    // Backtrack chosen items
+    const chosen = [];
+    let w = W;
+    for (let i = n; i >= 1; i--) {
+      if (choice[i][w]) {
+        chosen.push(i - 1);        // store 0-based index of the item
+        w -= weights[i - 1];
+      }
+    }
+    chosen.reverse();
+
+    const resultMsg =
+      `Max value = ${dp[n][W]} | chosen items (1-based): [${chosen.map(x => x + 1).join(", ")}] ` +
+      `| weights: [${chosen.map(x => weights[x]).join(", ")}] | values: [${chosen.map(x => values[x]).join(", ")}]`;
+
+    stepsArr.push({
+      board: dp.map(row => [...row]),
+      message: resultMsg,
+      focus: [n, W],
+      meta: { chosen, W, values, weights }
+    });
+
     return stepsArr;
   };
+
 
   // 5️⃣ Matrix Chain Multiplication 
   const matrixChain = (dims = [10, 30, 5, 60]) => {
@@ -169,15 +222,18 @@ const DPVisualizer = ({ defaultAlgorithm = "Fibonacci", size = 10 }) => {
   useEffect(() => {
     if (isVisualizing && steps.length > 0) {
       if (currentStep >= steps.length) {
-        setIsVisualizing(false);
-        setMessage("Visualization complete!");
-       // capture the final step result
-        if (algorithm === "MatrixChain") {
-          const lastMsg = steps[steps.length - 1]?.message;
-          setFinalResult(lastMsg);
+
+          setCurrentStep(steps.length - 1);
+
+          setIsVisualizing(false);
+          setMessage("Visualization complete!");
+          // Persist result for Knapsack
+          if (algorithm === "Knapsack") {
+            const lastMsg = steps[steps.length - 1]?.message;
+            setFinalResult(lastMsg || null);
+          }
+          return;
         }
-        return;
-      }
       const timer = setTimeout(() => setCurrentStep((prev) => prev + 1), 400);
       return () => clearTimeout(timer);
     }
@@ -191,6 +247,7 @@ const DPVisualizer = ({ defaultAlgorithm = "Fibonacci", size = 10 }) => {
     setCurrentStep(0);
     setIsVisualizing(false);
     setMessage("Select an algorithm and run.");
+    setFinalResult(null);
   };
 
   // ================= Render =================
@@ -217,47 +274,33 @@ const DPVisualizer = ({ defaultAlgorithm = "Fibonacci", size = 10 }) => {
       );
     }
 
-    const focusCell = steps[currentStep]?.focus; // [i, j] or undefined
+    const focusCell = steps[currentStep]?.focus; // [i, j] or [i, w] if present
 
-
-    // 2D grid visualization (Knapsack, LCS, Matrix Chain)
     return (
-      <div className="board">
+      <div className="board scrollable">
         {stepBoard.map((row, i) => (
           <div key={i} className="board-row">
 
             {row.map((cell, j) => {
               const isFocus = focusCell && focusCell[0] === i && focusCell[1] === j;
+              const isActive = cell !== Infinity && cell > 0; // color only positive values
               return (
                 <div
                   key={j}
-                  className={`cell ${cell > 0 ? "active" : ""} ${isFocus ? "is-focus" : ""}`}
+                  className={`cell ${isActive ? "active" : ""} ${isFocus ? "is-focus" : ""}`}
+
                   title={`dp[${i}][${j}] = ${cell === Infinity ? "∞" : cell}`}
                 >
                   {cell === Infinity ? "∞" : cell}
                 </div>
               );
             })}
-
-              {row.map((cell, j) => {
-                const isFocus = steps[currentStep]?.focus &&
-                                steps[currentStep].focus[0] === i &&
-                                steps[currentStep].focus[1] === j;
-                return (
-                  <div
-                    key={j}
-                    className={`cell ${cell !== Infinity && cell !== 0 ? "active" : ""} ${isFocus ? "is-focus" : ""}`}
-                  >
-                    {cell === Infinity ? "∞" : cell}
-                  </div>
-                );
-              })}
-
           </div>
         ))}
       </div>
 
     );
+
   };
 
   return (
@@ -279,6 +322,11 @@ const DPVisualizer = ({ defaultAlgorithm = "Fibonacci", size = 10 }) => {
       </div>
 
       {renderBoard()}
+      {algorithm === "Knapsack" && finalResult && (
+        <div className="result-box">
+          <strong>Result:</strong> {finalResult}
+        </div>
+      )}
 
       {finalResult && algorithm === "MatrixChain" && (
         <div className="result-box">

@@ -1798,5 +1798,3174 @@
         ],
         "correctAnswer": 3,
         "explanation": "Hashing is crucial in substring search, frequency counting, and cache/memoization implementations."
-    }
+    },
+    {
+    "id": 121,
+    "topic": "Other Topics",
+    "algorithm": "Branch & Bound: Knapsack 01",
+    "difficulty": "Easy",
+    "question": "What is the basic concept of the 0/1 Knapsack problem?",
+    "options": [
+      "Selecting items with binary choice (take or leave) to maximize value within weight limit",
+      "Sorting items by weight",
+      "Finding the shortest path in a graph",
+      "Minimizing the number of items"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The 0/1 Knapsack problem involves making binary (yes/no) decisions for each item to maximize total value while respecting weight constraints."
+    },
+    {
+        "id": 122,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Knapsack 01",
+        "difficulty": "Easy",
+        "question": "What is the role of bounding in the Knapsack problem?",
+        "options": [
+        "To estimate the best possible value achievable in a subtree",
+        "To sort items by weight",
+        "To count the number of items",
+        "To calculate the minimum weight"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Bounding functions estimate the maximum possible value achievable in a branch, helping prune unpromising paths."
+    },
+    {
+        "id": 123,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Knapsack 01",
+        "difficulty": "Medium",
+        "question": "How does Branch & Bound improve upon brute force for the Knapsack problem?",
+        "options": [
+        "By pruning branches that cannot lead to better solutions",
+        "By sorting items first",
+        "By using dynamic programming",
+        "By using greedy selection"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Branch & Bound improves efficiency by eliminating branches that cannot produce better solutions than the current best."
+    },
+    {
+        "id": 124,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Knapsack 01",
+        "difficulty": "Medium",
+        "question": "What is the most effective bounding function for the Knapsack problem?",
+        "options": [
+        "Fractional knapsack value",
+        "Total weight",
+        "Item count",
+        "Random estimation"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The fractional knapsack solution provides an optimistic estimate of the best possible value achievable in a branch."
+    },
+    {
+        "id": 125,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Knapsack 01",
+        "difficulty": "Hard",
+        "question": "What is the worst-case time complexity of Branch & Bound for Knapsack?",
+        "options": [
+        "O(2\u207f)",
+        "O(n log n)",
+        "O(n)",
+        "O(n\u00b2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "In the worst case, Branch & Bound might still need to explore all possible combinations, leading to O(2\u207f)."
+    },
+    {
+        "id": 126,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Knapsack 01",
+        "difficulty": "Hard",
+        "question": "How does the ordering of items affect Knapsack Branch & Bound efficiency?",
+        "options": [
+        "Sorting by value/weight ratio can improve pruning effectiveness",
+        "Order doesn't matter",
+        "Random ordering is best",
+        "Sorting by weight only is optimal"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Sorting items by value/weight ratio can help find good solutions early, enabling more effective pruning."
+    },
+    {
+        "id": 127,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Traveling Salesman",
+        "difficulty": "Easy",
+        "question": "What is the basic idea of TSP Branch & Bound?",
+        "options": [
+        "Finding the shortest tour visiting all cities exactly once",
+        "Finding the longest path",
+        "Finding all possible paths",
+        "Finding multiple tours"
+        ],
+        "correctAnswer": 0,
+        "explanation": "TSP aims to find the minimum cost tour that visits each city exactly once and returns to the starting city."
+    },
+    {
+        "id": 128,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Traveling Salesman",
+        "difficulty": "Easy",
+        "question": "What is a lower bound in TSP Branch & Bound?",
+        "options": [
+        "Minimum possible cost of completing a partial tour",
+        "Maximum possible tour length",
+        "Number of cities",
+        "Average distance between cities"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A lower bound estimates the minimum possible cost to complete a partial tour, used for pruning unpromising branches."
+    },
+    {
+        "id": 129,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Traveling Salesman",
+        "difficulty": "Medium",
+        "question": "What is the role of the reduced cost matrix in TSP?",
+        "options": [
+        "To provide better lower bounds for partial solutions",
+        "To increase the tour length",
+        "To count cities",
+        "To maximize distance"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The reduced cost matrix helps calculate tighter lower bounds, making branch pruning more effective."
+    },
+    {
+        "id": 130,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Traveling Salesman",
+        "difficulty": "Medium",
+        "question": "How are subtours eliminated in TSP Branch & Bound?",
+        "options": [
+        "By maintaining a path and checking for cycles",
+        "By increasing distances",
+        "By removing cities",
+        "By adding random edges"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The algorithm maintains a valid path and ensures no cycles are formed until the final edge of the tour."
+    },
+    {
+        "id": 131,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Traveling Salesman",
+        "difficulty": "Hard",
+        "question": "What is the most effective branching strategy for TSP?",
+        "options": [
+        "Selecting cities based on minimum cost edges",
+        "Random selection",
+        "Maximum cost edges",
+        "Middle edges"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Choosing cities connected by minimum cost edges first often leads to better solutions earlier."
+    },
+    {
+        "id": 132,
+        "topic": "Other Topics",
+        "algorithm": "Branch & Bound: Traveling Salesman",
+        "difficulty": "Hard",
+        "question": "What makes TSP particularly challenging for Branch & Bound?",
+        "options": [
+        "The combination of tour constraints and optimization",
+        "The number of cities",
+        "The distance calculation",
+        "The path finding"
+        ],
+        "correctAnswer": 0,
+        "explanation": "TSP combines the challenges of maintaining valid tours while optimizing the total cost, making effective pruning crucial."
+    },
+    {
+        "id": 133,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Minimax",
+        "difficulty": "Easy",
+        "question": "What is the fundamental principle of the Minimax algorithm?",
+        "options": [
+        "Alternating between maximizing and minimizing player moves",
+        "Always choosing random moves",
+        "Always selecting the first available move",
+        "Ignoring opponent moves"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Minimax alternates between maximizing the current player's position and minimizing the opponent's opportunities."
+    },
+    {
+        "id": 134,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Minimax",
+        "difficulty": "Easy",
+        "question": "What type of games is Minimax best suited for?",
+        "options": [
+        "Two-player, zero-sum games with perfect information",
+        "Single-player games",
+        "Games of chance",
+        "Multiplayer games"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Minimax works best for games like chess or tic-tac-toe where two players compete and all information is visible."
+    },
+    {
+        "id": 135,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Minimax",
+        "difficulty": "Medium",
+        "question": "How does Minimax handle game tree depth limitations?",
+        "options": [
+        "Using evaluation functions at cutoff depth",
+        "Ignoring deeper nodes",
+        "Random selection",
+        "Continuing indefinitely"
+        ],
+        "correctAnswer": 0,
+        "explanation": "When the search can't reach terminal positions, Minimax uses heuristic evaluation functions to estimate position value."
+    },
+    {
+        "id": 136,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Minimax",
+        "difficulty": "Medium",
+        "question": "What determines the effectiveness of a Minimax evaluation function?",
+        "options": [
+        "Its ability to accurately estimate position strength",
+        "The speed of calculation",
+        "The number of moves considered",
+        "The game tree depth"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A good evaluation function must provide reliable estimates of position strength to make effective decisions."
+    },
+    {
+        "id": 137,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Minimax",
+        "difficulty": "Hard",
+        "question": "What is the time complexity of Minimax without pruning?",
+        "options": [
+        "O(b\u1d48) where b is branching factor and d is depth",
+        "O(n)",
+        "O(log n)",
+        "O(n\u00b2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Minimax must explore all possible moves to a given depth, leading to exponential time complexity."
+    },
+    {
+        "id": 138,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Minimax",
+        "difficulty": "Hard",
+        "question": "How does Minimax handle transpositions in the game tree?",
+        "options": [
+        "Using a transposition table to cache results",
+        "Recalculating every position",
+        "Ignoring repeated positions",
+        "Random selection"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Transposition tables store previously evaluated positions to avoid redundant calculations."
+    },
+    {
+        "id": 139,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Alpha-Beta Pruning",
+        "difficulty": "Easy",
+        "question": "What is the main purpose of Alpha-Beta pruning?",
+        "options": [
+        "To reduce the number of nodes evaluated by Minimax",
+        "To increase search depth",
+        "To evaluate more nodes",
+        "To randomize search"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Alpha-Beta pruning improves Minimax efficiency by skipping evaluation of irrelevant branches."
+    },
+    {
+        "id": 140,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Alpha-Beta Pruning",
+        "difficulty": "Easy",
+        "question": "What do Alpha and Beta values represent?",
+        "options": [
+        "Best already explored alternatives for both players",
+        "Random values",
+        "Node depths",
+        "Number of moves"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Alpha represents the best value for the maximizing player, Beta for the minimizing player."
+    },
+    {
+        "id": 141,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Alpha-Beta Pruning",
+        "difficulty": "Medium",
+        "question": "How does move ordering affect Alpha-Beta efficiency?",
+        "options": [
+        "Good move ordering increases pruning opportunities",
+        "Move order doesn't matter",
+        "Random ordering is best",
+        "Worst moves should be first"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Examining better moves first increases the likelihood of pruning subsequent branches."
+    },
+    {
+        "id": 142,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Alpha-Beta Pruning",
+        "difficulty": "Medium",
+        "question": "What is a null window search in Alpha-Beta?",
+        "options": [
+        "A search with Alpha and Beta values very close together",
+        "A search with no pruning",
+        "A random search",
+        "A complete tree search"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Null window searches are used to efficiently determine if a position is above or below a specific value."
+    },
+    {
+        "id": 143,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Alpha-Beta Pruning",
+        "difficulty": "Hard",
+        "question": "What is the best-case time complexity of Alpha-Beta?",
+        "options": [
+        "O(b\u1d48/\u00b2) where b is branching factor and d is depth",
+        "O(b\u1d48)",
+        "O(n)",
+        "O(log n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "With perfect move ordering, Alpha-Beta can reduce the effective branching factor by roughly its square root."
+    },
+    {
+        "id": 144,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Alpha-Beta Pruning",
+        "difficulty": "Hard",
+        "question": "How can iterative deepening improve Alpha-Beta pruning?",
+        "options": [
+        "By providing move ordering information for deeper searches",
+        "By reducing search depth",
+        "By increasing branching factor",
+        "By randomizing search"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Results from shallower searches can guide move ordering in deeper searches, improving pruning efficiency."
+    },
+    {
+        "id": 145,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Expectimax",
+        "difficulty": "Easy",
+        "question": "What type of games is Expectimax designed for?",
+        "options": [
+        "Games with chance elements or uncertainty",
+        "Perfect information games",
+        "Two-player games only",
+        "Single-player games"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Expectimax handles games where some outcomes are determined by chance or probability."
+    },
+    {
+        "id": 146,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Expectimax",
+        "difficulty": "Easy",
+        "question": "How does Expectimax differ from Minimax?",
+        "options": [
+        "It uses probability-weighted averages instead of minimizing",
+        "It searches deeper",
+        "It uses no heuristics",
+        "It's always faster"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Expectimax accounts for chance events by calculating expected values rather than assuming optimal opponent play."
+    },
+    {
+        "id": 147,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Expectimax",
+        "difficulty": "Medium",
+        "question": "How are chance nodes handled in Expectimax?",
+        "options": [
+        "By computing weighted averages of all possible outcomes",
+        "By choosing the highest value",
+        "By choosing the lowest value",
+        "By random selection"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Chance nodes compute the expected value by weighing each possible outcome by its probability."
+    },
+    {
+        "id": 148,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Expectimax",
+        "difficulty": "Medium",
+        "question": "What is the impact of depth on Expectimax computational cost?",
+        "options": [
+        "It grows exponentially with both branching factor and chance outcomes",
+        "It's constant",
+        "It grows linearly",
+        "It decreases with depth"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each level of depth multiplies the computation by both the branching factor and number of chance outcomes."
+    },
+    {
+        "id": 149,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Expectimax",
+        "difficulty": "Hard",
+        "question": "Why can't alpha-beta pruning be fully applied to Expectimax?",
+        "options": [
+        "Because chance nodes must consider all outcomes",
+        "Because it's not needed",
+        "Because it makes it slower",
+        "Because it's too complex"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Chance nodes must evaluate all possibilities to compute the correct expected value, preventing full pruning."
+    },
+    {
+        "id": 150,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Expectimax",
+        "difficulty": "Hard",
+        "question": "How can Expectimax be optimized for practical use?",
+        "options": [
+        "By pruning extremely unlikely or low-impact outcomes",
+        "By ignoring probabilities",
+        "By reducing depth",
+        "By increasing branching"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Practical implementations often ignore outcomes with very low probability or minimal impact on the expected value."
+    },
+    {
+        "id": 151,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Monte Carlo Tree Search",
+        "difficulty": "Easy",
+        "question": "What is the basic idea of Monte Carlo Tree Search (MCTS)?",
+        "options": [
+        "Using random simulations to evaluate positions",
+        "Calculating exact values",
+        "Following fixed strategies",
+        "Ignoring tree structure"
+        ],
+        "correctAnswer": 0,
+        "explanation": "MCTS uses random playouts to estimate position value through statistical sampling."
+    },
+    {
+        "id": 152,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Monte Carlo Tree Search",
+        "difficulty": "Easy",
+        "question": "What are the four main steps of MCTS?",
+        "options": [
+        "Selection, Expansion, Simulation, Backpropagation",
+        "Search, Evaluate, Update, Repeat",
+        "Choose, Play, Win, Lose",
+        "Start, Middle, End, Reset"
+        ],
+        "correctAnswer": 0,
+        "explanation": "These four steps form the core MCTS algorithm cycle, balancing exploration and exploitation."
+    },
+    {
+        "id": 153,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Monte Carlo Tree Search",
+        "difficulty": "Medium",
+        "question": "What is the role of UCT in MCTS?",
+        "options": [
+        "Balancing exploration and exploitation",
+        "Speeding up simulations",
+        "Reducing memory usage",
+        "Simplifying the tree"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Upper Confidence bounds for Trees (UCT) helps balance between exploring new nodes and exploiting known good moves."
+    },
+    {
+        "id": 154,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Monte Carlo Tree Search",
+        "difficulty": "Medium",
+        "question": "How does MCTS handle large branching factors?",
+        "options": [
+        "By gradually building the tree through sampling",
+        "By exploring all branches",
+        "By ignoring some moves",
+        "By random selection"
+        ],
+        "correctAnswer": 0,
+        "explanation": "MCTS manages large branching factors by focusing resources on promising branches identified through sampling."
+    },
+    {
+        "id": 155,
+        "topic": "GOther Topics",
+        "algorithm": "Game Search: Monte Carlo Tree Search",
+        "difficulty": "Hard",
+        "question": "What determines the quality of MCTS playouts?",
+        "options": [
+        "The balance between speed and simulation accuracy",
+        "The number of nodes",
+        "The tree depth",
+        "The branching factor"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Good playouts must balance quick execution with reasonable approximation of actual game play."
+    },
+    {
+        "id": 156,
+        "topic": "Other Topics",
+        "algorithm": "Game Search: Monte Carlo Tree Search",
+        "difficulty": "Hard",
+        "question": "How can MCTS be parallelized effectively?",
+        "options": [
+        "By running multiple independent trees or parallel playouts",
+        "It cannot be parallelized",
+        "By splitting the game board",
+        "By reducing search depth"
+        ],
+        "correctAnswer": 0,
+        "explanation": "MCTS can be parallelized through root parallelization, tree parallelization, or leaf parallelization."
+    },    
+    {
+        "id": 157,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking",
+        "difficulty": "Easy",
+        "question": "Which of the following best describes backtracking?",
+        "options": [
+        "Trying all possible solutions without undoing choices",
+        "Systematically exploring all solutions and undoing invalid ones",
+        "Choosing the best solution at each step",
+        "Dividing a problem into subproblems"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Backtracking systematically explores possible solutions and undoes choices when they lead to dead ends."
+    },
+    {
+        "id": 158,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking",
+        "difficulty": "Easy",
+        "question": "Which of these is a common application of backtracking?",
+        "options": [
+        "N-Queens Problem",
+        "Binary Search",
+        "Merge Sort",
+        "Dijkstra's Algorithm"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The N-Queens problem is a classic backtracking example."
+    },
+    {
+        "id": 159,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking",
+        "difficulty": "Medium",
+        "question": "Which data structure is most closely associated with backtracking?",
+        "options": [
+        "Queue",
+        "Stack",
+        "Heap",
+        "Graph"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Backtracking often uses the call stack or an explicit stack to manage choices."
+    },
+    {
+        "id": 160,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking",
+        "difficulty": "Medium",
+        "question": "When does backtracking stop exploring a path?",
+        "options": [
+        "When a partial solution is invalid",
+        "When the algorithm has tried all possible options",
+        "When it finds a greedy solution",
+        "After a fixed number of iterations"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Backtracking stops exploring a path as soon as the partial solution becomes invalid."
+    },
+    {
+        "id": 161,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking",
+        "difficulty": "Hard",
+        "question": "What is the worst-case time complexity of backtracking algorithms like N-Queens?",
+        "options": [
+        "O(N^2)",
+        "O(N!)",
+        "O(log N)",
+        "O(2^N)"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The N-Queens backtracking solution can explore O(N!) possibilities."
+    },
+    {
+        "id": 162,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking",
+        "difficulty": "Hard",
+        "question": "Which optimization helps improve the efficiency of backtracking?",
+        "options": [
+        "Memoization",
+        "Pruning invalid paths early",
+        "Random guessing",
+        "Greedy selection"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Pruning reduces the number of paths explored by eliminating invalid ones early."
+    },
+
+    {
+        "id": 163,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : N-Queens",
+        "difficulty": "Easy",
+        "question": "What is the objective of the N-Queens problem?",
+        "options": [
+        "Place queens randomly",
+        "Place N queens so that no two attack each other",
+        "Sort queens by size",
+        "Maximize queen moves"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The goal is to place N queens on an N×N chessboard such that no two queens attack each other."
+    },
+    {
+        "id": 164,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : N-Queens",
+        "difficulty": "Easy",
+        "question": "What is the board size in the 8-Queens problem?",
+        "options": [
+        "4x4",
+        "6x6",
+        "8x8",
+        "10x10"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The 8-Queens problem uses an 8×8 chessboard."
+    },
+    {
+        "id": 165,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : N-Queens",
+        "difficulty": "Medium",
+        "question": "Which algorithmic paradigm is most suitable for N-Queens?",
+        "options": [
+        "Greedy",
+        "Dynamic Programming",
+        "Backtracking",
+        "Divide and Conquer"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Backtracking is the primary technique used to solve N-Queens."
+    },
+    {
+        "id": 166,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : N-Queens",
+        "difficulty": "Medium",
+        "question": "What strategy is used to place queens in N-Queens with backtracking?",
+        "options": [
+        "Placing queens row by row",
+        "Placing queens randomly",
+        "Placing queens greedily",
+        "Placing queens by sorting columns"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Backtracking places queens row by row and backtracks on conflicts."
+    },
+    {
+        "id": 167,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : N-Queens",
+        "difficulty": "Hard",
+        "question": "How many distinct solutions exist for the 8-Queens problem?",
+        "options": [
+        "64",
+        "92",
+        "128",
+        "256"
+        ],
+        "correctAnswer": 1,
+        "explanation": "There are 92 distinct solutions for the 8-Queens problem."
+    },
+    {
+        "id": 168,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : N-Queens",
+        "difficulty": "Hard",
+        "question": "What is the asymptotic time complexity of solving N-Queens using backtracking?",
+        "options": [
+        "O(N!)",
+        "O(N^2)",
+        "O(N log N)",
+        "O(2^N)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Backtracking for N-Queens has factorial time complexity O(N!)."
+    },
+
+    {
+        "id": 169,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Sudoku",
+        "difficulty": "Easy",
+        "question": "What is the size of a standard Sudoku grid?",
+        "options": [
+        "6x6",
+        "9x9",
+        "12x12",
+        "8x8"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Standard Sudoku puzzles are played on a 9x9 grid."
+    },
+    {
+        "id": 170,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Sudoku",
+        "difficulty": "Easy",
+        "question": "How many sub-grids are there in a standard Sudoku puzzle?",
+        "options": [
+        "6",
+        "9",
+        "12",
+        "16"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A 9x9 Sudoku grid is divided into 9 smaller 3x3 sub-grids."
+    },
+    {
+        "id": 171,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Sudoku",
+        "difficulty": "Medium",
+        "question": "Which algorithm is most commonly used for solving Sudoku computationally?",
+        "options": [
+        "Greedy Algorithm",
+        "Backtracking",
+        "Divide and Conquer",
+        "Dynamic Programming"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Backtracking is the most common method to solve Sudoku."
+    },
+    {
+        "id": 172,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Sudoku",
+        "difficulty": "Medium",
+        "question": "What pruning strategy is used in Sudoku solving?",
+        "options": [
+        "Eliminating invalid digits early",
+        "Skipping entire rows",
+        "Randomly guessing values",
+        "Sorting the digits"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Constraint checking removes invalid digits early to improve efficiency."
+    },
+    {
+        "id": 173,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Sudoku",
+        "difficulty": "Hard",
+        "question": "What is the worst-case complexity of solving Sudoku with naive backtracking?",
+        "options": [
+        "O(1)",
+        "O(9^n)",
+        "O(n^2)",
+        "O(log n)"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Naive Sudoku solving can explore up to O(9^n) possibilities."
+    },
+    {
+        "id": 174,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Sudoku",
+        "difficulty": "Hard",
+        "question": "Which advanced human technique is difficult to implement programmatically?",
+        "options": [
+        "Naked pairs/triples",
+        "Backtracking",
+        "Binary Search",
+        "Greedy heuristics"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Naked pairs/triples are advanced logical techniques used by humans in Sudoku solving."
+    },
+    {
+        "id": 175,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Rat in a Maze",
+        "difficulty": "Easy",
+        "question": "What is the main objective in the Rat in a Maze problem?",
+        "options": [
+        "Find all possible paths in a maze",
+        "Count the number of walls",
+        "Escape the maze in minimum steps",
+        "Place the rat randomly"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The goal is to find all paths from start to finish using backtracking."
+    },
+    {
+        "id": 176,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Rat in a Maze",
+        "difficulty": "Easy",
+        "question": "Which of these structures represents the maze in this problem?",
+        "options": [
+        "Graph",
+        "2D Matrix",
+        "Linked List",
+        "Stack"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A 2D matrix is commonly used to represent the maze with 0s and 1s."
+    },
+    {
+        "id": 177,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Rat in a Maze",
+        "difficulty": "Medium",
+        "question": "Which algorithmic approach is used to explore paths in the maze?",
+        "options": [
+        "Greedy",
+        "Backtracking",
+        "Dynamic Programming",
+        "Divide and Conquer"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Backtracking systematically explores all possible paths and backtracks on dead ends."
+    },
+    {
+        "id": 178,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Rat in a Maze",
+        "difficulty": "Medium",
+        "question": "What condition is checked before moving the rat to the next cell?",
+        "options": [
+        "If the cell is within bounds and not blocked",
+        "If the cell has already been visited",
+        "If the cell contains a reward",
+        "Both 1 and 2"
+        ],
+        "correctAnswer": 3,
+        "explanation": "The rat moves only to valid, unvisited cells within the maze boundaries."
+    },
+    {
+        "id": 179,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Rat in a Maze",
+        "difficulty": "Hard",
+        "question": "What is the time complexity of finding all paths in an N×N maze?",
+        "options": [
+        "O(N^2)",
+        "O(2^(N^2))",
+        "O(N!)",
+        "O(N^N)"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The algorithm may explore all possible combinations of cells, giving O(2^(N^2)) complexity."
+    },
+    {
+        "id": 180,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Rat in a Maze",
+        "difficulty": "Hard",
+        "question": "Which optimization can reduce the search space in Rat in a Maze?",
+        "options": [
+        "Pruning visited paths",
+        "Random moves",
+        "Greedy selection",
+        "Sorting the cells"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Pruning prevents revisiting paths, reducing unnecessary computation."
+    },
+
+    {
+        "id": 181,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Combination Sum",
+        "difficulty": "Easy",
+        "question": "What is the goal of the Combination Sum problem?",
+        "options": [
+        "Find a single combination of numbers",
+        "Find all unique combinations that sum to target",
+        "Sort numbers in ascending order",
+        "Multiply numbers to reach target"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Combination Sum finds all combinations of numbers that add up to the target."
+    },
+    {
+        "id": 182,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Combination Sum",
+        "difficulty": "Easy",
+        "question": "Which of these constraints is usually applied?",
+        "options": [
+        "Numbers can be used only once",
+        "Numbers can be repeated",
+        "Numbers must be negative",
+        "Only prime numbers are allowed"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Numbers can typically be used multiple times to form combinations."
+    },
+    {
+        "id": 183,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Combination Sum",
+        "difficulty": "Medium",
+        "question": "Which paradigm is commonly used to solve Combination Sum?",
+        "options": [
+        "Backtracking",
+        "Greedy",
+        "Dynamic Programming",
+        "Divide and Conquer"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Backtracking explores all possible combinations and backtracks when necessary."
+    },
+    {
+        "id": 184,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Combination Sum",
+        "difficulty": "Medium",
+        "question": "How do we avoid duplicate combinations?",
+        "options": [
+        "Sort the input and explore in order",
+        "Use a hash set for duplicates",
+        "Both 1 and 2",
+        "Ignore duplicates"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Sorting and using a set ensures unique combinations only."
+    },
+    {
+        "id": 185,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Combination Sum",
+        "difficulty": "Hard",
+        "question": "What is the worst-case complexity of Combination Sum backtracking solution?",
+        "options": [
+        "O(2^n)",
+        "O(n^2)",
+        "O(n!)",
+        "O(n^n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The solution explores subsets of input, giving exponential time complexity O(2^n)."
+    },
+    {
+        "id": 186,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Combination Sum",
+        "difficulty": "Hard",
+        "question": "Which technique can optimize repeated sum calculations?",
+        "options": [
+        "Memoization",
+        "Greedy selection",
+        "Random sampling",
+        "Sorting"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Memoization stores previously computed sums to avoid redundant work."
+    },
+
+    {
+        "id": 187,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Word Search",
+        "difficulty": "Easy",
+        "question": "What is the main goal of the Word Search problem?",
+        "options": [
+        "Find words in a grid of letters",
+        "Count letters in a word",
+        "Sort words alphabetically",
+        "Replace letters randomly"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Word Search requires locating given words within a letter grid."
+    },
+    {
+        "id": 188,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Word Search",
+        "difficulty": "Easy",
+        "question": "Which directions are typically considered when searching?",
+        "options": [
+        "Horizontally and vertically",
+        "Diagonally",
+        "All 8 directions",
+        "Only horizontally"
+        ],
+        "correctAnswer": 2,
+        "explanation": "All 8 directions (horizontal, vertical, diagonal) are used to locate words."
+    },
+    {
+        "id": 189,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Word Search",
+        "difficulty": "Medium",
+        "question": "Which algorithmic technique is used for Word Search?",
+        "options": [
+        "Backtracking",
+        "Dynamic Programming",
+        "Greedy",
+        "Divide and Conquer"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Backtracking is used to explore paths in the grid recursively."
+    },
+    {
+        "id": 190,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Word Search",
+        "difficulty": "Medium",
+        "question": "How can we prevent revisiting the same cell in a word path?",
+        "options": [
+        "Mark cells as visited during recursion",
+        "Use a global counter",
+        "Ignore visited cells",
+        "Sort the grid"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Marking visited cells prevents cycles and incorrect paths."
+    },
+    {
+        "id": 191,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Word Search",
+        "difficulty": "Hard",
+        "question": "What is the worst-case time complexity for finding a word of length L in an N×N grid?",
+        "options": [
+        "O(L)",
+        "O(N^2 * 4^L)",
+        "O(N^L)",
+        "O(N!)"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Each letter has up to 4 directions, giving O(N^2 * 4^L) in the worst case."
+    },
+    {
+        "id": 192,
+        "topic": "Paradigms",
+        "algorithm": "Backtracking : Word Search",
+        "difficulty": "Hard",
+        "question": "Which optimization can reduce the search in Word Search?",
+        "options": [
+        "Trie for prefix checking",
+        "Random cell selection",
+        "Sorting words",
+        "Greedy search"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Using a Trie allows early pruning if no word starts with the current prefix."
+    },
+    {
+        "id": 193,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Fibonacci Sequence",
+        "difficulty": "Easy",
+        "question": "What is the 0th Fibonacci number?",
+        "options": [
+        "0",
+        "1",
+        "2",
+        "Undefined"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The Fibonacci sequence starts with 0 as the 0th element."
+    },
+    {
+        "id": 194,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Fibonacci Sequence",
+        "difficulty": "Easy",
+        "question": "Which recurrence relation defines Fibonacci numbers?",
+        "options": [
+        "F(n) = F(n-1) + F(n-2)",
+        "F(n) = F(n-1) * F(n-2)",
+        "F(n) = F(n-2) - F(n-1)",
+        "F(n) = n^2"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each Fibonacci number is the sum of the two preceding numbers."
+    },
+    {
+        "id": 195,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Fibonacci Sequence",
+        "difficulty": "Medium",
+        "question": "Which approach avoids exponential recursion in Fibonacci calculation?",
+        "options": [
+        "Backtracking",
+        "Memoization",
+        "Greedy",
+        "Sorting"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Memoization stores previously computed results to prevent repeated calculations."
+    },
+    {
+        "id": 196,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Fibonacci Sequence",
+        "difficulty": "Medium",
+        "question": "What is the time complexity of Fibonacci with memoization?",
+        "options": [
+        "O(2^n)",
+        "O(n)",
+        "O(n^2)",
+        "O(log n)"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Memoization reduces the time complexity to linear O(n)."
+    },
+    {
+        "id": 197,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Fibonacci Sequence",
+        "difficulty": "Hard",
+        "question": "Which space optimization can be applied to Fibonacci DP?",
+        "options": [
+        "Using two variables instead of an array",
+        "Using a stack",
+        "Using recursion only",
+        "Using sorting"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Only the last two numbers are needed, so we can use two variables to reduce space."
+    },
+    {
+        "id": 198,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Fibonacci Sequence",
+        "difficulty": "Hard",
+        "question": "Which formula allows O(log n) Fibonacci computation?",
+        "options": [
+        "Binet's formula / Matrix exponentiation",
+        "Greedy summation",
+        "Backtracking",
+        "Linear DP"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Matrix exponentiation or Binet's formula computes Fibonacci in logarithmic time."
+    },
+
+    {
+        "id": 199,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : 0/1 Knapsack",
+        "difficulty": "Easy",
+        "question": "In 0/1 Knapsack, each item can be:",
+        "options": [
+        "Taken multiple times",
+        "Taken once or not taken",
+        "Taken partially",
+        "Ignored completely"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Each item can either be included once or excluded."
+    },
+    {
+        "id": 200,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : 0/1 Knapsack",
+        "difficulty": "Easy",
+        "question": "What is the main goal of 0/1 Knapsack?",
+        "options": [
+        "Maximize profit without exceeding weight",
+        "Minimize weight",
+        "Sort items by value",
+        "Select items randomly"
+        ],
+        "correctAnswer": 0,
+        "explanation": "We aim to maximize total value while staying within the weight limit."
+    },
+    {
+        "id": 201,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : 0/1 Knapsack",
+        "difficulty": "Medium",
+        "question": "Which DP table size is commonly used for 0/1 Knapsack?",
+        "options": [
+        "n × W",
+        "n × n",
+        "W × W",
+        "1D array only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The DP table has dimensions [number of items] × [capacity W]."
+    },
+    {
+        "id": 202,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : 0/1 Knapsack",
+        "difficulty": "Medium",
+        "question": "What recurrence relation is used in 0/1 Knapsack?",
+        "options": [
+        "dp[i][w] = max(dp[i-1][w], dp[i-1][w-weight[i]] + value[i])",
+        "dp[i][w] = dp[i-1][w] + dp[i-1][w-weight[i]]",
+        "dp[i][w] = min(dp[i-1][w], dp[i-1][w-weight[i]] + value[i])",
+        "dp[i][w] = dp[i-1][w] * value[i]"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The DP formula considers including or excluding the current item."
+    },
+    {
+        "id": 203,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : 0/1 Knapsack",
+        "difficulty": "Hard",
+        "question": "What is the time complexity of standard DP 0/1 Knapsack?",
+        "options": [
+        "O(n*W)",
+        "O(n^2)",
+        "O(2^n)",
+        "O(n*log W)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Time complexity is O(n*W) where n = number of items and W = capacity."
+    },
+    {
+        "id": 204,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : 0/1 Knapsack",
+        "difficulty": "Hard",
+        "question": "Which optimization reduces space to O(W) in 0/1 Knapsack?",
+        "options": [
+        "Using a 1D DP array and iterating weights in reverse",
+        "Using recursion only",
+        "Sorting items first",
+        "Greedy selection"
+        ],
+        "correctAnswer": 0,
+        "explanation": "1D DP array with reverse iteration reduces space while maintaining correctness."
+    },
+
+    {
+        "id": 205,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Coin Change",
+        "difficulty": "Easy",
+        "question": "What is the Coin Change problem?",
+        "options": [
+        "Find the minimum number of coins to make a target",
+        "Count total coins available",
+        "Sort coins",
+        "Maximize coin value"
+        ],
+        "correctAnswer": 0,
+        "explanation": "We aim to make a target amount using the fewest coins."
+    },
+    {
+        "id": 206,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Coin Change",
+        "difficulty": "Easy",
+        "question": "Which type of DP is used in Coin Change problem?",
+        "options": [
+        "Top-down with memoization",
+        "Greedy only",
+        "Divide and Conquer",
+        "Backtracking only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Top-down (or bottom-up) DP is used to avoid recomputation."
+    },
+    {
+        "id": 207,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Coin Change",
+        "difficulty": "Medium",
+        "question": "Which DP table represents the minimum coins for each amount?",
+        "options": [
+        "dp[amount]",
+        "dp[coins]",
+        "dp[value]",
+        "dp[weight]"
+        ],
+        "correctAnswer": 0,
+        "explanation": "dp[i] stores the minimum coins needed to make amount i."
+    },
+    {
+        "id": 208,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Coin Change",
+        "difficulty": "Medium",
+        "question": "How to handle amounts that cannot be formed?",
+        "options": [
+        "Initialize with INF or large value",
+        "Use 0",
+        "Skip them",
+        "Use negative numbers"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Initialize DP with a large number to indicate unreachable amounts."
+    },
+    {
+        "id": 209,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Coin Change",
+        "difficulty": "Hard",
+        "question": "What is the time complexity of DP Coin Change with n coins and amount A?",
+        "options": [
+        "O(n*A)",
+        "O(A^n)",
+        "O(n^2)",
+        "O(n*log A)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each amount is computed by iterating over n coins, giving O(n*A)."
+    },
+    {
+        "id": 210,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Coin Change",
+        "difficulty": "Hard",
+        "question": "Which optimization can reduce space in Coin Change DP?",
+        "options": [
+        "1D array storing min coins for each amount",
+        "Sorting coins",
+        "Greedy selection",
+        "Recursive stack only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Only 1D array of size amount+1 is needed, reducing space."
+    },
+    {
+        "id": 211,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Longest Common Subsequence",
+        "difficulty": "Easy",
+        "question": "What does LCS stand for?",
+        "options": [
+        "Longest Continuous Subarray",
+        "Longest Common Subsequence",
+        "Largest Common Sum",
+        "Least Common Subsequence"
+        ],
+        "correctAnswer": 1,
+        "explanation": "LCS stands for Longest Common Subsequence."
+    },
+    {
+        "id": 212,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Longest Common Subsequence",
+        "difficulty": "Easy",
+        "question": "Which of these pairs has an LCS of length 3?",
+        "options": [
+        "ABCD & ACBD",
+        "ABC & DEF",
+        "XYZ & XYZ",
+        "AA & BB"
+        ],
+        "correctAnswer": 0,
+        "explanation": "ABCD and ACBD share 'ABD' as a common subsequence of length 3."
+    },
+    {
+        "id": 213,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Longest Common Subsequence",
+        "difficulty": "Medium",
+        "question": "Which recurrence defines LCS?",
+        "options": [
+        "If X[i] = Y[j], dp[i][j] = dp[i-1][j-1]+1 else max(dp[i-1][j], dp[i][j-1])",
+        "dp[i][j] = dp[i-1][j] + dp[i][j-1]",
+        "dp[i][j] = dp[i-1][j-1]",
+        "dp[i][j] = max(dp[i][j-1], dp[i-1][j-1])"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The standard LCS recurrence considers match or max of previous subproblems."
+    },
+    {
+        "id": 214,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Longest Common Subsequence",
+        "difficulty": "Medium",
+        "question": "Which DP table size is used for sequences of length m and n?",
+        "options": [
+        "m × n",
+        "m + n",
+        "2 × max(m,n)",
+        "m^2"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The DP table has dimensions [m+1][n+1]."
+    },
+    {
+        "id": 215,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Longest Common Subsequence",
+        "difficulty": "Hard",
+        "question": "What is the time complexity of LCS DP solution?",
+        "options": [
+        "O(m+n)",
+        "O(m*n)",
+        "O(2^n)",
+        "O(n!)"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The standard DP solution computes each cell once, giving O(m*n)."
+    },
+    {
+        "id": 216,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Longest Common Subsequence",
+        "difficulty": "Hard",
+        "question": "Which optimization reduces space to O(min(m,n))?",
+        "options": [
+        "Using only two rows of DP table",
+        "Memoization with recursion",
+        "Greedy LCS",
+        "Sorting sequences"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Storing only previous and current row suffices for DP computation."
+    },
+
+    {
+        "id": 217,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Matrix Chain Multiplication",
+        "difficulty": "Easy",
+        "question": "What is the goal in Matrix Chain Multiplication?",
+        "options": [
+        "Multiply matrices in any order",
+        "Minimize total scalar multiplications",
+        "Maximize determinant",
+        "Sort matrices by size"
+        ],
+        "correctAnswer": 1,
+        "explanation": "We seek the order that minimizes scalar multiplications."
+    },
+    {
+        "id": 218,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Matrix Chain Multiplication",
+        "difficulty": "Easy",
+        "question": "Which operation counts in cost calculation?",
+        "options": [
+        "Matrix addition",
+        "Scalar multiplications",
+        "Matrix inversion",
+        "Determinant"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The number of scalar multiplications determines the cost."
+    },
+    {
+        "id": 219,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Matrix Chain Multiplication",
+        "difficulty": "Medium",
+        "question": "Which DP approach is used?",
+        "options": [
+        "Bottom-up",
+        "Greedy",
+        "Divide and Conquer without DP",
+        "Backtracking"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Bottom-up DP computes minimum costs for increasing chain lengths."
+    },
+    {
+        "id": 220,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Matrix Chain Multiplication",
+        "difficulty": "Medium",
+        "question": "What does dp[i][j] represent?",
+        "options": [
+        "Minimum cost to multiply matrices i to j",
+        "Maximum cost",
+        "Sum of matrix elements",
+        "Matrix dimensions"
+        ],
+        "correctAnswer": 0,
+        "explanation": "dp[i][j] stores the minimal scalar multiplication cost for matrices i..j."
+    },
+    {
+        "id": 221,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Matrix Chain Multiplication",
+        "difficulty": "Hard",
+        "question": "Time complexity of standard DP solution?",
+        "options": [
+        "O(n^2)",
+        "O(n^3)",
+        "O(2^n)",
+        "O(n!)"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Triple nested loops yield O(n^3) complexity."
+    },
+    {
+        "id": 222,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Matrix Chain Multiplication",
+        "difficulty": "Hard",
+        "question": "Which optimization can reconstruct optimal multiplication order?",
+        "options": [
+        "Store split points in separate table",
+        "Memoize recursively",
+        "Sort matrices",
+        "Greedy splitting"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A table of split indices allows reconstruction of the optimal order."
+    },
+
+    {
+        "id": 223,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Minimum Path Sum",
+        "difficulty": "Easy",
+        "question": "What is the problem statement?",
+        "options": [
+        "Find path with minimum sum from top-left to bottom-right",
+        "Maximize path sum",
+        "Count number of paths",
+        "Sort grid values"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The goal is to find a path with the smallest sum."
+    },
+    {
+        "id": 224,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Minimum Path Sum",
+        "difficulty": "Easy",
+        "question": "Which moves are allowed?",
+        "options": [
+        "Down or Right",
+        "Up or Left",
+        "Diagonally only",
+        "All 8 directions"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Only right and down moves are allowed in standard formulation."
+    },
+    {
+        "id": 225,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Minimum Path Sum",
+        "difficulty": "Medium",
+        "question": "Which recurrence is used?",
+        "options": [
+        "dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1])",
+        "dp[i][j] = grid[i][j] + max(dp[i-1][j], dp[i][j-1])",
+        "dp[i][j] = grid[i][j] * dp[i-1][j]",
+        "dp[i][j] = dp[i-1][j-1]"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The minimum path sum is current cell plus min of top or left."
+    },
+    {
+        "id": 226,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Minimum Path Sum",
+        "difficulty": "Medium",
+        "question": "Time complexity for an m×n grid?",
+        "options": [
+        "O(m*n)",
+        "O(m+n)",
+        "O(2^(m*n))",
+        "O(m^2*n^2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each cell is computed once, giving O(m*n)."
+    },
+    {
+        "id": 227,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Minimum Path Sum",
+        "difficulty": "Hard",
+        "question": "Which space optimization is possible?",
+        "options": [
+        "Use a single row or column",
+        "Use recursion only",
+        "Store full DP table",
+        "Sort the grid"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Only previous row or column is needed for DP computation."
+    },
+    {
+        "id": 228,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Minimum Path Sum",
+        "difficulty": "Hard",
+        "question": "Which variant allows diagonal moves?",
+        "options": [
+        "Diagonal DP variant",
+        "0/1 Knapsack",
+        "Fibonacci",
+        "LCS"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Allowing diagonal moves requires updating the DP formula to consider diagonal predecessor."
+    },
+
+    {
+        "id": 229,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Subset Sum",
+        "difficulty": "Easy",
+        "question": "What is the problem statement?",
+        "options": [
+        "Check if a subset sums to target",
+        "Find all subsets",
+        "Sort numbers",
+        "Find max element"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Subset Sum checks if any subset sums to a given target."
+    },
+    {
+        "id": 230,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Subset Sum",
+        "difficulty": "Easy",
+        "question": "Which of these is a valid DP approach?",
+        "options": [
+        "dp[i][j] = dp[i-1][j] || dp[i-1][j-arr[i]]",
+        "dp[i][j] = dp[i-1][j] + arr[i]",
+        "dp[i][j] = dp[i][j-1]",
+        "dp[i][j] = arr[i]*arr[j]"
+        ],
+        "correctAnswer": 0,
+        "explanation": "DP tracks whether a sum j can be formed using first i elements."
+    },
+    {
+        "id": 231,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Subset Sum",
+        "difficulty": "Medium",
+        "question": "Time complexity of standard DP Subset Sum?",
+        "options": [
+        "O(n*target)",
+        "O(n^2)",
+        "O(2^n)",
+        "O(n!)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "We iterate over n elements and sums up to target."
+    },
+    {
+        "id": 232,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Subset Sum",
+        "difficulty": "Medium",
+        "question": "Space optimization possible?",
+        "options": [
+        "Use 1D array of size target+1",
+        "Use recursion only",
+        "Sort elements",
+        "Use 2D array always"
+        ],
+        "correctAnswer": 0,
+        "explanation": "1D array suffices by updating from target downwards."
+    },
+    {
+        "id": 233,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Subset Sum",
+        "difficulty": "Hard",
+        "question": "Subset Sum problem is a special case of which problem?",
+        "options": [
+        "0/1 Knapsack",
+        "Coin Change",
+        "Fibonacci",
+        "LCS"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Subset Sum is a 0/1 Knapsack variant where item values = weights and capacity = target."
+    },
+    {
+        "id": 234,
+        "topic": "Paradigms",
+        "algorithm": "Dynamic Programming : Subset Sum",
+        "difficulty": "Hard",
+        "question": "Which technique can solve large Subset Sum instances efficiently?",
+        "options": [
+        "Bitset DP or optimized space DP",
+        "Greedy",
+        "Sorting",
+        "Backtracking only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Bitset DP or optimized 1D DP allows handling large sums efficiently."
+    },
+    {
+        "id": 235,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Activity Selection",
+        "difficulty": "Easy",
+        "question": "What is the main goal of the Activity Selection problem?",
+        "options": [
+        "Maximize number of non-overlapping activities",
+        "Minimize activity duration",
+        "Sort activities by name",
+        "Maximize total duration"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The goal is to select the maximum number of activities that don't overlap."
+    },
+    {
+        "id": 236,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Activity Selection",
+        "difficulty": "Easy",
+        "question": "Which greedy criterion is used?",
+        "options": [
+        "Earliest finish time first",
+        "Longest duration first",
+        "Random selection",
+        "Latest start time first"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Choosing activities by earliest finish time ensures optimal selection."
+    },
+    {
+        "id": 237,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Activity Selection",
+        "difficulty": "Medium",
+        "question": "Time complexity of standard greedy solution after sorting?",
+        "options": [
+        "O(n log n)",
+        "O(n^2)",
+        "O(n)",
+        "O(log n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Sorting takes O(n log n), selection afterward is O(n)."
+    },
+    {
+        "id": 238,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Activity Selection",
+        "difficulty": "Medium",
+        "question": "What data structure is commonly used for activity representation?",
+        "options": [
+        "Array or list of (start, end) times",
+        "Graph adjacency matrix",
+        "Stack",
+        "Queue"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each activity is represented by its start and finish time."
+    },
+    {
+        "id": 239,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Activity Selection",
+        "difficulty": "Hard",
+        "question": "Which is true about greedy correctness?",
+        "options": [
+        "Earliest finish time greedy gives optimal solution",
+        "Random selection gives optimal solution",
+        "Longest duration gives optimal solution",
+        "None of the above"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Earliest finish time is proven to produce the maximum number of activities."
+    },
+    {
+        "id": 240,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Activity Selection",
+        "difficulty": "Hard",
+        "question": "Which proof technique shows correctness?",
+        "options": [
+        "Greedy stays ahead / exchange argument",
+        "Dynamic programming",
+        "Recursion",
+        "Divide and Conquer"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Exchange argument demonstrates greedy choice leads to optimal solution."
+    },
+
+    {
+        "id": 241,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Fractional Knapsack",
+        "difficulty": "Easy",
+        "question": "What is allowed in Fractional Knapsack?",
+        "options": [
+        "Take fractions of items",
+        "Take each item only once",
+        "Skip items completely",
+        "Sort items by name"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Unlike 0/1 Knapsack, items can be taken partially."
+    },
+    {
+        "id": 242,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Fractional Knapsack",
+        "difficulty": "Easy",
+        "question": "Which criterion is used to select items?",
+        "options": [
+        "Highest value/weight ratio first",
+        "Lowest value first",
+        "Random order",
+        "Longest item first"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Greedy choice selects items with highest value-to-weight ratio."
+    },
+    {
+        "id": 243,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Fractional Knapsack",
+        "difficulty": "Medium",
+        "question": "Time complexity after sorting n items?",
+        "options": [
+        "O(n log n)",
+        "O(n^2)",
+        "O(n)",
+        "O(log n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Sorting dominates the algorithm; selection is linear."
+    },
+    {
+        "id": 244,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Fractional Knapsack",
+        "difficulty": "Medium",
+        "question": "Which data structure is commonly used to sort items?",
+        "options": [
+        "Array or list",
+        "Queue",
+        "Graph",
+        "Stack"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Items are sorted in an array/list by value/weight ratio."
+    },
+    {
+        "id": 245,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Fractional Knapsack",
+        "difficulty": "Hard",
+        "question": "Why is greedy optimal for Fractional Knapsack?",
+        "options": [
+        "Fractional property allows linear combination of best ratios",
+        "Because recursion works",
+        "Sorting guarantees minimal weight",
+        "Random choice works"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Fractions allow us to always take as much as possible from the best ratio item."
+    },
+    {
+        "id": 246,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Fractional Knapsack",
+        "difficulty": "Hard",
+        "question": "Time complexity if items are unsorted?",
+        "options": [
+        "O(n log n)",
+        "O(n^2)",
+        "O(n)",
+        "O(log n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Sorting is necessary before linear selection; otherwise, cannot guarantee optimality."
+    },
+
+    {
+        "id": 247,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Huffman Encoding",
+        "difficulty": "Easy",
+        "question": "What is Huffman Encoding used for?",
+        "options": [
+        "Data compression",
+        "Sorting numbers",
+        "Finding shortest paths",
+        "Graph traversal"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Huffman encoding compresses data by using variable-length codes."
+    },
+    {
+        "id": 248,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Huffman Encoding",
+        "difficulty": "Easy",
+        "question": "Which data structure is used?",
+        "options": [
+        "Min-heap or priority queue",
+        "Stack",
+        "Queue",
+        "Array only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A min-heap efficiently extracts the two lowest frequency nodes repeatedly."
+    },
+    {
+        "id": 249,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Huffman Encoding",
+        "difficulty": "Medium",
+        "question": "Greedy choice in Huffman?",
+        "options": [
+        "Combine two nodes with smallest frequencies",
+        "Choose largest node",
+        "Random nodes",
+        "Sort characters alphabetically"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Always combine two smallest frequencies to form a new node."
+    },
+    {
+        "id": 250,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Huffman Encoding",
+        "difficulty": "Medium",
+        "question": "Time complexity for n characters?",
+        "options": [
+        "O(n log n)",
+        "O(n^2)",
+        "O(n)",
+        "O(log n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Building min-heap takes O(n log n) and each merge is logarithmic."
+    },
+    {
+        "id": 251,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Huffman Encoding",
+        "difficulty": "Hard",
+        "question": "Why is greedy optimal for Huffman?",
+        "options": [
+        "Optimal prefix property ensures minimal encoding length",
+        "Because recursion works",
+        "Sorting guarantees minimal weight",
+        "Random choice works"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Greedy choice ensures the resulting prefix code has minimal total weighted path length."
+    },
+    {
+        "id": 252,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Huffman Encoding",
+        "difficulty": "Hard",
+        "question": "Which proof method shows optimality?",
+        "options": [
+        "Greedy stays ahead / exchange argument",
+        "Dynamic programming",
+        "Recursion only",
+        "Divide and Conquer"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Exchange argument proves combining smallest frequencies is optimal."
+    },
+    {
+        "id": 253,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Job Scheduling",
+        "difficulty": "Easy",
+        "question": "What is the goal in the Job Scheduling problem?",
+        "options": [
+        "Maximize profit by scheduling non-overlapping jobs",
+        "Minimize job durations",
+        "Sort jobs by name",
+        "Maximize number of jobs"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The goal is to select jobs to maximize total profit without conflicts."
+    },
+    {
+        "id": 254,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Job Scheduling",
+        "difficulty": "Easy",
+        "question": "Which criterion is commonly used to schedule jobs?",
+        "options": [
+        "Earliest deadline first",
+        "Longest processing time first",
+        "Random selection",
+        "Alphabetical order"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Earliest deadline first ensures feasible scheduling and often optimal profit."
+    },
+    {
+        "id": 255,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Job Scheduling",
+        "difficulty": "Medium",
+        "question": "Time complexity after sorting n jobs by deadline?",
+        "options": [
+        "O(n log n)",
+        "O(n^2)",
+        "O(n)",
+        "O(log n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Sorting dominates; selection afterward is linear."
+    },
+    {
+        "id": 256,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Job Scheduling",
+        "difficulty": "Medium",
+        "question": "Which data structure can help track free time slots efficiently?",
+        "options": [
+        "Disjoint set / Union-Find",
+        "Stack",
+        "Queue",
+        "Array only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Union-Find helps efficiently find the latest available slot."
+    },
+    {
+        "id": 257,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Job Scheduling",
+        "difficulty": "Hard",
+        "question": "Greedy optimality proof often uses which technique?",
+        "options": [
+        "Exchange argument",
+        "Dynamic programming",
+        "Recursion only",
+        "Divide and Conquer"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Exchange argument shows that swapping jobs maintains optimal profit."
+    },
+    {
+        "id": 258,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Job Scheduling",
+        "difficulty": "Hard",
+        "question": "Which variant allows fractional scheduling?",
+        "options": [
+        "Job Fractional Scheduling (like Fractional Knapsack)",
+        "0/1 Job Scheduling",
+        "Random scheduling",
+        "None"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Fractional scheduling allows splitting jobs partially to maximize profit."
+    },
+
+    {
+        "id": 259,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Minimum Spanning Tree",
+        "difficulty": "Easy",
+        "question": "What is the goal of MST?",
+        "options": [
+        "Connect all vertices with minimum total edge weight",
+        "Maximize total edge weight",
+        "Count number of edges",
+        "Sort vertices"
+        ],
+        "correctAnswer": 0,
+        "explanation": "MST connects all vertices using the minimum total edge weight."
+    },
+    {
+        "id": 260,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Minimum Spanning Tree",
+        "difficulty": "Easy",
+        "question": "Which algorithms are greedy for MST?",
+        "options": [
+        "Prim and Kruskal",
+        "Dijkstra and BFS",
+        "DFS and Bellman-Ford",
+        "Floyd-Warshall"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Prim and Kruskal build MSTs greedily by choosing minimum edges."
+    },
+    {
+        "id": 261,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Minimum Spanning Tree",
+        "difficulty": "Medium",
+        "question": "Kruskal’s algorithm requires which data structure?",
+        "options": [
+        "Disjoint set / Union-Find",
+        "Queue",
+        "Stack",
+        "Heap only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Union-Find detects cycles efficiently when adding edges."
+    },
+    {
+        "id": 262,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Minimum Spanning Tree",
+        "difficulty": "Medium",
+        "question": "Prim’s algorithm can be implemented efficiently using which structure?",
+        "options": [
+        "Min-heap / Priority queue",
+        "Stack",
+        "Disjoint set",
+        "Array only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Priority queue efficiently picks the next minimum edge connecting the MST."
+    },
+    {
+        "id": 263,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Minimum Spanning Tree",
+        "difficulty": "Hard",
+        "question": "Time complexity of Kruskal’s algorithm with n vertices and m edges?",
+        "options": [
+        "O(m log m + m α(n))",
+        "O(n^2)",
+        "O(n log n)",
+        "O(m^2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Sorting edges is O(m log m) and Union-Find operations are near constant (α(n))."
+    },
+    {
+        "id": 264,
+        "topic": "Paradigms",
+        "algorithm": "Greedy Algorithms : Minimum Spanning Tree",
+        "difficulty": "Hard",
+        "question": "Time complexity of Prim’s algorithm using min-heap?",
+        "options": [
+        "O((V+E) log V)",
+        "O(V^2)",
+        "O(E^2)",
+        "O(V log V)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each edge may trigger a heap update, giving O((V+E) log V) complexity."
+    },
+    {
+        "id": 265,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Merge Sort",
+        "difficulty": "Easy",
+        "question": "Which paradigm does Merge Sort use?",
+        "options": [
+        "Divide and Conquer",
+        "Greedy",
+        "Dynamic Programming",
+        "Backtracking"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Merge Sort divides the array, sorts recursively, and merges — classic divide and conquer."
+    },
+    {
+        "id": 266,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Merge Sort",
+        "difficulty": "Easy",
+        "question": "What is the time complexity of Merge Sort in the worst case?",
+        "options": [
+        "O(n log n)",
+        "O(n^2)",
+        "O(log n)",
+        "O(n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Merge Sort always divides and merges, giving O(n log n) complexity."
+    },
+    {
+        "id": 267,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Merge Sort",
+        "difficulty": "Medium",
+        "question": "Which data structure is commonly used during merging?",
+        "options": [
+        "Temporary array",
+        "Stack",
+        "Queue",
+        "Linked list only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A temporary array stores merged elements before copying back."
+    },
+    {
+        "id": 268,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Merge Sort",
+        "difficulty": "Medium",
+        "question": "Space complexity of Merge Sort?",
+        "options": [
+        "O(n)",
+        "O(1)",
+        "O(log n)",
+        "O(n^2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Merge Sort requires O(n) extra space for the temporary array."
+    },
+    {
+        "id": 269,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Merge Sort",
+        "difficulty": "Hard",
+        "question": "Which technique can reduce Merge Sort’s space usage?",
+        "options": [
+        "In-place merging",
+        "Greedy selection",
+        "Recursion only",
+        "Backtracking"
+        ],
+        "correctAnswer": 0,
+        "explanation": "In-place merging techniques reduce additional memory, though more complex."
+    },
+    {
+        "id": 270,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Merge Sort",
+        "difficulty": "Hard",
+        "question": "Merge Sort is stable. What does stability mean?",
+        "options": [
+        "Equal elements retain relative order",
+        "Always fastest sorting",
+        "Requires extra memory",
+        "Divides array recursively"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Stability preserves the order of equal elements after sorting."
+    },
+
+    {
+        "id": 271,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Quick Sort",
+        "difficulty": "Easy",
+        "question": "Which paradigm does Quick Sort use?",
+        "options": [
+        "Divide and Conquer",
+        "Greedy",
+        "Dynamic Programming",
+        "Backtracking"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Quick Sort divides the array around a pivot and conquers recursively."
+    },
+    {
+        "id": 272,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Quick Sort",
+        "difficulty": "Easy",
+        "question": "Worst-case time complexity of Quick Sort?",
+        "options": [
+        "O(n^2)",
+        "O(n log n)",
+        "O(log n)",
+        "O(n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "If pivot selection is poor (sorted array), Quick Sort degrades to O(n^2)."
+    },
+    {
+        "id": 273,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Quick Sort",
+        "difficulty": "Medium",
+        "question": "Which pivot selection technique is commonly used?",
+        "options": [
+        "Randomized or median-of-three",
+        "First element always",
+        "Last element only",
+        "Middle element only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Random or median-of-three pivot improves average performance and reduces worst-case likelihood."
+    },
+    {
+        "id": 274,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Quick Sort",
+        "difficulty": "Medium",
+        "question": "Average-case time complexity?",
+        "options": [
+        "O(n log n)",
+        "O(n^2)",
+        "O(log n)",
+        "O(n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "With balanced partitioning, Quick Sort runs in O(n log n) on average."
+    },
+    {
+        "id": 275,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Quick Sort",
+        "difficulty": "Hard",
+        "question": "Is Quick Sort stable?",
+        "options": [
+        "No",
+        "Yes",
+        "Only for small arrays",
+        "Depends on pivot"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Standard Quick Sort is not stable; equal elements may change relative order."
+    },
+    {
+        "id": 276,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Quick Sort",
+        "difficulty": "Hard",
+        "question": "Space complexity of Quick Sort (recursive)?",
+        "options": [
+        "O(log n) average",
+        "O(n)",
+        "O(n log n)",
+        "O(1)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Recursive calls use O(log n) stack space on average."
+    },
+
+    {
+        "id": 277,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Binary Search",
+        "difficulty": "Easy",
+        "question": "Binary Search works on which type of array?",
+        "options": [
+        "Sorted array",
+        "Unsorted array",
+        "Random array",
+        "Linked list only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Binary Search requires a sorted array to divide search space efficiently."
+    },
+    {
+        "id": 278,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Binary Search",
+        "difficulty": "Easy",
+        "question": "Time complexity of Binary Search?",
+        "options": [
+        "O(log n)",
+        "O(n)",
+        "O(n log n)",
+        "O(n^2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each step halves the search space, giving O(log n)."
+    },
+    {
+        "id": 279,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Binary Search",
+        "difficulty": "Medium",
+        "question": "Which implementation is more space-efficient?",
+        "options": [
+        "Iterative",
+        "Recursive",
+        "Both same",
+        "Depends on array"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Iterative Binary Search uses O(1) space; recursion uses O(log n) stack."
+    },
+    {
+        "id": 280,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Binary Search",
+        "difficulty": "Medium",
+        "question": "Binary Search can be adapted for which type of problem?",
+        "options": [
+        "Finding first/last occurrence",
+        "Sorting array",
+        "Linear search",
+        "Counting elements"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Binary Search can locate first/last occurrence in sorted arrays."
+    },
+    {
+        "id": 281,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Binary Search",
+        "difficulty": "Hard",
+        "question": "Which variant works on rotated sorted arrays?",
+        "options": [
+        "Modified Binary Search",
+        "Standard Binary Search",
+        "Linear search",
+        "Quick Search"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Modified Binary Search accounts for rotation to find target correctly."
+    },
+    {
+        "id": 282,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Binary Search",
+        "difficulty": "Hard",
+        "question": "Binary Search in infinite or unknown size array?",
+        "options": [
+        "Exponential search followed by Binary Search",
+        "Linear search",
+        "Quick Search",
+        "Merge Search"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Exponential search finds a range, then binary search locates the element."
+    },
+
+    {
+        "id": 283,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Maximum Subarray Sum",
+        "difficulty": "Easy",
+        "question": "What is the goal of Maximum Subarray Sum problem?",
+        "options": [
+        "Find contiguous subarray with maximum sum",
+        "Sort array",
+        "Find largest element",
+        "Count subarrays"
+        ],
+        "correctAnswer": 0,
+        "explanation": "We seek a contiguous subarray whose sum is maximum."
+    },
+    {
+        "id": 284,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Maximum Subarray Sum",
+        "difficulty": "Easy",
+        "question": "Which simple algorithm can solve it in O(n^2)?",
+        "options": [
+        "Check all subarrays",
+        "Binary search",
+        "Greedy selection",
+        "Merge sort"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Brute-force checks sums of all possible contiguous subarrays."
+    },
+    {
+        "id": 285,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Maximum Subarray Sum",
+        "difficulty": "Medium",
+        "question": "Optimal O(n) algorithm is called?",
+        "options": [
+        "Kadane’s algorithm",
+        "Merge Sum",
+        "Divide Sum",
+        "Quick Sum"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Kadane’s algorithm computes max sum in linear time using DP-like approach."
+    },
+    {
+        "id": 286,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Maximum Subarray Sum",
+        "difficulty": "Medium",
+        "question": "Kadane’s algorithm keeps track of?",
+        "options": [
+        "Current max ending here and overall max",
+        "All subarrays",
+        "Sum of first half",
+        "Count of positive numbers"
+        ],
+        "correctAnswer": 0,
+        "explanation": "It maintains current subarray sum and updates overall maximum."
+    },
+    {
+        "id": 287,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Maximum Subarray Sum",
+        "difficulty": "Hard",
+        "question": "Time complexity of Kadane’s algorithm?",
+        "options": [
+        "O(n)",
+        "O(n log n)",
+        "O(n^2)",
+        "O(log n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each element is processed once, giving linear O(n) complexity."
+    },
+    {
+        "id": 288,
+        "topic": "Paradigms",
+        "algorithm": "Divide & Conquer : Maximum Subarray Sum",
+        "difficulty": "Hard",
+        "question": "Can Kadane’s algorithm handle all-negative arrays?",
+        "options": [
+        "Yes, by tracking maximum element",
+        "No",
+        "Only positive arrays",
+        "Depends on size"
+        ],
+        "correctAnswer": 0,
+        "explanation": "It works for all-negative arrays by choosing the maximum single element."
+    },
+    {
+        "id": 289,
+        "topic": "Other Topics",
+        "algorithm": "trees: Preorder Traversal",
+        "difficulty": "Easy",
+        "question": "What is the order of nodes in Preorder Traversal?",
+        "options": [
+        "Root, Left, Right",
+        "Left, Root, Right",
+        "Left, Right, Root",
+        "Right, Root, Left"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Preorder traversal visits the root first, then the left subtree, then the right subtree."
+    },
+    {
+        "id": 290,
+        "topic": "Other Topics",
+        "algorithm": "trees: Preorder Traversal",
+        "difficulty": "Easy",
+        "question": "Preorder traversal is typically implemented using?",
+        "options": [
+        "Recursion or stack",
+        "Queue only",
+        "Heap",
+        "Graph"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Recursion or an explicit stack is used to simulate recursive calls."
+    },
+    {
+        "id": 291,
+        "topic": "Other Topics",
+        "algorithm": "trees: Preorder Traversal",
+        "difficulty": "Medium",
+        "question": "Time complexity of Preorder Traversal?",
+        "options": [
+        "O(n)",
+        "O(n log n)",
+        "O(log n)",
+        "O(n^2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each node is visited once, giving O(n) time complexity."
+    },
+    {
+        "id": 292,
+        "topic": "Other Topics",
+        "algorithm": "trees: Preorder Traversal",
+        "difficulty": "Medium",
+        "question": "Which data structure can be used for iterative preorder traversal?",
+        "options": [
+        "Stack",
+        "Queue",
+        "Heap",
+        "Linked list"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A stack simulates the recursive calls for preorder traversal."
+    },
+    {
+        "id": 293,
+        "topic": "Other Topics",
+        "algorithm": "trees: Preorder Traversal",
+        "difficulty": "Hard",
+        "question": "Preorder traversal is used to?",
+        "options": [
+        "Serialize a tree",
+        "Sort elements",
+        "Search efficiently",
+        "Delete nodes"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Preorder is often used for tree serialization and reconstruction."
+    },
+    {
+        "id": 294,
+        "topic": "Other Topics",
+        "algorithm": "trees: Preorder Traversal",
+        "difficulty": "Hard",
+        "question": "Space complexity of recursive Preorder Traversal?",
+        "options": [
+        "O(h) where h is tree height",
+        "O(n)",
+        "O(log n)",
+        "O(1)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Recursive calls stack can go up to the height of the tree."
+    },
+
+    {
+        "id": 295,
+        "topic": "Other Topics",
+        "algorithm": "trees: Inorder Traversal",
+        "difficulty": "Easy",
+        "question": "Order of nodes in Inorder Traversal?",
+        "options": [
+        "Left, Root, Right",
+        "Root, Left, Right",
+        "Right, Root, Left",
+        "Left, Right, Root"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Inorder visits left subtree, then root, then right subtree."
+    },
+    {
+        "id": 296,
+        "topic": "Other Topics",
+        "algorithm": "trees: Inorder Traversal",
+        "difficulty": "Easy",
+        "question": "Inorder traversal of a BST gives?",
+        "options": [
+        "Sorted sequence",
+        "Reverse sorted sequence",
+        "Random order",
+        "Heap order"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Inorder traversal of a BST visits nodes in ascending order."
+    },
+    {
+        "id": 297,
+        "topic": "Other Topics",
+        "algorithm": "trees: Inorder Traversal",
+        "difficulty": "Medium",
+        "question": "Iterative Inorder traversal uses?",
+        "options": [
+        "Stack",
+        "Queue",
+        "Heap",
+        "Graph"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A stack is used to track nodes while visiting leftmost nodes first."
+    },
+    {
+        "id": 298,
+        "topic": "Other Topics",
+        "algorithm": "trees: Inorder Traversal",
+        "difficulty": "Medium",
+        "question": "Time complexity of Inorder Traversal?",
+        "options": [
+        "O(n)",
+        "O(n log n)",
+        "O(log n)",
+        "O(n^2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each node is visited exactly once, O(n)."
+    },
+    {
+        "id": 299,
+        "topic": "Other Topics",
+        "algorithm": "trees: Inorder Traversal",
+        "difficulty": "Hard",
+        "question": "Morris Traversal for Inorder achieves?",
+        "options": [
+        "O(1) space",
+        "O(n log n) time",
+        "Stack-based simulation",
+        "Heap-based storage"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Morris Traversal uses threaded binary tree concept to traverse in O(1) space."
+    },
+    {
+        "id": 300,
+        "topic": "Other Topics",
+        "algorithm": "trees: Inorder Traversal",
+        "difficulty": "Hard",
+        "question": "Inorder is useful to?",
+        "options": [
+        "Validate BST property",
+        "Compute height",
+        "Delete node",
+        "Traverse level-wise"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Inorder traversal of a BST should produce a sorted sequence; this validates BST."
+    },
+    {
+        "id": 301,
+        "topic": "Other Topics",
+        "algorithm": "trees: Postorder Traversal",
+        "difficulty": "Easy",
+        "question": "Order of nodes in Postorder Traversal?",
+        "options": [
+        "Left, Right, Root",
+        "Root, Left, Right",
+        "Left, Root, Right",
+        "Right, Root, Left"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Postorder visits left subtree, then right subtree, then root."
+    },
+    {
+        "id": 302,
+        "topic": "Other Topics",
+        "algorithm": "trees: Postorder Traversal",
+        "difficulty": "Easy",
+        "question": "Postorder traversal is useful for?",
+        "options": [
+        "Deleting a tree",
+        "Printing nodes",
+        "Searching elements",
+        "Balancing tree"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Postorder is used to delete a tree safely by visiting children first."
+    },
+    {
+        "id": 303,
+        "topic": "Other Topics",
+        "algorithm": "trees: Postorder Traversal",
+        "difficulty": "Medium",
+        "question": "Iterative Postorder traversal can use?",
+        "options": [
+        "Two stacks",
+        "Queue",
+        "Heap",
+        "Graph"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Two stacks can simulate postorder traversal iteratively."
+    },
+    {
+        "id": 304,
+        "topic": "Other Topics",
+        "algorithm": "trees: Postorder Traversal",
+        "difficulty": "Medium",
+        "question": "Time complexity of Postorder Traversal?",
+        "options": [
+        "O(n)",
+        "O(n log n)",
+        "O(log n)",
+        "O(n^2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each node is visited once."
+    },
+    {
+        "id": 305,
+        "topic": "Other Topics",
+        "algorithm": "trees: Postorder Traversal",
+        "difficulty": "Hard",
+        "question": "Space complexity of recursive Postorder?",
+        "options": [
+        "O(h) where h is tree height",
+        "O(n)",
+        "O(log n)",
+        "O(1)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Recursive calls stack can go up to tree height."
+    },
+    {
+        "id": 306,
+        "topic": "Other Topics",
+        "algorithm": "trees: Postorder Traversal",
+        "difficulty": "Hard",
+        "question": "Postorder can be used to compute?",
+        "options": [
+        "Subtree sizes or expression evaluation",
+        "Node heights only",
+        "Inorder sequence",
+        "Level order sequence"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Postorder allows processing children before root, useful in evaluation and subtree computations."
+    },
+
+    {
+        "id": 307,
+        "topic": "Other Topics",
+        "algorithm": "trees: Level Order Traversal",
+        "difficulty": "Easy",
+        "question": "Level Order Traversal visits nodes in?",
+        "options": [
+        "Breadth-first manner",
+        "Depth-first manner",
+        "Random order",
+        "Reverse order"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Level order uses BFS to visit nodes level by level."
+    },
+    {
+        "id": 308,
+        "topic": "Other Topics",
+        "algorithm": "trees: Level Order Traversal",
+        "difficulty": "Easy",
+        "question": "Which data structure is used for Level Order Traversal?",
+        "options": [
+        "Queue",
+        "Stack",
+        "Heap",
+        "Graph"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Queue stores nodes of each level to process in FIFO order."
+    },
+    {
+        "id": 309,
+        "topic": "Other Topics",
+        "algorithm": "trees: Level Order Traversal",
+        "difficulty": "Medium",
+        "question": "Time complexity of Level Order Traversal?",
+        "options": [
+        "O(n)",
+        "O(n log n)",
+        "O(log n)",
+        "O(n^2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Each node is visited once."
+    },
+    {
+        "id": 310,
+        "topic": "Other Topics",
+        "algorithm": "trees: Level Order Traversal",
+        "difficulty": "Medium",
+        "question": "Level order can also be called?",
+        "options": [
+        "Breadth-First Traversal",
+        "Depth-First Traversal",
+        "Preorder Traversal",
+        "Inorder Traversal"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Level order is equivalent to BFS."
+    },
+    {
+        "id": 311,
+        "topic": "Other Topics",
+        "algorithm": "trees: Level Order Traversal",
+        "difficulty": "Hard",
+        "question": "Space complexity of level order traversal?",
+        "options": [
+        "O(width of tree)",
+        "O(h)",
+        "O(n log n)",
+        "O(n^2)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Queue stores up to the maximum number of nodes at any level."
+    },
+    {
+        "id": 312,
+        "topic": "Other Topics",
+        "algorithm": "trees: Level Order Traversal",
+        "difficulty": "Hard",
+        "question": "Level order can be used to compute?",
+        "options": [
+        "Height of tree, level sums, zigzag traversal",
+        "Only leaf nodes",
+        "Inorder sequence",
+        "Preorder sequence"
+        ],
+        "correctAnswer": 0,
+        "explanation": "It allows computations involving levels like height, sum, or zigzag ordering."
+    },
+
+    {
+        "id": 313,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Insert",
+        "difficulty": "Easy",
+        "question": "In BST, where is a new node inserted?",
+        "options": [
+        "Maintaining BST property",
+        "At root always",
+        "Leftmost position",
+        "Rightmost position"
+        ],
+        "correctAnswer": 0,
+        "explanation": "BST insertion ensures left < root < right property."
+    },
+    {
+        "id": 314,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Insert",
+        "difficulty": "Easy",
+        "question": "Time complexity of BST insertion (balanced tree)?",
+        "options": [
+        "O(log n)",
+        "O(n)",
+        "O(n log n)",
+        "O(1)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Balanced BST has height log n, giving O(log n) insertion time."
+    },
+    {
+        "id": 315,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Insert",
+        "difficulty": "Medium",
+        "question": "Insertion in BST may cause?",
+        "options": [
+        "Tree imbalance (for unbalanced BST)",
+        "Tree deletion",
+        "Traversal change",
+        "Sorting error"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Unbalanced insertions may skew the tree."
+    },
+    {
+        "id": 316,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Insert",
+        "difficulty": "Medium",
+        "question": "BST insertion can be implemented using?",
+        "options": [
+        "Recursion or iteration",
+        "Queue only",
+        "Heap only",
+        "Graph traversal"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Both recursive and iterative methods are used for BST insertion."
+    },
+    {
+        "id": 317,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Insert",
+        "difficulty": "Hard",
+        "question": "Time complexity of BST insertion in worst-case (skewed tree)?",
+        "options": [
+        "O(n)",
+        "O(log n)",
+        "O(n log n)",
+        "O(1)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A skewed BST has height n, giving O(n) insertion time."
+    },
+    {
+        "id": 318,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Insert",
+        "difficulty": "Hard",
+        "question": "BST insertion maintains?",
+        "options": [
+        "BST property",
+        "Heap property",
+        "Graph adjacency",
+        "Traversal order"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Insertion ensures BST left < root < right property."
+    },
+    {
+        "id": 319,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Search",
+        "difficulty": "Easy",
+        "question": "In a BST, how do you search for a value?",
+        "options": [
+        "Compare with root and traverse left or right",
+        "Check all nodes sequentially",
+        "Use a hash table",
+        "Random traversal"
+        ],
+        "correctAnswer": 0,
+        "explanation": "BST search compares the target with root and moves left or right recursively or iteratively."
+    },
+    {
+        "id": 320,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Search",
+        "difficulty": "Easy",
+        "question": "Time complexity of BST search in a balanced tree?",
+        "options": [
+        "O(log n)",
+        "O(n)",
+        "O(n log n)",
+        "O(1)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Balanced BST has height log n, so search takes O(log n)."
+    },
+    {
+        "id": 321,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Search",
+        "difficulty": "Medium",
+        "question": "Time complexity of BST search in worst-case (skewed tree)?",
+        "options": [
+        "O(n)",
+        "O(log n)",
+        "O(n log n)",
+        "O(1)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A skewed BST has height n, so search can take O(n) in worst case."
+    },
+    {
+        "id": 322,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Search",
+        "difficulty": "Medium",
+        "question": "BST search can be implemented using?",
+        "options": [
+        "Recursion or iteration",
+        "Queue only",
+        "Heap only",
+        "Stack only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Both recursive and iterative approaches are commonly used."
+    },
+    {
+        "id": 323,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Search",
+        "difficulty": "Hard",
+        "question": "Searching a non-existent element in BST returns?",
+        "options": [
+        "Null or None",
+        "Root node",
+        "Random node",
+        "All nodes"
+        ],
+        "correctAnswer": 0,
+        "explanation": "If the element is not found, search returns null (or None in Python)."
+    },
+    {
+        "id": 324,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Search",
+        "difficulty": "Hard",
+        "question": "BST search efficiency depends on?",
+        "options": [
+        "Tree height",
+        "Node values",
+        "Queue usage",
+        "Traversal type"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Search efficiency is determined by tree height; balanced trees give O(log n)."
+    },
+
+    {
+        "id": 325,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Delete",
+        "difficulty": "Easy",
+        "question": "Deleting a node with no children in BST?",
+        "options": [
+        "Simply remove the node",
+        "Replace with root",
+        "Move left subtree",
+        "Move right subtree"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A leaf node can be removed directly without affecting BST property."
+    },
+    {
+        "id": 326,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Delete",
+        "difficulty": "Easy",
+        "question": "Deleting a node with one child?",
+        "options": [
+        "Replace node with its child",
+        "Replace with root",
+        "Remove both subtrees",
+        "Do nothing"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The node is replaced by its only child to maintain BST property."
+    },
+    {
+        "id": 327,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Delete",
+        "difficulty": "Medium",
+        "question": "Deleting a node with two children?",
+        "options": [
+        "Replace with inorder successor or predecessor",
+        "Remove both subtrees",
+        "Replace with root",
+        "Random node"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Replace the node with its inorder successor (or predecessor) and delete that successor."
+    },
+    {
+        "id": 328,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Delete",
+        "difficulty": "Medium",
+        "question": "Time complexity of BST delete (balanced tree)?",
+        "options": [
+        "O(log n)",
+        "O(n)",
+        "O(n log n)",
+        "O(1)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Delete involves search plus adjustment, giving O(log n) in balanced BST."
+    },
+    {
+        "id": 329,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Delete",
+        "difficulty": "Hard",
+        "question": "Time complexity of BST delete (skewed tree)?",
+        "options": [
+        "O(n)",
+        "O(log n)",
+        "O(n log n)",
+        "O(1)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Skewed BST has height n, so delete can take O(n)."
+    },
+    {
+        "id": 330,
+        "topic": "Other Topics",
+        "algorithm": "trees: BST Delete",
+        "difficulty": "Hard",
+        "question": "BST delete maintains?",
+        "options": [
+        "BST property",
+        "Heap property",
+        "Queue order",
+        "Traversal order"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Deletion preserves the BST left < root < right property."
+    }                                        
 ]

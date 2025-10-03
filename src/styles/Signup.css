@@ -1,0 +1,211 @@
+/* ===== Global Signup Container ===== */
+.signup-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Light & Dark theme backgrounds */
+.signup-light {
+  background: #f7f9fc;
+  color: #1e293b;
+}
+
+.signup-dark {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+/* ===== Back Button ===== */
+.signup-back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.signup-back-button:hover {
+  color: #2563eb;
+}
+
+.back-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== Signup Wrapper ===== */
+.signup-wrapper {
+  width: 100%;
+  max-width: 460px;
+}
+
+/* ===== Header ===== */
+.signup-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.signup-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 0.8rem auto;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+}
+
+.signup-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.signup-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+/* ===== Card ===== */
+.signup-card {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.signup-light .signup-card {
+  --card-bg: #ffffff;
+}
+
+.signup-dark .signup-card {
+  --card-bg: #1e293b;
+}
+
+/* ===== Form ===== */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Row for first/last name */
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+/* Input Container */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.7rem 0.9rem 0.7rem 2.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.6rem;
+  font-size: 0.95rem;
+  background: transparent;
+  color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+/* Password toggle button */
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle:hover {
+  color: #2563eb;
+}
+
+.toggle-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== Buttons ===== */
+.submit-button {
+  background: #2563eb;
+  color: #fff;
+  padding: 0.85rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.submit-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+/* ===== Login Link ===== */
+.login-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.login-action {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.login-action:hover {
+  text-decoration: underline;
+}

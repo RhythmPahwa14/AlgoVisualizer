@@ -59,29 +59,63 @@ const PauseOverlay = ({ onResume }) => (
 );
 
 // Sub-component for exit confirmation overlay
-const ExitConfirmationOverlay = ({ onConfirm, onCancel }) => (
-  <div className="quiz-overlay quiz-overlay-confirm" role="dialog" aria-modal="true" aria-labelledby="exit-title">
-    <div className="overlay-content">
-      <h2 id="exit-title">Are you sure you want to exit the quiz?</h2>
-      <div className="overlay-buttons">
-        <button 
-          className="quiz-btn"
-          onClick={onConfirm}
-          aria-label="Confirm exit"
-        >
-          Yes, Exit
-        </button>
-        <button 
-          className="quiz-btn secondary"
-          onClick={onCancel}
-          aria-label="Cancel exit"
-        >
-          Cancel
-        </button>
+const ExitConfirmationOverlay = ({ onConfirm, onCancel }) => {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const buttons = Array.from(document.querySelectorAll(".exit-dialog button"));
+      const currentIndex = buttons.indexOf(document.activeElement);
+
+      if (e.key === "Enter") {
+        if (document.activeElement instanceof HTMLButtonElement) {
+          document.activeElement.click();
+        }
+      }
+
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        if (currentIndex !== -1) {
+          const nextIndex =
+            e.key === "ArrowRight"
+              ? (currentIndex + 1) % buttons.length
+              : (currentIndex - 1 + buttons.length) % buttons.length;
+          buttons[nextIndex].focus();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  return (
+    <div
+      className="quiz-overlay quiz-overlay-confirm exit-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="exit-title"
+    >
+      <div className="overlay-content">
+        <h2 id="exit-title">Are you sure you want to exit the quiz?</h2>
+        <div className="overlay-buttons">
+          <button
+            className="quiz-btn"
+            onClick={onConfirm}
+            aria-label="Confirm exit"
+            autoFocus
+          >
+            Yes, Exit
+          </button>
+          <button
+            className="quiz-btn secondary"
+            onClick={onCancel}
+            aria-label="Cancel exit"
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Helper functions for quiz logic
 const QuizHelpers = {
@@ -179,6 +213,13 @@ const QuizManager = () => {
     }
     return () => clearTimeout(timer);
   }, [timeRemaining, timedMode, currentStep, isPaused]);
+
+  // 🔹 Scroll fix
+useEffect(() => {
+  if (currentStep === QUIZ_STEPS.QUIZ) {
+    window.scrollTo(0, 0);
+  }
+}, [currentStep]);
 
   const startQuiz = (topic, difficulty, timed = false) => {
     // Filter and shuffle questions

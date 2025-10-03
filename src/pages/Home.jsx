@@ -410,15 +410,15 @@ const Home = () => {
         {/* Feature Cards with detailed content */}
         {/* ADD THIS NEW SECTION */}
         <div className="algo-learning-updates-container" data-aos="fade-up" data-aos-duration="1000">
-       <section className="algorithm-buttons">
-        <h2 className='buttons-heading' data-aos="fade-up" data-aos-delay="100">Resources</h2>
+       <section className="algorithm-buttons" data-aos="fade-up" data-aos-delay="200">
+        <h2 className='buttons-heading'>Resources</h2>
 
         {features.map((feature,index)=>(
           <Link 
   key={index} 
   to={feature.path} 
   className={`clean-button-link feature-${index+1}`}
-  data-aos="fade-up" data-aos-delay={`${200 + index * 100}`}
+  data-aos="fade-up" data-aos-delay={`${300 + index * 100}`}
 >
   <div className='button-icon'>
     <feature.icon size={35}/>
@@ -428,10 +428,10 @@ const Home = () => {
         ))}
        </section>
        
- <div className='vertical-steps-container' data-aos="fade-up" data-aos-delay="300">
+ <div className='vertical-steps-container' data-aos="fade-up" data-aos-delay="200">
   <h2 className='steps-heading'>Learning paths</h2>
      {learningPaths.map((path,index)=>(
-      <div key={index} className={`step-button step-${index+1}`} data-aos="fade-up" data-aos-delay={`${400 + index * 150}`}>
+      <div key={index} className={`step-button step-${index+1}`} data-aos="fade-up" data-aos-delay={`${300 + index * 150}`}>
         <div className='step-content-wrapper'>
           <div className='step-text'>
             <span className='step-title'>{path.title}</span>
@@ -446,11 +446,11 @@ const Home = () => {
     
   </div>
         {/* Enhanced Activity Feed */}
-        <div className="activity-feed" data-aos="fade-up" data-aos-delay="500">
+        <div className="activity-feed" data-aos="fade-up" data-aos-delay="200">
           <h3 className="activity-title">Recent Updates</h3>
           <div className="activity-items">
             {recentUpdates.map((update, index) => (
-              <div key={index} className="activity-item" data-aos="fade-up" data-aos-delay={`${600 + index * 100}`}>
+              <div key={index} className="activity-item" data-aos="fade-up" data-aos-delay={`${300 + index * 100}`}>
                 <div className={`activity-icon ${update.type}`}>
                   {update.type === 'new' && <Sparkles size={14} />}
                   {update.type === 'update' && <Code size={14} />}

@@ -1,11 +1,12 @@
 // src/pages/Searching.jsx
 import React, { useState, useEffect, useRef } from "react";
-// ⬇️ removed: import AlgorithmVisualizer from "../components/AlgorithmVisualizer";
 import CodeExplanation from "../components/CodeExplanation";
+import InputPanel from "../components/InputPanel";
 import SimpleExportControls from "../components/SimpleExportControls";
 import "../styles/global-theme.css";
 import { useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { getSampleData, getValidationRule } from "../data/sampleData";
 // ⬇️ removed: AOS imports (AOS is initialized in App.jsx)
 
 const ALGORITHM_PSEUDOCODE = {
@@ -145,6 +146,26 @@ const Searching = () => {
 
   const [customArrayInput, setCustomArrayInput] = useState("");
   const [inputError, setInputError] = useState("");
+
+  // Enhanced handler for InputPanel
+  const handleArrayDataLoaded = (arrayData) => {
+    try {
+      // Ensure data is an array
+      if (!Array.isArray(arrayData)) {
+        setInputError("Data must be an array of numbers");
+        return;
+      }
+
+      // Sort the array for searching algorithms
+      const sortedArray = [...arrayData].sort((a, b) => a - b);
+      setArray(sortedArray);
+      setMessage(`Loaded custom array with ${sortedArray.length} elements (auto-sorted for searching)`);
+      setInputError("");
+      setCustomArrayInput("");
+    } catch (err) {
+      setInputError(err.message);
+    }
+  };
 
   // Step mode (Binary Search)
   const [steps, setSteps] = useState([]);
@@ -304,6 +325,17 @@ const Searching = () => {
   return (
     <div className="theme-container" data-aos="fade-up" data-aos-duration="1000">
       <h1 className="theme-title">Searching Algorithms</h1>
+
+      {/* Enhanced Input Panel */}
+      <InputPanel
+        dataType="array"
+        placeholder="Enter numbers separated by commas (e.g., 5, 12, 19, 23, 45) - will be auto-sorted for searching"
+        acceptedFormats={['json', 'csv', 'txt']}
+        sampleData={getSampleData('array', 'sorted')}
+        validationRules={getValidationRule('array')}
+        onDataLoaded={handleArrayDataLoaded}
+        className="searching-input-panel"
+      />
 
       {/* Top control bar */}
       <div className="theme-card" data-aos="fade-up" data-aos-delay="200">

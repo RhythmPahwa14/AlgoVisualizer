@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -30,13 +30,21 @@ import Settings from "./pages/Settings";
 import Blog from "./pages/Blog";
 import CommunityLanding from "./pages/CommunityLanding";
 
+
 // Java Notes
 import Fundamentals from "./pages/Notes/Java/Fundamentals";
 import VariablesAndDataTypes from "./pages/Notes/Java/VariablesAndDataTypes";
+import JavaBasics from "./pages/Notes/Java/JavaBasics";
 
 // Python Notes
 import PythonFundamentals from "./pages/Notes/Python/Fundamentals";
 import PythonVariablesAndDataTypes from "./pages/Notes/Python/VariablesAndDataTypes";
+import PythonBasics from "./pages/Notes/Python/PythonBasics";
+
+// C++ Notes
+import CppFundamentals from "./pages/Notes/Cpp/Fundamentals";
+import CppVariablesAndDataTypes from "./pages/Notes/Cpp/VariablesAndDataTypes";
+
 
 // Algorithm Pages
 import DPOverview from "./pages/DPOverview";
@@ -69,6 +77,8 @@ import Contributors from "./components/Contributors";
 import Contribute from "./components/Contribute";
 
 // Static / Info Pages
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import About from "./components/about";
 import Contact from "./components/contact";
 import PrivacyPolicy from "./components/Privacy";
@@ -85,6 +95,14 @@ import "./styles/components.css";
 import "./styles/footer-improved.css";
 import LearnLanding from "./pages/LearnLanding";
 import DSDocumentation from "./pages/DSDocumentation";
+
+// Dynamic Notes Page
+import NotesPage from "./pages/Notes/NotesPage";
+
+// import ContributorBoard from "./pages/ContributorBoard";
+import ContributorBoard from "./pages/ContributorBoard";
+
+import JavaOOPS from "./pages/JavaOOPS.jsx";
 
 
 const App = () => {
@@ -116,8 +134,10 @@ const App = () => {
 
           <main className="main-content page-content">
             <Routes>
+              {/* Home */}
               <Route path="/" element={<Home />} />
-
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
               {/* Sorting */}
               <Route path="/sorting" element={<Sorting />} />
               <Route path="/sorting/:algoId/docs" element={<SortingDoc />} />
@@ -146,7 +166,10 @@ const App = () => {
               />
               <Route path="/data-structures/queue" element={<Queue />} />
               <Route path="/data-structures/stack" element={<Stack />} />
-              <Route path="/data-structures/binary-tree" element={<BinaryTreeVisualizer />} />
+              <Route
+                path="/data-structures/binary-tree"
+                element={<BinaryTreeVisualizer />}
+              />
 
               {/* Graph */}
               <Route path="/graph" element={<Graph />} />
@@ -154,7 +177,10 @@ const App = () => {
               <Route path="/graph/dfs" element={<GraphDFS />} />
               <Route path="/graph/dijkstra" element={<GraphDijkstra />} />
               <Route path="/graph/comparison" element={<GraphComparison />} />
-              <Route path="Graph/cycleDetection" element={<GraphCycleDetection/>}/>
+              <Route
+                path="/graph/cycleDetection"
+                element={<GraphCycleDetection />}
+              />
 
               {/* Algorithm Pages */}
               <Route
@@ -184,9 +210,12 @@ const App = () => {
               <Route path="/branchbound" element={<BranchBoundPage />} />
               <Route path="/string-overview" element={<StringOverview />} />
               <Route path="/string" element={<StringPage />} />
-              {/* Data Structures Documentation */}
-<Route path="/data-structures-docs" element={<DSDocumentation />} />
 
+              {/* Data Structures Documentation */}
+              <Route
+                path="/data-structures-docs"
+                element={<DSDocumentation />}
+              />
 
               {/* Other Pages */}
               <Route path="/quiz" element={<Quiz />} />
@@ -199,6 +228,35 @@ const App = () => {
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/cookies" element={<CookiePolicy />} />
+
+              <Route path="/documentation" element={<AlgorithmDocumentation />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/contributor-leaderboard" element={<ContributorLeaderboard />} />
+              <Route path="/editor" element={<CodeEditor />} />
+
+              {/* Notes Routes */}
+              {/* Java */}
+              <Route path="/notes/java" element={<Navigate to="/notes/java/fundamentals" replace />} />
+              <Route path="/notes/java/fundamentals" element={<Fundamentals />} />
+              <Route
+                path="/notes/java/variables-and-data-types"
+                element={<VariablesAndDataTypes />}
+              />
+              <Route path="/notes/java/basics" element={<JavaBasics />} />
+
+
+              {/* Python */}
+
+              <Route path="/notes/python" element={<Navigate to="/notes/python/fundamentals" replace />} />
+              <Route path="/notes/python/fundamentals" element={<PythonFundamentals />} />
+              <Route path="/notes/python/variables-and-data-types" element={<PythonVariablesAndDataTypes />} />
+
+              {/* C++ */}
+              <Route path="/notes/cpp" element={<Navigate to="/notes/cpp/fundamentals" replace />} />
+              <Route path="/notes/cpp/fundamentals" element={<CppFundamentals />} />
+              <Route path="/notes/cpp/variables-and-data-types" element={<CppVariablesAndDataTypes />} />
+
+
               <Route
                 path="/documentation"
                 element={<AlgorithmDocumentation />}
@@ -210,31 +268,20 @@ const App = () => {
               />
               <Route path="/editor" element={<CodeEditor />} />
 
-              {/* Notes Routes */}
-              {/* Java */}
+              <Route path="/java-oops" element={<JavaOOPS />} />
+
+              {/* Dynamic Notes Routes */}
+              <Route path="/notes/:language/:topic" element={<NotesPage />} />
               <Route
-                path="/notes/java"
-                element={<Navigate to="/notes/java/fundamentals" replace />}
-              />
-              <Route path="/notes/java/fundamentals" element={<Fundamentals />} />
-              <Route
-                path="/notes/java/variables-and-data-types"
-                element={<VariablesAndDataTypes />}
+                path="/notes/:language"
+                element={
+                  <Navigate to="/notes/:language/fundamentals" replace />
+                }
               />
 
-              {/* Python */}
-              <Route
-                path="/notes/python"
-                element={<Navigate to="/notes/python/fundamentals" replace />}
-              />
-              <Route
-                path="/notes/python/fundamentals"
-                element={<PythonFundamentals />}
-              />
-              <Route
-                path="/notes/python/variables-and-data-types"
-                element={<PythonVariablesAndDataTypes />}
-              />
+              <Route path="/contributor-board" element={<ContributorBoard />} />
+              <Route path="/contributor-leaderboard" element={<ContributorBoard />} />
+
 
               {/* Learning & Settings */}
               <Route path="/learn" element={<LearnLanding />} />

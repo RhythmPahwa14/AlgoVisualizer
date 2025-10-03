@@ -111,7 +111,7 @@ export default function SortingDoc() {
         <h2>Key Properties</h2>
         <div className="stats-grid">
           <article className="stat-card">
-            <h3>⚡ Time Complexity</h3>
+            <h3>Time Complexity</h3>
             <p>
               <strong>Avg/Worst:</strong> {info.timeComplexity}
             </p>
@@ -121,14 +121,14 @@ export default function SortingDoc() {
           </article>
 
           <article className="stat-card">
-            <h3>💾 Space</h3>
+            <h3>Space</h3>
             <p>
               <strong>{info.spaceComplexity}</strong>
             </p>
           </article>
 
           <article className="stat-card">
-            <h3>🔄 Stable</h3>
+            <h3>Stable</h3>
             <p>
               <strong>{normalizeStable(info.stable)}</strong>
             </p>

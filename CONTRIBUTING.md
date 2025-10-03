@@ -40,6 +40,20 @@ cd AlgoVisualizer
 npm install
 **▶️ Start the development server:**
 npm run dev
+### 3.Create a new branch:
+```bash
+git checkout -b feat/my-feature
+```
+### 4.Make your changes and commit:
+```bash
+git add .
+git commit -m "feat: describe your change"
+```
+### 5.Push your branch:
+```bash
+git push origin feat/my-feature
+```
+### 6.Create a Pull Request on GitHub and describe what you’ve done.
 
 ![Setup GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmxpNzEyMjhzb2k3eDc1MWFzM3lhZnFrZXJxZDVpMDZ2am9wZHhzcCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/LESpNIDaNBUcRIPzng/giphy.gif)
 

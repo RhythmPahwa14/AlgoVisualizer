@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import GraphVisualizer from "../components/GraphVisualizer";
+import InputPanel from "../components/InputPanel";
 import { graphAlgorithms } from "../data/allCodes";
+import { getSampleData, getValidationRule } from "../data/sampleData";
 import "../styles/global-theme.css";
 
 const GraphDijkstra = () => {
@@ -8,7 +10,12 @@ const GraphDijkstra = () => {
   const [customGraph, setCustomGraph] = useState(null);
   const [inputText, setInputText] = useState("");
 
-  // Handle textarea change
+  // Enhanced handler for InputPanel
+  const handleGraphDataLoaded = (graphData) => {
+    setCustomGraph(graphData);
+  };
+
+  // Legacy handler to parse input (kept for backward compatibility)
   const handleInputChange = (e) => {
     setInputText(e.target.value);
   };
@@ -31,16 +38,30 @@ const GraphDijkstra = () => {
     <div className="theme-container">
       <h1 className="theme-title">Dijkstra's Algorithm</h1>
       <p style={{ textAlign: 'center', maxWidth: '700px', margin: '-2rem auto 2rem auto', color: 'var(--theme-text-secondary)' }}>
-        Visualize shortest paths using Dijkstra's algorithm. You can edit the graph JSON below and click "Load Graph".
+        Visualize shortest paths using Dijkstra's algorithm. Use the input panel below to load your own weighted graph data.
       </p>
 
-      {/* Custom Input Section */}
+      {/* Enhanced Input Panel */}
+      <InputPanel
+        dataType="graph"
+        placeholder='Enter weighted graph JSON with nodes and edges containing weight property'
+        acceptedFormats={['json']}
+        sampleData={getSampleData('graph', 'weighted')}
+        validationRules={getValidationRule('graph')}
+        onDataLoaded={handleGraphDataLoaded}
+        className="graph-input-panel"
+      />
+
+      {/* Legacy Custom Input Section (kept for backward compatibility) */}
       <div style={{
         background: 'var(--surface-bg)',
         padding: '1rem',
         borderRadius: '8px',
         marginBottom: '1.5rem'
       }}>
+        <label style={{ fontWeight: 500, marginBottom: '0.5rem', display: 'block' }}>
+          Legacy Text Input (use Input Panel above for better experience):
+        </label>
         <textarea
           value={inputText}
           onChange={handleInputChange}
@@ -68,7 +89,7 @@ const GraphDijkstra = () => {
             cursor: 'pointer'
           }}
         >
-          Load Graph
+          Load Graph (Legacy)
         </button>
       </div>
 
