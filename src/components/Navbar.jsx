@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Fuse from "fuse.js";
 import {
   Home,
   BarChart3,
@@ -23,10 +22,9 @@ import {
   Menu,
 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
-import { navbarNavigationItems, learnSections } from "../utils/navigation";
+import { navbarNavigationItems } from "../utils/navigation";
 import UserDropdown from "./UserDropdown";
 
-// Icon mapping for navigation items
 const ICON_COMPONENTS = {
   Home,
   BarChart3,
@@ -47,42 +45,29 @@ const ICON_COMPONENTS = {
   Menu,
 };
 
-// Sub-component for rendering desktop navigation items
-const DesktopNavItem = ({ 
-  item, 
-  index, 
-  isDropdownOpen, 
-  handleDropdownToggle, 
-  isActive,
-  getIconComponent 
-}) => {
+// Desktop Nav Item
+const DesktopNavItem = ({ item, index, isOpen, toggleDropdown, isActive, getIcon }) => {
   if (item.dropdown) {
     return (
-      <div key={index} className="navbar-item dropdown">
+      <div className="navbar-item dropdown" key={index}>
         <button
-          className={`dropdown-toggle ${isDropdownOpen === index ? "active" : ""}`}
-          onClick={() => handleDropdownToggle(index)}
+          className={`dropdown-toggle ${isOpen === index ? "active" : ""}`}
+          onClick={() => toggleDropdown(index)}
         >
-          {item.icon && React.createElement(getIconComponent(item.icon), {
-            size: 18,
-            className: "drop-icon",
-          })}
+          {item.icon && React.createElement(getIcon(item.icon), { size: 18, className: "drop-icon" })}
           <span>{item.label}</span>
-          <ChevronDown
-            size={16}
-            className={`dropdown-arrow ${isDropdownOpen === index ? "rotated" : ""}`}
-          />
+          <ChevronDown size={16} className={`dropdown-arrow ${isOpen === index ? "rotated" : ""}`} />
         </button>
-        {isDropdownOpen === index && (
+        {isOpen === index && (
           <div className="dropdown-menu">
-            {item.dropdown.map((subItem, subIndex) => (
+            {item.dropdown.map((sub, subIndex) => (
               <Link
                 key={subIndex}
-                to={subItem.path}
-                className={`dropdown-item ${isActive(subItem.path) ? "active" : ""}`}
-                onClick={() => handleDropdownToggle(null)}
+                to={sub.path}
+                className={`dropdown-item ${isActive(sub.path) ? "active" : ""}`}
+                onClick={() => toggleDropdown(null)}
               >
-                {subItem.label}
+                {sub.label}
               </Link>
             ))}
           </div>
@@ -92,79 +77,54 @@ const DesktopNavItem = ({
   }
 
   return (
-    <Link
-      key={index}
-      to={item.path}
-      className={`navbar-link ${isActive(item.path) ? "active" : ""}`}
-    >
-      {item.icon && React.createElement(getIconComponent(item.icon), {
-        size: 18,
-        className: "icon",
-      })}
+    <Link to={item.path} className={`navbar-link ${isActive(item.path) ? "active" : ""}`} key={index}>
+      {item.icon && React.createElement(getIcon(item.icon), { size: 18, className: "icon" })}
       <span>{item.label}</span>
     </Link>
   );
 };
 
-// Sub-component for rendering mobile navigation items
-const MobileNavItem = ({ 
-  item, 
-  index, 
-  isDropdownOpen, 
-  handleDropdownToggle, 
-  isActive,
-  getIconComponent,
-  setIsMobileMenuOpen
-}) => {
+// Mobile Nav Item
+const MobileNavItem = ({ item, index, isOpen, toggleDropdown, isActive, getIcon, closeMenu }) => {
   if (item.dropdown) {
     return (
-      <div key={index} className="mobile-dropdown">
+      <div className="mobile-dropdown" key={index}>
         <button
-          className={`mobile-dropdown-toggle ${isDropdownOpen === index ? "active" : ""}`}
-          onClick={() => handleDropdownToggle(index)}
+          className={`mobile-dropdown-toggle ${isOpen === index ? "active" : ""}`}
+          onClick={() => toggleDropdown(index)}
         >
-          {item.icon && React.createElement(getIconComponent(item.icon), {
-            size: 18,
-            className: "icon",
-          })}
+          {item.icon && React.createElement(getIcon(item.icon), { size: 18, className: "icon" })}
           <span>{item.label}</span>
-          <ChevronDown
-            size={16}
-            className={`dropdown-arrow ${isDropdownOpen === index ? "rotated" : ""}`}
-          />
+          <ChevronDown size={16} className={`dropdown-arrow ${isOpen === index ? "rotated" : ""}`} />
         </button>
-        {isDropdownOpen === index && (
-          <div className="mobile-dropdown-menu">
-            {item.dropdown.map((subItem, subIndex) => (
-              <Link
-                key={subIndex}
-                to={subItem.path}
-                className={`mobile-dropdown-item ${isActive(subItem.path) ? "active" : ""}`}
-                onClick={() => {
-                  handleDropdownToggle(null);
-                  setIsMobileMenuOpen(false);
-                }}
-              >
-                {subItem.label}
-              </Link>
-            ))}
-          </div>
-        )}
+
+        <div className={`mobile-dropdown-menu ${isOpen === index ? "open" : ""}`}>
+          {item.dropdown.map((sub, subIndex) => (
+            <Link
+              key={subIndex}
+              to={sub.path}
+              className={`mobile-menu-link ${isActive(sub.path) ? "active" : ""}`}
+              onClick={() => {
+                toggleDropdown(null);
+                closeMenu();
+              }}
+            >
+              {sub.label}
+            </Link>
+          ))}
+        </div>
       </div>
     );
   }
 
   return (
     <Link
-      key={index}
       to={item.path}
       className={`mobile-menu-link ${isActive(item.path) ? "active" : ""}`}
-      onClick={() => setIsMobileMenuOpen(false)}
+      onClick={closeMenu}
+      key={index}
     >
-      {item.icon && React.createElement(getIconComponent(item.icon), {
-        size: 18,
-        className: "icon",
-      })}
+      {item.icon && React.createElement(getIcon(item.icon), { size: 18, className: "icon" })}
       <span>{item.label}</span>
     </Link>
   );
@@ -172,339 +132,170 @@ const MobileNavItem = ({
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState("All");
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(null);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(null);
+  const [desktopNotesOpen, setDesktopNotesOpen] = useState(false);
+  const [mobileNotesOpen, setMobileNotesOpen] = useState(false);
 
   const location = useLocation();
   const { theme } = useTheme();
   const navbarRef = useRef(null);
-  const searchRef = useRef(null);
 
-  // Get icon component by name
-  const getIconComponent = (iconName) => ICON_COMPONENTS[iconName] || null;
+  const getIcon = (name) => ICON_COMPONENTS[name] || null;
+  const isActive = (path) => location.pathname === path;
 
-  // Detect mobile screen
+  const toggleDesktopDropdown = (index) => setDesktopDropdownOpen(desktopDropdownOpen === index ? null : index);
+  const toggleMobileDropdown = (index) => setMobileDropdownOpen(mobileDropdownOpen === index ? null : index);
+
   useEffect(() => {
-    const handleResize = () => {
-      const mobile = window.innerWidth <= 768;
-      setIsMobile(mobile);
-      if (!mobile) setIsMobileMenuOpen(false);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Handle click outside for dropdowns & search
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
-        setIsDropdownOpen(null);
-      }
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setIsSearchOpen(false);
+    const handleClickOutside = (e) => {
+      if (navbarRef.current && !navbarRef.current.contains(e.target)) {
+        setDesktopDropdownOpen(null);
+        setMobileDropdownOpen(null);
+        setDesktopNotesOpen(false);
+        setMobileNotesOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Navigation helpers
-  const isActive = (path) => location.pathname === path;
-  const handleDropdownToggle = (index) => setIsDropdownOpen(index === isDropdownOpen ? null : index);
-
-  // ===================== Fuse.js Setup for Notes Search with Tags =====================
-  const searchableNotes = learnSections.flatMap((section) =>
-    section.items.map((note) => ({
-      ...note,
-      keywords: note.tags ? note.tags.join(" ") : "", // Use tags for search
-      category: section.heading,
-    }))
-  );
-
-  const fuse = new Fuse(searchableNotes, {
-    keys: ["label", "path", "keywords"],
-    threshold: 0.3,
-  });
-
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-
-    if (!query.trim()) {
-      setSearchResults([]);
-      setIsSearchOpen(false);
-      return;
-    }
-
-    const results = fuse
-      .search(query)
-      .map((res) => res.item)
-      .filter((item) => categoryFilter === "All" || item.category === categoryFilter);
-
-    setSearchResults(results);
-    setIsSearchOpen(results.length > 0);
-  };
-  // ====================================================================================
-
-  // Render notes dropdown for desktop
-  const renderNotesDropdown = () => (
-    <div className="navbar-item dropdown">
-      <button
-        className="dropdown-toggle"
-        onClick={() => handleDropdownToggle("notes")}
-      >
-        <BookOpen size={18} className="drop-icon" />
-        <span>Notes</span>
-        <ChevronDown
-          size={16}
-          className={`dropdown-arrow ${isDropdownOpen === "notes" ? "rotated" : ""}`}
-        />
-      </button>
-      {isDropdownOpen === "notes" && (
-        <div className="dropdown-menu">
-          <Link
-            to="/notes/java"
-            className={`dropdown-item ${isActive("/notes/java") ? "active" : ""}`}
-            onClick={() => handleDropdownToggle(null)}
-          >
-            Java
-          </Link>
-          <Link
-            to="/notes/python"
-            className={`dropdown-item ${isActive("/notes/python") ? "active" : ""}`}
-            onClick={() => handleDropdownToggle(null)}
-          >
-            Python
-          </Link>
-        </div>
-      )}
-    </div>
-  );
-
-  // Render notes dropdown for mobile
-  const renderMobileNotesDropdown = () => (
-    <div className="mobile-dropdown">
-      <button
-        className={`mobile-dropdown-toggle ${isDropdownOpen === "notes" ? "active" : ""}`}
-        onClick={() => handleDropdownToggle("notes")}
-      >
-        <BookOpen size={18} className="icon" />
-        <span>Notes</span>
-        <ChevronDown
-          size={16}
-          className={`dropdown-arrow ${isDropdownOpen === "notes" ? "rotated" : ""}`}
-        />
-      </button>
-      {isDropdownOpen === "notes" && (
-        <div className="mobile-dropdown-menu">
-          <Link
-            to="/notes/java"
-            className="mobile-dropdown-item"
-            onClick={() => {
-              handleDropdownToggle(null);
-              setIsMobileMenuOpen(false);
-            }}
-          >
-            Java
-          </Link>
-          <Link
-            to="/notes/python"
-            className="mobile-dropdown-item"
-            onClick={() => {
-              handleDropdownToggle(null);
-              setIsMobileMenuOpen(false);
-            }}
-          >
-            Python
-          </Link>
-        </div>
-      )}
-    </div>
-  );
-
   return (
-    <nav className={`navbar ${theme}`} ref={navbarRef}>
-      <div className="navbar-container">
+    <nav className={`navbar fixed top-0 left-0 right-0 z-50 ${theme}`} ref={navbarRef}>
+      <div className="navbar-container flex items-center justify-between px-4 py-2">
         {/* Logo */}
-        <Link to="/" className="navbar-logo">
+        <Link to="/" className="navbar-logo flex items-center gap-2">
           <img src="/logo.jpg" alt="AlgoVisualizer Logo" className="logo-img" />
-          <span className="logo-text">
-            Algo<span>Visualizer</span>
-          </span>
+          <span className="logo-text">Algo<span>Visualizer</span></span>
         </Link>
 
-        {/* Search Bar */}
-        <div className="navbar-search" ref={searchRef}>
-          <input
-            type="text"
-            placeholder="Search algorithms or notes..."
-            value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-            className="search-input"
-          />
-          {searchQuery && (
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-4">
+          {navbarNavigationItems.map((item, i) => (
+            <DesktopNavItem
+              key={i}
+              item={item}
+              index={i}
+              isOpen={desktopDropdownOpen}
+              toggleDropdown={toggleDesktopDropdown}
+              isActive={isActive}
+              getIcon={getIcon}
+            />
+          ))}
+
+          {/* Notes desktop */}
+          <div className="navbar-item dropdown">
             <button
-              className="clear-btn"
-              onClick={() => {
-                setSearchQuery("");
-                setSearchResults([]);
-                setIsSearchOpen(false);
-              }}
+              className={`dropdown-toggle ${desktopNotesOpen ? "active" : ""}`}
+              onClick={() => setDesktopNotesOpen(!desktopNotesOpen)}
             >
-              <X size={16} />
+              <BookOpen size={18} className="drop-icon" />
+              <span>Notes</span>
+              <ChevronDown size={16} className={`${desktopNotesOpen ? "rotated" : ""}`} />
             </button>
-          )}
-          <Search size={18} className="search-icon" />
-
-          {/* Category Filter */}
-          <select
-            className="category-filter"
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-          >
-            <option value="All">All</option>
-            {learnSections.map((section, idx) => (
-              <option key={idx} value={section.heading}>
-                {section.heading}
-              </option>
-            ))}
-          </select>
-
-          {isSearchOpen && (
-            <div className="search-results">
-              {searchResults.map((item, index) => (
+            {desktopNotesOpen && (
+              <div className="dropdown-menu">
                 <Link
-                  key={index}
-                  to={item.path}
-                  className="search-result-item"
-                  onClick={() => setIsSearchOpen(false)}
+                  to="/notes/java"
+                  className={`dropdown-item ${isActive("/notes/java") ? "active" : ""}`}
+                  onClick={() => setDesktopNotesOpen(false)}
                 >
-                  {item.label}
+                  Java
                 </Link>
-              ))}
-              {searchResults.length === 0 && (
-                <div className="search-no-results">No results found</div>
-              )}
-            </div>
-          )}
+                <Link
+                  to="/notes/python"
+                  className={`dropdown-item ${isActive("/notes/python") ? "active" : ""}`}
+                  onClick={() => setDesktopNotesOpen(false)}
+                >
+                  Python
+                </Link>
+              </div>
+            )}
+          </div>
+
+          <UserDropdown />
         </div>
 
-        {/* Desktop Navigation */}
-        {!isMobile && (
-          <div className="navbar-menu">
-            {navbarNavigationItems.map((item, index) => (
-              <DesktopNavItem
-                key={index}
-                item={item}
-                index={index}
-                isDropdownOpen={isDropdownOpen}
-                handleDropdownToggle={handleDropdownToggle}
-                isActive={isActive}
-                getIconComponent={getIconComponent}
-              />
-            ))}
-
-
-            {/* ✅ Notes Dropdown */}
-            <div className="navbar-item dropdown">
-              <button
-                className="dropdown-toggle"
-                onClick={() => handleDropdownToggle("notes")}
-              >
-                <BookOpen size={18} className="drop-icon" />
-                <span>Notes</span>
-                <ChevronDown
-                  size={16}
-                  className={`dropdown-arrow ${
-                    isDropdownOpen === "notes" ? "rotated" : ""
-                  }`}
-                />
-              </button>
-              {isDropdownOpen === "notes" && (
-                <div className="dropdown-menu">
-                  <Link
-                    to="/notes/java"
-                    className={`dropdown-item ${
-                      isActive("/notes/java") ? "active" : ""
-                    }`}
-                    onClick={() => setIsDropdownOpen(null)}
-                  >
-                    Java
-                  </Link>
-                  <Link
-                    to="/notes/python"
-                    className={`dropdown-item ${
-                      isActive("/notes/python") ? "active" : ""
-                    }`}
-                    onClick={() => setIsDropdownOpen(null)}
-                  >
-                    Python
-                  </Link>
-
-                  <Link
-                    to="/notes/cpp"
-                    className={`dropdown-item ${
-                      isActive("/notes/cpp") ? "active" : ""
-                    }`}
-                    onClick={() => setIsDropdownOpen(null)}
-                  >
-                    CPP
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Notes Dropdown */}
-            {renderNotesDropdown()}
-
-
-            {/* User Dropdown */}
-            <UserDropdown />
-          </div>
-        )}
-
-        {/* Mobile Menu Button */}
-        {isMobile && (
-          <button
-            className="mobile-menu-button"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        )}
-
-        {/* Mobile Navigation */}
-        {isMobile && isMobileMenuOpen && (
-          <div className="mobile-menu">
-            {navbarNavigationItems.map((item, index) => (
-              <MobileNavItem
-                key={index}
-                item={item}
-                index={index}
-                isDropdownOpen={isDropdownOpen}
-                handleDropdownToggle={handleDropdownToggle}
-                isActive={isActive}
-                getIconComponent={getIconComponent}
-                setIsMobileMenuOpen={setIsMobileMenuOpen}
-              />
-            ))}
-
-            {/* Notes dropdown in mobile */}
-            {renderMobileNotesDropdown()}
-
-            <div className="mobile-user-dropdown mt-4">
-              <UserDropdown />
-            </div>
-          </div>
-        )}
+        {/* Mobile Hamburger */}
+        <button
+          className="mobile-menu-button md:hidden"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      <div className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`} onClick={(e) => e.stopPropagation()}>
+        
+        {/* Optional: Mobile Menu Header */}
+        <div className="mobile-menu-header">
+          <div className="mobile-menu-header-content">
+            <span className="mobile-menu-title">AlgoVisualizer</span>
+            <button className="mobile-menu-close-btn" onClick={() => setIsMobileMenuOpen(false)}>
+              <X size={20} />
+            </button>
+          </div>
+          <p className="mobile-menu-subtitle">Explore Algorithms & Notes</p>
+        </div>
+
+        {/* Menu Items */}
+        {navbarNavigationItems.map((item, i) => (
+          <MobileNavItem
+            key={i}
+            item={item}
+            index={i}
+            isOpen={mobileDropdownOpen}
+            toggleDropdown={toggleMobileDropdown}
+            isActive={isActive}
+            getIcon={getIcon}
+            closeMenu={() => setIsMobileMenuOpen(false)}
+          />
+        ))}
+
+        {/* Notes Section */}
+        <div className="mobile-dropdown">
+          <button
+            className={`mobile-dropdown-toggle ${mobileNotesOpen ? "active" : ""}`}
+            onClick={() => setMobileNotesOpen(!mobileNotesOpen)}
+          >
+            <BookOpen size={18} className="icon" />
+            <span>Notes</span>
+            <ChevronDown size={16} className={`${mobileNotesOpen ? "rotated" : ""}`} />
+          </button>
+          <div className={`mobile-dropdown-menu ${mobileNotesOpen ? "open" : ""}`}>
+            <Link
+              to="/notes/java"
+              className="mobile-menu-link"
+              onClick={() => {
+                setMobileNotesOpen(false);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Java
+            </Link>
+            <Link
+              to="/notes/python"
+              className="mobile-menu-link"
+              onClick={() => {
+                setMobileNotesOpen(false);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Python
+            </Link>
+          </div>
+        </div>
+
+        {/* User Dropdown */}
+        <div className="mobile-user-dropdown mt-4">
+          <UserDropdown />
+        </div>
+      </div>
+
     </nav>
   );
 };
 
 export default Navbar;
+
