@@ -1,183 +1,290 @@
-// src/data/algorithmInfo.js
-export const ALGORITHM_INFO = {
-  sorting: {
-    bubbleSort: {
-      description:
-        "Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
-      timeComplexity: "O(n²)",
-      spaceComplexity: "O(1)",
-      bestCase: "O(n)",
-      stable: "Yes",
-    },
-    selectionSort: {
-      description:
-        "Selection Sort sorts an array by repeatedly finding the minimum element from the unsorted part and putting it at the beginning.",
-      timeComplexity: "O(n²)",
-      spaceComplexity: "O(1)",
-      bestCase: "O(n²)",
-      stable: "No",
-    },
-    mergeSort: {
-      description:
-        "Merge Sort is a divide-and-conquer algorithm that divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.",
-      timeComplexity: "O(n log n)",
-      spaceComplexity: "O(n)",
-      bestCase: "O(n log n)",
-      stable: "Yes",
-    },
-    insertionSort: {
-      description:
-        "Insertion Sort builds the final sorted array one item at a time by inserting each element into its correct position.",
-      timeComplexity: "O(n²)",
-      spaceComplexity: "O(1)",
-      bestCase: "O(n)",
-      stable: "Yes",
-    },
-    quickSort: {
-      description:
-        "Quick Sort is a divide-and-conquer algorithm that picks an element as a pivot and partitions the array around the pivot.",
-      timeComplexity: "O(n log n)",
-      spaceComplexity: "O(log n)",
-      bestCase: "O(n log n)",
-      stable: "No",
-    },
-    shellSort: {
-      description:
-        "Sorts elements at specific gaps, reducing the gap until it becomes 1 (like insertion sort).",
-      timeComplexity: "O(n^1.5) to O(n²)",
-      spaceComplexity: "O(1)",
-      bestCase: "O(n log n)",
-      stable: "No",
-    },
-    heapSort: {
-      description:
-        "Heap Sort uses a heap data structure to repeatedly extract the maximum element and place it at the end.",
-      timeComplexity: "O(n log n)",
-      spaceComplexity: "O(1)",
-      bestCase: "O(n log n)",
-      stable: "No",
-    },
-    radixSort: {
-      description:
-        "Radix Sort sorts numbers by processing individual digits. Works well for integers and has linear complexity relative to digits.",
-      timeComplexity: "O(d * (n + k))",
-      spaceComplexity: "O(n + k)",
-      bestCase: "O(n)",
-      stable: "Yes",
-    },
-    bucketSort: {
-      description:
-        "Bucket Sort distributes elements into buckets and sorts each bucket individually (often with insertion sort).",
-      timeComplexity: "Average O(n + k)",
-      spaceComplexity: "O(n + k)",
-      bestCase: "O(n)",
-      stable: "Yes (depends on bucket sorting)",
-    },
-    timSort: {
-      description:
-        "TimSort is a hybrid stable sorting algorithm derived from merge sort and insertion sort.",
-      timeComplexity: "O(n log n)",
-      spaceComplexity: "O(n)",
-      bestCase: "O(n)",
-      stable: "Yes",
-    },
-    introSort: {
-      description:
-        "IntroSort starts with quicksort and switches to heapsort when recursion depth gets too large to guarantee O(n log n).",
-      timeComplexity: "O(n log n)",
-      spaceComplexity: "O(log n)",
-      bestCase: "O(n log n)",
-      stable: "No",
-    },
-    cycleSort: {
-      description:
-        "An in-place, unstable sorting algorithm that minimizes writes by rotating elements into correct position in a cycle. Useful when memory writes are costly.",
-      timeComplexity: "O(n²)",
-      bestCase: "O(n²)",
-      spaceComplexity: "O(1)",
-      stable: "No",
+export const algorithmInfo = {
+  bubbleSort: {
+    name: 'Bubble Sort',
+    description: 'Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.',
+    complexity: {
+      time: {
+        best: 'O(n)',
+        average: 'O(n^2)',
+        worst: 'O(n^2)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
     },
   },
-
-  searching: {
-    linearSearch: {
-      description:
-        "Linear Search sequentially checks each element of the list until a match is found or the list ends.",
-      timeComplexity: "O(n)",
-      spaceComplexity: "O(1)",
-      bestCase: "O(1)",
-      stable: "Yes",
-    },
-    binarySearch: {
-      description:
-        "Binary Search finds the position of a target value within a sorted array by repeatedly dividing the search interval in half.",
-      timeComplexity: "O(log n)",
-      spaceComplexity: "O(1)",
-      bestCase: "O(1)",
-      stable: "Yes",
+  insertionSort: {
+    name: 'Insertion Sort',
+    description: 'Insertion sort is a simple sorting algorithm that builds the final sorted array one item at a time. It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort.',
+    complexity: {
+      time: {
+        best: 'O(n)',
+        average: 'O(n^2)',
+        worst: 'O(n^2)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
     },
   },
-
-  graphTraversal: {
-    BFS: {
-      description:
-        "Breadth-First Search traverses a graph level by level starting from a given source node.",
-      timeComplexity: "O(V + E)",
-      spaceComplexity: "O(V)",
-    },
-    DFS: {
-      description:
-        "Depth-First Search explores as far as possible along each branch before backtracking.",
-      timeComplexity: "O(V + E)",
-      spaceComplexity: "O(V)",
-    },
-  },
-
-  pathfinding: {
-    dijkstra: {
-      description:
-        "Dijkstra's algorithm finds the shortest path from a source node to all other nodes in a weighted graph.",
-      timeComplexity: "O(V²) or O(E + V log V) with min-heap",
-      spaceComplexity: "O(V)",
-    },
-    aStar: {
-      description:
-        "A* Search finds the shortest path using heuristics to improve efficiency over Dijkstra.",
-      timeComplexity: "O(E) in best case, O(b^d) worst case",
-      spaceComplexity: "O(V)",
-    },
-    bellmanFord: {
-      description:
-        "Bellman-Ford algorithm computes shortest paths from a source vertex to all vertices in a weighted graph and can handle negative weights.",
-      timeComplexity: "O(V * E)",
-      spaceComplexity: "O(V)",
+  selectionSort: {
+    name: 'Selection Sort',
+    description: 'Selection sort is an in-place comparison sorting algorithm. It has an O(n^2) time complexity, which makes it inefficient on large lists, and generally performs worse than the similar insertion sort.',
+    complexity: {
+      time: {
+        best: 'O(n^2)',
+        average: 'O(n^2)',
+        worst: 'O(n^2)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
     },
   },
-
-  dynamicProgramming: {
-    knapsack: {
-      description:
-        "0/1 Knapsack problem finds the maximum value of items that can be put in a knapsack of limited capacity.",
-      timeComplexity: "O(n * W)",
-      spaceComplexity: "O(n * W)",
+  mergeSort: {
+    name: 'Merge Sort',
+    description: 'Merge sort is an efficient, stable, comparison-based sorting algorithm. Most implementations produce a stable sort, which means that the order of equal elements is the same in the input and output.',
+    complexity: {
+      time: {
+        best: 'O(n log n)',
+        average: 'O(n log n)',
+        worst: 'O(n log n)',
+      },
+      space: {
+        best: 'O(n)',
+        average: 'O(n)',
+        worst: 'O(n)',
+      },
     },
-    longestCommonSubsequence: {
-      description:
-        "LCS finds the longest subsequence common to two sequences.",
-      timeComplexity: "O(m * n)",
-      spaceComplexity: "O(m * n)",
+  },
+  quickSort: {
+    name: 'Quick Sort',
+    description: 'Quicksort is an efficient sorting algorithm. Developed by British computer scientist Tony Hoare in 1959 and published in 1961, it is still a commonly used algorithm for sorting.',
+    complexity: {
+      time: {
+        best: 'O(n log n)',
+        average: 'O(n log n)',
+        worst: 'O(n^2)',
+      },
+      space: {
+        best: 'O(log n)',
+        average: 'O(log n)',
+        worst: 'O(n)',
+      },
     },
-    fibonacciDP: {
-      description:
-        "Calculates Fibonacci numbers using dynamic programming to avoid repeated calculations.",
-      timeComplexity: "O(n)",
-      spaceComplexity: "O(n)",
+  },
+  heapSort: {
+    name: 'Heap Sort',
+    description: 'Heapsort is a comparison-based sorting algorithm. Heapsort can be thought of as an improved selection sort: like selection sort, it divides its input into a sorted and an unsorted region, and it iteratively shrinks the unsorted region by extracting the largest element and moving that to the sorted region.',
+    complexity: {
+      time: {
+        best: 'O(n log n)',
+        average: 'O(n log n)',
+        worst: 'O(n log n)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
     },
-    matrixChainMultiplication: {
-      description:
-        "Optimizes the order of matrix multiplication to minimize computations.",
-      timeComplexity: "O(n³)",
-      spaceComplexity: "O(n²)",
+  },
+  radixSort: {
+    name: 'Radix Sort',
+    description: 'Radix sort is a non-comparative sorting algorithm. It avoids comparison by creating and distributing elements into buckets according to their radix.',
+    complexity: {
+      time: {
+        best: 'O(nk)',
+        average: 'O(nk)',
+        worst: 'O(nk)',
+      },
+      space: {
+        best: 'O(n+k)',
+        average: 'O(n+k)',
+        worst: 'O(n+k)',
+      },
+    },
+  },
+  bucketSort: {
+    name: 'Bucket Sort',
+    description: 'Bucket sort, or bin sort, is a sorting algorithm that works by distributing the elements of an array into a number of buckets.',
+    complexity: {
+      time: {
+        best: 'O(n+k)',
+        average: 'O(n+k)',
+        worst: 'O(n^2)',
+      },
+      space: {
+        best: 'O(n+k)',
+        average: 'O(n+k)',
+        worst: 'O(n)',
+      },
+    },
+  },
+  shellSort: {
+    name: 'Shell Sort',
+    description: 'Shell sort is a generalization of insertion sort that allows the exchange of items that are far apart.',
+    complexity: {
+      time: {
+        best: 'O(n log n)',
+        average: 'O(n (log n)^2)',
+        worst: 'O(n (log n)^2)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
+    },
+  },
+  cycleSort: {
+    name: 'Cycle Sort',
+    description: 'Cycle sort is an in-place, unstable sorting algorithm, a comparison sort that is theoretically optimal in terms of the total number of writes to original array.',
+    complexity: {
+      time: {
+        best: 'O(n^2)',
+        average: 'O(n^2)',
+        worst: 'O(n^2)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
+    },
+  },
+  timSort: {
+    name: 'Tim Sort',
+    description: 'Timsort is a hybrid stable sorting algorithm, derived from merge sort and insertion sort, designed to perform well on many kinds of real-world data.',
+    complexity: {
+      time: {
+        best: 'O(n)',
+        average: 'O(n log n)',
+        worst: 'O(n log n)',
+      },
+      space: {
+        best: 'O(n)',
+        average: 'O(n)',
+        worst: 'O(n)',
+      },
+    },
+  },
+  introSort: {
+    name: 'Intro Sort',
+    description: 'Introsort or introspective sort is a hybrid sorting algorithm that provides both fast average performance and (asymptotically) optimal worst-case performance.',
+    complexity: {
+      time: {
+        best: 'O(n log n)',
+        average: 'O(n log n)',
+        worst: 'O(n log n)',
+      },
+      space: {
+        best: 'O(log n)',
+        average: 'O(log n)',
+        worst: 'O(log n)',
+      },
+    },
+  },
+  pancakeSort: {
+    name: 'Pancake Sort',
+    description: 'Pancake sort is a sorting algorithm that works by repeatedly flipping prefixes of the array to sort the elements. It is not very efficient but provides an interesting visualization.',
+    complexity: {
+      time: {
+        best: 'O(n)',
+        average: 'O(n^2)',
+        worst: 'O(n^2)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
+    },
+  },
+  linearSearch: {
+    name: 'Linear Search',
+    description: 'Linear search is a simple search algorithm that finds the position of a target value within a list by checking every one of its elements, one at a time and in sequence, until the desired one is found.',
+    complexity: {
+      time: {
+        best: 'O(1)',
+        average: 'O(n)',
+        worst: 'O(n)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
+    },
+  },
+  binarySearch: {
+    name: 'Binary Search',
+    description: 'Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the list that could contain the item, until you\'ve narrowed down the possible locations to just one.',
+    complexity: {
+      time: {
+        best: 'O(1)',
+        average: 'O(log n)',
+        worst: 'O(log n)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
+    },
+  },
+  jumpSearch: {
+    name: 'Jump Search',
+    description: 'Jump search is a searching algorithm for sorted arrays. The basic idea is to check fewer elements (than linear search) by jumping ahead by fixed steps or skipping some elements in place of searching all elements.',
+    complexity: {
+      time: {
+        best: 'O(1)',
+        average: 'O(√n)',
+        worst: 'O(√n)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
+    },
+  },
+  exponentialSearch: {
+    name: 'Exponential Search',
+    description: 'Exponential search (also called doubling search or galloping search) is an algorithm for finding a value in a sorted array. It works by first finding a range where the value might be and then doing a binary search in that range.',
+    complexity: {
+      time: {
+        best: 'O(1)',
+        average: 'O(log i)',
+        worst: 'O(log i)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
+    },
+  },
+  ternarySearch: {
+    name: 'Ternary Search',
+    description: 'Ternary search is a search algorithm for finding the minimum or maximum of a unimodal function. It determines either that the minimum or maximum cannot be in the first third of the domain or that it cannot be in the last third of the domain, then repeats on the remaining two thirds.',
+    complexity: {
+      time: {
+        best: 'O(1)',
+        average: 'O(log3 n)',
+        worst: 'O(log3 n)',
+      },
+      space: {
+        best: 'O(1)',
+        average: 'O(1)',
+        worst: 'O(1)',
+      },
     },
   },
 };

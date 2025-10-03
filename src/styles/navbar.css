@@ -411,3 +411,83 @@ body {
   margin: 0;
   padding-top: 72px; /* adjust to your navbar's actual height */
 }
+
+/* =========================
+   === ADDED: NAVBAR SIZING & SPACING FIX (Option A)
+   Content-sized items, centered, consistent gaps (labels fully visible)
+   Paste this at the end of your CSS (already appended here).
+========================= */
+
+/* Apply to both .nav-menu and .navbar-menu to match different naming */
+.nav-menu,
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center the whole nav group */
+  gap: 28px;                /* consistent spacing between items */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+/* Support both .nav-item and .navbar-item */
+.nav-item,
+.navbar-item {
+  flex: 0 0 auto;         /* size to content, don't force equal widths */
+  margin: 0;
+  text-align: left;
+  min-width: 0;
+}
+
+/* Links and dropdown toggles fill their content box and do not truncate */
+.nav-item > a,
+.navbar-item > a,
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;    /* keep each label on one line */
+  overflow: visible;
+  text-overflow: clip;
+  padding: 0.5rem 0.5rem;
+  width: auto;
+  justify-content: center;
+}
+
+/* Keep dropdown menu behavior unchanged (but ensure visible text) */
+.dropdown-menu a.dropdown-item {
+  white-space: nowrap;
+}
+
+/* Small responsive tweak: on narrower screens reduce gap slightly */
+@media (max-width: 1100px) {
+  .nav-menu, .navbar-menu { gap: 20px; }
+}
+
+/* If you prefer the nav to wrap into multiple neat rows on medium widths,
+   you can enable the optional block below (commented out). Keep it disabled
+   if you want a single centered row instead.
+
+@media (max-width: 900px) {
+  .nav-menu, .navbar-menu {
+    flex-wrap: wrap;
+    gap: 12px 20px;  / * row-gap then column-gap * /
+    justify-content: center;
+  }
+  .nav-item, .navbar-item {
+    flex: 0 1 auto;
+    min-width: 120px;
+    text-align: center;
+  }
+  .nav-item > a, .navbar-item > a, .dropdown-toggle {
+    white-space: normal; / * allow wrapping if needed * /
+  }
+}
+*/
+
+/* Optional: if search/logo take too much room, reduce search flex to free space for nav */
+.navbar-search {
+  flex: 1 1 360px;  /* allow search to shrink more on narrower screens */
+  min-width: 220px;
+}

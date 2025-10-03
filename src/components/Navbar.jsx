@@ -58,10 +58,13 @@ const DesktopNavItem = ({
 }) => {
   if (item.dropdown) {
     return (
-      <div key={index} className="navbar-item dropdown">
+      <div 
+        key={index} 
+        className="navbar-item dropdown"
+        onMouseEnter={() => handleDropdownToggle(index)}
+      >
         <button
           className={`dropdown-toggle ${isDropdownOpen === index ? "active" : ""}`}
-          onClick={() => handleDropdownToggle(index)}
         >
           {item.icon && React.createElement(getIconComponent(item.icon), {
             size: 18,
@@ -184,10 +187,8 @@ const Navbar = () => {
   const navbarRef = useRef(null);
   const searchRef = useRef(null);
 
-  // Get icon component by name
   const getIconComponent = (iconName) => ICON_COMPONENTS[iconName] || null;
 
-  // Detect mobile screen
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth <= 768;
@@ -199,7 +200,6 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Handle click outside for dropdowns & search
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (navbarRef.current && !navbarRef.current.contains(event.target)) {
@@ -213,15 +213,13 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Navigation helpers
   const isActive = (path) => location.pathname === path;
   const handleDropdownToggle = (index) => setIsDropdownOpen(index === isDropdownOpen ? null : index);
 
-  // ===================== Fuse.js Setup for Notes Search with Tags =====================
   const searchableNotes = learnSections.flatMap((section) =>
     section.items.map((note) => ({
       ...note,
-      keywords: note.tags ? note.tags.join(" ") : "", // Use tags for search
+      keywords: note.tags ? note.tags.join(" ") : "",
       category: section.heading,
     }))
   );
@@ -233,30 +231,25 @@ const Navbar = () => {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-
     if (!query.trim()) {
       setSearchResults([]);
       setIsSearchOpen(false);
       return;
     }
-
     const results = fuse
       .search(query)
       .map((res) => res.item)
       .filter((item) => categoryFilter === "All" || item.category === categoryFilter);
-
     setSearchResults(results);
     setIsSearchOpen(results.length > 0);
   };
-  // ====================================================================================
 
-  // Render notes dropdown for desktop
   const renderNotesDropdown = () => (
-    <div className="navbar-item dropdown">
-      <button
-        className="dropdown-toggle"
-        onClick={() => handleDropdownToggle("notes")}
-      >
+    <div 
+        className="navbar-item dropdown"
+        onMouseEnter={() => handleDropdownToggle("notes")}
+    >
+      <button className="dropdown-toggle">
         <BookOpen size={18} className="drop-icon" />
         <span>Notes</span>
         <ChevronDown
@@ -280,12 +273,18 @@ const Navbar = () => {
           >
             Python
           </Link>
+          <Link
+            to="/notes/cpp"
+            className={`dropdown-item ${isActive("/notes/cpp") ? "active" : ""}`}
+            onClick={() => handleDropdownToggle(null)}
+          >
+            CPP
+          </Link>
         </div>
       )}
     </div>
   );
 
-  // Render notes dropdown for mobile
   const renderMobileNotesDropdown = () => (
     <div className="mobile-dropdown">
       <button
@@ -329,7 +328,6 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${theme}`} ref={navbarRef}>
       <div className="navbar-container">
-        {/* Logo */}
         <Link to="/" className="navbar-logo">
           <img src="/logo.jpg" alt="AlgoVisualizer Logo" className="logo-img" />
           <span className="logo-text">
@@ -337,7 +335,6 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Search Bar */}
         <div className="navbar-search" ref={searchRef}>
           <input
             type="text"
@@ -359,8 +356,6 @@ const Navbar = () => {
             </button>
           )}
           <Search size={18} className="search-icon" />
-
-          {/* Category Filter */}
           <select
             className="category-filter"
             value={categoryFilter}
@@ -373,7 +368,6 @@ const Navbar = () => {
               </option>
             ))}
           </select>
-
           {isSearchOpen && (
             <div className="search-results">
               {searchResults.map((item, index) => (
@@ -393,9 +387,8 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Desktop Navigation */}
         {!isMobile && (
-          <div className="navbar-menu">
+          <div className="navbar-menu" onMouseLeave={() => handleDropdownToggle(null)}>
             {navbarNavigationItems.map((item, index) => (
               <DesktopNavItem
                 key={index}
@@ -407,67 +400,16 @@ const Navbar = () => {
                 getIconComponent={getIconComponent}
               />
             ))}
-
-
-            {/* ✅ Notes Dropdown */}
-            <div className="navbar-item dropdown">
-              <button
-                className="dropdown-toggle"
-                onClick={() => handleDropdownToggle("notes")}
-              >
-                <BookOpen size={18} className="drop-icon" />
-                <span>Notes</span>
-                <ChevronDown
-                  size={16}
-                  className={`dropdown-arrow ${
-                    isDropdownOpen === "notes" ? "rotated" : ""
-                  }`}
-                />
-              </button>
-              {isDropdownOpen === "notes" && (
-                <div className="dropdown-menu">
-                  <Link
-                    to="/notes/java"
-                    className={`dropdown-item ${
-                      isActive("/notes/java") ? "active" : ""
-                    }`}
-                    onClick={() => setIsDropdownOpen(null)}
-                  >
-                    Java
-                  </Link>
-                  <Link
-                    to="/notes/python"
-                    className={`dropdown-item ${
-                      isActive("/notes/python") ? "active" : ""
-                    }`}
-                    onClick={() => setIsDropdownOpen(null)}
-                  >
-                    Python
-                  </Link>
-
-                  <Link
-                    to="/notes/cpp"
-                    className={`dropdown-item ${
-                      isActive("/notes/cpp") ? "active" : ""
-                    }`}
-                    onClick={() => setIsDropdownOpen(null)}
-                  >
-                    CPP
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Notes Dropdown */}
+            
             {renderNotesDropdown()}
 
-
-            {/* User Dropdown */}
-            <UserDropdown />
+            {/* ✅ FINAL FIX: Added a wrapper for perfect spacing */}
+            <div className="navbar-user-section">
+              <UserDropdown />
+            </div>
           </div>
         )}
 
-        {/* Mobile Menu Button */}
         {isMobile && (
           <button
             className="mobile-menu-button"
@@ -478,7 +420,6 @@ const Navbar = () => {
           </button>
         )}
 
-        {/* Mobile Navigation */}
         {isMobile && isMobileMenuOpen && (
           <div className="mobile-menu">
             {navbarNavigationItems.map((item, index) => (
@@ -493,10 +434,7 @@ const Navbar = () => {
                 setIsMobileMenuOpen={setIsMobileMenuOpen}
               />
             ))}
-
-            {/* Notes dropdown in mobile */}
             {renderMobileNotesDropdown()}
-
             <div className="mobile-user-dropdown mt-4">
               <UserDropdown />
             </div>
