@@ -9,7 +9,7 @@ const NotificationWidget = () => {
   const unreadCount = notifications.filter((n) => !n.read).length;
 
   return (
-    <div style={{ position: "fixed", top: 20, right: 20, zIndex: 999 }}>
+    <div style={{ position: "fixed", top: 92, right: 20, zIndex: 2001 }}>
       <button onClick={() => setOpen(!open)}>
         Notifications ({unreadCount})
       </button>
