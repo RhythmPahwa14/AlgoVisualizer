@@ -77,19 +77,6 @@ const Fundamentals = () => {
             { id: "control", label: "Control Flow" },
             { id: "methods", label: "Methods" },
             { id: "oop", label: "OOP Concepts" },
-            { id: "strings", label: "Strings" },
-            { id: "arrays", label: "Arrays" },
-            { id: "loops", label: "Loops" },
-            { id: "classes", label: "Classes/Objects" },
-            { id: "inheritance", label: "Inheritance" },
-            { id: "polymorphism", label: "Polymorphism" },
-            { id: "encapsulation", label: "Encapsulation" },
-            { id: "constructors", label: "Constructors" },
-            { id: "exceptions", label: "Exceptions" },
-            { id: "collections", label: "Collections" },
-            { id: "interfaces", label: "Interfaces" },
-            { id: "packages", label: "Packages" },
-            { id: "filehandling", label: "File Handling" },
           ].map((item) => (
             <button
               key={item.id}
