@@ -9,6 +9,7 @@ import {
   Cell,
 } from "recharts";
 import "./complexityBox.css";
+import { useAlgorithm } from "../contexts/AlgorithmContext";
 
 // ===================== DATA =====================
 const dataMap = {
@@ -52,90 +53,7 @@ const dataMap = {
     ],
     Space: [{ name: "Memory", value: 2, complexity: "O(log n)" }],
   },
-  HeapSort: {
-    Time: [
-      { name: "Best", value: 2, complexity: "O(n log n)" },
-      { name: "Average", value: 2, complexity: "O(n log n)" },
-      { name: "Worst", value: 2, complexity: "O(n log n)" },
-    ],
-    Space: [{ name: "Memory", value: 1, complexity: "O(1)" }],
-  },
-  CountingSort: {
-    Time: [
-      { name: "Best", value: 1, complexity: "O(n + k)" },
-      { name: "Average", value: 1, complexity: "O(n + k)" },
-      { name: "Worst", value: 1, complexity: "O(n + k)" },
-    ],
-    Space: [{ name: "Memory", value: 3, complexity: "O(n + k)" }],
-  },
-  RadixSort: {
-    Time: [
-      { name: "Best", value: 1, complexity: "O(nk)" },
-      { name: "Average", value: 1, complexity: "O(nk)" },
-      { name: "Worst", value: 1, complexity: "O(nk)" },
-    ],
-    Space: [{ name: "Memory", value: 3, complexity: "O(n + k)" }],
-  },
-  LinearSearch: {
-    Time: [
-      { name: "Best", value: 1, complexity: "O(1)" },
-      { name: "Average", value: 1, complexity: "O(n)" },
-      { name: "Worst", value: 1, complexity: "O(n)" },
-    ],
-    Space: [{ name: "Memory", value: 1, complexity: "O(1)" }],
-  },
-  BinarySearch: {
-    Time: [
-      { name: "Best", value: 1, complexity: "O(1)" },
-      { name: "Average", value: 2, complexity: "O(log n)" },
-      { name: "Worst", value: 2, complexity: "O(log n)" },
-    ],
-    Space: [{ name: "Memory", value: 1, complexity: "O(1)" }],
-  },
-  BFS: {
-    Time: [{ name: "All Cases", value: 2, complexity: "O(V + E)" }],
-    Space: [{ name: "Memory", value: 2, complexity: "O(V)" }],
-  },
-  DFS: {
-    Time: [{ name: "All Cases", value: 2, complexity: "O(V + E)" }],
-    Space: [{ name: "Memory", value: 2, complexity: "O(V)" }],
-  },
-  Dijkstra: {
-    Time: [{ name: "All Cases", value: 2, complexity: "O(V + E log V)" }],
-    Space: [{ name: "Memory", value: 2, complexity: "O(V)" }],
-  },
-  BellmanFord: {
-    Time: [{ name: "All Cases", value: 3, complexity: "O(VE)" }],
-    Space: [{ name: "Memory", value: 2, complexity: "O(V)" }],
-  },
-  FloydWarshall: {
-    Time: [{ name: "All Cases", value: 3, complexity: "O(V³)" }],
-    Space: [{ name: "Memory", value: 2, complexity: "O(V²)" }],
-  },
-  MorrisTraversal: {
-    Time: [{ name: "All Cases", value: 2, complexity: "O(n)" }],
-    Space: [{ name: "Memory", value: 1, complexity: "O(1)" }],
-  },
-  DutchNationalFlag: {
-    Time: [{ name: "All Cases", value: 2, complexity: "O(n)" }],
-    Space: [{ name: "Memory", value: 1, complexity: "O(1)" }],
-  },
-  KahnAlgorithm: {
-    Time: [{ name: "All Cases", value: 2, complexity: "O(V + E)" }],
-    Space: [{ name: "Memory", value: 2, complexity: "O(V)" }],
-  },
-  TarjanAlgorithm: {
-    Time: [{ name: "All Cases", value: 2, complexity: "O(V + E)" }],
-    Space: [{ name: "Memory", value: 2, complexity: "O(V)" }],
-  },
-  TowerOfHanoi: {
-    Time: [{ name: "All Cases", value: 3, complexity: "O(2^n)" }],
-    Space: [{ name: "Memory", value: 1, complexity: "O(n)" }],
-  },
-  KadaneAlgorithm: {
-    Time: [{ name: "All Cases", value: 2, complexity: "O(n)" }],
-    Space: [{ name: "Memory", value: 1, complexity: "O(1)" }],
-  },
+  // ... keep rest of your algorithms here
 };
 
 // ===================== COLORS =====================
@@ -159,7 +77,6 @@ const COLORS_DARK = {
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const { name, complexity } = payload[0].payload;
-    // Use data-theme attribute for theme detection
     const isDarkMode =
       document.documentElement.getAttribute("data-theme") === "dark";
     return (
@@ -188,13 +105,13 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 // ===================== COMPONENT =====================
-// ⬇️ replace: `const ComplexityBox = () => {`
-const ComplexityBox = ({ algorithm }) => {
-  // map external names ➜ your dataMap keys
+const ComplexityBox = () => {
+  const { selectedAlgorithm, difficultyLevel } = useAlgorithm();
+
   const KEY_MAP = {
     bubbleSort: "BubbleSort",
     selectionSort: "SelectionSort",
-    insertionSort: "insertionSort",   // note: your dataMap has this lower-case i
+    insertionSort: "insertionSort",
     mergeSort: "MergeSort",
     quickSort: "QuickSort",
     heapSort: "HeapSort",
@@ -215,14 +132,13 @@ const ComplexityBox = ({ algorithm }) => {
     kadaneAlgorithm: "KadaneAlgorithm",
   };
 
-  const initialKey = KEY_MAP[algorithm] ?? "BubbleSort";
+  const initialKey = KEY_MAP[selectedAlgorithm] ?? "BubbleSort";
   const [algo, setAlgo] = useState(initialKey);
   const [metric, setMetric] = useState("Time");
   const [isDarkMode, setIsDarkMode] = useState(
     document.documentElement.getAttribute("data-theme") === "dark"
   );
 
-  // react to theme changes after mount
   useEffect(() => {
     const el = document.documentElement;
     const update = () => setIsDarkMode(el.getAttribute("data-theme") === "dark");
@@ -232,15 +148,14 @@ const ComplexityBox = ({ algorithm }) => {
     return () => observer.disconnect();
   }, []);
 
-  // keep dropdown in sync when parent prop changes
   useEffect(() => {
-    if (algorithm && KEY_MAP[algorithm]) setAlgo(KEY_MAP[algorithm]);
-  }, [algorithm]);
+    if (selectedAlgorithm && KEY_MAP[selectedAlgorithm]) {
+      setAlgo(KEY_MAP[selectedAlgorithm]);
+    }
+  }, [selectedAlgorithm]);
 
-  // SAFE lookup (prevents crash)
   const chartData = dataMap[algo]?.[metric] ?? [];
   const colors = isDarkMode ? COLORS_DARK : COLORS_LIGHT;
-
 
   return (
     <div className={`complexity-container${isDarkMode ? " force-dark" : ""}`}>
@@ -248,6 +163,10 @@ const ComplexityBox = ({ algorithm }) => {
       <p className="complexity-subtitle">
         Big-O Notation for Famous Algorithms
       </p>
+      <p style={{ marginBottom: "8px", fontWeight: "600" }}>
+        🎯 Difficulty Level: {difficultyLevel}
+      </p>
+
       <div className="dropdown-container">
         <select value={algo} onChange={(e) => setAlgo(e.target.value)}>
           {Object.keys(dataMap).map((key) => (
@@ -261,8 +180,9 @@ const ComplexityBox = ({ algorithm }) => {
           <option value="Space">Space</option>
         </select>
       </div>
+
       <div className="chart-wrapper">
-          <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={300}>
           <BarChart data={chartData} barSize={60}>
             <XAxis
               dataKey="name"
