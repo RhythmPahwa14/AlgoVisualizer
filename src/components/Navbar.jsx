@@ -160,6 +160,162 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+
+  // Navigation helpers
+  const isActive = (path) => location.pathname === path;
+  const handleDropdownToggle = (index) => setIsDropdownOpen(index === isDropdownOpen ? null : index);
+
+  // ===================== Fuse.js Setup for Notes Search with Tags =====================
+  const searchableNotes = learnSections.flatMap((section) =>
+    section.items.map((note) => ({
+      ...note,
+      keywords: note.tags ? note.tags.join(" ") : "", // Use tags for search
+      category: section.heading,
+    }))
+  );
+
+  const fuse = new Fuse(searchableNotes, {
+    keys: ["label", "path", "keywords"],
+    threshold: 0.3,
+  });
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+
+    if (!query.trim()) {
+      setSearchResults([]);
+      setIsSearchOpen(false);
+      return;
+    }
+
+    const results = fuse
+      .search(query)
+      .map((res) => res.item)
+      .filter((item) => categoryFilter === "All" || item.category === categoryFilter);
+
+    setSearchResults(results);
+    setIsSearchOpen(results.length > 0);
+  };
+  // ====================================================================================
+
+  // Render notes dropdown for desktop
+  const renderNotesDropdown = () => (
+    <div className="navbar-item dropdown">
+      <button
+        className="dropdown-toggle"
+        onClick={() => handleDropdownToggle("notes")}
+      >
+        <BookOpen size={18} className="drop-icon" />
+        <span>Notes</span>
+        <ChevronDown
+          size={16}
+          className={`dropdown-arrow ${isDropdownOpen === "notes" ? "rotated" : ""}`}
+        />
+      </button>
+      {isDropdownOpen === "notes" && (
+        <div className="dropdown-menu">
+          <Link
+            to="/notes/java"
+            className={`dropdown-item ${isActive("/notes/java") ? "active" : ""}`}
+            onClick={() => handleDropdownToggle(null)}
+          >
+            Java
+          </Link>
+          <Link
+            to="/notes/python"
+            className={`dropdown-item ${isActive("/notes/python") ? "active" : ""}`}
+            onClick={() => handleDropdownToggle(null)}
+          >
+            Python
+          </Link>
+
+           <Link
+            to="/notes/cpp"
+            className="mobile-dropdown-item"
+            onClick={() => {
+              handleDropdownToggle(null);
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            C++
+          </Link>
+
+          <Link
+            to="/notes/javascript"
+            className={`dropdown-item ${isActive("/notes/javascript") ? "active" : ""}`}
+            onClick={() => handleDropdownToggle(null)}
+          >
+            Javascript
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+
+  // Render notes dropdown for mobile
+  const renderMobileNotesDropdown = () => (
+    <div className="mobile-dropdown">
+      <button
+        className={`mobile-dropdown-toggle ${isDropdownOpen === "notes" ? "active" : ""}`}
+        onClick={() => handleDropdownToggle("notes")}
+      >
+        <BookOpen size={18} className="icon" />
+        <span>Notes</span>
+        <ChevronDown
+          size={16}
+          className={`dropdown-arrow ${isDropdownOpen === "notes" ? "rotated" : ""}`}
+        />
+      </button>
+      {isDropdownOpen === "notes" && (
+        <div className="mobile-dropdown-menu">
+          <Link
+            to="/notes/java"
+            className="mobile-dropdown-item"
+            onClick={() => {
+              handleDropdownToggle(null);
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            Java
+          </Link>
+          <Link
+            to="/notes/python"
+            className="mobile-dropdown-item"
+            onClick={() => {
+              handleDropdownToggle(null);
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            Python
+          </Link>
+
+           <Link
+            to="/notes/python"
+            className="mobile-dropdown-item"
+            onClick={() => {
+              handleDropdownToggle(null);
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            C++
+          </Link>
+
+           <Link
+            to="/notes/python"
+            className="mobile-dropdown-item"
+            onClick={() => {
+              handleDropdownToggle(null);
+              setIsMobileMenuOpen(false);
+            }}
+          >
+           javascript
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+
+
   return (
     <nav className={`navbar fixed top-0 left-0 right-0 z-50 ${theme}`} ref={navbarRef}>
       <div className="navbar-container flex items-center justify-between px-4 py-2">
@@ -202,6 +358,90 @@ const Navbar = () => {
                 >
                   Java
                 </Link>
+
+              ))}
+              {searchResults.length === 0 && (
+                <div className="search-no-results">No results found</div>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Desktop Navigation */}
+        {!isMobile && (
+          <div className="navbar-menu">
+            {navbarNavigationItems.map((item, index) => (
+              <DesktopNavItem
+                key={index}
+                item={item}
+                index={index}
+                isDropdownOpen={isDropdownOpen}
+                handleDropdownToggle={handleDropdownToggle}
+                isActive={isActive}
+                getIconComponent={getIconComponent}
+              />
+            ))}
+
+
+            {/* ✅ Notes Dropdown */}
+            <div className="navbar-item dropdown">
+              <button
+                className="dropdown-toggle"
+                onClick={() => handleDropdownToggle("notes")}
+              >
+                <BookOpen size={18} className="drop-icon" />
+                <span>Notes</span>
+                <ChevronDown
+                  size={16}
+                  className={`dropdown-arrow ${
+                    isDropdownOpen === "notes" ? "rotated" : ""
+                  }`}
+                />
+              </button>
+              {isDropdownOpen === "notes" && (
+                <div className="dropdown-menu">
+                  <Link
+                    to="/notes/java"
+                    className={`dropdown-item ${
+                      isActive("/notes/java") ? "active" : ""
+                    }`}
+                    onClick={() => setIsDropdownOpen(null)}
+                  >
+                    Java
+                  </Link>
+                  <Link
+                    to="/notes/python"
+                    className={`dropdown-item ${
+                      isActive("/notes/python") ? "active" : ""
+                    }`}
+                    onClick={() => setIsDropdownOpen(null)}
+                  >
+                    Python
+                  </Link>
+
+                  <Link
+                    to="/notes/cpp"
+                    className={`dropdown-item ${
+                      isActive("/notes/cpp") ? "active" : ""
+                    }`}
+                    onClick={() => setIsDropdownOpen(null)}
+                  >
+                    C++
+                  </Link>
+
+                  <Link
+                    to="/notes/javascript"
+                    className={`dropdown-item ${
+                      isActive("/notes/javascript") ? "active" : ""
+                    }`}
+                    onClick={() => setIsDropdownOpen(null)}
+                  >
+                    JavaScript
+                  </Link>
+                </div>
+              )}
+            </div>
+
                 <Link
                   to="/notes/python"
                   className={`dropdown-item ${isActive("/notes/python") ? "active" : ""}`}
@@ -209,9 +449,26 @@ const Navbar = () => {
                 >
                   Python
                 </Link>
+
+                <Link
+                  to="/notes/Cpp"
+                  className={`dropdown-item ${isActive("/notes/Cpp") ? "active" : ""}`}
+                  onClick={() => setDesktopNotesOpen(false)}
+                >
+                  C++
+                </Link>
+
+                <Link
+                  to="/notes/Javascript"
+                  className={`dropdown-item ${isActive("/notes/Cpp") ? "active" : ""}`}
+                  onClick={() => setDesktopNotesOpen(false)}
+                >
+                  JavaScript
+                </Link>
               </div>
             )}
           </div>
+
 
           <UserDropdown />
         </div>
@@ -283,6 +540,28 @@ const Navbar = () => {
               }}
             >
               Python
+            </Link>
+
+             <Link
+              to="/notes/Cpp"
+              className="mobile-menu-link"
+              onClick={() => {
+                setMobileNotesOpen(false);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              C++
+            </Link>
+
+             <Link
+              to="/notes/Javascript"
+              className="mobile-menu-link"
+              onClick={() => {
+                setMobileNotesOpen(false);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+             JavaScript
             </Link>
           </div>
         </div>

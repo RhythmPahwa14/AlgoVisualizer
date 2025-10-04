@@ -45,6 +45,10 @@ import PythonBasics from "./pages/Notes/Python/PythonBasics";
 import CppFundamentals from "./pages/Notes/Cpp/Fundamentals";
 import CppVariablesAndDataTypes from "./pages/Notes/Cpp/VariablesAndDataTypes";
 
+//javascript Notes
+import JavaScriptFundamentals from "./pages/Notes/Javascript/Fundamentals.jsx"
+import JavaScriptVariablesAndDataTypes from "./pages/Notes/Javascript/VariableAndDataTypes.jsx"
+
 
 // Algorithm Pages
 import DPOverview from "./pages/DPOverview";
@@ -65,6 +69,27 @@ import BranchBoundOverview from "./pages/BranchBoundOverview";
 import BranchBoundPage from "./pages/BranchBoundPage";
 import StringOverview from "./pages/StringOverview";
 import StringPage from "./pages/StringPage";
+
+// Java Notes
+import Fundamentals from "./pages/Notes/Java/Fundamentals";
+import VariablesAndDataTypes from "./pages/Notes/Java/VariablesAndDataTypes";
+
+// Python Notes
+import PythonFundamentals from "./pages/Notes/Python/Fundamentals";
+import PythonVariablesAndDataTypes from "./pages/Notes/Python/VariablesAndDataTypes";
+
+// C++ Notes
+import CppFundamentals from "./pages/Notes/Cpp/Fundamentals";
+import CppVariablesAndDataTypes from "./pages/Notes/Cpp/VariablesAndDataTypes";
+
+// Javascript
+
+import JavaScriptFundamentals from "./pages/Notes/Javascript/Fundamentals"
+import JavaScriptVariablesAndDataTypes from "./pages/Notes/JavaScript/VariableAndDataTypes"
+
+
+
+
 
 // Components
 import LinkedListPage from "./components/pages/LinkedListPage";
@@ -243,6 +268,11 @@ const App = () => {
               {/* Java */}
               <Route path="/notes/java" element={<Navigate to="/notes/java/fundamentals" replace />} />
               <Route path="/notes/java/fundamentals" element={<Fundamentals />} />
+
+              <Route path="/notes/java/variables-and-data-types" element={<VariablesAndDataTypes />} />
+
+              {/* Python */}
+
               <Route
                 path="/notes/java/variables-and-data-types"
                 element={<VariablesAndDataTypes />}
@@ -252,6 +282,7 @@ const App = () => {
 
               {/* Python */}
 
+
               <Route path="/notes/python" element={<Navigate to="/notes/python/fundamentals" replace />} />
               <Route path="/notes/python/fundamentals" element={<PythonFundamentals />} />
               <Route path="/notes/python/variables-and-data-types" element={<PythonVariablesAndDataTypes />} />
@@ -260,6 +291,20 @@ const App = () => {
               <Route path="/notes/cpp" element={<Navigate to="/notes/cpp/fundamentals" replace />} />
               <Route path="/notes/cpp/fundamentals" element={<CppFundamentals />} />
               <Route path="/notes/cpp/variables-and-data-types" element={<CppVariablesAndDataTypes />} />
+
+              {/* Javascript*/}
+              <Route path="/notes/javascript" element={<Navigate to="/notes/javascript/fundamentals" replace/>}/>
+              <Route path="/notes/javascript/fundamentals" element={<JavaScriptFundamentals/>} />
+              <Route path="/notes/javascript/variables-and-data-types" element={<JavaScriptVariablesAndDataTypes/>} />
+
+
+              {/* Javascript */}
+              <Route path="/notes/javascript" element={<Navigate to="/notes/javascript/fundamentals" replace />}/>
+              <Route path="/notes/javascript/fundamentals" element={<JavaScriptFundamentals/>}/>
+              <Route path="/notes/javascript/variables-and-data-types" element={<JavaScriptVariablesAndDataTypes/>} />
+
+
+              
 
 
               <Route
@@ -274,6 +319,7 @@ const App = () => {
               <Route path="/editor" element={<CodeEditor />} />
 
               <Route path="/java-oops" element={<JavaOOPS />} />
+
 
               {/* Dynamic Notes Routes */}
               <Route path="/notes/:language/:topic" element={<NotesPage />} />
