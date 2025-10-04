@@ -190,3 +190,36 @@
     bottom: 14px;
   }
 }
+
+/* Prevent conflicts with notification widget */
+@media (max-width: 768px) {
+  .feedback-fab {
+    /* Move feedback button slightly left on mobile to avoid notification widget */
+    right: 16px;
+    bottom: 16px;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  
+  .feedback-panel {
+    /* Adjust panel position on mobile */
+    bottom: 76px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+  }
+}
+
+/* Ensure proper stacking order */
+.feedback-fab {
+  z-index: 1100; /* Below notification widget (2001) but above other content */
+}
+
+.feedback-panel {
+  z-index: 1101; /* Slightly above fab but below notification */
+}
+
+.feedback-overlay {
+  z-index: 1099; /* Below everything else */
+}

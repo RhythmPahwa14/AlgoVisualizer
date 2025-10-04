@@ -228,13 +228,10 @@ const Navbar = () => {
       {/* Mobile menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`} onClick={(e) => e.stopPropagation()}>
         
-        {/* Optional: Mobile Menu Header */}
+        {/* Mobile Menu Header */}
         <div className="mobile-menu-header">
           <div className="mobile-menu-header-content">
             <span className="mobile-menu-title">AlgoVisualizer</span>
-            <button className="mobile-menu-close-btn" onClick={() => setIsMobileMenuOpen(false)}>
-              <X size={20} />
-            </button>
           </div>
           <p className="mobile-menu-subtitle">Explore Algorithms & Notes</p>
         </div>
