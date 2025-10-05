@@ -90,6 +90,15 @@ const Fundamentals = () => {
             { id: "interfaces", label: "Interfaces" },
             { id: "packages", label: "Packages" },
             { id: "filehandling", label: "File Handling" },
+             { id: "generics", label: "Generics" },
+  { id: "multithreading", label: "Multithreading" },
+  { id: "concurrency", label: "Concurrency" },
+  { id: "lambda", label: "Lambdas & Streams" },
+  { id: "functional", label: "Functional Interfaces" },
+  { id: "regex", label: "Regular Expressions" },
+  { id: "jdbc", label: "JDBC" },
+  { id: "algorithms", label: "Algorithms" },
+  { id: "dataStructures", label: "Data Structures" }
           ].map((item) => (
             <button
               key={item.id}
@@ -632,6 +641,462 @@ public class OOPExample {
           </div>
         </section>
       )}
+
+  {activeTab === "methods" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-cogs"></i> Methods</h2>
+      <p>Methods are blocks of code that perform specific tasks and can be reused.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode === "methods" ? "copied" : ""}`} onClick={() => copyCode(`public static int add(int x, int y) {\n    return x + y;\n}\n\npublic static void main(String[] args) {\n    System.out.println(add(5, 3));\n}`, "methods")}>
+          {copiedCode === "methods" ? "Copied!" : "Copy"}
+        </button>
+        <pre>{`public static int add(int x, int y) {
+    return x + y;
+}
+
+public static void main(String[] args) {
+    System.out.println(add(5, 3));
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "strings" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-font"></i> Strings</h2>
+      <p>Strings are immutable sequences of characters.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode === "strings" ? "copied" : ""}`} onClick={() => copyCode(`String name = "Java";\nSystem.out.println(name.length()); // 4\nSystem.out.println(name.toUpperCase()); // JAVA`, "strings")}>
+          {copiedCode === "strings" ? "Copied!" : "Copy"}
+        </button>
+        <pre>{`String name = "Java";
+System.out.println(name.length()); // 4
+System.out.println(name.toUpperCase()); // JAVA`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+{activeTab === "arrays" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-th"></i> Arrays</h2>
+      <p>Arrays store multiple values of the same type in a single variable.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode === "arrays" ? "copied" : ""}`} onClick={() => copyCode(`int[] nums = {1,2,3,4};\nfor(int n : nums) System.out.println(n);`, "arrays")}>
+          {copiedCode === "arrays" ? "Copied!" : "Copy"}
+        </button>
+        <pre>{`int[] nums = {1,2,3,4};
+for(int n : nums) System.out.println(n);`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+{activeTab === "loops" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-redo"></i> Loops</h2>
+      <p>Loops are used to execute a block of code multiple times.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode === "loops" ? "copied" : ""}`} onClick={() => copyCode(`for(int i=0;i<5;i++) {\n  System.out.println(i);\n}`, "loops")}>
+          {copiedCode === "loops" ? "Copied!" : "Copy"}
+        </button>
+        <pre>{`for(int i=0;i<5;i++) {
+  System.out.println(i);
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+{activeTab === "classes" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-cube"></i> Classes & Objects</h2>
+      <p>Classes define objects and their behaviors in Java.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode === "classes" ? "copied" : ""}`} onClick={() => copyCode(`class Car {\n  String model;\n  void display() { System.out.println(model); }\n}\npublic static void main(String[] args) {\n  Car c = new Car(); c.model="Tesla"; c.display();\n}`, "classes")}>
+          {copiedCode === "classes" ? "Copied!" : "Copy"}
+        </button>
+        <pre>{`class Car {
+  String model;
+  void display() { System.out.println(model); }
+}
+public static void main(String[] args) {
+  Car c = new Car(); 
+  c.model="Tesla"; 
+  c.display();
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+{activeTab === "inheritance" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-share-alt"></i> Inheritance</h2>
+      <p>Inheritance allows one class to acquire properties and methods of another class.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="inheritance"?"copied":""}`} onClick={()=>copyCode(`class Animal { void eat(){ System.out.println("Eating"); } }\nclass Dog extends Animal { void bark(){ System.out.println("Barking"); } }\npublic static void main(String[] args){ Dog d=new Dog(); d.eat(); d.bark(); }`, "inheritance")}>
+          {copiedCode==="inheritance"?"Copied!":"Copy"}
+        </button>
+        <pre>{`class Animal {
+  void eat(){ System.out.println("Eating"); }
+}
+class Dog extends Animal {
+  void bark(){ System.out.println("Barking"); }
+}
+public static void main(String[] args){
+  Dog d=new Dog();
+  d.eat();
+  d.bark();
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+{activeTab === "polymorphism" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-sync-alt"></i> Polymorphism</h2>
+      <p>Polymorphism allows objects to take multiple forms (method overloading and overriding).</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="polymorphism"?"copied":""}`} onClick={()=>copyCode(`class MathUtils { int add(int a,int b){ return a+b; } double add(double a,double b){ return a+b; } }\npublic static void main(String[] args){ MathUtils m=new MathUtils(); System.out.println(m.add(5,3)); System.out.println(m.add(5.5,3.5)); }`, "polymorphism")}>
+          {copiedCode==="polymorphism"?"Copied!":"Copy"}
+        </button>
+        <pre>{`class MathUtils {
+  int add(int a,int b){ return a+b; }
+  double add(double a,double b){ return a+b; }
+}
+public static void main(String[] args){
+  MathUtils m=new MathUtils();
+  System.out.println(m.add(5,3));
+  System.out.println(m.add(5.5,3.5));
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "encapsulation" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-lock"></i> Encapsulation</h2>
+      <p>Encapsulation hides internal state of an object using private fields and public getters/setters.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="encapsulation"?"copied":""}`} onClick={()=>copyCode(`class Person { private String name; public void setName(String n){ name=n; } public String getName(){ return name; } }\npublic static void main(String[] args){ Person p=new Person(); p.setName("Alice"); System.out.println(p.getName()); }`, "encapsulation")}>
+          {copiedCode==="encapsulation"?"Copied!":"Copy"}
+        </button>
+        <pre>{`class Person {
+  private String name;
+  public void setName(String n){ name=n; }
+  public String getName(){ return name; }
+}
+public static void main(String[] args){
+  Person p=new Person();
+  p.setName("Alice");
+  System.out.println(p.getName());
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "constructors" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-wrench"></i> Constructors</h2>
+      <p>Constructors initialize objects when created.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="constructors"?"copied":""}`} onClick={()=>copyCode(`class Car { String model; Car(String m){ model=m; } void display(){ System.out.println(model); } }\npublic static void main(String[] args){ Car c=new Car("Tesla"); c.display(); }`, "constructors")}>
+          {copiedCode==="constructors"?"Copied!":"Copy"}
+        </button>
+        <pre>{`class Car {
+  String model;
+  Car(String m){ model=m; }
+  void display(){ System.out.println(model); }
+}
+public static void main(String[] args){
+  Car c=new Car("Tesla");
+  c.display();
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+
+{activeTab === "exceptions" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-exclamation-triangle"></i> Exceptions</h2>
+      <p>Exceptions handle runtime errors in a controlled manner.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="exceptions"?"copied":""}`} onClick={()=>copyCode(`try { int a=10/0; } catch(ArithmeticException e){ System.out.println("Error: "+e); } finally{ System.out.println("Done"); }`, "exceptions")}>
+          {copiedCode==="exceptions"?"Copied!":"Copy"}
+        </button>
+        <pre>{`try {
+  int a=10/0;
+} catch(ArithmeticException e){
+  System.out.println("Error: "+e);
+} finally{
+  System.out.println("Done");
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "collections" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-list"></i> Collections</h2>
+      <p>Collections framework provides dynamic data structures like List, Set, Map.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="collections"?"copied":""}`} onClick={()=>copyCode(`import java.util.*;\nList<String> list = new ArrayList<>(); list.add("Java"); list.add("Python"); for(String lang:list) System.out.println(lang);`, "collections")}>
+          {copiedCode==="collections"?"Copied!":"Copy"}
+        </button>
+        <pre>{`import java.util.*;
+List<String> list = new ArrayList<>();
+list.add("Java");
+list.add("Python");
+for(String lang:list) System.out.println(lang);`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "interfaces" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-network-wired"></i> Interfaces</h2>
+      <p>Interfaces define a contract that implementing classes must follow.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="interfaces"?"copied":""}`} onClick={()=>copyCode(`interface Drawable { void draw(); }\nclass Circle implements Drawable { public void draw(){ System.out.println("Drawing Circle"); } }\npublic static void main(String[] args){ Circle c=new Circle(); c.draw(); }`, "interfaces")}>
+          {copiedCode==="interfaces"?"Copied!":"Copy"}
+        </button>
+        <pre>{`interface Drawable { void draw(); }
+class Circle implements Drawable { 
+  public void draw(){ System.out.println("Drawing Circle"); } 
+}
+public static void main(String[] args){
+  Circle c=new Circle();
+  c.draw();
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+{activeTab === "packages" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-box"></i> Packages</h2>
+      <p>Packages group related classes and interfaces for modular code organization.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="packages"?"copied":""}`} onClick={()=>copyCode(`package mypackage;\npublic class MyClass { public void show(){ System.out.println("Hello from package"); } }`, "packages")}>
+          {copiedCode==="packages"?"Copied!":"Copy"}
+        </button>
+        <pre>{`package mypackage;
+public class MyClass {
+  public void show(){ System.out.println("Hello from package"); }
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "filehandling" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-file"></i> File Handling</h2>
+      <p>Read and write files using Java's File and BufferedReader/Writer classes.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="filehandling"?"copied":""}`} onClick={()=>copyCode(`import java.io.*;\nBufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));\nwriter.write("Hello World"); writer.close();`, "filehandling")}>
+          {copiedCode==="filehandling"?"Copied!":"Copy"}
+        </button>
+        <pre>{`import java.io.*;
+BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+writer.write("Hello World");
+writer.close();`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "generics" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-cogs"></i> Generics</h2>
+      <p>Generics enable type-safe code that works with different data types.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="generics"?"copied":""}`} onClick={()=>copyCode(`class Box<T> { T content; void set(T c){ content=c; } T get(){ return content; } }\npublic static void main(String[] args){ Box<String> b=new Box<>(); b.set("Hello"); System.out.println(b.get()); }`, "generics")}>
+          {copiedCode==="generics"?"Copied!":"Copy"}
+        </button>
+        <pre>{`class Box<T> {
+  T content;
+  void set(T c){ content=c; }
+  T get(){ return content; }
+}
+public static void main(String[] args){
+  Box<String> b=new Box<>();
+  b.set("Hello");
+  System.out.println(b.get());
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "multithreading" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-running"></i> Multithreading</h2>
+      <p>Create multiple threads to run tasks concurrently.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="multithreading"?"copied":""}`} onClick={()=>copyCode(`class MyThread extends Thread { public void run(){ System.out.println("Thread running"); } }\npublic static void main(String[] args){ MyThread t=new MyThread(); t.start(); }`, "multithreading")}>
+          {copiedCode==="multithreading"?"Copied!":"Copy"}
+        </button>
+        <pre>{`class MyThread extends Thread {
+  public void run(){ System.out.println("Thread running"); }
+}
+public static void main(String[] args){
+  MyThread t=new MyThread();
+  t.start();
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "concurrency" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-tasks"></i> Concurrency</h2>
+      <p>Concurrency utilities like synchronized, ExecutorService help manage multiple threads safely.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="concurrency"?"copied":""}`} onClick={()=>copyCode(`import java.util.concurrent.*;\nExecutorService ex=Executors.newFixedThreadPool(2);\nex.submit(() -> System.out.println("Task 1"));\nex.submit(() -> System.out.println("Task 2"));\nex.shutdown();`, "concurrency")}>
+          {copiedCode==="concurrency"?"Copied!":"Copy"}
+        </button>
+        <pre>{`import java.util.concurrent.*;
+ExecutorService ex=Executors.newFixedThreadPool(2);
+ex.submit(() -> System.out.println("Task 1"));
+ex.submit(() -> System.out.println("Task 2"));
+ex.shutdown();`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "lambda" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-stream"></i> Lambdas & Streams</h2>
+      <p>Lambdas simplify functional programming; Streams allow bulk data operations.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="lambda"?"copied":""}`} onClick={()=>copyCode(`List<Integer> nums=Arrays.asList(1,2,3,4);\nnums.stream().filter(n->n%2==0).forEach(System.out::println);`, "lambda")}>
+          {copiedCode==="lambda"?"Copied!":"Copy"}
+        </button>
+        <pre>{`List<Integer> nums=Arrays.asList(1,2,3,4);
+nums.stream().filter(n->n%2==0).forEach(System.out::println);`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "functional" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-code-branch"></i> Functional Interfaces</h2>
+      <p>Functional interfaces have exactly one abstract method and can be used with lambdas.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="functional"?"copied":""}`} onClick={()=>copyCode(`@FunctionalInterface interface Greet { void sayHello(); }\npublic static void main(String[] args){ Greet g = ()-> System.out.println("Hello"); g.sayHello(); }`, "functional")}>
+          {copiedCode==="functional"?"Copied!":"Copy"}
+        </button>
+        <pre>{`@FunctionalInterface
+interface Greet { void sayHello(); }
+public static void main(String[] args){
+  Greet g = ()-> System.out.println("Hello");
+  g.sayHello();
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+{activeTab === "regex" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-search"></i> Regular Expressions</h2>
+      <p>Used for pattern matching in strings.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="regex"?"copied":""}`} onClick={()=>copyCode(`import java.util.regex.*;\nPattern p = Pattern.compile("\\\\d+");\nMatcher m = p.matcher("Order123");\nif(m.find()){ System.out.println("Found: "+m.group()); }`, "regex")}>
+          {copiedCode==="regex"?"Copied!":"Copy"}
+        </button>
+        <pre>{`import java.util.regex.*;
+Pattern p = Pattern.compile("\\d+");
+Matcher m = p.matcher("Order123");
+if(m.find()){ System.out.println("Found: "+m.group()); }`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+{activeTab === "jdbc" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-database"></i> JDBC</h2>
+      <p>Java Database Connectivity allows Java to connect and execute queries on databases.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="jdbc"?"copied":""}`} onClick={()=>copyCode(`import java.sql.*;\nConnection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db","user","pass");\nStatement st = con.createStatement();\nResultSet rs = st.executeQuery("SELECT * FROM students");`, "jdbc")}>
+          {copiedCode==="jdbc"?"Copied!":"Copy"}
+        </button>
+        <pre>{`import java.sql.*;
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db","user","pass");
+Statement st = con.createStatement();
+ResultSet rs = st.executeQuery("SELECT * FROM students");`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+{activeTab === "algorithms" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-brain"></i> Algorithms</h2>
+      <p>Step-by-step procedures to solve problems efficiently.</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="algorithms"?"copied":""}`} onClick={()=>copyCode(`// Bubble Sort example\nint[] arr = {5,2,8,1};\nfor(int i=0;i<arr.length-1;i++){\n  for(int j=0;j<arr.length-i-1;j++){\n    if(arr[j]>arr[j+1]){ int temp=arr[j]; arr[j]=arr[j+1]; arr[j+1]=temp; }\n  }\n}`, "algorithms")}>
+          {copiedCode==="algorithms"?"Copied!":"Copy"}
+        </button>
+        <pre>{`// Bubble Sort example
+int[] arr = {5,2,8,1};
+for(int i=0;i<arr.length-1;i++){
+  for(int j=0;j<arr.length-i-1;j++){
+    if(arr[j]>arr[j+1]){ int temp=arr[j]; arr[j]=arr[j+1]; arr[j+1]=temp; }
+  }
+}`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+{activeTab === "dataStructures" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-layer-group"></i> Data Structures</h2>
+      <p>Organize and store data efficiently (arrays, lists, stacks, queues, maps).</p>
+      <div className="code-container">
+        <button className={`copy-btn ${copiedCode==="dataStructures"?"copied":""}`} onClick={()=>copyCode(`import java.util.*;\nList<Integer> list = new ArrayList<>();\nlist.add(10); list.add(20);\nfor(int i:list){ System.out.println(i); }`, "dataStructures")}>
+          {copiedCode==="dataStructures"?"Copied!":"Copy"}
+        </button>
+        <pre>{`import java.util.*;
+List<Integer> list = new ArrayList<>();
+list.add(10); list.add(20);
+for(int i:list){ System.out.println(i); }`}</pre>
+      </div>
+    </div>
+  </section>
+)}
+
+
 
       {/* Add similar sections for other tabs */}
 
