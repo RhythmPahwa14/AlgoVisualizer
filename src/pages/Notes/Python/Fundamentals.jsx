@@ -63,7 +63,12 @@ const PythonFundamentals = () => {
             { id: "control", label: "Control Flow" },
             { id: "functions", label: "Functions" },
             { id: "oop", label: "OOP Concepts" },
-            { id: "examples", label: "Example Code" }             
+            { id: "examples", label: "Example Code" }  ,
+             { id: "files", label: "Files & Exceptions" },
+  { id: "iterators", label: "Iterators & Generators" },
+  { id: "modules", label: "Modules & Packages" },
+  { id: "dsa", label: "Python for DSA" },
+  { id: "numpy", label: "NumPy & Pandas" }           
           ].map(item => (
             <button
               key={item.id}
@@ -469,7 +474,149 @@ print("Balance:", account.get_balance())`}</pre>
             </div>
           </div>
         </section>
-      )}      
+      )}   
+      {activeTab === "files" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-file"></i> 10. Files & Exceptions</h2>
+      <h3>File Handling</h3>
+      <p>Open, read, write, and close files using Python's built-in functions.</p>
+      <pre>{`# Writing to a file
+with open("data.txt", "w") as f:
+    f.write("Hello, Python!")
+
+# Reading from a file
+with open("data.txt", "r") as f:
+    content = f.read()
+    print(content)`}</pre>
+
+      <h3>Exception Handling</h3>
+      <pre>{`try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+finally:
+    print("Execution complete")`}</pre>
+    </div>
+  </section>
+)}
+{activeTab === "iterators" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-sync-alt"></i> 11. Iterators & Generators</h2>
+      <p>Iterators allow traversing through objects; generators create iterators efficiently.</p>
+      <pre>{`# Iterator example
+lst = [1,2,3]
+it = iter(lst)
+print(next(it))  # 1
+print(next(it))  # 2
+
+# Generator example
+def gen_numbers(n):
+    for i in range(n):
+        yield i
+
+for num in gen_numbers(5):
+    print(num)`}</pre>
+    </div>
+  </section>
+)}
+{activeTab === "modules" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-box"></i> 12. Modules & Packages</h2>
+      <p>Modules are Python files with functions and variables; packages are collections of modules.</p>
+      
+      <h3>Using Built-in Modules</h3>
+      <pre>{`import os
+print(os.getcwd())  # Get current working directory
+
+import sys
+print(sys.version)  # Python version
+
+from collections import Counter
+nums = [1,2,2,3,3,3]
+print(Counter(nums))  # Count occurrences`}</pre>
+      
+      <h3>Creating Your Own Module</h3>
+      <pre>{`# save this as mymodule.py
+def greet(name):
+    return "Hello, " + name
+
+# main.py
+import mymodule
+print(mymodule.greet("Python"))`}</pre>
+    </div>
+  </section>
+)}
+
+{activeTab === "dsa" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-code-branch"></i> 13. Python for DSA</h2>
+      <p>Implement common data structures using Python for algorithm practice.</p>
+      
+      <h3>Stack (LIFO)</h3>
+      <pre>{`stack = []
+stack.append(1)
+stack.append(2)
+stack.append(3)
+print(stack.pop())  # 3
+print(stack.pop())  # 2`}</pre>
+      
+      <h3>Queue (FIFO)</h3>
+      <pre>{`from collections import deque
+queue = deque([1,2,3])
+queue.append(4)
+print(queue.popleft())  # 1
+print(queue.popleft())  # 2`}</pre>
+      
+      <h3>Heap</h3>
+      <pre>{`import heapq
+heap = [3,1,4,2]
+heapq.heapify(heap)
+heapq.heappush(heap, 0)
+print(heapq.heappop(heap))  # 0 (smallest element)`}</pre>
+      
+      <h3>Linked List (Basic)</h3>
+      <pre>{`class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+head = Node(1)
+second = Node(2)
+head.next = second
+print(head.data, head.next.data)  # 1 2`}</pre>
+    </div>
+  </section>
+)}
+{activeTab === "numpy" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-chart-bar"></i> 14. NumPy & Pandas</h2>
+      <p>Popular libraries for scientific computing and data manipulation.</p>
+      
+      <h3>NumPy Example</h3>
+      <pre>{`import numpy as np
+
+arr = np.array([1,2,3,4])
+print(arr * 2)        # [2 4 6 8]
+print(arr.mean())     # 2.5
+print(arr.reshape(2,2))`}</pre>
+      
+      <h3>Pandas Example</h3>
+      <pre>{`import pandas as pd
+
+data = {'Name': ['Alice', 'Bob'], 'Age': [25, 30]}
+df = pd.DataFrame(data)
+print(df)
+print(df['Age'].mean())`}</pre>
+    </div>
+  </section>
+)}
+
+
 
       <style jsx>{`
         .notes-page {

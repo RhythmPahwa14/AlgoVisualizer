@@ -41,6 +41,14 @@ import JavaBasics from "./pages/Notes/Java/JavaBasics";
 // Python Notes
 import PythonFundamentals from "./pages/Notes/Python/Fundamentals";
 import PythonVariablesAndDataTypes from "./pages/Notes/Python/VariablesAndDataTypes";
+import PythonBasics from "./pages/Notes/Python/PythonBasics";
+import PythonModules from "./pages/Notes/Python/Modules";
+import PythonIterators from "./pages/Notes/Python/Iterators";
+import PythonFilesExceptions from "./pages/Notes/Python/FilesExceptions";
+import PythonNumpyPandas from "./pages/Notes/Python/NumpyPandas";
+import PythonDSA from "./pages/Notes/Python/DSA";
+
+
 
 // C++ Notes
 import CppFundamentals from "./pages/Notes/Cpp/Fundamentals";
@@ -208,9 +216,17 @@ const App = () => {
                   <Route path="/notes/java/variables-and-data-types" element={<VariablesAndDataTypes />} />
                   <Route path="/notes/java/basics" element={<JavaBasics />} />
 
-                  <Route path="/notes/python" element={<Navigate to="/notes/python/fundamentals" replace />} />
-                  <Route path="/notes/python/fundamentals" element={<PythonFundamentals />} />
-                  <Route path="/notes/python/variables-and-data-types" element={<PythonVariablesAndDataTypes />} />
+                 {/* Python Notes */}
+<Route path="/notes/python" element={<Navigate to="/notes/python/fundamentals" replace />} />
+<Route path="/notes/python/fundamentals" element={<PythonFundamentals />} />
+<Route path="/notes/python/variables-and-data-types" element={<PythonVariablesAndDataTypes />} />
+<Route path="/notes/python/basics" element={<PythonBasics />} />
+<Route path="/notes/python/modules" element={<PythonModules />} />
+<Route path="/notes/python/iterators" element={<PythonIterators />} />
+<Route path="/notes/python/files-exceptions" element={<PythonFilesExceptions />} />
+<Route path="/notes/python/numpy-pandas" element={<PythonNumpyPandas />} />
+<Route path="/notes/python/dsa" element={<PythonDSA />} />
+
 
                   <Route path="/notes/cpp" element={<Navigate to="/notes/cpp/fundamentals" replace />} />
                   <Route path="/notes/cpp/fundamentals" element={<CppFundamentals />} />
