@@ -40,6 +40,9 @@ const Fundamentals = () => {
             maxWidth: "700px",
             margin: "0 auto",
             opacity: 0.9,
+             color: window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? "#ffffff"  // text color for dark mode
+      : "#1a1a1a", // text color for light mode
           }}
         >
           A comprehensive guide to Java programming for beginners. Learn core
