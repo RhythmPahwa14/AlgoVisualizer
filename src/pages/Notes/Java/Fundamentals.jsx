@@ -1,4 +1,26 @@
 import React, { useState } from "react";
+import IntroSection from "./sections/IntroSection";
+import SetupSection from "./sections/SetupSection";
+import SyntaxSection from "./sections/SyntaxSection";
+import DataTypesSection from "./sections/DataTypesSection";
+import VariablesSection from "./sections/VariablesSection";
+import OperatorsSection from "./sections/OperatorsSection";
+import ControlFlowSection from "./sections/ControlFlowSection";
+import MethodsSection from "./sections/MethodsSection";
+import OOPSection from "./sections/OOPSection";
+import StringsSection from "./sections/StringsSection";
+import ArraysSection from "./sections/ArraysSection";
+import LoopsSection from "./sections/LoopsSection";
+import ClassesSection from "./sections/ClassesSection";
+import InheritanceSection from "./sections/InheritanceSection";
+import PolymorphismSection from "./sections/PolymorphismSection";
+import EncapsulationSection from "./sections/EncapsulationSection";
+import ConstructorsSection from "./sections/ConstructorsSection";
+import ExceptionsSection from "./sections/ExceptionsSection";
+import CollectionsSection from "./sections/CollectionsSection";
+import InterfacesSection from "./sections/InterfacesSection";
+import PackagesSection from "./sections/PackagesSection";
+import FileHandlingSection from "./sections/FileHandlingSection";
 
 const Fundamentals = () => {
   const [activeTab, setActiveTab] = useState("intro");
@@ -14,11 +36,33 @@ const Fundamentals = () => {
     }
   };
 
+  const sections = [
+    { id: "intro", label: "Introduction", component: <IntroSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "setup", label: "Setup", component: <SetupSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "syntax", label: "Syntax", component: <SyntaxSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "datatypes", label: "Data Types", component: <DataTypesSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "variables", label: "Variables", component: <VariablesSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "operators", label: "Operators", component: <OperatorsSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "control", label: "Control Flow", component: <ControlFlowSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "methods", label: "Methods", component: <MethodsSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "oop", label: "OOP Concepts", component: <OOPSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "strings", label: "Strings", component: <StringsSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "arrays", label: "Arrays", component: <ArraysSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "loops", label: "Loops", component: <LoopsSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "classes", label: "Classes/Objects", component: <ClassesSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "inheritance", label: "Inheritance", component: <InheritanceSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "polymorphism", label: "Polymorphism", component: <PolymorphismSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "encapsulation", label: "Encapsulation", component: <EncapsulationSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "constructors", label: "Constructors", component: <ConstructorsSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "exceptions", label: "Exceptions", component: <ExceptionsSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "collections", label: "Collections", component: <CollectionsSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "interfaces", label: "Interfaces", component: <InterfacesSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "packages", label: "Packages", component: <PackagesSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    { id: "filehandling", label: "File Handling", component: <FileHandlingSection copyCode={copyCode} copiedCode={copiedCode} /> },
+  ];
+
   return (
-    <div
-      className="notes-page"
-      style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}
-    >
+    <div className="notes-page" style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
       {/* Header */}
       <header
         style={{
@@ -31,23 +75,13 @@ const Fundamentals = () => {
           boxShadow: "0 10px 25px rgba(79, 70, 229, 0.3)",
         }}
       >
-        <h1 style={{ fontSize: "3rem", marginBottom: "1rem", fontWeight: 800 }}>
-          Java Fundamentals
-        </h1>
-        <p
-          style={{
-            fontSize: "1.2rem",
-            maxWidth: "700px",
-            margin: "0 auto",
-            opacity: 0.9,
-          }}
-        >
-          A comprehensive guide to Java programming for beginners. Learn core
-          concepts with detailed explanations and examples.
+        <h1 style={{ fontSize: "3rem", marginBottom: "1rem", fontWeight: 800 }}>Java Fundamentals</h1>
+        <p style={{ fontSize: "1.2rem", maxWidth: "700px", margin: "0 auto", opacity: 0.9 }}>
+          A comprehensive guide to Java programming for beginners. Learn core concepts with detailed explanations and runnable examples you can copy.
         </p>
       </header>
 
-      {/* Navigation */}
+      {/* Navigation Tabs */}
       <nav
         style={{
           position: "sticky",
@@ -55,18 +89,16 @@ const Fundamentals = () => {
           background: "var(--card-bg, #ffffff)",
           borderRadius: "12px",
           padding: "1.5rem",
-          boxShadow: "var(--card-shadow, 0 6px 18px rgba(16,24,40,0.04))",
+          boxShadow: "0 6px 18px rgba(16,24,40,0.04)",
           marginBottom: "2rem",
         }}
       >
-        <h3 style={{ marginTop: 0, color: "var(--secondary, #0f172a)" }}>
-          <i
-            className="fas fa-bookmark"
-            style={{ marginRight: "0.5rem", color: "#4f46e5" }}
-          ></i>
+        <h3 style={{ marginTop: 0, color: "#0f172a" }}>
+          <i className="fas fa-bookmark" style={{ marginRight: "0.5rem", color: "#4f46e5" }}></i>
           Contents
         </h3>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+
           {[
             { id: "intro", label: "Introduction" },
             { id: "setup", label: "Setup" },
@@ -100,6 +132,7 @@ const Fundamentals = () => {
   { id: "algorithms", label: "Algorithms" },
   { id: "dataStructures", label: "Data Structures" }
           ].map((item) => (
+
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
@@ -1098,7 +1131,6 @@ for(int i:list){ System.out.println(i); }`}</pre>
 
 
 
-      {/* Add similar sections for other tabs */}
 
       <style jsx>{`
         .notes-page {
@@ -1110,8 +1142,8 @@ for(int i:list){ System.out.println(i); }`}</pre>
         .card {
           background: var(--card-bg, #ffffff);
           border-radius: 12px;
-          box-shadow: var(--card-shadow, 0 6px 18px rgba(16, 24, 40, 0.04));
-          border: var(--card-border, 1px solid rgba(15, 23, 42, 0.03));
+          box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+          border: 1px solid rgba(15, 23, 42, 0.03);
           padding: 1.5rem;
           margin-bottom: 2rem;
           transition: all 0.3s ease;
@@ -1123,7 +1155,7 @@ for(int i:list){ System.out.println(i); }`}</pre>
         }
 
         h2 {
-          color: var(--code-text);
+          color: var(--code-text, #1e293b);
           margin-bottom: 1rem;
           font-weight: 700;
           display: flex;
@@ -1146,7 +1178,7 @@ for(int i:list){ System.out.println(i); }`}</pre>
 
         .code-container pre {
           background: var(--code-bg, #0b1220);
-          color: var(--code-text);
+          color: var(--code-text, #f8fafc);
           padding: 1.5rem;
           overflow-x: auto;
           border-radius: 12px;
@@ -1154,8 +1186,9 @@ for(int i:list){ System.out.println(i); }`}</pre>
           line-height: 1.5;
           font-size: 0.95rem;
         }
+
         p {
-          color: var(--code-text);
+          color: var(--code-text, #374151);
         }
 
         .copy-btn {
@@ -1163,7 +1196,7 @@ for(int i:list){ System.out.println(i); }`}</pre>
           top: 0.75rem;
           right: 0.75rem;
           background: rgba(255, 255, 255, 0.1);
-          color: var(--code-text);
+          color: var(--code-text, #374151);
           border: none;
           padding: 0.5rem 1rem;
           border-radius: 6px;
@@ -1193,16 +1226,16 @@ for(int i:list){ System.out.println(i); }`}</pre>
         ul {
           padding-left: 1.5rem;
           margin-bottom: 1rem;
-          color: var(--code-text);
+          color: var(--code-text, #374151);
         }
 
         li {
-          color: var(--code-text);
+          color: var(--code-text, #374151);
           margin-bottom: 0.5rem;
         }
 
         strong {
-          color: var(--code-text);
+          color: var(--code-text, #374151);
         }
       `}</style>
     </div>
