@@ -35,12 +35,23 @@ export const learnSections = [
   
   // Sorting algorithms section
   {
-    heading: "Sorting",
-    items: [
-      { path: "/sorting", label: "Overview", category: "Sorting", tags: ["overview", "algorithms"] },
-      { path: "/components/AlgorithmComparison", label: "Algorithm Comparison", category: "Sorting", tags: ["comparison", "time complexity"] },
-    ],
-  },
+  heading: "Sorting",
+  items: [
+    {
+      path: "/sorting", 
+      label: "Overview", 
+      category: "Sorting", 
+      tags: ["overview", "algorithms"]
+    },
+    {
+      path: "/sorting/algorithm-comparison", // ✅ updated URL
+      label: "Algorithm Comparison",
+      category: "Sorting",
+      tags: ["comparison", "time complexity"]
+    },
+  ],
+}
+,
   
   // Searching algorithms section
   {

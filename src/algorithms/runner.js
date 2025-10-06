@@ -1,5 +1,7 @@
-// Central runner: adapts ONLY the implementations from src/algorithms (no internal logic)
-// We call the concrete functions and translate their side-effects/outputs into unified steps.
+// src/algorithms/runner.js
+
+// 🎯 Central Algorithm Runner: Adapts implementations from src/algorithms
+// 🔄 Translates algorithm side-effects/outputs into unified visualization steps
 
 import {
   bubbleSort,
@@ -14,9 +16,10 @@ import {
   binarySearchWrapper,
 } from "./index";
 
+// 🛡️ Input validation utilities
 function validateArrayInput(array) {
   if (!Array.isArray(array)) {
-    throw new Error("Input must be an array.");
+    throw new Error("Input must be a valid array.");
   }
   if (array.length === 0) {
     throw new Error("Input array is empty. Please provide an array of numbers.");
@@ -32,7 +35,8 @@ function validateSearchTarget(target) {
   }
 }
 
-const SORTING_ALGOS = new Set([
+// 📊 Algorithm classification constants
+const SORTING_ALGORITHMS = new Set([
   "Bubble Sort",
   "Insertion Sort",
   "Selection Sort",
@@ -43,133 +47,261 @@ const SORTING_ALGOS = new Set([
   "Shell Sort",
 ]);
 
-const SEARCHING_ALGOS = new Set([
+const SEARCHING_ALGORITHMS = new Set([
   "Linear Search",
   "Binary Search",
 ]);
 
+// 🎯 Algorithm type detection
 export function getAlgorithmType(algorithmName) {
-  if (SORTING_ALGOS.has(algorithmName)) return "sorting";
-  if (SEARCHING_ALGOS.has(algorithmName)) return "searching";
+  if (SORTING_ALGORITHMS.has(algorithmName)) return "sorting";
+  if (SEARCHING_ALGORITHMS.has(algorithmName)) return "searching";
   return "unknown";
 }
 
+// 🎨 Color to index conversion utility
 function colorsToIndices(colors) {
-  const indices = [];
-  if (!Array.isArray(colors)) return indices;
-  for (let i = 0; i < colors.length; i++) {
-    if (colors[i] && colors[i] !== "lightgrey") indices.push(i);
+  const highlightedIndices = [];
+  if (!Array.isArray(colors)) return highlightedIndices;
+  
+  for (let index = 0; index < colors.length; index++) {
+    if (colors[index] && colors[index] !== "lightgrey") {
+      highlightedIndices.push(index);
+    }
   }
-  return indices;
+  return highlightedIndices;
 }
 
-async function adaptColorArrayAlgorithm(fn, working, delay = 0) {
-  const steps = [];
-  const n = working.length;
-  let lastColors = new Array(n).fill("lightgrey");
-  const setColorArray = (colors) => {
-    lastColors = Array.isArray(colors) ? colors.slice() : lastColors;
-    const indices = colorsToIndices(lastColors);
-    steps.push({ type: "compare", indices, array: working.slice() });
+// 🔄 Color array algorithm adapter
+async function adaptColorArrayAlgorithm(algorithmFunction, workingArray, delay = 0) {
+  const executionSteps = [];
+  const arrayLength = workingArray.length;
+  let previousColors = new Array(arrayLength).fill("lightgrey");
+  
+  const colorArraySetter = (colors) => {
+    previousColors = Array.isArray(colors) ? colors.slice() : previousColors;
+    const highlightedIndices = colorsToIndices(previousColors);
+    executionSteps.push({ 
+      type: "compare", 
+      indices: highlightedIndices, 
+      array: workingArray.slice() 
+    });
   };
-  // Drive the algorithm (it mutates working and calls setColorArray)
-  await fn(working, setColorArray, delay);
-  steps.push({ type: "done", array: working.slice() });
-  return { steps, finalArray: working.slice() };
+  
+  // 🚀 Execute algorithm with color tracking
+  await algorithmFunction(workingArray, colorArraySetter, delay);
+  
+  executionSteps.push({ 
+    type: "done", 
+    array: workingArray.slice() 
+  });
+  
+  return { 
+    steps: executionSteps, 
+    finalArray: workingArray.slice() 
+  };
 }
 
-function adaptQuickSort(working) {
-  const animations = quickSort(working.slice());
-  const steps = [];
-  const replay = working.slice();
-  for (const evt of animations) {
-    if (evt.type === "compare" && Array.isArray(evt.indices)) {
-      steps.push({ type: "compare", indices: evt.indices });
+// 🔄 QuickSort specific adapter
+function adaptQuickSort(workingArray) {
+  const animationEvents = quickSort(workingArray.slice());
+  const executionSteps = [];
+  const stateArray = workingArray.slice();
+  
+  for (const event of animationEvents) {
+    if (event.type === "compare" && Array.isArray(event.indices)) {
+      executionSteps.push({ 
+        type: "compare", 
+        indices: event.indices 
+      });
     }
-    if (evt.type === "swap" && Array.isArray(evt.indices)) {
-      const [i, j] = evt.indices;
-      if (typeof i === "number" && typeof j === "number") {
-        const tmp = replay[i];
-        replay[i] = replay[j];
-        replay[j] = tmp;
+    if (event.type === "swap" && Array.isArray(event.indices)) {
+      const [firstIndex, secondIndex] = event.indices;
+      if (typeof firstIndex === "number" && typeof secondIndex === "number") {
+        const temporary = stateArray[firstIndex];
+        stateArray[firstIndex] = stateArray[secondIndex];
+        stateArray[secondIndex] = temporary;
       }
-      steps.push({ type: "swap", array: replay.slice() });
+      executionSteps.push({ 
+        type: "swap", 
+        array: stateArray.slice() 
+      });
     }
   }
-  steps.push({ type: "done", array: replay.slice() });
-  return { steps, finalArray: replay };
+  
+  executionSteps.push({ 
+    type: "done", 
+    array: stateArray.slice() 
+  });
+  
+  return { 
+    steps: executionSteps, 
+    finalArray: stateArray 
+  };
 }
 
-async function runSorting(algorithmName, array) {
-  const working = array.slice();
+// 🌀 MergeSort specific adapter
+async function adaptMergeSort(workingArray) {
+  const sortedResult = await mergeSort(workingArray.slice());
+  const finalArray = Array.isArray(sortedResult) ? sortedResult : workingArray.slice();
+  
+  return { 
+    steps: [{ 
+      type: "done", 
+      array: finalArray.slice() 
+    }], 
+    finalArray: finalArray.slice() 
+  };
+}
+
+// 🎬 Sorting algorithm executor
+async function runSortingAlgorithm(algorithmName, inputArray) {
+  const workingArray = inputArray.slice();
+  
   switch (algorithmName) {
     case "Bubble Sort":
-      return await adaptColorArrayAlgorithm(bubbleSort, working, 0);
+      return await adaptColorArrayAlgorithm(bubbleSort, workingArray, 0);
     case "Insertion Sort":
-      return await adaptColorArrayAlgorithm(insertionSort, working, 0);
+      return await adaptColorArrayAlgorithm(insertionSort, workingArray, 0);
     case "Selection Sort":
-      return await adaptColorArrayAlgorithm(selectionSort, working, 0);
+      return await adaptColorArrayAlgorithm(selectionSort, workingArray, 0);
     case "Shell Sort":
-      return await adaptColorArrayAlgorithm(shellSort, working, 0);
+      return await adaptColorArrayAlgorithm(shellSort, workingArray, 0);
     case "Tim Sort":
-      return await adaptColorArrayAlgorithm(timSort, working, 0);
+      return await adaptColorArrayAlgorithm(timSort, workingArray, 0);
     case "Intro Sort":
-      return await adaptColorArrayAlgorithm(introSort, working, 0);
+      return await adaptColorArrayAlgorithm(introSort, workingArray, 0);
     case "Quick Sort":
-      return await adaptColorArrayAlgorithm(quickSort, working, 0);
-    case "Merge Sort": {
-      // mergeSort implementation returns sorted array without colors; we run it and emit final state.
-      const result = await mergeSort(working.slice());
-      const out = Array.isArray(result) ? result : working.slice();
-      return { steps: [{ type: "done", array: out.slice() }], finalArray: out.slice() };
-    }
+      return await adaptColorArrayAlgorithm(quickSort, workingArray, 0);
+    case "Merge Sort":
+      return await adaptMergeSort(workingArray);
     default:
-      return { steps: [{ type: "done", array: working.slice() }], finalArray: working.slice() };
+      return { 
+        steps: [{ 
+          type: "done", 
+          array: workingArray.slice() 
+        }], 
+        finalArray: workingArray.slice() 
+      };
   }
 }
 
-async function runSearching(algorithmName, array, target) {
-  const working = array.slice();
+// 🔍 Searching algorithm executor
+async function runSearchingAlgorithm(algorithmName, inputArray, targetValue) {
+  const workingArray = inputArray.slice();
+  
   switch (algorithmName) {
     case "Linear Search":
-      return await adaptColorArrayAlgorithm(linearSearchWrapper, working, 0);
+      return await adaptColorArrayAlgorithm(linearSearchWrapper, workingArray, 0);
     case "Binary Search":
-      return await adaptColorArrayAlgorithm(binarySearchWrapper, working, 0);
+      return await adaptColorArrayAlgorithm(binarySearchWrapper, workingArray, 0);
     default: {
-      // For other searching algorithms, we'll create a simple step sequence
-      const steps = [];
-      for (let i = 0; i < working.length; i++) {
-        steps.push({ type: "probe", index: i });
-        // In a real implementation, we would check if working[i] === target
+      // 🎯 Fallback search implementation
+      const searchSteps = [];
+      for (let index = 0; index < workingArray.length; index++) {
+        searchSteps.push({ 
+          type: "probe", 
+          index: index 
+        });
+        // 🎯 Real implementation would check: workingArray[index] === targetValue
       }
-      steps.push({ type: "done", array: working.slice() });
-      return { steps, finalArray: working.slice() };
+      searchSteps.push({ 
+        type: "done", 
+        array: workingArray.slice() 
+      });
+      return { 
+        steps: searchSteps, 
+        finalArray: workingArray.slice() 
+      };
     }
   }
 }
 
-export function runAlgorithm(algorithmName, array, target) {
-  const type = getAlgorithmType(algorithmName);
-  if (type === "sorting") {
-    // Note: returning a promise to allow awaiting in callers if needed
-    // but AlgorithmVisualizer treats steps synchronously, so we resolve immediately by blocking until done.
-    // Here we use deasync via async/await-style: Since callers are not async, we expose sync-like result using Atomics? Not needed.
-    // Instead, we design AlgorithmVisualizer to call this synchronously? For now, we rely on algorithms executing quickly with delay 0.
+// 🚀 Synchronous algorithm runner (legacy interface)
+export function runAlgorithm(algorithmName, inputArray, targetValue) {
+  const algorithmType = getAlgorithmType(algorithmName);
+  
+  if (algorithmType === "sorting") {
+    // 📝 Note: Returns promise for async handling
+    // AlgorithmVisualizer treats steps synchronously, so we resolve immediately
   }
-  // We return a plain object; since we call the async fns synchronously above using await, callers should call runAlgorithmSync.
-  throw new Error("Use runAlgorithmAsync for execution");
+  
+  throw new Error("Use runAlgorithmAsync for algorithm execution");
 }
 
-export async function runAlgorithmAsync(algorithmName, array, target) {
+// ⚡ Asynchronous algorithm runner (primary interface)
+export async function runAlgorithmAsync(algorithmName, inputArray, targetValue) {
+  // 🛡️ Input validation
   validateArrayInput(inputArray);
+  
+  const algorithmType = getAlgorithmType(algorithmName);
+  
   if (algorithmType.includes("search")) {
-    validateSearchTarget(target);
+    validateSearchTarget(targetValue);
   }
-  const type = getAlgorithmType(algorithmName);
-  if (type === "sorting") {
-    const res = await runSorting(algorithmName, array);
-    return { type, ...res };
+  
+  // 🎯 Execute appropriate algorithm type
+  if (algorithmType === "sorting") {
+    const result = await runSortingAlgorithm(algorithmName, inputArray);
+    return { 
+      type: algorithmType, 
+      ...result 
+    };
+  } else {
+    const result = await runSearchingAlgorithm(algorithmName, inputArray, targetValue);
+    return { 
+      type: algorithmType, 
+      ...result 
+    };
   }
-  const res = await runSearching(algorithmName, array, target);
-  return { type, ...res };
 }
+
+// 📊 Algorithm metadata and capabilities
+export const AlgorithmMetadata = {
+  sorting: {
+    algorithms: Array.from(SORTING_ALGORITHMS),
+    description: "Array sorting algorithms",
+    complexity: {
+      "Bubble Sort": "O(n²)",
+      "Insertion Sort": "O(n²)",
+      "Selection Sort": "O(n²)",
+      "Merge Sort": "O(n log n)",
+      "Quick Sort": "O(n log n)",
+      "Tim Sort": "O(n log n)",
+      "Intro Sort": "O(n log n)",
+      "Shell Sort": "O(n log n)"
+    }
+  },
+  searching: {
+    algorithms: Array.from(SEARCHING_ALGORITHMS),
+    description: "Array searching algorithms",
+    complexity: {
+      "Linear Search": "O(n)",
+      "Binary Search": "O(log n)"
+    }
+  }
+};
+
+// 🛠️ Utility functions for algorithm analysis
+export const AlgorithmUtils = {
+  // 📈 Get algorithm time complexity
+  getTimeComplexity: (algorithmName) => {
+    const algorithmType = getAlgorithmType(algorithmName);
+    return AlgorithmMetadata[algorithmType]?.complexity[algorithmName] || "Unknown";
+  },
+  
+  // 🔍 Check if algorithm is available
+  isAlgorithmAvailable: (algorithmName) => {
+    return SORTING_ALGORITHMS.has(algorithmName) || SEARCHING_ALGORITHMS.has(algorithmName);
+  },
+  
+  // 📋 Get all available algorithms by type
+  getAvailableAlgorithms: (type = "all") => {
+    if (type === "sorting") return Array.from(SORTING_ALGORITHMS);
+    if (type === "searching") return Array.from(SEARCHING_ALGORITHMS);
+    return {
+      sorting: Array.from(SORTING_ALGORITHMS),
+      searching: Array.from(SEARCHING_ALGORITHMS)
+    };
+  }
+};

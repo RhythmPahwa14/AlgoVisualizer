@@ -1,5 +1,6 @@
 // src/algorithms/queue.js
 
+// 🏗️ Queue Node Structure
 export class Node {
     constructor(data, next = null) {
         this.data = data;
@@ -7,31 +8,47 @@ export class Node {
     }
 }
 
+// 📊 Queue Data Structure Implementation
 export class Queue {
     constructor() {
         this.front = null;
         this.back = null;
         this.size = 0;
+        this.maxSize = 1000; // 🎯 Added maximum size constraint
     }
 
+    // ➕ Add element to the back of queue
     enqueue(data) {
+        // 🚫 Check queue capacity
+        if (this.size >= this.maxSize) {
+            console.warn('⚠️ Queue capacity reached');
+            return false;
+        }
+
         const newNode = new Node(data);
         if (!this.back) {
+            // 🎯 First element in empty queue
             this.front = newNode;
             this.back = newNode;
         } else {
+            // 🔗 Add to existing queue
             this.back.next = newNode;
             this.back = newNode;
         }
         this.size++;
+        return true;
     }
 
+    // ➖ Remove element from front of queue
     dequeue() {
         if (!this.front) {
+            console.log('ℹ️ Queue is empty, nothing to dequeue');
             return null;
         }
         const dequeuedNode = this.front;
         this.front = this.front.next;
+        
+        // 🎯 Update back pointer if queue becomes empty
         if (!this.front) {
             this.back = null;
         }
@@ -39,146 +56,286 @@ export class Queue {
         return dequeuedNode.data;
     }
 
+    // 👀 Peek at front element without removal
     peek() {
         return this.front ? this.front.data : null;
     }
 
+    // 🔍 Check if queue is empty
     isEmpty() {
         return this.size === 0;
     }
 
-    // New search method
+    // 🔎 Search for element in queue
     search(data) {
-        let current = this.front;
-        while (current) {
-            if (current.data === data) {
-                return true;
+        let currentNode = this.front;
+        let position = 0;
+        
+        while (currentNode) {
+            if (currentNode.data === data) {
+                return { found: true, position };
             }
-            current = current.next;
+            currentNode = currentNode.next;
+            position++;
         }
-        return false;
+        return { found: false, position: -1 };
     }
 
+    // 📋 Convert queue to array representation
     getArray() {
-        const arr = [];
-        let current = this.front;
-        while (current) {
-            arr.push(current.data);
-            current = current.next;
+        const arrayRepresentation = [];
+        let currentNode = this.front;
+        
+        while (currentNode) {
+            arrayRepresentation.push(currentNode.data);
+            currentNode = currentNode.next;
         }
-        return arr;
+        return arrayRepresentation;
+    }
+
+    // 🧹 Clear all elements from queue
+    clear() {
+        this.front = null;
+        this.back = null;
+        this.size = 0;
+    }
+
+    // 📊 Get queue statistics
+    getStats() {
+        return {
+            size: this.size,
+            isEmpty: this.isEmpty(),
+            frontElement: this.peek(),
+            maxSize: this.maxSize
+        };
+    }
+
+    // 🔄 Create queue from array
+    static fromArray(elements) {
+        const newQueue = new Queue();
+        elements.forEach(element => newQueue.enqueue(element));
+        return newQueue;
     }
 }
 
-// Pseudo-code to be used in DataStructures.js
+// 📝 Queue Algorithm Pseudocode Documentation
 export const QUEUE_PSEUDOCODE = {
     enqueue: [
-        { code: 'function enqueue(data)', explain: 'A new node with the data is created and added to the back of the queue.' },
-        { code: '  if queue is empty', explain: 'If the queue is empty, the new node is both the front and the back.' },
-        { code: '  else', explain: 'Otherwise, the new node is added after the current back node.' },
-        { code: '    queue.back.next = newNode', explain: 'The old back node\'s next pointer is updated.' },
-        { code: '    queue.back = newNode', explain: 'The new node becomes the new back of the queue.' }
+        { code: 'function enqueue(data)', explain: 'Create new node with provided data value.' },
+        { code: '  if queue is empty', explain: 'Initialize both front and back pointers to new node.' },
+        { code: '  else', explain: 'Append new node to the end of existing queue.' },
+        { code: '    queue.back.next = newNode', explain: 'Link current back node to new node.' },
+        { code: '    queue.back = newNode', explain: 'Update back pointer to new node.' },
+        { code: '  increment queue size', explain: 'Maintain accurate size counter.' }
     ],
     dequeue: [
-        { code: 'function dequeue()', explain: 'The element at the front of the queue is removed.' },
-        { code: '  if queue is not empty', explain: 'Check if there are any elements to remove.' },
-        { code: '    queue.front = queue.front.next', explain: 'The front is moved to the next element in the queue.' }
+        { code: 'function dequeue()', explain: 'Remove and return front element from queue.' },
+        { code: '  if queue is not empty', explain: 'Verify queue contains elements.' },
+        { code: '    temp = queue.front', explain: 'Store reference to front node.' },
+        { code: '    queue.front = queue.front.next', explain: 'Advance front pointer to next node.' },
+        { code: '    if queue.front is null', explain: 'Handle case when queue becomes empty.' },
+        { code: '      queue.back = null', explain: 'Reset back pointer for empty queue.' },
+        { code: '    decrement queue size', explain: 'Update size counter accordingly.' }
     ],
     search: [
-        { code: 'function search(data)', explain: 'Iterate through the queue to find the data.' },
-        { code: '  current = queue.front', explain: 'Start from the front of the queue.' },
-        { code: '  while (current !== null)', explain: 'Loop until the end of the queue is reached.' },
-        { code: '    if (current.data === data)', explain: 'Check if the current node\'s data matches the target.' },
-        { code: '      return true', explain: 'If a match is found, return true.' },
-        { code: '    current = current.next', explain: 'Move to the next node.' },
-        { code: '  return false', explain: 'If the loop finishes, the data was not found.' }
+        { code: 'function search(data)', explain: 'Linear search through queue elements.' },
+        { code: '  current = queue.front', explain: 'Start traversal from front node.' },
+        { code: '  position = 0', explain: 'Initialize position counter.' },
+        { code: '  while (current !== null)', explain: 'Iterate until end of queue.' },
+        { code: '    if (current.data === data)', explain: 'Compare current node data with target.' },
+        { code: '      return {found: true, position}', explain: 'Return success with position.' },
+        { code: '    current = current.next', explain: 'Move to next node in queue.' },
+        { code: '    position++', explain: 'Increment position counter.' },
+        { code: '  return {found: false, position: -1}', explain: 'Return failure indicator.' }
+    ],
+    peek: [
+        { code: 'function peek()', explain: 'Examine front element without removal.' },
+        { code: '  if queue.front exists', explain: 'Check if queue is non-empty.' },
+        { code: '    return queue.front.data', explain: 'Return data from front node.' },
+        { code: '  else', explain: 'Handle empty queue case.' },
+        { code: '    return null', explain: 'Return null for empty queue.' }
     ]
 };
 
-// Function to generate visualization steps
+// 🎬 Queue Visualization Step Generator
 export const getQueueSteps = (operation, queueInstance, params) => {
-    const steps = [];
-    const tempQueue = new Queue();
-    tempQueue.front = queueInstance.front;
-    tempQueue.back = queueInstance.back;
-    tempQueue.size = queueInstance.size;
+    const visualizationSteps = [];
+    const temporaryQueue = new Queue();
+    
+    // 🎯 Create temporary copy for visualization
+    temporaryQueue.front = queueInstance.front;
+    temporaryQueue.back = queueInstance.back;
+    temporaryQueue.size = queueInstance.size;
 
     switch (operation) {
         case 'enqueue':
-            steps.push({
+            visualizationSteps.push({
                 type: 'highlight',
-                queue: [...tempQueue.getArray()],
+                queue: [...temporaryQueue.getArray()],
                 pseudoLine: 0,
-                description: `Adding element ${params.data} to the back.`
+                description: `Preparing to enqueue element ${params.data} to queue back.`,
+                operation: 'enqueue'
             });
-            tempQueue.enqueue(params.data);
-            steps.push({
+            
+            temporaryQueue.enqueue(params.data);
+            
+            visualizationSteps.push({
                 type: 'insert',
-                queue: [...tempQueue.getArray()],
+                queue: [...temporaryQueue.getArray()],
                 pseudoLine: 4,
-                description: `New element ${params.data} added.`
+                description: `Element ${params.data} successfully added to queue back.`,
+                operation: 'enqueue'
             });
             break;
-        case 'dequeue':
-            steps.push({
-                type: 'highlight',
-                queue: [...tempQueue.getArray()],
-                pseudoLine: 0,
-                description: `Removing element from the front.`
-            });
-            tempQueue.dequeue();
-            steps.push({
-                type: 'delete',
-                queue: [...tempQueue.getArray()],
-                pseudoLine: 2,
-                description: `Element removed from the front.`
-            });
-            break;
-        case 'search':
-            let current = tempQueue.front;
-            let index = 0;
-            let found = false;
 
-            while(current) {
-                steps.push({
+        case 'dequeue':
+            visualizationSteps.push({
+                type: 'highlight',
+                queue: [...temporaryQueue.getArray()],
+                pseudoLine: 0,
+                description: `Preparing to dequeue element from queue front.`,
+                operation: 'dequeue'
+            });
+            
+            const dequeuedValue = temporaryQueue.dequeue();
+            
+            visualizationSteps.push({
+                type: 'delete',
+                queue: [...temporaryQueue.getArray()],
+                pseudoLine: 2,
+                description: `Element ${dequeuedValue} removed from queue front.`,
+                operation: 'dequeue'
+            });
+            break;
+
+        case 'search':
+            let currentNode = temporaryQueue.front;
+            let currentIndex = 0;
+            let searchFound = false;
+
+            visualizationSteps.push({
+                type: 'startSearch',
+                queue: [...temporaryQueue.getArray()],
+                pseudoLine: 0,
+                description: `Initiating search for value ${params.data} in queue.`,
+                operation: 'search'
+            });
+
+            while(currentNode) {
+                visualizationSteps.push({
                     type: 'traverse',
-                    queue: [...tempQueue.getArray()],
-                    highlightIndex: index,
+                    queue: [...temporaryQueue.getArray()],
+                    highlightIndex: currentIndex,
                     pseudoLine: 2,
-                    description: `Searching for ${params.data}. Checking node at index ${index}`
+                    description: `Checking element at position ${currentIndex}: ${currentNode.data}`,
+                    operation: 'search'
                 });
-                if (current.data === params.data) {
-                    steps.push({
+                
+                if (currentNode.data === params.data) {
+                    visualizationSteps.push({
                         type: 'found',
-                        queue: [...tempQueue.getArray()],
-                        highlightIndex: index,
+                        queue: [...temporaryQueue.getArray()],
+                        highlightIndex: currentIndex,
                         pseudoLine: 4,
-                        description: `Value ${params.data} found at index ${index}.`
+                        description: `Target value ${params.data} found at position ${currentIndex}.`,
+                        operation: 'search'
                     });
-                    found = true;
+                    searchFound = true;
                     break;
                 }
-                current = current.next;
-                index++;
+                
+                currentNode = currentNode.next;
+                currentIndex++;
             }
-            if (!found) {
-                steps.push({
+            
+            if (!searchFound) {
+                visualizationSteps.push({
                     type: 'notFound',
-                    queue: [...tempQueue.getArray()],
+                    queue: [...temporaryQueue.getArray()],
                     highlightIndex: -1,
                     pseudoLine: 6,
-                    description: `Value ${params.data} not found in the queue.`
+                    description: `Value ${params.data} not found in queue.`,
+                    operation: 'search'
                 });
             }
             break;
-        default:
-            steps.push({
-                type: 'initial',
-                queue: [...tempQueue.getArray()],
+
+        case 'peek':
+            visualizationSteps.push({
+                type: 'highlight',
+                queue: [...temporaryQueue.getArray()],
                 pseudoLine: 0,
-                description: `Initial state of the queue.`
+                description: `Examining front element without removal.`,
+                operation: 'peek'
+            });
+            
+            const frontValue = temporaryQueue.peek();
+            
+            visualizationSteps.push({
+                type: 'peek',
+                queue: [...temporaryQueue.getArray()],
+                highlightIndex: 0,
+                pseudoLine: 2,
+                description: `Front element is: ${frontValue}`,
+                operation: 'peek'
+            });
+            break;
+
+        default:
+            visualizationSteps.push({
+                type: 'initial',
+                queue: [...temporaryQueue.getArray()],
+                pseudoLine: 0,
+                description: `Queue initial state loaded.`,
+                operation: 'default'
             });
     }
 
-    return steps;
+    return visualizationSteps;
+};
+
+// 🧪 Queue Utility Functions
+export const QueueUtils = {
+    // 🔄 Reverse queue elements
+    reverse: (queue) => {
+        const stack = [];
+        while (!queue.isEmpty()) {
+            stack.push(queue.dequeue());
+        }
+        while (stack.length > 0) {
+            queue.enqueue(stack.pop());
+        }
+        return queue;
+    },
+
+    // 📊 Compare two queues for equality
+    areEqual: (queue1, queue2) => {
+        if (queue1.size !== queue2.size) return false;
+        
+        let current1 = queue1.front;
+        let current2 = queue2.front;
+        
+        while (current1 && current2) {
+            if (current1.data !== current2.data) return false;
+            current1 = current1.next;
+            current2 = current2.next;
+        }
+        
+        return true;
+    },
+
+    // 🎯 Find maximum element in queue
+    findMax: (queue) => {
+        if (queue.isEmpty()) return null;
+        
+        let max = queue.front.data;
+        let current = queue.front.next;
+        
+        while (current) {
+            if (current.data > max) max = current.data;
+            current = current.next;
+        }
+        
+        return max;
+    }
 };

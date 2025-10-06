@@ -1,5 +1,6 @@
 // src/algorithms/binaryTree.js
 
+// 🏗️ Binary Tree Node Structure
 export class Node {
     constructor(data) {
         this.data = data;
@@ -8,39 +9,47 @@ export class Node {
     }
 }
 
+// 🌳 Binary Search Tree Implementation
 export class BinaryTree {
     constructor() {
         this.root = null;
+        this.nodeCount = 0;
     }
 
+    // ➕ Insert new data into tree
     insert(data) {
         const newNode = new Node(data);
         if (!this.root) {
             this.root = newNode;
+            this.nodeCount++;
         } else {
             this.insertNode(this.root, newNode);
         }
     }
 
+    // 🔍 Recursive node insertion helper
     insertNode(node, newNode) {
         if (newNode.data < node.data) {
             if (!node.left) {
                 node.left = newNode;
+                this.nodeCount++;
             } else {
                 this.insertNode(node.left, newNode);
             }
         } else if (!node.right) {
             node.right = newNode;
+            this.nodeCount++;
         } else {
             this.insertNode(node.right, newNode);
         }
     }
 
-    // New search method
+    // 🔎 Search for data in tree
     search(data) {
         return this.searchNode(this.root, data);
     }
 
+    // 🔍 Recursive search implementation
     searchNode(node, data) {
         if (!node || node.data === data) {
             return node;
@@ -53,7 +62,7 @@ export class BinaryTree {
         }
     }
 
-    // Helper to get all nodes for visualization
+    // 📊 Get all nodes for visualization
     getNodes() {
         const nodes = [];
         const queue = [this.root];
@@ -68,11 +77,12 @@ export class BinaryTree {
         return nodes;
     }
 
-    // Delete a node from BST (handles leaf, one child, two children)
+    // 🗑️ Delete node from BST
     delete(data) {
         this.root = this._deleteNode(this.root, data);
     }
 
+    // 🔧 Internal delete node implementation
     _deleteNode(node, data) {
         if (!node) return null;
         if (data < node.data) {
@@ -82,220 +92,435 @@ export class BinaryTree {
             node.right = this._deleteNode(node.right, data);
             return node;
         }
-        // Node found
-        if (!node.left && !node.right) return null; // leaf
-        if (!node.left) return node.right; // one child
-        if (!node.right) return node.left; // one child
-        // two children: replace with inorder successor
-        const succ = this._minNode(node.right);
-        node.data = succ.data;
-        node.right = this._deleteNode(node.right, succ.data);
+        // 🎯 Node found - handle deletion cases
+        if (!node.left && !node.right) return null; // 🍃 Leaf node
+        if (!node.left) return node.right; // 👶 Single child (right)
+        if (!node.right) return node.left; // 👶 Single child (left)
+        // 👨‍👩‍👧‍👦 Two children: replace with inorder successor
+        const successor = this._minNode(node.right);
+        node.data = successor.data;
+        node.right = this._deleteNode(node.right, successor.data);
         return node;
     }
 
+    // 📉 Find minimum node in subtree
     _minNode(node) {
-        let cur = node;
-        while (cur?.left) {
-            cur = cur.left;
+        let current = node;
+        while (current?.left) {
+            current = current.left;
         }
-        return cur;
+        return current;
     }
 
-    // Traversals (return arrays)
+    // 🔄 Inorder traversal (LNR)
     inorder() {
-        const res = [];
-        const dfs = (n) => { if (!n) return; dfs(n.left); res.push(n.data); dfs(n.right); };
-        dfs(this.root);
-        return res;
+        const result = [];
+        const traverse = (node) => { 
+            if (!node) return; 
+            traverse(node.left); 
+            result.push(node.data); 
+            traverse(node.right); 
+        };
+        traverse(this.root);
+        return result;
     }
+
+    // 🔄 Preorder traversal (NLR)
     preorder() {
-        const res = [];
-        const dfs = (n) => { if (!n) return; res.push(n.data); dfs(n.left); dfs(n.right); };
-        dfs(this.root);
-        return res;
+        const result = [];
+        const traverse = (node) => { 
+            if (!node) return; 
+            result.push(node.data); 
+            traverse(node.left); 
+            traverse(node.right); 
+        };
+        traverse(this.root);
+        return result;
     }
+
+    // 🔄 Postorder traversal (LRN)
     postorder() {
-        const res = [];
-        const dfs = (n) => { if (!n) return; dfs(n.left); dfs(n.right); res.push(n.data); };
-        dfs(this.root);
-        return res;
+        const result = [];
+        const traverse = (node) => { 
+            if (!node) return; 
+            traverse(node.left); 
+            traverse(node.right); 
+            result.push(node.data); 
+        };
+        traverse(this.root);
+        return result;
+    }
+
+    // 📈 Get tree statistics
+    getStats() {
+        return {
+            nodeCount: this.nodeCount,
+            height: this._calculateHeight(this.root),
+            isBalanced: this._isBalanced(this.root)
+        };
+    }
+
+    // 📏 Calculate tree height
+    _calculateHeight(node) {
+        if (!node) return 0;
+        return 1 + Math.max(
+            this._calculateHeight(node.left), 
+            this._calculateHeight(node.right)
+        );
+    }
+
+    // ⚖️ Check if tree is balanced
+    _isBalanced(node) {
+        if (!node) return true;
+        const leftHeight = this._calculateHeight(node.left);
+        const rightHeight = this._calculateHeight(node.right);
+        return Math.abs(leftHeight - rightHeight) <= 1 && 
+               this._isBalanced(node.left) && 
+               this._isBalanced(node.right);
     }
 }
 
-// Pseudo-code to be used in DataStructures.js
+// 📝 Algorithm pseudocode documentation
 export const BINARY_TREE_PSEUDOCODE = {
     insert: [
-        { code: 'function insert(node, data)', explain: 'Find the correct position to insert the new node.' },
-        { code: '  if data < node.data', explain: 'If the data is smaller, move to the left subtree.' },
-        { code: '    insert(node.left, data)', explain: 'Recursively call insert on the left child.' },
-        { code: '  else', explain: 'If the data is larger, move to the right subtree.' },
-        { code: '    insert(node.right, data)', explain: 'Recursively call insert on the right child.' }
+        { code: 'function insert(node, data)', explain: 'Locate appropriate position for new node insertion.' },
+        { code: '  if data < node.data', explain: 'Navigate to left subtree for smaller values.' },
+        { code: '    insert(node.left, data)', explain: 'Recursive insertion in left subtree.' },
+        { code: '  else', explain: 'Navigate to right subtree for larger values.' },
+        { code: '    insert(node.right, data)', explain: 'Recursive insertion in right subtree.' }
     ],
     search: [
-        { code: 'function search(node, data)', explain: 'Start the search from the root of the tree.' },
-        { code: '  if node === null or node.data === data', explain: 'Base case: if the node is null or its data matches, return the node.' },
-        { code: '  if data < node.data', explain: 'If the target data is smaller, it must be in the left subtree.' },
-        { code: '    return search(node.left, data)', explain: 'Recursively search the left subtree.' },
-        { code: '  else', explain: 'Otherwise, the data must be in the right subtree.' },
-        { code: '    return search(node.right, data)', explain: 'Recursively search the right subtree.' }
+        { code: 'function search(node, data)', explain: 'Initiate search from root node.' },
+        { code: '  if node === null or node.data === data', explain: 'Base case: node found or reached leaf.' },
+        { code: '  if data < node.data', explain: 'Target data smaller than current node.' },
+        { code: '    return search(node.left, data)', explain: 'Recursively search left subtree.' },
+        { code: '  else', explain: 'Target data larger than current node.' },
+        { code: '    return search(node.right, data)', explain: 'Recursively search right subtree.' }
     ],
     delete: [
-        { code: 'function delete(node, key)', explain: 'Find the node to delete.' },
-        { code: '  if key < node.data: node.left = delete(node.left, key)', explain: 'Go left.' },
-        { code: '  else if key > node.data: node.right = delete(node.right, key)', explain: 'Go right.' },
-        { code: '  else // found', explain: 'Handle 3 cases.' },
-        { code: '    if no child: return null', explain: 'Leaf node.' },
-        { code: '    if one child: return that child', explain: 'Single child replace.' },
-        { code: '    two children: node.data = min(node.right)', explain: 'Copy inorder successor.' },
-        { code: '    node.right = delete(node.right, node.data)', explain: 'Delete successor.' }
+        { code: 'function delete(node, key)', explain: 'Locate target node for deletion.' },
+        { code: '  if key < node.data: node.left = delete(node.left, key)', explain: 'Search in left subtree.' },
+        { code: '  else if key > node.data: node.right = delete(node.right, key)', explain: 'Search in right subtree.' },
+        { code: '  else // node found', explain: 'Handle three deletion scenarios.' },
+        { code: '    if no children: return null', explain: 'Simple leaf node removal.' },
+        { code: '    if one child: return that child', explain: 'Bypass node with single child.' },
+        { code: '    two children: node.data = min(node.right)', explain: 'Replace with inorder successor.' },
+        { code: '    node.right = delete(node.right, node.data)', explain: 'Remove duplicate successor.' }
     ],
     inorder: [
-        { code: 'inorder(node):', explain: 'LNR' },
-        { code: '  inorder(node.left)', explain: 'Left' },
-        { code: '  visit(node)', explain: 'Node' },
-        { code: '  inorder(node.right)', explain: 'Right' }
+        { code: 'inorder(node):', explain: 'Left-Node-Right traversal pattern.' },
+        { code: '  inorder(node.left)', explain: 'Process left subtree first.' },
+        { code: '  visit(node)', explain: 'Process current node.' },
+        { code: '  inorder(node.right)', explain: 'Process right subtree last.' }
     ],
     preorder: [
-        { code: 'preorder(node):', explain: 'NLR' },
-        { code: '  visit(node)', explain: 'Node' },
-        { code: '  preorder(node.left)', explain: 'Left' },
-        { code: '  preorder(node.right)', explain: 'Right' }
+        { code: 'preorder(node):', explain: 'Node-Left-Right traversal pattern.' },
+        { code: '  visit(node)', explain: 'Process current node first.' },
+        { code: '  preorder(node.left)', explain: 'Process left subtree second.' },
+        { code: '  preorder(node.right)', explain: 'Process right subtree third.' }
     ],
     postorder: [
-        { code: 'postorder(node):', explain: 'LRN' },
-        { code: '  postorder(node.left)', explain: 'Left' },
-        { code: '  postorder(node.right)', explain: 'Right' },
-        { code: '  visit(node)', explain: 'Node' }
+        { code: 'postorder(node):', explain: 'Left-Right-Node traversal pattern.' },
+        { code: '  postorder(node.left)', explain: 'Process left subtree first.' },
+        { code: '  postorder(node.right)', explain: 'Process right subtree second.' },
+        { code: '  visit(node)', explain: 'Process current node last.' }
     ]
 };
 
-// Function to generate visualization steps
-// Helper builders to reduce complexity of getTreeSteps
+// 🎬 Visualization step generators
+
+// ➕ Insert operation step builder
 function buildInsertSteps(treeInstance, data) {
     const steps = [];
     let currentNode = treeInstance.root;
+    
     if (!currentNode) {
-        steps.push({ type: 'insert', node: new Node(data), pseudoLine: 0, description: `Inserting new node ${data} as root.`, operation: 'insert' });
+        steps.push({ 
+            type: 'insert', 
+            node: new Node(data), 
+            pseudoLine: 0, 
+            description: `Creating new node ${data} as root element.`, 
+            operation: 'insert' 
+        });
         return steps;
     }
-    steps.push({ type: 'traverse', node: currentNode, pseudoLine: 0, description: `Starting insert from root node ${currentNode.data}.`, operation: 'insert' });
+    
+    steps.push({ 
+        type: 'traverse', 
+        node: currentNode, 
+        pseudoLine: 0, 
+        description: `Beginning insertion from root node ${currentNode.data}.`, 
+        operation: 'insert' 
+    });
+    
     while (currentNode) {
         if (data < currentNode.data) {
             if (!currentNode.left) {
-                steps.push({ type: 'insert', node: currentNode, value: data, pseudoLine: 2, description: `Inserting ${data} as left child of ${currentNode.data}.`, operation: 'insert' });
+                steps.push({ 
+                    type: 'insert', 
+                    node: currentNode, 
+                    value: data, 
+                    pseudoLine: 2, 
+                    description: `Placing ${data} as left child of ${currentNode.data}.`, 
+                    operation: 'insert' 
+                });
                 break;
             }
-            steps.push({ type: 'traverse', node: currentNode.left, pseudoLine: 2, description: `Moving to left child ${currentNode.left.data} as ${data} is smaller.`, operation: 'insert' });
+            steps.push({ 
+                type: 'traverse', 
+                node: currentNode.left, 
+                pseudoLine: 2, 
+                description: `Navigating to left child ${currentNode.left.data} (${data} < ${currentNode.data}).`, 
+                operation: 'insert' 
+            });
             currentNode = currentNode.left;
         } else {
             if (!currentNode.right) {
-                steps.push({ type: 'insert', node: currentNode, value: data, pseudoLine: 4, description: `Inserting ${data} as right child of ${currentNode.data}.`, operation: 'insert' });
+                steps.push({ 
+                    type: 'insert', 
+                    node: currentNode, 
+                    value: data, 
+                    pseudoLine: 4, 
+                    description: `Placing ${data} as right child of ${currentNode.data}.`, 
+                    operation: 'insert' 
+                });
                 break;
             }
-            steps.push({ type: 'traverse', node: currentNode.right, pseudoLine: 4, description: `Moving to right child ${currentNode.right.data} as ${data} is larger.`, operation: 'insert' });
+            steps.push({ 
+                type: 'traverse', 
+                node: currentNode.right, 
+                pseudoLine: 4, 
+                description: `Navigating to right child ${currentNode.right.data} (${data} >= ${currentNode.data}).`, 
+                operation: 'insert' 
+            });
             currentNode = currentNode.right;
         }
     }
     return steps;
 }
 
+// 🔍 Search operation step builder
 function buildSearchSteps(treeInstance, data) {
     const steps = [];
     let currentNode = treeInstance.root;
+    
     if (!currentNode) {
-        steps.push({ type: 'notFound', node: null, pseudoLine: 1, description: `Tree is empty, value ${data} not found.`, operation: 'search' });
+        steps.push({ 
+            type: 'notFound', 
+            node: null, 
+            pseudoLine: 1, 
+            description: `Empty tree structure - value ${data} not present.`, 
+            operation: 'search' 
+        });
         return steps;
     }
-    steps.push({ type: 'traverse', node: currentNode, pseudoLine: 0, description: `Starting search for ${data} from root node ${currentNode.data}.`, operation: 'search' });
+    
+    steps.push({ 
+        type: 'traverse', 
+        node: currentNode, 
+        pseudoLine: 0, 
+        description: `Initiating search for ${data} from root ${currentNode.data}.`, 
+        operation: 'search' 
+    });
+    
     while (currentNode) {
         if (currentNode.data === data) {
-            steps.push({ type: 'found', node: currentNode, pseudoLine: 1, description: `Value ${data} found.`, operation: 'search' });
+            steps.push({ 
+                type: 'found', 
+                node: currentNode, 
+                pseudoLine: 1, 
+                description: `Target value ${data} located successfully.`, 
+                operation: 'search' 
+            });
             return steps;
         }
-        steps.push({ type: 'compare', node: currentNode, pseudoLine: 2, description: `Comparing ${data} with ${currentNode.data}.`, operation: 'search' });
+        steps.push({ 
+            type: 'compare', 
+            node: currentNode, 
+            pseudoLine: 2, 
+            description: `Comparing target ${data} with current ${currentNode.data}.`, 
+            operation: 'search' 
+        });
         if (data < currentNode.data) {
             if (!currentNode.left) {
-                steps.push({ type: 'notFound', node: currentNode, pseudoLine: 3, description: `No left child. Value ${data} not found.`, operation: 'search' });
+                steps.push({ 
+                    type: 'notFound', 
+                    node: currentNode, 
+                    pseudoLine: 3, 
+                    description: `Left subtree empty - value ${data} not found.`, 
+                    operation: 'search' 
+                });
                 return steps;
             }
-            steps.push({ type: 'traverse', node: currentNode.left, pseudoLine: 3, description: `Moving to left child ${currentNode.left.data}.`, operation: 'search' });
+            steps.push({ 
+                type: 'traverse', 
+                node: currentNode.left, 
+                pseudoLine: 3, 
+                description: `Moving to left child ${currentNode.left.data}.`, 
+                operation: 'search' 
+            });
             currentNode = currentNode.left;
         } else {
             if (!currentNode.right) {
-                steps.push({ type: 'notFound', node: currentNode, pseudoLine: 5, description: `No right child. Value ${data} not found.`, operation: 'search' });
+                steps.push({ 
+                    type: 'notFound', 
+                    node: currentNode, 
+                    pseudoLine: 5, 
+                    description: `Right subtree empty - value ${data} not found.`, 
+                    operation: 'search' 
+                });
                 return steps;
             }
-            steps.push({ type: 'traverse', node: currentNode.right, pseudoLine: 5, description: `Moving to right child ${currentNode.right.data}.`, operation: 'search' });
+            steps.push({ 
+                type: 'traverse', 
+                node: currentNode.right, 
+                pseudoLine: 5, 
+                description: `Moving to right child ${currentNode.right.data}.`, 
+                operation: 'search' 
+            });
             currentNode = currentNode.right;
         }
     }
-    steps.push({ type: 'notFound', node: null, pseudoLine: 5, description: `Value ${data} not found in the tree.`, operation: 'search' });
+    steps.push({ 
+        type: 'notFound', 
+        node: null, 
+        pseudoLine: 5, 
+        description: `Value ${data} not present in tree structure.`, 
+        operation: 'search' 
+    });
     return steps;
 }
 
+// 🗑️ Delete operation step builder
 function buildDeleteSteps(treeInstance, data) {
     const steps = [];
     let currentNode = treeInstance.root;
+    
     if (!currentNode) {
-        steps.push({ type: 'notFound', node: null, pseudoLine: 0, description: `Tree is empty, cannot delete ${data}.`, operation: 'delete' });
+        steps.push({ 
+            type: 'notFound', 
+            node: null, 
+            pseudoLine: 0, 
+            description: `Empty tree - deletion of ${data} not possible.`, 
+            operation: 'delete' 
+        });
         return steps;
     }
-    let node = treeInstance.root;
-    let parent = null;
-    steps.push({ type: 'traverse', node, pseudoLine: 0, description: `Starting delete of ${data} from root ${node.data}.`, operation: 'delete' });
-    while (node && node.data !== data) {
-        steps.push({ type: 'compare', node, pseudoLine: 0, description: `Compare ${data} with ${node.data}.`, operation: 'delete' });
-        parent = node;
-        node = data < node.data ? node.left : node.right;
-        if (node) steps.push({ type: 'traverse', node, pseudoLine: 0, description: `Move to ${node.data}.`, operation: 'delete' });
+    
+    let targetNode = treeInstance.root;
+    let parentNode = null;
+    
+    steps.push({ 
+        type: 'traverse', 
+        node: targetNode, 
+        pseudoLine: 0, 
+        description: `Starting deletion process for ${data} from root ${targetNode.data}.`, 
+        operation: 'delete' 
+    });
+    
+    while (targetNode && targetNode.data !== data) {
+        steps.push({ 
+            type: 'compare', 
+            node: targetNode, 
+            pseudoLine: 0, 
+            description: `Comparing deletion target ${data} with ${targetNode.data}.`, 
+            operation: 'delete' 
+        });
+        parentNode = targetNode;
+        targetNode = data < targetNode.data ? targetNode.left : targetNode.right;
+        if (targetNode) steps.push({ 
+            type: 'traverse', 
+            node: targetNode, 
+            pseudoLine: 0, 
+            description: `Progressing to ${targetNode.data}.`, 
+            operation: 'delete' 
+        });
     }
-    if (!node) {
-        steps.push({ type: 'notFound', node: parent, pseudoLine: 0, description: `${data} not found.`, operation: 'delete' });
+    
+    if (!targetNode) {
+        steps.push({ 
+            type: 'notFound', 
+            node: parentNode, 
+            pseudoLine: 0, 
+            description: `Target value ${data} not found for deletion.`, 
+            operation: 'delete' 
+        });
         return steps;
     }
-    // determine case
-    let delType;
-    if (!node.left && !node.right) delType = 'deleteLeaf';
-    else if (!node.left || !node.right) delType = 'deleteOneChild';
-    else delType = 'deleteTwoChildren';
-    steps.push({ type: delType, node, pseudoLine: 0, description: `Deleting ${data} (${delType.replace(/delete/, '').trim() || 'leaf'} case).`, operation: 'delete' });
+    
+    // 🎯 Determine deletion case type
+    let deletionType;
+    if (!targetNode.left && !targetNode.right) deletionType = 'deleteLeaf';
+    else if (!targetNode.left || !targetNode.right) deletionType = 'deleteOneChild';
+    else deletionType = 'deleteTwoChildren';
+    
+    steps.push({ 
+        type: deletionType, 
+        node: targetNode, 
+        pseudoLine: 0, 
+        description: `Executing deletion of ${data} (${deletionType.replace(/delete/, '').trim() || 'leaf node'} scenario).`, 
+        operation: 'delete' 
+    });
     return steps;
 }
 
+// 🔄 Traversal operation step builder
 function buildTraversalSteps(treeInstance, order) {
     const steps = [];
-    const seq = [];
-    const dfs = (n) => {
-        if (!n) return;
-        if (order === 'preorder') seq.push(n);
-        dfs(n.left);
-        if (order === 'inorder') seq.push(n);
-        dfs(n.right);
-        if (order === 'postorder') seq.push(n);
+    const sequence = [];
+    
+    const depthFirstSearch = (node) => {
+        if (!node) return;
+        if (order === 'preorder') sequence.push(node);
+        depthFirstSearch(node.left);
+        if (order === 'inorder') sequence.push(node);
+        depthFirstSearch(node.right);
+        if (order === 'postorder') sequence.push(node);
     };
-    dfs(treeInstance.root);
-    if (seq.length === 0) {
-        steps.push({ type: 'notFound', node: null, description: 'Tree is empty.', operation: order });
+    
+    depthFirstSearch(treeInstance.root);
+    
+    if (sequence.length === 0) {
+        steps.push({ 
+            type: 'notFound', 
+            node: null, 
+            description: 'Tree structure is empty.', 
+            operation: order 
+        });
         return steps;
     }
-    seq.forEach((n, idx) => steps.push({ type: 'visit', node: n, pseudoLine: idx === 0 ? 1 : 2, description: `Visit ${n.data} (${order})`, operation: order }));
+    
+    sequence.forEach((node, index) => steps.push({ 
+        type: 'visit', 
+        node: node, 
+        pseudoLine: index === 0 ? 1 : 2, 
+        description: `Visiting node ${node.data} (${order} traversal)`, 
+        operation: order 
+    }));
+    
     return steps;
 }
 
+// 🎯 Main visualization step coordinator
 export const getTreeSteps = (operation, treeInstance, params) => {
-    const data = parseInt(params.data, 10);
+    const dataValue = parseInt(params.data, 10);
     switch (operation) {
         case 'insert':
-            return buildInsertSteps(treeInstance, data);
+            return buildInsertSteps(treeInstance, dataValue);
         case 'search':
-            return buildSearchSteps(treeInstance, data);
+            return buildSearchSteps(treeInstance, dataValue);
         case 'delete':
-            return buildDeleteSteps(treeInstance, data);
+            return buildDeleteSteps(treeInstance, dataValue);
         case 'inorder':
         case 'preorder':
         case 'postorder':
             return buildTraversalSteps(treeInstance, operation);
         default:
-            return [{ type: 'initial', node: null, pseudoLine: 0, description: 'Initial state.' }];
+            return [{ 
+                type: 'initial', 
+                node: null, 
+                pseudoLine: 0, 
+                description: 'Initial tree state loaded.' 
+            }];
     }
 };

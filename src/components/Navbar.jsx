@@ -217,6 +217,13 @@ const Navbar = () => {
                   >
                     C++
                   </Link>
+                  <Link
+                    to="/notes/c"
+                    className={`dropdown-item ${isActive("/notes/c") ? "active" : ""}`}
+                    onClick={() => setDesktopNotesOpen(false)}
+                  >
+                    C
+                  </Link>
                 </div>
               )}
             </div>
@@ -302,6 +309,16 @@ const Navbar = () => {
               }}
             >
               C++
+            </Link>
+            <Link
+              to="/notes/c"
+              className="mobile-menu-link"
+              onClick={() => {
+                setMobileNotesOpen(false);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              C
             </Link>
           </div>
         </div>

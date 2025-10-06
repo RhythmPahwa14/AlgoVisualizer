@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import "../styles/Signup.css";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Signup = () => {
   const { theme } = useTheme();
@@ -46,6 +47,30 @@ const Signup = () => {
   };
 
   const isDark = theme === "dark";
+
+  const checkPasswordRules = (password) => ({
+    length: password.length >= 8,
+    uppercase: /[A-Z]/.test(password),
+    lowercase: /[a-z]/.test(password),
+    number: /[0-9]/.test(password),
+    specialChar: /[!@#$%^&*]/.test(password),
+  });
+
+  const passwordChecks = checkPasswordRules(formData.password);
+  const isPasswordValid = Object.values(passwordChecks).every(Boolean);
+  const doPasswordsMatch =
+    formData.confirmPassword && formData.password === formData.confirmPassword;
+
+  const handlePasswordChange = (e) => {
+    let input = e.target.value;
+    if (input.startsWith(" ")) input = input.trimStart();
+
+    setFormData((prev) => ({ ...prev, password: input }));
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    setFormData((prev) => ({ ...prev, confirmPassword: e.target.value }));
+  };
 
   return (
     <div
@@ -141,8 +166,8 @@ const Signup = () => {
               <label htmlFor="password" className="form-label">
                 Password
               </label>
-              <div className="input-container">
-                <div className="input-icon">
+              <div className="input-container relative">
+                <div className="input-icon absolute left-3 top-2">
                   <Lock className="icon" />
                 </div>
                 <input
@@ -152,12 +177,13 @@ const Signup = () => {
                   autoComplete="new-password"
                   required
                   value={formData.password}
-                  onChange={handleChange}
-                  className="form-input"
+                  onChange={handlePasswordChange}
+                  className="form-input pl-10"
+                  placeholder="Enter your password"
                 />
                 <button
                   type="button"
-                  className="password-toggle"
+                  className="password-toggle absolute right-3 top-2"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
@@ -167,6 +193,56 @@ const Signup = () => {
                   )}
                 </button>
               </div>
+
+              {/* Real-time Password Validation */}
+              {formData.password && (
+                <div className="text-sm mt-1 space-y-1">
+                  <p
+                    className={
+                      passwordChecks.length ? "text-green-600" : "text-red-500"
+                    }
+                  >
+                    {passwordChecks.length ? "✅" : "❌"} Minimum 8 characters
+                  </p>
+                  <p
+                    className={
+                      passwordChecks.uppercase
+                        ? "text-green-600"
+                        : "text-red-500"
+                    }
+                  >
+                    {passwordChecks.uppercase ? "✅" : "❌"} At least 1
+                    uppercase letter
+                  </p>
+                  <p
+                    className={
+                      passwordChecks.lowercase
+                        ? "text-green-600"
+                        : "text-red-500"
+                    }
+                  >
+                    {passwordChecks.lowercase ? "✅" : "❌"} At least 1
+                    lowercase letter
+                  </p>
+                  <p
+                    className={
+                      passwordChecks.number ? "text-green-600" : "text-red-500"
+                    }
+                  >
+                    {passwordChecks.number ? "✅" : "❌"} At least 1 number
+                  </p>
+                  <p
+                    className={
+                      passwordChecks.specialChar
+                        ? "text-green-600"
+                        : "text-red-500"
+                    }
+                  >
+                    {passwordChecks.specialChar ? "✅" : "❌"} At least 1
+                    special symbol (!@#$%^&*)
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Confirm Password Field */}
@@ -174,8 +250,8 @@ const Signup = () => {
               <label htmlFor="confirmPassword" className="form-label">
                 Confirm Password
               </label>
-              <div className="input-container">
-                <div className="input-icon">
+              <div className="input-container relative">
+                <div className="input-icon absolute left-3 top-2">
                   <Lock className="icon" />
                 </div>
                 <input
@@ -185,12 +261,13 @@ const Signup = () => {
                   autoComplete="new-password"
                   required
                   value={formData.confirmPassword}
-                  onChange={handleChange}
-                  className="form-input"
+                  onChange={handleConfirmPasswordChange}
+                  className="form-input pl-10"
+                  placeholder="Confirm your password"
                 />
                 <button
                   type="button"
-                  className="password-toggle"
+                  className="password-toggle absolute right-3 top-2"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   {showConfirmPassword ? (
@@ -200,6 +277,20 @@ const Signup = () => {
                   )}
                 </button>
               </div>
+
+              {formData.confirmPassword && (
+                <p
+                  className={
+                    doPasswordsMatch
+                      ? "text-sm mt-1 text-green-600"
+                      : "text-sm mt-1 text-red-500"
+                  }
+                >
+                  {doPasswordsMatch
+                    ? "✅ Passwords match"
+                    : "❌ Passwords do not match"}
+                </p>
+              )}
             </div>
 
             {/* Submit Button */}
@@ -217,6 +308,17 @@ const Signup = () => {
               </p>
             </div>
           </form>
+        </div>
+        <div className="google-login">
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              console.log("Google login success:", credentialResponse);
+              // You can send credentialResponse.credential to your backend to verify & login
+            }}
+            onError={() => {
+              console.log("Google login failed");
+            }}
+          />
         </div>
       </div>
     </div>

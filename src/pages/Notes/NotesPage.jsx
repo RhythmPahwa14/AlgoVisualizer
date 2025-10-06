@@ -20,6 +20,10 @@ const notesMap = {
     { name: "Variables & Data Types", path: "/notes/cpp/variables-and-data-types" },
     // Add more C++ topics here
   ],
+  c: [
+    { name: "Fundamentals", path: "/notes/c/fundamentals" },
+    // Add more C topics here
+  ],
 };
 
 const NotesPage = () => {

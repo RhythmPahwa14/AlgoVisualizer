@@ -16,7 +16,7 @@
   --theme-accent: #4f46e5;
   --theme-accent-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   --theme-btn-primary-bg: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  --theme-btn-primary-text: #ffffff;
+  --theme-btn-primary-text: #dc8686;
   --theme-btn-secondary-bg: #f3f4f6;
   --theme-btn-secondary-text: #1f2937;
   --theme-btn-secondary-border: #d1d5db;
@@ -263,13 +263,17 @@ body {
   background: var(--theme-btn-primary-bg);
   color: var(--theme-btn-primary-text);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  filter: brightness(1.1);
+  background: shade(var(--theme-btn-primary-bg), 10%);
+  color: #fff; /* ensures text remains bright and visible */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
+
 
 .btn-secondary {
   background: var(--theme-btn-secondary-bg);

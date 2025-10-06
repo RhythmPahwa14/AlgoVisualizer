@@ -46,6 +46,9 @@ import PythonVariablesAndDataTypes from "./pages/Notes/Python/VariablesAndDataTy
 import CppFundamentals from "./pages/Notes/Cpp/Fundamentals";
 import CppVariablesAndDataTypes from "./pages/Notes/Cpp/VariablesAndDataTypes";
 
+// C Notes
+import CFundamentals from "./pages/Notes/C/Fundamentals";
+
 // Algorithm Pages
 import DPOverview from "./pages/DPOverview";
 import DPPage from "./pages/DPPage";
@@ -140,7 +143,7 @@ const App = () => {
                   {/* Sorting */}
                   <Route path="/sorting" element={<Sorting />} />
                   <Route path="/sorting/:algoId/docs" element={<SortingDoc />} />
-                  <Route path="/sorting/comparison" element={<AlgorithmComparison />} />
+                  <Route path="/sorting/algorithm-comparison" element={<AlgorithmComparison />} />
 
                   {/* Searching */}
                   <Route path="/searching" element={<Searching />} />
@@ -215,6 +218,9 @@ const App = () => {
                   <Route path="/notes/cpp" element={<Navigate to="/notes/cpp/fundamentals" replace />} />
                   <Route path="/notes/cpp/fundamentals" element={<CppFundamentals />} />
                   <Route path="/notes/cpp/variables-and-data-types" element={<CppVariablesAndDataTypes />} />
+
+                  <Route path="/notes/c" element={<Navigate to="/notes/c/fundamentals" replace />} />
+                  <Route path="/notes/c/fundamentals" element={<CFundamentals />} />
 
                   <Route path="/java-oops" element={<JavaOOPS />} />
 

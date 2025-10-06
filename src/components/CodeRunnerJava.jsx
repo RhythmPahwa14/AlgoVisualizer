@@ -13,13 +13,19 @@ const CodeRunnerJava = () => {
   const runCode = async () => {
     setOutput("⏳ Running...");
     try {
+      // Check if API key is configured
+      if (!import.meta.env.VITE_RAPIDAPI_KEY) {
+        setOutput("⚠️ RapidAPI key not configured. Please add VITE_RAPIDAPI_KEY to your environment variables.");
+        return;
+      }
+
       const response = await axios.post("https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=false&wait=true", {
         source_code: code,
         language_id: 62, // 62 = Java (OpenJDK 17) in Judge0
       }, {
         headers: {
           "Content-Type": "application/json",
-          "X-RapidAPI-Key": "YOUR_RAPIDAPI_KEY",   // 🔑 Replace with your RapidAPI Key
+          "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
           "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com"
         }
       });
@@ -32,8 +38,12 @@ const CodeRunnerJava = () => {
         setOutput("No output");
       }
     } catch (error) {
-      setOutput("⚠️ Error running code");
-      console.error(error);
+      if (error.response?.status === 401) {
+        setOutput("⚠️ Invalid API key. Please check your RapidAPI configuration.");
+      } else {
+        setOutput("⚠️ Error running code. Please try again.");
+      }
+      console.error("Java execution error:", error);
     }
   };
 
