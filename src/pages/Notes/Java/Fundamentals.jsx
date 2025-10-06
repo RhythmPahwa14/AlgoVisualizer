@@ -73,12 +73,25 @@ const Fundamentals = () => {
           color: "white",
           borderRadius: "12px",
           boxShadow: "0 10px 25px rgba(79, 70, 229, 0.3)",
+          
         }}
       >
         <h1 style={{ fontSize: "3rem", marginBottom: "1rem", fontWeight: 800 }}>Java Fundamentals</h1>
-        <p style={{ fontSize: "1.2rem", maxWidth: "700px", margin: "0 auto", opacity: 0.9 }}>
-          A comprehensive guide to Java programming for beginners. Learn core concepts with detailed explanations and runnable examples you can copy.
-        </p>
+        <p
+  style={{
+    fontSize: "1.2rem",
+    maxWidth: "700px",
+    margin: "0 auto",
+    opacity: 0.9,
+    color: window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? "#ffffff"  // text color for dark mode
+      : "#1a1a1a", // text color for light mode
+  }}
+>
+  A comprehensive guide to Java programming for beginners. Learn core
+  concepts with detailed explanations and examples.
+</p>
+
       </header>
 
       {/* Navigation Tabs */}
