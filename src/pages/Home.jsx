@@ -612,27 +612,159 @@ const Home = () => {
     ))}
     
   </div>
-        {/* Enhanced Activity Feed */}
-        <div className="activity-feed" data-aos="fade-up" data-aos-delay="200">
-          <h3 className="activity-title">Recent Updates</h3>
-          <div className="activity-items">
-            {recentUpdates.map((update, index) => (
-              <div key={index} className="activity-item" data-aos="fade-up" data-aos-delay={`${300 + index * 100}`}>
-                <div className={`activity-icon ${update.type}`}>
-                  {update.type === 'new' && <Sparkles size={14} />}
-                  {update.type === 'update' && <Code size={14} />}
-                  {update.type === 'feature' && <Star size={14} />}
-                  {update.type === 'community' && <Users size={14} />}
-                </div>
-                <div className="activity-content">
-                  <h4 className="activity-item-title">{update.title}</h4>
-                  <p className="activity-description">{update.description}</p>
-                  <span className="activity-time">{update.time}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+       {/* Enhanced Activity Feed */}
+<div
+  style={{
+    backgroundColor: isLight ? "#ffffff" : "#0f172a",
+    padding: "1.5rem",
+    borderRadius: "20px",
+    boxShadow: isLight
+      ? "0 10px 30px -10px rgba(0,0,0,0.1)"
+      : "0 10px 30px -10px rgba(0,0,0,0.5)",
+    transition: "all 0.3s ease",
+  }}
+  data-aos="fade-up"
+  data-aos-delay="200"
+>
+  <h3
+    style={{
+      color: isLight ? "#1f2937" : "#f9fafb",
+      fontWeight: 600,
+      fontSize: "1.25rem",
+      marginBottom: "1.5rem",
+    }}
+  >
+    Recent Updates
+  </h3>
+
+  <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    {recentUpdates.map((update, index) => (
+      <div
+        key={index}
+        style={{
+          display: "flex",
+          gap: "1rem",
+          alignItems: "flex-start",
+          backgroundColor: isLight ? "#f3f4f6" : "#1e293b",
+          border: `1px solid ${isLight ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.1)"}`,
+          padding: "1rem",
+          borderRadius: "16px",
+          transition: "all 0.3s ease",
+          cursor: "pointer",
+          boxShadow: isLight
+            ? "0 5px 15px -5px rgba(0,0,0,0.05)"
+            : "0 5px 15px -5px rgba(0,0,0,0.3)",
+        }}
+        data-aos="fade-up"
+        data-aos-delay={`${300 + index * 100}`}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "scale(1.02)";
+          e.currentTarget.style.boxShadow = isLight
+            ? "0 8px 25px -5px rgba(0,0,0,0.1)"
+            : "0 8px 25px -5px rgba(0,0,0,0.5)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "scale(1)";
+          e.currentTarget.style.boxShadow = isLight
+            ? "0 5px 15px -5px rgba(0,0,0,0.05)"
+            : "0 5px 15px -5px rgba(0,0,0,0.3)";
+        }}
+      >
+        {/* Icon with glow */}
+        <div
+          style={{
+            width: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color:
+              update.type === "new"
+                ? isLight
+                  ? "#10b981"
+                  : "#6ee7b7"
+                : update.type === "update"
+                ? isLight
+                  ? "#3b82f6"
+                  : "#60a5fa"
+                : update.type === "feature"
+                ? isLight
+                  ? "#f59e0b"
+                  : "#facc15"
+                : isLight
+                ? "#8b5cf6"
+                : "#c4b5fd",
+            backgroundColor:
+              update.type === "new"
+                ? isLight
+                  ? "#d1fae5"
+                  : "rgba(16,185,129,0.2)"
+                : update.type === "update"
+                ? isLight
+                  ? "#dbeafe"
+                  : "rgba(59,130,246,0.2)"
+                : update.type === "feature"
+                ? isLight
+                  ? "#fef3c7"
+                  : "rgba(245,158,11,0.2)"
+                : isLight
+                ? "#ede9fe"
+                : "rgba(139,92,246,0.2)",
+            boxShadow: `${
+              update.type === "new"
+                ? "0 0 10px rgba(16,185,129,0.6)"
+                : update.type === "update"
+                ? "0 0 10px rgba(59,130,246,0.6)"
+                : update.type === "feature"
+                ? "0 0 10px rgba(245,158,11,0.6)"
+                : "0 0 10px rgba(139,92,246,0.6)"
+            }`,
+            transition: "all 0.3s ease",
+          }}
+        >
+          {update.type === "new" && <Sparkles size={16} />}
+          {update.type === "update" && <Code size={16} />}
+          {update.type === "feature" && <Star size={16} />}
+          {update.type === "community" && <Users size={16} />}
         </div>
+
+        {/* Content */}
+        <div style={{ flex: 1 }}>
+          <h4
+            style={{
+              color: isLight ? "#1f2937" : "#f9fafb",
+              fontWeight: 500,
+              margin: 0,
+            }}
+          >
+            {update.title}
+          </h4>
+          <p
+            style={{
+              color: isLight ? "#4b5563" : "#d1d5db",
+              marginTop: "0.25rem",
+              fontSize: "0.875rem",
+            }}
+          >
+            {update.description}
+          </p>
+          <span
+            style={{
+              color: isLight ? "#6b7280" : "#9ca3af",
+              fontSize: "0.75rem",
+              marginTop: "0.25rem",
+              display: "block",
+            }}
+          >
+            {update.time}
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
         </div>
 
         {/* Problem of the Day Modal */}
