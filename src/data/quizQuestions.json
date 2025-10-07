@@ -5169,5 +5169,546 @@
         ],
         "correctAnswer": 0,
         "explanation": "Deletion preserves the BST left < root < right property."
-    }                                        
+    },
+    {
+        "id": 331,
+        "topic": "Other Topics",
+        "algorithm": "A* Algorithm",
+        "difficulty": "Easy",
+        "question": "What is the main goal of the A* algorithm?",
+        "options": [
+            "Find the shortest path between two nodes",
+            "Sort a list of elements",
+            "Detect a cycle in a graph",
+            "Compress data efficiently"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A* is used to find the shortest path between two points using cost and heuristic functions."
+    },
+    {
+        "id": 332,
+        "topic": "Other Topics",
+        "algorithm": "A* Algorithm",
+        "difficulty": "Easy",
+        "question": "Which function guides A* towards the goal?",
+        "options": [
+            "Heuristic function (h)",
+            "Stack function",
+            "Compression ratio",
+            "Hash function"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The heuristic function estimates the cost from the current node to the goal."
+    },
+    {
+        "id": 333,
+        "topic": "Other Topics",
+        "algorithm": "A* Algorithm",
+        "difficulty": "Medium",
+        "question": "What is the evaluation function used by A*?",
+        "options": [
+            "f(n) = g(n) + h(n)",
+            "f(n) = g(n) - h(n)",
+            "f(n) = g(n) * h(n)",
+            "f(n) = g(n) / h(n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A* uses f(n) = g(n) + h(n) where g(n) is path cost so far and h(n) is the heuristic estimate."
+    },
+    {
+        "id": 334,
+        "topic": "Other Topics",
+        "algorithm": "A* Algorithm",
+        "difficulty": "Medium",
+        "question": "A* guarantees the shortest path if:",
+        "options": [
+            "The heuristic is admissible",
+            "The heuristic is random",
+            "The path has cycles",
+            "The graph is unweighted"
+        ],
+        "correctAnswer": 0,
+        "explanation": "An admissible heuristic never overestimates the true cost, ensuring optimality."
+    },
+    {
+        "id": 335,
+        "topic": "Other Topics",
+        "algorithm": "A* Algorithm",
+        "difficulty": "Hard",
+        "question": "Which data structure is typically used to select the next node in A*?",
+        "options": [
+            "Priority Queue (Min-Heap)",
+            "Stack",
+            "Linked List",
+            "Hash Table"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A* uses a priority queue to always expand the node with the lowest f(n) value."
+    },
+    {
+        "id": 336,
+        "topic": "Other Topics",
+        "algorithm": "A* Algorithm",
+        "difficulty": "Hard",
+        "question": "When does A* perform like Dijkstra’s algorithm?",
+        "options": [
+            "When the heuristic h(n) = 0",
+            "When h(n) > actual cost",
+            "When graph is cyclic",
+            "When g(n) is constant"
+        ],
+        "correctAnswer": 0,
+        "explanation": "If the heuristic is zero, A* becomes equivalent to Dijkstra’s algorithm."
+    },
+    {
+        "id": 337,
+        "topic": "Other Topics",
+        "algorithm": "Huffman Coding",
+        "difficulty": "Easy",
+        "question": "Huffman coding is mainly used for?",
+        "options": [
+            "Data compression",
+            "Sorting arrays",
+            "Graph traversal",
+            "Pattern matching"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Huffman coding compresses data by assigning shorter codes to frequent characters."
+    },
+    {
+        "id": 338,
+        "topic": "Other Topics",
+        "algorithm": "Huffman Coding",
+        "difficulty": "Easy",
+        "question": "What kind of tree does Huffman coding use?",
+        "options": [
+            "Binary Tree",
+            "AVL Tree",
+            "Trie",
+            "B-Tree"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Huffman coding constructs a binary tree where leaves represent characters."
+    },
+    {
+        "id": 339,
+        "topic": "Other Topics",
+        "algorithm": "Huffman Coding",
+        "difficulty": "Medium",
+        "question": "Which nodes are combined first in Huffman coding?",
+        "options": [
+            "Two lowest-frequency nodes",
+            "Two highest-frequency nodes",
+            "Random nodes",
+            "Middle-frequency nodes"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The two smallest frequency nodes are merged to form a new node repeatedly."
+    },
+    {
+        "id": 340,
+        "topic": "Other Topics",
+        "algorithm": "Huffman Coding",
+        "difficulty": "Medium",
+        "question": "The time complexity of building a Huffman Tree is?",
+        "options": [
+            "O(n log n)",
+            "O(n²)",
+            "O(log n)",
+            "O(n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Building the Huffman Tree involves sorting or using a min-heap, giving O(n log n)."
+    },
+    {
+        "id": 341,
+        "topic": "Other Topics",
+        "algorithm": "Huffman Coding",
+        "difficulty": "Hard",
+        "question": "Huffman coding is optimal when:",
+        "options": [
+            "Symbol probabilities are known and independent",
+            "Data is random",
+            "Symbols repeat uniformly",
+            "Compression ratio is fixed"
+        ],
+        "correctAnswer": 0,
+        "explanation": "It gives the best compression when symbol frequencies are known and independent."
+    },
+    {
+        "id": 342,
+        "topic": "Other Topics",
+        "algorithm": "Huffman Coding",
+        "difficulty": "Hard",
+        "question": "Which limitation does Huffman coding have?",
+        "options": [
+            "Does not handle variable-length sequences efficiently",
+            "Cannot adapt to changing frequencies",
+            "Cannot represent binary data",
+            "Always increases data size"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Huffman coding is static; adaptive Huffman handles changing frequencies better."
+    },
+    {
+        "id": 343,
+        "topic": "Other Topics",
+        "algorithm": "KMP Algorithm",
+        "difficulty": "Easy",
+        "question": "What problem does the KMP algorithm solve?",
+        "options": [
+            "Pattern matching in strings",
+            "Shortest path finding",
+            "Data compression",
+            "Sorting characters"
+        ],
+        "correctAnswer": 0,
+        "explanation": "KMP is used for pattern searching within a text efficiently."
+    },
+    {
+        "id": 344,
+        "topic": "Other Topics",
+        "algorithm": "KMP Algorithm",
+        "difficulty": "Easy",
+        "question": "What is the main advantage of KMP over the naive approach?",
+        "options": [
+            "It avoids re-checking characters",
+            "It uses less memory",
+            "It sorts strings faster",
+            "It compresses data"
+        ],
+        "correctAnswer": 0,
+        "explanation": "KMP avoids redundant comparisons by precomputing information in the LPS array."
+    },
+    {
+        "id": 345,
+        "topic": "Other Topics",
+        "algorithm": "KMP Algorithm",
+        "difficulty": "Medium",
+        "question": "What does the LPS array represent in KMP?",
+        "options": [
+            "Longest proper prefix which is also a suffix",
+            "Least possible substring",
+            "Length of processed string",
+            "Lexicographically smallest prefix"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The LPS array stores the length of the longest proper prefix that is also a suffix."
+    },
+    {
+        "id": 346,
+        "topic": "Other Topics",
+        "algorithm": "KMP Algorithm",
+        "difficulty": "Medium",
+        "question": "Time complexity of KMP pattern matching is?",
+        "options": [
+            "O(n + m)",
+            "O(n * m)",
+            "O(log n)",
+            "O(n²)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "KMP processes both text and pattern once, leading to O(n + m) complexity."
+    },
+    {
+        "id": 347,
+        "topic": "Other Topics",
+        "algorithm": "KMP Algorithm",
+        "difficulty": "Hard",
+        "question": "In KMP, when a mismatch occurs, what determines the next shift of the pattern?",
+        "options": [
+            "The LPS array value of the previous index",
+            "The position of mismatch",
+            "Random offset",
+            "Character ASCII difference"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The LPS array tells where to resume matching without re-checking characters."
+    },
+    {
+        "id": 348,
+        "topic": "Other Topics",
+        "algorithm": "KMP Algorithm",
+        "difficulty": "Hard",
+        "question": "What is a key limitation of KMP in practical applications?",
+        "options": [
+            "High preprocessing time for short patterns",
+            "Cannot handle binary data",
+            "Requires sorted text",
+            "Fails on repeating characters"
+        ],
+        "correctAnswer": 0,
+        "explanation": "KMP’s preprocessing (LPS table) can be unnecessary overhead for small or one-time searches."
+    },
+    {
+        "id": 349,
+        "topic": "Other Topics",
+        "algorithm": "Rabin-Karp Algorithm",
+        "difficulty": "Easy",
+        "question": "What is the Rabin-Karp algorithm mainly used for?",
+        "options": [
+            "Pattern searching in strings",
+            "Finding shortest paths",
+            "Sorting arrays",
+            "Building trees"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Rabin-Karp is a string-searching algorithm that uses hashing to find a pattern in a text."
+    },
+    {
+        "id": 350,
+        "topic": "Other Topics",
+        "algorithm": "Rabin-Karp Algorithm",
+        "difficulty": "Easy",
+        "question": "What technique does Rabin-Karp use to compare substrings efficiently?",
+        "options": [
+            "Hashing",
+            "Dynamic programming",
+            "Binary search",
+            "Recursion"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Rabin-Karp uses rolling hash functions to compare substring hashes instead of characters."
+    },
+    {
+        "id": 351,
+        "topic": "Other Topics",
+        "algorithm": "Rabin-Karp Algorithm",
+        "difficulty": "Medium",
+        "question": "What is the average time complexity of Rabin-Karp?",
+        "options": [
+            "O(n + m)",
+            "O(nm)",
+            "O(log n)",
+            "O(1)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "On average, Rabin-Karp performs efficiently in O(n + m) time using rolling hashes."
+    },
+    {
+        "id": 352,
+        "topic": "Other Topics",
+        "algorithm": "Rabin-Karp Algorithm",
+        "difficulty": "Medium",
+        "question": "What causes Rabin-Karp to perform poorly in the worst case?",
+        "options": [
+            "Hash collisions",
+            "Large input size",
+            "Recursion overhead",
+            "Pattern mismatch"
+        ],
+        "correctAnswer": 0,
+        "explanation": "When hash collisions occur frequently, extra character comparisons cause O(nm) time."
+    },
+    {
+        "id": 353,
+        "topic": "Other Topics",
+        "algorithm": "Rabin-Karp Algorithm",
+        "difficulty": "Hard",
+        "question": "Rabin-Karp uses a rolling hash to:",
+        "options": [
+            "Compute next substring hash in O(1)",
+            "Recompute entire hash from scratch",
+            "Store previous substring only",
+            "Encrypt the pattern"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Rolling hash updates the hash value in constant time as the window slides across text."
+    },
+    {
+        "id": 354,
+        "topic": "Other Topics",
+        "algorithm": "Rabin-Karp Algorithm",
+        "difficulty": "Hard",
+        "question": "Which of the following is an example of a good modulus for Rabin-Karp hashing?",
+        "options": [
+            "A large prime number",
+            "A power of two",
+            "A random integer",
+            "The ASCII value of a character"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Using a large prime modulus minimizes collisions in the hash values."
+    },
+    {
+        "id": 355,
+        "topic": "Data Structures",
+        "algorithm": "Stack Visualization",
+        "difficulty": "Easy",
+        "question": "Which operation adds an element to the top of a stack?",
+        "options": [
+            "Push",
+            "Pop",
+            "Peek",
+            "Insert"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Push adds an element to the top of the stack."
+    },
+    {
+        "id": 356,
+        "topic": "Data Structures",
+        "algorithm": "Stack Visualization",
+        "difficulty": "Easy",
+        "question": "Which operation removes the top element from a stack?",
+        "options": [
+            "Pop",
+            "Push",
+            "Peek",
+            "Delete"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Pop removes the top element from the stack."
+    },
+    {
+        "id": 357,
+        "topic": "Data Structures",
+        "algorithm": "Stack Visualization",
+        "difficulty": "Medium",
+        "question": "What does the Peek operation do on a stack?",
+        "options": [
+            "Returns the top element without removing it",
+            "Removes the top element",
+            "Adds an element at the bottom",
+            "Checks if the stack is empty"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Peek lets you see the top element without modifying the stack."
+    },
+    {
+        "id": 358,
+        "topic": "Data Structures",
+        "algorithm": "Stack Visualization",
+        "difficulty": "Medium",
+        "question": "Time complexity of push and pop in a stack is?",
+        "options": [
+            "O(1)",
+            "O(n)",
+            "O(log n)",
+            "O(n log n)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Both push and pop are constant-time operations."
+    },
+    {
+        "id": 359,
+        "topic": "Data Structures",
+        "algorithm": "Stack Visualization",
+        "difficulty": "Hard",
+        "question": "Which scenario illustrates a stack overflow?",
+        "options": [
+            "Trying to push onto a full stack",
+            "Trying to pop from an empty stack",
+            "Viewing the top element",
+            "Traversing the stack"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Stack overflow happens when you try to push beyond its capacity."
+    },
+    {
+        "id": 360,
+        "topic": "Data Structures",
+        "algorithm": "Stack Visualization",
+        "difficulty": "Hard",
+        "question": "Which stack implementation supports dynamic memory usage efficiently?",
+        "options": [
+            "Linked list",
+            "Fixed-size array",
+            "Queue",
+            "Binary tree"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Linked lists allow dynamic growth without a fixed size."
+    },
+    {
+        "id": 361,
+        "topic": "Other Topics",
+        "algorithm": "Cycle Detection",
+        "difficulty": "Easy",
+        "question": "What is a cycle in a graph?",
+        "options": [
+            "A path that starts and ends at the same vertex",
+            "A path visiting all vertices once",
+            "A path with no repeated edges",
+            "A disconnected component"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A cycle is a path where the first and last vertices are the same."
+    },
+    {
+        "id": 362,
+        "topic": "Other Topics",
+        "algorithm": "Cycle Detection",
+        "difficulty": "Easy",
+        "question": "Which data structure is commonly used to detect cycles in a graph?",
+        "options": [
+            "Visited set / recursion stack",
+            "Queue",
+            "Heap",
+            "Trie"
+        ],
+        "correctAnswer": 0,
+        "explanation": "DFS with a visited set or recursion stack is typically used to detect cycles."
+    },
+    {
+        "id": 363,
+        "topic": "Other Topics",
+        "algorithm": "Cycle Detection",
+        "difficulty": "Medium",
+        "question": "Time complexity of cycle detection using DFS is?",
+        "options": [
+            "O(V + E)",
+            "O(V²)",
+            "O(E²)",
+            "O(log V)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "DFS visits each vertex and edge once, giving O(V + E) time."
+    },
+    {
+        "id": 364,
+        "topic": "Other Topics",
+        "algorithm": "Cycle Detection",
+        "difficulty": "Medium",
+        "question": "In a directed graph, a cycle is detected if a node is visited that is:",
+        "options": [
+            "Already in the recursion stack",
+            "Already in the visited set only",
+            "Disconnected from start",
+            "Leaf node"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A back edge to a node in the recursion stack indicates a cycle in a directed graph."
+    },
+    {
+        "id": 365,
+        "topic": "Other Topics",
+        "algorithm": "Cycle Detection",
+        "difficulty": "Hard",
+        "question": "Which algorithm can detect cycles in a directed graph using topological sorting?",
+        "options": [
+            "Kahn's Algorithm",
+            "Dijkstra's Algorithm",
+            "Prim's Algorithm",
+            "Bellman-Ford Algorithm"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Kahn’s algorithm detects cycles by checking if topological sorting is possible."
+    },
+    {
+        "id": 366,
+        "topic": "Other Topics",
+        "algorithm": "Cycle Detection",
+        "difficulty": "Hard",
+        "question": "Union-Find (Disjoint Set) can be used to detect cycles in which type of graph?",
+        "options": [
+            "Undirected graph",
+            "Directed graph",
+            "Weighted graph only",
+            "Tree only"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Union-Find efficiently detects cycles in undirected graphs by checking if two vertices belong to the same set."
+    }                                                          
 ]
+

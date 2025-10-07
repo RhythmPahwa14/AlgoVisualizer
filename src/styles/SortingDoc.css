@@ -117,30 +117,116 @@
   border: 1px solid var(--border);
   background: var(--surface-2);
   color: var(--text);
-  padding: 10px 14px;
-  border-radius: 10px;
+  padding: 10px 16px;
+  border-radius: 12px;
   font-weight: 600;
   text-decoration: none;
-  transition: transform 0.08s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
-  border-color: var(--text-muted);
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: var(--surface);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .btn.primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), #4f7fff);
   color: var(--primary-contrast);
   border-color: transparent;
+  box-shadow: 0 2px 8px rgba(91, 140, 255, 0.25);
+}
+
+.btn.primary:hover {
+  background: linear-gradient(135deg, #4f7fff, var(--primary));
+  box-shadow: 0 6px 20px rgba(91, 140, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn.secondary:hover {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.btn.danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25);
+}
+
+.btn.danger:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
 }
 
 .btn.lg {
-  padding: 12px 18px;
+  padding: 14px 24px;
   font-size: 1.05rem;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.btn.sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: 8px;
+}
+
+.btn.icon-only {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn.full-width {
+  width: 100%;
 }
 
 /* ================================
@@ -161,15 +247,27 @@
 
 .stats-grid {
   display: grid;
-  gap: 12px;
-  grid-template-columns: 1fr 1fr;
-  margin: 16px 0 20px;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  /* margin: 16px 0 20px; */
+  align-items: stretch;
+}
+
+@media (min-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (min-width: 768px) {
   .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-grid {
     grid-template-columns: repeat(4, 1fr);
-    align-items: center;
   }
 }
 
@@ -177,29 +275,79 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 14px;
+  padding: 16px;
   box-shadow: var(--shadow);
-  min-height: 200px;
+  min-height: 290px;
   transition: all 0.3s ease;
-  /* overflow-y: auto;  */
-  min-height: 230px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.stat-card:hover{
-  /* background: black; */
-  /* color:white; */
-  /* min-height: 250px; */
-  /* transform: scaleX(1.2); */
-  overflow-y: auto;
-  border: 1px black solid;
-  z-index: 200;
-  scrollbar-width: none;
-  
 
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary);
+  background: var(--surface);
+  z-index: 10;
+}
+
+/* Ensure text remains visible on hover */
+.stat-card:hover h3,
+.stat-card:hover p,
+.stat-card:hover strong {
+  color: var(--text);
+}
+
+/* Handle text overflow gracefully */
+.stat-card p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.5;
+}
+
+.stat-card strong {
+  font-weight: 600;
+  color: var(--text);
 }
 
 .stat-card h3 {
+  /* margin: 0 0 8px 0; */
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.stat-card h3:first-child {
   margin-top: 0;
-  font-size: 1rem;
+}
+
+/* Special styling for tip cards */
+.stat-card.callout.success {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border-color: var(--success-text);
+  border-width: 2px;
+}
+
+.stat-card.callout.success:hover {
+  background: var(--success-bg);
+  color: var(--success-text);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(23, 108, 58, 0.2);
+}
+
+.stat-card.callout.success strong {
+  color: var(--success-text);
+  font-size: 1.05rem;
+}
+
+.stat-card.callout.success p {
+  color: var(--success-text);
 }
 
 /* ================================
@@ -346,4 +494,30 @@ html[data-theme="dark"] .doc-page {
   --code-bg: #0b1020;
   --code-text: #e5e7eb;
   --shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ================================
+   Additional mobile improvements
+   ================================ */
+
+@media (max-width: 640px) {
+  .stats-grid {
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+    padding: 16px;
+    min-height: 140px;
+  }
+  
+  .stat-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .cta-row {
+    flex-direction: column;
+    gap: 12px;
+  }
 }

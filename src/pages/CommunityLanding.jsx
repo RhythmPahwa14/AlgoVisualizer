@@ -455,11 +455,7 @@ const CommunityLanding = () => {
                 ))}
               </div>
 
-              <div
-                style={{
-                  textAlign: "center",
-                  marginTop: "auto",
-                }}
+              <Link to="#"
               >
                 <span
                   style={{
@@ -472,9 +468,10 @@ const CommunityLanding = () => {
                   }}
                   aria-hidden="true"
                 >
+                  className="btn btn-secondary" >
                   Learn More <ArrowRight size={16} />
                 </span>
-              </div>
+              </Link>
             </div>
           </motion.div>
 
@@ -788,6 +785,13 @@ const CommunityLanding = () => {
               style={{ textDecoration: "none" }}
               onClick={() => trackInteraction('external_link_click', { target: 'github' })}
               aria-label="Visit our GitHub repository to start contributing (opens in new tab)"
+              className="btn btn-secondary"
+
+              style={{
+                color: "var(--theme-accent)",
+                backgroundColor: "var(--theme-accent)",
+                textDecoration: "none"
+              }}
             >
               <Github size={16} aria-hidden="true" />
               Start Contributing
@@ -827,7 +831,7 @@ const CommunityLanding = () => {
           </div>
         )}
       </motion.div>
-    </div>
+    </div >
   );
 };
 

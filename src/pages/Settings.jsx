@@ -74,7 +74,7 @@ const Settings = () => {
 
   if (isLoading) {
     return (
-      <div className="settings-container">
+      <div className="settings-container" >
         <div className="settings-loading">
           <div className="settings-loading-spinner"></div>
           <p>Loading settings...</p>
@@ -84,7 +84,12 @@ const Settings = () => {
   }
 
   return (
-    <div className="settings-container">
+    <div className="settings-container" style={{ 
+    background: "linear-gradient(135deg, #d0e7ff 0%, #e6d4ff 100%)",
+    borderRadius: "24px",
+    padding: "2rem",
+    color: "#333"   
+    }}>
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <motion.h1 className="settings-title">
           <SettingsIcon size={40} />Settings

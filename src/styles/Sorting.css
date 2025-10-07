@@ -1,4 +1,4 @@
-@import './theme.css';
+@import "./theme.css";
 
 /* =========================
    Sorting Component Styles
@@ -16,8 +16,11 @@
   font-weight: 800;
   text-align: center;
   margin-bottom: var(--space-xl);
-  color: var(--text-primary);
-  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 /* Cards */
@@ -61,7 +64,7 @@
   font-size: 0.875rem;
 }
 
-.form-control, 
+.form-control,
 .form-select {
   width: 100%;
   padding: var(--space-sm) var(--space-md);
@@ -73,7 +76,7 @@
   transition: var(--transition-fast);
 }
 
-.form-control:focus, 
+.form-control:focus,
 .form-select:focus {
   outline: none;
   border-color: var(--border-accent);
@@ -185,7 +188,6 @@
 }
 
 .stats-grid {
-    
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -240,7 +242,7 @@
 }
 
 .complexity-value {
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -270,16 +272,16 @@
   .theme-container {
     padding: var(--space-md);
   }
-  
+
   .form-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .stats-grid {
     grid-auto-flow: row;
     grid-template-columns: 1fr;
   }
-  
+
   .complexity-grid {
     grid-template-columns: 1fr;
   }
@@ -325,7 +327,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: 420px;           /* consistent visual height */
+  height: 420px; /* consistent visual height */
   padding: 0.75rem 0.5rem; /* matches card inner padding */
   border-radius: 8px;
   background: var(--surface-bg);
@@ -370,16 +372,16 @@
   .viz-canvas {
     height: 360px;
   }
-  
+
   /* Fix for mobile layout */
   .sorting-right {
     order: -1; /* Show visualization first on mobile */
   }
-  
+
   .form-group.span-2 {
     grid-column: span 1;
   }
-  
+
   .stats-grid.compact {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -411,13 +413,17 @@ body {
 
 .theme-title {
   margin: 0 0 20px 0;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Two-column grid: left = content cards, right = visualization */
 .sorting-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr; /* laptop/desktop split */
-  align-items: start;               /* TOP align both columns */
+  align-items: start; /* TOP align both columns */
   gap: var(--gap);
 }
 
@@ -430,7 +436,7 @@ body {
 /* Right column is just one big card (viz) */
 .sorting-right {
   position: sticky;
-  top: 20px;             /* keeps the viz visible while scrolling on wide screens */
+  top: 20px; /* keeps the viz visible while scrolling on wide screens */
   align-self: start;
 }
 
@@ -546,11 +552,11 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  height: 320px;                 /* matches your JS math (max 280 + padding) */
+  height: 320px; /* matches your JS math (max 280 + padding) */
   padding: 12px;
   border: 1px dashed var(--border);
   border-radius: 10px;
-  overflow: hidden;              /* keeps bars inside */
+  overflow: hidden; /* keeps bars inside */
   background: var(--surface-bg);
 }
 
@@ -596,7 +602,8 @@ body {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 12px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 .muted {
@@ -635,16 +642,16 @@ body {
 
 @media (max-width: 1024px) {
   .sorting-grid {
-    grid-template-columns: 1fr;  /* stack on tablet/phone */
+    grid-template-columns: 1fr; /* stack on tablet/phone */
   }
 
   .sorting-right {
-    position: static;            /* no sticky on small screens */
-    order: -1;                   /* show viz first on mobile (optional) */
+    position: static; /* no sticky on small screens */
+    order: -1; /* show viz first on mobile (optional) */
   }
 
   .form-grid {
-    grid-template-columns: 1fr;  /* controls stack vertically */
+    grid-template-columns: 1fr; /* controls stack vertically */
   }
 
   .form-group.span-2 {
@@ -679,13 +686,17 @@ body {
 
 .theme-title {
   margin: 0 0 20px 0;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Two-column grid: left = content cards, right = visualization */
 .sorting-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr; /* laptop/desktop split */
-  align-items: start;               /* TOP align both columns */
+  align-items: start; /* TOP align both columns */
   gap: var(--gap);
 }
 
@@ -700,7 +711,7 @@ body {
   display: grid;
   gap: var(--gap);
   position: sticky;
-  top: 76px;        /* sit below your navbar; tweak to match your header height */
+  top: 76px; /* sit below your navbar; tweak to match your header height */
   align-self: start;
   z-index: 1;
 }
@@ -828,7 +839,7 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  height: 320px;                 /* matches JS math (max 280 + padding) */
+  height: 320px; /* matches JS math (max 280 + padding) */
   padding: 12px;
   border: 1px dashed var(--border);
   border-radius: 10px;
@@ -896,7 +907,8 @@ body {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 12px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 .muted {
@@ -935,17 +947,17 @@ body {
 
 @media (max-width: 1024px) {
   .sorting-grid {
-    grid-template-columns: 1fr;  /* stack on tablet/phone */
+    grid-template-columns: 1fr; /* stack on tablet/phone */
   }
 
   .sorting-right {
-    position: static;            /* no sticky on small screens */
+    position: static; /* no sticky on small screens */
     top: auto;
-    order: -1;                   /* show viz first on mobile (optional) */
+    order: -1; /* show viz first on mobile (optional) */
   }
 
   .form-grid {
-    grid-template-columns: 1fr;  /* controls stack vertically */
+    grid-template-columns: 1fr; /* controls stack vertically */
   }
 
   .form-group.span-2 {
@@ -959,32 +971,34 @@ body {
   .complexity-grid {
     grid-template-columns: 1fr;
   }
-  
+
   /* Fix for mobile layout */
   .stats-grid.compact {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .compact-card .stat-card {
     padding: 8px;
   }
 }
 
 .compact-card {
-  max-height: 180px;   /* adjust as you like */
-  overflow-y: auto;    /* adds scrollbar if content overflows */
+  max-height: 180px; /* adjust as you like */
+  overflow-y: auto; /* adds scrollbar if content overflows */
 }
 
 /* --- Fix dark box + dark text and ensure good contrast --- */
 .code-like {
-  background: #0c1118;         /* or var(--surface-bg) */
-  color: var(--text);          /* <<< readable text */
+  background: #0c1118; /* or var(--surface-bg) */
+  color: var(--text); /* <<< readable text */
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 12px;
 }
 
-.code-like strong { color: var(--text); }
+.code-like strong {
+  color: var(--text);
+}
 
 /* Light theme safety */
 :root[data-theme="light"] .code-like {
@@ -994,42 +1008,44 @@ body {
 }
 
 /* Make the card header always readable */
-.theme-card-header h3 { color: var(--text); }
+.theme-card-header h3 {
+  color: var(--text);
+}
 
 /* Improved responsive design for small screens */
 @media (max-width: 768px) {
   .sorting-grid {
     gap: 1rem;
   }
-  
+
   .theme-container {
     padding: 1rem;
   }
-  
+
   .theme-card {
     padding: 1rem;
   }
-  
+
   .form-grid {
     gap: 0.75rem;
   }
-  
+
   .row-actions {
     flex-direction: column;
   }
-  
+
   .btn {
     width: 100%;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .stats-grid.compact {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .complexity-grid {
     grid-template-columns: 1fr;
   }
@@ -1039,11 +1055,11 @@ body {
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .stats-grid.compact {
     grid-template-columns: 1fr;
   }
-  
+
   .form-grid {
     grid-template-columns: 1fr;
   }

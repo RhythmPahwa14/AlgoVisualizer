@@ -30,7 +30,7 @@ const algorithmDatabase = {
         id: "bubbleSort",
         description:
           "Compares adjacent elements and swaps them if they are in wrong order. Simple but inefficient for large datasets.",
-        timeComplexity: { best: "O(n)", average: "O(n²)", worst: "O(n²)" },
+        timeComplexity: { best: "O(n)", average: "O(n²)", worst: "O(n²)", averaget: "O(n²)" },
         spaceComplexity: "O(1)",
         stability: "Stable",
         inPlace: true,
@@ -42,7 +42,7 @@ const algorithmDatabase = {
         id: "selectionSort",
         description:
           "Finds the minimum element and places it at the beginning. Makes fewer swaps than bubble sort.",
-        timeComplexity: { best: "O(n²)", average: "O(n²)", worst: "O(n²)" },
+        timeComplexity: { best: "O(n²)", average: "O(n²)", worst: "O(n²)", averaget: "O(n²)" },
         spaceComplexity: "O(1)",
         stability: "Unstable",
         inPlace: true,
@@ -54,7 +54,7 @@ const algorithmDatabase = {
         id: "insertionSort",
         description:
           "Builds sorted array one element at a time. Efficient for small datasets and nearly sorted arrays.",
-        timeComplexity: { best: "O(n)", average: "O(n²)", worst: "O(n²)" },
+        timeComplexity: { best: "O(n)", average: "O(n²)", worst: "O(n²)", averaget: "O(n²)" },
         spaceComplexity: "O(1)",
         stability: "Stable",
         inPlace: true,
@@ -71,6 +71,7 @@ const algorithmDatabase = {
           best: "O(n log n)",
           average: "O(n log n)",
           worst: "O(n log n)",
+          averaget: "O(n log n)",
         },
         spaceComplexity: "O(n)",
         stability: "Stable",
@@ -87,6 +88,7 @@ const algorithmDatabase = {
           best: "O(n log n)",
           average: "O(n log n)",
           worst: "O(n²)",
+          averaget: "O(n log n)",
         },
         spaceComplexity: "O(log n)",
         stability: "Unstable",
@@ -103,6 +105,7 @@ const algorithmDatabase = {
           best: "O(n)",
           average: "O(n log n)",
           worst: "O(n log n)",
+          averaget: "O(n log n)",
         },
         spaceComplexity: "O(n)",
         stability: "Stable",
@@ -119,6 +122,7 @@ const algorithmDatabase = {
           best: "O(n log n)",
           average: "O(n log n)",
           worst: "O(n log n)",
+          averaget: "O(n log n)",
         },
         spaceComplexity: "O(log n)",
         stability: "Unstable",
@@ -135,6 +139,7 @@ const algorithmDatabase = {
           best: "O(n log n)",
           average: "O(n(log n)^2)",
           worst: "O(n(log n)^2)",
+          averaget: "O(n(log n)^2)",
         },
         spaceComplexity: "O(1)",
         stability: "Unstable",
@@ -151,6 +156,7 @@ const algorithmDatabase = {
           best: "O(n²)",
           average: "O(n²)",
           worst: "O(n²)",
+          averaget: "O(n²)",
         },
         spaceComplexity: "O(1)",
         stability: "Unstable",
@@ -165,13 +171,13 @@ const algorithmDatabase = {
     title: "Search Algorithms",
     icon: "🔍",
     color: "#4ade80",
-    algorithms: [
+    algorithms: [,
       {
         name: "Linear Search",
         id: "linearSearch",
         description:
           "Searches through array sequentially until target is found. Works on unsorted arrays.",
-        timeComplexity: { best: "O(1)", average: "O(n)", worst: "O(n)" },
+        timeComplexity: { best: "O(1)", average: "O(n)", worst: "O(n)", averaget: "O(n)" },
         spaceComplexity: "O(1)",
         dataRequirement: "None (works on unsorted data)",
         implemented: true,
@@ -185,6 +191,7 @@ const algorithmDatabase = {
           best: "O(1)",
           average: "O(log n)",
           worst: "O(log n)",
+          averaget: "O(log n)",
         },
         spaceComplexity: "O(1)",
         dataRequirement: "Sorted array",
@@ -199,6 +206,7 @@ const algorithmDatabase = {
           best: "O(1)",
           average: "O(log n)",
           worst: "O(log n)",
+          averaget: "O(log n)",
         },
         spaceComplexity: "O(1)",
         dataRequirement: "Sorted array",
@@ -210,7 +218,7 @@ const algorithmDatabase = {
         id: "jumpSearch",
         description:
           "Efficient search on sorted arrays that jumps ahead by fixed steps (√n) and then performs a linear search within the identified block.",
-        timeComplexity: { best: "O(1)", average: "O(√n)", worst: "O(√n)" },
+        timeComplexity: { best: "O(1)", average: "O(√n)", worst: "O(√n)", averaget: "O(√n)" },
         spaceComplexity: "O(1)",
         dataRequirement: "Sorted array",
         implemented: true,
@@ -225,6 +233,7 @@ const algorithmDatabase = {
           best: "O(1)",
           average: "O(log₃ n)",
           worst: "O(log₃ n)",
+          averaget: "O(log₃ n)",
         },
         spaceComplexity: "O(1)",
         dataRequirement: "Sorted array",
@@ -247,6 +256,7 @@ const algorithmDatabase = {
           deletion: "O(1)",
           search: "O(n)",
           access: "O(n)",
+          averaget: "O(n)",
         },
         spaceComplexity: "O(n)",
         implemented: true,
@@ -260,6 +270,7 @@ const algorithmDatabase = {
           pop: "O(1)",
           peek: "O(1)",
           search: "O(n)",
+          averaget: "O(1)",
         },
         spaceComplexity: "O(n)",
         implemented: true,
@@ -273,6 +284,7 @@ const algorithmDatabase = {
           dequeue: "O(1)",
           front: "O(1)",
           search: "O(n)",
+          averaget: "O(1)",
         },
         spaceComplexity: "O(n)",
         implemented: true,
@@ -287,6 +299,7 @@ const algorithmDatabase = {
           deletion: "O(log n)",
           search: "O(log n)",
           traversal: "O(n)",
+          averaget: "O(log n)",
         },
         spaceComplexity: "O(n)",
         implemented: true,
@@ -301,6 +314,7 @@ const algorithmDatabase = {
           deletion: "O(m)",
           search: "O(m)",
           prefixSearch: "O(m)",
+          averaget: "O(m)",
         },
         spaceComplexity: "O(N)",
         implemented: true,
@@ -372,10 +386,10 @@ function AlgorithmCard({ algorithm }) {
     data-aos-once="true"
   >
     {/* Header */}
-    <div className="card-header flex items-center justify-between mb-3">
+    <div className="card-header flex items-center justify-between mb-3 ">
       <div className="card-title-group flex items-center gap-2">
         <span className="card-icon text-blue-500 text-lg">{algorithm.categoryIcon}</span>
-        <h3 className="card-title text-gray-800 font-semibold text-base leading-tight">
+        <h3 className=" text-gray-800 font-bold text-center text-2xl leading-tight">
           {algorithm.name}
         </h3>
       </div>
@@ -397,8 +411,8 @@ function AlgorithmCard({ algorithm }) {
     </p>
     {algorithm.category === "sorting" || algorithm.category === "searching" ? (
       <div>
-        <p>TC : {algorithm.timeComplexity.averaget} </p>
-        <p>SC : {algorithm.spaceComplexity} </p>
+        <p className="text-xl  font-bold text-black">TC : {algorithm.timeComplexity.averaget} </p>
+        <p className="text-xl font-bold text-black">SC : {algorithm.spaceComplexity} </p>
       </div>
     ):null}
     {/* Category Badge */}
@@ -569,6 +583,7 @@ function DataStructuresPage() {
       <div className="results-grid">
         {filteredAlgorithms.length > 0 ? (
           filteredAlgorithms.map((algorithm) => (
+            
             <AlgorithmCard key={algorithm.id} algorithm={algorithm} />
           ))
         ) : (

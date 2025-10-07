@@ -1,0 +1,468 @@
+/* ================================
+   Theme tokens (light / dark)
+   ================================ */
+
+:root {
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --surface-2: #eef2f7;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --primary: #5b8cff;
+  --primary-contrast: #ffffff;
+  --border: #e2e8f0;
+  --success-bg: #e7f7ef;
+  --success-text: #176c3a;
+  --code-bg: #0b1020;
+  --code-text: #e5e7eb;
+  --shadow: 0 8px 22px rgba(2, 6, 23, 0.08);
+}
+
+/* If your app sets data-theme on <html> or a top wrapper */
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --surface: #0f172a;
+  --surface-2: #131c2f;
+  --text: #e5e7eb;
+  --text-muted: #94a3b8;
+  --primary: #8ab4ff;
+  --primary-contrast: #0b1220;
+  --border: #243049;
+  --success-bg: #0d2a1a;
+  --success-text: #77d39a;
+  --code-bg: #0b1020;
+  --code-text: #e5e7eb;
+  --shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+}
+
+/* Fallback to OS preference if no data-theme is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --bg: #0b1220;
+    --surface: #0f172a;
+    --surface-2: #131c2f;
+    --text: #e5e7eb;
+    --text-muted: #94a3b8;
+    --primary: #8ab4ff;
+    --primary-contrast: #0b1220;
+    --border: #243049;
+    --success-bg: #0d2a1a;
+    --success-text: #77d39a;
+    --code-bg: #0b1020;
+    --code-text: #e5e7eb;
+    --shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ================================
+   Global layout
+   ================================ */
+
+.doc-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.doc-title {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+  margin: 0 0 8px;
+}
+
+/* ================================
+   Hero
+   ================================ */
+
+.doc-hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: clamp(16px, 3vw, 28px);
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+/* ================================
+   Buttons
+   ================================ */
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.08s ease, background 0.2s ease, border-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--text-muted);
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border-color: transparent;
+}
+
+.btn.lg {
+  padding: 12px 18px;
+  font-size: 1.05rem;
+}
+
+/* ================================
+   Text styles
+   ================================ */
+
+.muted {
+  color: var(--text-muted);
+}
+
+.center {
+  text-align: center;
+}
+
+/* ================================
+   Stats grid (responsive)
+   ================================ */
+
+.stats-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  margin: 20px 0;
+  align-items: stretch;
+}
+
+@media (min-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  min-height: 180px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary);
+  background: var(--surface);
+  z-index: 10;
+}
+
+/* Ensure text remains visible on hover */
+.stat-card:hover h3,
+.stat-card:hover p,
+.stat-card:hover strong {
+  color: var(--text);
+}
+
+/* Handle text overflow gracefully */
+.stat-card p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.6;
+  margin: 8px 0 0 0;
+  font-size: 0.95rem;
+}
+
+.stat-card strong {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.stat-card h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  text-align: center;
+}
+
+.stat-card h3:first-child {
+  margin-top: 0;
+}
+
+/* Special styling for tip cards */
+.stat-card.callout.success {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border: 2px solid rgba(22, 163, 74, 0.3);
+  position: relative;
+  overflow: visible;
+}
+
+.stat-card.callout.success::before {
+  content: '💡';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  background: #16a34a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+}
+
+.stat-card.callout.success:hover {
+  background: var(--success-bg);
+  color: var(--success-text);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(22, 163, 74, 0.2);
+  border-color: rgba(22, 163, 74, 0.5);
+}
+
+.stat-card.callout.success h3 {
+  color: var(--success-text);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.stat-card.callout.success strong {
+  color: var(--success-text);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.stat-card.callout.success p {
+  color: var(--success-text);
+  line-height: 1.6;
+}
+
+/* ================================
+   Callouts
+   ================================ */
+
+.callout {
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  margin: 16px 0 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.callout.success {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border-color: transparent;
+}
+
+/* ================================
+   Sections & code blocks
+   ================================ */
+
+.doc-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: clamp(14px, 2.5vw, 20px);
+  margin: 16px 0 20px;
+  box-shadow: var(--shadow);
+}
+
+.doc-section h2 {
+  margin-top: 0;
+}
+
+pre {
+  background: var(--code-bg);
+  color: var(--code-text);
+  border-radius: 12px;
+  padding: 12px;
+  overflow: auto;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border: 1px solid #1b2238;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New",
+    monospace;
+}
+
+/* ================================
+   Walkthrough steps (responsive)
+   ================================ */
+
+.steps {
+  display: grid;
+  gap: 10px;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 10px;
+  align-items: start;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.step-no {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  font-weight: 700;
+}
+
+.step-body p {
+  margin: 6px 0 0;
+}
+
+/* ================================
+   Accessibility & mobile polish
+   ================================ */
+
+@media (max-width: 480px) {
+  .doc-page {
+    padding: 16px 12px;
+  }
+  .btn {
+    width: 100%;
+  }
+  .doc-section, .doc-hero {
+    padding: 14px;
+  }
+}
+
+/* Focus styles for keyboard users */
+.btn:focus,
+a:focus,
+summary:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* SortingDoc light tweaks (only when app is light) */
+html[data-theme="light"] .doc-page {
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --surface-2: #eef2f7;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --primary: #2563eb;
+  --primary-contrast: #ffffff;
+  --border: #e2e8f0;
+  --success-bg: #e7f7ef;
+  --success-text: #176c3a;
+  --code-bg: #f1f5f9;
+  --code-text: #1e293b;
+  --shadow: 0 8px 22px rgba(2, 6, 23, 0.08);
+}
+
+/* SortingDoc dark tweaks (only when app is dark) */
+html[data-theme="dark"] .doc-page {
+  --bg: #0b1220;
+  --surface: #0f172a;
+  --surface-2: #131c2f;
+  --text: #e5e7eb;
+  --text-muted: #94a3b8;
+  --primary: #8ab4ff;
+  --primary-contrast: #0b1220;
+  --border: #243049;
+  --success-bg: #0d2a1a;
+  --success-text: #77d39a;
+  --code-bg: #0b1020;
+  --code-text: #e5e7eb;
+  --shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+}
+
+ 
+ 
+/* ================================
+   Additional mobile improvements
+   ================================ */
+
+@media (max-width: 640px) {
+  .stats-grid {
+    gap: 12px;
+  }
+  
+  .stat-card {
+    padding: 12px;
+    min-height: 160px;
+  }
+  
+  .stat-card h3 {
+    font-size: 1rem;
+  }
+  
+  .cta-row {
+    flex-direction: column;
+  }
+}

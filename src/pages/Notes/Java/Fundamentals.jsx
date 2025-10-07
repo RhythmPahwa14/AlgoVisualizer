@@ -30,10 +30,90 @@ import FunctionalInterfacesSection from "./sections/FunctionalInterfacesSection"
 import RegexSection from "./sections/RegexSection";
 import JDBCSection from "./sections/JDBCSection";
 import DataStructuresSection from "./sections/DataStructuresSection";
+import Abstract from "./sections/Abstract";
+import Feature from "./sections/Feature";
+import Annotations from "./sections/Annotations";
+
+import "../../../styles/notesSideBar.css";
+import { FaChevronDown, FaChevronRight, FaBook, FaBars, FaTimes  } from "react-icons/fa";
+
+// sideBar content
+const JavaSidebar = ({
+  isOpen,
+  onClose,
+  onSelectTopic,
+  activeTopic,
+  sections,
+}) => {
+  const [openCategory, setOpenCategory] = useState("intro");
+
+  const toggleCategory = (title) => {
+    setOpenCategory(openCategory === title ? null : title);
+  };
+
+  return (
+    <>
+      {isOpen && <div className="overlay" onClick={onClose}></div>}
+      <aside className={`sidebar ${isOpen ? "open" : "close"}`}>
+        <div className="sidebar-header">
+          <h2 className="sidebar-title">
+            <FaBook className="mr-2 text-indigo-400" /> Java Topics
+          </h2>
+          <button className="close-btn" onClick={onClose}>
+            <FaTimes />
+          </button>
+        </div>
+
+        {sections.map((section) => (
+          <div key={section.title} className="mb-3">
+            {/* --- Main Section --- */}
+            <button
+              onClick={() => toggleCategory(section.title)}
+              className="flex justify-between items-center   text-left text-sm font-semibold w-50 px-3 py-2 rounded-md hover:bg-indigo-700/30 transition"
+            >
+              <span>{section.title}</span>
+              {openCategory === section.title ? (
+                <FaChevronDown size={14} />
+              ) : (
+                <FaChevronRight size={14} />
+              )}
+            </button>
+
+            {/* --- Sub Topics --- */}
+            {openCategory === section.title && (
+              <ul className="mt-1 ml-3 space-y-1 border-l border-gray-700 pl-3">
+                {section.topics.map((topic, i) => {
+                  const topicId = topic.id || `topic-${i}`;
+                  const label = topic.label || topic;
+                  return (
+                    <li key={topicId}>
+                      <button
+                        onClick={() => onSelectTopic(topicId)}
+                        className={`w-40 text-left text-sm mx-3.5 px-6 py-1.5 rounded-md hover:bg-indigo-600/30 transition ${
+                          activeTopic === topicId
+                            ? "bg-indigo-600/40 text-indigo-300"
+                            : "text-gray-200"
+                        }`}
+                      >
+                        {label}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+        ))}
+      </aside>
+    </>
+  );
+};
 
 const Fundamentals = () => {
   const [activeTab, setActiveTab] = useState("intro");
   const [copiedCode, setCopiedCode] = useState("");
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const copyCode = async (code, identifier) => {
     try {
@@ -44,43 +124,303 @@ const Fundamentals = () => {
       console.error("Copy failed:", err);
     }
   };
-
+  
+  // topics section
   const sections = [
-    { id: "intro", label: "Introduction", component: <IntroSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "setup", label: "Setup", component: <SetupSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "syntax", label: "Syntax", component: <SyntaxSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "datatypes", label: "Data Types", component: <DataTypesSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "variables", label: "Variables", component: <VariablesSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "operators", label: "Operators", component: <OperatorsSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "control", label: "Control Flow", component: <ControlFlowSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "methods", label: "Methods", component: <MethodsSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "oop", label: "OOP Concepts", component: <OOPSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "strings", label: "Strings", component: <StringsSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "arrays", label: "Arrays", component: <ArraysSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "loops", label: "Loops", component: <LoopsSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "classes", label: "Classes/Objects", component: <ClassesSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "inheritance", label: "Inheritance", component: <InheritanceSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "polymorphism", label: "Polymorphism", component: <PolymorphismSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "encapsulation", label: "Encapsulation", component: <EncapsulationSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "constructors", label: "Constructors", component: <ConstructorsSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "exceptions", label: "Exceptions", component: <ExceptionsSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "collections", label: "Collections", component: <CollectionsSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "interfaces", label: "Interfaces", component: <InterfacesSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "packages", label: "Packages", component: <PackagesSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "filehandling", label: "File Handling", component: <FileHandlingSection copyCode={copyCode} copiedCode={copiedCode} /> },
-     { id: "generics", label: "Generics", component: <GenericsSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "multithreading", label: "Multithreading", component: <MultithreadingSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "concurrency", label: "Concurrency", component: <ConcurrencySection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "lambdasstreams", label: "Lambdas & Streams", component: <LambdasStreamsSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "functionalinterfaces", label: "Functional Interfaces", component: <FunctionalInterfacesSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "regex", label: "Regular Expressions", component: <RegexSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "jdbc", label: "JDBC", component: <JDBCSection copyCode={copyCode} copiedCode={copiedCode} /> },
-    { id: "datastructures", label: "Data Structures", component: <DataStructuresSection copyCode={copyCode} copiedCode={copiedCode} /> },
+    {
+      title: "Core Java",
+      topics: [
+        {
+          id: "intro",
+          label: "Introduction",
+          component: (
+            <IntroSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id:"features",
+          label:"Features",
+          component:(
+            <Feature copyCode={copyCode} copiedCode={copiedCode}/>
+          )
+        },
+        {
+          id: "setup",
+          label: "Setup",
+          component: (
+            <SetupSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "syntax",
+          label: "Syntax",
+          component: (
+            <SyntaxSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "datatypes",
+          label: "Data Types",
+          component: (
+            <DataTypesSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "variables",
+          label: "Variables",
+          component: (
+            <VariablesSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "operators",
+          label: "Operators",
+          component: (
+            <OperatorsSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "control",
+          label: "Control Flow",
+          component: (
+            <ControlFlowSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "methods",
+          label: "Methods",
+          component: (
+            <MethodsSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "strings",
+          label: "Strings",
+          component: (
+            <StringsSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "arrays",
+          label: "Arrays",
+          component: (
+            <ArraysSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "loops",
+          label: "Loops",
+          component: (
+            <LoopsSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },  
+      ],
+    },
+    {
+      title: "OOP Concepts",
+      topics: [
+        {
+          id: "oop",
+          label: "OOP Concepts",
+          component: <OOPSection copyCode={copyCode} copiedCode={copiedCode} />,
+        },
+        {
+          id: "classes",
+          label: "Classes/Objects",
+          component: (
+            <ClassesSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "inheritance",
+          label: "Inheritance",
+          component: (
+            <InheritanceSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "polymorphism",
+          label: "Polymorphism",
+          component: (
+            <PolymorphismSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "encapsulation",
+          label: "Encapsulation",
+          component: (
+            <EncapsulationSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "constructors",
+          label: "Constructors",
+          component: (
+            <ConstructorsSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "abstract",
+          label: "Abstract",
+          component: <Abstract copyCode={copyCode} copiedCode={copiedCode} />,
+        },
+        "Access Modifiers",
+      ],
+    },
+    {
+      title: "Advanced Java",
+      topics: [
+        {
+          id: "packages",
+          label: "Packages",
+          component: (
+            <PackagesSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "exceptions",
+          label: "Exceptions",
+          component: (
+            <ExceptionsSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "collections",
+          label: "Collections",
+          component: (
+            <CollectionsSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "generics",
+          label: "Generics",
+          component: (
+            <GenericsSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        }, 
+        {
+           id: "annotations",
+          label: "Annotations",
+          component: (
+            <Annotations copyCode={copyCode} copiedCode={copiedCode} />
+          ), 
+        },
+        //   "Wrapper Classes",
+        //   "Varargs",
+        //   "Enum",
+      ],
+    },
+    {
+      title: "Multithreading",
+      topics: [
+        {
+          id: "multithreading",
+          label: "Multithreading",
+          component: (
+            <MultithreadingSection
+              copyCode={copyCode}
+              copiedCode={copiedCode}
+            />
+          ),
+        },
+        {
+          id: "concurrency",
+          label: "Concurrency",
+          component: (
+            <ConcurrencySection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
 
+        {
+          id: "jdbc",
+          label: "JDBC",
+          component: (
+            <JDBCSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        {
+          id: "datastructures",
+          label: "Data Structures",
+          component: (
+            <DataStructuresSection
+              copyCode={copyCode}
+              copiedCode={copiedCode}
+            />
+          ),
+        },
+        //   "Thread Lifecycle",
+        //   "Creating Threads",
+        //   "Synchronization",
+        //   "Inter-thread Communication",
+        //   "Executors & Thread Pools",
+      ],
+    },
+    {
+      title: "I/O and File Handling",
+      topics: [
+        {
+          id: "filehandling",
+          label: "File Handling",
+          component: (
+            <FileHandlingSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        //   "Streams (Byte & Character)",
+        //   "BufferedReader / Writer",
+        //   "Serialization & Deserialization",
+        //   "NIO Package",
+      ],
+    },
+    {
+      title: "Modern Java",
+      topics: [
+        {
+          id: "lambdasstreams",
+          label: "Lambdas & Streams",
+          component: (
+            <LambdasStreamsSection
+              copyCode={copyCode}
+              copiedCode={copiedCode}
+            />
+          ),
+        },
+        {
+          id: "functionalinterfaces",
+          label: "Functional Interfaces",
+          component: (
+            <FunctionalInterfacesSection
+              copyCode={copyCode}
+              copiedCode={copiedCode}
+            />
+          ),
+        },
+        {
+          id: "regex",
+          label: "Regular Expressions",
+          component: (
+            <RegexSection copyCode={copyCode} copiedCode={copiedCode} />
+          ),
+        },
+        //   "Streams API",
+        //   "Optional Class",
+        //   "Method References",
+      ],
+    },
   ];
 
+  const getActiveComponent = () => {
+    for (const section of sections) {
+      const topic = section.topics.find((t) => t.id === activeTab);
+      if (topic?.component) return topic.component;
+    }
+    return <p className="text-gray-400">Select a topic to view notes.</p>;
+  };
+
   return (
-    <div className="notes-page" style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
+    <div
+      className="notes-page"
+      style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}
+    >
       {/* Header */}
       <header
         style={{
@@ -93,57 +433,50 @@ const Fundamentals = () => {
           boxShadow: "0 10px 25px rgba(79, 70, 229, 0.3)",
         }}
       >
-        <h1 style={{ fontSize: "3rem", marginBottom: "1rem", fontWeight: 800 }}>Java Fundamentals</h1>
-        <p style={{ fontSize: "1.2rem", maxWidth: "700px", margin: "0 auto", opacity: 0.9 ,
-           color: window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? "#ffffff"  // text color for dark mode
-      : "#1a1a1a", // text color for light mode
-        }}>
-          A comprehensive guide to Java programming for beginners. Learn core concepts with detailed explanations and runnable examples you can copy.
+        <h1
+          style={{
+            fontSize: "3rem",
+            color: "white !important",
+            marginBottom: "1rem",
+            fontWeight: 800,
+          }}
+        >
+          Java Fundamentals
+        </h1>
+        <p
+          style={{
+            fontSize: "1.2rem",
+            maxWidth: "700px",
+            margin: "0 auto",
+            opacity: 0.9,
+            color: window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "#ffffff" // text color for dark mode
+              : "#1a1a1a", // text color for light mode
+          }}
+        >
+          A comprehensive guide to Java programming for beginners. Learn core
+          concepts with detailed explanations and runnable examples you can
+          copy.
         </p>
-      </header>
+      </header> 
 
-      {/* Navigation Tabs */}
-      <nav
-        style={{
-          position: "sticky",
-          top: "2rem",
-          background: "var(--card-bg, #ffffff)",
-          borderRadius: "12px",
-          padding: "1.5rem",
-          boxShadow: "0 6px 18px rgba(16,24,40,0.04)",
-          marginBottom: "2rem",
-        }}
-      >
-        <h3 style={{ marginTop: 0, color: "#0f172a" }}>
-          <i className="fas fa-bookmark" style={{ marginRight: "0.5rem", color: "#4f46e5" }}></i>
-          Contents
-        </h3>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-          {sections.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setActiveTab(item.id)}
-              style={{
-                background: activeTab === item.id ? "#4f46e5" : "transparent",
-                color: activeTab === item.id ? "white" : "#4f46e5",
-                border: "2px solid #4f46e5",
-                padding: "0.5rem 1rem",
-                borderRadius: "6px",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-      </nav>
+      {/* sideBar */}
+      <JavaSidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        onSelectTopic={setActiveTab}
+        activeTopic={activeTab}
+        sections={sections}
+      />
 
       {/* Section Renderer */}
-      <div style={{ marginTop: "1rem" }}>
-        {sections.find((s) => s.id === activeTab)?.component}
-      </div>
+      <main className="main-content">
+        <button className="menu-btn" onClick={() => setSidebarOpen(true)}>
+          <FaBars />
+        </button>
+        {/* <div className="content">{getActiveComponent()}</div> */}
+        <div style={{ marginTop: "1rem" }}>{getActiveComponent()}</div>
+      </main>
 
       <style jsx>{`
         .notes-page {

@@ -10,7 +10,12 @@
   --settings-icon-size: 24px;
   --settings-spacing: 2rem;
   --settings-glow: 0 0 30px rgba(var(--theme-accent-rgb, 88, 166, 255), 0.15);
-  --settings-gradient: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-secondary, #79c0ff) 100%);
+  /* --settings-gradient: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-secondary, #79c0ff) 100%); */
+  --settings-gradient: linear-gradient(
+    135deg,
+    var(--theme-bg, #f0f4f8) 0%,
+    color-mix(in srgb, var(--theme-bg, #f0f4f8) 95%, var(--theme-accent, #58a6ff) 5%) 100%
+  );
 }
 
 [data-theme="dark"] {
@@ -25,9 +30,9 @@
   margin: 0 auto;
   padding: 3rem 2rem;
   min-height: 100vh;
-  background: linear-gradient(135deg, 
+  /* background: linear-gradient(135deg, 
     var(--theme-bg) 0%, 
-    color-mix(in srgb, var(--theme-bg) 95%, var(--theme-accent) 5%) 100%);
+    color-mix(in srgb, var(--theme-bg) 95%, var(--theme-accent) 5%) 100%); */
 }
 
 .settings-title {

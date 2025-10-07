@@ -51,6 +51,10 @@ import CppVariablesAndDataTypes from "./pages/Notes/Cpp/VariablesAndDataTypes";
 // C Notes
 import CFundamentals from "./pages/Notes/C/Fundamentals";
 
+//javascript Notes
+import JavaScriptFundamentals from "./pages/Notes/JavaScript/Fundamentals.jsx";
+import JavaScriptVariablesAndDataTypes from "./pages/Notes/JavaScript/VariablesAndDataTypes.jsx";
+
 // Algorithm Pages
 import DPOverview from "./pages/DPOverview";
 import DPPage from "./pages/DPPage";
@@ -72,6 +76,7 @@ import StringOverview from "./pages/StringOverview";
 import StringPage from "./pages/StringPage";
 import StringRabinKarpPage from "./pages/StringRabinKarpPage";
 import PrimPage from "./pages/PrimPage";
+import KruskalPage from "./pages/KruskalPage";
 import HuffmanPage from "./pages/HuffmanPage";
 
 // Components
@@ -117,6 +122,7 @@ import Playground from "./pages/Playground";
 import ProgressTracker from "./components/ProgressTracker";
 import LearnerLeaderboard from "./components/LearnerLeaderboard";
 import WeeklyChallenge from "./components/WeeklyChallenge";
+import GitLearning from "./pages/GitLearning.jsx";
 
 
 
@@ -206,6 +212,7 @@ const App = () => {
                   <Route path="/string" element={<StringPage />} />
                   <Route path="/string/rabin-karp" element={<StringRabinKarpPage />} />
                   <Route path="/prims" element={<PrimPage />} />
+                  <Route path="/kruskal" element={<KruskalPage />} />
                   <Route path="/huffman" element={<HuffmanPage />} />
 
                   {/* Data Structures Documentation */}
@@ -227,7 +234,7 @@ const App = () => {
                   <Route path="/contributor-leaderboard" element={<ContributorLeaderboard />} />
                   <Route path="/editor" element={<CodeEditor />} />
 
-                  {/* Notes Routes */}
+                  {/* Notes Routes */} 
                   <Route path="/notes/java" element={<Navigate to="/notes/java/fundamentals" replace />} />
                   <Route path="/notes/java/fundamentals" element={<Fundamentals />} />
                   <Route path="/notes/java/variables-and-data-types" element={<VariablesAndDataTypes />} />
@@ -240,6 +247,10 @@ const App = () => {
                   <Route path="/notes/cpp" element={<Navigate to="/notes/cpp/fundamentals" replace />} />
                   <Route path="/notes/cpp/fundamentals" element={<CppFundamentals />} />
                   <Route path="/notes/cpp/variables-and-data-types" element={<CppVariablesAndDataTypes />} />
+
+                  <Route path="/notes/javascript" element={<Navigate to="/notes/javascript/fundamentals" replace />} />
+                  <Route path="/notes/javascript/fundamentals" element={<JavaScriptFundamentals/>} />
+                  <Route path="/notes/javascript/variables-and-data-types" element={<JavaScriptVariablesAndDataTypes/>} />
 
                   <Route path="/notes/c" element={<Navigate to="/notes/c/fundamentals" replace />} />
                   <Route path="/notes/c/fundamentals" element={<CFundamentals />} />
@@ -254,6 +265,8 @@ const App = () => {
                   <Route path="/contributor/:id" element={<ContributorProfileModal />} />
 
                   <Route path="/playground" element={<Playground />} />
+
+                  <Route path="/learn/git" element={<GitLearning />} />
 
 
                   {/* Learning & Settings */}

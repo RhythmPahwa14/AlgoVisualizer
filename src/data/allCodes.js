@@ -825,6 +825,198 @@ void introSortUtil(vector<int>& arr, int low, int high, int depthLimit) {
   },
 };
 
+export const kruskalAlgorithms = {
+  kruskal: {
+    java: `import java.util.*;
+
+class Edge implements Comparable<Edge> {
+    int src, dest, weight;
+    Edge(int s, int d, int w) {
+        src = s; dest = d; weight = w;
+    }
+    public int compareTo(Edge o) { return this.weight - o.weight; }
+}
+
+class KruskalAlgorithm {
+    static int[] parent, rank;
+
+    static int find(int x) {
+        if (parent[x] != x) parent[x] = find(parent[x]);
+        return parent[x];
+    }
+
+    static void union(int x, int y) {
+        int px = find(x), py = find(y);
+        if (px != py) {
+            if (rank[px] < rank[py]) parent[px] = py;
+            else if (rank[px] > rank[py]) parent[py] = px;
+            else { parent[py] = px; rank[px]++; }
+        }
+    }
+
+    static void kruskalMST(List<Edge> edges, int V) {
+        Collections.sort(edges);
+        parent = new int[V]; rank = new int[V];
+        for (int i = 0; i < V; i++) parent[i] = i;
+
+        List<Edge> mst = new ArrayList<>();
+        int mstWeight = 0;
+
+        for (Edge e : edges) {
+            if (find(e.src) != find(e.dest)) {
+                union(e.src, e.dest);
+                mst.add(e);
+                mstWeight += e.weight;
+            }
+        }
+
+        System.out.println("MST Edges:");
+        for (Edge e : mst) {
+            System.out.println(e.src + " - " + e.dest + " : " + e.weight);
+        }
+        System.out.println("Total MST Weight: " + mstWeight);
+    }
+}`,
+    python: `class UnionFind:
+    def __init__(self, size):
+        self.parent = list(range(size))
+        self.rank = [0] * size
+
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+
+    def union(self, x, y):
+        px, py = self.find(x), self.find(y)
+        if px != py:
+            if self.rank[px] < self.rank[py]:
+                self.parent[px] = py
+            elif self.rank[px] > self.rank[py]:
+                self.parent[py] = px
+            else:
+                self.parent[py] = px
+                self.rank[px] += 1
+
+def kruskal_mst(edges, V):
+    edges.sort(key=lambda x: x[2])  # sort by weight
+    uf = UnionFind(V)
+    mst = []
+    mst_weight = 0
+
+    for u, v, w in edges:
+        if uf.find(u) != uf.find(v):
+            uf.union(u, v)
+            mst.append((u, v, w))
+            mst_weight += w
+
+    print("MST Edges:")
+    for u, v, w in mst:
+        print(f"{u} - {v} : {w}")
+    print(f"Total MST Weight: {mst_weight}")
+    return mst`,
+    cpp: `#include <bits/stdc++.h>
+using namespace std;
+
+struct Edge {
+    int src, dest, weight;
+};
+
+bool cmp(Edge a, Edge b) { return a.weight < b.weight; }
+
+class UnionFind {
+    vector<int> parent, rank;
+public:
+    UnionFind(int size) {
+        parent.resize(size); rank.resize(size, 0);
+        for(int i=0; i<size; i++) parent[i] = i;
+    }
+    int find(int x) {
+        if(parent[x] != x) parent[x] = find(parent[x]);
+        return parent[x];
+    }
+    void unionSets(int x, int y) {
+        int px = find(x), py = find(y);
+        if(px != py) {
+            if(rank[px] < rank[py]) parent[px] = py;
+            else if(rank[px] > rank[py]) parent[py] = px;
+            else { parent[py] = px; rank[px]++; }
+        }
+    }
+};
+
+void kruskalMST(vector<Edge>& edges, int V) {
+    sort(edges.begin(), edges.end(), cmp);
+    UnionFind uf(V);
+    vector<Edge> mst;
+    int mstWeight = 0;
+
+    for(auto& e : edges) {
+        if(uf.find(e.src) != uf.find(e.dest)) {
+            uf.unionSets(e.src, e.dest);
+            mst.push_back(e);
+            mstWeight += e.weight;
+        }
+    }
+
+    cout << "MST Edges:\\n";
+    for(auto& e : mst) {
+        cout << e.src << " - " << e.dest << " : " << e.weight << "\\n";
+    }
+    cout << "Total MST Weight: " << mstWeight << endl;
+}`,
+    javascript: `class UnionFind {
+    constructor(size) {
+        this.parent = Array.from({length: size}, (_, i) => i);
+        this.rank = Array(size).fill(0);
+    }
+
+    find(x) {
+        if (this.parent[x] !== x) {
+            this.parent[x] = this.find(this.parent[x]);
+        }
+        return this.parent[x];
+    }
+
+    union(x, y) {
+        const px = this.find(x), py = this.find(y);
+        if (px !== py) {
+            if (this.rank[px] < this.rank[py]) {
+                this.parent[px] = py;
+            } else if (this.rank[px] > this.rank[py]) {
+                this.parent[py] = px;
+            } else {
+                this.parent[py] = px;
+                this.rank[px]++;
+            }
+        }
+    }
+}
+
+function kruskalMST(edges, V) {
+    edges.sort((a, b) => a[2] - b[2]); // sort by weight
+    const uf = new UnionFind(V);
+    const mst = [];
+    let mstWeight = 0;
+
+    for (const [u, v, w] of edges) {
+        if (uf.find(u) !== uf.find(v)) {
+            uf.union(u, v);
+            mst.push([u, v, w]);
+            mstWeight += w;
+        }
+    }
+
+    console.log("MST Edges:");
+    for (const [u, v, w] of mst) {
+        console.log(\`\${u} - \${v} : \${w}\`);
+    }
+    console.log(\`Total MST Weight: \${mstWeight}\`);
+    return mst;
+}`,
+  },
+};
+
 export const primsAlgorithms = {
   prims: {
     java: `import java.util.*;

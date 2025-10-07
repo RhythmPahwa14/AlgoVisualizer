@@ -187,6 +187,12 @@ export const learnSections = [
         category: "Paradigms",
         tags: ["prim's", "mst", "minimum spanning tree", "greedy", "graph"],
       },
+      {
+        path: "/kruskal",
+        label: "Kruskal's Algorithm",
+        category: "Paradigms",
+        tags: ["kruskal's", "mst", "minimum spanning tree", "greedy", "graph"],
+      },
     ],
   },
   

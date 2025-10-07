@@ -733,8 +733,7 @@ body.dark-mode .stat-card {
 /* ✅ ADD: A base card style for all dashboard elements for consistency */
 .hero-card,
 .feature-card,
-.learning-paths,
-.activity-feed {
+.learning-paths {
   background: var(--dashboard-card-bg);
   border: 1px solid var(--dashboard-border);
   border-radius: 24px;
@@ -1284,83 +1283,96 @@ body.dark-mode .stat-card {
   border-radius: 6px;
   border: 1px solid var(--dashboard-border);
 }
+/* Activity Feed Container */
+.activity-feed {
+  width: 100%;
+}
 
-/* Enhanced Activity Feed */
+.activity-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+/* Activity Items Container */
 .activity-items {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+/* Individual Activity Item */
 .activity-item {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid var(--dashboard-border);
+  background: var(--activity-bg-hover, rgba(0, 0, 0, 0.06));
+  border-color: var(--accent-color, #007bff);
   border-radius: 12px;
   transition: all 0.3s ease;
 }
 
 .activity-item:hover {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: var(--dashboard-accent-color);
+  background: var(--activity-bg-hover, rgba(0, 0, 0, 0.06));
+  border-color: var(--accent-color, #007bff);
 }
 
+/* Activity Icon */
 .activity-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   flex-shrink: 0;
 }
 
 .activity-icon.new {
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
+  background: var(--new-icon-bg, #e3f2fd);
+  color: var(--new-icon-color, #1976d2);
 }
 
 .activity-icon.update {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: white;
+  background: var(--update-icon-bg, #f3e5f5);
+  color: var(--update-icon-color, #7b1fa2);
 }
 
 .activity-icon.feature {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  color: white;
+  background: var(--feature-icon-bg, #e8f5e8);
+  color: var(--feature-icon-color, #2e7d32);
 }
 
 .activity-icon.community {
-  background: linear-gradient(135deg, #ec4899, #be185d);
-  color: white;
+  background: var(--community-icon-bg, #fff3e0);
+  color: var(--community-icon-color, #f57c00);
 }
 
+/* Activity Content */
 .activity-content {
   flex: 1;
 }
 
 .activity-item-title {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--dashboard-text-primary);
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.25rem 0;
+  color: var(--text-primary);
 }
 
 .activity-description {
-  font-size: 0.8rem;
-  color: var(--dashboard-text-secondary);
+  font-size: 0.875rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-secondary);
   line-height: 1.4;
-  margin-bottom: 0.5rem;
 }
 
 .activity-time {
   font-size: 0.75rem;
-  color: var(--dashboard-text-muted);
+  color: var(--text-muted);
 }
-
 .feature-card:hover {
   transform: translateY(-5px) scale(1.02);
   border-color: var(--dashboard-accent-color);
@@ -1482,7 +1494,7 @@ body.dark-mode .stat-card {
   padding: 14px 28px;
   margin: 16px 0 36px 0;
   background: linear-gradient(90deg, #143e81, #0e7789); /* gradient */
-  color: white;
+  color: var(--text-primary, #1a1a1a);
   font-size: 15px;
   font-weight: 600;
   border: none;
@@ -1500,10 +1512,14 @@ body.dark-mode .stat-card {
 
 .activity-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
-  font-size: 0.85rem;
-  color: var(--dashboard-text-secondary);
+  padding: 1rem;
+  background: var(--activity-bg, rgba(0, 0, 0, 0.03));
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .activity-dot {
@@ -2270,7 +2286,6 @@ body.dark-mode .step-duration-tag {
 }
 
 .activity-feed {
-  background: transparent;
   border-radius: 0;
   padding: 0;
   box-shadow: none;
@@ -2282,13 +2297,14 @@ body.dark-mode .step-duration-tag {
 }
 .activity-item {
   display: flex;
-  gap: 12px;
   align-items: flex-start;
-  background: #fff;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(15, 23, 42, 0.03);
-  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--activity-bg, rgba(0, 0, 0, 0.03));
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 .activity-item .activity-icon {
   width: 42px;
