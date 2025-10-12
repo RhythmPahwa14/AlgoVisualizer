@@ -120,6 +120,8 @@ import "./styles/components.css";
 import "./styles/footer-improved.css";
 import LearnLanding from "./pages/LearnLanding";
 import DSDocumentation from "./pages/DSDocumentation";
+import BoruvkaPage from "./pages/GraphBoruvka.jsx";
+
 
 // Dynamic Notes Page
 import NotesPage from "./pages/Notes/NotesPage";
@@ -259,6 +261,7 @@ const App = () => {
                   <Route path="/kruskal" element={<KruskalPage />} />
                   <Route path="/huffman" element={<HuffmanPage />} />
                   <Route path="/graph/floyd-warshall" element={<FloydWarshallPage />} />
+                  <Route path="/graph/boruvka" element={<BoruvkaPage />} />
 
 
                   {/* Data Structures Documentation */}
