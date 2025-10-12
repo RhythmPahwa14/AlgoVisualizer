@@ -7082,7 +7082,23 @@
         ],
         "correctAnswer": 0,
         "explanation": "When Z value equals pattern length, it signifies a full match of the pattern at that position in the text."
-    }
+    },
+    {
+    "id": 458,
+    "topic": "String Algorithms",
+    "algorithm": "Z Algorithm",
+    "difficulty": "Medium",
+    "question": "What is the time complexity of the Z algorithm for pattern searching in a string of length n?",
+    "options": [
+        "O(n^2)",
+        "O(n log n)",
+        "O(n)",
+        "O(log n)"
+    ],
+    "correctAnswer": 2,
+    "explanation": "The Z algorithm processes the string in linear time, O(n), by efficiently reusing previously computed Z values."
+}
+
 
 
 
