@@ -1194,6 +1194,113 @@ def intro_sort(arr):
     ]
   },
 
+sleepSort: {
+  title: "Sleep Sort",
+  description: "Sleep Sort is a fun, visualization-based algorithm that sorts numbers by leveraging their values as delays. Each element 'sleeps' for a duration proportional to its value, then gets placed in the output in that order. While not practical for real-world use, it's often used to demonstrate concurrency and timing-based sorting.",
+  code: {
+    js: `function sleepSort(arr, delay = 1) {
+  const result = [];
+  const maxVal = Math.max(...arr);
+  return new Promise((resolve) => {
+    arr.forEach((num) => {
+      setTimeout(() => {
+        result.push(num);
+        if (result.length === arr.length) {
+          resolve(result);
+        }
+      }, num * delay);
+    });
+  });
+}
+
+// Usage example:
+(async () => {
+  const arr = [3, 1, 4, 2];
+  const sorted = await sleepSort(arr, 50);
+  console.log(sorted); // [1, 2, 3, 4]
+})();`,
+    java: `import java.util.*;
+
+class SleepSort {
+  public static void sleepSort(int[] arr) {
+    List<Integer> result = Collections.synchronizedList(new ArrayList<>());
+    int max = Arrays.stream(arr).max().orElse(0);
+    for (int num : arr) {
+      new Thread(() -> {
+        try {
+          Thread.sleep(num * 10);
+        } catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+        }
+        result.add(num);
+        if (result.size() == arr.length) {
+          synchronized (result) {
+            Collections.sort(result); // Optional for ensuring order in race
+            System.out.println(result);
+          }
+        }
+      }).start();
+    }
+  }
+
+  public static void main(String[] args) {
+    int[] arr = {3, 1, 4, 2};
+    sleepSort(arr);
+  }
+}`,
+    cpp: `#include <bits/stdc++.h>
+#include <thread>
+#include <chrono>
+using namespace std;
+
+void sleepSort(vector<int>& arr) {
+  vector<int> result;
+  mutex m;
+  vector<thread> threads;
+
+  for (int num : arr) {
+    threads.emplace_back([num, &result, &m]() {
+      this_thread::sleep_for(chrono::milliseconds(num * 10));
+      lock_guard<mutex> lock(m);
+      result.push_back(num);
+    });
+  }
+
+  for (auto& t : threads) t.join();
+  sort(result.begin(), result.end());
+  for (int x : result) cout << x << " ";
+  cout << endl;
+}
+
+int main() {
+  vector<int> arr = {3, 1, 4, 2};
+  sleepSort(arr);
+  return 0;
+}`,
+    py: `import threading, time
+
+def sleep_sort(arr, delay=0.01):
+  result = []
+  def sleeper(n):
+    time.sleep(n * delay)
+    result.append(n)
+
+  threads = [threading.Thread(target=sleeper, args=(n,)) for n in arr]
+  for t in threads: t.start()
+  for t in threads: t.join()
+  return result
+
+# Example
+print(sleep_sort([3, 1, 4, 2]))  # [1, 2, 3, 4]`
+  },
+  steps: [
+    { explanation: "For each number, create a 'timer' or 'thread' that waits for a duration proportional to the number's value." },
+    { explanation: "When the timer completes, the number is added to the output list." },
+    { explanation: "Since smaller numbers have shorter sleep times, they get added earlier, resulting in sorted order." },
+    { explanation: "This algorithm relies on concurrency and precise timing, making it impractical but visually interesting." },
+    { explanation: "Time complexity depends on the maximum value in the array, approximately O(max(arr) + n)." }
+  ]
+},
 
   binarySearch: {
     title: "Binary Search Algorithm",

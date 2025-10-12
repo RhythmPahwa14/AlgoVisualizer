@@ -43,6 +43,8 @@ export const navbarNavigationItems = [
       { path: "/notes/python", label: "Python" },
       { path: "/notes/cpp", label: "Cpp" },
       { path: "/notes/c", label: "C" },
+      { path: "/notes/javascript", label: "JavaScript" },
+      { path: "/notes/rust", label: "Rust" },
 
      ],
   },

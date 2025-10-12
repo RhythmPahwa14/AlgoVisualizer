@@ -288,6 +288,7 @@ body {
   right: 0;
   bottom: 0;
   background: var(--hover-bg);
+  /* background-color: green; */
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
@@ -299,12 +300,14 @@ body {
 
 .navbar-link:hover {
   color: var(--primary-color);
+  /* color: green; */
   transform: translateY(-1px);
 }
 
 .navbar-link.active {
   color: var(--primary-color);
   background: var(--primary-color-alpha);
+  /* background-color: green; */
 }
 
 .navbar-link.active::before {
@@ -343,7 +346,7 @@ body {
   gap: 0.4rem;
   padding: 0.65rem 0.85rem;
   border-radius: 10px;
-  background: none;
+  /* background: none; */
   border: none;
   color: var(--text-color);
   font-weight: 500;
@@ -362,7 +365,9 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--hover-bg);
+  /* background-color: var(--pr); */
+  background: var(--primary-color-alpha);
+  border: 2px solid rgb(34, 136, 215);
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
@@ -375,7 +380,8 @@ body {
 
 .dropdown-toggle:hover,
 .dropdown-toggle.active {
-  color: var(--primary-color);
+  background: var(--hover-bg);
+  /* color: var(--primary-color); */
   transform: translateY(-1px);
 }
 

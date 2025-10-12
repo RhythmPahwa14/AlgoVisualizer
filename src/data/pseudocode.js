@@ -111,6 +111,14 @@ export const ALGORITHM_PSEUDOCODE = {
     { code: "    arr[j] = temp", explain: "Place the stored element in its correct position." },
     { code: "  gap = gap / 2", explain: "Reduce the gap for the next pass." },
   ],
+  sleepSort: [
+  { code: "for each number in array", explain: "Iterate through all elements of the array." },
+  { code: "  start a timer for number × constant", explain: "Schedule a delayed action proportional to the element's value." },
+  { code: "  after timer ends → output number", explain: "Smaller numbers finish earlier, so they appear first." },
+  { code: "collect numbers in order of completion", explain: "As timers complete, elements are gathered in sorted order." },
+  { code: "return sorted array", explain: "Final output is the array sorted in ascending order." },
+],
+
   cycleSort: [
     { code: "for cycle_start in [0..n-2]", explain: "Choose cycle starting index" },
     { code: "item = arr[cycle_start]", explain: "Store the starting item" },

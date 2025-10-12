@@ -228,25 +228,26 @@ const Navbar = () => {
 
         {/* Desktop nav */}
         <div className="hidden md:flex justify-center items-center gap-2">
-          {navbarNavigationItems.map((item, i) => (
-            <DesktopNavItem
-              key={i}
-              item={item}
-              index={i}
-              isOpen={desktopDropdownOpen}
-              toggleDropdown={toggleDesktopDropdown}
-              isActive={isActive}
-              getIcon={getIcon}
-            />
-          ))}
+          {/* Render nav items excluding "Notes" */}
+          {navbarNavigationItems
+            .filter((item) => item.label.toLowerCase() !== "notes")
+            .map((item, i) => (
+              <DesktopNavItem
+                key={i}
+                item={item}
+                index={i}
+                isOpen={desktopDropdownOpen}
+                toggleDropdown={toggleDesktopDropdown}
+                isActive={isActive}
+                getIcon={getIcon}
+              />
+            ))}
 
-          <div className="flex items-center gap-1">
-            {/* Notes desktop */}
+          {/* Insert Notes dropdown here (moved from right) */}
+          {location.pathname !== "/notes/rust" && (
             <div className="navbar-item dropdown">
               <button
-                className={`dropdown-toggle ${
-                  desktopNotesOpen ? "active" : ""
-                }`}
+                className={`dropdown-toggle ${desktopNotesOpen ? "active" : ""}`}
                 onClick={() => setDesktopNotesOpen(!desktopNotesOpen)}
               >
                 <BookOpen size={18} className="drop-icon" />
@@ -294,7 +295,6 @@ const Navbar = () => {
                   >
                     C
                   </Link>
-
                   <Link
                     to="/notes/javascript"
                     className={`dropdown-item ${
@@ -313,27 +313,53 @@ const Navbar = () => {
                   >
                     MERN
                   </Link>
-
+                  <Link
+                    to="/notes/Rust"
+                    className={`dropdown-item ${
+                      isActive("/notes/Rust") ? "active" : ""
+                    }`}
+                    onClick={() => setDesktopNotesOpen(false)}                    
+                  >
+                    Rust
+                  </Link>
                   <Link
                     to="https://docs.google.com/spreadsheets/d/1mvlc8EYc3OVVU3X7NKoC0iZJr_45BL_pVxiJec0r94c/htmlview?gid=0#gid=0"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`dropdown-item ${
-                      isActive("/notes/c") ? "active" : ""
-                    }`}
+                    className="dropdown-item"
                     onClick={() => setDesktopNotesOpen(false)}
                   >
-                    DSA Sheet
+                    DSA Sheet  by Shradha Khapra      
+                  </Link>
+                  <Link
+                    to="https://codolio.com/question-tracker/sheet/neetcode-150?category=popular"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="dropdown-item"
+                    onClick={() => setDesktopNotesOpen(false)}
+                  >
+                    DSA Sheet by NEETCODE
                   </Link>
                 </div>
               )}
             </div>
+          )}
 
-            {/* User Dropdown */}
-            <UserDropdown />
-          </div>
+          {/* Algorithm Comparison Table Link */}
+          <Link
+            to="/algorithm-comparison-table"
+            className={`navbar-link ${
+              isActive("/algorithm-comparison-table") ? "active" : ""
+            }`}
+          >
+            <BarChart3 size={18} className="icon" />
+            <span>Compare</span>
+          </Link>
         </div>
+
+        {/* ThemeToggle remains on the right */}
         <ThemeToggle />
+
         {/* Mobile Hamburger */}
         <button
           className="mobile-menu-button md:hidden"
@@ -375,6 +401,18 @@ const Navbar = () => {
             closeMenu={() => setIsMobileMenuOpen(false)}
           />
         ))}
+
+        {/* Algorithm Comparison Table Link - Mobile */}
+        <Link
+          to="/algorithm-comparison-table"
+          className={`mobile-menu-link ${
+            isActive("/algorithm-comparison-table") ? "active" : ""
+          }`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <BarChart3 size={18} className="icon" />
+          <span>Compare Algorithms</span>
+        </Link>
 
         {/* Notes Section */}
         <div className="mobile-dropdown">

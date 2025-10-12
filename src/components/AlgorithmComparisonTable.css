@@ -1,0 +1,329 @@
+/* AlgorithmComparisonTable.css */
+
+/* CSS Variables for Themes */
+:root {
+  /* Light Theme */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #ffffff;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --text-tertiary: #000000;
+  --border-color: #e9ecef;
+  --accent-color: #3498db;
+  --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --property-bg: #34495e;
+  --property-text: #ffffff;
+  --button-bg: #e74c3c;
+  --button-hover: #c0392b;
+  --checkbox-bg: #ffffff;
+  --checkbox-border: #e9ecef;
+  --checkbox-selected-bg: #e3f2fd;
+  --table-bg: #ffffff;
+  --table-border: #ecf0f1;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --bg-primary: #1c1c1c;
+  --bg-secondary: #2c2c2c;
+  --bg-tertiary: #1f1f1f;
+  --text-primary: #ecf0f1;
+  --text-secondary: #95a5a6;
+  --text-tertiary: #dddddd;
+  --border-color: #444444;
+  --accent-color: #2980b9;
+  --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --property-bg: #34495e;
+  --property-text: #ffffff;
+  --button-bg: #c0392b;
+  --button-hover: #e74c3c;
+  --checkbox-bg: #1f1f1f;
+  --checkbox-border: #444444;
+  --checkbox-selected-bg: #34495e;
+  --table-bg: #1f1f1f;
+  --table-border: #444444;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Container & Typography */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.headerTitle {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.headerText {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Category Filter */
+.categoryFilter {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+}
+
+.categoryLabel {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.categorySelect {
+  padding: 8px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  min-width: 200px;
+}
+
+.categorySelect option {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* Algorithm Selection Section */
+.selectionSection {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  color: var(--text-primary);
+}
+
+.selectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.selectionTitle {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.clearButton {
+  background: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clearButton:hover {
+  background: var(--button-hover);
+}
+
+/* Algorithm Grid */
+.algorithmGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.algorithmCheckbox {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background: var(--checkbox-bg);
+  border: 2px solid var(--checkbox-border);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.algorithmCheckbox.selected {
+  border-color: var(--accent-color);
+  background: var(--checkbox-selected-bg);
+  color: var(--text-primary);
+}
+
+.algorithmCheckbox.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkboxInput {
+  margin-right: 12px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* Selected Algorithms Preview */
+.selectedPreview {
+  background: var(--bg-tertiary);
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-color);
+  margin-top: 20px;
+  color: var(--text-primary);
+}
+
+.selectedTitle {
+  margin-bottom: 15px;
+}
+
+.selectedList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.selectedBadge {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0;
+}
+
+/* Comparison Table Section */
+.comparisonContainer {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+  color: var(--text-primary);
+}
+
+.comparisonTitle {
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--table-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 600px;
+  table-layout: fixed;
+}
+
+/* FIX: Table header text color - black in light mode, white in dark mode */
+.tableHeader {
+  background: var(--header-bg);
+  color: #000000 !important; /* Force black text in light mode */
+  padding: 16px;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  border: none;
+}
+
+[data-theme="dark"] .tableHeader {
+  color: #ffffff !important; /* White text in dark mode */
+}
+
+.propertyColumn {
+  width: 200px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.propertyName {
+  background: var(--property-bg);
+  color: var(--property-text);
+  font-weight: bold;
+  text-align: center !important;
+  padding: 14px 16px;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--table-border);
+}
+
+.tableCell {
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  background: var(--table-bg);
+}
+
+/* Force black text in table cells for readability */
+.comparisonTable td:not(.propertyName) {
+  color: #000000 !important;
+  background: #ffffff !important;
+}
+
+/* Empty State Styles */
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.emptyTitle {
+  color: var(--text-primary);
+  margin-bottom: 15px;
+}
+
+.emptyText {
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Scrollbar styling for table wrapper */
+.tableWrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}

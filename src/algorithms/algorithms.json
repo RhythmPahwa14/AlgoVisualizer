@@ -41,6 +41,13 @@
   "description": "Cycle Sort is a comparison-based, in-place sorting algorithm that minimizes the number of writes to the array by rotating elements to their correct positions in cycles. It is efficient when write operations are costly but has quadratic time complexity.",
   "useCase": "Best suited for scenarios where minimizing the number of write operations is critical, such as sorting data in EEPROM or flash memory where write operations are expensive or limited."
 },
+{
+  "name": "Sleep Sort",
+  "type": "sorting",
+  "description": "Sleep Sort is a visualization-based algorithm that delays outputting each number by a time proportional to its value. Elements are 'emitted' after their sleep time, producing a sorted sequence.",
+  "useCase": "Used primarily for fun demonstrations and visualizations. Not practical for real sorting due to its reliance on timing and potential race conditions."
+},
+
   {
     "name": "Intro Sort",
     "type": "sorting",

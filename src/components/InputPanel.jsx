@@ -17,6 +17,18 @@ const InputPanel = ({
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  
+// 🔹 Password Validation Function
+  const passwordValidationRules = useCallback((password) => {
+    if (typeof password !== 'string') throw new Error('Password must be a string');
+    if (password.length < 8) throw new Error('Password must be at least 8 characters long');
+    if (!/[A-Z]/.test(password)) throw new Error('Add at least one uppercase letter');
+    if (!/[a-z]/.test(password)) throw new Error('Add at least one lowercase letter');
+    if (!/[0-9]/.test(password)) throw new Error('Add at least one number');
+    if (!/[!@#$%^&*]/.test(password)) throw new Error('Add at least one special character (!@#$%^&*)');
+    return true;
+  }, []);
+  
 
   // Validation functions
   const validateArrayData = useCallback((data) => {
@@ -110,6 +122,8 @@ const InputPanel = ({
           return validateGraphData(data);
         case 'tree':
           return validateTreeData(data);
+         case 'password': 
+          return passwordValidationRules(data); // 🔹 Password case
         default:
           return true;
       }
@@ -117,7 +131,7 @@ const InputPanel = ({
       setError(err.message);
       return false;
     }
-  }, [dataType, validationRules, validateArrayData, validateGraphData, validateTreeData]);
+  }, [dataType, validationRules, validateArrayData, validateGraphData, validateTreeData, passwordValidationRules]);
 
   const parseTextInput = useCallback((input) => {
     const trimmed = input.trim();
@@ -140,6 +154,8 @@ const InputPanel = ({
           return num;
         });
         return values;
+      } else if (dataType === 'password') {
+        return trimmed; // 🔹 Password treated as string
       } else {
         throw new Error('Invalid format. Please provide valid JSON or use the correct format for your data type.');
       }

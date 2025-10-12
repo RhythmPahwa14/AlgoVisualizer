@@ -25,24 +25,81 @@ import { introSortWithStop } from "../algorithms/introSort";
 import { shellSortWithStop } from "../algorithms/shellSort";
 import { cycleSortWithStop } from "../algorithms/cycleSort";
 import { strandSortWithStop } from "../algorithms/strandSort";
-import { cocktailShakerSortWithStop } from "../algorithms/cocktailShakerSort"; // fixed import
 
-// Algorithm mappings
+import { sleepSortWithStop } from "../algorithms/sleepSort";
+// Enhanced algorithm mappings with improved organization
 const ALGORITHM_MAPPINGS = {
-  bubbleSort: { name: "Bubble Sort", function: bubbleSortWithStop, category: "comparison" },
-  cocktailShakerSort: { name: "Cocktail Shaker Sort", function: cocktailShakerSortWithStop, category: "comparison" },
-  selectionSort: { name: "Selection Sort", function: selectionSortWithStop, category: "comparison" },
-  strandSort: { name: "Strand Sort", function: strandSortWithStop, category: "comparison" },
-  insertionSort: { name: "Insertion Sort", function: insertionSortWithStop, category: "comparison" },
-  mergeSort: { name: "Merge Sort", function: mergeSortWithStop, category: "divide-conquer" },
-  quickSort: { name: "Quick Sort", function: quickSortWithStop, category: "divide-conquer" },
-  radixSort: { name: "Radix Sort", function: radixSortWithStop, category: "distribution" },
-  bucketSort: { name: "Bucket Sort", function: bucketSortWithStop, category: "distribution" },
-  heapSort: { name: "Heap Sort", function: heapSortWithStop, category: "selection" },
-  timSort: { name: "Tim Sort", function: timSortWithStop, category: "hybrid" },
-  introSort: { name: "Intro Sort", function: introSortWithStop, category: "hybrid" },
-  shellSort: { name: "Shell Sort", function: shellSortWithStop, category: "comparison" },
-  cycleSort: { name: "Cycle Sort", function: cycleSortWithStop, category: "selection" },
+  bubbleSort: { 
+    name: "Bubble Sort", 
+    function: bubbleSortWithStop,
+    category: "comparison"
+  },
+  selectionSort: { 
+    name: "Selection Sort", 
+    function: selectionSortWithStop,
+    category: "comparison"
+  },
+  strandSort: { 
+    name: "Strand Sort", 
+    function: strandSortWithStop,
+    category: "comparison"
+  },
+  sleepSort: { 
+    name: "Sleep Sort", 
+    function: sleepSortWithStop,
+    category: "comparison"
+  },
+  insertionSort: { 
+    name: "Insertion Sort", 
+    function: insertionSortWithStop,
+    category: "comparison"
+  },
+  mergeSort: { 
+    name: "Merge Sort", 
+    function: mergeSortWithStop,
+    category: "divide-conquer"
+  },
+  quickSort: { 
+    name: "Quick Sort", 
+    function: quickSortWithStop,
+    category: "divide-conquer"
+  },
+  radixSort: { 
+    name: "Radix Sort", 
+    function: radixSortWithStop,
+    category: "distribution"
+  },
+  bucketSort: { 
+    name: "Bucket Sort", 
+    function: bucketSortWithStop,
+    category: "distribution"
+  },
+  heapSort: { 
+    name: "Heap Sort", 
+    function: heapSortWithStop,
+    category: "selection"
+  },
+  timSort: { 
+    name: "Tim Sort", 
+    function: timSortWithStop,
+    category: "hybrid"
+  },
+  introSort: { 
+    name: "Intro Sort", 
+    function: introSortWithStop,
+    category: "hybrid"
+  },
+  shellSort: { 
+    name: "Shell Sort", 
+    function: shellSortWithStop,
+    category: "comparison"
+  },
+  cycleSort: { 
+    name: "Cycle Sort", 
+    function: cycleSortWithStop,
+    category: "selection"
+  },
+
 };
 
 // Array utilities

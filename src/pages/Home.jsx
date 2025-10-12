@@ -562,13 +562,14 @@ const Home = () => {
                 <div className="feature-highlight" style={{ background: T.badgeBg, border: T.badgeBorder }}><Target size={16} /><span>Hands-on practice</span></div>
               </div>
 
-              <div style={{ marginTop: "1.4rem", display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
-                <button onClick={() => setShowAuthModal(true)} className="btn-primary-new"><Play size={16} />Start Learning</button>
-                <Link to="/quiz" className="btn-secondary-new"><Trophy size={16} />Take a Quiz</Link>
-                <button onClick={() => setShowProblemModal(true)} className="btn-secondary-new" style={{ background: T.badgeBg, border: T.badgeBorder, color: T.textSecondary }}>
-                  <Sparkles size={16} />Problem of the Day
-                </button>
-              </div>
+           <div style={{ marginTop: "1.4rem", display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
+  <Link to="/login" className="btn-primary-new"><Play size={16} />Start Learning</Link>
+  <Link to="/quiz" className="btn-secondary-new"><Trophy size={16} />Take a Quiz</Link>
+  <button onClick={() => setShowProblemModal(true)} className="btn-secondary-new" style={{ background: T.badgeBg, border: T.badgeBorder, color: T.textSecondary }}>
+    <Sparkles size={16} />Problem of the Day
+  </button>
+</div>
+
             </div>
           </div>
         </div>

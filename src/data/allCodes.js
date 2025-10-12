@@ -640,7 +640,106 @@ void heapSort(vector<int>& arr) {
         heapify(arr, i, 0);
     }
 }`,
-  },
+  },sleepSort: {
+  javascript: `function sleepSort(arr) {
+  const promises = arr.map(num => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log(num);
+        resolve(num);
+      }, num * 10); // delay proportional to value
+    });
+  });
+
+  return Promise.all(promises);
+}
+
+// Example
+sleepSort([4, 3, 1, 2, 5]);
+`,
+  
+  java: `import java.util.*;
+
+public class SleepSort {
+    public static void sleepSort(int[] arr) {
+        List<Thread> threads = new ArrayList<>();
+        for (int num : arr) {
+            Thread t = new Thread(() -> {
+                try {
+                    Thread.sleep(num * 10);
+                    System.out.print(num + " ");
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            });
+            threads.add(t);
+            t.start();
+        }
+
+        for (Thread t : threads) {
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {4, 3, 1, 2, 5};
+        sleepSort(arr);
+    }
+}`,
+  
+  python: `import threading
+import time
+
+def sleep_sort(arr):
+    def sleeper(x):
+        time.sleep(x * 0.01)
+        print(x, end=' ')
+    
+    threads = []
+    for num in arr:
+        t = threading.Thread(target=sleeper, args=(num,))
+        threads.append(t)
+        t.start()
+    
+    for t in threads:
+        t.join()
+
+# Example
+sleep_sort([4, 3, 1, 2, 5])`,
+  
+  cpp: `#include <iostream>
+#include <thread>
+#include <vector>
+#include <chrono>
+using namespace std;
+
+void sleeper(int x) {
+    this_thread::sleep_for(chrono::milliseconds(x * 10));
+    cout << x << " ";
+}
+
+void sleepSort(vector<int> arr) {
+    vector<thread> threads;
+    for (int num : arr) {
+        threads.emplace_back(sleeper, num);
+    }
+
+    for (auto& t : threads) {
+        t.join();
+    }
+}
+
+int main() {
+    vector<int> arr = {4, 3, 1, 2, 5};
+    sleepSort(arr);
+    return 0;
+}`,
+},
+
 
   timSort: {
     java: `// Tim Sort is built into Java's Arrays.sort()
