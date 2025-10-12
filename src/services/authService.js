@@ -1,10 +1,10 @@
-
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api/auth";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api/auth";
 
 /**
- * User signup with email/password
+ * 🟢 Email/Password Signup
  */
 export const signup = async (userData) => {
   try {
@@ -17,7 +17,7 @@ export const signup = async (userData) => {
 };
 
 /**
- * User login with email/password
+ * 🟢 Email/Password Login
  */
 export const login = async (credentials) => {
   try {
@@ -30,13 +30,15 @@ export const login = async (credentials) => {
 };
 
 /**
- * Google Sign-In (OAuth)
+ * 🟢 Google Sign-In (OAuth)
  * @param {string} googleToken — token received from Google after login
  */
-export const googleLogin = async (googleToken) => {
+export const loginUserWithGoogle = async (googleToken) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/google`, { token: googleToken });
-    return response.data; // usually returns user + JWT
+    const response = await axios.post(`${API_BASE_URL}/google`, {
+      token: googleToken,
+    });
+    return response.data; // typically user info + JWT
   } catch (error) {
     console.error("Google login error:", error.response?.data || error.message);
     throw error.response?.data || { message: "Google login failed" };
@@ -44,15 +46,16 @@ export const googleLogin = async (googleToken) => {
 };
 
 /**
- * Logout
+ * 🟢 Logout user and clear local storage
  */
 export const logout = () => {
   localStorage.removeItem("user");
   localStorage.removeItem("token");
+  localStorage.removeItem("rememberMe");
 };
 
 /**
- * Save user info locally
+ * 🟢 Save user info locally
  */
 export const saveUserData = (user, token) => {
   localStorage.setItem("user", JSON.stringify(user));
@@ -60,7 +63,7 @@ export const saveUserData = (user, token) => {
 };
 
 /**
- * Get current user from local storage
+ * 🟢 Get current user from local storage
  */
 export const getCurrentUser = () => {
   try {
@@ -70,65 +73,55 @@ export const getCurrentUser = () => {
   }
 };
 
+/**
+ * 🧩 Mocked backend for local testing (optional)
+ * Used when API isn’t available, keeps build running locally.
+ */
 const authService = {
   login: async (email, password) => {
     console.log(`Mock login with email: ${email}`);
-    
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    // Mock successful response
+
+    // simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
     return {
       success: true,
       user: {
         id: "user123",
         name: "Test User",
         email: email,
-        avatar: "https://ui-avatars.com/api/?name=Test+User&background=random"
+        avatar:
+          "https://ui-avatars.com/api/?name=Test+User&background=random",
       },
-      token: "mock-jwt-token-for-development"
+      token: "mock-jwt-token-for-development",
     };
   },
-  
+
   signup: async (name, email, password) => {
     console.log(`Mock signup with name: ${name}, email: ${email}`);
-    
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    // Mock successful response
+
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
     return {
       success: true,
       user: {
         id: "user123",
         name: name,
         email: email,
-        avatar: "https://ui-avatars.com/api/?name=" + encodeURIComponent(name) + "&background=random"
+        avatar:
+          "https://ui-avatars.com/api/?name=" +
+          encodeURIComponent(name) +
+          "&background=random",
       },
-      token: "mock-jwt-token-for-development"
+      token: "mock-jwt-token-for-development",
     };
   },
-  
+
   logout: async () => {
     console.log("Mock logout");
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    localStorage.removeItem("isLoggedIn");
+    logout();
     return { success: true };
   },
-  
-  requestPasswordReset: async (email) => {
-    console.log(`Mock password reset request for email: ${email}`);
-    await new Promise(resolve => setTimeout(resolve, 500));
-    return { success: true };
-  },
-  
-  resetPassword: async (token, password) => {
-    console.log(`Mock password reset with token: ${token}`);
-    await new Promise(resolve => setTimeout(resolve, 500));
-    return { success: true };
-  }
 };
 
 export default authService;
-

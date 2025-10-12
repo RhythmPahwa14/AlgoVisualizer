@@ -232,8 +232,6 @@ const App = () => {
                       path="/graph/bellman-ford"
                       element={<BellmanFordPage />}
                     />
-
-
                   {/* Algorithm Pages */}
 
                   <Route path="/backtracking-overview" element={<BacktrackingOverview />} />
