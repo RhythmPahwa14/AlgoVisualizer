@@ -836,7 +836,7 @@
             "O(n log n)",
             "O(n\u00b2)"
         ],
-        "correctAnswer": 1,
+        "correctAnswer": 0,
         "explanation": "In the best case, Binary Search can often achieve O(1), especially when data is already partially structured."
     },
     {
@@ -5304,7 +5304,7 @@
         "options": [
             "Two lowest-frequency nodes",
             "Two highest-frequency nodes",
-            "Random nodes",
+                    "Random nodes",
             "Middle-frequency nodes"
         ],
         "correctAnswer": 0,
@@ -5357,94 +5357,95 @@
     },
     {
         "id": 343,
-        "topic": "Other Topics",
-        "algorithm": "KMP Algorithm",
-        "difficulty": "Easy",
-        "question": "What problem does the KMP algorithm solve?",
-        "options": [
-            "Pattern matching in strings",
-            "Shortest path finding",
-            "Data compression",
-            "Sorting characters"
-        ],
-        "correctAnswer": 0,
-        "explanation": "KMP is used for pattern searching within a text efficiently."
-    },
+ "topic": "Other Topics",
+    "algorithm": "Asymptotic Notation",
+    "difficulty": "Easy",
+    "question": "Which asymptotic notation represents the upper bound of an algorithm's running time?",
+    "options": [
+        "Big O (O)",
+        "Big Omega (Ω)",
+        "Big Theta (Θ)",
+        "Little o (o)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Big O notation is used to describe the worst-case or upper bound of an algorithm's running time."
+},
     {
         "id": 344,
         "topic": "Other Topics",
-        "algorithm": "KMP Algorithm",
-        "difficulty": "Easy",
-        "question": "What is the main advantage of KMP over the naive approach?",
-        "options": [
-            "It avoids re-checking characters",
-            "It uses less memory",
-            "It sorts strings faster",
-            "It compresses data"
-        ],
-        "correctAnswer": 0,
-        "explanation": "KMP avoids redundant comparisons by precomputing information in the LPS array."
-    },
+    "algorithm": "Asymptotic Notation",
+    "difficulty": "Easy",
+    "question": "Which asymptotic notation represents the tight bound of an algorithm's running time?",
+    "options": [
+        "Big O (O)",
+        "Big Omega (Ω)",
+        "Big Theta (Θ)",
+        "Little o (o)"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Big Theta (Θ) notation describes a tight bound, meaning the running time grows at the same rate in both the upper and lower bounds."
+},
     {
         "id": 345,
-        "topic": "Other Topics",
-        "algorithm": "KMP Algorithm",
-        "difficulty": "Medium",
-        "question": "What does the LPS array represent in KMP?",
-        "options": [
-            "Longest proper prefix which is also a suffix",
-            "Least possible substring",
-            "Length of processed string",
-            "Lexicographically smallest prefix"
-        ],
-        "correctAnswer": 0,
-        "explanation": "The LPS array stores the length of the longest proper prefix that is also a suffix."
-    },
+       "topic": "Other Topics",
+    "algorithm": "Disjoint Set Union (DSU) with Path Compression",
+    "difficulty": "Medium",
+    "question": "In a Disjoint Set Union with path compression, what is the primary benefit of path compression?",
+    "options": [
+        "It reduces the number of sets created",
+        "It ensures the sets are sorted",
+        "It flattens the tree, reducing the time complexity of future find operations",
+        "It prevents union operations from happening"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Path compression flattens the tree structure during find operations, making future finds faster and effectively almost constant time per operation."
+},
     {
         "id": 346,
-        "topic": "Other Topics",
-        "algorithm": "KMP Algorithm",
-        "difficulty": "Medium",
-        "question": "Time complexity of KMP pattern matching is?",
-        "options": [
-            "O(n + m)",
-            "O(n * m)",
-            "O(log n)",
-            "O(n²)"
-        ],
-        "correctAnswer": 0,
-        "explanation": "KMP processes both text and pattern once, leading to O(n + m) complexity."
-    },
+           "topic": "Other Topics",
+    "algorithm": "Rolling Hashes",
+    "difficulty": "Medium",
+    "question": "What is the main advantage of using a rolling hash in string algorithms?",
+    "options": [
+        "It reduces the length of the string",
+        "It allows computing hash of substrings efficiently in constant time",
+        "It sorts the characters of the string",
+        "It compresses the string without loss"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Rolling hashes allow updating the hash value of a substring in constant time as the window slides over the string, making algorithms like Rabin-Karp efficient."
+}
+,
     {
         "id": 347,
-        "topic": "Other Topics",
-        "algorithm": "KMP Algorithm",
-        "difficulty": "Hard",
-        "question": "In KMP, when a mismatch occurs, what determines the next shift of the pattern?",
-        "options": [
-            "The LPS array value of the previous index",
-            "The position of mismatch",
-            "Random offset",
-            "Character ASCII difference"
-        ],
-        "correctAnswer": 0,
-        "explanation": "The LPS array tells where to resume matching without re-checking characters."
-    },
+ "topic": "Other Topics",
+    "algorithm": "Modular Arithmetic",
+    "difficulty": "Medium",
+    "question": "Which property of modular arithmetic allows computing (a * b) % m efficiently?",
+    "options": [
+        "(a * b) % m = ((a % m) * (b % m)) % m",
+        "(a + b) % m = (a % m) + (b % m)",
+        "(a - b) % m = (a % m) - (b % m)",
+        "Modular arithmetic cannot simplify multiplication"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The property (a * b) % m = ((a % m) * (b % m)) % m allows breaking down large multiplications under modulo into smaller computations efficiently."
+},
     {
         "id": 348,
         "topic": "Other Topics",
-        "algorithm": "KMP Algorithm",
-        "difficulty": "Hard",
-        "question": "What is a key limitation of KMP in practical applications?",
-        "options": [
-            "High preprocessing time for short patterns",
-            "Cannot handle binary data",
-            "Requires sorted text",
-            "Fails on repeating characters"
-        ],
-        "correctAnswer": 0,
-        "explanation": "KMP’s preprocessing (LPS table) can be unnecessary overhead for small or one-time searches."
-    },
+    "algorithm": "Bit Masking",
+    "difficulty": "Hard",
+    "question": "You have an integer array of size n where each element appears exactly twice except for one element that appears only once. Which bitwise operation technique can help find the unique element in linear time without extra space?",
+    "options": [
+        "Using AND (&) operator between all elements",
+        "Using OR (|) operator between all elements",
+        "Using XOR (^) operator between all elements",
+        "Shifting bits left and summing elements"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Using XOR between all elements cancels out elements appearing twice (since x ^ x = 0) and leaves the unique element, achieving linear time and constant space."
+},
     {
         "id": 349,
         "topic": "Other Topics",
