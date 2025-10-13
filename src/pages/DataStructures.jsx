@@ -305,7 +305,7 @@ const algorithmDatabase = {
         implemented: true,
       },
       {
-        name: "Trie",
+        name: "Tree",
         id: "trie",
         description:
           "Prefix tree data structure for efficient string operations like search, insert, and prefix matching.",

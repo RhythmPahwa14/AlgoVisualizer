@@ -240,7 +240,7 @@ export default function TrieVisualizer() {
       {/* TRIE INTRODUCTION */}
       <section className="tv-intro">
         <div className="tv-intro-content">
-          <h2 className="tv-intro-title">Trie (Prefix Tree) Visualizer</h2>
+          <h2 className="tv-intro-title">Tree (Prefix Tree) Visualizer</h2>
           <p className="tv-intro-description">
             A Trie is a tree-like data structure that stores strings efficiently. Each node represents a character,
             making it perfect for prefix-based operations like autocomplete and spell checking.
