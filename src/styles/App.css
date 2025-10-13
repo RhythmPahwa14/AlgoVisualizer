@@ -352,3 +352,11 @@ body {
     padding: 1rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+.pdf-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.pdf-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}

@@ -1,68 +1,53 @@
-import React from "react";
+import React from 'react';
 
 const PythonVariablesAndDataTypes = () => {
   return (
-  <div className="notes-page" style={{ padding: "2rem", maxWidth: "1100px", margin: "0 auto" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "1.5rem", color: "#4f46e5" }}>
-        Python Variables and Data Types
-      </h1>
+    <div className="container py-5">
+      <div className="card shadow-sm">
+        <div className="card-header bg-primary text-white">
+          <h1 className="h3 mb-0">Python Variables & Data Types</h1>
+        </div>
+        <div className="card-body" style={{ lineHeight: '1.7' }}>
+          
+          <h2 className="h4">What is a Variable?</h2>
+          <p>
+            In Python, a variable is a name that refers to a value. Unlike in other programming languages, you do not need to declare a variable's type. Python is dynamically typed, meaning the type is determined at runtime.
+          </p>
 
-      <section style={{ marginBottom: "1.5rem" }}>
-        <h2 style={{ color: "#111827" }}>1. Variables</h2>
-        <ul>
-          <li>No need to declare type explicitly – Python infers it automatically.</li>
-          <li>Variable names must start with a letter or underscore, not numbers.</li>
-          <li>Variables are dynamically typed (can change type at runtime).</li>
-        </ul>
-        <pre
-          style={{
-            background: "#1f2937",
-            color: "#f9fafb",
-            padding: "1rem",
-            borderRadius: "6px",
-            overflowX: "auto"
-          }}
-        >
-{`x = 10       # Integer
-name = "Ada"  # String
-pi = 3.14     # Float
-is_valid = True  # Boolean`}
-        </pre>
-      </section>
+          <h3 className="h5 mt-4">Common Data Types</h3>
+          <p>
+            Python has several built-in data types. Here are the most common ones:
+          </p>
+          <ul>
+            <li><strong>Text Type:</strong> <code>str</code> (e.g., "Hello World")</li>
+            <li><strong>Numeric Types:</strong> <code>int</code> (e.g., 20), <code>float</code> (e.g., 20.5)</li>
+            <li><strong>Sequence Types:</strong> <code>list</code>, <code>tuple</code></li>
+            <li><strong>Mapping Type:</strong> <code>dict</code> (dictionary)</li>
+            <li><strong>Boolean Type:</strong> <code>bool</code> (True or False)</li>
+          </ul>
 
-      <section style={{ marginBottom: "1.5rem" }}>
-        <h2 style={{ color: "#111827" }}>2. Data Types</h2>
-        <ul>
-          <li><b>Numeric:</b> int, float, complex</li>
-          <li><b>Sequence:</b> str, list, tuple, range</li>
-          <li><b>Mapping:</b> dict</li>
-          <li><b>Set Types:</b> set, frozenset</li>
-          <li><b>Boolean:</b> bool</li>
-          <li><b>Binary Types:</b> bytes, bytearray, memoryview</li>
-        </ul>
-      </section>
+          <h3 className="h5 mt-4">Declaring and Using Variables</h3>
+          <p>Here is an example of how to create and use variables in Python:</p>
+          <pre className="bg-light p-3 rounded"><code>
+            {`# A variable of type int
+age = 25
 
-      <section style={{ marginBottom: "1.5rem" }}>
-        <h2 style={{ color: "#111827" }}>3. Example Code</h2>
-        <pre
-          style={{
-            background: "#1f2937",
-            color: "#f9fafb",
-            padding: "1rem",
-            borderRadius: "6px",
-            overflowX: "auto"
-          }}
-        >
-{`# Different data types in Python
-a = 42            # int
-b = 3.14          # float
-c = "Python"      # string
-d = [1, 2, 3]     # list
-e = (4, 5, 6)     # tuple
-f = {"name": "Ada", "age": 25}  # dict
-g = {1, 2, 3}     # set`}
-        </pre>
-      </section>
+# A variable of type float
+price = 19.99
+
+# A variable of type str
+name = "Alice"
+
+# A variable of type bool
+is_student = True
+
+print(name)
+print(age)
+print(price)`}
+          </code></pre>
+          
+        </div>
+      </div>
     </div>
   );
 };

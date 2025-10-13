@@ -1,58 +1,62 @@
-// src/pages/Notes/Java/VariablesAndDataTypes.jsx
-import React from "react";
+import React from 'react';
 
 const VariablesAndDataTypes = () => {
   return (
-  <div className="notes-page" style={{ padding: "2rem", maxWidth: "1100px", margin: "0 auto" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "1.5rem", color: "#4f46e5" }}>
-        Variables & Data Types in Java
-      </h1>
+    <div className="container py-5">
+      <div className="card shadow-sm">
+        <div className="card-header bg-primary text-white">
+          <h1 className="h3 mb-0">Java Variables & Data Types</h1>
+        </div>
+        <div className="card-body" style={{ lineHeight: '1.7' }}>
+          
+          <h2 className="h4">What is a Variable?</h2>
+          <p>
+            A variable is a container which holds the value while the Java program is executed. A variable is assigned with a data type. It's a name given to a memory location.
+          </p>
 
-      {/* 1. Variables */}
-      <section style={{ marginBottom: "1.5rem" }}>
-        <h2 style={{ color: "#111827" }}>1. Variables</h2>
-        <ul>
-          <li><b>Local Variables:</b> Declared inside methods, only accessible within that method.</li>
-          <li><b>Instance Variables:</b> Declared inside a class but outside methods, belong to objects.</li>
-          <li><b>Static Variables:</b> Declared with <code>static</code> keyword, shared across all instances.</li>
-        </ul>
-      </section>
+          <h3 className="h5 mt-4">Primitive Data Types</h3>
+          <p>
+            Java has eight primitive data types, which are the most basic types of data available.
+          </p>
+          <ul>
+            <li><strong>boolean:</strong> Represents true or false values.</li>
+            <li><strong>byte:</strong> 8-bit signed integer.</li>
+            <li><strong>char:</strong> 16-bit Unicode character.</li>
+            <li><strong>short:</strong> 16-bit signed integer.</li>
+            <li><strong>int:</strong> 32-bit signed integer (most commonly used for whole numbers).</li>
+            <li><strong>long:</strong> 64-bit signed integer.</li>
+            <li><strong>float:</strong> 32-bit floating-point number.</li>
+            <li><strong>double:</strong> 64-bit floating-point number (most commonly used for decimal numbers).</li>
+          </ul>
 
-      {/* 2. Data Types */}
-      <section style={{ marginBottom: "1.5rem" }}>
-        <h2 style={{ color: "#111827" }}>2. Data Types</h2>
-        <ul>
-          <li><b>Primitive Types:</b> byte, short, int, long, float, double, char, boolean</li>
-          <li><b>Non-Primitive Types:</b> String, Arrays, Classes, Objects</li>
-        </ul>
-      </section>
+          <h3 className="h5 mt-4">Declaring and Initializing Variables</h3>
+          <p>Here is an example of how to declare and initialize variables in Java:</p>
+          <pre className="bg-light p-3 rounded"><code>
+            {`public class VariableExample {
+    public static void main(String[] args) {
+        // Declaring an integer variable
+        int age = 30;
 
-      {/* 3. Example */}
-      <section style={{ marginBottom: "1.5rem" }}>
-        <h2 style={{ color: "#111827" }}>3. Example</h2>
-        <pre
-          style={{
-            background: "#1f2937",
-            color: "#f9fafb",
-            padding: "1rem",
-            borderRadius: "6px",
-            overflowX: "auto"
-          }}
-        >
-{`public class VariablesExample {
-    static int staticVar = 10;
+        // Declaring a double variable
+        double salary = 60000.50;
 
-    int instanceVar;
+        // Declaring a character variable
+        char initial = 'J';
 
-    public void demo() {
-        int localVar = 5;
-        System.out.println("Local: " + localVar);
-        System.out.println("Instance: " + instanceVar);
-        System.out.println("Static: " + staticVar);
+        // Declaring a boolean variable
+        boolean isEmployed = true;
+
+        // Declaring a String (which is a non-primitive type)
+        String name = "John Doe";
+
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
     }
 }`}
-        </pre>
-      </section>
+          </code></pre>
+          
+        </div>
+      </div>
     </div>
   );
 };
