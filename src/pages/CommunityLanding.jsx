@@ -623,7 +623,7 @@ const CommunityLanding = () => {
 
               <div style={{ marginTop: "auto" }}>
                 <Link
-                  to="/ContributorLeaderboard"
+                  to="/contributor-leaderboard"
                   className="btn btn-secondary"
                   style={{
                     display: "inline-flex",

@@ -912,6 +912,7 @@ body.dark-mode .stat-card {
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
   color: white;
   padding: 0.875rem 1.5rem;
+  margin-left: 5px;
   border-radius: 12px;
   text-decoration: none;
   font-weight: 600;

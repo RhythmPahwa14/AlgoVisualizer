@@ -80,6 +80,7 @@ import AlgorithmComparisonTable from './components/AlgorithmComparisonTable';
 // Static / Info Pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
 import About from "./components/about";
 import Contact from "./components/contact";
 import PrivacyPolicy from "./components/Privacy";
