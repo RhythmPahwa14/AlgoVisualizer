@@ -1995,6 +1995,180 @@ def bfs(graph, start):
     }
 }`,
   },
+  hierholzer: {
+    java: `import java.util.*;
+
+public class EulerianPath {
+    public static List<Integer> findEulerianPath(int n, int[][] edges) {
+        Map<Integer, LinkedList<Integer>> adj = new HashMap<>();
+        Map<Integer, Integer> degree = new HashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            adj.put(i, new LinkedList<>());
+            degree.put(i, 0);
+        }
+
+        for (int[] edge : edges) {
+            adj.get(edge[0]).add(edge[1]);
+            adj.get(edge[1]).add(edge[0]);
+            degree.put(edge[0], degree.get(edge[0]) + 1);
+            degree.put(edge[1], degree.get(edge[1]) + 1);
+        }
+
+        int startNode = 0;
+        int oddDegreeCount = 0;
+        for (int i = 0; i < n; i++) {
+            if (degree.get(i) % 2 != 0) {
+                oddDegreeCount++;
+                startNode = i;
+            }
+        }
+
+        if (oddDegreeCount > 2) {
+            return new ArrayList<>(); // No Eulerian path
+        }
+
+        List<Integer> path = new ArrayList<>();
+        Stack<Integer> stack = new Stack<>();
+        stack.push(startNode);
+
+        while (!stack.isEmpty()) {
+            int u = stack.peek();
+            if (adj.get(u).isEmpty()) {
+                path.add(stack.pop());
+            } else {
+                int v = adj.get(u).poll();
+                adj.get(v).remove(Integer.valueOf(u)); // Remove the reverse edge
+                stack.push(v);
+            }
+        }
+        Collections.reverse(path);
+        return path;
+    }
+}`,
+    python: `from collections import defaultdict
+
+def find_eulerian_path(n, edges):
+    adj = defaultdict(list)
+    degree = defaultdict(int)
+
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+        degree[u] += 1
+        degree[v] += 1
+
+    start_node = 0
+    odd_degree_count = 0
+    for i in range(n):
+        if degree[i] % 2 != 0:
+            odd_degree_count += 1
+            start_node = i
+
+    if odd_degree_count > 2:
+        return []  # No Eulerian path
+
+    path = []
+    stack = [start_node]
+
+    while stack:
+        u = stack[-1]
+        if adj[u]:
+            v = adj[u].pop()
+            adj[v].remove(u)
+            stack.append(v)
+        else:
+            path.append(stack.pop())
+
+    return path[::-1]
+`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <list>
+#include <stack>
+#include <algorithm>
+
+std::vector<int> findEulerianPath(int n, const std::vector<std::pair<int, int>>& edges) {
+    std::vector<std::list<int>> adj(n);
+    for (const auto& edge : edges) {
+        adj[edge.first].push_back(edge.second);
+        adj[edge.second].push_back(edge.first);
+    }
+
+    // Find starting node (must be odd degree if one exists)
+    int startNode = 0;
+    for (int i = 0; i < n; ++i) {
+        if (adj[i].size() % 2 != 0) {
+            startNode = i;
+            break;
+        }
+    }
+
+    std::vector<int> path;
+    std::stack<int> stack;
+    stack.push(startNode);
+
+    while (!stack.empty()) {
+        int u = stack.top();
+        if (!adj[u].empty()) {
+            int v = adj[u].front();
+            adj[u].pop_front();
+            // Find and remove the reverse edge
+            for (auto it = adj[v].begin(); it != adj[v].end(); ++it) {
+                if (*it == u) {
+                    adj[v].erase(it);
+                    break;
+                }
+            }
+            stack.push(v);
+        } else {
+            path.push_back(stack.top());
+            stack.pop();
+        }
+    }
+    std::reverse(path.begin(), path.end());
+    return path;
+}`,
+    javascript: `function findEulerianPath(n, edges) {
+    const adj = new Map();
+    for (let i = 0; i < n; i++) adj.set(i, []);
+
+    for (const [u, v] of edges) {
+        adj.get(u).push(v);
+        adj.get(v).push(u);
+    }
+
+    let startNode = 0;
+    let oddDegreeCount = 0;
+    for (let i = 0; i < n; i++) {
+        if (adj.get(i).length % 2 !== 0) {
+            oddDegreeCount++;
+            startNode = i;
+        }
+    }
+
+    if (oddDegreeCount > 2) return []; // No path
+
+    const path = [];
+    const stack = [startNode];
+
+    while (stack.length > 0) {
+        let u = stack[stack.length - 1];
+        if (adj.get(u).length > 0) {
+            const v = adj.get(u).pop();
+            // Remove reverse edge
+            const vNeighbors = adj.get(v);
+            const index = vNeighbors.indexOf(u);
+            if (index > -1) vNeighbors.splice(index, 1);
+            stack.push(v);
+        } else {
+            path.push(stack.pop());
+        }
+    }
+
+    return path.reverse();
+}`
+  },
 
   dijkstra: {
     java: `public static int[] dijkstra(int[][] graph, int src) {

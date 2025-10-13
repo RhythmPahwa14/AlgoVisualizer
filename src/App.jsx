@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-// ✅ 1. Re-enable the import for the background component
-import ThreeBackground from './components/ThreeBackground';
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -26,10 +24,12 @@ import SortingDoc from "./pages/SortingDoc";
 import Searching from "./pages/Searching";
 import SearchingOverview from "./pages/SearchingOverview";
 import DataStructures from "./pages/DataStructures";
-import Graph from "./pages/Graph";
+import Graph from "./pages/Graph.jsx";
 import GraphBFS from "./pages/GraphBFS";
 import GraphCycleDetection from "./pages/GraphCycleDetection";
 import GraphDFS from "./pages/GraphDFS";
+import GraphEulerianCircuit from "./pages/GraphEulerianCircuit.jsx";
+import GraphEulerianPath from "./pages/GraphEulerianPath";
 import GraphDijkstra from "./pages/GraphDijkstra";
 import GraphAStar from "./pages/GraphAStar";
 import Quiz from "./pages/Quiz";
@@ -89,7 +89,6 @@ import HuffmanPage from "./pages/HuffmanPage";
 import FloydWarshallPage from "./pages/GraphFloydWarshall";
 
 // Components
-import ArrayVisualizer from "./pages/Array.jsx";
 import LinkedListPage from "./components/pages/LinkedListPage";
 import Queue from "./components/Queue/Queue";
 import Stack from "./components/Stack/Stack";
@@ -105,7 +104,7 @@ import AlgorithmComparisonTable from './components/AlgorithmComparisonTable';
 // Static / Info Pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import ForgotPassword from "./pages/ForgotPassword";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
 import About from "./components/about";
 import Contact from "./components/contact";
 import PrivacyPolicy from "./components/Privacy";
@@ -234,6 +233,16 @@ const App = () => {
                     <Route
                       path="/graph/bellman-ford"
                       element={<BellmanFordPage />}
+                    />
+                    {/* ✅ Eulerian Path Route */}
+                    <Route
+                      path="/graph/eulerian-path"
+                      element={<GraphEulerianPath />}
+                    />
+                    {/* ✅ Eulerian Circuit Route */}
+                    <Route
+                      path="/graph/eulerian-circuit"
+                      element={<GraphEulerianCircuit />}
                     />
 
 

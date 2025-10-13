@@ -169,6 +169,72 @@ const GraphAlgorithms = {
     }
     
     return { steps, path };
+  },
+
+  // Hierholzer's algorithm for Eulerian path/circuit
+  hierholzer: ({ nodes, edges, startNode, setVisualState, setMessage, getNeighbors }) => {
+    const adj = new Map();
+    nodes.forEach((_, i) => adj.set(i, []));
+    edges.forEach(edge => {
+      adj.get(edge.start).push(edge.end);
+      adj.get(edge.end).push(edge.start);
+    });
+
+    setVisualState({ visited: new Set(), path: [] });
+
+    // Check for Eulerian path/circuit possibility
+    let oddDegreeNodes = [];
+    adj.forEach((neighbors, node) => {
+      if (neighbors.length % 2 !== 0) {
+        oddDegreeNodes.push(node);
+      }
+    });
+
+    let actualStartNode;
+
+    if (oddDegreeNodes.length > 2) {
+      setMessage("Graph has more than two nodes with odd degree. No Eulerian path or circuit exists.");
+      return { steps: [], path: [] };
+    } else if (oddDegreeNodes.length === 2) {
+      // Eulerian Path exists
+      actualStartNode = oddDegreeNodes.includes(startNode) ? startNode : oddDegreeNodes[0];
+      setMessage(`Eulerian Path detected. Starting from odd-degree node ${actualStartNode}...`);
+    } else {
+      // Eulerian Circuit exists (or it's an empty/single-node graph)
+      actualStartNode = startNode !== null ? startNode : (nodes.length > 0 ? nodes[0].id ?? 0 : 0);
+      setMessage(`Eulerian Circuit detected. Starting from node ${actualStartNode}...`);
+    }
+
+    const visualizationSteps = [];
+    const path = [];
+    const stack = [actualStartNode];
+    const edgeCount = new Map();
+
+    edges.forEach(edge => {
+        const key1 = `${edge.start}-${edge.end}`;
+        const key2 = `${edge.end}-${edge.start}`;
+        edgeCount.set(key1, (edgeCount.get(key1) || 0) + 1);
+        edgeCount.set(key2, (edgeCount.get(key2) || 0) + 1);
+    });
+
+    while (stack.length > 0) {
+      let u = stack[stack.length - 1];
+      visualizationSteps.push({ type: "visit", node: u });
+
+      if (adj.get(u) && adj.get(u).length > 0) {
+        let v = adj.get(u).pop();
+        // Remove the corresponding edge from v's adjacency list
+        const vNeighbors = adj.get(v);
+        const index = vNeighbors.indexOf(u);
+        if (index > -1) vNeighbors.splice(index, 1);
+
+        stack.push(v);
+      } else {
+        path.unshift(stack.pop());
+      }
+    }
+
+    return { steps: visualizationSteps, path };
   }
 };
 
@@ -232,22 +298,20 @@ const VisualizationHelpers = {
     });
   },
 
-  // Animate the visualization steps
-  animateVisualization: ({ steps, distances, path, dijkstraStart, dijkstraEnd, setVisualState, setIsVisualizing, setMessage, setResult }) => {
+  // Animate the Eulerian path visualization
+  animateEulerianVisualization: ({ steps, path, startNode, setVisualState, setIsVisualizing, setMessage, setResult }) => {
     let stepIndex = 0;
     const interval = setInterval(() => {
       if (stepIndex >= steps.length) {
         clearInterval(interval);
         setIsVisualizing(false);
-        setMessage("Visualization complete!");
-        const totalWeight = distances[dijkstraEnd];
-        if (totalWeight === Infinity) {
-          setResult({ path: "No path found", weight: "N/A" });
-        } else {
-          const nodePath = [dijkstraStart];
-          path.forEach((edge) => nodePath.push(edge.end));
-          setResult({ path: nodePath.join(" → "), weight: totalWeight });
-        }
+        setMessage("Eulerian path visualization complete!");
+        
+        // Set the final result for Eulerian path
+        setResult({
+          path: path.map(edge => edge.start).concat(path.length > 0 ? [path[path.length - 1].end] : []).join(" → "),
+          weight: "N/A (Eulerian Path)",
+        });
 
         return;
       }
@@ -262,18 +326,54 @@ const VisualizationHelpers = {
       }
       stepIndex++;
     }, 300); // Animation speed
+  },
+
+  // Animate the visualization steps for pathfinding algorithms
+  animateVisualization: ({ steps, distances, path, dijkstraStart, dijkstraEnd, setVisualState, setIsVisualizing, setMessage, setResult }) => {
+    let stepIndex = 0;
+    setIsVisualizing(true);
+    const interval = setInterval(() => {
+      if (stepIndex >= steps.length) {
+        clearInterval(interval);
+        setIsVisualizing(false);
+        setMessage("Visualization complete!");
+        
+        const totalWeight = distances && dijkstraEnd !== null ? distances[dijkstraEnd] : (path ? path.length : 0);
+        
+        if (dijkstraEnd !== null && (totalWeight === Infinity || path.length === 0 && dijkstraStart !== dijkstraEnd)) {
+          setResult({ path: "No path found", weight: "N/A" });
+        } else if (dijkstraEnd !== null) {
+          const nodePath = [dijkstraStart, ...path.map(edge => edge.end)];
+          setResult({ path: nodePath.join(" → "), weight: totalWeight });
+        }
+
+        return;
+      }
+      
+      const step = steps[stepIndex];
+      if (step.type === "visit") {
+        setVisualState((prev) => ({
+          ...prev,
+          visited: new Set(prev.visited).add(step.node),
+        }));
+      } else if (step.type === "path") {
+        setVisualState((prev) => ({ ...prev, path: step.path }));
+      }
+      
+      stepIndex++;
+    }, 300); // Animation speed
   }
 };
 
 // Default example graph data
 const DEFAULT_EXAMPLE = {
   nodes: [
-    { x: 150, y: 120 },
-    { x: 350, y: 80 },
-    { x: 550, y: 120 },
-    { x: 200, y: 320 },
-    { x: 400, y: 300 },
-    { x: 600, y: 320 }
+    { x: 150, y: 120, id: 0 },
+    { x: 350, y: 80, id: 1 },
+    { x: 550, y: 120, id: 2 },
+    { x: 200, y: 320, id: 3 },
+    { x: 400, y: 300, id: 4 },
+    { x: 600, y: 320, id: 5 }
   ],
   edges: [
     { start: 0, end: 1, weight: 2 },
@@ -485,12 +585,44 @@ const GraphVisualizer = ({ defaultAlgorithm = null, autoLoadExample = false, can
       setResult
     });
   }, [dijkstraStart, dijkstraEnd, nodes, getNeighbors]);
+  
+  const runEulerian = useCallback(() => {
+    const { steps, path: eulerPathNodes } = GraphAlgorithms.hierholzer({
+      nodes,
+      edges,
+      startNode: dijkstraStart,
+      setVisualState,
+      setMessage,
+      getNeighbors,
+    });
+
+    if (!steps || steps.length === 0) return;
+
+    // Convert node path to edge path for visualization
+    const eulerPathEdges = [];
+    for (let i = 0; i < eulerPathNodes.length - 1; i++) {
+      eulerPathEdges.push({ start: eulerPathNodes[i], end: eulerPathNodes[i+1] });
+    }
+    steps.push({ type: "path", path: eulerPathEdges });
+
+    // Use a dedicated animation helper for Eulerian paths
+    VisualizationHelpers.animateEulerianVisualization({
+      steps,
+      path: eulerPathEdges,
+      startNode: dijkstraStart,
+      setVisualState,
+      setIsVisualizing,
+      setMessage,
+      setResult,
+    });
+  }, [dijkstraStart, nodes, edges, getNeighbors]);
 
   const runSelectedAlgorithm = useCallback(() => {
     if (algorithm === "Dijkstra") return runDijkstra();
     if (algorithm === "BFS") return runBFS();
     if (algorithm === "DFS") return runDFS();
-  }, [algorithm, runDijkstra, runBFS, runDFS]);
+    if (algorithm === "Eulerian") return runEulerian();
+  }, [algorithm, runDijkstra, runBFS, runDFS, runEulerian]);
 
   const handleClear = useCallback(() => {
     setNodes([]);
@@ -516,7 +648,8 @@ const GraphVisualizer = ({ defaultAlgorithm = null, autoLoadExample = false, can
   const algorithmOptions = useMemo(() => [
     { value: "BFS", label: "BFS" },
     { value: "DFS", label: "DFS" },
-    { value: "Dijkstra", label: "Dijkstra" }
+    { value: "Dijkstra", label: "Dijkstra" },
+    { value: "Eulerian", label: "Eulerian Path/Circuit" }
   ], []);
 
   return (
@@ -596,7 +729,7 @@ const GraphVisualizer = ({ defaultAlgorithm = null, autoLoadExample = false, can
             </select>
           </div>
           <div className="control-group">
-            <label className="control-label">End Node:</label>
+            <label className="control-label">End Node (for Dijkstra/BFS/DFS):</label>
             <select
               value={dijkstraEnd ?? ""}
               onChange={(e) =>
