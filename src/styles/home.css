@@ -912,6 +912,7 @@ body.dark-mode .stat-card {
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
   color: white;
   padding: 0.875rem 1.5rem;
+  margin-left: 5px;
   border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
@@ -2083,7 +2084,7 @@ body.dark-mode .step-duration-tag {
   justify-content: space-between;
   padding: 14px 28px;
   margin: 0px 0 16px 0;
-  background: linear-gradient(90deg, #143e81, #0e7789); /* gradient */
+  background: linear-gradient(90deg, #143e81, #0e7789);
   color: white;
   font-size: 15px;
   font-weight: 600;
@@ -2126,7 +2127,7 @@ body.dark-mode .step-duration-tag {
   background: var(--btn-bg);
   text-align: center;
   flex-direction: column;
-  background: linear-gradient(90deg, #8492a7, #5f7db4); /* gradient */
+  background: linear-gradient(90deg, #8492a7, #5f7db4);
 }
 
 .clean-button-link:hover {
@@ -2206,12 +2207,17 @@ body.dark-mode .step-duration-tag {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin: 10px;
+
   background: linear-gradient(
-    180deg,
-    rgba(79, 110, 246, 0.14),
-    rgba(139, 199, 255, 0.06)
+    130deg,
+    transparent 0%,
+    rgb(210, 210, 243) 50%,
+    transparent 100%
   );
-  border-radius: var(--ui-radius-md);
+  border-radius:20px;
+  border:1px solid rgba(79, 110, 246, 0.12);  
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.1);
   padding: 18px;
   color: var(--theme-text-primary);
   min-height: 72px;
@@ -2219,6 +2225,17 @@ body.dark-mode .step-duration-tag {
   box-shadow: var(--ui-shadow-soft);
   border: 1px solid rgba(79, 110, 246, 0.12);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.algorithm-buttons .clean-button-link:hover{
+  transition:translateY(-20px);
+  box-shadow: var(--ui-shadow-stacked);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color) 0%,
+    var(--accent-color) 100%
+  );
+  color: white;
 }
 
 .algorithm-buttons .clean-button-link .button-icon {

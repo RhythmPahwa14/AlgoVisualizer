@@ -38,6 +38,7 @@ const SearchingOverview = () => {
         : Return the position/index or confirm if the element exists.
       </p>
 
+     <div className="theme-container" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div className="theme-card" style={{ width: "1300px" }}>
         <div className="theme-card-header">
           <h3>What is Searching?</h3>
@@ -143,9 +144,11 @@ const SearchingOverview = () => {
             </tr>
           </tbody>
         </table>
+      </div>  
       </div>
       <Searching/>
     </div>
+
   );
 };
 

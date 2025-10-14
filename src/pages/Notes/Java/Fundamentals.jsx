@@ -33,6 +33,7 @@ import DataStructuresSection from "./sections/DataStructuresSection";
 import Abstract from "./sections/Abstract";
 import Feature from "./sections/Feature";
 import Annotations from "./sections/Annotations";
+import AccessModifiers from "./sections/AccessModifiers";
 
 import "../../../styles/notesSideBar.css";
 import "../../../styles/fundamentals.css";
@@ -265,7 +266,11 @@ const Fundamentals = () => {
           label: "Abstract",
           component: <Abstract copyCode={copyCode} copiedCode={copiedCode} />,
         },
-        "Access Modifiers",
+        {
+          id: "accessmodifiers",
+          label: "Access Modifiers",
+          component: <AccessModifiers copyCode={copyCode} copiedCode={copiedCode} />,
+        },
       ],
     },
     {

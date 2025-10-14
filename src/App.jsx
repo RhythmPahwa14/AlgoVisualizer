@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+
+import ThreeBackground from './components/ThreeBackground';
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -17,7 +19,7 @@ import Doubt from "./components/Doubt";
 import FeedbackWidget from "./components/FeedbackWidget";
 import NotificationWidget from "./components/NotificationWidget";
 
-// Pages
+
 import Home from "./pages/Home";
 import Sorting from "./pages/Sorting";
 import SortingDoc from "./pages/SortingDoc";
@@ -86,8 +88,8 @@ import KruskalPage from "./pages/KruskalPage";
 import HuffmanPage from "./pages/HuffmanPage";
 import FloydWarshallPage from "./pages/GraphFloydWarshall";
 
-
 // Components
+import ArrayVisualizer from "./pages/Array.jsx";
 import LinkedListPage from "./components/pages/LinkedListPage";
 import Queue from "./components/Queue/Queue";
 import Stack from "./components/Stack/Stack";
@@ -100,10 +102,10 @@ import Contribute from "./components/Contribute";
 import Cheatsheet from "./components/Cheatsheet";
 import AlgorithmComparisonTable from './components/AlgorithmComparisonTable';
 
-
 // Static / Info Pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
 import About from "./components/about";
 import Contact from "./components/contact";
 import PrivacyPolicy from "./components/Privacy";
@@ -169,6 +171,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
 
                     {/* Sorting */}
                     <Route path="/sorting" element={<Sorting />} />

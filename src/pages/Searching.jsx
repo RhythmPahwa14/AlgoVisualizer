@@ -56,6 +56,16 @@ const ALGORITHM_PSEUDOCODE = {
     { code: "  while item not at correct position", explain: "Rotate cycle by putting item in correct position." },
     { code: "  repeat until cycle is complete", explain: "Continue rotations until back to start." }
   ],
+  fibonacciSearch: [
+    { code: "find smallest fib F(m) >= n", explain: "Initialize Fibonacci numbers." },
+    { code: "offset = -1", explain: "Tracks the eliminated part." },
+    { code: "while F(m) > 1", explain: "While there are elements to inspect." },
+    { code: "  i = min(offset + F(m-2), n-1)", explain: "Calculate index to check." },
+    { code: "  if arr[i] < target", explain: "Discard left part, update offset." },
+    { code: "  else if arr[i] > target", explain: "Discard right part." },
+    { code: "  else -> return i", explain: "Target found." },
+    { code: "return -1", explain: "Target not found." },
+  ],
 };
 
 const SEARCHING_DETAILS = {
@@ -88,6 +98,11 @@ const SEARCHING_DETAILS = {
     time: "Best/Average/Worst O(n²)",
     space: "O(1)",
     uses: ["Useful where memory writes are expensive (e.g., flash memory, EEPROM)", "Minimizing writes in embedded systems"],
+  },
+    fibonacciSearch: {
+    time: "Best O(1), Average/Worst O(log n)",
+    space: "O(1)",
+    uses: ["Large datasets where division is slow", "Searching on systems with slow RAM"],
   },
 };
 
@@ -182,7 +197,7 @@ const Searching = () => {
 
   // Pick algorithm based on /searching/:id (if provided)
   useEffect(() => {
-    const allowed = new Set(["linearSearch", "binarySearch", "jumpSearch", "exponentialSearch", "cycleSort"]);
+    const allowed = new Set(["linearSearch", "binarySearch", "jumpSearch", "exponentialSearch", "cycleSort","fibonacciSearch"]);
     if (id && allowed.has(id)) setAlgorithm(id);
   }, [id]);
 
@@ -202,6 +217,7 @@ const Searching = () => {
       linearSearch: "Linear Search",
       jumpSearch: "Jump Search",
       exponentialSearch: "Exponential Search",
+      fibonacciSearch: "Fibonacci Search",
     }[algo] || algo);
 
   // Generate steps for Binary Search when target is valid

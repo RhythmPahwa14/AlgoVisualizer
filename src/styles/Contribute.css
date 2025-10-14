@@ -68,7 +68,7 @@
 .section-content {
   max-width: 1260px;
   margin: 0 auto;
-  padding: 0 2.5rem 0 2.5rem;
+  padding: 5rem;
   position: relative;
   z-index: 1;
 }
@@ -381,10 +381,11 @@
 }
 
 .contribution-card:hover {
-  transform: translateY(-10px) scale(1.03);
+  transform: translateY(-20px) scale(1.03);
   border-color: var(--accent-primary);
   box-shadow: 0 30px 62px rgba(99,102,241,0.21);
-  background: linear-gradient(120deg, var(--accent-primary) 10%, var(--card-bg) 80%);
+
+  background: linear-gradient(120deg,transparent, rgba(54, 56, 206, 0.05), transparent);
 }
 
 .card-header {

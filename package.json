@@ -41,6 +41,7 @@
     "recharts": "^3.1.2",
     "recordrtc": "^5.6.2",
     "tailwindcss": "^4.1.13",
+    "three": "^0.180.0",
     "uuid": "^13.0.0",
     "vis-data": "^8.0.3",
     "vis-network": "^10.0.2",

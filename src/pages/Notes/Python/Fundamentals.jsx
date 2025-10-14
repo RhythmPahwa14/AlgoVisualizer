@@ -74,7 +74,13 @@ const PythonFundamentals = () => {
   { id: "modules", label: "Modules & Packages" },
   { id: "dsa", label: "Python for DSA" },
   { id: "numpy", label: "NumPy & Pandas" },
-  { id: "multithreading", label: "Multithreading & Multiprocessing"}
+  { id: "multithreading", label: "Multithreading & Multiprocessing"},
+
+  { id: "async", label: "Async Programming" },
+
+
+  { id: "regex", label: "Regular Expressions (re)" },
+
 ]
 .map(item => (
             <button
@@ -164,6 +170,7 @@ const PythonFundamentals = () => {
           </div>
         </section>
       )} 
+      
       {activeTab === "multithreading" && (
   <section style={{ marginBottom: "2rem" }}>
     <div className="card">
@@ -284,6 +291,111 @@ if __name__ == "__main__":
     </div>
   </section>
 )}
+{activeTab === "async" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-bolt"></i> 16. Async Programming (async / await) using asyncio</h2>
+      <p>
+        <strong>Async programming</strong> provides a modern way to handle <strong>concurrent I/O-bound</strong> operations
+        without blocking the main thread. This is ideal for API calls, database queries, and real-time applications.
+      </p>
+
+      <h3>Basic Example</h3>
+      <p>Use <code>async def</code> to define asynchronous functions and <code>await</code> to pause execution until a coroutine completes.</p>
+      <div className="code-container">
+        <button
+          className={`copy-btn ${copiedCode === "async-basic" ? "copied" : ""}`}
+          onClick={() =>
+            copyCode(`import asyncio
+
+async def greet(name):
+    await asyncio.sleep(1)  # Simulate I/O operation
+    print(f"Hello, {name}!")
+
+async def main():
+    await greet("Python")
+
+asyncio.run(main())`, "async-basic")
+          }
+        >
+          {copiedCode === "async-basic" ? "Copied!" : "Copy"}
+        </button>
+        <pre>{`import asyncio
+
+async def greet(name):
+    await asyncio.sleep(1)  # Simulate I/O operation
+    print(f"Hello, {name}!")
+
+async def main():
+    await greet("Python")
+
+asyncio.run(main())`}</pre>
+      </div>
+
+      <h3>Running Multiple Tasks Concurrently</h3>
+      <p>You can use <code>asyncio.gather()</code> to run multiple coroutines at the same time efficiently.</p>
+      <div className="code-container">
+        <button
+          className={`copy-btn ${copiedCode === "async-concurrent" ? "copied" : ""}`}
+          onClick={() =>
+            copyCode(`import asyncio
+
+async def fetch_data(source):
+    print(f"Fetching from {source}...")
+    await asyncio.sleep(2)
+    print(f"Done: {source}")
+
+async def main():
+    await asyncio.gather(
+        fetch_data("API 1"),
+        fetch_data("API 2"),
+        fetch_data("Database")
+    )
+
+asyncio.run(main())`, "async-concurrent")
+          }
+        >
+          {copiedCode === "async-concurrent" ? "Copied!" : "Copy"}
+        </button>
+        <pre>{`import asyncio
+
+async def fetch_data(source):
+    print(f"Fetching from {source}...")
+    await asyncio.sleep(2)
+    print(f"Done: {source}")
+
+async def main():
+    await asyncio.gather(
+        fetch_data("API 1"),
+        fetch_data("API 2"),
+        fetch_data("Database")
+    )
+
+asyncio.run(main())`}</pre>
+      </div>
+
+      <h3>Concurrency vs Parallelism</h3>
+      <ul>
+        <li><strong>Concurrency:</strong> Tasks take turns on a single thread (async I/O).</li>
+        <li><strong>Parallelism:</strong> Tasks run simultaneously on multiple CPU cores (multiprocessing).</li>
+      </ul>
+
+      <div
+        style={{
+          background: "#ecfdf5",
+          borderLeft: "4px solid #10b981",
+          padding: "1rem 1.5rem",
+          margin: "1.5rem 0",
+          borderRadius: "0 12px 12px 0",
+        }}
+      >
+        <strong>Tip:</strong> Use <code>asyncio</code> for I/O-bound tasks like API requests, DB calls, or network operations.
+        Use multiprocessing for CPU-intensive tasks like ML model training or heavy computations.
+      </div>
+    </div>
+  </section>
+)}
+
      
 
       {/* Data Types */}
@@ -438,7 +550,134 @@ print(x, y, name, is_coding)`}</pre>
         </section>
       )}
 
-    
+    {activeTab === "regex" && (
+  <section style={{ marginBottom: "2rem" }}>
+    <div className="card">
+      <h2><i className="fas fa-italic"></i> 17. Regular Expressions (re module)</h2>
+      <p>
+        <strong>Regular Expressions (regex)</strong> allow you to search, match, and manipulate strings based on patterns.
+        Python’s <code>re</code> module provides powerful tools for text processing, validation, and cleaning.
+      </p>
+
+      <h3>1. Pattern Matching & Searching</h3>
+      <p>Use <code>re.match()</code> to check the start of a string, and <code>re.search()</code> to find a pattern anywhere.</p>
+      <div className="code-container">
+        <button
+          className={`copy-btn ${copiedCode === "regex-match" ? "copied" : ""}`}
+          onClick={() =>
+            copyCode(`import re
+
+text = "Contact us at support@example.com"
+
+# Match: pattern must be at the start
+if re.match(r"Contact", text):
+    print("Matched at the start!")
+
+# Search: pattern can be anywhere
+if re.search(r"example\\.com", text):
+    print("Found 'example.com' in the text!")`, "regex-match")
+          }
+        >
+          {copiedCode === "regex-match" ? "Copied!" : "Copy"}
+        </button>
+        <pre>{`import re
+
+text = "Contact us at support@example.com"
+
+# Match: pattern must be at the start
+if re.match(r"Contact", text):
+    print("Matched at the start!")
+
+# Search: pattern can be anywhere
+if re.search(r"example\\.com", text):
+    print("Found 'example.com' in the text!")`}</pre>
+      </div>
+
+      <h3>2. Finding All Occurrences</h3>
+      <p>Use <code>re.findall()</code> to extract all substrings matching a pattern — useful for emails, phone numbers, etc.</p>
+      <div className="code-container">
+        <button
+          className={`copy-btn ${copiedCode === "regex-findall" ? "copied" : ""}`}
+          onClick={() =>
+            copyCode(`import re
+
+text = "Emails: alice@example.com, bob@test.org, hello@site.net"
+
+emails = re.findall(r"[\\w\\.-]+@[\\w\\.-]+", text)
+print(emails)  # ['alice@example.com', 'bob@test.org', 'hello@site.net']`, "regex-findall")
+          }
+        >
+          {copiedCode === "regex-findall" ? "Copied!" : "Copy"}
+        </button>
+        <pre>{`import re
+
+text = "Emails: alice@example.com, bob@test.org, hello@site.net"
+
+emails = re.findall(r"[\\w\\.-]+@[\\w\\.-]+", text)
+print(emails)  # ['alice@example.com', 'bob@test.org', 'hello@site.net']`}</pre>
+      </div>
+
+      <h3>3. Replacing Patterns</h3>
+      <p>Use <code>re.sub()</code> to clean or standardize text by replacing patterns.</p>
+      <div className="code-container">
+        <button
+          className={`copy-btn ${copiedCode === "regex-sub" ? "copied" : ""}`}
+          onClick={() =>
+            copyCode(`import re
+
+text = "My phone: 123-456-7890"
+clean_text = re.sub(r"\\d", "X", text)
+print(clean_text)  # My phone: XXX-XXX-XXXX`, "regex-sub")
+          }
+        >
+          {copiedCode === "regex-sub" ? "Copied!" : "Copy"}
+        </button>
+        <pre>{`import re
+
+text = "My phone: 123-456-7890"
+clean_text = re.sub(r"\\d", "X", text)
+print(clean_text)  # My phone: XXX-XXX-XXXX`}</pre>
+      </div>
+
+      <h3>4. Raw String Notation</h3>
+      <p>
+        Always use <code>r"pattern"</code> (raw strings) to avoid issues with backslashes.
+        For example, <code>r"\d+"</code> matches one or more digits.
+      </p>
+
+      <div
+        style={{
+          background: "#ecfdf5",
+          borderLeft: "4px solid #10b981",
+          padding: "1rem 1.5rem",
+          margin: "1.5rem 0",
+          borderRadius: "0 12px 12px 0",
+        }}
+      >
+        <strong>Common Patterns:</strong>
+        <ul>
+          <li><code>\\d</code> → Digit</li>
+          <li><code>\\w</code> → Word character (letters, digits, underscore)</li>
+          <li><code>.</code> → Any character</li>
+          <li><code>^</code> → Start of string</li>
+          <li><code>$</code> → End of string</li>
+          <li><code>[a-zA-Z]</code> → Any letter</li>
+          <li><code>( )</code> → Group</li>
+          <li><code>+</code>, <code>*</code>, <code>?</code> → Quantifiers</li>
+        </ul>
+      </div>
+
+      <h3>5. Use Cases</h3>
+      <ul>
+        <li> Email / Phone validation</li>
+        <li> Extracting structured data from text</li>
+        <li> Cleaning noisy text (e.g., logs, scraped data)</li>
+        <li> Web scraping & form validation</li>
+      </ul>
+    </div>
+  </section>
+)}
+
 
       {/* Control Flow */}
       {activeTab === "control" && (

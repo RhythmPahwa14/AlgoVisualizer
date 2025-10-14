@@ -1,22 +1,31 @@
-// src/pages/ForgotPassword.jsx
 import React, { useState } from "react";
-import { requestPasswordReset } from "../services/authService"; // API call service
+import authService from "../services/authService"; 
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("");
     setError("");
+    setMessage("");
+    setLoading(true);
 
     try {
-      await requestPasswordReset(email);
-      setMessage("Reset link sent! Check your email.");
+      // Call the function from the default export object
+      const response = await authService.requestPasswordReset(email);
+
+      if (response.success) {
+        setMessage("Password reset link has been sent to your email!");
+      } else {
+        setError("Failed to send reset link. Please try again.");
+      }
     } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong.");
+      setError("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -24,20 +33,23 @@ const ForgotPassword = () => {
     <div className="forgot-password-container">
       <h2>Forgot Password</h2>
       <form onSubmit={handleSubmit} className="forgot-password-form">
-        <label>
-          Enter your registered email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Send Reset Link</button>
+        <label htmlFor="email">Enter your registered email:</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          placeholder="example@gmail.com"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Sending..." : "Send Reset Link"}
+        </button>
       </form>
 
-      {message && <p className="success">{message}</p>}
-      {error && <p className="error">{error}</p>}
+      {/* Display messages */}
+      {message && <p className="success-message">{message}</p>}
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };

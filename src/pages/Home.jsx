@@ -382,23 +382,29 @@ const Home = () => {
               }}
               data-aos="zoom-in" data-aos-duration="1500"
             >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", color: isLight ? "#1f2937" : "#c7d2fe" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div
-                    style={{
-                      width: 8, height: 8, borderRadius: 999,
-                      background: isLight
-                        ? "radial-gradient(circle at 40% 40%, #10b981 0%, #059669 60%, #065f46 100%)"
-                        : "radial-gradient(circle at 40% 40%, #34d399 0%, #059669 60%, #065f46 100%)",
-                      boxShadow: isLight ? "0 0 0 3px rgba(16,185,129,.20)" : "0 0 0 3px rgba(52,211,153,.17)",
-                    }}
-                  />
-                  <strong style={{ letterSpacing: ".2px" }}>Live Demo</strong>
-                </div>
-                <span style={{ opacity: 0.9, fontSize: ".9rem", color: isLight ? "#334155" : undefined }}>
-                  Bubble Sort · {values.length} bars
-                </span>
-              </div>
+              <div style={{ 
+    display: "flex", 
+    justifyContent: "space-between", 
+    alignItems: "center", 
+    color: isLight ? "#1f2937" : "#c7d2fe",
+    backgroundColor: 'transparent' // Added this line
+}}>
+    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div
+            style={{
+                width: 8, height: 8, borderRadius: 999,
+                background: isLight
+                    ? "radial-gradient(circle at 40% 40%, #10b981 0%, #059669 60%, #065f46 100%)"
+                    : "radial-gradient(circle at 40% 40%, #34d399 0%, #059669 60%, #065f46 100%)",
+                boxShadow: isLight ? "0 0 0 3px rgba(16,185,129,.20)" : "0 0 0 3px rgba(52,211,153,.17)",
+            }}
+        />
+        <strong style={{ letterSpacing: ".2px" }}>Live Demo</strong>
+    </div>
+    <span style={{ opacity: 0.9, fontSize: ".9rem", color: isLight ? "#334155" : undefined }}>
+        Bubble Sort · {values.length} bars
+    </span>
+</div>
 
               {/* Chart */}
               <div

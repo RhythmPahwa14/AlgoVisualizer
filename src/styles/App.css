@@ -6,12 +6,10 @@
 /* =========================
    Theme Variables - LEGACY SUPPORT
 ========================= */
-html, body, #root {
+html {
   height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
 }
+
 
 main {
   flex: 1; /* pushes footer to bottom */
@@ -22,7 +20,7 @@ main {
 ========================= */
 body {
     font-family: 'Poppins', sans-serif;
-    background: var(--primary-bg);
+    background: transparent !important; /* Force transparent background */
     color: var(--text-primary);
     margin: 0;
     padding: 0;
@@ -30,7 +28,13 @@ body {
     overflow-y: scroll;
     transition: all var(--transition-normal);
 }
-
+#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Make it a positioning context */
+    z-index: 1;         /* Put it on a layer above the background */
+}
 /* =========================
    Unified Button Styles
 ========================= */
@@ -319,7 +323,7 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 0;
-    background-color: var(--bg-color);
+    background-color: transparent;
     width: 100vw;
     position: fixed;
     top: 0;

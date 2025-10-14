@@ -84,6 +84,12 @@
     "description": "Ternary Search divides the search interval into three parts and discards two-thirds of the elements in each step. Works only on sorted arrays.",
     "useCase": "Useful for searching in large sorted datasets where dividing into more parts can reduce the number of comparisons."
 },
+{
+  "name": "Fibonacci Search",
+  "type": "searching",
+  "description": "Narrows down search positions in a sorted array using Fibonacci numbers, avoiding division.",
+  "useCase": "Ideal for very large datasets where division/modulo operations are slow, as it only uses addition and subtraction."
+},
   {
     "name": "Jump Search",
     "type": "searching",

@@ -1,4 +1,13 @@
 <h1 align="center">🎯 AlgoVisualizer</h1> 
+<div align="center">
+<br />
+    <a href="https://algovisualizer.rhythmpahwa.tech/"><strong>Explore the Live Demo »</strong></a>
+    <br />
+    <br />
+
+[Report Bug](https://github.com/RhythmPahwa14/AlgoVisualizer/issues/new?template=bug_report.yml) • [Request Feature](https://github.com/RhythmPahwa14/AlgoVisualizer/issues/new?template=feature_request.yml)
+ 
+</div>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
@@ -14,15 +23,22 @@
 <h2>📖 Table of Contents</h2> 
 
 - <a href="#overview"> Overview </a>
+- <a href="#vision"> Vision</a>
+- <a href="#mission"> Mission</a>
 - <a href="#project-insights"> Project Insights </a>
-- <a href="#features">Features</a>
+- <a href="#features"> Features</a>
+- <a href="#why-algovisualizer"> Why AlgoVisualizer</a>
 - <a href="#supported-algorithms">Supported Algorithms</a>
 - <a href="#code-implementations">Code Implementations</a>
 - <a href="#technologies-used">Technologies Used</a>
+- <a href="#prerequisites">Prerequisites</a>
 - <a href="#quick-start">Quick Start</a>
 - <a href="#usage-guide">Usage Guide</a>
 - <a href="#project-structure">Project Structure</a>
+- <a href="#learning-journey-flowchart">Learning Journey</a>
+- <a href="#troubleshooting">Troubleshooting</a>
 - <a href="#getting-started">Getting Started</a>
+- <a href="#sync-fork">Sync Your Fork with Upstream</a>
 - <a href="#analytics-performance">Analytics & Performance</a>
 - <a href="#educational-impact">Educational Impact</a>
 - <a href="#contributors">Contributors</a>
@@ -50,13 +66,26 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-🚀 **Live Demo**: [https://algo-visualizer-amber.vercel.app](https://algo-visualizer-amber.vercel.app/)
+**Live Link**: [https://algo-visualizer-amber.vercel.app](https://algo-visualizer-amber.vercel.app/)
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <div align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1000&color=00C853&center=true&vCenter=true&width=900&lines=Thanks+for+visiting+AlgoVisualizer!+🙌;Start+the+repo+✅;Share+it+with+others+🌍;Contribute+and+grow+🛠️;Happy+Coding+✨!" alt="Thanks Banner Typing SVG" />
 </div>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<h2 id="vision">✨ Vision</h2>
+Transform algorithmic learning through interactive visualizations—empowering students and developers to master data structures and algorithms with hands-on exploration and real-time feedback.
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<h2 id="mission">🎯 Mission</h2>
+Build the most comprehensive interactive algorithm visualization platform
+Provide step-by-step visual learning with multi-language code implementations
+Support educators with exportable content for classrooms and presentations
+Foster algorithmic thinking through interactive learning and community contributions
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
@@ -128,6 +157,17 @@
 - **Algorithm Documentation**: Comprehensive guides and explanations
 - **Contributors Section**: Meet the amazing people behind the project
 - **About & Contact Pages**: Learn more about the project and get in touch
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<h2 id="why-algovisualizer">💡 Why AlgoVisualizer</h2>
+
+- Learn by seeing: Watch algorithms execute step-by-step with clear visual feedback
+- Multi-language support: Production-ready code in Java, Python, and C++
+- Educational-first: Export recordings and screenshots for presentations
+- Interview prep: Perfect for coding interviews with complexity analysis
+- Modern stack: React 18, Vite, and Framer Motion for smooth experiences
+- Open-source: Community-driven with contributions from developers worldwide
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
@@ -312,19 +352,57 @@ The code implementations are ideal for:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
+<h2 id="prerequisites">🧩 Prerequisites</h2>
+
+Required:
+- Node.js 20.11.1 or higher (LTS recommended)
+- npm or yarn package manager
+- Git (for cloning and contributing)
+- Modern web browser
+
+Optional:
+- VS Code or preferred code editor
+- React Developer Tools browser extension
+- GitHub account (for contributions)
+
+Windows users:
+- Use Windows Terminal or PowerShell
+- Ensure Node.js is in PATH
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
 <h2 id="visualization-logic-explained"> Visualization Logic Explained</h2>
 
 ### The heart of this project is **AlgorithmVisualizer.jsx.** Here’s how it works:
-
 - State Management: Handles the array of numbers to be sorted and updates the UI as the algorithm progresses.
-
 - Dynamic Bar Width: Bar size is now calculated dynamically based on screen size and the number of elements — so the visualizer is fully responsive.
-
 - Sorting Algorithms: The algorithms (Bubble Sort, Merge Sort, Quick Sort, etc.) are imported from the  **src/algorithms/** folder. Each runs step-by-step with animated transitions.
-
 - Styling: The visualization container and bars are styled in **UnifiedVisualizer.css** for a clean, responsive layout.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<h2 id="troubleshooting"> 🛠️ Troubleshooting</h2>
+
+Installation Issues:
+
+```
+# Clear cache and reinstall
+npm cache clean --force
+Remove-Item -Recurse -Force node_modules
+npm install --legacy-peer-deps
+```
+Development Server Issues:
+```
+# Check port conflicts
+netstat -ano | findstr :5173
+# Start with different port
+npm run dev -- --port 3000
+```
+Performance Issues:
+- Reduce array size for testing
+- Close other browser tabs
+- Use Chrome/Firefox for better performance
+- Clear browser cache if visualizations aren't displaying
 
 <h2 id="quick-start"> Quick Start</h2>
 
@@ -338,8 +416,6 @@ The code implementations are ideal for:
 1. **Clone the repository:**
 
     ```bash
-   git clone https://github.com/<your-username>/AlgoVisualizer.git 
-   Example:
    git clone https://github.com/RhythmPahwa14/AlgoVisualizer.git
    cd AlgoVisualizer
    ```
@@ -454,12 +530,16 @@ AlgoVisualizer/
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
+<h2 id="learning-journey-flowchart"> 🗺️ Project Flowchart</h2>
+<img width="1081" height="847" alt="Untitled diagram-2025-10-13-150407" src="https://github.com/user-attachments/assets/e947afc3-6316-4967-8e6f-21d1f9204180" />
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 <h2 id="getting-started">Getting Started With Contributions</h2>
 
 1. Fork the repository
 ```bash
 # Fork the repository on GitHub, then clone your fork:
-git clone https://github.com/your-username/AlgoVisualizer.git
+git clone https://github.com/rhythmpahwa14/AlgoVisualizer.git
 cd AlgoVisualizer
 ``` 
 2. Set Up Upstream
@@ -490,12 +570,72 @@ Then go to AlgoVisualizer Pull Requests and create a PR with a clear description
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
+<h2 id="sync-fork">🔄 Sync Your Fork with Upstream</h2>
+
+To keep your fork up-to-date with the latest changes from the original repository, follow these steps:
+
+### Initial Setup (One-time only)
+```bash
+# Add the original repository as upstream (if not already done)
+git remote add upstream https://github.com/RhythmPahwa14/AlgoVisualizer.git
+
+# Verify your remotes
+git remote -v
+```
+
+### Regular Sync Process
+```bash
+# Fetch the latest changes from upstream
+git fetch upstream
+
+# Switch to your main branch
+git checkout main
+
+# Merge upstream changes into your local main branch
+git merge upstream/main
+
+# Push the updated main branch to your fork
+git push origin main
+```
+
+### Before Creating a New Feature Branch
+```bash
+# Always sync first, then create your feature branch
+git fetch upstream
+git checkout main
+git merge upstream/main
+git checkout -b feature/your-new-feature
+```
+
+### Handling Conflicts
+If you encounter merge conflicts:
+```bash
+# Resolve conflicts in your editor
+# After resolving, stage the changes
+git add .
+git commit -m "resolve merge conflicts"
+git push origin main
+```
+
+> **💡 Pro Tip**: Always sync your fork before starting work on a new feature to avoid conflicts and ensure you're working with the latest codebase.
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
 <h2 id="code-style">Code Style</h2>
 
 - Follow existing code conventions
 - Add comments for complex algorithms
 - Ensure responsive design for all new features
 - Test your changes across different devices
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+# ScreenShots
+<img width="1888" height="829" alt="Screenshot 2025-10-13 210440" src="https://github.com/user-attachments/assets/0cdad087-7975-4a8a-8664-7e849243c088" />
+
+<img width="1898" height="786" alt="Screenshot 2025-10-13 210501" src="https://github.com/user-attachments/assets/8cb76638-0c6e-4ddc-81b1-e2aaa25ec5db" />
+
+<img width="1896" height="831" alt="Screenshot 2025-10-13 210521" src="https://github.com/user-attachments/assets/02bcba5e-754d-40f4-adb4-068a2ba0f958" />
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
@@ -543,6 +683,24 @@ Meet our amazing project admins:
 </a><br>
 <sub><b>Sandeep Vashishtha</b><br>
 <a href="https://www.linkedin.com/in/sandeepvashishtha/" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="20" height="20" alt="LinkedIn"/>
+</a>
+</sub>
+</td>
+</tr>
+</table>
+
+<h2 id="project-admins">Project Maintainer</h2>
+
+Meet our amazing project maintainer:
+<table>
+<tr>
+<td align="center">
+<a href="https://github.com/aleenaharoldpeter">
+  <img src="https://avatars.githubusercontent.com/u/177343414?v=4" height="140px" width="140px" alt="Aleena Harold Peter">
+</a><br>
+<sub><b>Aleena Harold Peter</b><br>
+<a href="https://www.linkedin.com/in/aleena-harold-peter/" target="_blank">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="20" height="20" alt="LinkedIn"/>
 </a>
 </sub>

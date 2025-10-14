@@ -536,7 +536,8 @@ body {
   right: -100%; /* Start off-screen on the right */
   width: 100%;
   max-width: 320px; /* Or whatever width */
-  height: 100vh;
+  min-height:100vh;
+  overflow-y: auto;
   background: var(--card-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -555,6 +556,8 @@ body {
   right: 0;
   transform: translateX(0);
   box-shadow: -4px 0 30px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  /* height: 100vh; */
 }
 
 /* Mobile menu header */
@@ -564,6 +567,7 @@ body {
   background: linear-gradient(135deg, var(--primary-color-alpha), transparent);
   flex-shrink: 0; /* Prevent header compression */
   position: relative; /* For backdrop alignment */
+  /* height: 100vh; */
 }
 
 .mobile-menu-header-content {
@@ -571,7 +575,9 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
-  width: 100%; /* Full width for alignment */
+  width: 100%;
+  /* overflow-y: scroll; */
+  
 }
 
 .mobile-menu-title {

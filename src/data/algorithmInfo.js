@@ -143,6 +143,14 @@ export const ALGORITHM_INFO = {
       bestCase: "O(1)",
       stable: "Yes",
     },
+     fibonacciSearch: {
+      description:
+        "Fibonacci Search is a comparison-based technique that uses Fibonacci numbers to narrow down the search space in a sorted array, avoiding the use of division operators.",
+      timeComplexity: "O(log n)",
+      spaceComplexity: "O(1)",
+      bestCase: "O(1)",
+      stable: "Yes",
+    },
   },
 
   graphTraversal: {

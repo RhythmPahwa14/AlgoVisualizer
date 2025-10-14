@@ -357,6 +357,25 @@ searching:
       cons:
         - "Requires sorted data"
         - "Two-phase approach"
+        
+    - name: "Fibonacci Search"
+      timeComplexity:
+        best: "O(1)"
+        average: "O(log n)"
+        worst: "O(log n)"
+      spaceComplexity: "O(1)"
+      description: "Uses Fibonacci numbers to narrow down search positions in a sorted array."
+      useCases:
+        - "Large arrays not in CPU cache"
+        - "Systems where division is slow"
+        - "Read-only memory"
+      pros:
+        - "Avoids division, uses +/-"
+        - "Logarithmic time"
+        - "Efficient for slow-access memory"
+      cons:
+        - "Requires sorted data"
+        - "Slightly more complex than Binary Search"
 
 dataStructures:
   title: "Data Structures"

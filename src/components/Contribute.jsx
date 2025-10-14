@@ -263,10 +263,11 @@ const Contribute = () => {
   const contributionTypes = [
     {
       title: (
-        <>
-          <BugIcon size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <BugIcon size={40} className="inline mr-2" />
+
           Bug Fixes
-        </>
+        </div>
       ),
       description:
         "Help us identify and fix bugs in visualizations, UI components, or algorithm implementations.",
@@ -279,10 +280,10 @@ const Contribute = () => {
     },
     {
       title: (
-        <>
-          <Sparkles size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <Sparkles size={40} className="inline mr-2" />
           New Features
-        </>
+        </div>
       ),
       description:
         "Add new algorithm visualizations, improve existing ones, or enhance user experience.",
@@ -296,10 +297,10 @@ const Contribute = () => {
     },
     {
       title: (
-        <>
-          <BookOpen size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <BookOpen size={40} className="inline mr-2" />
           Documentation
-        </>
+        </div>
       ),
       description:
         "Improve code comments, README files, or create tutorials for new contributors.",
@@ -313,10 +314,10 @@ const Contribute = () => {
     },
     {
       title: (
-        <>
-          <Layers3 size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <Layers3 size={40} className="inline mr-2" />
           UI/UX Design
-        </>
+        </div>
       ),
       description:
         "Enhance the visual design, improve user interface, or create better user experiences.",
@@ -330,10 +331,10 @@ const Contribute = () => {
     },
     {
       title: (
-        <>
-          <Cpu size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <Cpu size={40} className="inline mr-2" />
           Performance
-        </>
+        </div>
       ),
       description:
         "Optimize algorithm performance, reduce bundle size, or improve rendering speed.",
@@ -347,10 +348,10 @@ const Contribute = () => {
     },
     {
       title: (
-        <>
-          <TestTube2 size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <TestTube2 size={40} className="inline mr-2" />
           Testing
-        </>
+        </div>
       ),
       description:
         "Write unit tests, integration tests, or help with quality assurance.",
@@ -368,10 +369,10 @@ const Contribute = () => {
     {
       step: 1,
       title: (
-        <>
-          <ForkIcon size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <ForkIcon size={40} className="inline mr-2" />
           Fork the Repository
-        </>
+        </div>
       ),
       description:
         "Click the 'Fork' button on our GitHub repository to create your own copy.",
@@ -379,10 +380,10 @@ const Contribute = () => {
     {
       step: 2,
       title: (
-        <>
-          <Download size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <Download size={40} className="inline mr-2" />
           Clone Your Fork
-        </>
+        </div>
       ),
       description:
         "Clone your forked repository to your local machine using Git.",
@@ -391,10 +392,10 @@ const Contribute = () => {
     {
       step: 3,
       title: (
-        <>
-          <Package size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <Package size={40} className="inline mr-2" />
           Install Dependencies
-        </>
+        </div>
       ),
       description:
         "Navigate to the project directory and install required packages.",
@@ -403,10 +404,10 @@ const Contribute = () => {
     {
       step: 4,
       title: (
-        <>
-          <Play size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <Play size={40} className="inline mr-2" />
           Start Development
-        </>
+        </div>
       ),
       description: "Run the development server and start making your changes.",
       code: "npm start",
@@ -414,10 +415,10 @@ const Contribute = () => {
     {
       step: 5,
       title: (
-        <>
-          <Code size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <Code size={40} className="inline mr-2" />
           Make Your Changes
-        </>
+        </div>
       ),
       description:
         "Create a new branch, make your improvements, and test thoroughly.",
@@ -425,10 +426,10 @@ const Contribute = () => {
     {
       step: 6,
       title: (
-        <>
-          <Upload size={20} className="inline mr-2" />
+        <div className="flex flex-row gap-5">
+          <Upload size={40} className="inline mr-2" />
           Submit Pull Request
-        </>
+        </div>
       ),
       description:
         "Push your changes and create a pull request with a clear description.",
@@ -448,7 +449,7 @@ const Contribute = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <ArrowLeft size={20} />
+        <ArrowLeft size={40} />
         <span>Back</span>
       </motion.button>
 
@@ -467,22 +468,22 @@ const Contribute = () => {
           </p>
           <div className="repo-stats" data-aos="fade-up" data-aos-delay="200">
             <div className="stat-item">
-              <Star className="stat-icon" size={20} />
+              <Star className="stat-icon" size={40} />
               <span className="stat-value">{repoStats.stars}</span>
               <span className="stat-label">Stars</span>
             </div>
             <div className="stat-item">
-              <GitFork className="stat-icon" size={20} />
+              <GitFork className="stat-icon" size={40} />
               <span className="stat-value">{repoStats.forks}</span>
               <span className="stat-label">Forks</span>
             </div>
             <div className="stat-item">
-              <Bug className="stat-icon" size={20} />
+              <Bug className="stat-icon" size={40} />
               <span className="stat-value">{repoStats.issues}</span>
               <span className="stat-label">Issues</span>
             </div>
             <div className="stat-item">
-              <Users className="stat-icon" size={20} />
+              <Users className="stat-icon" size={40} />
               <span className="stat-value">12+</span>
               <span className="stat-label">Contributors</span>
             </div>
