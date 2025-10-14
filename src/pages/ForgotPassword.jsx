@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import authService from "../services/authService"; 
+import "./ForgotPassword.css";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -31,9 +32,10 @@ const ForgotPassword = () => {
 
   return (
     <div className="forgot-password-container">
-      <h2>Forgot Password</h2>
+      <div class="main-container">
+      <h2><b>Forgot Password</b></h2>
       <form onSubmit={handleSubmit} className="forgot-password-form">
-        <label htmlFor="email">Enter your registered email:</label>
+        <label class="label" htmlFor="email">Enter your registered email</label><br></br>
         <input
           type="email"
           id="email"
@@ -41,7 +43,7 @@ const ForgotPassword = () => {
           placeholder="example@gmail.com"
           onChange={(e) => setEmail(e.target.value)}
           required
-        />
+        /> <br></br>
         <button type="submit" disabled={loading}>
           {loading ? "Sending..." : "Send Reset Link"}
         </button>
@@ -50,6 +52,7 @@ const ForgotPassword = () => {
       {/* Display messages */}
       {message && <p className="success-message">{message}</p>}
       {error && <p className="error-message">{error}</p>}
+    </div>
     </div>
   );
 };

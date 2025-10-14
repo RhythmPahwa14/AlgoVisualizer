@@ -11,4 +11,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ['vis-network', 'vis-data'],
   },
+   define: {
+    global: 'window', // 👈 Fix for vis-network
+  },
 });

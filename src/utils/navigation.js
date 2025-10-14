@@ -140,6 +140,7 @@ export const learnSections = [
       { path: "/graph/astar", label: "A*", category: "Graphs", tags: ["astar", "pathfinding", "heuristic", "grid"] },
       { path: "/graph/comparison", label: "Graph Comparison", category: "Graphs", tags: ["comparison", "graph algorithms"] },
       { path: "/graph/cycleDetection", label: "Cycle Detection", category: "Graphs", tags: ["graph", "cycle", "DFS"] },
+      { path: "/graph/eulerianGraphs", label: "Eulerian graphs", category: "Graphs", tags: ["graph", "euler", "eulerianCircuit" , "eulerianPath"] },
     ],
   },
 
