@@ -348,6 +348,15 @@ const algorithmDatabase = {
          spaceComplexity: "O(1)",
         implemented: true,
       },
+      {
+      name: "KMP Algorithm",
+      id: "kmp",
+      description:
+        "Efficient string matching algorithm that avoids re-checking characters by using the LPS (Longest Prefix Suffix) array.",
+      timeComplexity: { best: "O(n + m)", average: "O(n + m)", worst: "O(n + m)" },
+      spaceComplexity: "O(m)",
+      implemented: true,
+    },
     ],
   },
 };
