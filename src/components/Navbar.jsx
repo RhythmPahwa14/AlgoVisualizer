@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  Home,
   BarChart3,
   Search,
   Database,
@@ -44,6 +43,9 @@ const ICON_COMPONENTS = {
   TreeDeciduous,
   Menu
 };
+
+// Default icon component for fallback
+const DefaultIcon = () => <div style={{ width: 18, height: 18 }} />;
 
 // Desktop Nav Item
 const DesktopNavItem = ({
@@ -178,7 +180,7 @@ const Navbar = () => {
   const { theme } = useTheme();
   const navbarRef = useRef(null);
 
-  const getIcon = (name) => ICON_COMPONENTS[name] || null;
+  const getIcon = (name) => ICON_COMPONENTS[name] || DefaultIcon;
   const isActive = (path) => location.pathname === path;
 
   const toggleDesktopDropdown = (index) =>
