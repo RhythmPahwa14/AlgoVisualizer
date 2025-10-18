@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/feedback.css";
+import { submitFeedback } from "../services/feedbackSumbitServices";
+// import submitFeedback from "../services/feedbackSumbitServices";
 
 const FeedbackWidget = () => {
   const [open, setOpen] = useState(false);
@@ -41,6 +43,7 @@ const FeedbackWidget = () => {
         path: window.location.pathname,
       };
       localStorage.setItem("algovisualizer_feedback", JSON.stringify([feedback, ...existing]));
+      submitFeedback(feedback.name, feedback.email, feedback.message);
 
       setSubmitted(true);
 
