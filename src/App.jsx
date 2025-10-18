@@ -101,6 +101,7 @@ import ArrayVisualizer from "./pages/Array.jsx";
 import KadaneVisualizer from "./pages/Kadane.jsx";
 import DijkstraVisualizer from "./pages/Dijkstra.jsx";
 import DivideAndConquerVisualizer from "./pages/DivideAndConquer.jsx";
+import KnapsackVisualizer from "../Downloads/AlgoVisualizer-master/AlgoVisualizer-master/src/pages/Knapsack.jsx";
 import KMPVisualizer from "./pages/KMP";
 import LinkedListPage from "./components/pages/LinkedListPage";
 import Queue from "./components/Queue/Queue";
@@ -225,6 +226,7 @@ const App = () => {
                     <Route path="/data-structures/kmp" element={<KMPVisualizer />} />
                     <Route path="/data-structures/dijkstras" element={<DijkstraVisualizer/>} />
                     <Route path="/data-structures/divideandconquer" element={<DivideAndConquerVisualizer/>} />
+                    <Route path="/data-structures/knapsack" element={<KnapsackVisualizer/>} />
 
 
                     <Route

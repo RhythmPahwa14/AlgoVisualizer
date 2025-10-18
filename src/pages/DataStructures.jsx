@@ -376,6 +376,15 @@ const algorithmDatabase = {
       spaceComplexity:"O(n)",
       implemented:true,
     },
+    {
+      name:"0/1 Knapsack",
+      id:"knapsack",
+      description:
+      "The 0/1 Knapsack problem chooses items with maximum total value without exceeding the capacity. Each item can either be taken (1) or not (0).",
+      timeComplexity:"O(n × W)",
+      spaceComplexity:"O(n × W)",
+      implemented:true,
+    }
 
     ],
   },
