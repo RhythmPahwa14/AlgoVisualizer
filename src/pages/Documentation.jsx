@@ -137,6 +137,30 @@ const algorithmDatabase = {
         inPlace: true,
         adaptivity: "Not Adaptive",
         implemented: true
+      },
+      {
+        name: "Heap Sort",
+        id: "heapSort",
+        description:
+          "Builds a max heap from the input data, then repeatedly extracts the maximum element and rebuilds the heap. Performs well for large datasets but is unstable.",
+        timeComplexity: { best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)" },
+        spaceComplexity: "O(1)",
+        stability: "Unstable",
+        inPlace: true,
+        adaptivity: "Not Adaptive",
+        implemented: true
+      },
+      {
+        name: "Bucket Sort",
+        id: "bucketSort",
+        description:
+          "Distributes elements into buckets, sorts each bucket individually (often using insertion sort), then concatenates them. Works best for uniformly distributed data.",
+        timeComplexity: { best: "O(n + k)", average: "O(n + k)", worst: "O(n²)" },
+        spaceComplexity: "O(n + k)",
+        stability: "Stable (depends on bucket sort used)",
+        inPlace: false,
+        adaptivity: "Adaptive (depends on data distribution)",
+        implemented: true
       }
     ]
   },
