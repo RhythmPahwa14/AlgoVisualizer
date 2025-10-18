@@ -27,6 +27,7 @@ const GameSearchPage = () => {
     expectimax: "Expectimax",
     mcts: "Monte Carlo Tree Search"
   };
+  
 
   return (
     <div
@@ -51,8 +52,8 @@ const GameSearchPage = () => {
       <div data-aos="fade-up" data-aos-delay="200">
         <GameSearchVisualizer
           defaultAlgorithm={selectedAlgorithm}
-          problemSize={defaultSizes[selectedAlgorithm] || 3}
-          autoLoadExample={true}
+          boardSize={defaultSizes[selectedAlgorithm] || 3}
+          autoLoadExample={false}
         />
       </div>
 

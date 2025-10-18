@@ -581,19 +581,61 @@ const Home = () => {
         <section className="algorithm-buttons" data-aos="fade-up" data-aos-delay="200">
           <h2 className='buttons-heading'>Resources</h2>
 
-          {features.map((feature, index) => (
-            <Link
-              key={index}
-              to={feature.path}
-              className={`clean-button-link feature-${index + 1}`}
-              data-aos="fade-up" data-aos-delay={`${300 + index * 100}`}
-            >
-              <div className='button-icon'>
-                <feature.icon size={35} />
-              </div>
-              <span className="feature-title">{feature.title}</span>
-            </Link>
-          ))}
+      {features.map((feature, index) => (
+  <Link
+    key={index}
+    to={feature.path}
+    className={`clean-button-link feature-${index + 1}`}
+    data-aos="fade-up"
+    data-aos-delay={`${300 + index * 100}`}
+    style={{
+      background: isLight
+        ? "linear-gradient(135deg, #f9fafb 60%, #dbeafe 100%)"
+        : "linear-gradient(135deg, #23283e 60%, #171725 100%)",
+      border: isLight
+        ? "1px solid rgba(15,23,42,.08)"
+        : "1px solid rgba(180, 184, 255, 0.14)",
+      borderRadius: 20,
+      boxShadow: isLight
+        ? "0 5px 20px -8px rgba(30, 64, 175, 0.10)"
+        : "0 5px 20px -8px rgba(124, 131, 255, 0.16)",
+      color: isLight ? "#1e293b" : "#e0e7ff",
+      transition: "all 0.22s",
+      marginBottom: "1.2rem",
+      position: "relative",
+    }}
+  >
+    <div className='button-icon' style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      <feature.icon
+        size={35}
+        color={isLight ? "#1e293b" : "#ffaaff"}
+        style={
+          !isLight
+            ? { filter: "drop-shadow(0 0 8px #a78bfa88)" }
+            : {}
+        }
+      />
+    </div>
+    <span
+      className="feature-title"
+      style={{
+        fontWeight: 600,
+        fontSize: "1.10rem",
+        color: isLight ? "#1e293b" : "#e0e7ff",
+        textShadow: !isLight ? "0 2px 12px #4f46e533, 0 1px 0 #000" : "none",
+        marginTop: ".6rem",
+        letterSpacing: ".1px",
+      }}
+    >
+      {feature.title}
+    </span>
+  </Link>
+))}
+
         </section>
 
         <div className='vertical-steps-container' data-aos="fade-up" data-aos-delay="200">

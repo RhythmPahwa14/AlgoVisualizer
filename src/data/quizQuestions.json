@@ -131,8 +131,8 @@
             "O(n\u00b2)",
             "O(log n)"
         ],
-        "correctAnswer": 1,
-        "explanation": "Typically, Selection Sort has an average case of O(n log n)."
+        "correctAnswer": 2,
+        "explanation": "Typically, Selection Sort has an average case of O(n^2)."
     },
     {
         "id": 10,

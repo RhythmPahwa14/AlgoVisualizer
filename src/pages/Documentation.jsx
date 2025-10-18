@@ -1,5 +1,26 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { Search, Database, BookOpen, Users, Star, GitBranch, Code } from "lucide-react";
+import {useNavigate} from "react-router-dom";
+ import React, { useState, useEffect, useCallback, useMemo } from "react";
+import { 
+  Search, 
+  Database, 
+  BookOpen, 
+  Users, 
+  Star, 
+  GitBranch, 
+  Code,
+  ArrowDownUp,
+  Zap,
+  TreeDeciduous,
+  Gamepad2,
+  Box,
+  Hash,
+  Boxes,
+  Split,
+  Wallet,
+  Target,
+  Brain,
+  Network
+} from "lucide-react";
 import "../styles/global-theme.css";
 
 // ============================================================================
@@ -9,9 +30,10 @@ import "../styles/global-theme.css";
 const algorithmDatabase = {
   sorting: {
     title: "Sorting Algorithms",
-    icon: "🔄",
+    icon: ArrowDownUp, // Changed from 🔄
     color: "#66ccff",
     algorithms: [
+      // ... all your sorting algorithms stay the same
       {
         name: "Bubble Sort",
         id: "bubbleSort",
@@ -120,7 +142,7 @@ const algorithmDatabase = {
   },
   searching: {
     title: "Search Algorithms",
-    icon: "🔍",
+    icon: Search, // Changed from 🔍
     color: "#4ade80",
     algorithms: [
       {
@@ -177,7 +199,7 @@ const algorithmDatabase = {
   },
   dataStructures: {
     title: "Data Structures",
-    icon: "🏗️",
+    icon: Database, // Changed from 🏗️
     color: "#ffd93d",
     algorithms: [
       {
@@ -237,7 +259,7 @@ const algorithmDatabase = {
   },
   graph: {
     title: "Graph Algorithms",
-    icon: "🧭",
+    icon: Network, // Changed from 🧭
     color: "#66ccff",
     algorithms: [
       {
@@ -278,7 +300,7 @@ const algorithmDatabase = {
   },
   backtracking: {
     title: "Backtracking Algorithms",
-    icon: "🧩",
+    icon: Target, // Changed from 🧩
     color: "#f9a825",
     algorithms: [
       {
@@ -335,7 +357,7 @@ const algorithmDatabase = {
   },
   dynamicProgramming: {
     title: "Dynamic Programming",
-    icon: "📊",
+    icon: Brain, // Changed from 📊
     color: "#f97316",
     algorithms: [
       {
@@ -408,7 +430,7 @@ const algorithmDatabase = {
   },
   greedy: {
     title: "Greedy Algorithms",
-    icon: "💰",
+    icon: Wallet, // Changed from 💰
     color: "#f97316",
     algorithms: [
       {
@@ -451,7 +473,7 @@ const algorithmDatabase = {
   },
   divideAndConquer: {
     title: "Divide & Conquer",
-    icon: "🪓",
+    icon: Split, // Changed from 🪓
     color: "#a78bfa",
     algorithms: [
       {
@@ -490,7 +512,7 @@ const algorithmDatabase = {
   },
   hashing: {
     title: "Hashing",
-    icon: "🔑",
+    icon: Hash, // Changed from 🔑
     color: "#ff6b6b",
     algorithms: [
       {
@@ -529,7 +551,7 @@ const algorithmDatabase = {
   },
   plants: {
     title: "Trees",
-    icon: "🌳",
+    icon: TreeDeciduous, // Changed from 🌳
     color: "#4ade80",
     algorithms: [
       {
@@ -567,7 +589,7 @@ const algorithmDatabase = {
 
   gameSearch: {
     title: "Game Search",
-    icon: "🎮",
+    icon: Gamepad2, // Changed from 🎮
     color: "#f9a825",
     algorithms: [
       {
@@ -607,7 +629,7 @@ const algorithmDatabase = {
   },
   branchAndBound: {
     title: "Branch & Bound",
-    icon: "📦",
+    icon: Box, // Changed from 📦
     color: "#34d399",
     algorithms: [
       {
@@ -648,28 +670,42 @@ const getComplexityColor = (complexity) => {
 // 2. SUB-COMPONENTS
 // ============================================================================
 
-function AlgorithmCard({ algorithm }) {
+function AlgorithmCard({ algorithm ,onOpen}) {
+  const IconComponent = algorithm.categoryIconComponent || Code;
+  const isLinearSearch=algorithm.id==="linearSearch";
+  
   return (
-    <div
-      className="theme-card algorithm-card min-h-[200px] flex flex-col justify-between"
-      title={algorithm.description}
-    >
-      <div>
-        <div className="card-header">
-          <div className="card-title-group">
-            <span className="card-icon">{algorithm.categoryIcon}</span>
-            <h3 className="card-title">{algorithm.name}</h3>
-          </div>
-          {algorithm.implemented ? (
-            <div className="status-badge implemented">Implemented</div>
-          ) : (
-            <div className="status-badge coming-soon">Coming Soon</div>
-          )}
-        </div>
-        <p className="card-description line-clamp-3">{algorithm.description}</p>
+<div
+  className={`theme-card algorithm-card ${isLinearSearch ? 'cursor-pointer' : ''}`}
+  onClick={isLinearSearch ? onOpen : null}
+  role={isLinearSearch ? 'button' : ''}
+  tabIndex={isLinearSearch ? 0 : -1}
+  onKeyDown={isLinearSearch ? (e) => { if (e.key === 'Enter') onOpen(); } : null}
+  title={algorithm.description}
+>
+  <div>
+    <div className="card-header">
+      <div className="card-title-group">
+        <span className="card-icon">
+          <IconComponent size={20} />
+        </span>
+        <h3 className="card-title">{algorithm.name}</h3>
       </div>
-      <div className="card-category-badge mt-auto">{algorithm.categoryTitle}</div>
+
+      {algorithm.implemented ? (
+        <div className="status-badge implemented">Implemented</div>
+      ) : (
+        <div className="status-badge coming-soon">Coming Soon</div>
+      )}
     </div>
+
+    <p className="card-description line-clamp-3">{algorithm.description}</p>
+  </div>
+
+  <div className="card-category-badge mt-auto">{algorithm.categoryTitle}</div>
+</div>
+
+    
   );
 }
 
@@ -681,9 +717,13 @@ function AlgorithmDocumentation() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [filteredAlgorithms, setFilteredAlgorithms] = useState([]);
-  const [graphSubcategory, setGraphSubcategory] = useState("all");
-  const [backtrackingSubcategory, setBacktrackingSubcategory] = useState("all");
-  const [dpSubcategory, setDpSubcategory] = useState("all");
+  const navigate = useNavigate();
+  const handleCardClick = (algo) => {
+    if(algo.id==="linearSearch"){
+      navigate("/searching?algo=linear-search");
+      return;
+    }
+  };
 
   const getAllAlgorithms = useCallback(() => {
     const seen = new Map();
@@ -694,7 +734,7 @@ function AlgorithmDocumentation() {
             ...algo,
             category: categoryKey,
             categoryTitle: category.title,
-            categoryIcon: category.icon,
+            categoryIconComponent: category.icon,
             categoryColor: category.color
           });
         }
@@ -710,7 +750,7 @@ function AlgorithmDocumentation() {
       {
         key: "sorting",
         label: "Sorting",
-        icon: Users,
+        icon: ArrowDownUp,
         count: algorithmDatabase.sorting?.algorithms.length || 0
       },
       {
@@ -728,61 +768,59 @@ function AlgorithmDocumentation() {
       {
         key: "graph",
         label: "Graph",
-        icon: GitBranch,
+        icon: Network,
         count: algorithmDatabase.graph?.algorithms.length || 0
       },
       {
         key: "backtracking",
         label: "Backtracking",
-        icon: Code,
+        icon: Target,
         count: algorithmDatabase.backtracking?.algorithms.length || 0
       },
       {
         key: "dynamicProgramming",
         label: "Dynamic Programming",
-        icon: BookOpen,
+        icon: Brain,
         count: algorithmDatabase.dynamicProgramming?.algorithms.length || 0
       },
       {
         key: "greedy",
         label: "Greedy",
-        icon: Star,
+        icon: Wallet,
         count: algorithmDatabase.greedy?.algorithms.length || 0
       },
       {
         key: "divideAndConquer",
         label: "Divide & Conquer",
-        icon: Star,
+        icon: Split,
         count: algorithmDatabase.divideAndConquer?.algorithms.length || 0
       },
       {
         key: "hashing",
         label: "Hashing",
-        icon: Star,
+        icon: Hash,
         count: algorithmDatabase.hashing?.algorithms.length || 0
       },
       {
-        key: "trees",
-        label: "Tree",
-        icon: Star,
-        count: algorithmDatabase.trees?.algorithms.length || 0
+        key: "plants",
+        label: "Trees",
+        icon: TreeDeciduous,
+        count: algorithmDatabase.plants?.algorithms.length || 0
       },
       {
         key: "gameSearch",
         label: "Game Search",
-        icon: Star,
+        icon: Gamepad2,
         count: algorithmDatabase.gameSearch?.algorithms.length || 0
       },
       {
         key: "branchAndBound",
         label: "Branch & Bound",
-        icon: Star,
+        icon: Box,
         count: algorithmDatabase.branchAndBound?.algorithms.length || 0
       }
     ];
   }, [getAllAlgorithms]);
-
-  // Removed subcategory counts as we're treating all categories consistently
 
   useEffect(() => {
     let allAlgorithms = getAllAlgorithms();
@@ -851,7 +889,7 @@ function AlgorithmDocumentation() {
         <div className="results-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
           {filteredAlgorithms.length > 0 ? (
             filteredAlgorithms.map((algorithm) => (
-              <AlgorithmCard key={algorithm.id} algorithm={algorithm} />
+              <AlgorithmCard key={algorithm.id} algorithm={algorithm}  onOpen={()=>handleCardClick(algorithm)}/>
             ))
           ) : (
             <div className="no-results-card theme-card text-center p-4 col-span-full">

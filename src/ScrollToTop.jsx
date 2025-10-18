@@ -36,11 +36,15 @@ export default function ScrollToTop() {
 
     // Window scroll to bottom
     if (typeof window.scrollTo === "function") {
-      window.scrollTo({ top: document.documentElement.scrollHeight || document.body.scrollHeight, behavior });
+      window.scrollTo({
+        top: document.documentElement.scrollHeight || document.body.scrollHeight,
+        behavior
+      });
     }
 
     // Document fallbacks
-    document.documentElement.scrollTop = document.documentElement.scrollHeight || document.body.scrollHeight;
+    document.documentElement.scrollTop =
+      document.documentElement.scrollHeight || document.body.scrollHeight;
     document.body.scrollTop = document.body.scrollHeight || document.documentElement.scrollHeight;
 
     // Inner container fallback
@@ -71,7 +75,7 @@ export default function ScrollToTop() {
             document.documentElement.scrollTop ||
             document.body.scrollTop ||
             0;
-          const atBottom = (window.innerHeight + y) >= (document.documentElement.scrollHeight - 100);
+          const atBottom = window.innerHeight + y >= document.documentElement.scrollHeight - 100;
           const isAtTop = y <= 200;
           // Show button when scrolled down OR when at top (so user can discover the "go to bottom" action)
           setShowButton(y > 200 || isAtTop);
@@ -103,23 +107,23 @@ export default function ScrollToTop() {
       <button
         type="button"
         onClick={() => {
-            // Toggle behavior: when at page top, clicking goes to bottom; otherwise go to top
-            if (atTop) {
-              forceScrollBottom(true);
-            } else {
-              forceScrollTop(true);
-            }
-          }}
-          aria-label={atTop ? "Scroll to bottom" : "Scroll to top"}
-          title={atTop ? "Go to bottom" : "Back to top"}
-        className={`floating-btn scroll-to-top-btn ${showButton ? 'show' : ''}`}
+          // Toggle behavior: when at page top, clicking goes to bottom; otherwise go to top
+          if (atTop) {
+            forceScrollBottom(true);
+          } else {
+            forceScrollTop(true);
+          }
+        }}
+        aria-label={atTop ? "Scroll to bottom" : "Scroll to top"}
+        title={atTop ? "Go to bottom" : "Back to top"}
+        className={`floating-btn scroll-to-top-btn ${showButton ? "show" : ""}`}
       >
-          {/* Show down arrow when atTop (suggest go-to-bottom), otherwise up arrow */}
-          {atTop ? (
-            <i className="fa-solid fa-arrow-down" aria-hidden="true" />
-          ) : (
-            <i className="fa-solid fa-arrow-up" aria-hidden="true" />
-          )}
+        {/* Show down arrow when atTop (suggest go-to-bottom), otherwise up arrow */}
+        {atTop ? (
+          <i className="fa-solid fa-arrow-down" aria-hidden="true" />
+        ) : (
+          <i className="fa-solid fa-arrow-up" aria-hidden="true" />
+        )}
         <span className="sr-only">Back to top</span>
       </button>
 
@@ -162,7 +166,7 @@ export default function ScrollToTop() {
 
           /* Light theme styles */
           .scroll-to-top-btn {
-            bottom: 80px; /* Reduced so widgets are closer together */
+            bottom: 14px; /* Positioned at the bottom */
             right: 24px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -242,7 +246,7 @@ export default function ScrollToTop() {
               max-width: 48px;
               max-height: 48px;
               font-size: 18px;
-              bottom: 160px;
+              bottom: 16px;
               right: 20px;
             }
           }
@@ -256,7 +260,7 @@ export default function ScrollToTop() {
               max-width: 44px;
               max-height: 44px;
               font-size: 16px;
-              bottom: 120px;
+              bottom: 14px;
               right: 16px;
             }
           }

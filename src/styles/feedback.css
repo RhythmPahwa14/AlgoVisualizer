@@ -2,8 +2,8 @@
 
 .feedback-fab {
   position: fixed;
-  right: 24px; /* place below scroll-to-top button on the right */
-  bottom: 14px;
+  right: 24px; /* place above scroll-to-top button on the right */
+  bottom: 80px;
   width: 56px;
   height: 56px; /* keep explicit to ensure circular shape */
   border-radius: 50%;
@@ -201,7 +201,7 @@
   }
   .feedback-fab {
     right: 16px;
-    bottom: 14px;
+    bottom: 72px;
     width: 48px;
     height: 48px;
     min-width: 48px;

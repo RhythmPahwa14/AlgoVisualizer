@@ -284,40 +284,49 @@ const Home = () => {
   };
 
   /** ===== Data ===== */
-  const features = [
-    {
-      icon: BarChart3,
-      title: "Sorting",
-      path: "/sorting",
-      description: "See Bubble, Quick, Merge, Heap & more in motion.",
-      gradient: "from-sky-400 to-blue-600",
-      badges: ["12+ algos", "Live steps", "Big-O"],
-    },
-    {
-      icon: SearchIcon,
-      title: "Searching",
-      path: "/searching",
-      description: "Binary, Linear, Jump, Exponential—visual & fast.",
-      gradient: "from-sky-400 to-blue-600",
-      badges: ["8+ algos", "Trace moves", "Compare runs"],
-    },
-    {
-      icon: GitBranch,
-      title: "Data Structures",
-      path: "/data-structures",
-      description: "Lists, Trees, Stacks, Queues, Graphs—built up.",
-      gradient: "from-sky-400 to-blue-600",
-      badges: ["15+ types", "Ops demo", "Memory view"],
-    },
-    {
-      icon: Share2,
-      title: "Graph Algorithms",
-      path: "/graph",
-      description: "BFS, DFS, Dijkstra on your own or sample graphs.",
-      gradient: "from-sky-400 to-blue-600",
-      badges: ["Build graph", "Path trace", "Weights"],
-    },
-  ];
+ const features = [
+  {
+    icon: BarChart3,
+    title: "Sorting",
+    path: "/sorting",
+    description: "See Bubble, Quick, Merge, Heap & more in motion.",
+    gradient: "from-sky-400 to-blue-600",
+    badges: ["12+ algos", "Live steps", "Big-O"],
+  },
+  {
+    icon: SearchIcon,
+    title: "Searching",
+    path: "/searching",
+    description: "Binary, Linear, Jump, Exponential—visual & fast.",
+    gradient: "from-sky-400 to-blue-600",
+    badges: ["8+ algos", "Trace moves", "Compare runs"],
+  },
+  {
+    icon: BookOpen,
+    title: "Documentation",
+    path: "/documentation",
+    description: "Complete algorithm reference with complexity analysis.",
+    gradient: "from-sky-400 to-blue-600",
+    badges: ["50+ algos", "Details", "Examples"],
+  },
+  {
+    icon: GitBranch,
+    title: "Data Structures",
+    path: "/data-structures",
+    description: "Lists, Trees, Stacks, Queues, Graphs—built up.",
+    gradient: "from-sky-400 to-blue-600",
+    badges: ["15+ types", "Ops demo", "Memory view"],
+  },
+  {
+    icon: Share2,
+    title: "Graph Algorithms",
+    path: "/graph",
+    description: "BFS, DFS, Dijkstra on your own or sample graphs.",
+    gradient: "from-sky-400 to-blue-600",
+    badges: ["Build graph", "Path trace", "Weights"],
+  },
+];
+
 
   const recentUpdates = [
     { type: "new", title: "Quick Sort: step guide", description: "Clean overlays with pivot highlights.", time: "2h ago" },
@@ -588,18 +597,59 @@ const Home = () => {
           <h2 className='buttons-heading'>Resources</h2>
 
           {features.map((feature, index) => (
-            <Link
-              key={index}
-              to={feature.path}
-              className={`clean-button-link feature-${index + 1}`}
-              data-aos="fade-up" data-aos-delay={`${300 + index * 100}`}
+          <Link
+            key={index}
+            to={feature.path}
+            className={`clean-button-link feature-${index + 1}`}
+            data-aos="fade-up"
+            data-aos-delay={`${300 + index * 100}`}
+            style={{
+              background: isLight
+                ? "linear-gradient(135deg, #f9fafb 60%, #dbeafe 100%)"
+                : "linear-gradient(135deg, #23283e 60%, #171725 100%)",
+              border: isLight
+                ? "1px solid rgba(15,23,42,.08)"
+                : "1px solid rgba(180, 184, 255, 0.14)",
+              borderRadius: 20,
+              boxShadow: isLight
+                ? "0 5px 20px -8px rgba(30, 64, 175, 0.10)"
+                : "0 5px 20px -8px rgba(124, 131, 255, 0.16)",
+              color: isLight ? "#1e293b" : "#e0e7ff",
+              transition: "all 0.22s",
+              marginBottom: "1.2rem",
+              position: "relative",
+            }}
+          >
+            <div className='button-icon' style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <feature.icon
+                size={35}
+                color={isLight ? "#1e293b" : "#ffaaff"}
+                style={
+                  !isLight
+                    ? { filter: "drop-shadow(0 0 8px #a78bfa88)" }
+                    : {}
+                }
+              />
+            </div>
+            <span
+              className="feature-title"
+              style={{
+                fontWeight: 600,
+                fontSize: "1.10rem",
+                color: isLight ? "#1e293b" : "#e0e7ff",
+                textShadow: !isLight ? "0 2px 12px #4f46e533, 0 1px 0 #000" : "none",
+                marginTop: ".6rem",
+                letterSpacing: ".1px",
+              }}
             >
-              <div className='button-icon'>
-                <feature.icon size={35} />
-              </div>
-              <span className="feature-title">{feature.title}</span>
-            </Link>
-          ))}
+              {feature.title}
+            </span>
+          </Link>
+        ))}
         </section>
 
         <div className='vertical-steps-container' data-aos="fade-up" data-aos-delay="200">
@@ -904,3 +954,4 @@ const Home = () => {
 };
 
 export default Home;
+

@@ -1,0 +1,87 @@
+[
+  {
+    "event": "session_start",
+    "algorithm": "Bubble Sort",
+    "timestamp": "2025-10-15T10:00:00.000Z",
+    "sessionId": "s1"
+  },
+  {
+    "event": "step_complete",
+    "algorithm": "Bubble Sort",
+    "timestamp": "2025-10-15T10:00:20.000Z",
+    "sessionId": "s1",
+    "step": 1
+  },
+  {
+    "event": "step_complete",
+    "algorithm": "Bubble Sort",
+    "timestamp": "2025-10-15T10:00:45.000Z",
+    "sessionId": "s1",
+    "step": 2
+  },
+  {
+    "event": "session_end",
+    "algorithm": "Bubble Sort",
+    "timestamp": "2025-10-15T10:01:30.000Z",
+    "sessionId": "s1",
+    "durationSec": 90
+  },
+  {
+    "event": "session_start",
+    "algorithm": "Quick Sort",
+    "timestamp": "2025-10-15T11:00:00.000Z",
+    "sessionId": "s2"
+  },
+  {
+    "event": "session_end",
+    "algorithm": "Quick Sort",
+    "timestamp": "2025-10-15T11:00:12.000Z",
+    "sessionId": "s2",
+    "durationSec": 12
+  },
+  {
+    "event": "session_start",
+    "algorithm": "Bubble Sort",
+    "timestamp": "2025-10-16T09:20:00.000Z",
+    "sessionId": "s3"
+  },
+  {
+    "event": "session_end",
+    "algorithm": "Bubble Sort",
+    "timestamp": "2025-10-16T09:23:00.000Z",
+    "sessionId": "s3",
+    "durationSec": 180
+  },
+  {
+    "event": "session_start",
+    "algorithm": "Merge Sort",
+    "timestamp": "2025-10-16T12:00:00.000Z",
+    "sessionId": "s4"
+  },
+  {
+    "event": "session_end",
+    "algorithm": "Merge Sort",
+    "timestamp": "2025-10-16T12:00:15.000Z",
+    "sessionId": "s4",
+    "durationSec": 15
+  },
+  {
+    "event": "session_start",
+    "algorithm": "Bubble Sort",
+    "timestamp": "2025-10-17T08:00:00.000Z",
+    "sessionId": "s5"
+  },
+  {
+    "event": "retry",
+    "algorithm": "Bubble Sort",
+    "timestamp": "2025-10-17T08:01:00.000Z",
+    "sessionId": "s5"
+  },
+  {
+    "event": "session_end",
+    "algorithm": "Bubble Sort",
+    "timestamp": "2025-10-17T08:05:00.000Z",
+    "sessionId": "s5",
+    "durationSec": 300
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "avgTime": [
+    { "algorithm": "Bubble Sort", "seconds": 45 },
+    { "algorithm": "Quick Sort", "seconds": 12 },
+    { "algorithm": "Merge Sort", "seconds": 15 },
+    { "algorithm": "Binary Search", "seconds": 6 }
+  ],
+  "retries": [
+    { "algorithm": "Bubble Sort", "count": 120 },
+    { "algorithm": "Quick Sort", "count": 40 },
+    { "algorithm": "Merge Sort", "count": 55 },
+    { "algorithm": "Binary Search", "count": 20 }
+  ],
+  "completionRates": [
+    {
+      "algorithm": "Bubble Sort",
+      "step": "1",
+      "rates": [100, 90, 70, 55, 40]
+    },
+    {
+      "algorithm": "Quick Sort",
+      "step": "1",
+      "rates": [100, 95, 85, 80, 78]
+    }
+  ]
+}

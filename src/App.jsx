@@ -94,11 +94,13 @@ import PrimPage from "./pages/PrimPage";
 import KruskalPage from "./pages/KruskalPage";
 import HuffmanPage from "./pages/HuffmanPage";
 import FloydWarshallPage from "./pages/GraphFloydWarshall";
+import BeginnerPrograms from "./pages/BeginnerPrograms";
 
 // Components
 import ArrayVisualizer from "./pages/Array.jsx";
 import KadaneVisualizer from "./pages/Kadane.jsx";
 import DijkstraVisualizer from "./pages/Dijkstra.jsx";
+import DivideAndConquerVisualizer from "./pages/DivideAndConquer.jsx";
 import KMPVisualizer from "./pages/KMP";
 import LinkedListPage from "./components/pages/LinkedListPage";
 import Queue from "./components/Queue/Queue";
@@ -115,6 +117,7 @@ import AlgorithmComparisonTable from './components/AlgorithmComparisonTable';
 // Performance Dashboard
 import PerformanceDashboard from "./components/PerformanceDashboard";
 import PerformanceDocs from "./pages/PerformanceDocs";
+import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 
 // Static / Info Pages
 import Login from "./pages/Login";
@@ -149,6 +152,8 @@ import LearnerLeaderboard from "./components/LearnerLeaderboard";
 import WeeklyChallenge from "./components/WeeklyChallenge";
 import GitLearning from "./pages/GitLearning.jsx";
 import GitBasicsQuiz from "./pages/GitBasicsQuiz";
+// Sorting Algorithms Documentation
+import MergeSortPage from "./pages/MergeSort.jsx";
 
 const App = () => {
   const location = useLocation();
@@ -221,6 +226,7 @@ const App = () => {
                     <Route path="/data-structures/kadane" element={<KadaneVisualizer />} />
                     <Route path="/data-structures/kmp" element={<KMPVisualizer />} />
                     <Route path="/data-structures/dijkstras" element={<DijkstraVisualizer/>} />
+                    <Route path="/data-structures/divideandconquer" element={<DivideAndConquerVisualizer/>} />
 
 
                     <Route
@@ -286,7 +292,10 @@ const App = () => {
                   <Route path="/kruskal" element={<KruskalPage />} />
                   <Route path="/huffman" element={<HuffmanPage />} />
                   <Route path="/graph/floyd-warshall" element={<FloydWarshallPage />} />
+                  <Route path="/beginner-programs" element={<BeginnerPrograms />} />
 
+                  {/* Sorting Algorithms Documentation */}
+                  <Route path="/merge-sort" element={<MergeSortPage />} />
 
                   {/* Data Structures Documentation */}
                   <Route path="/data-structures-docs" element={<DSDocumentation />} />
@@ -294,6 +303,7 @@ const App = () => {
                   {/* Performance Dashboard */}
                   <Route path="/performance" element={<PerformanceDashboard />} />
                   <Route path="/performance/docs" element={<PerformanceDocs />} />
+                  <Route path="/analytics" element={<AnalyticsDashboard />} />
 
                   {/* Other Pages */}
                   <Route path="/quiz" element={<Quiz />} />
