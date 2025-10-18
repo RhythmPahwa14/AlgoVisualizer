@@ -816,7 +816,7 @@ graph:
         - "Works only for directed graphs"
 
 #Kosaraju's algorithm
-    - name: "Kosaraju’s Algorithm"
+    - name: "Kosaraju's Algorithm"
       timeComplexity:
         best: "O(V + E)"
         average: "O(V + E)"
@@ -835,7 +835,73 @@ graph:
       cons:
         - "Requires two full DFS traversals"
         - "Needs additional memory for transpose graph"
-        - "Less efficient than Tarjan’s in practice"
+        - "Less efficient than Tarjan's in practice"
+
+#Johnsan's algo
+    - name: "Johnson`s Algorithm"
+      timeComplexity:
+        best: "O(V² log V + V * E)"
+        average: "O(V² log V + V * E)"
+        worst: "O(V² log V + V * E)"
+      spaceComplexity: "O(V²)"
+      description: "Finds shortest paths between all pairs of vertices in a weighted, directed graph, even with negative edge weights, using Bellman-Ford and Dijkstra’s algorithms together."
+      useCases:
+        - "All-pairs shortest path in sparse graphs"
+        - "Graphs with negative edge weights (no negative cycles)"
+        - "Network routing and optimization"
+        - "Graph analysis where both Bellman-Ford and Dijkstra can be combined"
+      pros:
+        - "Efficient for sparse graphs compared to Floyd-Warshall"
+        - "Handles negative weights gracefully"
+        - "Combines the power of Dijkstra and Bellman-Ford"
+      cons:
+        - "More complex to implement"
+        - "Not ideal for dense graphs"
+        - "Fails if graph contains negative cycles"
+
+#Ford-fulkerson algo
+    - name: "Ford-Fulkerson Algorithm"
+      timeComplexity:
+        best: "O(E * max_flow)"
+        average: "O(E * max_flow)"
+        worst: "O(E * max_flow)"
+      spaceComplexity: "O(V + E)"
+      description: "Computes the maximum flow in a flow network using the concept of augmenting paths and residual capacities."
+      useCases:
+        - "Maximum flow problems"
+        - "Network routing and bandwidth allocation"
+        - "Bipartite matching"
+        - "Circulation and cut problems in graphs"
+      pros:
+        - "Simple and intuitive approach"
+        - "Can handle large flow networks"
+        - "Foundation for Edmonds-Karp and Dinic's algorithms"
+      cons:
+        - "Runtime depends on the magnitude of max flow"
+        - "May not terminate for irrational capacities"
+        - "Less efficient for dense or large graphs"
+
+#Kahn's algo
+    - name: "Kahn`s Algorithm"
+      timeComplexity:
+        best: "O(V + E)"
+        average: "O(V + E)"
+        worst: "O(V + E)"
+      spaceComplexity: "O(V)"
+      description: "Performs topological sorting on a Directed Acyclic Graph (DAG) using in-degree calculation and a queue to process nodes with zero in-degree."
+      useCases:
+        - "Topological sorting of DAGs"
+        - "Task scheduling and dependency resolution"
+        - "Detecting cycles in directed graphs"
+        - "Build systems and prerequisite problems"
+      pros:
+        - "Iterative and easy to understand"
+        - "Detects cycles in directed graphs"
+        - "Efficient linear-time implementation"
+      cons:
+        - "Works only on DAGs"
+        - "Not suitable for dynamic graphs"
+        - "Requires maintenance of in-degree array"
 
 advancedAlgorithms:
   title: "Advanced Techniques"
