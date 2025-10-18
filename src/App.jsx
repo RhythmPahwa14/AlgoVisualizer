@@ -154,6 +154,8 @@ import GitLearning from "./pages/GitLearning.jsx";
 import GitBasicsQuiz from "./pages/GitBasicsQuiz";
 // Sorting Algorithms Documentation
 import MergeSortPage from "./pages/MergeSort.jsx";
+import QuickSortPage from "./pages/QuickSort";
+
 
 const App = () => {
   const location = useLocation();
@@ -296,6 +298,8 @@ const App = () => {
 
                   {/* Sorting Algorithms Documentation */}
                   <Route path="/merge-sort" element={<MergeSortPage />} />
+                  <Route path="/quick-sort" element={<QuickSortPage />} />
+
 
                   {/* Data Structures Documentation */}
                   <Route path="/data-structures-docs" element={<DSDocumentation />} />
