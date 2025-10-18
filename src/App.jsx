@@ -155,6 +155,7 @@ import GitBasicsQuiz from "./pages/GitBasicsQuiz";
 // Sorting Algorithms Documentation
 import MergeSortPage from "./pages/MergeSort.jsx";
 import QuickSortPage from "./pages/QuickSort";
+import RadixSortPage from "./pages/RadixSort.jsx";
 
 
 const App = () => {
@@ -299,6 +300,7 @@ const App = () => {
                   {/* Sorting Algorithms Documentation */}
                   <Route path="/merge-sort" element={<MergeSortPage />} />
                   <Route path="/quick-sort" element={<QuickSortPage />} />
+                  <Route path="/radix-sort" element={<RadixSortPage />} />
 
 
                   {/* Data Structures Documentation */}
