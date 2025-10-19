@@ -25,7 +25,8 @@ const MergeSortPage = () => {
 
       <h2>🔢 Example</h2>
       <pre>
-{`Input:
+{
+`Input:
 arr = [38, 27, 43, 3, 9, 82, 10]
 
 Process:
