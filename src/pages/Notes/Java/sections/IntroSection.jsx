@@ -3,7 +3,7 @@ import React from "react";
 const IntroSection = ({ copyCode, copiedCode }) => (
   <section style={{ marginBottom: "2rem" }}>
     <div className="card">
-      <h2>
+      <h2 style={{color:'var(--text-primary)' , justifyContent:'center' , gap:'1rem'}}>
         <i className="fas fa-play-circle"></i> 1. Introduction to Java
       </h2>
       <p>

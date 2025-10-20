@@ -1,6 +1,8 @@
 import React from "react";
+import { useTheme } from "../../../../ThemeContext";
 
 const OptimizationSection = ({ copyCode, copiedCode }) => {
+  const {theme} = useTheme();
   const imageOptimization = `// Image Optimization in Next.js
 import Image from 'next/image';
 
@@ -188,8 +190,8 @@ function Posts() {
 }`;
 
   return (
-    <div>
-      <h2 style={{ color: "#000000", marginBottom: "1.5rem" }}>
+    <div >
+      <h2 className={`${theme === 'dark' ? '!text-gray-50' : '!text-gray-900'}`} style={{  marginBottom: "1.5rem" }}>
         Optimization
       </h2>
       
@@ -201,7 +203,7 @@ function Posts() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Image Optimization</h3>
+        <h3 style={{  marginBottom: "1rem" }}>Image Optimization</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -221,9 +223,7 @@ function Posts() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -237,7 +237,7 @@ function Posts() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Font Optimization</h3>
+        <h3 style={{  marginBottom: "1rem" }}>Font Optimization</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -257,9 +257,7 @@ function Posts() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -273,7 +271,7 @@ function Posts() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Performance Optimization</h3>
+        <h3 style={{  marginBottom: "1rem" }}>Performance Optimization</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -293,9 +291,7 @@ function Posts() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -309,7 +305,7 @@ function Posts() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>SEO Optimization</h3>
+        <h3 style={{   marginBottom: "1rem" }}>SEO Optimization</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -329,9 +325,7 @@ function Posts() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -345,7 +339,7 @@ function Posts() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Caching Strategies</h3>
+        <h3 style={{ marginBottom: "1rem" }}>Caching Strategies</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -365,9 +359,7 @@ function Posts() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",

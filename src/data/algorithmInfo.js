@@ -124,6 +124,15 @@ export const ALGORITHM_INFO = {
       spaceComplexity: "O(1)",
       stable: "No",
     },
+    // ✅ NEW Counting Sort information
+    countingSort: {
+      description:
+        "Counting Sort is a non-comparison based sorting algorithm that works by counting the number of objects having distinct key values. It uses this count to determine the position of each element in the output sequence, achieving linear time complexity O(n+k) where n is the number of elements and k is the range of input.",
+      timeComplexity: "O(n + k)",
+      spaceComplexity: "O(k)",
+      bestCase: "O(n + k)",
+      stable: "Yes",
+    },
   },
 
   searching: {
@@ -388,6 +397,19 @@ export const algorithmInfo = {
     stable: false,
     recursive: false,
     inPlace: true,
+    category: "Sorting",
+    adaptive: false
+  },
+  // ✅ NEW Counting Sort information for comparison table
+  "Counting Sort": {
+    description: "Counting Sort is a non-comparison based sorting algorithm that works by counting the number of objects having distinct key values. It uses this count to determine the position of each element in the output sequence, achieving linear time complexity O(n+k) where n is the number of elements and k is the range of input.",
+    bestCase: "O(n + k)",
+    averageCase: "O(n + k)",
+    worstCase: "O(n + k)",
+    spaceComplexity: "O(k)",
+    stable: true,
+    recursive: false,
+    inPlace: false,
     category: "Sorting",
     adaptive: false
   },

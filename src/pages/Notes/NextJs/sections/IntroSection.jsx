@@ -1,6 +1,8 @@
 import React from "react";
+import { useTheme } from "../../../../ThemeContext";
 
 const IntroSection = ({ copyCode, copiedCode }) => {
+  const {theme} = useTheme();
   const nextjsIntro = `// What is Next.js?
 // Next.js is a React framework that provides additional features
 // for building production-ready applications
@@ -125,19 +127,19 @@ export default function About() {
 
   return (
     <div>
-      <h2 style={{ color: "#000000", marginBottom: "1.5rem" }}>
+      <h2 className={`${theme === 'dark' ? '!text-gray-50' : '!text-gray-900'}`} style={{marginBottom: "1.5rem" }}>
         Introduction to Next.js
       </h2>
       
       <div style={{ marginBottom: "2rem" }}>
-        <p style={{ fontSize: "1.1rem", lineHeight: "1.6", marginBottom: "1rem" }}>
+        <p style={{ fontSize: "1.1rem", lineHeight: "1.6", marginBottom: "1rem",color:'var(--text-primary)' }}>
           Next.js is a React framework that provides additional features for building production-ready applications. 
           It extends React with powerful capabilities like server-side rendering, static site generation, and file-based routing.
         </p>
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>What is Next.js?</h3>
+        <h3 style={{ marginBottom: "1rem" }}>What is Next.js?</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -157,9 +159,7 @@ export default function About() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -173,7 +173,7 @@ export default function About() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Next.js vs React</h3>
+        <h3 style={{  marginBottom: "1rem" }}>Next.js vs React</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -193,9 +193,7 @@ export default function About() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -209,7 +207,7 @@ export default function About() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Project Setup</h3>
+        <h3 style={{  marginBottom: "1rem" }}>Project Setup</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -229,9 +227,7 @@ export default function About() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",

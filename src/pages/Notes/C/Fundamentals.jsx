@@ -70,16 +70,16 @@ const CFundamentals = () => {
       {/* Navigation */}
       <nav
         style={{
-          position: "sticky",
+          position: "relative",
           top: "2rem",
           background:  "var(--card-bg, #ffffff)",
           borderRadius: "12px",
           padding: "1.5rem",
           boxShadow: "0 6px 18px rgba(16,24,40,0.04)",
-          marginBottom: "2rem"
+          marginBottom: "4rem"
         }}
       >
-        <h3 style={{ marginTop: 0, color: "#0f172a" }}>
+        <h3 style={{ marginTop: 0, color: "var(--text-primary)" }}>
           <i className="fas fa-bookmark" style={{ marginRight: "0.5rem", color: "#4f46e5" }}></i>
           Contents
         </h3>

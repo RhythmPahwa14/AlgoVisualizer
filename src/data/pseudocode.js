@@ -127,5 +127,20 @@ export const ALGORITHM_PSEUDOCODE = {
     { code: "while item != arr[pos]", explain: "Swap and continue the cycle" },
     { code: "swap(item, arr[pos])", explain: "Place item at its correct position" },
   ],
+  
+  // ✅ NEW Counting Sort pseudocode
+  countingSort: [
+    { code: "find max and min elements", explain: "Determine the range of input elements." },
+    { code: "range = max - min + 1", explain: "Calculate the size of the counting array." },
+    { code: "initialize count array with zeros", explain: "Create an array to store counts of each element." },
+    { code: "for each element in input array", explain: "Traverse the input array." },
+    { code: "  count[element - min]++", explain: "Increment the count of the current element." },
+    { code: "for i = 1 to range-1", explain: "Calculate cumulative counts." },
+    { code: "  count[i] += count[i-1]", explain: "Modify count array to store actual positions." },
+    { code: "for i = n-1 down to 0", explain: "Build the output array from right to left." },
+    { code: "  output[count[input[i] - min] - 1] = input[i]", explain: "Place element at its correct position." },
+    { code: "  count[input[i] - min]--", explain: "Decrease count for the next occurrence of the element." },
+    { code: "copy output array to input array", explain: "Copy the sorted elements back to the original array." },
+  ],
 
 };

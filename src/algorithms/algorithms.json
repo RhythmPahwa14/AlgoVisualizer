@@ -68,6 +68,12 @@
     "useCase": "It is commonly used when insertion sort is too slow for large datasets. Shell sort significantly improves performance on moderately sized arrays, especially when the input data is partially sorted."
   },
   {
+    "name": "Counting Sort",
+    "type": "sorting",
+    "description": "Counting Sort is a non-comparison based sorting algorithm that works by counting the number of objects having distinct key values. It uses this count to determine the position of each element in the output sequence, achieving linear time complexity O(n+k) where n is the number of elements and k is the range of input.",
+    "useCase": "Most effective when the range of input data (k) is not significantly greater than the number of elements (n). Particularly useful for sorting integers or objects that can be mapped to integers, and when linear time complexity is needed."
+  },
+  {
     "name": "Linear Search",
     "type": "searching",
     "description": "Linear Search sequentially checks each element in the list until the target is found or the list ends.",
@@ -78,18 +84,19 @@
     "type": "searching",
     "description": "Binary Search divides the search interval in half repeatedly until the target is found. Works only on sorted arrays.",
     "useCase": "Efficient for large sorted datasets."
-  },{
+  },
+  {
     "name": "Ternary Search",
     "type": "searching",
     "description": "Ternary Search divides the search interval into three parts and discards two-thirds of the elements in each step. Works only on sorted arrays.",
     "useCase": "Useful for searching in large sorted datasets where dividing into more parts can reduce the number of comparisons."
-},
-{
-  "name": "Fibonacci Search",
-  "type": "searching",
-  "description": "Narrows down search positions in a sorted array using Fibonacci numbers, avoiding division.",
-  "useCase": "Ideal for very large datasets where division/modulo operations are slow, as it only uses addition and subtraction."
-},
+  },
+  {
+    "name": "Fibonacci Search",
+    "type": "searching",
+    "description": "Narrows down search positions in a sorted array using Fibonacci numbers, avoiding division.",
+    "useCase": "Ideal for very large datasets where division/modulo operations are slow, as it only uses addition and subtraction."
+  },
   {
     "name": "Jump Search",
     "type": "searching",

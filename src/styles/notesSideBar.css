@@ -1,8 +1,8 @@
  
 .sidebar {
   position: fixed;
-  top: 4.4rem;
-  left: 3px; 
+  top: 2rem;
+  left: 4.5rem; 
   opacity: 0;
   padding: 2rem 1.8rem;  
   height: 100vh;
@@ -62,9 +62,11 @@
 }
 .menu-btn {
   position: absolute;
-  top: 4rem;
-  left: 0px;
+  top: 2rem;
+  left: 3rem;
   z-index: 10;
+  max-width: 150px;
+  height: 45px;
   background-color: #6b6bff;
   border: none;
   color: white !important;

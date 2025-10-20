@@ -6,6 +6,7 @@ import {
   Loader2,
   Mail,
   HelpCircle,
+  User,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/doubt.css";
@@ -13,8 +14,10 @@ import "../styles/doubt.css";
 const MAX_CHARS = 400;
 
 const Doubt = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [doubt, setDoubt] = useState("");
+  const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [doubtError, setDoubtError] = useState("");
   const [submitStatus, setSubmitStatus] = useState(null); // null | 'loading' | 'success' | 'error'
@@ -26,6 +29,15 @@ const Doubt = () => {
       return () => clearTimeout(timer);
     }
   }, [submitStatus]);
+
+  const validateName = () => {
+    if (!name) {
+      setNameError("Please enter your name.");
+      return false;
+    }
+    setNameError("");
+    return true;
+  };
 
   const validateEmail = () => {
     if (!email) {
@@ -54,16 +66,18 @@ const Doubt = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const isNameValid = validateName();
     const isEmailValid = validateEmail();
     const isDoubtValid = validateDoubt();
 
-    if (isEmailValid && isDoubtValid) {
+    if (isNameValid && isEmailValid && isDoubtValid) {
       try {
         // Simulate async submission
         setSubmitStatus("loading");
         setTimeout(() => {
           // emulate success path
           setSubmitStatus("success");
+          setName("");
           setEmail("");
           setDoubt("");
         }, 1200);
@@ -76,12 +90,13 @@ const Doubt = () => {
   };
 
   const isFilled = {
+    name: Boolean(name),
     email: Boolean(email),
     doubt: Boolean(doubt),
   };
 
   const isValidToSubmit =
-    !emailError && !doubtError && email.trim() && doubt.trim();
+    !nameError && !emailError && !doubtError && name.trim() && email.trim() && doubt.trim();
 
   const container = {
     hidden: { opacity: 0, y: 40 },
@@ -185,49 +200,97 @@ const Doubt = () => {
           className="doubt-form"
           variants={itemUp}
         >
-          {/* Email */}
-          <motion.div
-            className={`field ${emailError ? "has-error" : ""}`}
-            variants={itemUp}
-          >
-            <Mail className="field-icon" aria-hidden="true" />
-            <input
-              id="email"
-              type="email"
-              name="email"
-              placeholder=" "
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                if (emailError) validateEmail();
-              }}
-              onBlur={validateEmail}
-              aria-invalid={!!emailError}
-              aria-describedby={emailError ? "email-error" : undefined}
-              aria-label="Email address"
-              autoComplete="email"
-              required
-              data-filled={isFilled.email}
-              className="field-input"
-            />
-            <label htmlFor="email" className="field-label">
-              Your Email
-            </label>
+          {/* Name and Email fields in a flex container */}
+          <motion.div className="fields-row" variants={itemUp}>
+            {/* Name */}
+            <motion.div
+              className={`field ${nameError ? "has-error" : ""}`}
+              variants={itemUp}
+            >
+              <User className="field-icon" aria-hidden="true" />
+              <input
+                id="name"
+                type="text"
+                name="name"
+                placeholder=" "
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  if (nameError) validateName();
+                }}
+                onBlur={validateName}
+                aria-invalid={!!nameError}
+                aria-describedby={nameError ? "name-error" : undefined}
+                aria-label="Your name"
+                autoComplete="name"
+                required
+                data-filled={isFilled.name}
+                className="field-input"
+              />
+              <label htmlFor="name" className="field-label">
+                Your Name
+              </label>
 
-            <AnimatePresence>
-              {emailError && (
-                <motion.div
-                  id="email-error"
-                  className="error-message"
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                >
-                  <AlertCircle size={16} className="error-icon" />
-                  <span>{emailError}</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
+              <AnimatePresence>
+                {nameError && (
+                  <motion.div
+                    id="name-error"
+                    className="error-message"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                  >
+                    <AlertCircle size={16} className="error-icon" />
+                    <span>{nameError}</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+
+            {/* Email */}
+            <motion.div
+              className={`field ${emailError ? "has-error" : ""}`}
+              variants={itemUp}
+            >
+              <Mail className="field-icon" aria-hidden="true" />
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder=" "
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (emailError) validateEmail();
+                }}
+                onBlur={validateEmail}
+                aria-invalid={!!emailError}
+                aria-describedby={emailError ? "email-error" : undefined}
+                aria-label="Email address"
+                autoComplete="email"
+                required
+                data-filled={isFilled.email}
+                className="field-input"
+              />
+              <label htmlFor="email" className="field-label">
+                Your Email
+              </label>
+
+              <AnimatePresence>
+                {emailError && (
+                  <motion.div
+                    id="email-error"
+                    className="error-message"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                  >
+                    <AlertCircle size={16} className="error-icon" />
+                    <span>{emailError}</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           </motion.div>
 
           {/* Doubt */}
@@ -272,17 +335,7 @@ const Doubt = () => {
                     <AlertCircle size={16} className="error-icon" />
                     <span>{doubtError}</span>
                   </motion.div>
-                ) : (
-                  <motion.span
-                    key="helper"
-                    className="helper"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.8 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    Be specific. Add inputs, constraints, or the error you saw.
-                  </motion.span>
-                )}
+                ) : null}
               </AnimatePresence>
 
               <motion.span
@@ -293,6 +346,18 @@ const Doubt = () => {
                 {Math.min(doubt.length, MAX_CHARS)}/{MAX_CHARS}
               </motion.span>
             </div>
+            
+            {/* Helper text moved below textarea and centered */}
+            <motion.div className="helper-text-container">
+              <motion.span
+                className="helper centered"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.8 }}
+                exit={{ opacity: 0 }}
+              >
+                Be specific. Add inputs, constraints, or the error you saw.
+              </motion.span>
+            </motion.div>
           </motion.div>
 
           {/* Actions */}

@@ -1,6 +1,8 @@
 import React from "react";
+import { useTheme } from "../../../../ThemeContext";
 
 const MiddlewareSection = ({ copyCode, copiedCode }) => {
+  const {theme} = useTheme();
   const basicMiddleware = `// Next.js Middleware
 // middleware.js (in root directory)
 
@@ -146,7 +148,7 @@ export const config = {
 
   return (
     <div>
-      <h2 style={{ color: "#000000", marginBottom: "1.5rem" }}>
+      <h2 className={`${theme === 'dark' ? '!text-gray-50' : '!text-gray-900'}`} style={{ marginBottom: "1.5rem" }}>
         Middleware
       </h2>
       
@@ -158,7 +160,7 @@ export const config = {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Basic Middleware</h3>
+        <h3 style={{  marginBottom: "1rem" }}>Basic Middleware</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -178,9 +180,7 @@ export const config = {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -194,7 +194,7 @@ export const config = {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Authentication Middleware</h3>
+        <h3 style={{   marginBottom: "1rem" }}>Authentication Middleware</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -214,9 +214,7 @@ export const config = {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -230,7 +228,7 @@ export const config = {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Geolocation Middleware</h3>
+        <h3 style={{  marginBottom: "1rem" }}>Geolocation Middleware</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -250,9 +248,7 @@ export const config = {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",

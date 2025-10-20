@@ -92,6 +92,14 @@ export async function cocktailShakerSort(arr, setColorArray, delay) {
   );
 }
 
+// ✅ NEW Counting Sort wrapper
+import { countingSortWithStop } from "./countingSort.js";
+export async function countingSort(arr, setColorArray, delay) {
+  return await countingSortWithStop(
+    arr, noopSetArray, setColorArray, delay, makeStopRef(), noopUpdateStats
+  );
+}
+
 // 🔍 Searching algorithm wrappers
 
 import { linearSearchWithStop } from "./linearSearch.js";
@@ -142,4 +150,3 @@ export { jumpSearch };
 // ✅ NEW Fibonacci Search non-visual export
 import { fibonacciSearch } from "./fibonacciSearch.js";
 export { fibonacciSearch };
-

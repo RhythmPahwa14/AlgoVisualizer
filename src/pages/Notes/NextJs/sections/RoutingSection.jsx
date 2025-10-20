@@ -1,6 +1,7 @@
 import React from "react";
-
+import { useTheme } from "../../../../ThemeContext";
 const RoutingSection = ({ copyCode, copiedCode }) => {
+  const {theme} = useTheme();
   const fileBasedRouting = `// File-based Routing in Next.js
 // No need to install React Router - routing is automatic
 
@@ -124,7 +125,7 @@ export default function Users() {
 
   return (
     <div>
-      <h2 style={{ color: "#000000", marginBottom: "1.5rem" }}>
+      <h2 className={`${theme === 'dark' ? '!text-gray-50' : '!text-gray-900'}`} style={{ marginBottom: "1.5rem" }}>
         File-based Routing
       </h2>
       
@@ -136,7 +137,7 @@ export default function Users() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Basic File-based Routing</h3>
+        <h3 style={{  marginBottom: "1rem" }}>Basic File-based Routing</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -156,9 +157,7 @@ export default function Users() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -172,7 +171,7 @@ export default function Users() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Dynamic Routes</h3>
+        <h3 style={{   marginBottom: "1rem" }}>Dynamic Routes</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -192,9 +191,7 @@ export default function Users() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -208,7 +205,7 @@ export default function Users() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Navigation</h3>
+        <h3 style={{   marginBottom: "1rem" }}>Navigation</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -228,9 +225,7 @@ export default function Users() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -244,7 +239,7 @@ export default function Users() {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Nested Routes</h3>
+        <h3 style={{   marginBottom: "1rem" }}>Nested Routes</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -264,9 +259,7 @@ export default function Users() {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",

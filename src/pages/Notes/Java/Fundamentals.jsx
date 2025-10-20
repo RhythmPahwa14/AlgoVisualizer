@@ -38,6 +38,7 @@ import AccessModifiers from "./sections/AccessModifiers";
 import "../../../styles/notesSideBar.css";
 import "../../../styles/fundamentals.css";
 import { FaChevronDown, FaChevronRight, FaBook, FaBars, FaTimes  } from "react-icons/fa";
+import { useTheme } from "../../../ThemeContext";
 
 // sideBar content
 const JavaSidebar = ({
@@ -48,6 +49,7 @@ const JavaSidebar = ({
   sections,
 }) => { 
   const [openCategory, setOpenCategory] = useState("intro");
+  const {theme} = useTheme();
 
   const toggleCategory = (title) => {
     setOpenCategory(openCategory === title ? null : title);
@@ -58,7 +60,7 @@ const JavaSidebar = ({
       {isOpen && <div className="overlay" onClick={onClose}></div>}
       <aside className={`sidebar ${isOpen ? "open" : "close"}`}>
         <div className="sidebar-header">
-          <h2 className="sidebar-title">
+          <h2 className={`${theme === 'dark' ? '!text-gray-50' : '!text-gray-900'} whitespace-nowrap 'sidebar-title'`}>
             <FaBook className="mr-2 text-indigo-400" /> Java Topics
           </h2>
           <button className="close-btn" onClick={onClose}>

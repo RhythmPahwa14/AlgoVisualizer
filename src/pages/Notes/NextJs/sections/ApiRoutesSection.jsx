@@ -1,6 +1,8 @@
 import React from "react";
+import { useTheme } from "../../../../ThemeContext";
 
 const ApiRoutesSection = ({ copyCode, copiedCode }) => {
+  const {theme} = useTheme();
   const basicApiRoute = `// API Routes in Next.js
 // Create API endpoints in pages/api/ directory
 
@@ -157,7 +159,7 @@ export function withAuth(handler) {
 
   return (
     <div>
-      <h2 style={{ color: "#000000", marginBottom: "1.5rem" }}>
+      <h2 className={`${theme === 'dark' ? '!text-gray-50' : '!text-gray-900'}`} style={{ marginBottom: "1.5rem" }}>
         API Routes
       </h2>
       
@@ -169,7 +171,7 @@ export function withAuth(handler) {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Basic API Routes</h3>
+        <h3 style={{  marginBottom: "1rem" }}>Basic API Routes</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -189,9 +191,7 @@ export function withAuth(handler) {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -205,7 +205,7 @@ export function withAuth(handler) {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>HTTP Methods</h3>
+        <h3 style={{  marginBottom: "1rem" }}>HTTP Methods</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -225,9 +225,7 @@ export function withAuth(handler) {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -241,7 +239,7 @@ export function withAuth(handler) {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>Dynamic API Routes</h3>
+        <h3 style={{  marginBottom: "1rem" }}>Dynamic API Routes</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -261,9 +259,7 @@ export function withAuth(handler) {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -277,7 +273,7 @@ export function withAuth(handler) {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>API with Database</h3>
+        <h3 style={{ marginBottom: "1rem" }}>API with Database</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -297,9 +293,7 @@ export function withAuth(handler) {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",
@@ -313,7 +307,7 @@ export function withAuth(handler) {
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h3 style={{ color: "#000000", marginBottom: "1rem" }}>API with Middleware</h3>
+        <h3 style={{  marginBottom: "1rem" }}>API with Middleware</h3>
         <div style={{ position: "relative" }}>
           <pre
             style={{
@@ -333,9 +327,7 @@ export function withAuth(handler) {
             style={{
               position: "absolute",
               top: "0.5rem",
-              right: "0.5rem",
-              background: "#374151",
-              color: "white",
+              right: "0.5rem", 
               border: "none",
               padding: "0.5rem",
               borderRadius: "4px",

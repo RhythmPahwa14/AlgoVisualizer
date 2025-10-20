@@ -816,7 +816,7 @@ graph:
         - "Works only for directed graphs"
 
 #Kosaraju's algorithm
-    - name: "Kosaraju's Algorithm"
+    - name: "Kosaraju’s Algorithm"
       timeComplexity:
         best: "O(V + E)"
         average: "O(V + E)"
@@ -835,6 +835,7 @@ graph:
       cons:
         - "Requires two full DFS traversals"
         - "Needs additional memory for transpose graph"
+
         - "Less efficient than Tarjan's in practice"
 
 #Johnsan's algo
@@ -902,6 +903,279 @@ graph:
         - "Works only on DAGs"
         - "Not suitable for dynamic graphs"
         - "Requires maintenance of in-degree array"
+
+    - name: "Dinic's Algorithm"
+      timeComplexity:
+        best: "O(E * sqrt(V))"
+        average: "O(V² * E)"
+        worst: "O(V² * E)"
+      spaceComplexity: "O(V + E)"
+      description: "An optimized algorithm for computing the maximum flow in a flow network using a layered graph (level graph) and blocking flow concept."
+      useCases:
+        - "Maximum flow problems"
+        - "Bipartite matching"
+        - "Circulation with demands"
+        - "Network routing and capacity planning"
+      pros:
+        - "Much faster than Ford-Fulkerson for large graphs"
+        - "Deterministic and guaranteed to terminate"
+        - "Works well on sparse and dense graphs"
+      cons:
+        - "Complex implementation"
+        - "Not intuitive for beginners"
+        - "Less efficient for graphs with small flow values"
+
+    - name: "Edmonds-Karp Algorithm"
+      timeComplexity:
+        best: "O(V * E²)"
+        average: "O(V * E²)"
+        worst: "O(V * E²)"
+      spaceComplexity: "O(V + E)"
+      description: "A specific implementation of the Ford-Fulkerson method that uses Breadth-First Search (BFS) to find the shortest augmenting paths, guaranteeing polynomial time complexity."
+      useCases:
+        - "Maximum flow computation"
+        - "Bipartite graph matching"
+        - "Network design and traffic optimization"
+        - "Flow-based resource allocation"
+      pros:
+        - "Guaranteed to run in polynomial time"
+        - "Easier to implement than Dinic's Algorithm"
+        - "Predictable and stable performance"
+      cons:
+        - "Slower compared to Dinic's on large graphs"
+        - "Higher time complexity (O(V * E²))"
+        - "Inefficient for graphs with very high edge count"
+
+
+
+# Tree algorithms for the cheatsheet added
+trees:
+  title: "Tree Algorithms"
+  icon: "🌳"
+  color: "#8BC34A"
+  algorithms:
+    - name: "Binary Tree Traversal (Inorder)"
+      timeComplexity:
+        best: "O(n)"
+        average: "O(n)"
+        worst: "O(n)"
+      spaceComplexity: "O(h)"
+      description: "Visits left subtree, root, then right subtree recursively."
+      useCases:
+        - "BST sorted order traversal"
+        - "Expression tree evaluation"
+        - "Flatten tree to sorted array"
+      pros:
+        - "Natural sorted order for BST"
+        - "Simple recursive implementation"
+      cons:
+        - "Requires stack space"
+        - "Not suitable for non-BST ordering"
+
+    - name: "Binary Tree Traversal (Preorder)"
+      timeComplexity:
+        best: "O(n)"
+        average: "O(n)"
+        worst: "O(n)"
+      spaceComplexity: "O(h)"
+      description: "Visits root first, then left subtree, then right subtree."
+      useCases:
+        - "Tree copying/cloning"
+        - "Prefix expression generation"
+        - "Tree serialization"
+      pros:
+        - "Good for copying trees"
+        - "Root processed first"
+      cons:
+        - "Not sorted order for BST"
+        - "Stack space required"
+
+    - name: "Binary Tree Traversal (Postorder)"
+      timeComplexity:
+        best: "O(n)"
+        average: "O(n)"
+        worst: "O(n)"
+      spaceComplexity: "O(h)"
+      description: "Visits left subtree, right subtree, then root."
+      useCases:
+        - "Tree deletion"
+        - "Postfix expression evaluation"
+        - "Calculate directory sizes"
+      pros:
+        - "Children processed before parent"
+        - "Good for deletion operations"
+      cons:
+        - "Root processed last"
+        - "Requires stack space"
+
+    - name: "Level Order Traversal (BFS)"
+      timeComplexity:
+        best: "O(n)"
+        average: "O(n)"
+        worst: "O(n)"
+      spaceComplexity: "O(w)"
+      description: "Visits nodes level by level using a queue."
+      useCases:
+        - "Level-wise processing"
+        - "Find tree width"
+        - "Connect nodes at same level"
+      pros:
+        - "Natural level-by-level order"
+        - "No recursion needed"
+      cons:
+        - "Uses queue space"
+        - "Not sorted for BST"
+
+    - name: "Lowest Common Ancestor (LCA)"
+      timeComplexity:
+        best: "O(log n)"
+        average: "O(h)"
+        worst: "O(n)"
+      spaceComplexity: "O(h)"
+      description: "Finds the lowest common ancestor of two nodes in a tree."
+      useCases:
+        - "Finding distance between nodes"
+        - "Range queries in trees"
+        - "Hierarchical relationships"
+      pros:
+        - "Efficient for balanced trees"
+        - "Fundamental tree operation"
+      cons:
+        - "Can be O(n) for skewed trees"
+        - "Requires parent pointers or recursion"
+
+    - name: "Morris Traversal"
+      timeComplexity:
+        best: "O(n)"
+        average: "O(n)"
+        worst: "O(n)"
+      spaceComplexity: "O(1)"
+      description: "Traverses tree without recursion or stack by creating temporary links."
+      useCases:
+        - "Space-constrained environments"
+        - "Inorder traversal without stack"
+        - "Constant space traversal"
+      pros:
+        - "O(1) space complexity"
+        - "No recursion or stack"
+      cons:
+        - "Modifies tree temporarily"
+        - "More complex implementation"
+        - "Not intuitive"
+
+# 6 Different Advance Tree algorithm
+    - name: "Tree Diameter"
+      timeComplexity:
+        best: "O(n)"
+        average: "O(n)"
+        worst: "O(n)"
+      spaceComplexity: "O(h)"
+      description: "Finds the longest path between any two nodes in the tree."
+      useCases:
+        - "Network analysis"
+        - "Finding tree width metrics"
+        - "Graph connectivity problems"
+      pros:
+        - "Linear time solution"
+        - "Important tree metric"
+      cons:
+        - "Requires DFS traversal"
+        - "Can be tricky with edge cases"
+
+    - name: "Serialize and Deserialize Tree"
+      timeComplexity:
+        best: "O(n)"
+        average: "O(n)"
+        worst: "O(n)"
+      spaceComplexity: "O(n)"
+      description: "Converts tree to string format and reconstructs it."
+      useCases:
+        - "Save tree to disk"
+        - "Network transmission"
+        - "Tree cloning"
+      pros:
+        - "Preserves tree structure"
+        - "Enables persistence"
+      cons:
+        - "Requires string parsing"
+        - "Uses extra space"
+
+    - name: "Vertical Order Traversal"
+      timeComplexity:
+        best: "O(n log n)"
+        average: "O(n log n)"
+        worst: "O(n log n)"
+      spaceComplexity: "O(n)"
+      description: "Groups nodes by vertical columns from left to right."
+      useCases:
+        - "Tree visualization"
+        - "Column-wise processing"
+        - "Vertical views of trees"
+      pros:
+        - "Natural column grouping"
+        - "Useful for visualization"
+      cons:
+        - "Requires sorting"
+        - "Extra space for hash map"
+
+    - name: "Binary Tree to Doubly Linked List"
+      timeComplexity:
+        best: "O(n)"
+        average: "O(n)"
+        worst: "O(n)"
+      spaceComplexity: "O(h)"
+      description: "Converts BST to sorted doubly linked list in-place."
+      useCases:
+        - "Space-efficient sorting"
+        - "Tree flattening"
+        - "Converting to linear structure"
+      pros:
+        - "In-place conversion"
+        - "Maintains sorted order"
+      cons:
+        - "Destroys original tree"
+        - "Requires careful pointer manipulation"
+
+    - name: "Zigzag Level Order Traversal"
+      timeComplexity:
+        best: "O(n)"
+        average: "O(n)"
+        worst: "O(n)"
+      spaceComplexity: "O(w)"
+      description: "Traverses the tree level by level, alternating the direction of traversal on each level (left-to-right, then right-to-left)."
+      useCases:
+        - "Tree visualization"
+        - "Alternating level order patterns"
+        - "Interview traversal problems"
+      pros:
+        - "Simple BFS-based logic"
+        - "Provides clear structure visualization"
+      cons:
+        - "Requires direction toggling logic"
+        - "Extra space for queue and reversal"
+
+    - name: "Boundary Traversal of Binary Tree"
+      timeComplexity:
+        best: "O(n)"
+        average: "O(n)"
+        worst: "O(n)"
+      spaceComplexity: "O(h)"
+      description: "Traverses the boundary nodes of a binary tree in anti-clockwise order including left boundary, leaves, and right boundary."
+      useCases:
+        - "Tree visualization"
+        - "Traversal pattern problems"
+        - "Complex interview traversal variants"
+      pros:
+        - "Covers the complete outer boundary"
+        - "Combines preorder and postorder concepts"
+      cons:
+        - "Edge cases for leaf duplication"
+        - "Requires multiple traversals (left, leaf, right)"
+
+
+
+        - "Less efficient than Tarjan’s in practice"
+
 
 advancedAlgorithms:
   title: "Advanced Techniques"

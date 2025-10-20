@@ -691,15 +691,15 @@ const Contribute = () => {
                 </a>
               </div>
             </div>
-            <div className="repo-content">
-              <p>
+            <div className="repo-content section-content border-l-0">
+              <p className="text-center">
                 AlgoVisualizer is an open-source project that helps students and
                 developers understand algorithms through interactive
                 visualizations. We welcome contributions from the community to
                 make learning algorithms more accessible and engaging.
               </p>
-              <div className="repo-stats-inline">
-                <div className="stat-inline">
+              <div className="repo-stats-inline flex items-center justify-center h-full mt-10 ">
+                <div className="stat-inline"> 
                   <span className="stat-label">Stars</span>
                   <span className="stat-value">{repoStats.stars}</span>
                 </div>

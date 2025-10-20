@@ -51,6 +51,11 @@ export const algorithmComplexity = {
     time: "O(n + k)",
     space: "O(n + k)",
   },
+  // ✅ NEW Counting Sort complexity
+  countingSort: {
+    time: "O(n + k)",
+    space: "O(k)",
+  },
 
   // Searching Algorithms
   linearSearch: {

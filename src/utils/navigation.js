@@ -41,6 +41,7 @@ export const navbarNavigationItems = [
     dropdown: [
       { path: "/performance", label: "Performance Analyzer" },
       { path: "/analytics", label: "Analytics Dashboard" },
+      { path: "/recommendations", label: "Algorithm Recommendations" },
       { path: "/performance/docs", label: "Performance Docs" },
     ],
   },
@@ -275,6 +276,7 @@ export const learnSections = [
       { path: "/game-search", label: "Game Search Algorithms", category: "Other", tags: ["game search", "algorithms"] },
       { path: "/branchbound-overview", label: "Branch & Bound (Overview)", category: "Other", tags: ["branch and bound", "overview"] },
       { path: "/branchbound", label: "Branch & Bound", category: "Other", tags: ["branch and bound", "algorithms"] },
+      { path: "/recommendations", label: "Algorithm Recommendations", category: "Other", tags: ["recommendations", "machine learning", "ai"] },
     ],
   },
 ];

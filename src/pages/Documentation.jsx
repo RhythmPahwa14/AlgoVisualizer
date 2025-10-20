@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
- import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { 
   Search, 
   Database, 
@@ -238,7 +238,7 @@ const algorithmDatabase = {
           access: "O(n)"
         },
         spaceComplexity: "O(n)",
-        implemented: false
+        implemented:true
       },
       {
         name: "Stack",
@@ -251,7 +251,7 @@ const algorithmDatabase = {
           search: "O(n)"
         },
         spaceComplexity: "O(n)",
-        implemented: false
+        implemented:true
       },
       {
         name: "Queue",
@@ -264,7 +264,7 @@ const algorithmDatabase = {
           search: "O(n)"
         },
         spaceComplexity: "O(n)",
-        implemented: false
+        implemented: true
       },
       {
         name: "Binary Tree",
@@ -277,7 +277,7 @@ const algorithmDatabase = {
           traversal: "O(n)"
         },
         spaceComplexity: "O(n)",
-        implemented: false
+        implemented: true
       }
     ]
   },
@@ -310,7 +310,7 @@ const algorithmDatabase = {
         name: "Dijkstra's Algorithm",
         id: "graphDijkstra",
         description:
-          "Computes shortest path distances from a source to all vertices in a weighted graph with non‑negative weights using a priority queue.",
+          "Computes shortest path distances from a source to all vertices in a weighted graph with non-negative weights using a priority queue.",
         timeComplexity: {
           best: "O(E + V log V)",
           average: "O(E + V log V)",
@@ -696,15 +696,17 @@ const getComplexityColor = (complexity) => {
 
 function AlgorithmCard({ algorithm ,onOpen}) {
   const IconComponent = algorithm.categoryIconComponent || Code;
-  const isLinearSearch=algorithm.id==="linearSearch";
+
+  // ✅ Make clickable only if onOpen is provided
+  const isClickable = typeof onOpen === 'function';
   
   return (
 <div
-  className={`theme-card algorithm-card ${isLinearSearch ? 'cursor-pointer' : ''}`}
-  onClick={isLinearSearch ? onOpen : null}
-  role={isLinearSearch ? 'button' : ''}
-  tabIndex={isLinearSearch ? 0 : -1}
-  onKeyDown={isLinearSearch ? (e) => { if (e.key === 'Enter') onOpen(); } : null}
+  className={`theme-card algorithm-card ${isClickable ? 'cursor-pointer' : ''}`}
+  onClick={isClickable ? onOpen : null}
+  role={isClickable ? 'button' : ''}
+  tabIndex={isClickable ? 0 : -1}
+  onKeyDown={isClickable ? (e) => { if (e.key === 'Enter') onOpen(); } : null}
   title={algorithm.description}
 >
   <div>
@@ -742,11 +744,20 @@ function AlgorithmDocumentation() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [filteredAlgorithms, setFilteredAlgorithms] = useState([]);
   const navigate = useNavigate();
+
+  // ✅ Central handler: use existing id for sorting docs; keep linearSearch
   const handleCardClick = (algo) => {
-    if(algo.id==="linearSearch"){
-      navigate("/searching?algo=linear-search");
+    // Sorting → /sorting/:algoId/docs (using the existing camelCase id)
+    if (algo.category === "sorting" && algo.implemented) {
+      navigate(`/sorting/${algo.id}/docs`);
       return;
     }
+    // Existing linearSearch route
+   if (algo.category === "searching" && algo.implemented) {
+      navigate(`/searching/${algo.id}`);
+      return;
+    }
+    // No-op for other categories (your stated scope = sorting)
   };
 
   const getAllAlgorithms = useCallback(() => {
@@ -913,7 +924,17 @@ function AlgorithmDocumentation() {
         <div className="results-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
           {filteredAlgorithms.length > 0 ? (
             filteredAlgorithms.map((algorithm) => (
-              <AlgorithmCard key={algorithm.id} algorithm={algorithm}  onOpen={()=>handleCardClick(algorithm)}/>
+              <AlgorithmCard
+                key={algorithm.id}
+                algorithm={algorithm}
+                // ✅ Clickable only for implemented sorting algos and linearSearch (kept)
+                onOpen={
+                  (algorithm.category === "sorting" || algorithm.category === "searching" && algorithm.implemented) ||
+                  algorithm.id === "linearSearch"
+                    ? () => handleCardClick(algorithm)
+                    : undefined
+                }
+              />
             ))
           ) : (
             <div className="no-results-card theme-card text-center p-4 col-span-full">

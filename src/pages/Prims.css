@@ -1,0 +1,53 @@
+.prims-page {
+  padding: 2rem;
+  color: #222;
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+  color: #0077cc;
+}
+
+.controls-panel {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.control-btn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.run-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.reset-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.graph-container {
+  display: grid;
+  gap: 0.6rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.edge {
+  padding: 0.4rem 0.8rem;
+  background: #e4e4e4;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.edge.highlight {
+  background: #ffcc00;
+  font-weight: bold;
+}
