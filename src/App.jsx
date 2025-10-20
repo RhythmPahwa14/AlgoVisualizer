@@ -10,6 +10,7 @@ import { AlgorithmProvider } from "./contexts/AlgorithmContext";
 import { NotificationsProvider } from "./contexts/NotificationsContext";
 import { GoogleAuthProvider } from "./contexts/GoogleAuthContext";
 import { ThemeProvider } from "./ThemeContext";
+import { DebuggingProvider } from "./contexts/DebuggingContext";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -24,6 +25,8 @@ import NotificationWidget from "./components/NotificationWidget";
 import Home from "./pages/Home";
 import Sorting from "./pages/Sorting";
 import SortingDoc from "./pages/SortingDoc";
+import DebuggableSortingPage from "./pages/DebuggableSortingPage";
+import DebuggingDocumentation from "./pages/DebuggingDocumentation";
 import Searching from "./pages/Searching";
 import SearchingOverview from "./pages/SearchingOverview";
 import DataStructures from "./pages/DataStructures";
@@ -185,7 +188,8 @@ const App = () => {
                 <Navbar />
 
                 <main className="main-content page-content">
-                  <Routes>
+                  <DebuggingProvider>
+                    <Routes>
                     {/* Home */}
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
@@ -194,9 +198,14 @@ const App = () => {
 
                     {/* Sorting */}
                     <Route path="/sorting" element={<Sorting />} />
+                    <Route path="/sorting/debug" element={<DebuggableSortingPage />} />
                     <Route
                       path="/sorting/:algoId/docs"
                       element={<SortingDoc />}
+                    />
+                    <Route
+                      path="/sorting/debug/docs"
+                      element={<DebuggingDocumentation />}
                     />
                     <Route
                       path="/sorting/algorithm-comparison"
@@ -381,6 +390,7 @@ const App = () => {
                     <ComplexityBox /> {/* No props needed unless you want to pass algorithm */}
                   </div>
                 )}
+              </DebuggingProvider>
               </main>
 
               <Doubt />

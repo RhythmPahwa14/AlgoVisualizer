@@ -1,0 +1,89 @@
+.call-stack-visualizer {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.call-stack-visualizer h3 {
+  margin-top: 0;
+  color: var(--text-primary);
+}
+
+.call-stack-content {
+  min-height: 200px;
+}
+
+.call-stack-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.call-stack-frame {
+  background-color: var(--bg-secondary);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid var(--accent-secondary);
+}
+
+.call-stack-frame.active {
+  border-left-color: var(--accent-primary);
+  background-color: rgba(var(--accent-primary-rgb), 0.1);
+}
+
+.frame-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.frame-name {
+  font-weight: bold;
+  color: var(--accent-primary);
+}
+
+.frame-location {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.frame-parameters h4,
+.frame-locals h4,
+.frame-return h4 {
+  margin: 0.5rem 0 0.25rem 0;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.frame-parameters ul,
+.frame-locals ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.frame-parameters li,
+.frame-locals li {
+  margin-bottom: 0.25rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+.param-name,
+.local-name {
+  color: var(--accent-primary);
+  margin-right: 0.5rem;
+}
+
+.param-value,
+.local-value,
+.return-value {
+  color: var(--text-primary);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 2rem;
+}

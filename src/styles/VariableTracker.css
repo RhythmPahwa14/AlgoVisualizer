@@ -1,0 +1,72 @@
+.variable-tracker {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.variable-tracker h3 {
+  margin-top: 0;
+  color: var(--text-primary);
+}
+
+.variables-content {
+  min-height: 200px;
+}
+
+.variables-scope {
+  margin-bottom: 1rem;
+}
+
+.variables-scope h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.25rem;
+}
+
+.variables-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.variable-item {
+  display: flex;
+  padding: 0.5rem;
+  margin-bottom: 0.25rem;
+  background-color: var(--bg-secondary);
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+.variable-name {
+  color: var(--accent-primary);
+  margin-right: 0.5rem;
+  min-width: 100px;
+}
+
+.variable-value {
+  flex: 1;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.variable-type {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
+.scope-wrapper {
+  margin-bottom: 1rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 2rem;
+}

@@ -260,3 +260,52 @@
   margin-bottom: 1rem;
   color: var(--text-color);
 }
+
+.documentation h1 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.documentation h2 {
+  color: var(--accent-primary);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.documentation h3 {
+  color: var(--text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.documentation p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.documentation ul, 
+.documentation ol {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.documentation li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.documentation code {
+  background-color: var(--bg-secondary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+  color: var(--accent-primary);
+}
+
+.documentation .theme-card {
+  margin-bottom: 2rem;
+}

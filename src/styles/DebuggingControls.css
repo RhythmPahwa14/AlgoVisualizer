@@ -1,0 +1,129 @@
+.debugging-controls {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.debugging-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.debugging-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.debugging-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.debugging-actions .btn {
+  flex: 1;
+  min-width: 100px;
+}
+
+.debugging-info {
+  background-color: var(--bg-secondary);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.debugging-info p {
+  margin: 0.25rem 0;
+  color: var(--text-primary);
+}
+
+.breakpoints-section,
+.watch-expressions-section {
+  margin-bottom: 1rem;
+}
+
+.breakpoints-section h4,
+.watch-expressions-section h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.breakpoint-input,
+.conditional-breakpoint-input,
+.watch-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.breakpoint-input input,
+.conditional-breakpoint-input input,
+.watch-input input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.conditional-breakpoint-input input:first-child {
+  max-width: 100px;
+}
+
+.breakpoint-item,
+.watch-expression-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: var(--bg-secondary);
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+}
+
+.breakpoint-item.conditional {
+  border-left: 3px solid var(--accent-primary);
+}
+
+.breakpoint-item span,
+.watch-expression-item span {
+  flex: 1;
+}
+
+.btn-small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.btn-danger {
+  background-color: var(--error-color);
+  border-color: var(--error-color);
+}
+
+.btn-danger:hover {
+  background-color: var(--error-color-dark);
+  border-color: var(--error-color-dark);
+}
+
+@media (max-width: 768px) {
+  .debugging-actions {
+    flex-direction: column;
+  }
+  
+  .debugging-actions .btn {
+    width: 100%;
+  }
+  
+  .breakpoint-input,
+  .conditional-breakpoint-input,
+  .watch-input {
+    flex-direction: column;
+  }
+}
