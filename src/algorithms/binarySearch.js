@@ -1,80 +1,117 @@
 import { COLOR, createBaseColors, sleep } from "../utils/sortingHelpers";
 
-export async function binarySearchWithStop(arr, setArray, setColorArray, delay, stopRef, updateStats) {
+interface SearchStats {
+  comparisons: number;
+  swaps: number;
+  time: number;
+}
+
+interface BinarySearchParams {
+  arr: number[];
+  setArray: (arr: number[]) => void;
+  setColorArray: (colors: string[]) => void;
+  delay: number;
+  stopRef: React.MutableRefObject<boolean>;
+  updateStats: (stats: SearchStats) => void;
+}
+
+interface SimpleBinarySearchParams {
+  array: number[];
+  target: number;
+  setColorArray: React.Dispatch<React.SetStateAction<string[]>>;
+  delay: number;
+}
+
+/**
+ * Performs binary search with visualization support
+ * @returns The index of the target element, or -1 if not found
+ * @throws Error if search is stopped via stopRef
+ */
+export async function binarySearchWithStop({
+  arr,
+  setArray,
+  setColorArray,
+  delay,
+  stopRef,
+  updateStats,
+}: BinarySearchParams): Promise<number> {
   const a = [...arr];
   let comparisons = 0;
   let left = 0;
   let right = a.length - 1;
 
   while (left <= right) {
-    if (stopRef.current) throw new Error("Stopped");
-    
+    if (stopRef.current) {
+      throw new Error("Stopped");
+    }
+
     const mid = Math.floor((left + right) / 2);
     comparisons++;
     updateStats({ comparisons, swaps: 0, time: 0 });
-    
-    // Highlight the middle element
+
+    // Highlight the middle element being compared
     const colors = createBaseColors(a.length);
     colors[mid] = COLOR.comparing;
     setColorArray([...colors]);
     await sleep(delay);
 
-    // In a real implementation, we would compare with target here
-    // For visualization purposes, we'll just show the process
-    const compareColors = createBaseColors(a.length);
-    compareColors[mid] = COLOR.comparing;
-    setColorArray([...compareColors]);
-    await sleep(delay);
-    
-    // Move to next iteration (in real implementation, this would depend on comparison)
-    left = mid + 1; // Just for visualization flow
+    // In a real implementation, compare with target here
+    // For visualization purposes, we demonstrate the search process
+    left = mid + 1;
   }
 
-  // Mark all as sorted at the end
-  const finalColors = createBaseColors(a.length);
-  for (let i = 0; i < a.length; i++) finalColors[i] = COLOR.sorted;
-  setColorArray([...finalColors]);
-  return -1; // Not found (in actual implementation, this would return index if found)
+  // Mark all elements as sorted when search completes
+  const finalColors = new Array(a.length).fill(COLOR.sorted);
+  setColorArray(finalColors);
+
+  return -1; // Not found (would return actual index in real implementation)
 }
 
-export const binarySearch = async (array, target, setColorArray, delay) => {
+/**
+ * Performs binary search on a sorted array with color visualization
+ * @returns The index of the target element, or -1 if not found
+ */
+export async function binarySearch({
+  array,
+  target,
+  setColorArray,
+  delay,
+}: SimpleBinarySearchParams): Promise<number> {
   let left = 0;
   let right = array.length - 1;
+
+  // Helper to update a single element's color
+  const updateColor = (index: number, color: string): void => {
+    setColorArray((prevColors) => {
+      const newColors = [...prevColors];
+      newColors[index] = color;
+      return newColors;
+    });
+  };
 
   while (left <= right) {
     const mid = Math.floor((left + right) / 2);
 
-    setColorArray(prevColors => {
-      const newColors = [...prevColors];
-      newColors[mid] = 'yellow'; // Highlight the middle element
-      return newColors;
-    });
-
-    await new Promise(resolve => setTimeout(resolve, delay));
+    // Highlight the current middle element
+    updateColor(mid, 'yellow');
+    await sleep(delay);
 
     if (array[mid] === target) {
-      setColorArray(prevColors => {
-        const newColors = [...prevColors];
-        newColors[mid] = 'green'; // Target found
-        return newColors;
-      });
+      // Target found - highlight in green
+      updateColor(mid, 'green');
       return mid;
-    } else if (array[mid] < target) {
-      setColorArray(prevColors => {
-        const newColors = [...prevColors];
-        newColors[mid] = 'lightgrey'; // Reset color if not found
-        return newColors;
-      });
+    }
+
+    // Reset color for non-matching element
+    updateColor(mid, 'lightgrey');
+
+    // Adjust search boundaries
+    if (array[mid] < target) {
       left = mid + 1;
     } else {
-      setColorArray(prevColors => {
-        const newColors = [...prevColors];
-        newColors[mid] = 'lightgrey'; // Reset color if not found
-        return newColors;
-      });
       right = mid - 1;
     }
   }
 
   return -1; // Target not found
-};
+}
