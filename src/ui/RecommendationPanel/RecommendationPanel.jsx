@@ -9,6 +9,8 @@ import RecommendationList from './RecommendationList';
 import ExplanationPane from './ExplanationPane';
 import PerformanceComparison from './PerformanceComparison';
 import FeedbackControls from './FeedbackControls';
+// Import the actual recommendation service instead of using mock data
+import { generateRecommendations as generateActualRecommendations } from '../../recommendation/service';
 
 const RecommendationPanel = ({ dataset, userPreferences, onAlgorithmSelect }) => {
   const [recommendations, setRecommendations] = useState([]);
@@ -23,120 +25,29 @@ const RecommendationPanel = ({ dataset, userPreferences, onAlgorithmSelect }) =>
     }
   }, [dataset, userPreferences]);
 
-  // Generate recommendations using the recommendation service
+  // Generate recommendations using the actual recommendation service
   const generateRecommendations = async () => {
     setLoading(true);
     setError(null);
     
     try {
-      // In a real implementation, this would import and call the recommendation service
-      // For now, we'll simulate the response
+      // Call the actual recommendation service
+      const result = await generateActualRecommendations(dataset, userPreferences);
       
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 800));
+      // Extract recommendations from the result
+      const actualRecommendations = result.recommendations || [];
       
-      // Mock recommendations based on dataset size
-      const mockRecommendations = generateMockRecommendations(dataset);
-      
-      setRecommendations(mockRecommendations);
+      setRecommendations(actualRecommendations);
       
       // Select the top recommendation by default
-      if (mockRecommendations.length > 0) {
-        setSelectedAlgorithm(mockRecommendations[0]);
+      if (actualRecommendations.length > 0) {
+        setSelectedAlgorithm(actualRecommendations[0]);
       }
     } catch (err) {
       setError('Failed to generate recommendations. Please try again.');
       console.error('Recommendation generation error:', err);
     } finally {
       setLoading(false);
-    }
-  };
-
-  // Generate mock recommendations for demonstration
-  const generateMockRecommendations = (data) => {
-    const size = data.length;
-    
-    if (size > 10000) {
-      return [
-        { 
-          algorithm: 'Merge Sort', 
-          confidence: 0.95, 
-          predictedRuntime: 0.045,
-          timeComplexity: 'O(n log n)',
-          predictedMemory: 1200,
-          memoryComplexity: 'O(n)'
-        },
-        { 
-          algorithm: 'Quick Sort', 
-          confidence: 0.92, 
-          predictedRuntime: 0.038,
-          timeComplexity: 'O(n log n)',
-          predictedMemory: 800,
-          memoryComplexity: 'O(log n)'
-        },
-        { 
-          algorithm: 'Heap Sort', 
-          confidence: 0.88, 
-          predictedRuntime: 0.052,
-          timeComplexity: 'O(n log n)',
-          predictedMemory: 900,
-          memoryComplexity: 'O(1)'
-        }
-      ];
-    } else if (size < 50) {
-      return [
-        { 
-          algorithm: 'Insertion Sort', 
-          confidence: 0.85, 
-          predictedRuntime: 0.001,
-          timeComplexity: 'O(n²)',
-          predictedMemory: 200,
-          memoryComplexity: 'O(1)'
-        },
-        { 
-          algorithm: 'Selection Sort', 
-          confidence: 0.80, 
-          predictedRuntime: 0.0015,
-          timeComplexity: 'O(n²)',
-          predictedMemory: 150,
-          memoryComplexity: 'O(1)'
-        },
-        { 
-          algorithm: 'Bubble Sort', 
-          confidence: 0.75, 
-          predictedRuntime: 0.002,
-          timeComplexity: 'O(n²)',
-          predictedMemory: 100,
-          memoryComplexity: 'O(1)'
-        }
-      ];
-    } else {
-      return [
-        { 
-          algorithm: 'Quick Sort', 
-          confidence: 0.90, 
-          predictedRuntime: 0.012,
-          timeComplexity: 'O(n log n)',
-          predictedMemory: 600,
-          memoryComplexity: 'O(log n)'
-        },
-        { 
-          algorithm: 'Merge Sort', 
-          confidence: 0.88, 
-          predictedRuntime: 0.015,
-          timeComplexity: 'O(n log n)',
-          predictedMemory: 800,
-          memoryComplexity: 'O(n)'
-        },
-        { 
-          algorithm: 'Intro Sort', 
-          confidence: 0.85, 
-          predictedRuntime: 0.013,
-          timeComplexity: 'O(n log n)',
-          predictedMemory: 700,
-          memoryComplexity: 'O(log n)'
-        }
-      ];
     }
   };
 
