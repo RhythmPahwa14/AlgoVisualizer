@@ -3,7 +3,10 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { runPerformanceAnalysis, generateTestData } from '../utils/performanceAnalyzer';
 import { performanceAlgorithms } from '../algorithms/performanceAlgorithms';
 
-const ComplexityAnalyzer = ({ algorithm, algorithmName }) => {
+// ✅ Import AlgorithmUtils to get complexity information
+import { AlgorithmUtils } from '../algorithms/runner';
+
+const ComplexityAnalyzer = ({ algorithm, algorithmName, complexity }) => {
   const [performanceData, setPerformanceData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [testDataType, setTestDataType] = useState('random');
@@ -54,9 +57,20 @@ const ComplexityAnalyzer = ({ algorithm, algorithmName }) => {
     setDataSizes(sizes);
   };
   
+  // ✅ Get complexity information if not provided
+  const algorithmComplexity = complexity || AlgorithmUtils.getTimeComplexity(algorithmName);
+  
   return (
     <div className="complexity-analyzer flex flex-col gap-5 mt-8 !p-6 rounded-lg shadow-2xl">
       <h3 className="text-xl text-center font-bold mb-4 text-white">Performance Analysis</h3>
+      
+      {/* ✅ Display algorithm complexity */}
+      {algorithmComplexity && algorithmComplexity !== "Unknown" && (
+        <div className="bg-gray-700 rounded-lg p-4 mb-4">
+          <h4 className="text-lg font-semibold text-white">Algorithm Complexity</h4>
+          <p className="text-gray-200">Time Complexity: <span className="font-mono">{algorithmComplexity}</span></p>
+        </div>
+      )}
       
       <div className="mb-4 flex flex-wrap gap-4">
         <div className='flex flex-col gap-2 justify-center items-center'>

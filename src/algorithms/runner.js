@@ -35,9 +35,12 @@ const SORTING_ALGORITHMS = new Set([
   "Tim Sort",
   "Intro Sort",
   "Shell Sort",
-
+  "Heap Sort",
+  "Radix Sort",
+  "Bucket Sort",
+  "Cocktail Shaker Sort",      // ✅ Added Cocktail Shaker Sort
+  "Counting Sort",             // ✅ Added Counting Sort
   "Sleep Sort",
-
 ]);
 
 const SEARCHING_ALGORITHMS = new Set([
@@ -182,7 +185,11 @@ export const AlgorithmMetadata = {
       "Tim Sort": "O(n log n)",
       "Intro Sort": "O(n log n)",
       "Shell Sort": "O(n log n)",
-
+      "Heap Sort": "O(n log n)",
+      "Radix Sort": "O(nk)",
+      "Bucket Sort": "O(n+k)",
+      "Cocktail Shaker Sort": "O(n²)",      // ✅ Added complexity
+      "Counting Sort": "O(n+k)",            // ✅ Added complexity
       "Sleep Sort": "O(n + max(arr))",
     },
 

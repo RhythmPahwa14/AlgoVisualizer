@@ -118,6 +118,108 @@ function merge(left, right) {
     .concat(right.slice(rightIndex));
 };
 
+// ✅ Added Cocktail Shaker Sort performance implementation
+export const cocktailShakerSortPerformance = (arr) => {
+  const array = [...arr];
+  const n = array.length;
+  let swapped = true;
+  let start = 0;
+  let end = n - 1;
+  
+  while (swapped) {
+    swapped = false;
+    
+    // Forward pass
+    for (let i = start; i < end; i++) {
+      if (array[i] > array[i + 1]) {
+        [array[i], array[i + 1]] = [array[i + 1], array[i]];
+        swapped = true;
+      }
+    }
+    
+    if (!swapped) break;
+    
+    end--;
+    swapped = false;
+    
+    // Backward pass
+    for (let i = end; i > start; i--) {
+      if (array[i] < array[i - 1]) {
+        [array[i], array[i - 1]] = [array[i - 1], array[i]];
+        swapped = true;
+      }
+    }
+    
+    start++;
+  }
+  
+  return array;
+};
+
+// ✅ Added Counting Sort performance implementation
+export const countingSortPerformance = (arr) => {
+  if (arr.length === 0) return arr;
+  
+  const max = Math.max(...arr);
+  const min = Math.min(...arr);
+  const range = max - min + 1;
+  const count = new Array(range).fill(0);
+  const output = [];
+  
+  // Count occurrences
+  for (let i = 0; i < arr.length; i++) {
+    count[arr[i] - min]++;
+  }
+  
+  // Build output array
+  for (let i = 0; i < range; i++) {
+    while (count[i] > 0) {
+      output.push(i + min);
+      count[i]--;
+    }
+  }
+  
+  return output;
+};
+
+// ✅ Added Heap Sort performance implementation
+export const heapSortPerformance = (arr) => {
+  const array = [...arr];
+  const n = array.length;
+  
+  // Build max heap
+  for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+    heapify(array, n, i);
+  }
+  
+  // Extract elements from heap one by one
+  for (let i = n - 1; i > 0; i--) {
+    [array[0], array[i]] = [array[i], array[0]];
+    heapify(array, i, 0);
+  }
+  
+  return array;
+};
+
+function heapify(arr, n, i) {
+  let largest = i;
+  const left = 2 * i + 1;
+  const right = 2 * i + 2;
+  
+  if (left < n && arr[left] > arr[largest]) {
+    largest = left;
+  }
+  
+  if (right < n && arr[right] > arr[largest]) {
+    largest = right;
+  }
+  
+  if (largest !== i) {
+    [arr[i], arr[largest]] = [arr[largest], arr[i]];
+    heapify(arr, n, largest);
+  }
+}
+
 export const linearSearchPerformance = (arr, target) => {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === target) {
@@ -153,6 +255,9 @@ export const performanceAlgorithms = {
   "Selection Sort": selectionSortPerformance,
   "Quick Sort": quickSortPerformance,
   "Merge Sort": mergeSortPerformance,
+  "Cocktail Shaker Sort": cocktailShakerSortPerformance, // ✅ Added
+  "Counting Sort": countingSortPerformance,             // ✅ Added
+  "Heap Sort": heapSortPerformance,                     // ✅ Added
   "Linear Search": linearSearchPerformance,
   "Binary Search": binarySearchPerformance
 };

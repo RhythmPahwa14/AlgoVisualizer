@@ -4,6 +4,7 @@ import algorithmsData from "../algorithms/algorithms.json";
 import "../styles/UnifiedVisualizer.css";
 import ComplexityAnalyzer from "./ComplexityAnalyzer";
 import { performanceAlgorithms } from "../algorithms/performanceAlgorithms";
+import { AlgorithmUtils } from "../algorithms/runner"; // ✅ Import AlgorithmUtils
 
 // Import all your algorithm functions here
 import { runAlgorithmAsync, getAlgorithmType } from "../algorithms/runner";
@@ -150,22 +151,17 @@ useLayoutEffect(() => {
     if (visualOnly || controlled) return; // nothing to animate in visual-only
     
     (async () => {
-      const result = await runAlgorithmAsync(algorithmName, state.array, state.target);
-      setState(prev => ({ 
-        ...prev, 
-        steps: result.steps || [],
-        currentStep: 0,
-        isAnimating: true
-      }));
-      const handleRun = async () => {
-        try {
-          await runAlgorithmAsync(state.algorithm, state.array, state.target);
-          setError(null); // clear error if success
-        } catch (err) {
-          setError(err.message); // show error if fail
-        }
-      };
-
+      try {
+        const result = await runAlgorithmAsync(algorithmName, state.array, state.target);
+        setState(prev => ({ 
+          ...prev, 
+          steps: result.steps || [],
+          currentStep: 0,
+          isAnimating: true
+        }));
+      } catch (err) {
+        setError(err.message); // show error if fail
+      }
     })();
   }, [visualOnly, controlled, algorithmName, state.array, state.target]);
 
@@ -247,6 +243,13 @@ useLayoutEffect(() => {
   const algoType = useMemo(() => resolveAlgoType(algorithmName), [algorithmName, resolveAlgoType]);
   const displayArray = useMemo(() => controlled ? externalArray ?? [] : state.array, [controlled, externalArray, state.array]);
 
+  // ✅ Check if algorithm requires special handling
+  const requiresSpecialHandling = useMemo(() => {
+    // Algorithms that modify array in real-time or have unique visualization needs
+    const specialAlgorithms = ["Sleep Sort"];
+    return specialAlgorithms.includes(algorithmName);
+  }, [algorithmName]);
+
   // Handler functions for state updates
   const updateState = useCallback((key, value) => {
     setState(prev => ({ ...prev, [key]: value }));
@@ -317,7 +320,10 @@ useLayoutEffect(() => {
       let isHighlighted = false;
       const step = state.steps[state.currentStep];
       
-      if (!visualOnly && !controlled && step) {
+      // ✅ Special handling for algorithms that modify array in real-time
+      if (requiresSpecialHandling && state.isAnimating && !state.isPaused) {
+        colorClass = "bar-move"; // Use move color for real-time algorithms
+      } else if (!visualOnly && !controlled && step) {
         if (step.type === "compare" && Array.isArray(step.indices)) {
           isHighlighted = step.indices.includes(idx);
           if (isHighlighted) colorClass = "bar-compare";
@@ -356,7 +362,7 @@ useLayoutEffect(() => {
         </div>
       );
     });
-  }, [displayArray, visualOnly, controlled, state.steps, state.currentStep, colorArray, state.barMotion, state.animationSpeedMs, fontSize]);
+  }, [displayArray, visualOnly, controlled, state.steps, state.currentStep, colorArray, state.barMotion, state.animationSpeedMs, fontSize, requiresSpecialHandling, state.isAnimating, state.isPaused]);
 
   return (
     <div className="unified-visualizer">
@@ -491,7 +497,14 @@ useLayoutEffect(() => {
         <ComplexityAnalyzer 
           algorithm={performanceAlgorithms[algorithmName] || null} 
           algorithmName={algorithmName}
+          // ✅ Pass algorithm complexity information
+          complexity={AlgorithmUtils.getTimeComplexity(algorithmName)}
         />
+      )}
+      {error && (
+        <div className="error-message">
+          Error: {error}
+        </div>
       )}
     </div>
   );
