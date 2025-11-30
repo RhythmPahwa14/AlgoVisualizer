@@ -480,3 +480,16 @@
     display: none;
   }
 }
+.sidebar-search {
+  padding: 10px;
+}
+
+.sidebar-search input {
+  width: 90%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #ddd);
+  background: var(--bg-secondary, #f5f5f5);
+  color: inherit;
+  outline: none;
+}

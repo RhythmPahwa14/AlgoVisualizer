@@ -26,7 +26,7 @@ const Sidebar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate(); 
   const { theme } = useTheme();
-
+  const [searchTerm, setSearchTerm] = useState("");
   // Update active indicator position
   useEffect(() => {
     const activeLink = linkRefs.current[activeTab];
@@ -141,7 +141,43 @@ const Sidebar = () => {
       ]
     }
   ];
+  const filterSidebarItems = (items, search) => {
+  if (!search.trim()) return items; // nothing typed → return all
 
+  const lowerSearch = search.toLowerCase();
+
+  return items
+    .map(group => {
+      const filteredItems = group.items
+        .map(item => {
+          // Match category label?
+          const matchesItem = item.label.toLowerCase().includes(lowerSearch);
+
+          // Filter children
+          let filteredChildren = [];
+          if (item.children) {
+            filteredChildren = item.children.filter(child =>
+              child.label.toLowerCase().includes(lowerSearch)
+            );
+          }
+
+          // If category matches OR children match → keep item
+          if (matchesItem || filteredChildren.length > 0) {
+            return { ...item, children: filteredChildren };
+          }
+
+          return null;
+        })
+        .filter(Boolean);
+
+      if (filteredItems.length > 0) {
+        return { ...group, items: filteredItems };
+      }
+
+      return null;
+    })
+    .filter(Boolean);
+};
   return (
     <div className="sidebar-container">
       {/* Enhanced Mobile Menu Button with Animation */}
@@ -183,7 +219,15 @@ const Sidebar = () => {
 
         {/* Navigation Groups */}
         <div className="sidebar-content">
-          {sidebarItems.map((group, groupIndex) => (
+          <div className="sidebar-search">
+            <input
+            type="text"
+            placeholder="Search algorithms..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}/>
+            </div>
+
+            {filterSidebarItems(sidebarItems, searchTerm).map((group, groupIndex) => (
             <div key={group.group} className="sidebar-group">
               {group.group !== "main" && (
                 <div className="sidebar-group-header">
