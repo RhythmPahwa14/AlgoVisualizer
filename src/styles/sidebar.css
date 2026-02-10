@@ -452,6 +452,13 @@
   }
 }
 
+/* Mobile menu button active state */
+.mobile-menu-button.active {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  border-color: var(--accent-primary);
+}
+
 /* =========================
    Overlay for Mobile
 ========================= */

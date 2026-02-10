@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Home,
   BarChart3,
@@ -24,8 +24,49 @@ const Sidebar = () => {
   const linkRefs = useRef({});
   const [indicatorPos, setIndicatorPos] = useState({ top: 0 });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const location = useLocation();
   const { theme } = useTheme();
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setActiveTab(location.pathname);
+  }, [location.pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  // Close sidebar on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isMobileMenuOpen]);
+
+  // Close sidebar on window resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobileMenuOpen]);
 
   // Update active indicator position
   useEffect(() => {
@@ -37,11 +78,6 @@ const Sidebar = () => {
       const top = linkRect.top - containerRect.top + linkRect.height / 2 - indicatorHeight / 2;
       setIndicatorPos({ top });
     }
-  }, [activeTab]);
-
-  // Close mobile menu when tab changes
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
   }, [activeTab]);
 
   const SidebarLink = React.forwardRef(
