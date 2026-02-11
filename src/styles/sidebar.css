@@ -1,6 +1,24 @@
 @import './theme.css';
 
 /* =========================
+   Sidebar Container
+========================= */
+.sidebar-container {
+  position: relative;
+  z-index: 1000;
+}
+
+@media (max-width: 1024px) {
+  .sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+/* =========================
    Sidebar Styles
 ========================= */
 .app-sidebar {
@@ -18,7 +36,7 @@
   /* allow vertical scrolling when content exceeds viewport */
   overflow-x: hidden;
   overflow-y: auto;
-  transition: var(--transition-normal);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s ease;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 }
@@ -264,14 +282,20 @@
 /* =========================
    Responsive Design
 ========================= */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .app-sidebar {
-    width: 260px;
+    width: 280px;
     transform: translateX(-100%);
+    left: 0;
+    z-index: 1001;
+    box-shadow: none;
+    visibility: hidden;
   }
   
   .app-sidebar.mobile-open {
     transform: translateX(0);
+    visibility: visible;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
   }
   
   .sidebar-header {
@@ -412,7 +436,7 @@
   transition: margin-left 0.3s ease;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .main-content-with-sidebar {
     margin-left: 0;
   }
@@ -444,7 +468,7 @@
   box-shadow: 0 8px 24px rgba(88, 166, 255, 0.3);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .mobile-menu-button {
     display: flex;
     align-items: center;
@@ -468,21 +492,23 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  z-index: 999;
+  z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .sidebar-backdrop.active {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .sidebar-backdrop {
     display: none;
   }

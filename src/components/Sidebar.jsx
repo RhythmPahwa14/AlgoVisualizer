@@ -60,7 +60,7 @@ const Sidebar = () => {
   // Close sidebar on window resize to desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768 && isMobileMenuOpen) {
+      if (window.innerWidth > 1024 && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
       }
     };

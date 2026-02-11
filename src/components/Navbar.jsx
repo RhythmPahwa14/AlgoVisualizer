@@ -194,6 +194,23 @@ const Navbar = () => {
   const { theme } = useTheme();
   const navbarRef = useRef(null);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const navMenuRef = useRef(null);
   const itemRefs = useRef({});
   const [lineStyle, setLineStyle] = useState({});
@@ -239,18 +256,34 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={`navbar sidebar-nav ${isSidebarExpanded ? 'expanded' : ''} ${theme}`}
-      ref={navbarRef}
-      onMouseEnter={() => setIsSidebarExpanded(true)}
-      onMouseLeave={() => {
-        setIsSidebarExpanded(false);
-        setDesktopDropdownOpen(null); // Close dropdowns when leaving sidebar
-      }}
-    >
-      <div className="navbar-container flex flex-col items-start w-full px-4">
-        {/* Logo */}
-        <Link to="/" className="navbar-logo flex items-center gap-2">
+    <>
+      {/* Mobile menu backdrop */}
+      <div 
+        className={`navbar-backdrop ${isMobileMenuOpen ? 'active' : ''}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+      
+      {/* Mobile menu toggle button */}
+      <button 
+        className={`mobile-menu-button ${isMobileMenuOpen ? 'active' : ''}`}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle navigation menu"
+      >
+        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+
+      <nav
+        className={`navbar sidebar-nav ${isSidebarExpanded ? 'expanded' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''} ${theme}`}
+        ref={navbarRef}
+        onMouseEnter={() => setIsSidebarExpanded(true)}
+        onMouseLeave={() => {
+          setIsSidebarExpanded(false);
+          setDesktopDropdownOpen(null); // Close dropdowns when leaving sidebar
+        }}
+      >
+        <div className="navbar-container flex flex-col items-start w-full px-4">
+          {/* Logo */}
+          <Link to="/" className="navbar-logo flex items-center gap-2">
           <img src="/logo.jpg" alt="AlgoVisualizer Logo" className="logo-img" />
           <span className="logo-text navbar-label">
             Algo<span>Visualizer</span>
@@ -420,14 +453,6 @@ const Navbar = () => {
           <UserDropdown />
           <ThemeToggle />
         </div>
-
-        {/* Mobile Hamburger */}
-        <button
-          className="mobile-menu-button md:hidden"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
 
       {/* Mobile menu */}
@@ -546,6 +571,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    </>
   );
 };
 
