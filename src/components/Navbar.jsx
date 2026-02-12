@@ -460,114 +460,127 @@ const Navbar = () => {
         className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Optional: Mobile Menu Header */}
+        {/* Mobile Menu Header */}
         <div className="mobile-menu-header">
           <div className="mobile-menu-header-content">
             <span className="mobile-menu-title">AlgoVisualizer</span>
             <button className="mobile-menu-close-btn" onClick={() => setIsMobileMenuOpen(false)}>
-              <X size={20} />
+              <X size={18} />
             </button>
           </div>
           <p className="mobile-menu-subtitle">Explore Algorithms & Notes</p>
         </div>
 
         {/* Menu Items */}
-        {navbarNavigationItems.map((item, i) => (
-          <MobileNavItem
-            key={i}
-            item={item}
-            index={i}
-            isOpen={mobileDropdownOpen}
-            toggleDropdown={toggleMobileDropdown}
-            isActive={isActive}
-            getIcon={getIcon}
-            closeMenu={() => setIsMobileMenuOpen(false)}
-          />
-        ))}
+        <div className="mobile-menu-content">
+          {navbarNavigationItems.map((item, i) => (
+            <MobileNavItem
+              key={i}
+              item={item}
+              index={i}
+              isOpen={mobileDropdownOpen}
+              toggleDropdown={toggleMobileDropdown}
+              isActive={isActive}
+              getIcon={getIcon}
+              closeMenu={() => setIsMobileMenuOpen(false)}
+            />
+          ))}
 
-        {/* Algorithm Comparison Table Link - Mobile */}
-        <Link
-          to="/algorithm-comparison-table"
-          className={`mobile-menu-link ${isActive("/algorithm-comparison-table") ? "active" : ""}`}
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          <BarChart3 size={18} className="icon" />
-          <span>Compare Algorithms</span>
-        </Link>
-
-        {/* Notes Section */}
-        <div className="mobile-dropdown">
-          <button
-            className={`mobile-dropdown-toggle ${mobileNotesOpen ? "active" : ""}`}
-            onClick={() => setMobileNotesOpen(!mobileNotesOpen)}
+          {/* Algorithm Comparison Table Link - Mobile */}
+          <Link
+            to="/algorithm-comparison-table"
+            className={`mobile-menu-link ${isActive("/algorithm-comparison-table") ? "active" : ""}`}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
-            <BookOpen size={18} className="icon" />
-            <span>{selectedNotes}</span>
-            <ChevronDown size={16} className={`${mobileNotesOpen ? "rotated" : ""}`} />
-          </button>
-          <div className={`mobile-dropdown-menu ${mobileNotesOpen ? "open" : ""}`}>
-            <Link
-              to="/notes/java"
-              className="mobile-menu-link"
-              onClick={() => {
-                setSelectedNotes("Java");
-                setMobileNotesOpen(false);
-                setIsMobileMenuOpen(false);
-              }}
-            >
-              Java
-            </Link>
-            <Link
-              to="/notes/python"
-              className="mobile-menu-link"
-              onClick={() => {
-                setSelectedNotes("Python");
-                setMobileNotesOpen(false);
-                setIsMobileMenuOpen(false);
-              }}
-            >
-              Python
-            </Link>
-            <Link
-              to="/notes/cpp"
-              className="mobile-menu-link"
-              onClick={() => {
-                setSelectedNotes("C++");
-                setMobileNotesOpen(false);
-                setIsMobileMenuOpen(false);
-              }}
-            >
-              C++
-            </Link>
-            <Link
-              to="/notes/c"
-              className="mobile-menu-link"
-              onClick={() => {
-                setSelectedNotes("C");
-                setMobileNotesOpen(false);
-                setIsMobileMenuOpen(false);
-              }}
-            >
-              C
-            </Link>
+            <BarChart3 size={18} className="icon" />
+            <span>Compare Algorithms</span>
+          </Link>
 
-            <Link
-              to="/notes/javascript"
-              className="mobile-menu-link"
-              onClick={() => {
-                setSelectedNotes("JavaScript");
-                setMobileNotesOpen(false);
-                setIsMobileMenuOpen(false);
-              }}
+          {/* Notes Section */}
+          <div className="mobile-dropdown">
+            <button
+              className={`mobile-dropdown-toggle ${mobileNotesOpen ? "active" : ""}`}
+              onClick={() => setMobileNotesOpen(!mobileNotesOpen)}
             >
-              JavaScript
-            </Link>
+              <BookOpen size={18} className="icon" />
+              <span>Notes</span>
+              <ChevronDown size={16} className={mobileNotesOpen ? "rotated" : ""} />
+            </button>
+            <div className={`mobile-dropdown-menu ${mobileNotesOpen ? "open" : ""}`}>
+              <Link
+                to="/notes/java"
+                className={`mobile-menu-link ${isActive("/notes/java") ? "active" : ""}`}
+                onClick={() => {
+                  setMobileNotesOpen(false);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                <Code size={16} className="icon" />
+                <span>Java</span>
+              </Link>
+              <Link
+                to="/notes/python"
+                className={`mobile-menu-link ${isActive("/notes/python") ? "active" : ""}`}
+                onClick={() => {
+                  setMobileNotesOpen(false);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                <Code size={16} className="icon" />
+                <span>Python</span>
+              </Link>
+              <Link
+                to="/notes/cpp"
+                className={`mobile-menu-link ${isActive("/notes/cpp") ? "active" : ""}`}
+                onClick={() => {
+                  setMobileNotesOpen(false);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                <Code size={16} className="icon" />
+                <span>C++</span>
+              </Link>
+              <Link
+                to="/notes/c"
+                className={`mobile-menu-link ${isActive("/notes/c") ? "active" : ""}`}
+                onClick={() => {
+                  setMobileNotesOpen(false);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                <Code size={16} className="icon" />
+                <span>C</span>
+              </Link>
+              <Link
+                to="/notes/javascript"
+                className={`mobile-menu-link ${isActive("/notes/javascript") ? "active" : ""}`}
+                onClick={() => {
+                  setMobileNotesOpen(false);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                <Code size={16} className="icon" />
+                <span>JavaScript</span>
+              </Link>
+              <Link
+                to="/notes/rust"
+                className={`mobile-menu-link ${isActive("/notes/rust") ? "active" : ""}`}
+                onClick={() => {
+                  setMobileNotesOpen(false);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                <Code size={16} className="icon" />
+                <span>Rust</span>
+              </Link>
+            </div>
           </div>
         </div>
 
-        {/* User Dropdown */}
-        <div className="mobile-user-dropdown mt-4">
+        {/* User Dropdown at bottom */}
+        <div className="mobile-user-dropdown">
           <UserDropdown />
+          <ThemeToggle />
         </div>
       </div>
     </nav>
