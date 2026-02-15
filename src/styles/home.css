@@ -148,14 +148,14 @@ select:focus {
   font-family: "Poppins", sans-serif;
   text-align: center;
   white-space: nowrap; 
-  position: relative;
-  width: 100%;
+  position: absolute;
+
   /* Reserve space for the longest word to prevent layout shift while typing */
   min-width: 17ch; /* "Master Algorithms" ≈ 17 characters */
   max-width: 100%;
-  margin: 0 auto 5px auto;
-  padding: 0 1rem;
-  box-sizing: border-box;
+  margin-left: 30%;
+  margin-bottom: 5px;
+  margin-right: auto;
   /* Fix the line height so the element height stays constant */
   line-height: 1.2;
   min-height: 1.2em;
@@ -1961,23 +1961,20 @@ body.dark-mode .stat-card {
   flex-direction: column;
   gap: 40px;
   margin-left: 30px;
-  width: 100%;
-  max-width: 350px;
+  width: 350px;
+  max-width: 100%;
   flex-shrink: 0;
-  box-sizing: border-box;
 }
 .step-button {
   display: flex;
   align-items: center;
   border-radius: 1px solid #e9ecef;
-  padding: 25px 20px;
+  padding: 35px 45px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.7);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   color: var(--btn-text);
-  width: 100%;
-  box-sizing: border-box;
 }
 .step-button:hover {
   transform: translateY(-5px) scale(1.02);
@@ -2429,7 +2426,7 @@ body.dark-mode .step-duration-tag {
 }
 .algo-learning-updates-container > .vertical-steps-container {
   flex: 1 1 560px;
-  min-width: 0;
+  min-width: 560px;
 }
 .algo-learning-updates-container > .activity-feed {
   flex: 0 0 320px;
@@ -2513,101 +2510,5 @@ body.dark-mode .step-duration-tag {
   .step-button {
     transition: none;
     transform: none;
-  }
-}
-
-/* =========================
-   Enhanced Mobile Responsiveness
-========================= */
-@media (max-width: 768px) {
-  .typewriter-heading {
-    font-size: 1.8rem;
-    white-space: normal;
-    min-width: auto;
-    padding: 0 0.5rem;
-  }
-
-  .vertical-steps-container {
-    margin-left: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 10px;
-  }
-
-  .step-button {
-    padding: 18px 15px;
-    margin: 0;
-    width: 100%;
-  }
-
-  .step-content-wrapper {
-    padding-left: 10px;
-  }
-
-  .algorithm-buttons {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 10px;
-  }
-
-  .clean-button-link {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .algo-learning-updates-container {
-    padding: 1rem !important;
-    width: 100% !important;
-    overflow-x: hidden !important;
-  }
-
-  .activity-feed {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 10px;
-  }
-
-  /* Prevent horizontal scroll */
-  .home-dashboard {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .typewriter-heading {
-    font-size: 1.5rem;
-  }
-
-  .step-button {
-    padding: 15px 12px;
-  }
-
-  .step-title {
-    font-size: 1rem;
-  }
-
-  .step-description {
-    font-size: 0.8rem;
-  }
-
-  .step-duration-tag {
-    font-size: 0.75rem;
-  }
-
-  .steps-heading,
-  .buttons-heading {
-    font-size: 13px;
-    padding: 10px 14px !important;
-  }
-
-  .algo-learning-updates-container {
-    padding: 0.5rem !important;
-  }
-
-  .vertical-steps-container {
-    gap: 20px;
-    padding: 0 5px;
   }
 }

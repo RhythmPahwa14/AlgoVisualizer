@@ -416,13 +416,12 @@ const Home = () => {
 
   /** ===== Quick responsive helpers (no external CSS changes) ===== */
   const gridStyles = `
-    .hero-grid { display:grid; grid-template-columns: 1.08fr 1fr; gap:2.25rem; align-items:stretch; max-width:100%; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns: 1.08fr 1fr; gap:2.25rem; align-items:stretch; }
     .grid-2 { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1.25rem; }
     .updates-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1rem; }
     .paths-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; }
-    @media (max-width: 980px){ .hero-grid{ grid-template-columns:1fr; gap:1.5rem; } }
+    @media (max-width: 980px){ .hero-grid{ grid-template-columns:1fr; } }
     @media (max-width: 780px){ .grid-2{ grid-template-columns:1fr; } .updates-grid{ grid-template-columns:1fr; } }
-    @media (max-width: 480px){ .hero-grid{ gap:1rem; padding:0 0.5rem; } }
   `;
 
   return (
