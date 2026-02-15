@@ -52,7 +52,8 @@ body {
 /* Mobile: Remove body padding for sidebar */
 @media (max-width: 1024px) {
   body {
-    padding-left: 0;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
   }
 }
 
@@ -465,6 +466,7 @@ body {
 
 /* Mobile/Tablet: Hide desktop navbar sidebar and show mobile menu */
 @media (max-width: 1024px) {
+  .navbar,
   .navbar.sidebar-nav {
     width: 280px;
     transform: translateX(-100%);
@@ -472,7 +474,8 @@ body {
     z-index: 1001;
   }
   
-  .navbar.sidebar-nav.mobile-open {
+  .navbar.sidebar-nav.mobile-open,
+  .navbar.mobile-open {
     transform: translateX(0);
     visibility: visible;
   }
