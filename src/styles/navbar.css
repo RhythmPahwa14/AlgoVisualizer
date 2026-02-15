@@ -14,7 +14,8 @@
   border: 1px solid rgba(0,0,0,.08);
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
   border-radius: 10px;
-  min-width: 720px;
+  min-width: 0;
+  max-width: calc(100vw - 20px);
   z-index: 1000;
 }
 

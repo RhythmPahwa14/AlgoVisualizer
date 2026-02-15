@@ -255,8 +255,8 @@
   background: var(--table-bg);
   border-radius: 8px;
   overflow: hidden;
-  min-width: 600px;
-  table-layout: fixed;
+  min-width: 0;
+  table-layout: auto;
 }
 
 /* FIX: Table header text color - black in light mode, white in dark mode */
