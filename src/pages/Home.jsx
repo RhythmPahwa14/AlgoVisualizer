@@ -77,46 +77,46 @@ function useColorScheme() {
 
 function getTheme(isLight) {
   if (!isLight) {
-    // Dark theme (your existing look, slightly tuned)
+    // Dark theme - Minimal black and white
     return {
-      textPrimary: "#e5e7eb",
-      textSecondary: "rgba(229,231,235,.85)",
-      subText: "rgba(229,231,235,.75)",
-      cardBg: "linear-gradient(180deg, rgba(23,23,35,.9), rgba(13,20,30,.9))",
-      cardBorder: "1px solid rgba(180, 184, 255, 0.12)",
-      surfaceBg: "linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02))",
-      surfaceBorder: "1px solid rgba(255,255,255,.06)",
-      baseline: "rgba(255,255,255,.12)",
-      heroGradient: "linear-gradient(92deg,#ffffff 0%, #c7d2fe 40%, #a78bfa 70%, #fb7185 100%)",
-      badgeBg: "linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))",
-      badgeBorder: "1px solid rgba(255,255,255,.08)",
-      updatesCardBg: "linear-gradient(180deg, rgba(33,43,56,.7), rgba(15,18,28,.85))",
-      shadow: "0 14px 30px rgba(2,6,23,.35), 0 1px 0 rgba(255,255,255,.04) inset",
-      demoShellBg: "linear-gradient(135deg, rgba(41,35,110,.9), rgba(19,20,48,.9))",
-      demoShellShadow: "0 22px 55px rgba(2,6,23,.40), 0 1px 0 rgba(255,255,255,.04) inset",
-      pillBg: "rgba(255,255,255,.06)",
-      pillBorder: "1px solid rgba(255,255,255,.08)",
+      textPrimary: "#ffffff",
+      textSecondary: "#666666",
+      subText: "#999999",
+      cardBg: "#000000",
+      cardBorder: "1px solid #e5e5e5",
+      surfaceBg: "#0a0a0a",
+      surfaceBorder: "1px solid #333333",
+      baseline: "#333333",
+      heroGradient: "#000000",
+      badgeBg: "#ffffff",
+      badgeBorder: "1px solid #e5e5e5",
+      updatesCardBg: "#0a0a0a",
+      shadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+      demoShellBg: "#000000",
+      demoShellShadow: "0 4px 16px rgba(0, 0, 0, 0.2)",
+      pillBg: "#ffffff",
+      pillBorder: "1px solid #e5e5e5",
     };
   }
-  // Light theme (new palette)
+  // Light theme - Minimal black and white with clean aesthetic
   return {
-    textPrimary: "#0b1020",
-    textSecondary: "rgba(11,16,32,.75)",
-    subText: "rgba(11,16,32,.65)",
-    cardBg: "linear-gradient(180deg, rgba(255,255,255,.92), rgba(247,249,255,.92))",
-    cardBorder: "1px solid rgba(15,23,42,.08)",
-    surfaceBg: "linear-gradient(180deg, rgba(15,23,42,.03), rgba(15,23,42,.015))",
-    surfaceBorder: "1px solid rgba(15,23,42,.08)",
-    baseline: "rgba(15,23,42,.15)",
-    heroGradient: "linear-gradient(92deg,#1f2937 0%, #374151 40%, #4338ca 70%, #7c3aed 100%)",
-    badgeBg: "linear-gradient(180deg, rgba(15,23,42,.06), rgba(15,23,42,.03))",
-    badgeBorder: "1px solid rgba(15,23,42,.08)",
-    updatesCardBg: "linear-gradient(180deg, rgba(255,255,255,.9), rgba(248,250,252,.9))",
-    shadow: "0 10px 28px rgba(2,6,23,.10), 0 1px 0 rgba(255,255,255,.4) inset",
-    demoShellBg: "linear-gradient(135deg, rgba(239,246,255,1), rgba(219,234,254,1))",
-    demoShellShadow: "0 24px 40px rgba(2,6,23,.12), 0 1px 0 rgba(255,255,255,.75) inset",
-    pillBg: "rgba(15,23,42,.05)",
-    pillBorder: "1px solid rgba(15,23,42,.08)",
+    textPrimary: "#000000",
+    textSecondary: "#666666",
+    subText: "#999999",
+    cardBg: "#ffffff",
+    cardBorder: "1px solid #e5e5e5",
+    surfaceBg: "#fafafa",
+    surfaceBorder: "1px solid #e5e5e5",
+    baseline: "#e5e5e5",
+    heroGradient: "#000000",
+    badgeBg: "#ffffff",
+    badgeBorder: "1px solid #e5e5e5",
+    updatesCardBg: "#ffffff",
+    shadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
+    demoShellBg: "#000000",
+    demoShellShadow: "0 4px 16px rgba(0, 0, 0, 0.1)",
+    pillBg: "#ffffff",
+    pillBorder: "1px solid #e5e5e5",
   };
 }
 
@@ -167,7 +167,8 @@ const container = { width: "100%", display: "flex", justifyContent: "center" };
 const inner = { width: "min(1200px, 100%)", padding: "1.5rem" };
 
 const Home = () => {
-  const isLight = useColorScheme();
+  // Always use light (white bg / black text) minimal design
+  const isLight = true;
   const T = getTheme(isLight);
 
   const [showProblemModal, setShowProblemModal] = useState(false);
@@ -187,10 +188,29 @@ const Home = () => {
   }, []);
 
   /** ===== Bubble Sort — optimized with proper cleanup ===== */
-  const BAR_COUNT = 12;
+  const BAR_COUNT = 8;
   const STEP_MS = 350;
+
+  const generateArrayWithInversion = () => {
+    const arr = Array.from({ length: BAR_COUNT }, () => 20 + Math.floor(Math.random() * 75));
+    let hasInversion = false;
+
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        hasInversion = true;
+        break;
+      }
+    }
+
+    if (!hasInversion && arr.length > 1) {
+      [arr[0], arr[1]] = [arr[1], arr[0]];
+    }
+
+    return arr;
+  };
+
   const initial = useMemo(
-    () => Array.from({ length: BAR_COUNT }, () => 20 + Math.floor(Math.random() * 75)),
+    () => generateArrayWithInversion(),
     []
   );
 
@@ -201,110 +221,93 @@ const Home = () => {
   const [swaps, setSwaps] = useState(0);
   const [isAnimating, setIsAnimating] = useState(true);
 
-  const animRef = useRef(null);
+  const intervalRef = useRef(null);
   const isComponentMounted = useRef(true);
+  const valuesRef = useRef(initial);
+  const passRef = useRef(0);
+  const idxRef = useRef(0);
+  const comparisonsRef = useRef(0);
+  const swapsRef = useRef(0);
+  const isAnimatingRef = useRef(true);
 
   // Cleanup function to prevent memory leaks
   const cleanup = () => {
-    if (animRef.current) {
-      clearTimeout(animRef.current);
-      animRef.current = null;
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
   };
 
-  const reshuffle = () => {
-    if (!isComponentMounted.current || !isAnimating) return;
+  const reshuffleValues = () => {
+    const fresh = generateArrayWithInversion();
+    valuesRef.current = fresh;
+    passRef.current = 0;
+    idxRef.current = 0;
+    comparisonsRef.current = 0;
+    swapsRef.current = 0;
 
-    const fresh = Array.from({ length: BAR_COUNT }, () => 20 + Math.floor(Math.random() * 75));
     setValues(fresh);
     setPass(0);
     setIdx(0);
     setComparisons(0);
     setSwaps(0);
+  };
 
-    cleanup();
-    if (isAnimating) {
-      animRef.current = setTimeout(tick, STEP_MS);
+  const stepBubbleSort = () => {
+    if (!isComponentMounted.current || !isAnimatingRef.current) return;
+
+    const arr = [...valuesRef.current];
+    const n = arr.length;
+
+    if (passRef.current >= n - 1) {
+      reshuffleValues();
+      return;
     }
+
+    if (idxRef.current >= n - passRef.current - 1) {
+      passRef.current += 1;
+      idxRef.current = 0;
+      setPass(passRef.current);
+      setIdx(0);
+      return;
+    }
+
+    comparisonsRef.current += 1;
+    setComparisons(comparisonsRef.current);
+
+    if (arr[idxRef.current] > arr[idxRef.current + 1]) {
+      [arr[idxRef.current], arr[idxRef.current + 1]] = [arr[idxRef.current + 1], arr[idxRef.current]];
+      swapsRef.current += 1;
+      setSwaps(swapsRef.current);
+    }
+
+    idxRef.current += 1;
+    valuesRef.current = arr;
+    setValues(arr);
+    setIdx(idxRef.current);
   };
 
-  const tick = () => {
-    if (!isComponentMounted.current || !isAnimating) return;
-
-    setValues(currentValues => {
-      const arr = [...currentValues];
-      const n = arr.length;
-
-      setPass(currentPass => {
-        setIdx(currentIdx => {
-          if (currentPass >= n - 1) {
-            cleanup();
-            if (isAnimating) {
-              animRef.current = setTimeout(reshuffle, 1000);
-            }
-            return currentIdx;
-          }
-
-          if (currentIdx >= n - currentPass - 1) {
-            cleanup();
-            if (isAnimating) {
-              animRef.current = setTimeout(tick, STEP_MS);
-            }
-            return 0;
-          }
-
-          setComparisons(c => c + 1);
-
-          if (arr[currentIdx] > arr[currentIdx + 1]) {
-            const tmp = arr[currentIdx];
-            arr[currentIdx] = arr[currentIdx + 1];
-            arr[currentIdx + 1] = tmp;
-            setSwaps(s => s + 1);
-            setValues(arr);
-          }
-
-          cleanup();
-          if (isAnimating) {
-            animRef.current = setTimeout(tick, STEP_MS);
-          }
-
-          return currentIdx + 1;
-        });
-
-        // Use idx state instead of currentIdx parameter
-        return currentPass + (idx >= n - currentPass - 1 ? 1 : 0);
-      });
-      return currentValues;
-    });
-  };
-
-  // Start animation on mount
+  // Start/stop animation timer based on play state
   useEffect(() => {
+    isAnimatingRef.current = isAnimating;
+
     if (isAnimating) {
-      animRef.current = setTimeout(tick, STEP_MS);
+      cleanup();
+      intervalRef.current = setInterval(stepBubbleSort, STEP_MS);
+    } else {
+      cleanup();
     }
 
     return () => {
-      isComponentMounted.current = false;
       cleanup();
     };
   }, [isAnimating]);
 
-  // Pause animation when component is not visible (performance optimization)
+  // Mark unmounted once
   useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        setIsAnimating(false);
-        cleanup();
-      } else {
-        setIsAnimating(true);
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      isComponentMounted.current = false;
+      cleanup();
     };
   }, []);
 
@@ -314,18 +317,15 @@ const Home = () => {
 
   // Control functions for the animation
   const toggleAnimation = () => {
-    setIsAnimating(!isAnimating);
+    setIsAnimating((prev) => !prev);
   };
 
   const resetAnimation = () => {
     cleanup();
-    const fresh = Array.from({ length: BAR_COUNT }, () => 20 + Math.floor(Math.random() * 75));
-    setValues(fresh);
-    setPass(0);
-    setIdx(0);
-    setComparisons(0);
-    setSwaps(0);
+    reshuffleValues();
+    isAnimatingRef.current = true;
     setIsAnimating(true);
+    intervalRef.current = setInterval(stepBubbleSort, STEP_MS);
   };
 
   /** ===== Data ===== */
@@ -414,6 +414,8 @@ const Home = () => {
     },
   ];
 
+  const featuredResources = features.slice(0, 2);
+
   /** ===== Quick responsive helpers (no external CSS changes) ===== */
   const gridStyles = `
     .hero-grid { display:grid; grid-template-columns: 1.08fr 1fr; gap:2.25rem; align-items:stretch; }
@@ -436,14 +438,14 @@ const Home = () => {
             {/* LEFT: Bubble Sort */}
             <div
               style={{
-                background: T.demoShellBg,
-                borderRadius: 22,
-                padding: "1.2rem 1.2rem 1rem",
+                background: T.cardBg,
+                borderRadius: 14,
+                padding: "1rem",
                 border: T.cardBorder,
-                boxShadow: T.demoShellShadow,
-                display: "grid",
-                gridTemplateRows: "auto 1fr auto",
-                gap: "0.85rem",
+                boxShadow: T.shadow,
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
               }}
               data-aos="zoom-in" data-aos-duration="1500"
             >
@@ -451,76 +453,70 @@ const Home = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                color: isLight ? "#1f2937" : "#c7d2fe",
-                backgroundColor: 'transparent' // Added this line
+                color: isLight ? "#000000" : "#ffffff",
+                backgroundColor: 'transparent',
+                paddingBottom: "0.5rem",
+                borderBottom: `1px solid ${T.surfaceBorder.split(' ')[2]}`
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <div
                     style={{
                       width: 8, height: 8, borderRadius: 999,
-                      background: isLight
-                        ? "radial-gradient(circle at 40% 40%, #10b981 0%, #059669 60%, #065f46 100%)"
-                        : "radial-gradient(circle at 40% 40%, #34d399 0%, #059669 60%, #065f46 100%)",
-                      boxShadow: isLight ? "0 0 0 3px rgba(16,185,129,.20)" : "0 0 0 3px rgba(52,211,153,.17)",
+                      background: isLight ? "#000000" : "#ffffff",
                     }}
                   />
-                  <strong style={{ letterSpacing: ".2px" }}>Live Demo</strong>
+                  <strong style={{ letterSpacing: ".2px", fontWeight: 600, fontFamily: "'Inter', system-ui, sans-serif" }}>LIVE</strong>
                 </div>
-                <span style={{ opacity: 0.9, fontSize: ".9rem", color: isLight ? "#334155" : undefined }}>
-                  Bubble Sort · {values.length} bars
+                <span style={{ fontSize: ".875rem", color: T.textSecondary, fontFamily: "'Inter', system-ui, sans-serif" }}>
+                  VISUALIZER / BUBBLE SORT
                 </span>
               </div>
 
               {/* Chart */}
               <div
                 style={{
-                  position: "relative", height: 240,
+                  position: "relative", height: 280,
                   background: T.surfaceBg,
-                  borderRadius: 14, border: T.surfaceBorder,
-                  padding: "12px 10px 18px",
-                  display: "flex", alignItems: "flex-end", gap: 10, overflow: "hidden",
+                  borderRadius: 12, border: T.surfaceBorder,
+                  padding: "10px 8px 14px",
+                  display: "flex", alignItems: "flex-end", gap: 3, overflow: "hidden",
                 }}
               >
-                {/* horizontal grid */}
+                {/* horizontal grid - minimal */}
                 <div aria-hidden style={{
                   position: "absolute", inset: 0,
                   background: isLight
-                    ? "repeating-linear-gradient(to top, rgba(15,23,42,.06), rgba(15,23,42,.06) 1px, transparent 1px, transparent 32px)"
-                    : "repeating-linear-gradient(to top, rgba(255,255,255,.04), rgba(255,255,255,.04) 1px, transparent 1px, transparent 32px)",
+                    ? "repeating-linear-gradient(to top, #e5e5e5, #e5e5e5 1px, transparent 1px, transparent 40px)"
+                    : "repeating-linear-gradient(to top, #333333, #333333 1px, transparent 1px, transparent 40px)",
                   pointerEvents: "none",
+                  opacity: 0.3,
                 }} />
                 {/* baseline */}
                 <div aria-hidden style={{
-                  position: "absolute", left: 10, right: 10, bottom: 16, height: 2,
-                  background: T.baseline, borderRadius: 2,
+                  position: "absolute", left: 8, right: 8, bottom: 14, height: 1,
+                  background: T.baseline,
                 }} />
                 {values.map((h, i) => {
                   const isActive = i === activeA || i === activeB;
                   const isSorted = i >= sortedStart;
-                  const baseGradient = isLight
-                    ? "linear-gradient(180deg,#60a5fa 0%,#93c5fd 35%,#a78bfa 70%,#f9a8d4 100%)"
-                    : "linear-gradient(180deg,#9aa4ff 0%,#7c83ff 35%,#8b5cf6 70%,#f472b6 100%)";
-                  const activeGradient = isLight
-                    ? "linear-gradient(180deg,#2563eb 0%,#3b82f6 40%,#6366f1 80%)"
-                    : "linear-gradient(180deg,#60a5fa 0%,#3b82f6 40%,#6366f1 80%)";
-                  const sortedGradient = isLight
-                    ? "linear-gradient(180deg,#10b981 0%,#22c55e 60%,#16a34a 100%)"
-                    : "linear-gradient(180deg,#34d399 0%,#10b981 60%,#059669 100%)";
+                  
+                  // Minimal color scheme - black/white/grey
+                  const baseColor = isLight ? "#333333" : "#ffffff";
+                  const activeColor = isLight ? "#000000" : "#ffffff";
+                  const sortedColor = isLight ? "#666666" : "#cccccc";
 
                   return (
                     <div
                       key={i}
                       style={{
-                        width: `calc((100% - ${10 * (values.length - 1)}px) / ${values.length})`,
+                        width: `calc((100% - ${3 * (values.length - 1)}px) / ${values.length})`,
                         height: `${h}%`,
-                        minWidth: 16,
-                        borderRadius: 10,
-                        background: isSorted ? sortedGradient : isActive ? activeGradient : baseGradient,
-                        boxShadow: isLight
-                          ? "0 8px 16px rgba(30,64,175,.20), 0 1px 0 rgba(255,255,255,.65) inset"
-                          : "0 10px 22px rgba(124,131,255,.38), 0 1px 0 rgba(255,255,255,.12) inset",
-                        transition: "height .5s cubic-bezier(.2,.8,.2,1), transform .22s ease, background .2s ease",
-                        transform: isActive ? "translateY(-4px) scale(1.02)" : "translateY(0) scale(1)",
+                        minWidth: 10,
+                        borderRadius: 4,
+                        background: isSorted ? sortedColor : isActive ? activeColor : baseColor,
+                        opacity: isSorted ? 0.5 : isActive ? 1 : 0.7,
+                        transition: "height .4s cubic-bezier(.2,.8,.2,1), transform .2s ease, background .2s ease, opacity .2s ease",
+                        transform: isActive ? "translateY(-4px)" : "translateY(0)",
                       }}
                       title={`Value: ${h}`}
                     />
@@ -528,67 +524,76 @@ const Home = () => {
                 })}
               </div>
 
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", color: T.textSecondary, fontSize: ".92rem", paddingTop: 2 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  <span>Pass {Math.min(pass + 1, values.length - 1)}</span>
+              <div style={{ 
+                display: "flex", 
+                justifyContent: "space-between", 
+                alignItems: "center", 
+                color: T.textSecondary, 
+                fontSize: ".875rem", 
+                paddingTop: 4,
+                fontFamily: "'Inter', system-ui, sans-serif"
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
+                  <span style={{ color: T.textPrimary, fontWeight: 500 }}>{BAR_COUNT} DATA POINTS</span>
+                  <span style={{ color: T.textSecondary, fontSize: "0.8rem" }}>
+                    COMP: {comparisons} | SWAPS: {swaps}
+                  </span>
                   <div style={{ display: "flex", gap: "0.5rem" }}>
                     <button
                       onClick={toggleAnimation}
                       style={{
-                        background: "none",
-                        border: `1px solid ${isLight ? "rgba(59, 130, 246, 0.3)" : "rgba(147, 197, 253, 0.3)"}`,
-                        borderRadius: "6px",
-                        padding: "4px 8px",
+                        background: isLight ? "#ffffff" : "#000000",
+                        border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
+                        borderRadius: "4px",
+                        padding: "6px 12px",
                         cursor: "pointer",
-                        color: isLight ? "#2563eb" : "#93c5fd",
+                        color: isLight ? "#000000" : "#ffffff",
                         display: "flex",
                         alignItems: "center",
-                        gap: "4px",
-                        fontSize: "0.8rem",
+                        gap: "6px",
+                        fontSize: "0.75rem",
                         transition: "all 0.2s ease",
+                        fontWeight: 500,
+                        fontFamily: "'Inter', system-ui, sans-serif",
                       }}
                       onMouseEnter={(e) => {
-                        e.target.style.background = isLight ? "rgba(59, 130, 246, 0.1)" : "rgba(147, 197, 253, 0.1)";
+                        e.target.style.background = isLight ? "#f5f5f5" : "#1a1a1a";
                       }}
                       onMouseLeave={(e) => {
-                        e.target.style.background = "none";
+                        e.target.style.background = isLight ? "#ffffff" : "#000000";
                       }}
                       title={isAnimating ? "Pause animation" : "Resume animation"}
                     >
-                      {isAnimating ? <Pause size={12} /> : <Play size={12} />}
-                      {isAnimating ? "Pause" : "Play"}
+                      {isAnimating ? <Pause size={14} /> : <Play size={14} />}
                     </button>
                     <button
                       onClick={resetAnimation}
                       style={{
-                        background: "none",
-                        border: `1px solid ${isLight ? "rgba(107, 114, 128, 0.3)" : "rgba(156, 163, 175, 0.3)"}`,
-                        borderRadius: "6px",
-                        padding: "4px 8px",
+                        background: isLight ? "#ffffff" : "#000000",
+                        border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
+                        borderRadius: "4px",
+                        padding: "6px 12px",
                         cursor: "pointer",
-                        color: isLight ? "#6b7280" : "#9ca3af",
+                        color: isLight ? "#000000" : "#ffffff",
                         display: "flex",
                         alignItems: "center",
-                        gap: "4px",
-                        fontSize: "0.8rem",
+                        gap: "6px",
+                        fontSize: "0.75rem",
                         transition: "all 0.2s ease",
+                        fontWeight: 500,
+                        fontFamily: "'Inter', system-ui, sans-serif",
                       }}
                       onMouseEnter={(e) => {
-                        e.target.style.background = isLight ? "rgba(107, 114, 128, 0.1)" : "rgba(156, 163, 175, 0.1)";
+                        e.target.style.background = isLight ? "#f5f5f5" : "#1a1a1a";
                       }}
                       onMouseLeave={(e) => {
-                        e.target.style.background = "none";
+                        e.target.style.background = isLight ? "#ffffff" : "#000000";
                       }}
                       title="Reset with new data"
                     >
-                      <RotateCcw size={12} />
-                      Reset
+                      <RotateCcw size={14} />
                     </button>
                   </div>
-                </div>
-                <div style={{ display: "flex", gap: "1rem" }}>
-                  <span style={{ color: isLight ? "#16a34a" : "#34d399" }}>Comparisons: {comparisons}</span>
-                  <span style={{ color: isLight ? "#dc2626" : "#f87171" }}>Swaps: {swaps}</span>
                 </div>
               </div>
             </div>
@@ -598,47 +603,122 @@ const Home = () => {
               <div
                 className="hero-badge"
                 style={{
-                  display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 10px",
-                  borderRadius: 999, border: T.badgeBorder, color: T.textSecondary,
-                  background: T.badgeBg, width: "fit-content",
+                  display: "inline-flex", 
+                  alignItems: "center", 
+                  gap: 8, 
+                  padding: "8px 16px",
+                  borderRadius: 4, 
+                  border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`, 
+                  color: T.textPrimary,
+                  background: isLight ? "#ffffff" : "#000000", 
+                  width: "fit-content",
+                  fontSize: "0.75rem",
+                  fontWeight: 600,
+                  letterSpacing: "1px",
+                  fontFamily: "'Inter', system-ui, sans-serif",
                 }}
               >
-                <Sparkles size={14} />
-                <span>Interactive Algorithm Lab</span>
+                INTERACTIVE ALGORITHM LAB
               </div>
 
               <h1
                 className="hero-title"
                 style={{
-                  marginTop: "1rem", lineHeight: 1.05, fontSize: "clamp(28px, 5vw, 44px)",
-                  fontWeight: 900, letterSpacing: "-.3px",
-                  color: "transparent",
-
-
-                  background: T.hero,
-
-                  WebkitBackgroundClip: "text", backgroundClip: "text",
+                  marginTop: "1.5rem", 
+                  lineHeight: 1.1, 
+                  fontSize: "clamp(32px, 5vw, 52px)",
+                  fontWeight: 800, 
+                  letterSpacing: "-1px",
+                  color: "#000000",
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  WebkitTextFillColor: "#000000",
+                  background: "none",
                 }}
               >
-                Master Algorithms Through Visual Learning  <span style={{ opacity: 1 }}>- simplified</span>
+                Master Algorithms Through Visual Learning
               </h1>
 
-              <p className="hero-subtitle" style={{ marginTop: ".9rem", color: T.textSecondary, maxWidth: 560, fontSize: "1rem" }}>
+              <p className="hero-subtitle" style={{ 
+                marginTop: "1rem", 
+                color: T.textSecondary, 
+                maxWidth: 560, 
+                fontSize: "1rem", 
+                lineHeight: 1.6,
+                fontFamily: "'Inter', system-ui, sans-serif",
+              }}>
                 Learn by seeing. Trace every step, compare complexity, and build intuition fast.
               </p>
 
-              <div className="hero-features" style={{ marginTop: "1rem", display: "flex", gap: ".6rem", flexWrap: "wrap" }}>
-                <div className="feature-highlight" style={{ background: T.badgeBg, border: T.badgeBorder }}><Clock size={16} /><span>Real-time views</span></div>
-                <div className="feature-highlight" style={{ background: T.badgeBg, border: T.badgeBorder }}><BookOpen size={16} /><span>Step guides</span></div>
-                <div className="feature-highlight" style={{ background: T.badgeBg, border: T.badgeBorder }}><Target size={16} /><span>Hands-on practice</span></div>
+              <div className="hero-features" style={{ marginTop: "1.5rem", display: "flex", gap: ".8rem", flexWrap: "wrap" }}>
+                <div className="feature-highlight" style={{ 
+                  background: isLight ? "#ffffff" : "#000000", 
+                  border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
+                  borderRadius: "4px",
+                  padding: "8px 14px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  fontSize: "0.875rem",
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  color: T.textPrimary,
+                }}><Clock size={16} /><span>REAL-TIME VIEWS</span></div>
+                <div className="feature-highlight" style={{ 
+                  background: isLight ? "#ffffff" : "#000000", 
+                  border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
+                  borderRadius: "4px",
+                  padding: "8px 14px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  fontSize: "0.875rem",
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  color: T.textPrimary,
+                }}><BookOpen size={16} /><span>STEP GUIDES</span></div>
+                <div className="feature-highlight" style={{ 
+                  background: isLight ? "#ffffff" : "#000000", 
+                  border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
+                  borderRadius: "4px",
+                  padding: "8px 14px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  fontSize: "0.875rem",
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  color: T.textPrimary,
+                }}><Target size={16} /><span>HANDS-ON PRACTICE</span></div>
               </div>
 
-              <div style={{ marginTop: "1.4rem", display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
-                <Link to="/login" className="btn-primary-new"><Play size={16} />Start Learning</Link>
-                <Link to="/quiz" className="btn-secondary-new"><Trophy size={16} />Take a Quiz</Link>
-                <button onClick={() => setShowProblemModal(true)} className="btn-secondary-new" style={{ background: T.badgeBg, border: T.badgeBorder, color: T.textSecondary }}>
-                  <Sparkles size={16} />Problem of the Day
-                </button>
+              <div style={{ marginTop: "1.8rem", display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
+                <Link to="/login" className="btn-primary-new" style={{
+                  background: isLight ? "#000000" : "#ffffff",
+                  color: isLight ? "#ffffff" : "#000000",
+                  border: "none",
+                  padding: "12px 24px",
+                  borderRadius: "4px",
+                  fontWeight: 600,
+                  fontSize: "0.875rem",
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  transition: "all 0.2s ease",
+                }}><span>START LEARNING</span><ArrowRight size={16} /></Link>
+                <Link to="/quiz" className="btn-secondary-new" style={{
+                  background: isLight ? "#ffffff" : "#000000",
+                  color: isLight ? "#000000" : "#ffffff",
+                  border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
+                  padding: "12px 24px",
+                  borderRadius: "4px",
+                  fontWeight: 600,
+                  fontSize: "0.875rem",
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  transition: "all 0.2s ease",
+                }}>TAKE A QUIZ</Link>
               </div>
 
             </div>
@@ -652,7 +732,7 @@ const Home = () => {
         <section className="algorithm-buttons" data-aos="fade-up" data-aos-delay="200">
           <h2 className='buttons-heading'>Resources</h2>
 
-          {features.map((feature, index) => (
+          {featuredResources.map((feature, index) => (
             <Link
               key={index}
               to={feature.path}
@@ -660,56 +740,83 @@ const Home = () => {
               data-aos="fade-up"
               data-aos-delay={`${300 + index * 100}`}
               style={{
-                background: isLight
-                  ? "linear-gradient(135deg, #f9fafb 60%, #dbeafe 100%)"
-                  : "linear-gradient(135deg, #23283e 60%, #171725 100%)",
-                border: isLight
-                  ? "1px solid rgba(15,23,42,.08)"
-                  : "1px solid rgba(180, 184, 255, 0.14)",
-                borderRadius: 20,
-                boxShadow: isLight
-                  ? "0 5px 20px -8px rgba(30, 64, 175, 0.10)"
-                  : "0 5px 20px -8px rgba(124, 131, 255, 0.16)",
-                color: isLight ? "#1e293b" : "#e0e7ff",
-                transition: "all 0.22s",
-                marginBottom: "1.2rem",
+                background: isLight ? "#ffffff" : "#0a0a0a",
+                border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
+                borderRadius: 12,
+                boxShadow: T.shadow,
+                color: isLight ? "#000000" : "#ffffff",
+                transition: "all 0.2s ease",
+                marginBottom: "1rem",
                 position: "relative",
+                padding: "1.5rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "1rem",
+                textDecoration: "none",
+                fontFamily: "'Inter', system-ui, sans-serif",
               }}
             >
               <div className='button-icon' style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                width: "48px",
+                height: "48px",
+                borderRadius: "8px",
+                background: isLight ? "#f5f5f5" : "#1a1a1a",
+                border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
               }}>
                 <feature.icon
-                  size={35}
-                  color={isLight ? "#1e293b" : "#ffaaff"}
-                  style={
-                    !isLight
-                      ? { filter: "drop-shadow(0 0 8px #a78bfa88)" }
-                      : {}
-                  }
+                  size={24}
+                  color={isLight ? "#000000" : "#ffffff"}
                 />
               </div>
-              <span
-                className="feature-title"
-                style={{
-                  fontWeight: 600,
-                  fontSize: "1.10rem",
-                  color: isLight ? "#1e293b" : "#e0e7ff",
-                  textShadow: !isLight ? "0 2px 12px #4f46e533, 0 1px 0 #000" : "none",
-                  marginTop: ".6rem",
-                  letterSpacing: ".1px",
-                }}
-              >
-                {feature.title}
-              </span>
+              <div style={{ flex: 1 }}>
+                <span
+                  className="feature-title"
+                  style={{
+                    fontWeight: 600,
+                    fontSize: "1rem",
+                    color: T.textPrimary,
+                    letterSpacing: "0px",
+                    display: "block",
+                    marginBottom: "0.25rem",
+                    fontFamily: "'Inter', system-ui, sans-serif",
+                  }}
+                >
+                  {feature.title}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.875rem",
+                    color: T.textSecondary,
+                    display: "block",
+                    fontFamily: "'Inter', system-ui, sans-serif",
+                  }}
+                >
+                  {feature.description}
+                </span>
+              </div>
             </Link>
           ))}
+
+          <Link
+            to="/learn"
+            className="resources-more-link"
+            data-aos="fade-up"
+            data-aos-delay="550"
+          >
+            <span>More Resources</span>
+            <ArrowRight size={16} />
+          </Link>
         </section>
 
-        <div className='vertical-steps-container' data-aos="fade-up" data-aos-delay="200">
-          <h2 className='steps-heading !w-[95%] !mx-auto !md:w-[90%]'>Learning paths</h2>
+        <div
+          className='vertical-steps-container'
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <h2 className='steps-heading'>Learning paths</h2>
           {learningPaths.map((path, index) => (
             <div key={index} className={`step-button step-${index + 1}`} data-aos="fade-up" data-aos-delay={`${300 + index * 150}`}>
               <div className='step-content-wrapper'>
@@ -727,28 +834,21 @@ const Home = () => {
         </div>
         {/* Enhanced Activity Feed */}
         <div
+          className="activity-feed"
           style={{
-            backgroundColor: isLight ? "#ffffff" : "#0f172a",
+            backgroundColor: isLight ? "#ffffff" : "#0a0a0a",
             padding: "1.5rem",
-            borderRadius: "20px",
-            boxShadow: isLight
-              ? "0 10px 30px -10px rgba(0,0,0,0.1)"
-              : "0 10px 30px -10px rgba(0,0,0,0.5)",
+            borderRadius: "12px",
+            boxShadow: T.shadow,
+            border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
             transition: "all 0.3s ease",
           }}
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          <h3
-            style={{
-              color: isLight ? "#1f2937" : "#f9fafb",
-              fontWeight: 600,
-              fontSize: "1.25rem",
-              marginBottom: "1.5rem",
-            }}
-          >
+          <h2 className='activity-title'>
             Recent Updates
-          </h3>
+          </h2>
 
           <div className="!mx-auto w-[99%] flex flex-col gap-2">
             {recentUpdates.map((update, index) => (
@@ -758,112 +858,69 @@ const Home = () => {
                   display: "flex",
                   gap: "1rem",
                   alignItems: "flex-start",
-                  backgroundColor: isLight ? "#f3f4f6" : "#1e293b",
-                  border: `1px solid ${isLight ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.1)"}`,
+                  backgroundColor: isLight ? "#fafafa" : "#000000",
+                  border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
                   padding: "1rem",
-                  borderRadius: "16px",
-                  transition: "all 0.3s ease",
+                  borderRadius: "8px",
+                  transition: "all 0.2s ease",
                   cursor: "pointer",
-                  boxShadow: isLight
-                    ? "0 5px 15px -5px rgba(0,0,0,0.05)"
-                    : "0 5px 15px -5px rgba(0,0,0,0.3)",
                 }}
                 data-aos="fade-up"
                 data-aos-delay={`${300 + index * 100}`}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.02)";
-                  e.currentTarget.style.boxShadow = isLight
-                    ? "0 8px 25px -5px rgba(0,0,0,0.1)"
-                    : "0 8px 25px -5px rgba(0,0,0,0.5)";
+                  e.currentTarget.style.background = isLight ? "#f5f5f5" : "#1a1a1a";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = isLight
-                    ? "0 5px 15px -5px rgba(0,0,0,0.05)"
-                    : "0 5px 15px -5px rgba(0,0,0,0.3)";
+                  e.currentTarget.style.background = isLight ? "#fafafa" : "#000000";
                 }}
               >
-                {/* Icon with glow */}
+                {/* Icon */}
                 <div
                   style={{
                     width: "40px",
                     height: "40px",
-                    borderRadius: "50%",
+                    borderRadius: "8px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color:
-                      update.type === "new"
-                        ? isLight
-                          ? "#10b981"
-                          : "#6ee7b7"
-                        : update.type === "update"
-                          ? isLight
-                            ? "#3b82f6"
-                            : "#60a5fa"
-                          : update.type === "feature"
-                            ? isLight
-                              ? "#f59e0b"
-                              : "#facc15"
-                            : isLight
-                              ? "#8b5cf6"
-                              : "#c4b5fd",
-                    backgroundColor:
-                      update.type === "new"
-                        ? isLight
-                          ? "#d1fae5"
-                          : "rgba(16,185,129,0.2)"
-                        : update.type === "update"
-                          ? isLight
-                            ? "#dbeafe"
-                            : "rgba(59,130,246,0.2)"
-                          : update.type === "feature"
-                            ? isLight
-                              ? "#fef3c7"
-                              : "rgba(245,158,11,0.2)"
-                            : isLight
-                              ? "#ede9fe"
-                              : "rgba(139,92,246,0.2)",
-                    boxShadow: `${update.type === "new"
-                      ? "0 0 10px rgba(16,185,129,0.6)"
-                      : update.type === "update"
-                        ? "0 0 10px rgba(59,130,246,0.6)"
-                        : update.type === "feature"
-                          ? "0 0 10px rgba(245,158,11,0.6)"
-                          : "0 0 10px rgba(139,92,246,0.6)"
-                      }`,
-                    transition: "all 0.3s ease",
+                    color: isLight ? "#000000" : "#ffffff",
+                    backgroundColor: isLight ? "#f5f5f5" : "#1a1a1a",
+                    border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
+                    flexShrink: 0,
                   }}
                 >
-                  {update.type === "new" && <Sparkles size={16} />}
-                  {update.type === "update" && <Code size={16} />}
-                  {update.type === "feature" && <Star size={16} />}
-                  {update.type === "community" && <Users size={16} />}
+                  {update.type === "new" && <Sparkles size={18} />}
+                  {update.type === "update" && <Code size={18} />}
+                  {update.type === "feature" && <Star size={18} />}
+                  {update.type === "community" && <Users size={18} />}
                 </div>
 
                 {/* Content */}
                 <div style={{ flex: 1 }} className="!mx-auto">
                   <h4
                     style={{
-                      color: isLight ? "#1f2937" : "#f9fafb",
+                      color: T.textPrimary,
                       fontWeight: 500,
                       margin: 0,
+                      fontFamily: "'Inter', system-ui, sans-serif",
+                      fontSize: "0.95rem",
                     }}
                   >
                     {update.title}
                   </h4>
                   <p
                     style={{
-                      color: isLight ? "#4b5563" : "#d1d5db",
+                      color: T.textSecondary,
                       marginTop: "0.25rem",
                       fontSize: "0.875rem",
+                      fontFamily: "'Inter', system-ui, sans-serif",
                     }}
                   >
                     {update.description}
                   </p>
                   <span
                     style={{
-                      color: isLight ? "#6b7280" : "#9ca3af",
+                      color: T.subText,
                       fontSize: "0.75rem",
                       marginTop: "0.25rem",
                       display: "block",
