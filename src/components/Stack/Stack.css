@@ -62,8 +62,8 @@
   font-weight: 500;      
 }
 .stack-item.top {
-  outline: 2px solid #7c3aed;
-  box-shadow: 0 0 12px rgba(124,58,237,.4);
+  outline: 2px solid #000000;
+  box-shadow: 0 0 12px rgba(0,0,0,.3);
   background: #2a2a2a;   
   color: #fff;          
 }
@@ -79,7 +79,7 @@
 
 .legend { display: flex; align-items: center; gap: 1rem; opacity: .8; }
 .legend-box { width: 14px; height: 14px; border-radius: 3px; display: inline-block; border: 1px solid #666; }
-.legend-box.top { outline: 2px solid #7c3aed; box-shadow: 0 0 8px rgba(124,58,237,.35); }
+.legend-box.top { outline: 2px solid #000000; box-shadow: 0 0 8px rgba(0,0,0,.2); }
 .legend-box.normal { background: #1f1f1f; }
 
 /* ---- Info Panel ---- */
@@ -135,10 +135,10 @@
 
 /* Highlighted when Peek is clicked */
 .stack-item.peek {
-  background: linear-gradient(135deg, #4f46e5, #9333ea); /* nice purple/indigo gradient */
+  background: #000000;
   color: #fff;
   font-weight: 600;
-  box-shadow: 0 0 14px rgba(147, 51, 234, 0.6);
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.4);
   transform: scale(1.05);
   transition: all 0.3s ease;
 }
