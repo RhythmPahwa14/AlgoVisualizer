@@ -11,31 +11,18 @@ const getSystemTheme = () => {
   return 'light';
 };
 
-// Always use system theme - no localStorage persistence
+// Always use light theme
 const getInitialTheme = () => {
-  if (typeof window === 'undefined') return 'light';
-  return getSystemTheme();
+  return 'light';
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => getInitialTheme());
+  const [theme, setTheme] = useState('light');
 
-  // Apply theme and listen to system theme changes
+  // Always force light theme
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    
-    // Listen for system theme changes
-    if (typeof window !== 'undefined' && window.matchMedia) {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const handleChange = (e) => {
-        const newTheme = e.matches ? 'dark' : 'light';
-        setTheme(newTheme);
-      };
-      
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
-    }
-  }, [theme]);
+    document.documentElement.setAttribute("data-theme", "light");
+  }, []);
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
