@@ -448,10 +448,9 @@ const Navbar = () => {
           <div className="magic-line" style={lineStyle}></div>
         </div>
 
-        {/* Right side controls: UserDropdown & ThemeToggle */}
+        {/* Right side controls: UserDropdown only */}
         <div className="sidebar-footer hidden md:flex">
           <UserDropdown />
-          <ThemeToggle />
         </div>
       </div>
 
