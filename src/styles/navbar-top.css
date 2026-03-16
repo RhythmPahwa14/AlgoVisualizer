@@ -2,23 +2,24 @@
 
 /* CSS Variables for theming (add if not defined elsewhere) */
 :root {
-  --primary-color: var(--user-accent-primary);
-  --primary-color-alpha: rgba(37, 117, 252, 0.1);
+  --primary-color: #000000;
+  --primary-color-alpha: rgba(0, 0, 0, 0.08);
   --text-color: #1a1a1a;
   --card-bg: rgba(255, 255, 255, 0.95);
   --card-border: rgba(0, 0, 0, 0.1);
-  --hover-bg: rgba(37, 117, 252, 0.05);
+  --hover-bg: rgba(0, 0, 0, 0.05);
   --border-color: rgba(0, 0, 0, 0.08);
   --subtext-color: #666;
 }
 
 [data-theme="dark"] {
-  --text-color: #ffffff;
-  --card-bg: rgba(26, 26, 26, 0.95);
-  --card-border: rgba(255, 255, 255, 0.1);
-  --hover-bg: rgba(37, 117, 252, 0.1);
-  --border-color: rgba(255, 255, 255, 0.08);
-  --subtext-color: #aaa;
+  /* Dark mode forced to light values */
+  --text-color: #000000;
+  --card-bg: rgba(255, 255, 255, 0.98);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --hover-bg: rgba(0, 0, 0, 0.04);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --subtext-color: #666666;
 }
 
 /* Mobile menu animations */
@@ -135,12 +136,12 @@ body {
 }
 
 .logo-text span {
-  color: var(--primary-color);
+  color: #000000;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--primary-color) 0%, #5b8fff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: #000000;
+  background-clip: initial;
 }
 
 /* Desktop Navigation Menu */
