@@ -6,7 +6,7 @@
   --primary-purple-light: #ba68c8;
   --primary-purple-dark: #7b1fa2;
   --secondary-blue: #2196f3;
-  --accent-color: #58a6ff;
+  --accent-color: #000000;
   --bg-dark: #0d1117;
   --bg-secondary: #21262d;
   --bg-tertiary: #30363d;
@@ -718,13 +718,13 @@
 
 .algorithm-card:hover {
   transform: translateY(-6px) scale(1.02);
-  border-color: var(--accent-color, #3b82f6);
-  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.25);
+  border-color: var(--accent-color, #000000);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
 }
 
 /* Icon in Card */
 .algorithm-card svg {
-  color: var(--accent-color, #3b82f6);
+  color: var(--accent-color, #000000);
   margin-bottom: 1rem;
   width: 40px;
   height: 40px;
