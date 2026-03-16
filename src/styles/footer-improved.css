@@ -6,16 +6,16 @@
 
 .footer-container {
   position: relative;
-  background: var(--card-bg, #21262d); /* Dark bg with high contrast */
-  color: var(--text-primary, #e6edf3); /* Light text for readability (contrast >7:1) */
+  background: #ffffff;
+  color: #000000;
   padding: 60px 0 20px;
-  border-top: 1px solid var(--footer-border, rgba(255,255,255,0.06));
+  border-top: 1px solid #e5e5e5;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
   z-index: 1;
-  will-change: opacity, transform; /* Performance optimization for animations */
-  width: 100%; /* Ensure full width */
+  will-change: opacity, transform;
+  width: 100%;
 }
 
 /* Theme-aware border fallback for light/dark modes */
@@ -24,7 +24,7 @@
 }
 
 [data-theme="dark"] .footer-container {
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid #e5e5e5;
 }
 
 .footer-container.visible {
@@ -51,7 +51,7 @@
 }
 
 .footer-wave .shape-fill {
-  fill: var(--card-bg, #21262d); 
+  fill: #ffffff;
   transition: fill 0.3s ease;
 }
 
@@ -129,30 +129,25 @@
 
 .logo-icon {
   font-size: 28px;
-  color: var(--user-accent-primary);
+  color: #000000;
   margin-right: 12px;
-  filter: drop-shadow(0 0 8px rgba(88, 166, 255, 0.3)); /* Enhanced glow for dark theme */
-  transition: filter 0.3s ease, transform 0.3s ease;
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .logo-wrapper:hover .logo-icon {
-  filter: drop-shadow(0 0 12px rgba(88, 166, 255, 0.5));
-  transform: rotate(5deg); /* Playful rotation on hover */
+  transform: rotate(5deg);
 }
 
 .logo-text {
   font-size: 24px;
   font-weight: 700;
-  background: linear-gradient(90deg, var(--text-primary, #e6edf3), var(--accent-color, #58a6ff));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: var(--user-accent-primary); /* fallback if gradient doesn't render */
-  -webkit-text-fill-color: transparent;
+  background: none;
+  color: #000000;
+  -webkit-text-fill-color: #000000;
   letter-spacing: -0.5px;
-  transition: background 0.3s ease; /* Animate gradient shift */
-  flex: 1; /* Allow text to take available space */
-  white-space: nowrap; /* Prevent text wrap */
+  flex: 1;
+  white-space: nowrap;
 }
 
 /* .logo-wrapper:hover .logo-text {
@@ -377,7 +372,7 @@
 }
 
 .para-text a:hover {
-  color: var(--accent-hover, #2563eb);
+  color: var(--accent-hover, #333333);
   text-decoration: underline;
   transform: translateX(2px); /* Subtle slide on hover */
 }
@@ -452,7 +447,7 @@
 }
 
 .footer-links a:focus {
-  outline: 2px solid var(--accent-primary, #58a6ff);
+  outline: 2px solid var(--accent-primary, #000000);
   outline-offset: 2px; /* Accessibility focus */
 }
 
@@ -515,7 +510,7 @@ align-items: center;
 
 .newsletter-input:focus + .input-icon,
 .newsletter-input:valid + .input-icon {
-  color: var(--accent-primary, #58a6ff);
+  color: var(--accent-primary, #000000);
   transform: translateY(-50%) scale(1.1); /* Icon bounce on focus */
 }
 
