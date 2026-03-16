@@ -172,14 +172,14 @@
 
 .queue-item.rear {
   outline: 2px solid var(--info);
-  box-shadow: 0 0 12px rgba(88, 166, 255, 0.4);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
 }
 
 .queue-item.peek {
-  background: #9333ea;
+  background: #000000;
   color: white;
   transform: scale(1.08);
-  box-shadow: 0 0 16px rgba(147, 51, 234, 0.5);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
 }
 
 .queue-empty {
@@ -251,7 +251,7 @@
 }
 
 .legend-box.peek {
-  background: #9333ea;
+  background: #000000;
 }
 
 /* Documentation Section */
