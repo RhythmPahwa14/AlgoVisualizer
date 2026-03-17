@@ -20,29 +20,29 @@
     --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     
     /* Accent Colors */
-    --accent-primary: #0969da;
-    --accent-hover: #0550ae;
-    --accent-active: #0a58ca;
-    --accent-light: rgba(9, 105, 218, 0.1);
+    --accent-primary: #000000;
+    --accent-hover: #333333;
+    --accent-active: #000000;
+    --accent-light: rgba(0, 0, 0, 0.08);
     
     /* Button Colors */
-    --button-primary-bg: #0969da;
+    --button-primary-bg: #000000;
     --button-primary-text: #ffffff;
-    --button-primary-hover: #0550ae;
-    --button-secondary-bg: rgba(9, 105, 218, 0.1);
-    --button-secondary-text: #0969da;
-    --button-secondary-hover: rgba(9, 105, 218, 0.2);
+    --button-primary-hover: #333333;
+    --button-secondary-bg: rgba(0, 0, 0, 0.08);
+    --button-secondary-text: #000000;
+    --button-secondary-hover: rgba(0, 0, 0, 0.15);
     
     /* Border Colors */
     --border-primary: #d0d7de;
     --border-secondary: #e5e7ea;
-    --border-accent: #0969da;
+    --border-accent: #000000;
     
     /* Status Colors */
     --success: #3fb950;
     --warning: #d29922;
     --error: #f85149;
-    --info: #58a6ff;
+    --info: #000000;
     
     /* Sidebar Colors */
     --sidebar-bg: #ffffff;
@@ -78,50 +78,44 @@
 
 /* Dark Theme */
 [data-theme="dark"] {
-    /* Primary Colors */
-    --primary-bg: #0a0a1a;
-    --secondary-bg: rgba(26, 26, 46, 0.95);
-    --card-bg: #1a1a1a;
-    --surface-bg: #000000;
+    /* Forced to match light theme — dark mode disabled */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f6f8fa;
+    --card-bg: #ffffff;
+    --surface-bg: #ffffff;
     
-    /* Text Colors */
-    --text-primary: #e6edf3;
-    --text-secondary: rgba(230, 237, 243, 0.8);
-    --text-muted: rgba(230, 237, 243, 0.6);
-    --text-inverse: #0a0a1a;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-muted: #666666;
+    --text-inverse: #ffffff;
     
-    /* Accent Colors */
-    --accent-primary: #58a6ff;
-    --accent-hover: #79c0ff;
-    --accent-active: #4793e5;
-    --accent-light: rgba(88, 166, 255, 0.1);
+    --accent-primary: #000000;
+    --accent-hover: #333333;
+    --accent-active: #000000;
+    --accent-light: rgba(0, 0, 0, 0.08);
     
-    /* Button Colors */
-    --button-primary-bg: #58a6ff;
-    --button-primary-text: #0a0a1a;
-    --button-primary-hover: #79c0ff;
-    --button-secondary-bg: rgba(88, 166, 255, 0.1);
-    --button-secondary-text: #58a6ff;
-    --button-secondary-hover: rgba(88, 166, 255, 0.2);
+    --button-primary-bg: #000000;
+    --button-primary-text: #ffffff;
+    --button-primary-hover: #333333;
+    --button-secondary-bg: rgba(0, 0, 0, 0.06);
+    --button-secondary-text: #000000;
+    --button-secondary-hover: rgba(0, 0, 0, 0.1);
     
-    /* Border Colors */
-    --border-primary: rgba(240, 246, 252, 0.1);
-    --border-secondary: rgba(240, 246, 252, 0.05);
-    --border-accent: #58a6ff;
+    --border-primary: #e5e5e5;
+    --border-secondary: #f0f0f0;
+    --border-accent: #000000;
     
-    /* Sidebar Colors */
-    --sidebar-bg: linear-gradient(180deg, #1a1b23 0%, #16171d 100%);
-    --sidebar-border: rgba(240, 246, 252, 0.1);
-    --sidebar-text: #e6edf3;
-    --sidebar-text-secondary: rgba(230, 237, 243, 0.7);
-    --sidebar-hover: rgba(240, 246, 252, 0.05);
-    --sidebar-active: rgba(88, 166, 255, 0.15);
+    --sidebar-bg: #ffffff;
+    --sidebar-border: #e5e5e5;
+    --sidebar-text: #000000;
+    --sidebar-text-secondary: #666666;
+    --sidebar-hover: #f5f5f5;
+    --sidebar-active: rgba(0, 0, 0, 0.06);
     
-    /* Shadows for dark theme */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
-    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.25);
-    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.35);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* Light Theme (explicit for backward compatibility) */
@@ -139,23 +133,23 @@
     --text-inverse: #ffffff;
     
     /* Accent Colors */
-    --accent-primary: #0969da;
-    --accent-hover: #0550ae;
-    --accent-active: #0a58ca;
-    --accent-light: rgba(9, 105, 218, 0.1);
+    --accent-primary: #000000;
+    --accent-hover: #333333;
+    --accent-active: #000000;
+    --accent-light: rgba(0, 0, 0, 0.08);
     
     /* Button Colors */
-    --button-primary-bg: #0969da;
+    --button-primary-bg: #000000;
     --button-primary-text: #ffffff;
-    --button-primary-hover: #0550ae;
-    --button-secondary-bg: rgba(9, 105, 218, 0.1);
-    --button-secondary-text: #0969da;
-    --button-secondary-hover: rgba(9, 105, 218, 0.2);
+    --button-primary-hover: #333333;
+    --button-secondary-bg: rgba(0, 0, 0, 0.08);
+    --button-secondary-text: #000000;
+    --button-secondary-hover: rgba(0, 0, 0, 0.15);
     
     /* Border Colors */
     --border-primary: #d0d7de;
     --border-secondary: #e5e7ea;
-    --border-accent: #0969da;
+    --border-accent: #000000;
     
     /* Sidebar Colors */
     --sidebar-bg: #ffffff;
@@ -199,4 +193,22 @@
     --header-bg: var(--secondary-bg);
     --navbar-bg: var(--secondary-bg);
     --mega-bg: var(--card-bg);
+
+    /* --theme-* variables used by global-theme.css pages */
+    --theme-bg: #ffffff;
+    --theme-card-bg: #ffffff;
+    --theme-text-primary: #000000;
+    --theme-text-secondary: #444444;
+    --theme-text-muted: #888888;
+    --theme-border: #e5e5e5;
+    --theme-input-bg: #ffffff;
+    --theme-input-border: #e5e5e5;
+    --theme-input-text: #000000;
+    --theme-accent: #000000;
+    --theme-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --theme-button-bg: #000000;
+    --theme-button-text: #ffffff;
+
+    /* Ensure font is always Inter */
+    --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
