@@ -5,7 +5,7 @@
 }
 
 .page-header h1 {
-  color: #0077cc;
+  color: #000000;
   margin-bottom: 0.5rem;
 }
 
@@ -50,7 +50,7 @@
 .set-btn { background: #28a745; }
 .clear-btn { background: #dc3545; }
 .toggle-btn { background: #ffc107; color: #000; }
-.check-btn { background: #007bff; }
+.check-btn { background: #000000; }
 .reset-btn { background: #6c757d; }
 
 .binary-display {
@@ -99,7 +99,7 @@
   width: 100%;
   text-align: left;
   font-weight: bold;
-  background: #0077cc;
+  background: #000000;
   color: white;
   padding: 0.5rem;
   border-radius: 6px;
