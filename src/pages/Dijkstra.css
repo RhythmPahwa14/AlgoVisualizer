@@ -20,7 +20,7 @@
 }
 
 .controls button {
-  background-color: #2563eb;
+  background-color: #000000;
   color: white;
   border: none;
   padding: 8px 15px;
@@ -30,7 +30,7 @@
 }
 
 .controls button:hover {
-  background-color: #1e40af;
+  background-color: #333333;
 }
 
 .graph-boxes {
@@ -42,11 +42,11 @@
 }
 
 .graph-node {
-  border: 2px solid #2563eb;
+  border: 2px solid #000000;
   border-radius: 10px;
   padding: 15px;
   width: 100px;
-  background: #e0e7ff;
+  background: #f5f5f5;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
