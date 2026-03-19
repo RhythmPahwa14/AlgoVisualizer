@@ -21,7 +21,7 @@
 }
 
 .controls button {
-  background-color: #2563eb;
+  background-color: #000000;
   color: white;
   border: none;
   padding: 8px 15px;
@@ -31,7 +31,7 @@
 }
 
 .controls button:hover {
-  background-color: #1e40af;
+  background-color: #333333;
 }
 
 .knapsack-table {
