@@ -9,11 +9,11 @@
   --ce-text-secondary: #cbd5e1;
   --ce-border: #334155;
   --ce-code-bg: #0f172a;
-  --ce-line-num: #60a5fa;
+  --ce-line-num: #94a3b8;
   --ce-btn-bg: #334155;
   --ce-btn-hover: #475569;
   --ce-btn-disabled: #1e293b;
-  --ce-accent: #0ea5e9;
+  --ce-accent: #000000;
   --ce-accent-text: white;
   --ce-code-text: #94a3b8;
 }
@@ -30,7 +30,7 @@
   --ce-btn-bg: #e2e8f0;
   --ce-btn-hover: #cbd5e1;
   --ce-btn-disabled: #f1f5f9;
-  --ce-accent: #0284c7;
+  --ce-accent: #000000;
   --ce-accent-text: white;
   --ce-code-text: #334155;
 }
