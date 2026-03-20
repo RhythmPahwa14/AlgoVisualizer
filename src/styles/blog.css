@@ -379,14 +379,14 @@
           left: 0;
           right: 0;
           height: 4px;
-          background: var(--theme-accent-gradient, linear-gradient(90deg, #667eea 0%, #764ba2 100%));
+          background: var(--theme-accent-gradient, linear-gradient(90deg, #000000 0%, #333333 100%));
           opacity: 0;
           transition: opacity 0.3s ease;
         }
 
         .blog-card:hover {
           transform: translateY(-8px);
-          border-color: var(--theme-accent, #667eea);
+          border-color: var(--theme-accent, #000000);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--theme-accent, rgba(102, 126, 234, 0.1));
         }
 
@@ -405,7 +405,7 @@
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          background: var(--theme-accent-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+          background: var(--theme-accent-gradient, linear-gradient(135deg, #000000 0%, #333333 100%));
           color: var(--theme-btn-primary-text, white);
           padding: 0.5rem 1rem;
           border-radius: 20px;
@@ -436,7 +436,7 @@
         }
 
         .blog-card:hover .blog-card-title {
-          background: var(--theme-accent-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+          background: var(--theme-accent-gradient, linear-gradient(135deg, #000000 0%, #333333 100%));
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -504,7 +504,7 @@
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          background: var(--theme-accent-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+          background: var(--theme-accent-gradient, linear-gradient(135deg, #000000 0%, #333333 100%));
           color: var(--theme-btn-primary-text, white);
           border: none;
           padding: 0.75rem 1.25rem;
@@ -719,8 +719,8 @@
 
 .blog-card:hover {
   transform: translateY(-6px);
-  border-color: #667eea;
-  box-shadow: 0 12px 25px rgba(102, 126, 234, 0.15);
+  border-color: #000000;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
 }
 
 .blog-card-title {
@@ -739,7 +739,7 @@
 }
 
 .blog-card-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #000000;
   color: #fff;
   border: none;
   padding: 0.6rem 1rem;
@@ -751,7 +751,7 @@
 }
 
 .blog-card-btn:hover {
-  background: linear-gradient(135deg, #5b6ff3 0%, #8655b9 100%);
+  background: #333333;
   transform: translateY(-2px);
 }
 
@@ -780,15 +780,15 @@
 .blog-tag:hover,
 .blog-category:hover,
 .blog-filter-btn:hover {
-  background: #667eea; 
+  background: #000000;
   color: #fff;
-  border-color: #667eea;
+  border-color: #000000;
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .blog-filter-btn.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #000000;
   color: #fff;
   border: none;
 }
@@ -848,7 +848,7 @@
 }
 
 [data-theme="dark"] .blog-card-btn {
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  background: #000000;
   color: #fff;
   font-weight: 600;
   padding: 0.6rem 1.3rem;
@@ -863,15 +863,15 @@
 }
 
 [data-theme="dark"] .blog-card-btn:hover {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  background: #333333;
   transform: translateY(-2px);
 }
 
 [data-theme="dark"] .blog-card-category {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #93c5fd;
-  background: rgba(59, 130, 246, 0.15);
+  color: #e5e7eb;
+  background: rgba(255, 255, 255, 0.1);
   padding: 0.3rem 0.8rem;
   border-radius: 12px;
   display: inline-block;
@@ -880,5 +880,5 @@
 }
 
 [data-theme="dark"] .blog-card-category:hover {
-  background: rgba(59, 130, 246, 0.3);
+  background: rgba(255, 255, 255, 0.2);
 }
