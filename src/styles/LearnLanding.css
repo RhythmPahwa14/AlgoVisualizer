@@ -12,7 +12,7 @@
   --border-soft: #1a1c22;
   --accent: #8bb0ff;
   /* links / CTAs */
-  --accent-2: #6366f1;
+  --accent-2: #333333;
   /* hovers */
   --shadow: 0 16px 40px rgba(0, 0, 0, .45);
 
@@ -29,8 +29,8 @@
   --card-2: #f1f5f9;
   --border: #e2e8f0;
   --border-soft: #eef2f7;
-  --accent: #2563eb;
-  --accent-2: #1d4ed8;
+  --accent: #000000;
+  --accent-2: #333333;
   --shadow: 0 10px 28px rgba(2, 6, 23, .08);
 }
 
@@ -43,7 +43,7 @@
 }
 
 .learn-page:not(.light) .learn-card h3 {
-  color: #60a5fa;
+  color: #e5e7eb;
 }
 
 .learn-page:not(.light) .learn-card li a {
@@ -54,8 +54,8 @@
 
 .learn-page:not(.light) .learn-card:hover,
 .learn-page:not(.light) .learn-card:focus-within {
-  border-color: #60a5fa;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(59, 130, 246, 0.2);
+  border-color: #000000;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -73,10 +73,9 @@
   font-size: 2.4rem;
   margin: 0 0 10px;
   letter-spacing: .5px;
-  color: #2563eb;
+  color: #000000;
   font-weight: 900;
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-  text-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
   transition: color .2s;
   text-align: center;
 }
@@ -239,8 +238,8 @@
 .learn-card:hover,
 .learn-card:focus-within {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
-  border-color: #3b82f6;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.05);
+  border-color: #000000;
   cursor: pointer;
 }
 
@@ -263,7 +262,7 @@
 .learn-card h3 {
   margin: 0 0 16px;
   font-size: 1.4rem;
-  color: #1e40af;
+  color: #000000;
   font-weight: 700;
   letter-spacing: -0.025em;
   z-index: 1;
@@ -302,10 +301,10 @@
 .learn-card li a:hover,
 .learn-card li a:focus {
   color: white;
-  background: #2563eb;
-  border-color: #2563eb;
+  background: #000000;
+  border-color: #000000;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .learn-card li a::after {
