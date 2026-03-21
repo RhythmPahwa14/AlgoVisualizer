@@ -80,12 +80,7 @@
   padding: 2rem 0;
   text-align: center;
   margin: 3rem;
-  background: linear-gradient(135deg, var(--accent-primary), #ec4899, var(--info));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 300% 300%;
-  animation: gradient-shift 4s ease-in-out infinite;
+  color: #000000;
 }
 
 @keyframes gradient-shift {
@@ -111,12 +106,7 @@
   font-size: 4.4rem;
   font-weight: 800;
   margin-bottom: 2.2rem;
-  background: linear-gradient(135deg, var(--accent-primary), #ec4899, var(--info), var(--success));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 400% 400%;
-  animation: rainbow-gradient 6s ease-in-out infinite;
+  color: #000000;
   line-height: 1.1;
   padding: 1.2rem 0;
 }
@@ -501,7 +491,7 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(180deg, var(--accent-primary), #ec4899);
+  background: #000000;
   border-radius: 3px;
   opacity: 0;
   transition: opacity 0.3s;
@@ -524,13 +514,13 @@
   justify-content: center;
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, var(--accent-primary), #7c3aed);
+  background: #000000;
   color: white;
   border-radius: 50%;
   font-size: 1.7rem;
   font-weight: 700;
   flex-shrink: 0;
-  box-shadow: 0 10px 23px rgba(99,102,241,0.22);
+  box-shadow: 0 10px 23px rgba(0,0,0,0.2);
 }
 
 .step-content {
@@ -664,10 +654,7 @@
   font-size: 3.3rem;
   font-weight: 700;
   margin-bottom: 1.8rem;
-  background: linear-gradient(135deg, #6366f1, #ec4899);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #000000;
   padding-bottom: 0.7rem;
 }
 
@@ -724,15 +711,15 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-primary), #7c3aed);
+  background: #000000;
   color: var(--button-primary-text);
   border-color: transparent;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #5b21b6, var(--accent-primary));
+  background: #333333;
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 14px 32px rgba(99,102,241,0.26);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.2);
 }
 
 .btn-secondary {
@@ -742,11 +729,11 @@
 }
 
 .btn-secondary:hover {
-  background: linear-gradient(135deg, #ec4899, #f472b6);
+  background: #333333;
   color: white;
-  border-color: #ec4899;
+  border-color: #000000;
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 14px 32px rgba(236,72,153,0.22);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.15);
 }
 
 .btn-large {
