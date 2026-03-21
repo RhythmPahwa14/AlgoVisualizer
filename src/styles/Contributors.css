@@ -104,11 +104,8 @@
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #6366f1, #ec4899, #0ea5e9);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 3s ease-in-out infinite;
+  color: #000000;
+  -webkit-text-fill-color: unset;
 }
 
 .contributors-subtitle {
@@ -446,14 +443,14 @@
 }
 
 .btn-primary.enhanced-btn {
-  background: linear-gradient(135deg, var(--primary-color), #7c3aed);
+  background: #000000;
   color: var(--btn-text);
   border: 1px solid transparent;
 }
 
 .btn-primary.enhanced-btn:hover {
-  background: linear-gradient(135deg, #5b21b6, var(--primary-color));
-  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+  background: #333333;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .btn-secondary.enhanced-btn {
@@ -463,10 +460,10 @@
 }
 
 .btn-secondary.enhanced-btn:hover {
-  background: linear-gradient(135deg, #ec4899, #f472b6);
+  background: #333333;
   color: white;
-  border-color: #ec4899;
-  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+  border-color: #000000;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* ------------------------
@@ -538,12 +535,8 @@
 .contribute-cta h3 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--text-color);
+  color: #000000;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #6366f1, #ec4899);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .contribute-cta p {
@@ -741,8 +734,8 @@
 .loading-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid rgba(99, 102, 241, 0.2);
-  border-top: 3px solid #6366f1;
+  border: 3px solid rgba(0, 0, 0, 0.15);
+  border-top: 3px solid #000000;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;

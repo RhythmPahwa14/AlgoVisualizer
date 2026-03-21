@@ -2,44 +2,44 @@
    Light/Dark Mode Variables
 ========================= */
 :root {
-    --btn-bg: #58a6ff;
+    --btn-bg: #000000;
     --btn-text: #0d1117;
-    --btn-hover-bg: #79c0ff;
+    --btn-hover-bg: #333333;
     --panel-bg: #ffffff;
     --panel-text: #2c3e50;
-    --panel-border: #58a6ff;
+    --panel-border: #000000;
     --select-bg: #ffffff;
     --select-text: #2c3e50;
     --info-bg: #f8f9fa;
-    --info-border: #58a6ff;
+    --info-border: #000000;
     --info-text: #495057;
 }
 
 [data-theme="light"] {
-    --btn-bg: #58a6ff;
+    --btn-bg: #000000;
     --btn-text: #0d1117;
-    --btn-hover-bg: #79c0ff;
+    --btn-hover-bg: #333333;
     --panel-bg: #ffffff;
     --panel-text: #2c3e50;
-    --panel-border: #58a6ff;
+    --panel-border: #000000;
     --select-bg: #ffffff;
     --select-text: #2c3e50;
     --info-bg: #f8f9fa;
-    --info-border: #58a6ff;
+    --info-border: #000000;
     --info-text: #495057;
 }
 
 [data-theme="dark"] {
-    --btn-bg: #58a6ff;
+    --btn-bg: #000000;
     --btn-text: #0d1117;
-    --btn-hover-bg: #79c0ff;
+    --btn-hover-bg: #333333;
     --panel-bg: #21262d;
     --panel-text: #e6edf3;
-    --panel-border: #58a6ff;
+    --panel-border: #000000;
     --select-bg: #21262d;
     --select-text: #e6edf3;
     --info-bg: #21262d;
-    --info-border: #58a6ff;
+    --info-border: #000000;
     --info-text: #8b949e;
 }
 
