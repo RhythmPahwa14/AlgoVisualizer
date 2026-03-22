@@ -15,8 +15,8 @@ body,
     font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
-    background: #0d1117 !important;
-    color: #e6edf3 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
     transition: background 0.25s ease, color 0.25s ease;
 }
 
@@ -48,39 +48,39 @@ select {
 
 /* Standard buttons */
 button:not(.cta-button):not(.btn) {
-    background: #21262d;
-    color: #e6edf3;
-    border: 1px solid #30363d;
+    background: #f5f5f5;
+    color: #000000;
+    border: 1px solid #e5e5e5;
     cursor: pointer;
 }
 
 button:not(.cta-button):not(.btn):hover {
-    background: #30363d;
-    border-color: #484f58;
+    background: #e5e5e5;
+    border-color: #cccccc;
 }
 
 /* Input fields */
 input, select, textarea {
-    background: #21262d;
-    color: #e6edf3;
-    border: 1px solid #30363d;
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #e5e5e5;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: #1f6feb;
-    box-shadow: 0 0 5px rgba(31, 111, 235, 0.3);
+    border-color: #000000;
+    box-shadow: none;
 }
 
 /* Links */
 a {
-    color: #58a6ff;
+    color: #000000;
     text-decoration: none;
 }
 
 a:hover {
-    color: #79c0ff;
+    color: #333333;
 }
 
 /* =========================
@@ -100,44 +100,45 @@ a:hover {
 /* =========================
    Dark Mode Support
 ========================= */
+/* Dark mode override — disabled, always use light theme */
 @media (prefers-color-scheme: dark) {
     html,
     body,
     #root,
     .app-container {
-        background: #0d1117 !important;
-        color: #e6edf3 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
     }
 
     button:not(.cta-button):not(.btn) {
-        background: #21262d !important;
-        color: #e6edf3 !important;
-        border: 1px solid #30363d !important;
+        background: #f5f5f5 !important;
+        color: #000000 !important;
+        border: 1px solid #e5e5e5 !important;
     }
 
     button:not(.cta-button):not(.btn):hover {
-        background: #30363d !important;
-        border-color: #484f58 !important;
+        background: #e5e5e5 !important;
+        border-color: #cccccc !important;
     }
 
     input, select, textarea {
-        background: #21262d !important;
-        color: #e6edf3 !important;
-        border: 1px solid #30363d !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #e5e5e5 !important;
     }
 
     input:focus,
     select:focus,
     textarea:focus {
-        border-color: #1f6feb !important;
-        box-shadow: 0 0 5px rgba(31, 111, 235, 0.3) !important;
+        border-color: #000000 !important;
+        box-shadow: none !important;
     }
 
     a {
-        color: #58a6ff !important;
+        color: #000000 !important;
     }
 
     a:hover {
-        color: #79c0ff !important;
+        color: #333333 !important;
     }
 }

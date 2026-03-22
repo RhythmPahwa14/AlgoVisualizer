@@ -8,7 +8,7 @@
 
 /* Floating toggle button */
 .chat-toggle-btn {
-  background-color: #004aad;
+  background-color: #000000;
   color: white !important;
   border: none;
   margin-bottom: 35px;
@@ -26,7 +26,7 @@
 
 .chat-toggle-btn:hover {
   transform: scale(1.08);
-  background-color: #0066cc; /* lighter blue hover */
+  background-color: #333333;
 }
 
 /* Chat window */
@@ -53,7 +53,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #004aad;
+  color: #000000;
   font-size: 0.95rem;
   font-weight: 600;
 }
@@ -62,14 +62,14 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #004aad;
+  color: #000000;
   font-size: 1.2rem;
   transition: color 0.25s ease;
 }
 
 .close-btn:hover {
-  background-color: #0066cc;
-  color:#f5f8fc
+  background-color: #333333;
+  color: #ffffff;
 }
 
 /* Chat body */
@@ -103,7 +103,7 @@
 
 /* User message */
 .chat-message.user {
-  background-color: #004aad;
+  background-color: #000000;
   color: white;
   align-self: flex-end;
   border-bottom-right-radius: 4px;
@@ -124,16 +124,16 @@
   padding: 8px 12px;
   font-size: 0.88rem;
   outline: none;
-  color: #004aad;
+  color: #000000;
 }
 
 .chat-footer input:focus {
-  border-color: #0066cc;
-  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.15);
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 .chat-footer button {
-  background: #004aad;
+  background: #000000;
   color: white;
   border: none;
   border-radius: 50%;
@@ -148,5 +148,5 @@
 }
 
 .chat-footer button:hover {
-  background: #0066cc;
+  background: #333333;
 }

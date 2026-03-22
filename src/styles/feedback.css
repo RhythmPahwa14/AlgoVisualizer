@@ -9,7 +9,7 @@
   border-radius: 50%;
   border: none;
   /* Match the modern gradient used by the scroll-to-top button */
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #000000 0%, #333333 100%);
   color: #fff;
   font-size: 24px;
   cursor: pointer;
