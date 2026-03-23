@@ -365,8 +365,8 @@
   --background-secondary: #21262d;
   --background-hover: #30363d;
   --background-code: #161b22;
-  --accent-primary: #58a6ff;
-  --accent-primary-hover: #4493f8;
+  --accent-primary: #000000;
+  --accent-primary-hover: #333333;
   --background-success: #0f2419;
   --border-success: #238636;
   --text-success: #3fb950;

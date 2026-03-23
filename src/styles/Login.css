@@ -96,11 +96,11 @@
 }
 
 .login-light .login-icon {
-  color: #2563eb;
+  color: #000000;
 }
 
 .login-dark .login-icon {
-  color: #60a5fa;
+  color: #000000;
 }
 
 .login-title {
@@ -215,8 +215,8 @@
 }
 
 .login-light .form-input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 .login-dark .form-input {
@@ -226,8 +226,8 @@
 }
 
 .login-dark .form-input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
 }
 
 .form-input::placeholder {
@@ -278,7 +278,7 @@
 .checkbox {
   width: 16px;
   height: 16px;
-  accent-color: #3b82f6;
+  accent-color: #000000;
   cursor: pointer;
 }
 
@@ -301,19 +301,19 @@
 }
 
 .login-light .forgot-password {
-  color: #2563eb;
+  color: #000000;
 }
 
 .login-light .forgot-password:hover {
-  color: #1d4ed8;
+  color: #333333;
 }
 
 .login-dark .forgot-password {
-  color: #60a5fa;
+  color: #000000;
 }
 
 .login-dark .forgot-password:hover {
-  color: #93c5fd;
+  color: #333333;
 }
 
 /* Submit Button */
@@ -325,19 +325,19 @@
   font-size: 14px;
   font-weight: 500;
   color: #ffffff;
-  background-color: #3b82f6;
+  background-color: #000000;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-bottom: 24px;
 }
 
 .submit-button:hover {
-  background-color: #2563eb;
+  background-color: #333333;
 }
 
 .submit-button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
 }
 
 /* Sign Up Link */
@@ -365,19 +365,19 @@
 }
 
 .login-light .signup-action {
-  color: #2563eb;
+  color: #000000;
 }
 
 .login-light .signup-action:hover {
-  color: #1d4ed8;
+  color: #333333;
 }
 
 .login-dark .signup-action {
-  color: #60a5fa;
+  color: #000000;
 }
 
 .login-dark .signup-action:hover {
-  color: #93c5fd;
+  color: #333333;
 }
 
 /* Demo Section */
