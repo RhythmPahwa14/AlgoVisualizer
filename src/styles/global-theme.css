@@ -1768,8 +1768,8 @@
   font-size: 0.75rem;
   font-weight: 800;
   font-style: italic;
-  color: #2563eb;
-  background-color: #eff6ff;
+  color: #000000;
+  background-color: #f3f4f6;
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   align-self: flex-start;
@@ -2992,18 +2992,18 @@
 
 .info-table th,
 .info-table td {
-  border: 1px solid #333;
+  border: 1px solid #e5e5e5;
   padding: 0.75rem;
   text-align: left;
 }
 
 .info-table th {
-  background: #1f1f25;
-  color: #a5b4fc;
+  background: #f5f5f5;
+  color: #000000;
 }
 
 .info-table tr:nth-child(even) {
-  background: #18181b;
+  background: #fafafa;
 }
 /* grid board */
 .ttt-grid {
@@ -3019,8 +3019,8 @@
   font-weight: 700;
   font-size: clamp(1rem, 3vw, 1.75rem);
   border-radius: 10px;
-  border: 1px solid var(--border-subtle, rgba(255,255,255,0.1));
-  background: var(--surface-bg, #111);
+  border: 1px solid var(--border-subtle, #e5e5e5);
+  background: var(--surface-bg, #ffffff);
   transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
 }
 .ttt-cell.cell-changed {
@@ -3089,19 +3089,19 @@
 
 
 :root {
-  /* Light theme */
-  --surface-bg: #f5f5f5;
-  --text-primary: #1e1e1e;
-  --theme-text-secondary: #555;
+  /* Always light */
+  --surface-bg: #ffffff;
+  --text-primary: #000000;
+  --theme-text-secondary: #444444;
   --accent-warning-bg: #fff3cd;
 }
 
 [data-theme="dark"] {
-  /* Dark theme */
-  --surface-bg: #1e1e1e;
-  --text-primary: #f5f5f5;
-  --theme-text-secondary: #aaa;
-  --accent-warning-bg: #332f00;
+  /* Forced light — dark mode disabled */
+  --surface-bg: #ffffff;
+  --text-primary: #000000;
+  --theme-text-secondary: #444444;
+  --accent-warning-bg: #fff3cd;
 }
 
 .code-block {
