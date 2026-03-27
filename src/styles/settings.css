@@ -14,7 +14,7 @@
   --settings-gradient: linear-gradient(
     135deg,
     var(--theme-bg, #f0f4f8) 0%,
-    color-mix(in srgb, var(--theme-bg, #f0f4f8) 95%, var(--theme-accent, #58a6ff) 5%) 100%
+    color-mix(in srgb, var(--theme-bg, #f0f4f8) 95%, var(--theme-accent, #000000) 5%) 100%
   );
   --theme-input-border: #777;
 }
@@ -584,14 +584,14 @@
 .notification-bell-button .bell-icon {
   width: 24px;
   height: 24px;
-  color: #60a5fa;
-  filter: drop-shadow(0 2px 8px rgba(96, 165, 250, 0.4));
+  color: #000000;
+  filter: none;
   transition: all 0.2s ease;
 }
 
 .notification-bell-button:hover .bell-icon {
-  color: #93c5fd;
-  filter: drop-shadow(0 3px 12px rgba(96, 165, 250, 0.6));
+  color: #333333;
+  filter: none;
   animation: bellRing 0.5s ease;
 }
 

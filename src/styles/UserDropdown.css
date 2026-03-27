@@ -15,7 +15,7 @@
 }
 
 .user-dropdown-trigger:focus {
-  box-shadow: 0 0 0 2px var(--focus-ring-color, #3b82f6);
+  box-shadow: 0 0 0 2px var(--focus-ring-color, #000000);
 }
 
 .user-dropdown-trigger.light {
@@ -24,7 +24,7 @@
 }
 
 .user-dropdown-trigger.light:hover {
-  border-color: #60a5fa;
+  border-color: #000000;
 }
 
 .user-dropdown-trigger.dark {
@@ -33,7 +33,7 @@
 }
 
 .user-dropdown-trigger.dark:hover {
-  border-color: #3b82f6;
+  border-color: #000000;
 }
 
 /* When navbar is expanded, make the user trigger match expanded button styling */
@@ -57,7 +57,7 @@
 }
 
 .user-icon.light:hover {
-  color: #2563eb;
+  color: #000000;
 }
 
 .user-icon.dark {
@@ -65,7 +65,7 @@
 }
 
 .user-icon.dark:hover {
-  color: #60a5fa;
+  color: #000000;
 }
 
 /* Dropdown Content */
@@ -95,11 +95,11 @@
 .user-dropdown-header {
   padding: 1rem;
   border-bottom: 1px solid;
-  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 50%, #f3e8ff 100%);
+  background: #f9fafb;
 }
 
 .user-dropdown-header.light {
-  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 50%, #f3e8ff 100%);
+  background: #f9fafb;
   border-color: #f3f4f6;
 }
 
@@ -112,7 +112,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -173,13 +173,13 @@
 }
 
 .user-menu-item.light:hover {
-  background: linear-gradient(to right, #dbeafe, #dbeafe);
-  color: #1d4ed8;
+  background: #f3f4f6;
+  color: #000000;
 }
 
 .user-menu-item.dark:hover {
-  background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
-  color: #93c5fd;
+  background: #374151;
+  color: #ffffff;
 }
 
 /* Icon Container */
@@ -200,13 +200,13 @@
 
 /* Specific icon container colors */
 .icon-blue.light {
-  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-  color: #2563eb;
+  background: #f3f4f6;
+  color: #000000;
 }
 
 .icon-blue.dark {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2));
-  color: #60a5fa;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
 .icon-amber.light {

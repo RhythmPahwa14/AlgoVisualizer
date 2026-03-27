@@ -25,7 +25,7 @@
 }
 
 .theme-toggle-button:focus {
-  box-shadow: 0 0 0 2px var(--focus-ring-color, #3b82f6);
+  box-shadow: 0 0 0 2px var(--focus-ring-color, #000000);
 }
 
 /* Light mode styling */
@@ -43,15 +43,15 @@
 
 /* Dark mode styling */
 .theme-toggle-button.dark {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
-  border-color: rgba(139, 92, 246, 0.3);
+  background: linear-gradient(135deg, #333333 0%, #555555 50%, #777777 100%);
+  border-color: rgba(100, 100, 100, 0.3);
 }
 
 .theme-toggle-button.dark:hover {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-  border-color: rgba(139, 92, 246, 0.5);
-  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5),
-              0 3px 10px rgba(109, 40, 217, 0.4);
+  background: linear-gradient(135deg, #444444 0%, #666666 50%, #888888 100%);
+  border-color: rgba(120, 120, 120, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+              0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Icon styling */
@@ -110,6 +110,6 @@
 
 /* Focus visible for accessibility */
 .theme-toggle-button:focus-visible {
-  outline: 2px solid var(--primary-color, #3b82f6);
+  outline: 2px solid var(--primary-color, #000000);
   outline-offset: 2px;
 }

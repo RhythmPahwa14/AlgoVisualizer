@@ -3,8 +3,8 @@
   --bg-card: rgba(51, 65, 85, 0.4);
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
-  --accent-primary: #3b82f6;
-  --accent-light: rgba(59, 130, 246, 0.1);
+  --accent-primary: #000000;
+  --accent-light: rgba(0, 0, 0, 0.1);
   --border-color: rgba(148, 163, 184, 0.2);
   --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
@@ -14,7 +14,7 @@
   --bg-card: rgba(255, 255, 255, 0.9);
   --text-primary: #0f172a;
   --text-secondary: #334155;
-  --accent-primary: #2563eb;
+  --accent-primary: #000000;
   --border-color: rgba(226, 232, 240, 0.8);
   --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 }

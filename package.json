@@ -55,6 +55,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@vitejs/plugin-react": "^5.0.2",
+    "lightningcss": "^1.32.0",
     "npm-force-resolutions": "^0.0.10",
     "vite": "^7.1.7",
     "vite-plugin-svgr": "^4.5.0"
