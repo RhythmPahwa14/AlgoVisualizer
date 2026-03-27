@@ -53,8 +53,8 @@
   border-color: #2a3853;
 }
 .tree-btn--primary {
-  background: var(--accent, #2563eb);
-  border-color: var(--accent, #2563eb);
+  background: var(--accent, #000000);
+  border-color: var(--accent, #000000);
   color: #fff;
 }
 .tree-btn--ghost { background: transparent; }

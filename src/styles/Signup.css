@@ -33,7 +33,7 @@
 }
 
 .signup-back-button:hover {
-  color: #2563eb;
+  color: #333333;
 }
 
 .back-icon {
@@ -57,13 +57,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #2563eb;
+  background: #000000;
   color: #fff;
   border-radius: 50%;
   width: 54px;
   height: 54px;
   margin: 0 auto 0.8rem auto;
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .signup-title {
@@ -145,9 +145,9 @@
 }
 
 .form-input:focus {
-  border-color: #2563eb;
+  border-color: #000000;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
 }
 
 /* Password toggle button */
@@ -163,7 +163,7 @@
 }
 
 .password-toggle:hover {
-  color: #2563eb;
+  color: #333333;
 }
 
 .toggle-icon {
@@ -173,7 +173,7 @@
 
 /* ===== Buttons ===== */
 .submit-button {
-  background: #2563eb;
+  background: #000000;
   color: #fff;
   padding: 0.85rem;
   font-size: 1rem;
@@ -185,7 +185,7 @@
 }
 
 .submit-button:hover {
-  background: #1d4ed8;
+  background: #333333;
   transform: translateY(-1px);
 }
 
@@ -201,7 +201,7 @@
 }
 
 .login-action {
-  color: #2563eb;
+  color: #000000;
   font-weight: 500;
   text-decoration: none;
 }

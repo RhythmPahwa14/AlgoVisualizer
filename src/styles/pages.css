@@ -21,16 +21,16 @@
     --bg-color: #f6f0d6;
     --container-bg: #ffffff;
     --text-color: #1a1a1a;
-    --bar-color: #0077cc;
-    --btn-bg: #0077cc;
-    --btn-text: #f6f0d6;
-    --btn-hover: #005fa3;
-    --secondary-btn-bg: rgba(0, 119, 204, 0.1);
+    --bar-color: #000000;
+    --btn-bg: #000000;
+    --btn-text: #ffffff;
+    --btn-hover: #333333;
+    --secondary-btn-bg: rgba(0, 0, 0, 0.08);
     --secondary-btn-text: #1a1a1a;
     --input-bg: #e0e0e0;
     --input-text: #1a1a1a;
-    --border-color: rgba(0, 119, 204, 0.3);
-    --shadow-color: rgba(0, 119, 204, 0.2);
+    --border-color: rgba(0, 0, 0, 0.15);
+    --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 /* =========================
@@ -282,8 +282,8 @@ select, .select { color-scheme: var(--select-color-scheme, auto); }
 /* Complexity badges */
 .complexity-badge {
     display: inline-block;
-    background: #58a6ff;
-    color: #0d1117;
+    background: #000000;
+    color: #ffffff;
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.9em;
