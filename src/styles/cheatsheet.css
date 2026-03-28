@@ -92,28 +92,51 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border: 2px solid var(--border-color);
+  border: 2px solid #cbd5e1;
   border-radius: 50px;
-  background: var(--card-background);
-  color: var(--text-primary);
+  background: #eef2f7;
+  color: #111827;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .category-btn:hover {
+  background: var(--primary-color);
+  color: #ffffff;
   border-color: var(--primary-color);
   transform: translateY(-2px);
 }
 
 .category-btn.active {
   background: var(--primary-color);
-  color: white;
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+.category-btn.active:hover {
+  background: var(--primary-color);
+  color: #ffffff;
   border-color: var(--primary-color);
 }
 
 .cat-icon {
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.cat-icon svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.category-btn .cat-icon,
+.category-btn .cat-icon svg,
+.reference-btn svg {
+  color: inherit;
+  fill: currentColor;
 }
 
 /* Quick Reference Section */
@@ -130,24 +153,31 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
-  background: var(--card-background);
-  border: 2px solid var(--border-color);
+  background: #eef2f7;
+  border: 2px solid #cbd5e1;
   border-radius: 12px;
-  color: var(--text-primary);
+  color: #111827;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .reference-btn:hover {
+  background: var(--primary-color);
+  color: #ffffff;
   border-color: var(--primary-color);
-  background: var(--primary-color-light);
   transform: translateY(-2px);
 }
 
 .reference-btn.active {
   background: var(--primary-color);
-  color: white;
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+.reference-btn.active:hover {
+  background: var(--primary-color);
+  color: #ffffff;
   border-color: var(--primary-color);
 }
 
@@ -292,6 +322,7 @@
 }
 
 .section-header {
+  display: block;
   margin-bottom: 2rem;
   padding-left: 1.5rem;
   border-left: 5px solid;
@@ -306,7 +337,53 @@
 }
 
 .section-icon {
-  font-size: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.section-icon svg {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+/* Scoped overrides to avoid collisions with similarly named classes in other pages */
+.cheatsheet-container .section-header {
+  display: block;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  border-left: 5px solid;
+}
+
+.cheatsheet-container .section-header h2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
+}
+
+.cheatsheet-container .section-header:hover {
+  background: transparent !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.cheatsheet-container .section-icon {
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  background: transparent !important;
+  border: 0;
+  border-radius: 0;
+  color: var(--primary-color);
+}
+
+.cheatsheet-container .section-icon svg {
+  display: block;
+  color: currentColor;
+  fill: currentColor;
 }
 
 /* Cards Grid */
@@ -405,6 +482,36 @@
   color: var(--text-primary);
   line-height: 1;
   vertical-align: middle;
+}
+
+/* Scoped contrast guards so global styles cannot darken text on black surfaces */
+.cheatsheet-container .category-btn.active,
+.cheatsheet-container .category-btn:hover,
+.cheatsheet-container .category-btn.active:hover,
+.cheatsheet-container .reference-btn.active,
+.cheatsheet-container .reference-btn:hover,
+.cheatsheet-container .reference-btn.active:hover,
+.cheatsheet-container .clear-search-btn,
+.cheatsheet-container .clear-search-btn:hover,
+.cheatsheet-container .complexity-badge {
+  color: #ffffff !important;
+}
+
+.cheatsheet-container .category-btn > span,
+.cheatsheet-container .reference-btn > span {
+  color: inherit !important;
+}
+
+.cheatsheet-container .category-btn.active .cat-icon,
+.cheatsheet-container .category-btn.active .cat-icon svg,
+.cheatsheet-container .category-btn:hover .cat-icon,
+.cheatsheet-container .category-btn:hover .cat-icon svg,
+.cheatsheet-container .reference-btn:hover svg,
+.cheatsheet-container .reference-btn.active svg,
+.cheatsheet-container .complexity-badge .badge-label,
+.cheatsheet-container .complexity-badge .badge-value {
+  color: #ffffff !important;
+  fill: currentColor;
 }
 
 .badge-label {
@@ -626,7 +733,7 @@
 .clear-search-btn {
   padding: 0.75rem 2rem;
   background: var(--primary-color);
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 50px;
   font-weight: 600;
@@ -636,6 +743,7 @@
 
 .clear-search-btn:hover {
   background: var(--primary-color-dark);
+  color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }

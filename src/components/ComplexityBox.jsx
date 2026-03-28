@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Timer, Zap, Target } from "lucide-react";
 import {
   BarChart,
   Bar,
@@ -96,7 +97,8 @@ const CustomTooltip = ({ active, payload }) => {
           {name} Case
         </p>
         <p style={{ margin: 0 }}>
-          ⏱ Complexity: <b>{complexity}</b>
+          <Timer size={14} style={{ marginRight: 6, verticalAlign: "text-bottom" }} />
+          Complexity: <b>{complexity}</b>
         </p>
       </div>
     );
@@ -159,12 +161,12 @@ const ComplexityBox = () => {
 
   return (
     <div className={`complexity-container${isDarkMode ? " force-dark" : ""}`}>
-      <h2 className="complexity-title">⚡ Complexity Analysis</h2>
+      <h2 className="complexity-title"><Zap size={18} style={{ marginRight: 6, verticalAlign: "text-bottom" }} />Complexity Analysis</h2>
       <p className="complexity-subtitle">
         Big-O Notation for Famous Algorithms
       </p>
       <p style={{ marginBottom: "8px", fontWeight: "600" }}>
-        🎯 Difficulty Level: {difficultyLevel}
+        <Target size={16} style={{ marginRight: 6, verticalAlign: "text-bottom" }} />Difficulty Level: {difficultyLevel}
       </p>
 
       <div className="dropdown-container">

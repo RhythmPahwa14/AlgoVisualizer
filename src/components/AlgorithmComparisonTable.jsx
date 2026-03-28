@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { Check, X, Zap, Search } from 'lucide-react';
 import { algorithmInfo } from '../data/algorithmInfo';
 import './AlgorithmComparisonTable.css';
 
@@ -51,7 +52,7 @@ const AlgorithmComparisonTable = ({ darkMode }) => {
 
     switch (property.type) {
       case 'boolean':
-        return info[property.key] ? '✔' : '✘';
+        return info[property.key] ? <Check size={16} aria-label="True" /> : <X size={16} aria-label="False" />;
       default:
         return info[property.key] || 'N/A';
     }
@@ -187,7 +188,7 @@ const AlgorithmComparisonTable = ({ darkMode }) => {
       {/* Empty States */}
       {selectedAlgorithms.length === 0 && (
         <div className="emptyState">
-          <div className="emptyIcon">⚡</div>
+          <div className="emptyIcon" aria-hidden="true"><Zap size={24} /></div>
           <h3 className="emptyTitle">Select Algorithms to Compare</h3>
           <p className="emptyText">
             Choose up to 3 algorithms from the list above to see their
@@ -198,7 +199,7 @@ const AlgorithmComparisonTable = ({ darkMode }) => {
 
       {selectedAlgorithms.length === 1 && (
         <div className="emptyState">
-          <div className="emptyIcon">🔍</div>
+          <div className="emptyIcon" aria-hidden="true"><Search size={24} /></div>
           <h3 className="emptyTitle">Select One More Algorithm</h3>
           <p className="emptyText">
             Choose at least one more algorithm to start the comparison.

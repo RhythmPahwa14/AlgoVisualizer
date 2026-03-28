@@ -1,11 +1,12 @@
 // src/components/AlgorithmVisualizer.jsx
 import React, { useState, useEffect, useMemo, useCallback, useRef, useLayoutEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // ✅ Import Framer Motion
+import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
+import { Play, Pause } from "lucide-react";
 import algorithmsData from "../algorithms/algorithms.json";
 import "../styles/UnifiedVisualizer.css";
 import ComplexityAnalyzer from "./ComplexityAnalyzer";
 import { performanceAlgorithms } from "../algorithms/performanceAlgorithms";
-import { AlgorithmUtils } from "../algorithms/runner"; // ✅ Import AlgorithmUtils
+import { AlgorithmUtils } from "../algorithms/runner"; // Import AlgorithmUtils
 
 // Import all your algorithm functions here
 import { runAlgorithmAsync, getAlgorithmType } from "../algorithms/runner";
@@ -36,7 +37,7 @@ const VISUALIZATION_CONFIG = {
   normalScale: "scaleY(1)"
 };
 
-// ✅ Memoized bar component for better performance
+// Memoized bar component for better performance
 const VisualizationBar = React.memo(({ 
   value, 
   index, 
@@ -97,7 +98,7 @@ export default function AlgorithmVisualizer({
   const [error, setError] = useState(null);
   const [showPerformanceAnalysis, setShowPerformanceAnalysis] = useState(false);
 
-  // ✅ Responsive bar width calculation
+  // Responsive bar width calculation
 const containerRef = useRef(null);
 const [computedBarWidth, setComputedBarWidth] = useState(26); // default width
 
@@ -121,7 +122,7 @@ const computeBarWidth = useCallback(() => {
   setComputedBarWidth(width);
 }, [state.array]);
 
-// ✅ Recompute bar width on mount and window resize
+// Recompute bar width on mount and window resize
 useLayoutEffect(() => {
   computeBarWidth();
   window.addEventListener("resize", computeBarWidth);
@@ -280,7 +281,7 @@ useLayoutEffect(() => {
   const algoType = useMemo(() => resolveAlgoType(algorithmName), [algorithmName, resolveAlgoType]);
   const displayArray = useMemo(() => controlled ? externalArray ?? [] : state.array, [controlled, externalArray, state.array]);
 
-  // ✅ Check if algorithm requires special handling
+  // Check if algorithm requires special handling
   const requiresSpecialHandling = useMemo(() => {
     // Algorithms that modify array in real-time or have unique visualization needs
     const specialAlgorithms = ["Sleep Sort"];
@@ -357,7 +358,7 @@ useLayoutEffect(() => {
       let isHighlighted = false;
       const step = state.steps[state.currentStep];
       
-      // ✅ Special handling for algorithms that modify array in real-time
+      // Special handling for algorithms that modify array in real-time
       if (requiresSpecialHandling && state.isAnimating && !state.isPaused) {
         colorClass = "bar-move"; // Use move color for real-time algorithms
       } else if (!visualOnly && !controlled && step) {
@@ -426,7 +427,7 @@ useLayoutEffect(() => {
             className={state.isPaused ? "pause-btn paused" : "pause-btn"}
             title={state.isPaused ? "Resume (Space/P)" : "Pause (Space/P)"}
           >
-            {state.isPaused ? "▶️ Resume" : "⏸️ Pause"}
+            {state.isPaused ? <><Play size={14} /> Resume</> : <><Pause size={14} /> Pause</>}
           </button>
           <button
             onClick={() => {
@@ -532,7 +533,7 @@ useLayoutEffect(() => {
         <ComplexityAnalyzer 
           algorithm={performanceAlgorithms[algorithmName] || null} 
           algorithmName={algorithmName}
-          // ✅ Pass algorithm complexity information
+          // Pass algorithm complexity information
           complexity={AlgorithmUtils.getTimeComplexity(algorithmName)}
         />
       )}

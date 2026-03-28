@@ -1,4 +1,5 @@
 import React from "react";
+import { Star } from "lucide-react";
 
 const learners = [
   { name: "Alice", points: 120 },
@@ -9,7 +10,7 @@ const learners = [
 const LearnerLeaderboard = () => {
   return (
     <div className="p-4 bg-white rounded-2xl shadow">
-      <h2 className="text-xl font-bold mb-2">⭐ Learner Leaderboard</h2>
+      <h2 className="text-xl font-bold mb-2" style={{ display: "flex", alignItems: "center", gap: 8 }}><Star size={18} /> Learner Leaderboard</h2>
       <ol className="space-y-2">
         {learners
           .sort((a, b) => b.points - a.points)

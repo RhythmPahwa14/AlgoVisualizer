@@ -43,6 +43,8 @@ import {
   MousePointer2,
   Layers3,
   Wrench,
+  Database,
+  Leaf,
 } from "lucide-react";
 import "../styles/theme.css";
 import "../styles/Contribute.css"; 
@@ -99,7 +101,7 @@ const Contribute = () => {
       technologies: [
         {
           name: "React",
-          icon: <div className="tech-logo">⚛️</div>,
+          icon: <Atom size={24} />,
           description: "UI Library for building interactive components",
         },
         {
@@ -121,29 +123,17 @@ const Contribute = () => {
         },
         {
           name: "HTML5",
-          icon: (
-            <div className="tech-logo" style={{ color: "#E34F26" }}>
-              🌐
-            </div>
-          ),
+          icon: <Globe size={24} style={{ color: "#E34F26" }} />,
           description: "Markup language for structure",
         },
         {
           name: "CSS3",
-          icon: (
-            <div className="tech-logo" style={{ color: "#1572B6" }}>
-              🎨
-            </div>
-          ),
+          icon: <Palette size={24} style={{ color: "#1572B6" }} />,
           description: "Styling and animations",
         },
         {
           name: "Framer Motion",
-          icon: (
-            <div className="tech-logo" style={{ color: "#BB6BD9" }}>
-              🎭
-            </div>
-          ),
+          icon: <Sparkles size={24} style={{ color: "#BB6BD9" }} />,
           description: "Animation library for React",
         },
       ],
@@ -178,11 +168,7 @@ const Contribute = () => {
       technologies: [
         {
           name: "Git",
-          icon: (
-            <div className="tech-logo" style={{ color: "#F05032" }}>
-              🔧
-            </div>
-          ),
+          icon: <Wrench size={24} style={{ color: "#F05032" }} />,
           description: "Version control system",
         },
         {
@@ -192,20 +178,12 @@ const Contribute = () => {
         },
         {
           name: "VS Code",
-          icon: (
-            <div className="tech-logo" style={{ color: "#007ACC" }}>
-              💻
-            </div>
-          ),
+          icon: <Monitor size={24} style={{ color: "#007ACC" }} />,
           description: "Recommended IDE",
         },
         {
           name: "Node.js",
-          icon: (
-            <div className="tech-logo" style={{ color: "#339933" }}>
-              ⬢
-            </div>
-          ),
+          icon: <Hexagon size={24} style={{ color: "#339933" }} />,
           description: "JavaScript runtime environment",
         },
       ],
@@ -215,29 +193,17 @@ const Contribute = () => {
       technologies: [
         {
           name: "Spring Boot",
-          icon: (
-            <div className="tech-logo" style={{ color: "#6DB33F" }}>
-              🍃
-            </div>
-          ),
+          icon: <Leaf size={24} style={{ color: "#6DB33F" }} />,
           description: "Java framework for backend development",
         },
         {
           name: "React",
-          icon: (
-            <div className="tech-logo" style={{ color: "#61DAFB" }}>
-              ⚛️
-            </div>
-          ),
+          icon: <Atom size={24} style={{ color: "#61DAFB" }} />,
           description: "Frontend JavaScript library",
         },
         {
           name: "Node.js",
-          icon: (
-            <div className="tech-logo" style={{ color: "#339933" }}>
-              ⬢
-            </div>
-          ),
+          icon: <Hexagon size={24} style={{ color: "#339933" }} />,
           description: "JavaScript runtime environment",
         },
       ],
@@ -247,20 +213,12 @@ const Contribute = () => {
       technologies: [
         {
           name: "MySQL",
-          icon: (
-            <div className="tech-logo" style={{ color: "#4479A1" }}>
-              🐬
-            </div>
-          ),
+          icon: <Database size={24} style={{ color: "#4479A1" }} />,
           description: "Relational database management system",
         },
         {
           name: "MongoDB",
-          icon: (
-            <div className="tech-logo" style={{ color: "#47A248" }}>
-              🍃
-            </div>
-          ),
+          icon: <Leaf size={24} style={{ color: "#47A248" }} />,
           description: "NoSQL document database",
         },
       ],

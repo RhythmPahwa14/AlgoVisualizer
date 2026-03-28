@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Play, Pause, SkipBack, SkipForward, RotateCcw } from 'lucide-react';
 import '../styles/global-theme.css';
 
 const HuffmanVisualizer = () => {
@@ -311,21 +312,21 @@ const HuffmanVisualizer = () => {
               onClick={() => setIsPlaying(!isPlaying)}
               className="btn btn-secondary"
             >
-              {isPlaying ? '⏸' : '▶'}
+              {isPlaying ? <Pause size={14} /> : <Play size={14} />}
             </button>
             <button
               onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
               className="btn btn-secondary"
               disabled={currentStep === 0}
             >
-              ⏮
+              <SkipBack size={14} />
             </button>
             <button
               onClick={() => setCurrentStep(Math.min(steps.length - 1, currentStep + 1))}
               className="btn btn-secondary"
               disabled={currentStep === steps.length - 1}
             >
-              ⏭
+              <SkipForward size={14} />
             </button>
           </>
         )}
@@ -358,7 +359,7 @@ const HuffmanVisualizer = () => {
           }}
           className="btn btn-secondary"
         >
-          🔄 Reset
+          <RotateCcw size={14} /> Reset
         </button>
       </div>
 

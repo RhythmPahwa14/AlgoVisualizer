@@ -104,12 +104,6 @@ button {
   font-weight: 600;
 }
 
-[data-theme="dark"] button {
-  background-color: #ffffff;
-  color: #000000;
-  border: 1px solid #333333;
-}
-
 button:hover:not(:disabled) {
   opacity: 0.9;
 }
@@ -117,10 +111,6 @@ button:hover:not(:disabled) {
 button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
-}
-
-[data-theme="dark"] button:disabled {
-  background-color: #333333;
 }
 
 input,

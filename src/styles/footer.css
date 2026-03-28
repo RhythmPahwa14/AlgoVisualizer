@@ -746,7 +746,7 @@ footer {
 }
 
 .heart-icon {
-  color: var(--success-color, #10b981);
+  color: #000000;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -758,16 +758,17 @@ footer {
 }
 
 .footer-made-with {
-  display: flex;
-  flex-direction: column;
-  align-items: center;    
-  text-align: center;     
-  gap: 6px;               
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  white-space: nowrap;
 }
 
 .footer-made-with .heart-icon {
   font-size: 1.5rem;       
-  color: var(--success-color, #10b981);
+  color: #000000;
   animation: heartbeat 2s infinite;
 }
 

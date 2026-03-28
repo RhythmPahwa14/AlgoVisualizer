@@ -143,6 +143,18 @@ button:disabled {
     transform: none;
 }
 
+/* Keep labels visible on explicitly black inline-styled buttons */
+button[style*="#000"],
+button[style*="black"],
+a[style*="#000"][class*="btn"],
+a[style*="black"][class*="btn"],
+[class*="btn"][style*="#000"],
+[class*="btn"][style*="black"],
+[class*="button"][style*="#000"],
+[class*="button"][style*="black"] {
+    color: #ffffff !important;
+}
+
 /* =========================
    Mobile Menu
 ========================= */

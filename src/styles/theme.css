@@ -32,6 +32,11 @@
     --button-secondary-bg: rgba(0, 0, 0, 0.08);
     --button-secondary-text: #000000;
     --button-secondary-hover: rgba(0, 0, 0, 0.15);
+    --theme-btn-primary-bg: #000000;
+    --theme-btn-primary-text: #ffffff;
+    --theme-btn-secondary-bg: rgba(0, 0, 0, 0.08);
+    --theme-btn-secondary-text: #000000;
+    --theme-btn-secondary-border: #d0d7de;
     
     /* Border Colors */
     --border-primary: #d0d7de;
@@ -100,6 +105,11 @@
     --button-secondary-bg: rgba(0, 0, 0, 0.06);
     --button-secondary-text: #000000;
     --button-secondary-hover: rgba(0, 0, 0, 0.1);
+    --theme-btn-primary-bg: #000000;
+    --theme-btn-primary-text: #ffffff;
+    --theme-btn-secondary-bg: rgba(0, 0, 0, 0.06);
+    --theme-btn-secondary-text: #000000;
+    --theme-btn-secondary-border: #e5e5e5;
     
     --border-primary: #e5e5e5;
     --border-secondary: #f0f0f0;
@@ -145,6 +155,11 @@
     --button-secondary-bg: rgba(0, 0, 0, 0.08);
     --button-secondary-text: #000000;
     --button-secondary-hover: rgba(0, 0, 0, 0.15);
+    --theme-btn-primary-bg: #000000;
+    --theme-btn-primary-text: #ffffff;
+    --theme-btn-secondary-bg: rgba(0, 0, 0, 0.08);
+    --theme-btn-secondary-text: #000000;
+    --theme-btn-secondary-border: #d0d7de;
     
     /* Border Colors */
     --border-primary: #d0d7de;

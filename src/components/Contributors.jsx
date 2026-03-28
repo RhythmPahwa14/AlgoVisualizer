@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Crown, Star, Target, Flame, Gem, BarChart3, Wrench, Bug } from "lucide-react";
 import "../styles/global-theme.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -98,15 +99,15 @@ const getAvatarRingStyle = (contributions) => {
 // Helper function to get role badge icon
 const getRoleBadgeIcon = (role) => {
   if (role.includes("Lead") || role.includes("Maintainer")) {
-    return "👑";
+    return Crown;
   } else if (role.includes("Senior") || role.includes("Core")) {
-    return "⭐";
+    return Star;
   } else if (role.includes("Mentor")) {
-    return "🎯";
+    return Target;
   } else if (role.includes("Active")) {
-    return "🔥";
+    return Flame;
   }
-  return "💎";
+  return Gem;
 };
 
 // Helper function to assign roles based on GitHub activity and profile
@@ -414,7 +415,7 @@ const Contributors = () => {
         {contributors.map((contributor, index) => {
           const badgeStyle = getCommitBadgeStyle(contributor.contributions);
           const avatarRingStyle = getAvatarRingStyle(contributor.contributions);
-          const roleIcon = getRoleBadgeIcon(contributor.role);
+          const RoleIcon = getRoleBadgeIcon(contributor.role);
 
           return (
             <motion.div
@@ -444,7 +445,7 @@ const Contributors = () => {
                     }}
                   />
                   <div className="role-badge-overlay" title={contributor.role}>
-                    <span>{roleIcon}</span>
+                    <span><RoleIcon size={14} /></span>
                   </div>
                 </div>
 
@@ -468,7 +469,7 @@ const Contributors = () => {
               <div className="contributor-info enhanced-info">
                 <h3 className="contributor-name">{contributor.name || contributor.login}</h3>
                 <p className="contributor-role">
-                  <span className="role-icon">{roleIcon}</span>
+                  <span className="role-icon"><RoleIcon size={14} /></span>
                   {contributor.role}
                 </p>
                 <p className="contributor-bio">{contributor.bio}</p>
@@ -486,17 +487,17 @@ const Contributors = () => {
                   }}
                 >
                   <div className="stat-item"  >
-                    <span className="stat-icon">📊</span>
+                    <span className="stat-icon"><BarChart3 size={16} /></span>
                     <span className="stat-value">{contributor.contributions}</span>
                     <span className="stat-label">Commits</span>
                   </div>
                   <div className="stat-item" style={{ flexDirection: "column" }}>
-                    <span className="stat-icon">🔧</span>
+                    <span className="stat-icon"><Wrench size={16} /></span>
                     <span className="stat-value">{Math.floor(contributor.contributions / 3)}</span>
                     <span className="stat-label">PRs</span>
                   </div>
                   <div className="stat-item" style={{ flexDirection: "column" }}>
-                    <span className="stat-icon">🐛</span>
+                    <span className="stat-icon"><Bug size={16} /></span>
                     <span className="stat-value">{Math.floor(contributor.contributions / 5)}</span>
                     <span className="stat-label">Issues</span>
                   </div>
