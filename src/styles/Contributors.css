@@ -127,9 +127,27 @@
 ------------------------ */
 .contributors-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
+}
+
+@media (max-width: 1400px) {
+  .contributors-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .contributors-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (max-width: 600px) {
+  .contributors-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ------------------------
@@ -338,7 +356,12 @@
 }
 
 .role-icon {
-  font-size: 1rem;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .contributor-bio {
@@ -367,14 +390,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.5rem;
   text-align: center;
   flex: 1;
 }
 
 .stat-icon {
-  font-size: 1.2rem;
-  margin-bottom: 0.2rem;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .stat-value {
@@ -382,6 +409,7 @@
   font-weight: 700;
   color: var(--primary-color);
   line-height: 1;
+  display: block;
 }
 
 .stat-label {
@@ -390,6 +418,8 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 500;
+  line-height: 1;
+  display: block;
 }
 
 /* ------------------------
@@ -413,13 +443,27 @@
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   text-decoration: none;
   border: none;
   cursor: pointer;
   flex: 1;
-  justify-content: center;
   min-width: 140px;
+}
+
+.enhanced-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.enhanced-btn span {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .enhanced-btn::before {
