@@ -1,32 +1,36 @@
 // cspell:words sandeepvashishtha Vashishtha rhythmpahwa Pahwa noopener noreferrer
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Crown, Star, Target, Flame, Gem, BarChart3, Wrench, Bug } from "lucide-react";
 import "../styles/global-theme.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Mock contributors data - moved outside component to avoid useEffect dependency issues
+const GITHUB_HEADERS = {
+  Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
+  Accept: "application/vnd.github+json"
+};
+
+// Mock contributors data - fallback only
 const mockContributors = [
   {
     id: 1,
-    login: "sandeepvashishtha",
+    login: "SandeepVashishtha",
     name: "Sandeep Vashishtha",
-    avatar_url: "https://github.com/sandeepvashishtha.png",
-    html_url: "https://github.com/sandeepvashishtha",
-    contributions: 125,
+    avatar_url: "https://github.com/SandeepVashishtha.png",
+    html_url: "https://github.com/SandeepVashishtha",
+    contributions: 169,
     role: "Project Lead & Full Stack Developer",
     bio: "Passionate about building scalable algorithm visualization applications and educational tools."
   },
   {
     id: 2,
-    login: "rhythmpahwa14",
+    login: "RhythmPahwa14",
     name: "Rhythm Pahwa",
-    avatar_url: "https://github.com/rhythmpahwa14.png",
-    html_url: "https://github.com/rhythmpahwa14",
-    contributions: 50,
-    role: "Senior Contributor & Developer",
+    avatar_url: "https://github.com/RhythmPahwa14.png",
+    html_url: "https://github.com/RhythmPahwa14",
+    contributions: 800,
+    role: "Core Maintainer",
     bio: "Experienced developer contributing to algorithm visualization and educational technology projects."
   }
 ];
@@ -99,23 +103,23 @@ const getAvatarRingStyle = (contributions) => {
 // Helper function to get role badge icon
 const getRoleBadgeIcon = (role) => {
   if (role.includes("Lead") || role.includes("Maintainer")) {
-    return Crown;
+    return "👑";
   } else if (role.includes("Senior") || role.includes("Core")) {
-    return Star;
+    return "⭐";
   } else if (role.includes("Mentor")) {
-    return Target;
+    return "🎯";
   } else if (role.includes("Active")) {
-    return Flame;
+    return "🔥";
   }
-  return Gem;
+  return "💎";
 };
 
 // Helper function to assign roles based on GitHub activity and profile
 const getRoleByGitHubActivity = (contributor) => {
   const { contributions, followers = 0, public_repos = 0, created_at, login } = contributor;
 
-  // Special role for project owner
-  if (login === "sandeepvashishtha") return "Project Lead & Full Stack Developer";
+  // Special role for project owner — case-insensitive
+  if (login.toLowerCase() === "sandeepvashishtha") return "Project Lead & Full Stack Developer";
 
   // Calculate account age in years
   const accountAge = created_at
@@ -161,7 +165,7 @@ const getRoleByGitHubActivity = (contributor) => {
 const Contributors = () => {
   const [contributors, setContributors] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [lastCommitSha, setLastCommitSha] = useState(null);
+  const lastCommitShaRef = useRef(null);
   const navigate = useNavigate();
 
   // Function to handle back navigation
@@ -173,7 +177,8 @@ const Contributors = () => {
   const getLatestCommitSha = async () => {
     try {
       const response = await fetch(
-        "https://api.github.com/repos/RhythmPahwa14/AlgoVisualizer/commits?per_page=1"
+        "https://api.github.com/repos/RhythmPahwa14/AlgoVisualizer/commits?per_page=1",
+        { headers: GITHUB_HEADERS }
       );
       if (response.ok) {
         const commits = await response.json();
@@ -188,7 +193,9 @@ const Contributors = () => {
   // Function to fetch additional GitHub profile data
   const fetchGitHubProfile = async (username) => {
     try {
-      const response = await fetch(`https://api.github.com/users/${username}`);
+      const response = await fetch(`https://api.github.com/users/${username}`, {
+        headers: GITHUB_HEADERS
+      });
       if (response.ok) {
         const profile = await response.json();
         return {
@@ -216,46 +223,61 @@ const Contributors = () => {
     try {
       setLoading(true);
 
-      // Try to fetch real contributors from GitHub API
       try {
         const response = await fetch(
-          "https://api.github.com/repos/RhythmPahwa14/AlgoVisualizer/contributors"
+          "https://api.github.com/repos/RhythmPahwa14/AlgoVisualizer/contributors",
+          { headers: GITHUB_HEADERS }
         );
+
         if (response.ok) {
           const githubContributors = await response.json();
 
-          // Enhance GitHub data with additional profile info
-          const enhancedContributors = await Promise.all(
-            githubContributors.map(async (contributor) => {
-              const profileData = await fetchGitHubProfile(contributor.login);
+          const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
-              // Determine bio without nested ternaries (readability)
-              let bio = profileData.bio;
-              if (contributor.login === "sandeepvashishtha") {
-                bio =
-                  "Passionate about building scalable algorithm visualization applications and educational tools.";
-              } else if (contributor.login === "rhythmpahwa14") {
-                bio =
-                  "Experienced developer contributing to algorithm visualization and educational technology projects.";
-              }
+          const enhancedContributors = await Promise.allSettled(
+            githubContributors
+              .filter((c) => c.type !== "Bot")
+              .map(async (contributor, index) => {
+                await delay(index * 100);
 
-              const enhancedContributor = {
-                ...contributor,
-                ...profileData,
-                id: contributor.id,
-                role: getRoleByGitHubActivity({
+                let profileData = {
+                  followers: 0,
+                  public_repos: 0,
+                  created_at: null,
+                  name: contributor.login,
+                  bio: `Dedicated contributor with expertise in software development.`
+                };
+
+                try {
+                  profileData = await fetchGitHubProfile(contributor.login);
+                } catch {
+                  // silently use defaults
+                }
+
+                let bio = profileData.bio;
+                if (contributor.login.toLowerCase() === "sandeepvashishtha") {
+                  bio = "Passionate about building scalable algorithm visualization applications and educational tools.";
+                } else if (contributor.login.toLowerCase() === "rhythmpahwa14") {
+                  bio = "Experienced developer contributing to algorithm visualization and educational technology projects.";
+                }
+
+                return {
                   ...contributor,
-                  ...profileData
-                }),
-                bio
-              };
-
-              return enhancedContributor;
-            })
+                  ...profileData,
+                  id: contributor.id,
+                  role: getRoleByGitHubActivity({ ...contributor, ...profileData }),
+                  bio
+                };
+              })
           );
-          setContributors(enhancedContributors);
+
+          const validContributors = enhancedContributors
+            .filter((r) => r.status === "fulfilled")
+            .map((r) => r.value);
+
+          setContributors(validContributors);
         } else {
-          throw new Error("GitHub API request failed");
+          throw new Error(`GitHub API request failed with status: ${response.status}`);
         }
       } catch (apiError) {
         console.warn("GitHub API not available, using mock data", apiError);
@@ -275,7 +297,7 @@ const Contributors = () => {
     const initializeData = async () => {
       await fetchContributors();
       const initialSha = await getLatestCommitSha();
-      setLastCommitSha(initialSha);
+      lastCommitShaRef.current = initialSha;
     };
 
     initializeData();
@@ -284,18 +306,18 @@ const Contributors = () => {
     const commitCheckInterval = setInterval(async () => {
       const latestSha = await getLatestCommitSha();
 
-      if (latestSha && lastCommitSha && latestSha !== lastCommitSha) {
+      if (latestSha && lastCommitShaRef.current && latestSha !== lastCommitShaRef.current) {
         console.log("New commit detected, refreshing contributors...");
         await fetchContributors();
-        setLastCommitSha(latestSha);
-      } else if (latestSha && !lastCommitSha) {
-        setLastCommitSha(latestSha);
+        lastCommitShaRef.current = latestSha;
+      } else if (latestSha && !lastCommitShaRef.current) {
+        lastCommitShaRef.current = latestSha;
       }
     }, 30000);
 
     // Cleanup interval on component unmount
     return () => clearInterval(commitCheckInterval);
-  }, [lastCommitSha, fetchContributors]);
+  }, [fetchContributors]); // removed lastCommitSha from deps — using ref now
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -415,7 +437,7 @@ const Contributors = () => {
         {contributors.map((contributor, index) => {
           const badgeStyle = getCommitBadgeStyle(contributor.contributions);
           const avatarRingStyle = getAvatarRingStyle(contributor.contributions);
-          const RoleIcon = getRoleBadgeIcon(contributor.role);
+          const roleIcon = getRoleBadgeIcon(contributor.role);
 
           return (
             <motion.div
@@ -445,7 +467,7 @@ const Contributors = () => {
                     }}
                   />
                   <div className="role-badge-overlay" title={contributor.role}>
-                    <span><RoleIcon size={14} /></span>
+                    <span>{roleIcon}</span>
                   </div>
                 </div>
 
@@ -469,7 +491,7 @@ const Contributors = () => {
               <div className="contributor-info enhanced-info">
                 <h3 className="contributor-name">{contributor.name || contributor.login}</h3>
                 <p className="contributor-role">
-                  <span className="role-icon"><RoleIcon size={14} /></span>
+                  <span className="role-icon">{roleIcon}</span>
                   {contributor.role}
                 </p>
                 <p className="contributor-bio">{contributor.bio}</p>
@@ -477,27 +499,27 @@ const Contributors = () => {
                 <div
                   className="contribution-stats"
                   style={{
-                    padding:'1rem 1.3rem',
-                    display: "grid", 
-                    gridTemplateColumns:'repeat(2 , 1fr)',
-                    margin: "1rem 0", 
+                    padding: "1rem 1.3rem",
+                    display: "grid",
+                    gridTemplateColumns: "repeat(2 , 1fr)",
+                    margin: "1rem 0",
                     gap: "1rem",
                     borderRadius: "12px",
-                    boxShadow: `0 4px 12px ${`var(--shadow-color)`}`
+                    boxShadow: `0 4px 12px var(--shadow-color)`
                   }}
                 >
-                  <div className="stat-item"  >
-                    <span className="stat-icon"><BarChart3 size={16} /></span>
+                  <div className="stat-item">
+                    <span className="stat-icon">📊</span>
                     <span className="stat-value">{contributor.contributions}</span>
                     <span className="stat-label">Commits</span>
                   </div>
                   <div className="stat-item" style={{ flexDirection: "column" }}>
-                    <span className="stat-icon"><Wrench size={16} /></span>
+                    <span className="stat-icon">🔧</span>
                     <span className="stat-value">{Math.floor(contributor.contributions / 3)}</span>
                     <span className="stat-label">PRs</span>
                   </div>
                   <div className="stat-item" style={{ flexDirection: "column" }}>
-                    <span className="stat-icon"><Bug size={16} /></span>
+                    <span className="stat-icon">🐛</span>
                     <span className="stat-value">{Math.floor(contributor.contributions / 5)}</span>
                     <span className="stat-label">Issues</span>
                   </div>

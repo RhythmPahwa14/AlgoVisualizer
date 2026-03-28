@@ -1700,6 +1700,36 @@
   gap: 0.75rem;
 }
 
+/* === Perfect Icon-Text Alignment in Category Buttons === */
+.category-filters .btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.5rem !important;
+  line-height: 1 !important;
+}
+
+.category-filters .btn > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1;
+}
+
+.category-filters .btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.category-filters .btn span {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
 .category-filters .btn .count-badge {
   background-color: rgba(0, 0, 0, 0.1);
   color: inherit;
@@ -1708,6 +1738,10 @@
   font-size: 0.75rem;
   font-weight: 600;
   margin-left: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 [data-theme="dark"] .category-filters .btn .count-badge {
