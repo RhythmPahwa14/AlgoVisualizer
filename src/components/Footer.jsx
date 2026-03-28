@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaEnvelope, FaHeart, FaArrowRight } from "react-icons/fa";
+import { FaEnvelope, FaHeart, FaArrowRight, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -104,7 +104,11 @@ const Footer = () => {
       await simulateSubscription();
       handleSuccessfulSubscription();
     } catch (error) {
-      toast.error("❌ " + error.message);
+      toast.error(
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+          <FaExclamationTriangle /> {error.message}
+        </span>
+      );
     } finally {
       setIsLoading(false);
       setTimeout(() => setIsSubscribed(false), 8000);
@@ -142,11 +146,19 @@ const Footer = () => {
   // Handle successful subscription
   const handleSuccessfulSubscription = () => {
     setIsSubscribed(true);
-    toast.success("🎉 Successfully subscribed to our newsletter!");
+    toast.success(
+      <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+        <FaCheckCircle /> Successfully subscribed to our newsletter!
+      </span>
+    );
     setEmail("");
 
     setTimeout(() => {
-      toast.info("📧 Welcome email sent! Check your inbox.");
+      toast.info(
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+          <FaEnvelope /> Welcome email sent! Check your inbox.
+        </span>
+      );
     }, 1000);
   };
 

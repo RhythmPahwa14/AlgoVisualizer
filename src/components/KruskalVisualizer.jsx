@@ -566,7 +566,7 @@ const KruskalVisualizer = () => {
         <h4>About Kruskal's Algorithm</h4>
 
         <div className="explanation-section">
-          <h5>🔍 What is Kruskal's Algorithm?</h5>
+          <h5>What is Kruskal's Algorithm?</h5>
           <p>
             Kruskal's algorithm is a <strong>greedy algorithm</strong> that finds a <strong>Minimum Spanning Tree (MST)</strong>
             for a weighted undirected graph. It builds the MST by adding edges in order of increasing weight,
@@ -575,7 +575,7 @@ const KruskalVisualizer = () => {
         </div>
 
         <div className="explanation-section">
-          <h5>⚡ How It Works</h5>
+          <h5>How It Works</h5>
           <ol>
             <li><strong>Sort all edges</strong> - Sort edges by weight in ascending order</li>
             <li><strong>Initialize Union-Find</strong> - Create disjoint sets for each vertex</li>
@@ -586,7 +586,7 @@ const KruskalVisualizer = () => {
         </div>
 
         <div className="explanation-section">
-          <h5>🎯 Key Properties</h5>
+          <h5>Key Properties</h5>
           <div className="properties-grid">
             <div className="property-item">
               <strong>Greedy Choice:</strong> Always selects the smallest edge that doesn't form a cycle
@@ -604,7 +604,7 @@ const KruskalVisualizer = () => {
         </div>
 
         <div className="explanation-section">
-          <h5>⏱️ Time Complexity</h5>
+          <h5>Time Complexity</h5>
           <div className="complexity-info">
             <div className="complexity-item">
               <span className="complexity-label">Overall:</span>
@@ -622,7 +622,7 @@ const KruskalVisualizer = () => {
         </div>
 
         <div className="explanation-section">
-          <h5>🚀 Applications</h5>
+          <h5>Applications</h5>
           <ul className="applications-list">
             <li><strong>Network Design:</strong> Designing minimum cost networks (telephone, electrical, etc.)</li>
             <li><strong>Clustering:</strong> Single-linkage clustering in data mining</li>
@@ -633,7 +633,7 @@ const KruskalVisualizer = () => {
         </div>
 
         <div className="explanation-section">
-          <h5>📊 Visual Guide</h5>
+          <h5>Visual Guide</h5>
           <div className="visual-guide">
             <div className="guide-item">
               <div className="color-box green"></div>

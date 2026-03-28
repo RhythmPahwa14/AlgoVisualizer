@@ -5,6 +5,7 @@
  */
 
 import React, { useState } from 'react';
+import { BarChart3 } from 'lucide-react';
 import RecommendationPanel from '../ui/RecommendationPanel/RecommendationPanel';
 import { generateRecommendations } from '../recommendation/service';
 
@@ -177,7 +178,7 @@ const AlgorithmRecommendationDemo = () => {
             />
           ) : (
             <div className="bg-white rounded-lg shadow-md p-12 text-center">
-              <div className="text-5xl mb-4">📊</div>
+              <div className="text-5xl mb-4"><BarChart3 size={42} style={{ margin: "0 auto" }} /></div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Get Algorithm Recommendations</h3>
               <p className="text-gray-600 mb-6">
                 Enter a dataset or generate a sample to get intelligent algorithm recommendations

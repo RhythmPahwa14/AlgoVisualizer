@@ -484,7 +484,7 @@ const PrimVisualizer = () => {
         <h4>About Prim's Algorithm</h4>
 
         <div className="explanation-section">
-          <h5>🔍 What is Prim's Algorithm?</h5>
+          <h5>What is Prim's Algorithm?</h5>
           <p>
             Prim's algorithm is a <strong>greedy algorithm</strong> that finds a <strong>Minimum Spanning Tree (MST)</strong>
             for a weighted undirected graph. This means it connects all vertices with the minimum total edge weight,
@@ -493,7 +493,7 @@ const PrimVisualizer = () => {
         </div>
 
         <div className="explanation-section">
-          <h5>⚡ How It Works</h5>
+          <h5>How It Works</h5>
           <ol>
             <li><strong>Start with any vertex</strong> - Choose an arbitrary starting node</li>
             <li><strong>Grow the tree</strong> - Repeatedly add the smallest edge that connects a vertex in the tree to a vertex outside the tree</li>
@@ -502,7 +502,7 @@ const PrimVisualizer = () => {
         </div>
 
         <div className="explanation-section">
-          <h5>🎯 Key Properties</h5>
+          <h5>Key Properties</h5>
           <div className="properties-grid">
             <div className="property-item">
               <strong>Greedy Choice:</strong> Always selects the minimum weight edge connecting tree to non-tree vertices
@@ -520,7 +520,7 @@ const PrimVisualizer = () => {
         </div>
 
         <div className="explanation-section">
-          <h5>⏱️ Time Complexity</h5>
+          <h5>Time Complexity</h5>
           <div className="complexity-info">
             <div className="complexity-item">
               <span className="complexity-label">Adjacency Matrix:</span>
@@ -538,7 +538,7 @@ const PrimVisualizer = () => {
         </div>
 
         <div className="explanation-section">
-          <h5>🚀 Applications</h5>
+          <h5>Applications</h5>
           <ul className="applications-list">
             <li><strong>Network Design:</strong> Designing minimum cost networks (telephone, electrical, etc.)</li>
             <li><strong>Clustering:</strong> Single-linkage clustering in data mining</li>
@@ -549,7 +549,7 @@ const PrimVisualizer = () => {
         </div>
 
         <div className="explanation-section">
-          <h5>📊 Visual Guide</h5>
+          <h5>Visual Guide</h5>
           <div className="visual-guide">
             <div className="guide-item">
               <div className="color-box green"></div>

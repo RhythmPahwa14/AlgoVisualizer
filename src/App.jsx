@@ -16,9 +16,7 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./ScrollToTop";
 import ThemeToggle from "./components/ThemeToggle";
 import ComplexityBox from "./components/ComplexityBox";
-import Doubt from "./components/Doubt";
 import FeedbackWidget from "./components/FeedbackWidget";
-import NotificationWidget from "./components/NotificationWidget";
 
 // Pages
 import Home from "./pages/Home";
@@ -423,9 +421,7 @@ const App = () => {
                     )}
                   </main>
 
-                  <Doubt />
                   <FeedbackWidget />
-                  <NotificationWidget />
                   <Footer />
                   <Analytics />
                 </div>

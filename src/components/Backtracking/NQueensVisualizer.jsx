@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { solveNQueens } from "../../algorithms/backtracking/nQueens";
-import { Play, Pause, RotateCcw, StepForward, StepBack } from "lucide-react";
+import { Play, Pause, RotateCcw, StepForward, StepBack, CheckCircle2, CircleX, Undo2 } from "lucide-react";
 
 export default function NQueensVisualizer() {
   const [n, setN] = useState(8);
@@ -126,13 +126,13 @@ export default function NQueensVisualizer() {
       <div className="text-gray-600">
         Step {stepIndex + 1}/{steps.length} —{" "}
         {currentStep.status === "solution"
-          ? "✅ Solution Found!"
+          ? <><CheckCircle2 size={14} /> Solution Found!</>
           : currentStep.action === "conflict"
-          ? "❌ Conflict Detected"
+          ? <><CircleX size={14} /> Conflict Detected</>
           : currentStep.action === "place"
           ? "♛ Queen Placed"
           : currentStep.action === "remove"
-          ? "↩️ Backtracking"
+          ? <><Undo2 size={14} /> Backtracking</>
           : ""}
       </div>
     </div>

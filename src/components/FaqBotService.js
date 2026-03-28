@@ -75,7 +75,7 @@ const faqs = [
   {
     id: "features",
     question: "What are the main features?",
-    answer: "Visualize Algorithms: See how different sorting and searching algorithms work step-by-step. Interactive Experience: Adjust input values and see how the algorithms react.Export Visualizations: 📹 Record algorithms as GIFs/videos or take snapshots for presentations and sharing.Performance Statistics: Track comparisons, swaps, and execution time for each algorithm.Responsive Design: Accessible on both desktop and mobile devices.Educational Tools: Perfect for classrooms, tutorials, and learning algorithm concepts.",
+    answer: "Visualize Algorithms: See how different sorting and searching algorithms work step-by-step. Interactive Experience: Adjust input values and see how the algorithms react. Export Visualizations: Record algorithms as GIFs/videos or take snapshots for presentations and sharing. Performance Statistics: Track comparisons, swaps, and execution time for each algorithm. Responsive Design: Accessible on both desktop and mobile devices. Educational Tools: Perfect for classrooms, tutorials, and learning algorithm concepts.",
 
     keywords: [
       { word: "feature", weight: 10 },

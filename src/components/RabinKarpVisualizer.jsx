@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { CheckCircle2, AlertTriangle, Play, Pause, SkipBack, SkipForward, RotateCcw } from "lucide-react";
 import "../styles/global-theme.css";
 
 const RabinKarpVisualizer = () => {
@@ -492,14 +493,14 @@ const RabinKarpVisualizer = () => {
           {step.matches.length > 0 && (
             <div className="match-indicators">
               <div className="indicator success">
-                ✅ Matches at: {step.matches.join(', ')}
+                <CheckCircle2 size={14} /> Matches at: {step.matches.join(', ')}
               </div>
             </div>
           )}
           {step.collisions.length > 0 && (
             <div className="collision-indicators">
               <div className="indicator warning">
-                ⚠️ Spurious hits at: {step.collisions.join(', ')}
+                <AlertTriangle size={14} /> Spurious hits at: {step.collisions.join(', ')}
               </div>
             </div>
           )}
@@ -571,21 +572,21 @@ const RabinKarpVisualizer = () => {
         {/* Animation Controls */}
         <div className="animation-controls">
           <button onClick={runAlgorithm} disabled={isVisualizing || isPlaying} className="btn-run">
-            🔄 Run Algorithm
+            <RotateCcw size={14} /> Run Algorithm
           </button>
 
           <div className="playback-controls">
             <button onClick={stepBack} disabled={isPlaying || currentStep <= 0 || steps.length === 0} className="btn-step">
-              ⏮ Step Back
+              <SkipBack size={14} /> Step Back
             </button>
             <button onClick={playPause} disabled={steps.length === 0} className="btn-play">
-              {isPlaying ? '⏸ Pause' : '▶ Play'}
+              {isPlaying ? <><Pause size={14} /> Pause</> : <><Play size={14} /> Play</>}
             </button>
             <button onClick={stepForward} disabled={isPlaying || currentStep >= steps.length - 1 || steps.length === 0} className="btn-step">
-              ⏭ Step
+              <SkipForward size={14} /> Step
             </button>
             <button onClick={resetVisualizer} className="btn-reset">
-              🔁 Reset
+              <RotateCcw size={14} /> Reset
             </button>
           </div>
 

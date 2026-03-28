@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import PropTypes from "prop-types";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, X, Play, Pause, SkipBack, SkipForward, RotateCcw } from "lucide-react";
 import "../styles/codeExplanation.css";
 
 const LANGS = [
@@ -2050,7 +2050,7 @@ const CodeExplanation = ({ algorithm, isVisible, onClose }) => {
         {/* Header */}
         <div className="code-explanation-header">
           <h2>{currentAlgorithm.title}</h2>
-          <button className="close-button" onClick={onClose} aria-label="Close code explanation modal">✖</button>
+          <button className="close-button" onClick={onClose} aria-label="Close code explanation modal"><X size={16} /></button>
         </div>
 
         <div className="code-explanation-content">
@@ -2120,12 +2120,12 @@ const CodeExplanation = ({ algorithm, isVisible, onClose }) => {
             <h3>Step-by-Step Explanation</h3>
 
             <div className="step-controls">
-              <button onClick={prevStep} disabled={currentStep === 0} aria-label="Previous step">⏮ Prev</button>
+              <button onClick={prevStep} disabled={currentStep === 0} aria-label="Previous step"><SkipBack size={14} /> Prev</button>
               <button onClick={togglePlayback} aria-label={isPlaying ? "Pause playback" : "Start playback"}>
-                {isPlaying ? "⏸ Pause" : "▶ Play"}
+                {isPlaying ? <><Pause size={14} /> Pause</> : <><Play size={14} /> Play</>}
               </button>
-              <button onClick={nextStep} disabled={currentStep === totalSteps - 1} aria-label="Next step">Next ⏭</button>
-              <button onClick={resetSteps} aria-label="Reset steps">🔄 Reset</button>
+              <button onClick={nextStep} disabled={currentStep === totalSteps - 1} aria-label="Next step">Next <SkipForward size={14} /></button>
+              <button onClick={resetSteps} aria-label="Reset steps"><RotateCcw size={14} /> Reset</button>
             </div>
 
             {/* Playback Speed */}

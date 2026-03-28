@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Moon, Sun } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
 import '../styles/Settings.css';
 
@@ -50,7 +51,7 @@ const Settings = () => {
       toggleTheme();
     }
 
-    alert('✅ Settings reset to default values!');
+    alert('Settings reset to default values!');
   };
 
   return (
@@ -66,7 +67,7 @@ const Settings = () => {
           <div className="setting-card">
             <div className="setting-header">
               <h3>Theme</h3>
-              <span className="setting-icon">{theme === 'dark' ? '🌙' : '☀️'}</span>
+              <span className="setting-icon">{theme === 'dark' ? <Moon size={16} /> : <Sun size={16} />}</span>
             </div>
             <p className="setting-description">
               Switch between light and dark modes

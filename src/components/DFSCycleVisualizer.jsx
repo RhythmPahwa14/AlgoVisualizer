@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Play, Pause, RotateCcw, CheckCircle2, CircleX } from "lucide-react";
 import { Network } from "vis-network";
 import "../styles/global-theme.css";
 import "aos/dist/aos.css";
@@ -235,12 +236,12 @@ const DFSCycleVisualizer = ({ graphData }) => {
             }}
           >
             <button onClick={handlePlay} disabled={isPlaying}>
-              ▶ Play
+              <Play size={14} /> Play
             </button>
             <button onClick={handlePause} disabled={!isPlaying}>
-              ⏸ Pause
+              <Pause size={14} /> Pause
             </button>
-            <button onClick={handleRestart}>⏮ Restart</button>
+            <button onClick={handleRestart}><RotateCcw size={14} /> Restart</button>
           </div>
         </div>
         {/* Debug Info */}
@@ -307,7 +308,7 @@ const DFSCycleVisualizer = ({ graphData }) => {
                 textAlign: "center",
               }}
             >
-              {cycleFound ? "Cycle Detected ✅" : "No Cycle ❌"}
+              {cycleFound ? <><CheckCircle2 size={16} /> Cycle Detected</> : <><CircleX size={16} /> No Cycle</>}
             </p>
           )}
         </div>

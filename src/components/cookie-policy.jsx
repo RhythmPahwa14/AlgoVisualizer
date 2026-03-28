@@ -2,6 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useTheme } from "../ThemeContext";
 import "../styles/cookie-policy.css";
 import { Link } from "react-router-dom";
+import {
+  Cookie,
+  Lightbulb,
+  Target,
+  Lock,
+  Settings,
+  BarChart3,
+  Rocket,
+  ClipboardList,
+  Search,
+  Wrench,
+  AlertTriangle,
+  Globe,
+  Github,
+ Type,
+  CheckCircle2,
+  RefreshCcw,
+  Phone,
+} from "lucide-react";
 
 const CookiePolicy = () => {
   const { theme } = useTheme();
@@ -31,13 +50,13 @@ const CookiePolicy = () => {
   const cookieSections = [
     {
       id: "what-are-cookies",
-      icon: "🍪",
+      icon: <Cookie size={18} />,
       title: "What Are Cookies",
       content:
         "Cookies are small text files that are stored on your device when you visit our website. They help us provide you with a better experience by remembering your preferences and analyzing how you use our platform.",
       additionalContent: (
         <div className="info-card">
-          <div className="info-icon">💡</div>
+          <div className="info-icon"><Lightbulb size={18} /></div>
           <div className="info-content">
             <h4>Did You Know?</h4>
             <p>
@@ -50,28 +69,28 @@ const CookiePolicy = () => {
     },
     {
       id: "how-we-use",
-      icon: "🎯",
+      icon: <Target size={18} />,
       title: "How We Use Cookies",
       content: "We use cookies for the following purposes:",
       additionalContent: (
         <div className="usage-grid">
           <div className="usage-card">
-            <div className="card-icon">🔒</div>
+            <div className="card-icon"><Lock size={18} /></div>
             <h4>Essential Cookies</h4>
             <p>Required for basic website functionality and security</p>
           </div>
           <div className="usage-card">
-            <div className="card-icon">⚙️</div>
+            <div className="card-icon"><Settings size={18} /></div>
             <h4>Preference Cookies</h4>
             <p>Remember your settings like theme preferences and language</p>
           </div>
           <div className="usage-card">
-            <div className="card-icon">📊</div>
+            <div className="card-icon"><BarChart3 size={18} /></div>
             <h4>Analytics Cookies</h4>
             <p>Help us understand how users interact with our algorithms</p>
           </div>
           <div className="usage-card">
-            <div className="card-icon">🚀</div>
+            <div className="card-icon"><Rocket size={18} /></div>
             <h4>Performance Cookies</h4>
             <p>Improve website loading times and user experience</p>
           </div>
@@ -80,7 +99,7 @@ const CookiePolicy = () => {
     },
     {
       id: "types-of-cookies",
-      icon: "📋",
+      icon: <ClipboardList size={18} />,
       title: "Types of Cookies We Use",
       content: "Our platform uses the following categories of cookies:",
       additionalContent: (
@@ -123,7 +142,7 @@ const CookiePolicy = () => {
     },
     {
       id: "specific-cookies",
-      icon: "🔍",
+      icon: <Search size={18} />,
       title: "Specific Cookies We Use",
       content: "Here are the main cookies used on our platform:",
       additionalContent: (
@@ -157,7 +176,7 @@ const CookiePolicy = () => {
     },
     {
       id: "manage-preferences",
-      icon: "🛠️",
+      icon: <Wrench size={18} />,
       title: "Managing Your Cookie Preferences",
       content: "You have several options to manage cookies:",
       items: [
@@ -168,7 +187,7 @@ const CookiePolicy = () => {
       ],
       additionalContent: (
         <div className="warning-note">
-          <div className="warning-icon">⚠️</div>
+          <div className="warning-icon"><AlertTriangle size={18} /></div>
           <p>
             Please note that disabling certain cookies may affect website
             functionality and your user experience.
@@ -178,7 +197,7 @@ const CookiePolicy = () => {
     },
     {
       id: "third-party",
-      icon: "🌐",
+      icon: <Globe size={18} />,
       title: "Third-Party Services",
       content:
         "We use the following third-party services that may set cookies:",
@@ -190,12 +209,12 @@ const CookiePolicy = () => {
             <p>Website performance and usage analytics</p>
           </div>
           <div className="service-card">
-            <div className="service-logo">🐙</div>
+            <div className="service-logo"><Github size={16} /></div>
             <h4>GitHub</h4>
             <p>Authentication and repository integration</p>
           </div>
           <div className="service-card">
-            <div className="service-logo">🔤</div>
+            <div className="service-logo"><Type size={16} /></div>
             <h4>Google Fonts</h4>
             <p>Typography (may cache font preferences)</p>
           </div>
@@ -204,21 +223,21 @@ const CookiePolicy = () => {
     },
     {
       id: "cookie-consent",
-      icon: "✅",
+      icon: <CheckCircle2 size={18} />,
       title: "Cookie Consent",
       content:
         "By continuing to use AlgoVisualizer, you consent to our use of cookies as described in this policy. You can withdraw consent at any time by adjusting your browser settings or contacting us.",
     },
     {
       id: "updates",
-      icon: "🔄",
+      icon: <RefreshCcw size={18} />,
       title: "Updates to This Policy",
       content:
         "We may update this Cookie Policy to reflect changes in our practices or legal requirements. We will notify users of significant changes through our platform or via email.",
     },
     {
       id: "contact-us",
-      icon: "📞",
+      icon: <Phone size={18} />,
       title: "Contact Us",
       content:
         "If you have questions about our use of cookies or this policy, please contact us through our Contact page or reach out to our development team on GitHub.",

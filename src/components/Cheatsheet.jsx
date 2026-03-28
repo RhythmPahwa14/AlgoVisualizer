@@ -1,5 +1,21 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { FaSearch, FaClock, FaMemory, FaCheck, FaTimes, FaChevronDown, FaChevronUp, FaLightbulb, FaBook } from 'react-icons/fa';
+import {
+  FaSearch,
+  FaClock,
+  FaCheck,
+  FaTimes,
+  FaChevronDown,
+  FaChevronUp,
+  FaLightbulb,
+  FaBook,
+  FaSyncAlt,
+  FaProjectDiagram,
+  FaFolderOpen,
+  FaSitemap,
+  FaTree,
+  FaBullseye,
+  FaBrain,
+} from 'react-icons/fa';
 import { cheatsheetData, bigOReference, algorithmTips } from '../data/cheatsheetData';
 import '../styles/cheatsheet.css';
 import AOS from 'aos';
@@ -16,12 +32,24 @@ const Cheatsheet = () => {
     AOS.init({ duration: 600, once: true });
   }, []);
 
+  const sectionIcons = useMemo(() => ({
+    all: <FaBook />,
+    sorting: <FaSyncAlt />,
+    searching: <FaSearch />,
+    dataStructures: <FaFolderOpen />,
+    graph: <FaProjectDiagram />,
+    tree: <FaTree />,
+    patterns: <FaBullseye />,
+    advancedAlgorithms: <FaBrain />,
+  }), []);
+
+  const getSectionIcon = (id) => sectionIcons[id] || <FaSitemap />;
+
   const categories = useMemo(() => [
-      { id: 'all', label: 'All', icon: '📚' },
+      { id: 'all', label: 'All' },
       ...Object.entries(cheatsheetData).map(([key, value]) => ({
         id: key,
         label: value.title,
-        icon: value.icon,
       })),
     ], []);
 
@@ -399,7 +427,7 @@ const Cheatsheet = () => {
               className={`category-btn ${selectedCategory === cat.id ? 'active' : ''}`}
               onClick={() => setSelectedCategory(cat.id)}
             >
-              <span className="cat-icon">{cat.icon}</span>
+              <span className="cat-icon">{getSectionIcon(cat.id)}</span>
               <span>{cat.label}</span>
             </button>
           ))}
@@ -489,7 +517,7 @@ const Cheatsheet = () => {
               <section key={key} className="content-section" data-aos="fade-up">
                 <div className="section-header" style={{ borderLeftColor: section.color }}>
                   <h2>
-                    <span className="section-icon">{section.icon}</span>
+                    <span className="section-icon">{getSectionIcon(key)}</span>
                     {section.title}
                   </h2>
                 </div>

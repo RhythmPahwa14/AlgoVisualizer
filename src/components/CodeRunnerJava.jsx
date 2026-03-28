@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
+import { Laptop, Play } from "lucide-react";
 
 const CodeRunnerJava = () => {
   const [code, setCode] = useState(`public class Main {
@@ -11,11 +12,11 @@ const CodeRunnerJava = () => {
   const [output, setOutput] = useState("");
 
   const runCode = async () => {
-    setOutput("⏳ Running...");
+    setOutput("Running...");
     try {
       // Check if API key is configured
       if (!import.meta.env.VITE_RAPIDAPI_KEY) {
-        setOutput("⚠️ RapidAPI key not configured. Please add VITE_RAPIDAPI_KEY to your environment variables.");
+        setOutput("Warning: RapidAPI key not configured. Please add VITE_RAPIDAPI_KEY to your environment variables.");
         return;
       }
 
@@ -39,9 +40,9 @@ const CodeRunnerJava = () => {
       }
     } catch (error) {
       if (error.response?.status === 401) {
-        setOutput("⚠️ Invalid API key. Please check your RapidAPI configuration.");
+        setOutput("Warning: Invalid API key. Please check your RapidAPI configuration.");
       } else {
-        setOutput("⚠️ Error running code. Please try again.");
+        setOutput("Warning: Error running code. Please try again.");
       }
       console.error("Java execution error:", error);
     }
@@ -49,7 +50,7 @@ const CodeRunnerJava = () => {
 
   return (
     <div className="bg-gray-900 p-4 rounded-xl shadow-lg">
-      <h2 className="text-white text-lg mb-2">💻 Java Code Runner</h2>
+      <h2 className="text-white text-lg mb-2" style={{ display: "flex", alignItems: "center", gap: 8 }}><Laptop size={18} /> Java Code Runner</h2>
       <Editor
         height="300px"
         language="java"
@@ -61,7 +62,7 @@ const CodeRunnerJava = () => {
         onClick={runCode}
         className="mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg"
       >
-        ▶ Run Code
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><Play size={14} /> Run Code</span>
       </button>
       <div className="mt-3 bg-black text-green-400 p-3 rounded-lg min-h-[100px]">
         <pre>{output}</pre>

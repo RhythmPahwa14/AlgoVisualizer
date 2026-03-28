@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { Video, Camera, Circle, Square } from 'lucide-react';
 import VisualizationExporter from '../utils/visualizationExporter';
 import '../styles/ExportControls.css';
 
@@ -52,15 +53,15 @@ const ExportControls = ({
         try {
             const result = await exporterRef.current.stopRecording();
             if (result?.success) {
-                alert(`✅ ${result.message}`);
+                alert(`${result.message}`);
             } else if (result) {
-                alert(`✅ Export completed! ${recordingStatus.frameCount} frames captured.`);
+                alert(`Export completed. ${recordingStatus.frameCount} frames captured.`);
             } else {
-                alert('❌ Export failed. No frames were captured. Please try again.');
+                alert('Export failed. No frames were captured. Please try again.');
             }
         } catch (error) {
             console.error('Export error:', error);
-            alert(`❌ Export failed: ${error.message || 'Unknown error occurred'}`);
+            alert(`Export failed: ${error.message || 'Unknown error occurred'}`);
         }
         
         setRecordingStatus({ frameCount: 0, duration: 0 });
@@ -81,7 +82,7 @@ const ExportControls = ({
             const button = document.querySelector('.snapshot-btn');
             if (button) {
                 const originalText = button.textContent;
-                button.textContent = '✅ Snapshot Saved!';
+                button.textContent = 'Snapshot Saved!';
                 button.style.background = 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)';
                 setTimeout(() => {
                     button.textContent = originalText;
@@ -90,7 +91,7 @@ const ExportControls = ({
             }
         } catch (error) {
             console.error('Snapshot download error:', error);
-            alert('❌ Failed to download snapshot. Please try again.');
+            alert('Failed to download snapshot. Please try again.');
         }
     };
 
@@ -103,7 +104,7 @@ const ExportControls = ({
                 aria-label={showExportPanel ? "Close export panel" : "Open export panel"}
                 aria-expanded={showExportPanel}
             >
-                📹 Export
+                <Video size={14} /> Export
             </button>
             
             {showExportPanel && (
@@ -152,14 +153,15 @@ const ExportControls = ({
                                     aria-label="Start recording visualization"
                                     aria-disabled={isVisualizationRunning}
                                 >
-                                    🔴 Start Recording
+                                    <Circle size={14} /> Start Recording
                                 </button>
                                 <button 
                                     className="snapshot-btn"
                                     onClick={handleDownloadSnapshot}
                                     aria-label="Take snapshot of current visualization"
+                                </button>
                                 >
-                                    📸 Take Snapshot
+                                    <Camera size={14} /> Take Snapshot
                                 </button>
                             </>
                         ) : (
@@ -169,14 +171,14 @@ const ExportControls = ({
                                     onClick={handleStopRecording}
                                     aria-label="Stop recording and save visualization"
                                 >
-                                    ⏹️ Stop Recording
+                                    <Square size={14} /> Stop Recording
                                 </button>
                                 <button 
                                     className="capture-frame-btn"
                                     onClick={handleCaptureFrame}
                                     aria-label="Capture current frame during recording"
                                 >
-                                    📷 Capture Frame
+                                    <Camera size={14} /> Capture Frame
                                 </button>
                             </div>
                         )}

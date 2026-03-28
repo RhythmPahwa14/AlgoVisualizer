@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./Queue.css";
 
 /**
- * 🎯 Queue Data Structure Visualization Component
+ * Queue Data Structure Visualization Component
  * 
  * A comprehensive visualization tool for Queue operations including
  * enqueue, dequeue, peek, and educational content about FIFO principles.
@@ -12,14 +12,14 @@ import "./Queue.css";
  * @returns {JSX.Element} Queue visualization component
  */
 export default function Queue() {
-  // 🎮 State Management
+  // State management
   const [items, setItems] = useState([]);              // Queue items array
   const [input, setInput] = useState("");              // Input field value
   const [peekIndex, setPeekIndex] = useState(null);    // Currently peeked item index
   const [showCode, setShowCode] = useState(null);      // Track which code snippet is open
   const [operationHistory, setOperationHistory] = useState([]); // Track operations
 
-  // 🔄 Operation History Management
+  // Operation history management
   useEffect(() => {
     if (items.length === 0) {
       setOperationHistory([]);
@@ -381,9 +381,9 @@ size(): return length(Q)`}
         </article>
       </section>
 
-      {/* 💡 Usage Tips */}
+      {/* Usage Tips */}
       <aside className="usage-tips" aria-label="Usage tips">
-        <h3>💡 Quick Tips</h3>
+        <h3>Quick Tips</h3>
         <ul>
           <li>Press <kbd>Enter</kbd> after typing to enqueue quickly</li>
           <li>Watch the front and rear indicators during operations</li>

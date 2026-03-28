@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Target, CheckCircle2 } from "lucide-react";
 
 const challenges = [
   "Implement Binary Search",
@@ -15,7 +16,7 @@ const WeeklyChallenge = () => {
 
   return (
     <div className="p-4 bg-white rounded-2xl shadow mt-4">
-      <h2 className="text-xl font-bold mb-2">🎯 Weekly Challenge</h2>
+      <h2 className="text-xl font-bold mb-2" style={{ display: "flex", alignItems: "center", gap: 8 }}><Target size={18} /> Weekly Challenge</h2>
       <p className="mb-2">{challenge}</p>
       <button
         onClick={() => setCompleted(true)}
@@ -24,7 +25,7 @@ const WeeklyChallenge = () => {
           completed ? "bg-green-500 text-white" : "bg-blue-500 text-white"
         }`}
       >
-        {completed ? "✅ Completed" : "Mark as Done"}
+        {completed ? <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><CheckCircle2 size={14} /> Completed</span> : "Mark as Done"}
       </button>
     </div>
   );
