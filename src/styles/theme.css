@@ -55,7 +55,7 @@
     --sidebar-text: #24292f;
     --sidebar-text-secondary: rgba(36, 41, 47, 0.7);
     --sidebar-hover: #f3f4f6;
-    --sidebar-active: rgba(9, 105, 218, 0.1);
+    --sidebar-active: rgba(0, 0, 0, 0.08);
     
     /* Animation & Effects */
     --transition-fast: 0.15s ease;
@@ -172,7 +172,7 @@
     --sidebar-text: #24292f;
     --sidebar-text-secondary: rgba(36, 41, 47, 0.7);
     --sidebar-hover: #f3f4f6;
-    --sidebar-active: rgba(9, 105, 218, 0.1);
+    --sidebar-active: rgba(0, 0, 0, 0.08);
     
     /* Shadows for light theme */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);

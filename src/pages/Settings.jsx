@@ -11,8 +11,6 @@ import {
   Upload,
   RefreshCw,
   Save,
-  Sun,
-  Moon,
   Volume2,
   Eye,
   Accessibility,
@@ -21,12 +19,10 @@ import {
   AlertCircle,
   HelpCircle,
 } from 'lucide-react';
-import { useTheme } from '../ThemeContext';
 import { useSettings, AVAILABLE_LANGUAGES, COLOR_SCHEMES, FONT_SIZES, FONT_FAMILIES } from '../contexts/SettingsContext';
 import '../styles/settings.css';
 
 const Settings = () => {
-  const { theme, toggleTheme } = useTheme();
   const {
     settings,
     isLoading,
@@ -85,10 +81,10 @@ const Settings = () => {
 
   return (
     <div className="settings-container" style={{
-      background: "linear-gradient(135deg, #d0e7ff 0%, #e6d4ff 100%)",
+      background: "#ffffff",
       borderRadius: "24px",
       padding: "2rem",
-      color: "#333"
+      color: "#111111"
     }}>
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <motion.h1 className="settings-title">
@@ -121,19 +117,6 @@ const Settings = () => {
             <div className="settings-card-header">
               <Palette size={24} />
               <h3>Appearance</h3>
-            </div>
-
-            <div className="settings-control-group">
-              <label className="settings-label">Theme Preference</label>
-              <div className="settings-toggle-container">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <Sun size={20} style={{ color: theme === 'light' ? '#f59e0b' : 'var(--theme-text-muted)' }} />
-                  <div className={`settings-toggle ${theme === 'dark' ? 'active' : ''}`} onClick={toggleTheme}>
-                    <div className="settings-toggle-slider"></div>
-                  </div>
-                  <Moon size={20} style={{ color: theme === 'dark' ? 'var(--theme-accent)' : 'var(--theme-text-muted)' }} />
-                </div>
-              </div>
             </div>
 
             <div className="settings-control-group">

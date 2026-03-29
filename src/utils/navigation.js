@@ -22,8 +22,6 @@ export const headerNavigationItems = [
 // Main navbar navigation items (used in Navbar component)
 export const navbarNavigationItems = [
   { path: "/learn", label: "Learn", icon: "Zap" },
-  { path: "/cheatsheet", label: "Cheatsheet", icon: "Hash" },
-  { path: "/quiz", label: "Quiz", icon: "Trophy" },
   {
     label: "Community",
     icon: "Users",
@@ -34,32 +32,25 @@ export const navbarNavigationItems = [
       { path: "/contributor-leaderboard", label: "Leaderboard" }
     ]
   },
- { path: "/documentation", label: "Documentation", icon: "BookOpen" },
-
-  {
-    label: "Tools",
-    icon: "Cpu",
-    dropdown: [
-      { path: "/performance", label: "Performance Analyzer" },
-      { path: "/analytics", label: "Analytics Dashboard" },
-      { path: "/recommendations", label: "Algorithm Recommendations" },
-      { path: "/performance/docs", label: "Performance Docs" },
-    ],
-  },
   { path: "/analytics", label: "Analytics", icon: "BarChart3" },
   {
-    label: "Notes",
-    icon: "BookOpen",
+    label: "More Resources",
+    icon: "Code",
     dropdown: [
-      { path: "/notes/java", label: "Java" },
-      { path: "/notes/python", label: "Python" },
-      { path: "/notes/cpp", label: "Cpp" },
-      { path: "/notes/c", label: "C" },
-      { path: "/notes/javascript", label: "JavaScript" },
-      { path: "/notes/rust", label: "Rust" }
+      { path: "/cheatsheet", label: "Cheatsheet" },
+      { path: "/quiz", label: "Quiz" },
+      { path: "/documentation", label: "Documentation" },
+      { path: "/performance", label: "Performance Analyzer" },
+      { path: "/recommendations", label: "Algorithm Recommendations" },
+      { path: "/performance/docs", label: "Performance Docs" },
+      { path: "/notes/java", label: "Java Notes" },
+      { path: "/notes/python", label: "Python Notes" },
+      { path: "/notes/cpp", label: "C++ Notes" },
+      { path: "/notes/c", label: "C Notes" },
+      { path: "/notes/javascript", label: "JavaScript Notes" },
+      { path: "/notes/rust", label: "Rust Notes" }
     ]
-  },
-  { path: "/settings", label: "Settings", icon: "Settings" }
+  }
 ];
 
 // Learn page sections organized by topic areas with tags

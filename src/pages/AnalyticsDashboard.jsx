@@ -163,10 +163,10 @@ const AnalyticsDashboard = () => {
         <h1
           className="font-extrabold text-5xl md:text-6xl mb-6 text-center"
           style={{
-            color: "var(--primary, #007bff)",
+            color: "#000000",
             letterSpacing: "-0.025em",
             lineHeight: "1.1",
-            textShadow: "0 2px 4px rgba(0,0,0,0.08)",
+            textAlign: "center",
           }}
         >
           ALGORITHM ANALYTICS DASHBOARD
@@ -286,8 +286,8 @@ const ShowResultsButton = ({ filtered }) => {
 
 const ResultsSection = ({ filtered }) => {
   return (
-    <section style={{ marginTop: 24 }}>
-      <h3>Filtered Events</h3>
+    <section style={{ marginTop: 24, maxWidth: "100%", margin: "24px auto 0", textAlign: "center" }}>
+      <h3 style={{ textAlign: "center" }}>Filtered Events</h3>
       <ResultsTable filtered={filtered} />
     </section>
   );
@@ -295,8 +295,8 @@ const ResultsSection = ({ filtered }) => {
 
 const ResultsTable = ({ filtered }) => {
   return (
-    <div style={{ maxHeight: 360, overflow: "auto", border: "1px solid #eee", borderRadius: 6 }}>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+    <div style={{ maxHeight: 360, overflow: "auto", border: "1px solid #eee", borderRadius: 6, margin: "0 auto", textAlign: "left" }}>
+      <table style={{ width: "auto", minWidth: "70%", borderCollapse: "collapse", display: "table", margin: "0 auto" }}>
         <thead>
           <tr>
             <th style={{ textAlign: "left", borderBottom: "1px solid #ddd", padding: 8 }}>Timestamp</th>

@@ -397,35 +397,40 @@
 }
 
 .settings-btn-primary {
-  background: var(--theme-accent-gradient);
+  background: #000000;
   color: white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .settings-btn-primary:hover {
+  background: #1f2937;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .settings-btn-secondary {
-  background: var(--theme-btn-secondary-bg);
-  color: var(--theme-btn-secondary-text);
-  border-color: var(--theme-border);
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
 }
 
 .settings-btn-secondary:hover {
-  border-color: var(--theme-accent);
+  background: #1f2937;
+  border-color: #1f2937;
   transform: translateY(-2px);
 }
 
 .settings-btn-danger {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-  color: white;
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
 }
 
 .settings-btn-danger:hover {
+  background: #1f2937;
+  border-color: #1f2937;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Font Size Preview */

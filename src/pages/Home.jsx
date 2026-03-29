@@ -557,10 +557,10 @@ const Home = () => {
                         fontFamily: "'Inter', system-ui, sans-serif",
                       }}
                       onMouseEnter={(e) => {
-                        e.target.style.background = isLight ? "#f5f5f5" : "#1a1a1a";
+                        e.currentTarget.style.background = isLight ? "#f5f5f5" : "#1a1a1a";
                       }}
                       onMouseLeave={(e) => {
-                        e.target.style.background = isLight ? "#ffffff" : "#000000";
+                        e.currentTarget.style.background = isLight ? "#ffffff" : "#000000";
                       }}
                       title={isAnimating ? "Pause animation" : "Resume animation"}
                     >
@@ -584,10 +584,10 @@ const Home = () => {
                         fontFamily: "'Inter', system-ui, sans-serif",
                       }}
                       onMouseEnter={(e) => {
-                        e.target.style.background = isLight ? "#f5f5f5" : "#1a1a1a";
+                        e.currentTarget.style.background = isLight ? "#f5f5f5" : "#1a1a1a";
                       }}
                       onMouseLeave={(e) => {
-                        e.target.style.background = isLight ? "#ffffff" : "#000000";
+                        e.currentTarget.style.background = isLight ? "#ffffff" : "#000000";
                       }}
                       title="Reset with new data"
                     >

@@ -96,12 +96,20 @@ select {
 button {
   background-color: #000000;
   color: #ffffff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #333333;
   padding: 10px 20px;
   cursor: pointer;
   min-width: 120px;
   border-radius: 4px;
   font-weight: 600;
+}
+
+/* Buttons that explicitly set their own background via inline styles should
+   also be able to set their own text color. The [style] attribute selector
+   has lower specificity than inline styles, so this acts as a safe fallback
+   reset for buttons with custom backgrounds. */
+button[style*="background"] {
+  color: inherit;
 }
 
 button:hover:not(:disabled) {
@@ -2251,7 +2259,7 @@ body.dark-mode .step-duration-tag {
   background: var(--btn-bg);
   text-align: center;
   flex-direction: column;
-  background: linear-gradient(90deg, #8492a7, #5f7db4);
+  /* Removed hardcoded gradient - let inline styles or higher-specificity rules control background */
 }
 
 .clean-button-link:hover {
