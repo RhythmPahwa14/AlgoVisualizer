@@ -18,7 +18,7 @@ const Contact = lazy(() => import("../pages/contact.jsx"));
 const Privacy = lazy(() => import("../pages/privacy.jsx"));
 const Terms = lazy(() => import("../pages/terms.jsx"));
 const About = lazy(() => import("../pages/about.jsx"));
-const Settings = lazy(() => import("../components/Settings.jsx"));
+
 import NQueensPage from "@/pages/Backtracking/NQueens";
 // Add other pages as needed
 
@@ -44,7 +44,7 @@ const AppRoutes = () => {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/about" element={<About />} />
-        <Route path="/settings" element={<Settings />} />
+
         <Route path="/backtracking/n-queens" element={<NQueensPage />} />
 
         {/* Add more routes for other pages/components */}

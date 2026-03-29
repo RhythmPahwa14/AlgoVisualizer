@@ -46,43 +46,16 @@
    Section and Header
 ------------------------ */
 .contributors-section {
-  padding: 4rem 0;
-  background: var(--bg-color);
-  color: var(--text-color);
+  padding: 1.5rem 0 4rem;
+  background: #ffffff;
+  color: #000000;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  transition: background 0.2s ease, color 0.3s ease;
 }
 
 .contributors-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-  animation: backgroundShift 20s ease-in-out infinite;
-}
-
-@keyframes backgroundShift {
-  0%, 100% { 
-    background: 
-      radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
-  }
-  50% { 
-    background: 
-      radial-gradient(circle at 60% 60%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 30% 40%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 70% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 50%);
-  }
+  display: none;
 }
 
 .contributors-section .container {
@@ -154,58 +127,30 @@
    Contributor Cards - Enhanced
 ------------------------ */
 .contributor-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
   padding: 2rem;
   position: relative;
   overflow: hidden;
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   min-height: 420px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  text-align: center;
 }
 
 .enhanced-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.6), transparent);
+  display: none;
 }
 
 .card-glow {
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: linear-gradient(135deg, 
-    rgba(99, 102, 241, 0.15), 
-    rgba(236, 72, 153, 0.15), 
-    rgba(14, 165, 233, 0.15)
-  );
-  border-radius: 28px;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: -1;
-  filter: blur(10px);
-}
-
-.contributor-card:hover .card-glow {
-  opacity: 1;
+  display: none;
 }
 
 .contributor-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: var(--primary-color);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: #cccccc;
 }
 
 /* ------------------------
@@ -228,36 +173,25 @@
 }
 
 .avatar-ring {
-  position: absolute;
-  width: 115px;
-  height: 115px;
-  border-radius: 50%;
-  padding: 3px;
-  z-index: 1;
+  display: none;
 }
 
 .contributor-avatar img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 3px solid var(--card-bg);
-  transition: all 0.4s ease;
+  border: 2px solid #e5e5e5;
   position: relative;
   z-index: 2;
   object-fit: cover;
 }
 
-.contributor-card:hover .contributor-avatar img {
-  transform: scale(1.1);
-  border-color: var(--primary-color);
-}
-
 .role-badge-overlay {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 32px;
-  height: 32px;
+  top: 2px;
+  right: 2px;
+  width: 30px;
+  height: 30px;
   background: linear-gradient(135deg, #FFD700, #FFA500);
   border-radius: 50%;
   display: flex;
@@ -268,6 +202,20 @@
   box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
   border: 2px solid var(--card-bg);
   transition: all 0.3s ease;
+}
+
+.role-overlay-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.role-overlay-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.2;
+  color: #111827;
 }
 
 .contributor-card:hover .role-badge-overlay {
@@ -328,7 +276,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -351,7 +300,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  align-self: flex-start;
+  align-self: center;
   border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
@@ -360,8 +309,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
+  line-height: 0;
   flex-shrink: 0;
+}
+
+.role-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.2;
+  display: block;
 }
 
 .contributor-bio {
@@ -402,6 +358,12 @@
   justify-content: center;
   line-height: 1;
   flex-shrink: 0;
+}
+
+.stat-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.1;
 }
 
 .stat-value {

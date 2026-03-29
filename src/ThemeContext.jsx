@@ -1,35 +1,18 @@
-import { createContext, useContext, useState, useEffect, useMemo, useCallback } from "react";
+import { createContext, useContext, useEffect, useMemo, useCallback } from "react";
 import PropTypes from 'prop-types';
 
 const ThemeContext = createContext();
 
-// Helper function to get system theme preference
-const getSystemTheme = () => {
-  if (typeof window !== 'undefined' && window.matchMedia) {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-  return 'light';
-};
-
-// Always use light theme
-const getInitialTheme = () => {
-  return 'light';
-};
-
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
+  const theme = 'light';
 
-  // Always force light theme
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", "light");
   }, []);
 
+  // Single-theme app: keep API compatibility for existing callers.
   const toggleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const newTheme = prev === "light" ? "dark" : "light";
-      document.documentElement.setAttribute("data-theme", newTheme);
-      return newTheme;
-    });
+    document.documentElement.setAttribute("data-theme", "light");
   }, []);
 
   // Text color adjustment for light mode
@@ -42,13 +25,27 @@ export const ThemeProvider = ({ children }) => {
       "rgba(224, 230, 237, 1)"
     ]);
 
+    // Tags (and their descendants) whose text color should never be auto-overridden
+    const SKIP_TAGS = new Set(['BUTTON', 'A', 'INPUT', 'SELECT', 'TEXTAREA', 'LABEL', 'OPTION', 'NAV', 'SVG', 'HEADER', 'FOOTER']);
+
+    const isInsideSkippedTag = (el) => {
+      let node = el.parentElement;
+      while (node && node !== document.body) {
+        if (SKIP_TAGS.has(node.tagName)) return true;
+        node = node.parentElement;
+      }
+      return false;
+    };
+
+    const hasExplicitInlineColor = (el) => {
+      // If the dev explicitly set a color via inline style, respect it
+      const inlineStyle = el.getAttribute('style') || '';
+      return /\bcolor\s*:/.test(inlineStyle);
+    };
+
     const isWhiteLike = (el) => {
       const cs = window.getComputedStyle(el);
-      const rgb = cs.color.trim();
-      if (WHITE_RGB.has(rgb)) return true;
-      const inline = (el.getAttribute('style') || '').toLowerCase();
-      if (WHITE_HEXES.has(inline.match(/color:\s*([^;]+)/)?.[1]?.trim())) return true;
-      return false;
+      return WHITE_RGB.has(cs.color.trim());
     };
 
     const applyLightOverrides = () => {
@@ -59,6 +56,12 @@ export const ThemeProvider = ({ children }) => {
       while (walker.nextNode()) {
         const el = walker.currentNode;
         if (!(el instanceof HTMLElement)) continue;
+        // Skip interactive elements and all their descendants
+        if (SKIP_TAGS.has(el.tagName)) continue;
+        if (isInsideSkippedTag(el)) continue;
+        // Skip elements with an explicitly set inline color (intentional)
+        if (hasExplicitInlineColor(el)) continue;
+        // Skip elements opted out via data attribute
         if (el.dataset && (el.dataset.keepColor === 'true' || el.getAttribute('data-keep-color') === 'true')) continue;
         if (isWhiteLike(el)) toOverride.push(el);
       }
@@ -84,11 +87,8 @@ export const ThemeProvider = ({ children }) => {
     };
 
     if (typeof window !== 'undefined') {
-      if (theme === 'light') {
-        const id = window.requestAnimationFrame(applyLightOverrides);
-        return () => window.cancelAnimationFrame(id);
-      }
-      removeOverrides();
+      const id = window.requestAnimationFrame(applyLightOverrides);
+      return () => window.cancelAnimationFrame(id);
     }
     return undefined;
   }, [theme]);

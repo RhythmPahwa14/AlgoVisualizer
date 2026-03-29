@@ -1,10 +1,8 @@
-// cspell:words sandeepvashishtha Vashishtha rhythmpahwa Pahwa noopener noreferrer
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Crown, Star, Target, Flame, Gem, BarChart3, Wrench, Bug } from "lucide-react";
 import "../styles/global-theme.css";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import "../styles/Contributors.css";
 
 const GITHUB_HEADERS = {
   Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
@@ -20,7 +18,7 @@ const mockContributors = [
     avatar_url: "https://github.com/SandeepVashishtha.png",
     html_url: "https://github.com/SandeepVashishtha",
     contributions: 169,
-    role: "Project Lead & Full Stack Developer",
+    role: "Senior Open Source Developer",
     bio: "Passionate about building scalable algorithm visualization applications and educational tools."
   },
   {
@@ -30,7 +28,7 @@ const mockContributors = [
     avatar_url: "https://github.com/RhythmPahwa14.png",
     html_url: "https://github.com/RhythmPahwa14",
     contributions: 800,
-    role: "Core Maintainer",
+    role: "Project Lead & Full Stack Developer",
     bio: "Experienced developer contributing to algorithm visualization and educational technology projects."
   }
 ];
@@ -103,23 +101,24 @@ const getAvatarRingStyle = (contributions) => {
 // Helper function to get role badge icon
 const getRoleBadgeIcon = (role) => {
   if (role.includes("Lead") || role.includes("Maintainer")) {
-    return "👑";
+    return Crown;
   } else if (role.includes("Senior") || role.includes("Core")) {
-    return "⭐";
+    return Star;
   } else if (role.includes("Mentor")) {
-    return "🎯";
+    return Target;
   } else if (role.includes("Active")) {
-    return "🔥";
+    return Flame;
   }
-  return "💎";
+  return Gem;
 };
 
 // Helper function to assign roles based on GitHub activity and profile
 const getRoleByGitHubActivity = (contributor) => {
   const { contributions, followers = 0, public_repos = 0, created_at, login } = contributor;
 
-  // Special role for project owner — case-insensitive
-  if (login.toLowerCase() === "sandeepvashishtha") return "Project Lead & Full Stack Developer";
+  // Special role for project lead — case-insensitive
+  if (login.toLowerCase() === "rhythmpahwa14") return "Project Lead & Full Stack Developer";
+  if (login.toLowerCase() === "sandeepvashishtha") return "Senior Open Source Developer";
 
   // Calculate account age in years
   const accountAge = created_at
@@ -319,42 +318,16 @@ const Contributors = () => {
     return () => clearInterval(commitCheckInterval);
   }, [fetchContributors]); // removed lastCommitSha from deps — using ref now
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
 
   if (loading) {
     return (
       <div className="theme-container">
         <div className="loading-state">
-          <motion.div
-            className="bouncing-loader"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className="bouncing-loader">
             <div className="loader-dot" />
             <div className="loader-dot" />
             <div className="loader-dot" />
-          </motion.div>
+          </div>
           <p>Loading our amazing contributors...</p>
         </div>
       </div>
@@ -364,8 +337,6 @@ const Contributors = () => {
   return (
     <div
       className="theme-container contributors-section"
-      data-aos="fade-up"
-      data-aos-duration="1000"
     >
       {/* Back Button */}
       {/* <motion.button
@@ -414,49 +385,27 @@ const Contributors = () => {
         <span>Back to Community</span>
       </motion.button> */}
 
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="contributors-header"
-      >
+      <div className="contributors-header">
         <h1 className="theme-title">Our Amazing Contributors</h1>
         <p className="contributors-subtitle" style={{ fontSize: "1.5rem", textAlign: "center" }}>
           Building Together, Growing Together
         </p>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="contributors-grid"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
+      <div className="contributors-grid">
         {contributors.map((contributor, index) => {
           const badgeStyle = getCommitBadgeStyle(contributor.contributions);
           const avatarRingStyle = getAvatarRingStyle(contributor.contributions);
-          const roleIcon = getRoleBadgeIcon(contributor.role);
+          const RoleIcon = getRoleBadgeIcon(contributor.role);
 
           return (
-            <motion.div
+            <div
               key={contributor.id}
               className="contributor-card enhanced-card"
-              variants={itemVariants}
-              whileHover={{
-                y: -8,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-                transition: { duration: 0.3 }
-              }}
-              data-aos="fade-up"
-              data-aos-delay={`${index * 100}`}
             >
-              <div className="card-glow"></div>
 
               <div className="contributor-avatar">
                 <div className="avatar-container">
-                  <div className="avatar-ring" style={avatarRingStyle}></div>
                   <img
                     src={contributor.avatar_url}
                     alt={contributor.name || contributor.login}
@@ -467,7 +416,9 @@ const Contributors = () => {
                     }}
                   />
                   <div className="role-badge-overlay" title={contributor.role}>
-                    <span>{roleIcon}</span>
+                    <span className="role-overlay-icon">
+                      <RoleIcon size={14} aria-hidden="true" />
+                    </span>
                   </div>
                 </div>
 
@@ -491,7 +442,9 @@ const Contributors = () => {
               <div className="contributor-info enhanced-info">
                 <h3 className="contributor-name">{contributor.name || contributor.login}</h3>
                 <p className="contributor-role">
-                  <span className="role-icon">{roleIcon}</span>
+                  <span className="role-icon">
+                    <RoleIcon size={14} aria-hidden="true" />
+                  </span>
                   {contributor.role}
                 </p>
                 <p className="contributor-bio">{contributor.bio}</p>
@@ -509,17 +462,23 @@ const Contributors = () => {
                   }}
                 >
                   <div className="stat-item">
-                    <span className="stat-icon">📊</span>
+                    <span className="stat-icon">
+                      <BarChart3 size={16} aria-hidden="true" />
+                    </span>
                     <span className="stat-value">{contributor.contributions}</span>
                     <span className="stat-label">Commits</span>
                   </div>
                   <div className="stat-item" style={{ flexDirection: "column" }}>
-                    <span className="stat-icon">🔧</span>
+                    <span className="stat-icon">
+                      <Wrench size={16} aria-hidden="true" />
+                    </span>
                     <span className="stat-value">{Math.floor(contributor.contributions / 3)}</span>
                     <span className="stat-label">PRs</span>
                   </div>
                   <div className="stat-item" style={{ flexDirection: "column" }}>
-                    <span className="stat-icon">🐛</span>
+                    <span className="stat-icon">
+                      <Bug size={16} aria-hidden="true" />
+                    </span>
                     <span className="stat-value">{Math.floor(contributor.contributions / 5)}</span>
                     <span className="stat-label">Issues</span>
                   </div>
@@ -546,10 +505,10 @@ const Contributors = () => {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           );
         })}
-      </motion.div>
+      </div>
     </div>
   );
 };
