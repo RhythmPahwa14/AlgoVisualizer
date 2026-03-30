@@ -9,7 +9,6 @@ import {
   Users,
   Trophy,
   Settings,
-  X,
   Type,
   ChevronDown,
   BookOpen,
@@ -18,8 +17,7 @@ import {
   Hash,
   Zap,
   Gamepad,
-  TreeDeciduous,
-  Menu
+  TreeDeciduous
 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { navbarNavigationItems } from "../utils/navigation";
@@ -42,8 +40,7 @@ const ICON_COMPONENTS = {
   Hash,
   Zap,
   Gamepad,
-  TreeDeciduous,
-  Menu
+  TreeDeciduous
 };
 
 // Desktop Nav Item
@@ -330,11 +327,52 @@ const Navbar = () => {
           className={`mobile-menu-button ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle navigation menu"
-          style={{ color: "#000000" }}
+          style={{
+            color: "#000000",
+            background: "#ffffff",
+            border: "1px solid rgba(0, 0, 0, 0.12)",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+          }}
         >
-          {isMobileMenuOpen
-            ? <X size={24} color="#000000" style={{ stroke: "#000000" }} />
-            : <Menu size={24} color="#000000" style={{ stroke: "#000000" }} />}
+          <span
+            aria-hidden
+            style={{
+              position: "absolute",
+              width: "18px",
+              height: "2px",
+              borderRadius: "2px",
+              background: "#000000",
+              transform: isMobileMenuOpen ? "rotate(45deg)" : "translateY(-6px)",
+              transition: "transform 0.2s ease",
+            }}
+          />
+          <span
+            aria-hidden
+            style={{
+              position: "absolute",
+              width: "18px",
+              height: "2px",
+              borderRadius: "2px",
+              background: "#000000",
+              opacity: isMobileMenuOpen ? 0 : 1,
+              transition: "opacity 0.2s ease",
+            }}
+          />
+          <span
+            aria-hidden
+            style={{
+              position: "absolute",
+              width: "18px",
+              height: "2px",
+              borderRadius: "2px",
+              background: "#000000",
+              transform: isMobileMenuOpen ? "rotate(-45deg)" : "translateY(6px)",
+              transition: "transform 0.2s ease",
+            }}
+          />
         </button>
       </div>
 
@@ -345,11 +383,8 @@ const Navbar = () => {
       >
         {/* Mobile Menu Header */}
         <div className="mobile-menu-header">
-          <div className="mobile-menu-header-content">
+          <div className="mobile-menu-header-content" style={{ justifyContent: "flex-start" }}>
             <span className="mobile-menu-title">AlgoVisualizer</span>
-            <button className="mobile-menu-close-btn" onClick={() => setIsMobileMenuOpen(false)}>
-              <X size={18} />
-            </button>
           </div>
           <p className="mobile-menu-subtitle">Explore Algorithms & Notes</p>
         </div>

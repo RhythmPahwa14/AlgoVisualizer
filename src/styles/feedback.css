@@ -13,10 +13,9 @@
   color: #fff;
   font-size: 24px;
   cursor: pointer;
-  box-shadow: 
-    0 8px 32px rgba(102, 126, 234, 0.3),
-    0 4px 16px rgba(118, 75, 162, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,10 +33,9 @@
 
 .feedback-fab:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 
-    0 12px 40px rgba(102, 126, 234, 0.4),
-    0 6px 20px rgba(118, 75, 162, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .feedback-fab:active {
@@ -107,9 +105,9 @@
 }
 
 .feedback-close {
-  border: 1px solid rgba(0,0,0,0.12);
-  background: transparent;
-  color: inherit;
+  border: 1px solid #000000;
+  background: #000000;
+  color: #ffffff;
   width: 28px;
   height: 28px;
   border-radius: 6px;
@@ -158,19 +156,19 @@
 
 .feedback-submit {
   width: 100%;
-  border: none;
-  background: #2575fc;
+  border: 1px solid #000000;
+  background: #000000;
   color: #fff;
   padding: 10px 12px;
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 6px 16px rgba(37, 117, 252, 0.3);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
 }
 
 .feedback-submit:hover {
-  background: #1f63d6;
+  background: #111111;
   transform: translateY(-1px);
 }
 

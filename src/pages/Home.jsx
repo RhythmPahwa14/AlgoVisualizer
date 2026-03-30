@@ -416,6 +416,17 @@ const Home = () => {
 
   const featuredResources = features.slice(0, 2);
 
+  const resourceQuickLinks = [
+    { title: "Cheatsheet", path: "/cheatsheet", description: "Quick reference cards", icon: BookOpen },
+    { title: "Quiz", path: "/quiz", description: "Practice with timed quizzes", icon: Brain },
+    { title: "Performance Analyzer", path: "/performance", description: "Compare runtime and memory", icon: BarChart3 },
+    { title: "Algorithm Recommendations", path: "/recommendations", description: "Get the best-fit algorithm", icon: Sparkles },
+    { title: "Java Notes", path: "/notes/java", description: "Structured Java learning path", icon: Code },
+    { title: "Python Notes", path: "/notes/python", description: "Python basics to advanced", icon: Braces },
+  ];
+
+  const allResources = [...features, ...resourceQuickLinks];
+
   /** ===== Quick responsive helpers (no external CSS changes) ===== */
   const gridStyles = `
     .hero-grid { display:grid; grid-template-columns: 1.08fr 1fr; gap:2.25rem; align-items:stretch; }
@@ -423,7 +434,9 @@ const Home = () => {
     .updates-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1rem; }
     .paths-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; }
     
-    .algo-marketing-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin: 4rem auto; max-width: 1300px; align-items: start; }
+    .algo-marketing-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin: 4rem auto; max-width: 1300px; align-items: stretch; }
+    .algo-col { display:flex; flex-direction:column; height:100%; }
+    .resources-stack { display:flex; flex-direction:column; gap: 0.9rem; flex:1; justify-content:space-between; }
     .section-h2 { font-size: 1.8rem; font-weight: 800; color: #000; margin: 0 0 1.5rem 0; letter-spacing: -0.5px; font-family: 'Inter', sans-serif; }
     .section-sub { font-size: 0.65rem; font-weight: 800; color: #888; letter-spacing: 1px; margin-bottom: 0.75rem; text-transform: uppercase; font-family: 'Inter', sans-serif; }
     
@@ -746,19 +759,25 @@ const Home = () => {
         <div className="algo-col">
           <h2 className="section-h2">Resources</h2>
           <div className="section-sub">AVAILABLE MODULES</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {features.map((feature, i) => (
+          <div className="resources-stack">
+            {allResources.map((feature, i) => {
+              const IconComp = feature.icon;
+              return (
               <Link key={i} to={feature.path} style={{
                 display: 'block', padding: '12px 16px', background: isLight ? '#ffffff' : '#111',
                 borderLeft: i === 0 ? '3px solid #000' : '3px solid transparent',
                 boxShadow: i === 0 ? '0 4px 12px rgba(0,0,0,0.05)' : 'none',
                 borderRadius: '4px', textDecoration: 'none',
-                marginLeft: i === 0 ? '-3px' : '0'
+                marginLeft: i === 0 ? '-3px' : '0',
+                minHeight: '74px'
               }}>
-                 <div style={{ fontWeight: 700, color: i === 0 ? T.textPrimary : T.textSecondary, fontSize: '0.95rem' }}>{feature.title}</div>
-                 <div style={{ fontSize: '0.8rem', color: T.textSecondary, marginTop: '2px' }}>{feature.description.slice(0,35)}...</div>
+                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                   {IconComp ? <IconComp size={16} color={isLight ? '#000000' : '#ffffff'} /> : null}
+                   <div style={{ fontWeight: 700, color: i === 0 ? T.textPrimary : T.textSecondary, fontSize: '0.95rem' }}>{feature.title}</div>
+                 </div>
+                 <div style={{ fontSize: '0.8rem', color: T.textSecondary, marginTop: '6px' }}>{feature.description.slice(0, 42)}...</div>
               </Link>
-            ))}
+            );})}
           </div>
         </div>
 

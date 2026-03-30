@@ -298,15 +298,15 @@ body {
 
 .dropdown-toggle:hover,
 .dropdown-toggle.active {
-  background: var(--primary-color-alpha);
-  color: var(--primary-color);
-  transform: translateX(2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #ffffff !important;
+  color: #000000 !important;
+  transform: none;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-toggle:hover::before,
 .dropdown-toggle.active::before {
-  height: 70%;
+  height: 0;
 }
 
 .dropdown-toggle .drop-icon {
@@ -320,7 +320,8 @@ body {
 /* Dark mode hover text color fix */
 [data-theme="dark"] .dropdown-toggle:hover,
 [data-theme="dark"] .dropdown-toggle.active {
-  color: #000000;
+  background: #ffffff !important;
+  color: #000000 !important;
 }
 
 .dropdown-arrow {
@@ -660,9 +661,16 @@ body {
     border-color: var(--card-border) !important;
   }
 
-  .navbar .mobile-menu-button svg {
+  .navbar .mobile-menu-button svg,
+  .mobile-menu-button svg,
+  .mobile-menu-button svg path {
     color: #000000 !important;
     stroke: #000000 !important;
+    fill: none !important;
+    stroke-width: 2.2px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
   }
 
   .mobile-menu {
@@ -755,7 +763,9 @@ body {
   .mobile-menu-link:hover,
   .mobile-dropdown-toggle.active,
   .mobile-dropdown-toggle:hover {
-    background: var(--hover-bg);
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   }
 
   .mobile-dropdown-menu {

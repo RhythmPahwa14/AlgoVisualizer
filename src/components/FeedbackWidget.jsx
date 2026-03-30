@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { MessageSquare } from "lucide-react";
 import "../styles/feedback.css";
 
 const FeedbackWidget = () => {
@@ -80,9 +81,7 @@ const FeedbackWidget = () => {
         className="feedback-fab"
         onClick={toggle}
       >
-        <span className="feedback-fab-icon" role="img" aria-hidden>
-          💬
-        </span>
+        <MessageSquare size={18} strokeWidth={2.2} aria-hidden />
       </button>
 
       {/* Overlay */}
@@ -137,7 +136,7 @@ const FeedbackWidget = () => {
               {submitting ? "Submitting…" : "Submit feedback"}
             </button>
 
-            <p className="feedback-note">Saved locally—no network requests are made.</p>
+            <p className="feedback-note">Saved locally, no network requests are made.</p>
           </form>
         ) : (
           <div className="feedback-thanks" onClick={(e) => e.stopPropagation()}>
