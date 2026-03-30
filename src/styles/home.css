@@ -165,19 +165,18 @@ select:focus {
    Hero Section - Minimal Black & White
 ========================= */
 .typewriter-heading {
-  font-size: 3.2rem;
+  font-size: clamp(2rem, 6vw, 3.2rem);
   font-weight: 700;
   color: #000000;
   letter-spacing: -0.5px;
   font-family: "Inter", system-ui, sans-serif;
   text-align: center;
   white-space: nowrap; 
-  position: absolute;
+  position: relative;
   min-width: 17ch;
-  max-width: 100%;
-  margin-left: 30%;
-  margin-bottom: 5px;
-  margin-right: auto;
+  max-width: 100vw;
+  overflow: hidden;
+  margin: 0 auto 5px auto;
   line-height: 1.2;
   min-height: 1.2em;
 }
@@ -192,7 +191,7 @@ select:focus {
   height: 1.2em;
   background: #000000;
   margin-left: 4px;
-  position: absolute;
+  vertical-align: middle;
   animation: blink 0.7s infinite;
 }
 
@@ -799,6 +798,8 @@ body.dark-mode .stat-card {
    Dashboard Home Design - Minimal Black & White
 ========================= */
 .home-dashboard {
+  width: 100%;
+  box-sizing: border-box;
   min-height: 100vh;
   background: #ffffff;
   transition: background 0.3s ease-in-out;
