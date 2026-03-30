@@ -4,7 +4,7 @@
 
 :root {
   --bg: #ffffff;
-  --surface: #f8fafc;
+  --surface: #ffffff;
   --surface-2: #eef2f7;
   --text: #0f172a;
   --text-muted: #475569;
@@ -112,11 +112,11 @@
   margin-top: 8px;
 }
 
-.btn {
+.doc-page .btn {
   appearance: none;
-  border: 1px solid var(--border);
-  background: var(--surface-2);
-  color: var(--text);
+  border: 1px solid #000000;
+  background: #000000;
+  color: #ffffff;
   padding: 10px 16px;
   border-radius: 12px;
   font-weight: 600;
@@ -135,7 +135,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.btn::before {
+.doc-page .btn::before {
   content: '';
   position: absolute;
   top: 0;
@@ -146,86 +146,96 @@
   transition: left 0.5s ease;
 }
 
-.btn:hover {
+.doc-page .btn:hover {
   transform: translateY(-2px);
-  border-color: var(--primary);
+  border-color: #111111;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background: var(--surface);
+  background: #111111;
 }
 
-.btn:hover::before {
+.doc-page .btn:hover::before {
   left: 100%;
 }
 
-.btn:active {
+.doc-page .btn:active {
   transform: translateY(0);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.btn:disabled {
+.doc-page .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.btn.primary {
-  background: linear-gradient(135deg, var(--primary), #4f7fff);
-  color: var(--primary-contrast);
-  border-color: transparent;
-  box-shadow: 0 2px 8px rgba(91, 140, 255, 0.25);
+.doc-page .btn.primary {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.btn.primary:hover {
-  background: linear-gradient(135deg, #4f7fff, var(--primary));
-  box-shadow: 0 6px 20px rgba(91, 140, 255, 0.4);
+.doc-page .btn.primary:hover {
+  background: #111111;
+  border-color: #111111;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
   transform: translateY(-3px);
 }
 
-.btn.secondary {
+.doc-page .btn,
+.doc-page .btn:visited,
+.doc-page .btn:focus,
+.doc-page .btn:active {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+  text-decoration: none;
+}
+
+.doc-page .btn.secondary {
   background: transparent;
   border: 2px solid var(--primary);
   color: var(--primary);
 }
 
-.btn.secondary:hover {
+.doc-page .btn.secondary:hover {
   background: var(--primary);
   color: var(--primary-contrast);
 }
 
-.btn.danger {
+.doc-page .btn.danger {
   background: linear-gradient(135deg, #ef4444, #dc2626);
   color: white;
   border-color: transparent;
   box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25);
 }
 
-.btn.danger:hover {
+.doc-page .btn.danger:hover {
   background: linear-gradient(135deg, #dc2626, #b91c1c);
   box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
 }
 
-.btn.lg {
+.doc-page .btn.lg {
   padding: 14px 24px;
   font-size: 1.05rem;
   border-radius: 14px;
   font-weight: 700;
 }
 
-.btn.sm {
+.doc-page .btn.sm {
   padding: 6px 12px;
   font-size: 0.8rem;
   border-radius: 8px;
 }
 
-.btn.icon-only {
+.doc-page .btn.icon-only {
   width: 40px;
   height: 40px;
   padding: 0;
   border-radius: 50%;
 }
 
-.btn.full-width {
+.doc-page .btn.full-width {
   width: 100%;
 }
 
@@ -402,6 +412,24 @@ code {
     monospace;
 }
 
+pre code {
+  color: inherit !important;
+}
+
+.doc-page pre,
+.doc-page pre code {
+  color: #e2e8f0 !important;
+}
+
+.steps .step pre {
+  background: #020817;
+  border-color: #111827;
+}
+
+.steps .step pre code {
+  color: #e2e8f0 !important;
+}
+
 /* ================================
    Walkthrough steps (responsive)
    ================================ */
@@ -465,7 +493,7 @@ summary:focus {
 /* SortingDoc light tweaks (only when app is light) */
 html[data-theme="light"] .doc-page {
   --bg: #ffffff;
-  --surface: #f8fafc;
+  --surface: #ffffff;
   --surface-2: #eef2f7;
   --text: #0f172a;
   --text-muted: #475569;

@@ -844,31 +844,40 @@ function AlgorithmDocumentation() {
           />
         </div>
 
-        <div className="category-filters mt-4">
-          <div className="flex flex-wrap gap-3 px-4">
-            {categories.map((category) => {
-              const IconComponent = category.icon;
-              const isActive = selectedCategory === category.key;
-              return (
-                <button
-                  key={category.key}
-                  className={`btn ${isActive ? "btn-primary" : "btn-secondary"} px-4 py-2 rounded-full flex items-center justify-between min-w-[180px] transition-all duration-200 hover:scale-105 group`}
-                  onClick={() => setSelectedCategory(category.key)}
+        <div
+          className="category-filters mt-4"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            overflowX: "visible",
+            overflowY: "visible",
+            gap: "0.75rem",
+            padding: "0 0.25rem 0",
+          }}
+        >
+          {categories.map((category) => {
+            const IconComponent = category.icon;
+            const isActive = selectedCategory === category.key;
+            return (
+              <button
+                key={category.key}
+                className={`btn ${isActive ? "btn-primary" : "btn-secondary"} px-4 py-2 rounded-full flex items-center justify-between transition-all duration-200 hover:scale-105 group`}
+                onClick={() => setSelectedCategory(category.key)}
+                style={{ minWidth: "fit-content", whiteSpace: "nowrap", flex: "0 1 auto" }}
+              >
+                <div className="flex items-center gap-2">
+                  <IconComponent size={18} />
+                  <span className="font-medium">{category.label}</span>
+                </div>
+                <div
+                  className={`relative z-10 ${isActive ? "bg-white text-[#1a1a1a]" : "bg-primary text-white"} ml-2 px-2.5 py-0.5 rounded-full text-sm font-semibold min-w-[28px] flex items-center justify-center`}
+                  style={{ isolation: "isolate" }}
                 >
-                  <div className="flex items-center gap-2">
-                    <IconComponent size={18} />
-                    <span className="font-medium">{category.label}</span>
-                  </div>
-                  <div
-                    className={`relative z-10 ${isActive ? "bg-white text-[#1a1a1a]" : "bg-primary text-white"} ml-2 px-2.5 py-0.5 rounded-full text-sm font-semibold min-w-[28px] flex items-center justify-center`}
-                    style={{ isolation: "isolate" }}
-                  >
-                    {category.count}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+                  {category.count}
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
 

@@ -660,6 +660,49 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Bubble Sort specific cleanup: force monochrome buttons and keep icon/text inline */
+.row-actions .btn,
+.code-explanation-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.row-actions .btn svg,
+.code-explanation-btn svg {
+  flex-shrink: 0;
+}
+
+.bubble-sort-mode .btn,
+.bubble-sort-mode .code-explanation-btn,
+.bubble-sort-mode .unified-visualizer .visualization-controls button,
+.bubble-sort-mode .algorithm-selector button,
+.bubble-sort-mode .step-controls button {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+.bubble-sort-mode .btn:hover:not(:disabled),
+.bubble-sort-mode .code-explanation-btn:hover,
+.bubble-sort-mode .unified-visualizer .visualization-controls button:hover:not(:disabled),
+.bubble-sort-mode .algorithm-selector button:hover:not(:disabled),
+.bubble-sort-mode .step-controls button:hover:not(:disabled) {
+  background: #111111 !important;
+  color: #ffffff !important;
+  border-color: #111111 !important;
+}
+
+.bubble-sort-mode .btn:disabled,
+.bubble-sort-mode .unified-visualizer .visualization-controls button:disabled,
+.bubble-sort-mode .algorithm-selector button:disabled,
+.bubble-sort-mode .step-controls button:disabled {
+  background: #222222 !important;
+  color: #f3f4f6 !important;
+  border-color: #222222 !important;
+}
 /* ---------- Base + reset ---------- */
 *,
 *::before,
