@@ -168,44 +168,43 @@ export default function ScrollToTop() {
           .scroll-to-top-btn {
             bottom: 14px; /* Positioned at the bottom */
             right: 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #ffffff;
+            color: #000000;
+            border: 1px solid rgba(0, 0, 0, 0.22);
             font-size: 20px;
             box-shadow: 
-              0 8px 32px rgba(102, 126, 234, 0.3),
-              0 4px 16px rgba(118, 75, 162, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+              0 8px 22px rgba(0, 0, 0, 0.18),
+              inset 0 1px 0 rgba(255, 255, 255, 0.95);
           }
 
           /* Ensure the arrow icon is solid white */
           .scroll-to-top-btn i,
           .scroll-to-top-btn .fa-solid {
-            color: #ffffff !important;
+            color: #000000 !important;
           }
 
           /* Dark theme styles */
           [data-theme="dark"] .scroll-to-top-btn {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            box-shadow: 
-              0 8px 32px rgba(79, 70, 229, 0.4),
-              0 4px 16px rgba(124, 58, 237, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: #ffffff;
+            color: #000000;
+            border: 1px solid rgba(0, 0, 0, 0.28);
+            box-shadow:
+              0 8px 22px rgba(0, 0, 0, 0.28),
+              inset 0 1px 0 rgba(255, 255, 255, 0.95);
           }
 
           /* Hover effects */
           .scroll-to-top-btn:hover {
             transform: translateY(-4px) scale(1.05);
             box-shadow: 
-              0 12px 40px rgba(102, 126, 234, 0.4),
-              0 6px 20px rgba(118, 75, 162, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+              0 12px 28px rgba(0, 0, 0, 0.24),
+              inset 0 1px 0 rgba(255, 255, 255, 1);
           }
 
           [data-theme="dark"] .scroll-to-top-btn:hover {
-            box-shadow: 
-              0 12px 40px rgba(79, 70, 229, 0.5),
-              0 6px 20px rgba(124, 58, 237, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow:
+              0 12px 28px rgba(0, 0, 0, 0.34),
+              inset 0 1px 0 rgba(255, 255, 255, 1);
           }
 
           /* Active/Click effect */
@@ -218,16 +217,14 @@ export default function ScrollToTop() {
           .scroll-to-top-btn:focus {
             outline: none;
             box-shadow: 
-              0 8px 32px rgba(102, 126, 234, 0.3),
-              0 4px 16px rgba(118, 75, 162, 0.2),
-              0 0 0 3px rgba(102, 126, 234, 0.4);
+              0 8px 22px rgba(0, 0, 0, 0.22),
+              0 0 0 3px rgba(0, 0, 0, 0.2);
           }
 
           [data-theme="dark"] .scroll-to-top-btn:focus {
             box-shadow: 
-              0 8px 32px rgba(79, 70, 229, 0.4),
-              0 4px 16px rgba(124, 58, 237, 0.3),
-              0 0 0 3px rgba(79, 70, 229, 0.4);
+              0 8px 22px rgba(0, 0, 0, 0.32),
+              0 0 0 3px rgba(0, 0, 0, 0.28);
           }
 
           /* Gentle floating animation */

@@ -190,8 +190,9 @@ const Sidebar = () => {
         className={`mobile-menu-button ${isMobileMenuOpen ? 'active' : ''}`}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         aria-label="Toggle navigation menu"
+        style={{ color: "#000000" }}
       >
-        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        {isMobileMenuOpen ? <X size={24} color="#000000" style={{ stroke: "#000000" }} /> : <Menu size={24} color="#000000" style={{ stroke: "#000000" }} />}
       </button>
 
       {/* Backdrop with blur effect */}
