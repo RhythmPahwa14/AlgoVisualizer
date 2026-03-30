@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/footer.css";
-import logo from "/logo.jpg";
+import logo from "/logo.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { navigationLinks, resourceLinks, socialLinks, techPills } from "../utils/footerData";
