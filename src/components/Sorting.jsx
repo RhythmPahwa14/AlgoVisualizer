@@ -6,6 +6,7 @@ import SimpleExportControls from "./SimpleExportControls";
 import InputPanel from "./InputPanel";
 import "../styles/Sorting.css";
 import { useMediaQuery } from "react-responsive";
+import { Play, Square, Shuffle, Check, FileCode } from "lucide-react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { getSampleData, getValidationRule } from "../data/sampleData";
@@ -251,7 +252,7 @@ const Sorting = () => {
   const toggleCodeExplanation = useCallback(() => updateState('showCodeExplanation', !state.showCodeExplanation), [state.showCodeExplanation, updateState]);
 
   return (
-    <div className="theme-container" data-aos="fade-up" data-aos-duration="1000">
+    <div className={`theme-container ${state.algorithm === "bubbleSort" ? "bubble-sort-mode" : ""}`} data-aos="fade-up" data-aos-duration="1000">
       <InputPanel
         dataType="array"
         placeholder="Enter numbers separated by commas (e.g., 64, 34, 25)"
@@ -278,10 +279,22 @@ const Sorting = () => {
                 <label htmlFor="custom-array">Custom Array</label>
                 <input id="custom-array" type="text" placeholder="e.g., 8,2,5" value={state.customArrayInput} onChange={(e) => updateCustomArrayInput(e.target.value)} disabled={state.isSorting} />
                 <div className="row-actions">
-                  <button className="btn btn-primary" onClick={handleSort} disabled={state.isSorting}>{state.isSorting ? "Sorting..." : "Start Sort"}</button>
-                  <button className="btn btn-secondary" onClick={handleStop} disabled={!state.isSorting}>Stop</button>
-                  <button className="btn btn-secondary" onClick={generateArray} disabled={state.isSorting}>Generate Array</button>
-                  {state.customArrayInput && <button className="btn btn-secondary" onClick={handleCustomArray} disabled={state.isSorting}>Apply Custom Array</button>}
+                  <button className="btn btn-primary" onClick={handleSort} disabled={state.isSorting}>
+                    <Play size={15} />
+                    <span>{state.isSorting ? "Sorting..." : "Start Sort"}</span>
+                  </button>
+                  <button className="btn btn-secondary" onClick={handleStop} disabled={!state.isSorting}>
+                    <Square size={15} />
+                    <span>Stop</span>
+                  </button>
+                  <button className="btn btn-secondary" onClick={generateArray} disabled={state.isSorting}>
+                    <Shuffle size={15} />
+                    <span>Generate Array</span>
+                  </button>
+                  {state.customArrayInput && <button className="btn btn-secondary" onClick={handleCustomArray} disabled={state.isSorting}>
+                    <Check size={15} />
+                    <span>Apply Custom Array</span>
+                  </button>}
                 </div>
               </div>
             </div>
@@ -310,7 +323,10 @@ const Sorting = () => {
           <div className="theme-card">
             <div className="theme-card-header between">
               <h3>{algorithmName} - Algorithm Details</h3>
-              <button className="code-explanation-btn btn btn-secondary" onClick={toggleCodeExplanation}>View Code Explanation</button>
+              <button className="code-explanation-btn btn btn-secondary" onClick={toggleCodeExplanation}>
+                <FileCode size={15} />
+                <span>View Code Explanation</span>
+              </button>
             </div>
             <div>
               <p className="muted">{algorithmInfo.description}</p>

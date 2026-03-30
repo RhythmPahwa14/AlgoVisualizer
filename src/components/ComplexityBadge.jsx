@@ -1,4 +1,5 @@
 import React from "react";
+import { Clock3, HardDrive } from "lucide-react";
 import "../styles/global-theme.css";
 
 /**
@@ -35,13 +36,7 @@ const ComplexityBadge = ({ time, space }) => {
             fontWeight: "500",
           }}
         >
-          <span
-            style={{
-              fontSize: "1rem",
-            }}
-          >
-            ⏱️
-          </span>
+          <Clock3 size={16} aria-hidden="true" />
           <span style={{ color: "var(--text-primary)" }}>
             <strong>Time:</strong> {time}
           </span>
@@ -62,13 +57,7 @@ const ComplexityBadge = ({ time, space }) => {
             fontWeight: "500",
           }}
         >
-          <span
-            style={{
-              fontSize: "1rem",
-            }}
-          >
-            💾
-          </span>
+          <HardDrive size={16} aria-hidden="true" />
           <span style={{ color: "var(--text-primary)" }}>
             <strong>Space:</strong> {space}
           </span>
