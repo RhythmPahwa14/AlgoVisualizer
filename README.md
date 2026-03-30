@@ -1,4 +1,4 @@
-<h1 align="center">🎯 AlgoVisualizer</h1> 
+<h1 align="center"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/target.svg" width="22" height="22" alt="Target icon" /> AlgoVisualizer</h1> 
 <div align="center">
 <br />
     <a href="https://algovisualizer.rhythmpahwa.tech/"><strong>Explore the Live Demo »</strong></a>
@@ -20,7 +20,7 @@
  
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2>📖 Table of Contents</h2> 
+<h2><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/list.svg" width="18" height="18" alt="Table icon" /> Table of Contents</h2> 
 
 - <a href="#overview"> Overview </a>
 - <a href="#vision"> Vision</a>
@@ -60,7 +60,7 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="overview">🔍 Overview</h2>
+<h2 id="overview"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/search.svg" width="18" height="18" alt="Overview icon" /> Overview</h2>
 
 > Welcome to **AlgoVisualizer**, a cutting-edge interactive web application designed to transform the way you learn and understand algorithms. Experience real-time visualizations of sorting, searching, and data structure algorithms with a beautiful, modern interface.
 
@@ -71,17 +71,17 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1000&color=00C853&center=true&vCenter=true&width=900&lines=Thanks+for+visiting+AlgoVisualizer!+🙌;Start+the+repo+✅;Share+it+with+others+🌍;Contribute+and+grow+🛠️;Happy+Coding+✨!" alt="Thanks Banner Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1000&color=00C853&center=true&vCenter=true&width=900&lines=Thanks+for+visiting+AlgoVisualizer!+;Start+the+repo+;Share+it+with+others+;Contribute+and+grow+;Happy+Coding+!" alt="Thanks Banner Typing SVG" />
 </div>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="vision">✨ Vision</h2>
+<h2 id="vision"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/eye.svg" width="18" height="18" alt="Vision icon" /> Vision</h2>
 Transform algorithmic learning through interactive visualizations—empowering students and developers to master data structures and algorithms with hands-on exploration and real-time feedback.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="mission">🎯 Mission</h2>
+<h2 id="mission"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/flag.svg" width="18" height="18" alt="Mission icon" /> Mission</h2>
 Build the most comprehensive interactive algorithm visualization platform
 Provide step-by-step visual learning with multi-language code implementations
 Support educators with exportable content for classrooms and presentations
@@ -89,18 +89,18 @@ Foster algorithmic thinking through interactive learning and community contribut
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="project-insights">📊 Project Insights</h2>
+<h2 id="project-insights"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/bar-chart-2.svg" width="18" height="18" alt="Insights icon" /> Project Insights</h2>
 
 <table align="center">
     <thead align="center">
         <tr>
-            <td><b>🌟 Stars</b></td>
-            <td><b>🍴 Forks</b></td>
-            <td><b>🐛 Issues</b></td>
-            <td><b>🔔 Open PRs</b></td>
-            <td><b>🔕 Closed PRs</b></td>
-            <td><b>🛠️ Languages</b></td>
-            <td><b>👥 Contributors</b></td>
+            <td><b> Stars</b></td>
+            <td><b> Forks</b></td>
+            <td><b> Issues</b></td>
+            <td><b> Open PRs</b></td>
+            <td><b> Closed PRs</b></td>
+            <td><b> Languages</b></td>
+            <td><b> Contributors</b></td>
         </tr>
      </thead>
     <tbody>
@@ -118,40 +118,40 @@ Foster algorithmic thinking through interactive learning and community contribut
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="features">✨ Features</h2>
+<h2 id="features"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/star.svg" width="18" height="18" alt="Features icon" /> Features</h2>
 
-### 🎨 **Modern Interface**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/layout.svg" width="16" height="16" alt="Modern interface icon" /> **Modern Interface**
 
 - **Dark Theme**: Sleek GitHub-inspired dark theme for comfortable learning
 - **Interactive Learning Platform**: Intuitive badge-based navigation system
 - **Responsive Design**: Seamless experience across desktop, tablet, and mobile devices
 - **Smooth Animations**: Powered by Framer Motion for engaging user experience
 
-### 📝 **User Input System**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/edit-3.svg" width="16" height="16" alt="User input icon" /> **User Input System**
 
-- **📊 Custom Data Visualization**: Upload your own arrays, graphs, and data structures
-- **🎯 Multiple Input Methods**: Text input, file upload (JSON/CSV/TXT), and sample data
-- **✅ Smart Validation**: Real-time data validation with helpful error messages
-- **📋 Format Support**: JSON, CSV, comma-separated values, and structured data
-- **🔧 Auto-Processing**: Automatic sorting for search algorithms, ID generation for graphs
-- **📚 Sample Library**: Built-in examples for all algorithm types (arrays, graphs, trees)
-- **📄 File Export**: Download sample data or save your custom datasets
+- ** Custom Data Visualization**: Upload your own arrays, graphs, and data structures
+- ** Multiple Input Methods**: Text input, file upload (JSON/CSV/TXT), and sample data
+- ** Smart Validation**: Real-time data validation with helpful error messages
+- ** Format Support**: JSON, CSV, comma-separated values, and structured data
+- ** Auto-Processing**: Automatic sorting for search algorithms, ID generation for graphs
+- ** Sample Library**: Built-in examples for all algorithm types (arrays, graphs, trees)
+- ** File Export**: Download sample data or save your custom datasets
 
-### 🧠 **Algorithm Visualizations**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/activity.svg" width="16" height="16" alt="Visualization icon" /> **Algorithm Visualizations**
 
 - **Step-by-Step Visualization**: Watch algorithms execute in real-time with clear visual feedback
 - **Interactive Controls**: Play, pause, reset, and adjust speed of algorithm execution
 - **Performance Metrics**: Track comparisons, swaps, iterations, and execution time
 - **Code Explanation**: Detailed code walkthrough with syntax highlighting
 
-### 📊 **Export & Recording**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/video.svg" width="16" height="16" alt="Export icon" /> **Export & Recording**
 
-- **📸 High-Quality Snapshots**: Capture visualization states as PNG/JPEG images
-- **🎬 Video Recording**: Export complete algorithm runs as GIFs or MP4 videos
-- **⚙️ Customizable Settings**: Adjust frame rates, quality, and export formats
-- **📚 Educational Ready**: Perfect for presentations, tutorials, and documentation
+- ** High-Quality Snapshots**: Capture visualization states as PNG/JPEG images
+- ** Video Recording**: Export complete algorithm runs as GIFs or MP4 videos
+- ** Customizable Settings**: Adjust frame rates, quality, and export formats
+- ** Educational Ready**: Perfect for presentations, tutorials, and documentation
 
-### 🎓 **Learning Tools**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/book-open.svg" width="16" height="16" alt="Learning tools icon" /> **Learning Tools**
 
 - **Interactive Quiz System**: Test your algorithm knowledge with built-in quizzes
 - **Algorithm Documentation**: Comprehensive guides and explanations
@@ -160,7 +160,7 @@ Foster algorithmic thinking through interactive learning and community contribut
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="why-algovisualizer">💡 Why AlgoVisualizer</h2>
+<h2 id="why-algovisualizer"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/zap.svg" width="18" height="18" alt="Why icon" /> Why AlgoVisualizer</h2>
 
 - Learn by seeing: Watch algorithms execute step-by-step with clear visual feedback
 - Multi-language support: Production-ready code in Java, Python, and C++
@@ -171,26 +171,26 @@ Foster algorithmic thinking through interactive learning and community contribut
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-🌟 **Exciting News...**
+ **Exciting News...**
 
-🚀 This project is now an official part of GirlScript Summer of Code – GSSoC'25! 💃🎉💻 We're thrilled to welcome contributors from all over India and beyond to collaborate, build, and grow *AlgoVisualizer!* Let’s make learning and career development smarter – together! 🌟👨‍💻👩‍💻
+ This project is now an official part of GirlScript Summer of Code – GSSoC'25!  We're thrilled to welcome contributors from all over India and beyond to collaborate, build, and grow *AlgoVisualizer!* Let’s make learning and career development smarter – together!
 
-👩‍💻 GSSoC is one of India’s **largest 3-month-long open-source programs** that encourages developers of all levels to contribute to real-world projects 🌍 while learning, collaborating, and growing together. 🌱
+ GSSoC is one of India’s **largest 3-month-long open-source programs** that encourages developers of all levels to contribute to real-world projects while learning, collaborating, and growing together. 
 
-🌈 With **mentorship, community support**, and **collaborative coding**, it's the perfect platform for developers to:
+ With **mentorship, community support**, and **collaborative coding**, it's the perfect platform for developers to:
 
-- ✨ Improve their skills
-- 🤝 Contribute to impactful projects
-- 🏆 Get recognized for their work
-- 📜 Receive certificates and swag!
+-  Improve their skills
+-  Contribute to impactful projects
+-  Get recognized for their work
+-  Receive certificates and swag!
 
-🎉 **I can’t wait to welcome new contributors** from GSSoC 2025 to this AlgoVisualizer project family! Let's build, learn, and grow together — one commit at a time. 🔥👨‍💻👩‍💻
+ **I can’t wait to welcome new contributors** from GSSoC 2025 to this AlgoVisualizer project family! Let's build, learn, and grow together — one commit at a time.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="supported-algorithms"> 🔍 Supported Algorithms</h2>
+<h2 id="supported-algorithms"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/activity.svg" width="18" height="18" alt="Algorithms icon" /> Supported Algorithms</h2>
 
-### Sorting Algorithms (7 Total)
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/bar-chart-2.svg" width="16" height="16" alt="Sorting icon" /> Sorting Algorithms (7 Total)
 - **Bubble Sort** - Simple comparison-based sorting
 - **Insertion Sort** - Efficient for small datasets
 - **Selection Sort** - In-place comparison sorting
@@ -199,13 +199,13 @@ Foster algorithmic thinking through interactive learning and community contribut
 - **Bucket Sort** - Distribution-based sorting
 - **Radix Sort** - Non-comparison integer sorting
 
-### Searching Algorithms (4 Total)
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/search.svg" width="16" height="16" alt="Searching icon" /> Searching Algorithms (4 Total)
 - **Linear Search** - Sequential search through elements
 - **Binary Search** - Efficient search on sorted arrays
 - **Jump Search** - Block-based search optimization
 - **Exponential Search** - Combination of binary and unbounded search
 
-### Data Structures (6 Total)
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/database.svg" width="16" height="16" alt="Data structures icon" /> Data Structures (6 Total)
 - **Stack** - LIFO (Last In, First Out) operations
 - **Queue** - FIFO (First In, First Out) operations
 - **Linked List** - Dynamic linear data structure
@@ -215,19 +215,19 @@ Foster algorithmic thinking through interactive learning and community contribut
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="code-implementations">💻 Code Implementations</h2>
+<h2 id="code-implementations"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/code.svg" width="18" height="18" alt="Code icon" /> Code Implementations</h2>
 
 AlgoVisualizer provides **ready-to-use code implementations** for all visualized algorithms in **multiple programming languages**. This feature makes it perfect for learning, reference, and direct use in your projects.
 
-### 🌟 **Code Section Features**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/code.svg" width="16" height="16" alt="Code section icon" /> **Code Section Features**
 
-- **📚 Multiple Languages**: View implementations in **Java**, **Python**, and **C++**
-- **🔄 Language Switching**: Easy toggle between programming languages with a single click
-- **📋 Copy-Ready Code**: All code is production-ready and can be directly copied
-- **📖 Educational Focus**: Clean, well-commented code perfect for learning
-- **🎯 Algorithm Coverage**: Comprehensive coverage of all visualized algorithms
+- ** Multiple Languages**: View implementations in **Java**, **Python**, and **C++**
+- ** Language Switching**: Easy toggle between programming languages with a single click
+- ** Copy-Ready Code**: All code is production-ready and can be directly copied
+- ** Educational Focus**: Clean, well-commented code perfect for learning
+- ** Algorithm Coverage**: Comprehensive coverage of all visualized algorithms
 
-### 🎨 **Available Code Categories**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/grid.svg" width="16" height="16" alt="Code categories icon" /> **Available Code Categories**
 
 #### **Sorting Algorithms** 
 Complete implementations for all sorting algorithms including:
@@ -265,7 +265,7 @@ Additional algorithmic implementations:
 - Kahn's Algorithm, Tarjan's Algorithm
 - Tower of Hanoi, Kadane's Algorithm
 
-### 🚀 **How to Use the Code Section**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/navigation.svg" width="16" height="16" alt="How to use icon" /> **How to Use the Code Section**
 
 1. **Navigate to any algorithm page** (Sorting, Searching, Graph, etc.)
 2. **Scroll to the "Code Implementation" section** at the bottom
@@ -273,15 +273,15 @@ Additional algorithmic implementations:
 4. **Copy the code** directly from the syntax-highlighted code block
 5. **Use in your projects** - all code is production-ready!
 
-### 📝 **Code Quality & Standards**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/check-circle.svg" width="16" height="16" alt="Code quality icon" /> **Code Quality & Standards**
 
-- **✅ Production Ready**: All implementations are tested and optimized
-- **📚 Educational**: Clear variable names and logical structure
-- **🔧 Modular**: Easy to integrate into existing projects
-- **📖 Well Documented**: Inline comments explain key concepts
-- **🎯 Efficient**: Implementations follow best practices for each language
+- ** Production Ready**: All implementations are tested and optimized
+- ** Educational**: Clear variable names and logical structure
+- ** Modular**: Easy to integrate into existing projects
+- ** Well Documented**: Inline comments explain key concepts
+- ** Efficient**: Implementations follow best practices for each language
 
-### 🛠️ **Language-Specific Features**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/globe.svg" width="16" height="16" alt="Language features icon" /> **Language-Specific Features**
 
 #### **Java Implementations**
 - Object-oriented design patterns
@@ -301,24 +301,24 @@ Additional algorithmic implementations:
 - Memory management best practices
 - Template programming where beneficial
 
-### 📊 **Code Complexity Information**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/clock.svg" width="16" height="16" alt="Complexity icon" /> **Code Complexity Information**
 
 Each code section includes detailed complexity analysis:
-- **⏱️ Time Complexity**: Best, average, and worst-case scenarios
-- **💾 Space Complexity**: Memory usage analysis
-- **📋 Algorithm Description**: Clear explanation of how it works
-- **🎯 Use Cases**: Real-world applications and when to use each algorithm
+- ** Time Complexity**: Best, average, and worst-case scenarios
+- ** Space Complexity**: Memory usage analysis
+- ** Algorithm Description**: Clear explanation of how it works
+- ** Use Cases**: Real-world applications and when to use each algorithm
 
-### 🎓 **Perfect for Learning**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/award.svg" width="16" height="16" alt="Learning icon" /> **Perfect for Learning**
 
 The code implementations are ideal for:
-- **👨‍🎓 Students** learning data structures and algorithms
-- **👩‍💻 Developers** preparing for coding interviews
-- **🏫 Educators** creating teaching materials
-- **📚 Self-learners** exploring algorithmic concepts
-- **🚀 Project Developers** needing quick algorithm implementations
+- **‍ Students** learning data structures and algorithms
+- **‍ Developers** preparing for coding interviews
+- ** Educators** creating teaching materials
+- ** Self-learners** exploring algorithmic concepts
+- ** Project Developers** needing quick algorithm implementations
 
-### 💡 **Pro Tips**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/lightbulb.svg" width="16" height="16" alt="Tips icon" /> **Pro Tips**
 
 - **Compare Languages**: Switch between languages to see different implementation approaches
 - **Study Patterns**: Notice how similar algorithms are structured across languages
@@ -327,9 +327,9 @@ The code implementations are ideal for:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="technologies-used"> 🛠️ Technologies Used</h2>
+<h2 id="technologies-used"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/tool.svg" width="18" height="18" alt="Tech icon" /> Technologies Used</h2>
 
-### Frontend
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/monitor.svg" width="16" height="16" alt="Frontend icon" /> Frontend
 
 - **React 18.3.1** - Modern component-based UI framework
 - **Framer Motion 12.23** - Smooth animations and transitions
@@ -337,7 +337,7 @@ The code implementations are ideal for:
 - **Lucide React** - Beautiful icon library
 - **CSS3** - Modern styling with custom properties and grid layouts
 
-### Development Tools
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/tool.svg" width="16" height="16" alt="Development tools icon" /> Development Tools
 
 - **Vite 5.0** - Fast build tool and development server
 - **ESLint** - Code quality and consistency
@@ -345,14 +345,14 @@ The code implementations are ideal for:
 - **GIF.js** - GIF creation and export
 - **RecordRTC** - Video recording capabilities
 
-### Deployment & Analytics
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/trending-up.svg" width="16" height="16" alt="Deployment analytics icon" /> Deployment & Analytics
 
 - **Vercel** - Serverless deployment platform
 - **Vercel Analytics** - User behavior and performance tracking
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="prerequisites">🧩 Prerequisites</h2>
+<h2 id="prerequisites"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/check-square.svg" width="18" height="18" alt="Prerequisites icon" /> Prerequisites</h2>
 
 Required:
 - Node.js 20.11.1 or higher (LTS recommended)
@@ -371,7 +371,7 @@ Windows users:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="visualization-logic-explained"> Visualization Logic Explained</h2>
+<h2 id="visualization-logic-explained"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/cpu.svg" width="18" height="18" alt="Logic icon" /> Visualization Logic Explained</h2>
 
 ### The heart of this project is **AlgorithmVisualizer.jsx.** Here’s how it works:
 - State Management: Handles the array of numbers to be sorted and updates the UI as the algorithm progresses.
@@ -381,7 +381,7 @@ Windows users:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="troubleshooting"> 🛠️ Troubleshooting</h2>
+<h2 id="troubleshooting"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/tool.svg" width="18" height="18" alt="Troubleshooting icon" /> Troubleshooting</h2>
 
 Installation Issues:
 
@@ -404,14 +404,14 @@ Performance Issues:
 - Use Chrome/Firefox for better performance
 - Clear browser cache if visualizations aren't displaying
 
-<h2 id="quick-start"> Quick Start</h2>
+<h2 id="quick-start"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/play-circle.svg" width="18" height="18" alt="Quick start icon" /> Quick Start</h2>
 
-### Prerequisites
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/check-square.svg" width="16" height="16" alt="Prerequisites icon" /> Prerequisites
 
 - Node.js 20.11.1 or higher
 - npm or yarn package manager
 
-### Installation
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/download.svg" width="16" height="16" alt="Installation icon" /> Installation
 
 1. **Clone the repository:**
 
@@ -436,7 +436,7 @@ Performance Issues:
 
    Navigate to `http://localhost:5173/` to view the application.
 
-### Build for Production
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/package.svg" width="16" height="16" alt="Build icon" /> Build for Production
 
 ```bash
 npm run build
@@ -445,15 +445,15 @@ npm run preview
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="usage-guide">🎮 Usage Guide</h2>
+<h2 id="usage-guide"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/compass.svg" width="18" height="18" alt="Usage icon" /> Usage Guide</h2>
 
-### 🏠 **Home Page**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/home.svg" width="16" height="16" alt="Home page icon" /> **Home Page**
 
 - Interactive learning platform badge at the top
 - Algorithm showcase with rotating examples
 - Direct navigation to different algorithm categories
 
-### 📊 **Sorting Algorithms**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/sliders.svg" width="16" height="16" alt="Sorting usage icon" /> **Sorting Algorithms**
 
 1. **Load Your Data**: Use the enhanced input panel to:
    - Enter numbers directly: `64, 34, 25, 12, 22, 11, 90`
@@ -464,7 +464,7 @@ npm run preview
 4. Click "Start Sorting" to begin
 5. Use export controls to capture or record the process
 
-### 🔍 **Searching Algorithms**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/search.svg" width="16" height="16" alt="Searching usage icon" /> **Searching Algorithms**
 
 1. **Input Your Array**: Load custom data (auto-sorted for searching):
    - Direct input: `5, 12, 19, 23, 45, 67, 89`
@@ -475,7 +475,7 @@ npm run preview
 4. Watch the step-by-step search process
 5. Export visualizations for educational use
 
-### 🕸️ **Graph Algorithms**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/share-2.svg" width="16" height="16" alt="Graph usage icon" /> **Graph Algorithms**
 
 1. **Create Your Graph**: Use the input panel to define:
    ```json
@@ -488,14 +488,14 @@ npm run preview
 3. Select algorithm (BFS, DFS, Dijkstra)
 4. Watch the traversal or pathfinding in action
 
-### 🌳 **Data Structures**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/database.svg" width="16" height="16" alt="Data structures usage icon" /> **Data Structures**
 
 - Explore interactive data structure operations
 - Load custom tree/linked list data
 - Visualize insertions, deletions, and traversals
 - Understand structural relationships and properties
 
-### 📝 **Custom Data Input Features**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/edit.svg" width="16" height="16" alt="Custom input icon" /> **Custom Data Input Features**
 
 - **Multiple Formats**: JSON, CSV, TXT file support
 - **Real-time Validation**: Instant feedback on data format
@@ -503,7 +503,7 @@ npm run preview
 - **Auto-correction**: Missing IDs and labels auto-generated
 - **Error Guidance**: Clear instructions for fixing data issues
 
-### 🎓 **Quiz Section**
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/help-circle.svg" width="16" height="16" alt="Quiz icon" /> **Quiz Section**
 
 - Test your algorithm knowledge
 - Multiple choice questions with immediate feedback
@@ -511,7 +511,7 @@ npm run preview
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="project-structure">📁 Project Structure — AlgoVisualizer</h2>
+<h2 id="project-structure"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/folder.svg" width="18" height="18" alt="Structure icon" /> Project Structure - AlgoVisualizer</h2>
 
 Below is the complete folder structure of the **AlgoVisualizer** project:
 
@@ -604,11 +604,11 @@ AlgoVisualizer/
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="learning-journey-flowchart"> 🗺️ Project Flowchart</h2>
+<h2 id="learning-journey-flowchart"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/map-pin.svg" width="18" height="18" alt="Flowchart icon" /> Project Flowchart</h2>
 <img width="1081" height="847" alt="Untitled diagram-2025-10-13-150407" src="https://github.com/user-attachments/assets/e947afc3-6316-4967-8e6f-21d1f9204180" />
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
-<h2 id="getting-started">Getting Started With Contributions</h2>
+<h2 id="getting-started"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/git-pull-request.svg" width="18" height="18" alt="Getting started icon" /> Getting Started With Contributions</h2>
 
 1. Fork the repository
 ```bash
@@ -645,11 +645,11 @@ For further information to contribute, visit our [contributing guidelines](./CON
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="sync-fork">🔄 Sync Your Fork with Upstream</h2>
+<h2 id="sync-fork"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/refresh-cw.svg" width="18" height="18" alt="Sync fork icon" /> Sync Your Fork with Upstream</h2>
 
 To keep your fork up-to-date with the latest changes from the original repository, follow these steps:
 
-### Initial Setup (One-time only)
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/settings.svg" width="16" height="16" alt="Initial setup icon" /> Initial Setup (One-time only)
 ```bash
 # Add the original repository as upstream (if not already done)
 git remote add upstream https://github.com/RhythmPahwa14/AlgoVisualizer.git
@@ -658,7 +658,7 @@ git remote add upstream https://github.com/RhythmPahwa14/AlgoVisualizer.git
 git remote -v
 ```
 
-### Regular Sync Process
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/refresh-cw.svg" width="16" height="16" alt="Sync icon" /> Regular Sync Process
 ```bash
 # Fetch the latest changes from upstream
 git fetch upstream
@@ -673,7 +673,7 @@ git merge upstream/main
 git push origin main
 ```
 
-### Before Creating a New Feature Branch
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/git-branch.svg" width="16" height="16" alt="Branch icon" /> Before Creating a New Feature Branch
 ```bash
 # Always sync first, then create your feature branch
 git fetch upstream
@@ -682,7 +682,7 @@ git merge upstream/main
 git checkout -b feature/your-new-feature
 ```
 
-### Handling Conflicts
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/alert-triangle.svg" width="16" height="16" alt="Conflicts icon" /> Handling Conflicts
 If you encounter merge conflicts:
 ```bash
 # Resolve conflicts in your editor
@@ -692,11 +692,11 @@ git commit -m "resolve merge conflicts"
 git push origin main
 ```
 
-> **💡 Pro Tip**: Always sync your fork before starting work on a new feature to avoid conflicts and ensure you're working with the latest codebase.
+> ** Pro Tip**: Always sync your fork before starting work on a new feature to avoid conflicts and ensure you're working with the latest codebase.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="code-style">Code Style</h2>
+<h2 id="code-style"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/edit.svg" width="18" height="18" alt="Code style icon" /> Code Style</h2>
 
 - Follow existing code conventions
 - Add comments for complex algorithms
@@ -714,7 +714,7 @@ git push origin main
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="analytics-performance">📈 Analytics & Performance</h2>
+<h2 id="analytics-performance"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/bar-chart.svg" width="18" height="18" alt="Analytics icon" /> Analytics & Performance</h2>
 
 This application uses **Vercel Analytics** to track:
 - Page views and user engagement
@@ -726,7 +726,7 @@ This application uses **Vercel Analytics** to track:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="educational-impact">🎯 Educational Impact</h2>
+<h2 id="educational-impact"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/book.svg" width="18" height="18" alt="Education icon" /> Educational Impact</h2>
 
 Perfect for:
 - **Students** learning data structures and algorithms
@@ -737,7 +737,7 @@ Perfect for:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="project-admins">🧑‍💻 Project Admins</h2>
+<h2 id="project-admins"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/user-check.svg" width="18" height="18" alt="Admins icon" /> Project Admins</h2>
 
 Meet our amazing project admins:
 <table>
@@ -765,7 +765,7 @@ Meet our amazing project admins:
 </tr>
 </table>
 
-<h2 id="project-admins">Project Maintainer</h2>
+<h2 id="project-admins"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/user.svg" width="18" height="18" alt="Maintainer icon" /> Project Maintainer</h2>
 
 Meet our amazing project maintainer:
 <table>
@@ -785,7 +785,7 @@ Meet our amazing project maintainer:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="contributors">🏆 Contributors</h2>
+<h2 id="contributors"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/users.svg" width="18" height="18" alt="Contributors icon" /> Contributors</h2>
 
 Meet our amazing contributors:
 - **[Shitanshu Kumar](https://github.com/Shitanshukumar607)**
@@ -797,7 +797,7 @@ Meet our amazing contributors:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="documentation"> 📄 Documentation</h2>
+<h2 id="documentation"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/file-text.svg" width="18" height="18" alt="Documentation icon" /> Documentation</h2>
 
 - **[Export Features Guide](EXPORT_FEATURES.md)** - Detailed guide on recording and exporting visualizations
 - **[Contributing Guidelines](CONTRIBUTING.md)** - How to contribute to the project
@@ -805,7 +805,7 @@ Meet our amazing contributors:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="project-stats">📊 Project Stats</h2>
+<h2 id="project-stats"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/pie-chart.svg" width="18" height="18" alt="Project stats icon" /> Project Stats</h2>
 
 - **15+ Algorithms** implemented with visualizations
 - **6 Data Structures** with interactive operations
@@ -815,17 +815,17 @@ Meet our amazing contributors:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="future-roadmap"> 🔮 Future Roadmap</h2>
+<h2 id="future-roadmap"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/map.svg" width="18" height="18" alt="Roadmap icon" /> Future Roadmap</h2>
 
-- 🌐 **Graph Algorithms**: Advanced graph traversal and pathfinding
-- 🔢 **Mathematical Algorithms**: Number theory and computational mathematics
-- 🎮 **Gamification**: Achievement system and learning badges
-- 🌍 **Internationalization**: Multi-language support
-- 🤖 **AI Integration**: Algorithm recommendation system
+-  **Graph Algorithms**: Advanced graph traversal and pathfinding
+-  **Mathematical Algorithms**: Number theory and computational mathematics
+-  **Gamification**: Achievement system and learning badges
+-  **Internationalization**: Multi-language support
+-  **AI Integration**: Algorithm recommendation system
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="acknowledgments">🙏 Acknowledgments</h2>
+<h2 id="acknowledgments"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/award.svg" width="18" height="18" alt="Acknowledgments icon" /> Acknowledgments</h2>
 
 - Thanks to all contributors of this project 
 - Special shoutout to **GirlScript Summer of Code (GSSoC’25)** for the amazing community and support!
@@ -833,14 +833,14 @@ Meet our amazing contributors:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="contact">📞 Contact</h2>
+<h2 id="contact"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/mail.svg" width="18" height="18" alt="Contact icon" /> Contact</h2>
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/RhythmPahwa14/AlgoVisualizer/issues)
 - **Email**: Contact the maintainers for collaboration opportunities
   
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="how-to-contribute">🤝How to Contribute</h2>
+<h2 id="how-to-contribute"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/git-merge.svg" width="18" height="18" alt="How to contribute icon" /> How to Contribute</h2>
 
 We love contributions from the community! Whether it's a bug report, a new feature, or a documentation improvement, we appreciate your help.
 
@@ -863,32 +863,32 @@ or check out <a href="#getting-started">Getting Started With Contributions</a>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="contributing">🤝 Contributing</h2>
+<h2 id="contributing"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/users.svg" width="18" height="18" alt="Contributing icon" /> Contributing</h2>
 
 We welcome contributions from the community! Here's how you can help:
 
-### Ways to Contribute
+### <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/users.svg" width="16" height="16" alt="Contribute ways icon" /> Ways to Contribute
 
-- 🐛 **Report Bugs**: Found an issue? Let us know!
-- 💡 **Suggest Features**: Have ideas for improvements?
-- 📝 **Improve Documentation**: Help make our docs better
-- 🎨 **Design Improvements**: Enhance the user interface
-- ⚡ **Performance Optimizations**: Make the app faster
-- 🧪 **Add Algorithms**: Implement new visualization algorithms
+-  **Report Bugs**: Found an issue? Let us know!
+-  **Suggest Features**: Have ideas for improvements?
+-  **Improve Documentation**: Help make our docs better
+-  **Design Improvements**: Enhance the user interface
+-  **Performance Optimizations**: Make the app faster
+-  **Add Algorithms**: Implement new visualization algorithms
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="code-of-conduct">📜 Code of Conduct</h2>
+<h2 id="code-of-conduct"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/shield.svg" width="18" height="18" alt="Code of conduct icon" /> Code of Conduct</h2>
 
 Please refer to the [`Code of Conduct`](https://github.com/RhythmPahwa14/AlgoVisualizer/blob/master/CODE_OF_CONDUCT.md) for details on contributing guidelines and community standards.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="contribution-guidelines">🤝👤 Contribution Guidelines</h2>
+<h2 id="contribution-guidelines"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/clipboard.svg" width="18" height="18" alt="Contribution guidelines icon" /> Contribution Guidelines</h2>
 
 We love our contributors! If you'd like to help, please check out our [`CONTRIBUTE.md`](https://github.com/RhythmPahwa14/AlgoVisualizer/blob/master/CONTRIBUTING.md) file for guidelines.
 
->Thank you once again to all our contributors who has contributed to **AlgoVisualizer!** Your efforts are truly appreciated. 💖👏
+>Thank you once again to all our contributors who has contributed to **AlgoVisualizer!** Your efforts are truly appreciated. 
 
 <!-- Contributors badge (auto-updating) -->
 
@@ -912,30 +912,30 @@ See the full list of contributors and their contributions on the [`GitHub Contri
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="suggestions-feedback">💡 Suggestions & Feedback</h2>
+<h2 id="suggestions-feedback"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/message-circle.svg" width="18" height="18" alt="Suggestions icon" /> Suggestions & Feedback</h2>
 
 Feel free to open issues or discussions if you have any feedback, feature suggestions, or want to collaborate!
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="show-your-support">🙌 Show Your Support</h2>
+<h2 id="show-your-support"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/heart.svg" width="18" height="18" alt="Support icon" /> Show Your Support</h2>
 
-*If you find AlgoVisualizer project helpful, give it a star! ⭐ to support more such educational initiatives:*
+*If you find AlgoVisualizer project helpful, give it a star!  to support more such educational initiatives:*
 
-- ⭐ **Starring the repository**
-- 🐦 **Sharing on social media**
-- 💬 **Telling your friends and colleagues**
-- 🤝 **Contributing to the project**
+-  **Starring the repository**
+-  **Sharing on social media**
+-  **Telling your friends and colleagues**
+-  **Contributing to the project**
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="license">📄 License</h2>
+<h2 id="license"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/file-text.svg" width="18" height="18" alt="License icon" /> License</h2>
 
 This project is licensed under the MIT License - see the [`License`](https://github.com/RhythmPahwa14/AlgoVisualizer/blob/master/LICENSE) file for details.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="stargazers">⭐ Stargazers</h2>
+<h2 id="stargazers"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/star.svg" width="18" height="18" alt="Stargazers icon" /> Stargazers</h2>
 
 <div align="center">
   <a href="https://github.com/RhythmPahwa14/AlgoVisualizer/stargazers">
@@ -945,7 +945,7 @@ This project is licensed under the MIT License - see the [`License`](https://git
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="forkers">🍴 Forkers</h2>
+<h2 id="forkers"><img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/git-branch.svg" width="18" height="18" alt="Forkers icon" /> Forkers</h2>
 
 <div align="center">
   <a href="https://github.com/RhythmPahwa14/AlgoVisualizer/members">
@@ -963,20 +963,20 @@ This project is licensed under the MIT License - see the [`License`](https://git
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h3 align="center"> 👨‍💻 Built with ❤️ by AlgoVisualizer Team</h3>
-<h4 align="center"> ❤️ Rhythm and Contributors ❤️ </h4>
+<h3 align="center"> ‍ Built with  by AlgoVisualizer Team</h3>
+<h4 align="center">  Rhythm and Contributors  </h4>
 <p align="center">
-  <a href="https://github.com/RhythmPahwa14/AlgoVisualizer/issues">Open an Issue</a> | <a href="https://github.com/RhythmPahwa14/AlgoVisualizer">🌟 Star on GitHub</a> | <a href="https://algo-visualizer-amber.vercel.app/">🚀 Live Demo</a></p>
+  <a href="https://github.com/RhythmPahwa14/AlgoVisualizer/issues">Open an Issue</a> | <a href="https://github.com/RhythmPahwa14/AlgoVisualizer"> Star on GitHub</a> | <a href="https://algo-visualizer-amber.vercel.app/"> Live Demo</a></p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=65&section=footer"/>
 
 <p align="center">
   <a href="#top" style="font-size: 18px; padding: 8px 16px; display: inline-block; border: 1px solid #ccc; border-radius: 6px; text-decoration: none;">
-    ⬆️ Back to Top
+     Back to Top
   </a>
 </p>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-> Ready to show off your coding achievements? Get started with **AlgoVisualizer** today! 🚀
+> Ready to show off your coding achievements? Get started with **AlgoVisualizer** today! 
 <!-- Thank you -->
