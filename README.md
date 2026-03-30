@@ -540,10 +540,11 @@ AlgoVisualizer/
 │
 ├── public/                             # Static assets served directly
 │   ├── sample-data/                    # Example/sample dataset
-│   ├── Favicon.png
+│   ├── black favicon.png
 │   ├── _redirects                      # Netlify redirects configuration
 │   ├── favicon.ico
-│   ├── logo.jpg
+│   ├── logo.png
+│   ├── white favicon.png
 │   ├── manifest.json                   # Web app manifest
 │   └── robots.txt                      # SEO and crawling rules
 │
