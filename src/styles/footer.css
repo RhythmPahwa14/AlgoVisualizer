@@ -761,9 +761,11 @@ footer {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   text-align: center;
   gap: 6px;
-  white-space: nowrap;
+  white-space: normal;
+  flex-wrap: wrap;
 }
 
 .footer-made-with .heart-icon {

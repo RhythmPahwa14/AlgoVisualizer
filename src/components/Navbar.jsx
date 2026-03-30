@@ -276,14 +276,7 @@ const Navbar = () => {
         onClick={() => setIsMobileMenuOpen(false)}
       />
       
-      {/* Mobile menu toggle button */}
-      <button 
-        className={`mobile-menu-button ${isMobileMenuOpen ? 'active' : ''}`}
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        aria-label="Toggle navigation menu"
-      >
-        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+      {/* Mobile menu toggle button was moved inside nav */}
 
       <nav
         className={`navbar ${isMobileMenuOpen ? 'mobile-open' : ''} ${theme}`}
@@ -331,6 +324,15 @@ const Navbar = () => {
         <div className="sidebar-footer hidden md:flex">
           <UserDropdown />
         </div>
+
+        {/* Mobile menu toggle button */}
+        <button 
+          className={`mobile-menu-button ${isMobileMenuOpen ? 'active' : ''}`}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
       {/* Mobile menu */}
@@ -365,9 +367,8 @@ const Navbar = () => {
           ))}
 
           {/* User Dropdown at bottom */}
-          <div className="mobile-user-dropdown">
+          <div className="mobile-user-dropdown" style={{ justifyContent: 'center' }}>
             <UserDropdown />
-            <ThemeToggle />
           </div>
         </div>
       </div>

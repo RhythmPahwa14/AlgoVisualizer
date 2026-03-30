@@ -163,8 +163,8 @@ const TypewriterHeading = () => {
 };
 
 /** ---------- Shared layout styles ---------- */
-const container = { width: "100%", display: "flex", justifyContent: "center" };
-const inner = { width: "min(1200px, 100%)", padding: "1.5rem" };
+const container = { width: "100%", display: "flex", justifyContent: "center", boxSizing: "border-box" };
+const inner = { width: "min(1200px, 100%)", padding: "1.5rem", boxSizing: "border-box" };
 
 const Home = () => {
   // Always use light (white bg / black text) minimal design
@@ -422,8 +422,19 @@ const Home = () => {
     .grid-2 { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1.25rem; }
     .updates-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1rem; }
     .paths-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; }
-    @media (max-width: 980px){ .hero-grid{ grid-template-columns:1fr; } }
-    @media (max-width: 780px){ .grid-2{ grid-template-columns:1fr; } .updates-grid{ grid-template-columns:1fr; } }
+    
+    .algo-marketing-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin: 4rem auto; max-width: 1300px; align-items: start; }
+    .section-h2 { font-size: 1.8rem; font-weight: 800; color: #000; margin: 0 0 1.5rem 0; letter-spacing: -0.5px; font-family: 'Inter', sans-serif; }
+    .section-sub { font-size: 0.65rem; font-weight: 800; color: #888; letter-spacing: 1px; margin-bottom: 0.75rem; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    
+    @media (max-width: 1024px){ 
+      .hero-grid{ grid-template-columns:1fr; } 
+      .algo-marketing-grid { grid-template-columns:1fr; gap: 4rem; }
+    }
+    @media (max-width: 780px){ 
+      .grid-2{ grid-template-columns:1fr; } 
+      .updates-grid{ grid-template-columns:1fr; } 
+    }
   `;
 
   return (
@@ -599,7 +610,7 @@ const Home = () => {
             </div>
 
             {/* RIGHT: copy */}
-            <div style={{ padding: ".4rem 0", display: "grid", gridTemplateRows: "auto auto 1fr auto", alignItems: "start" }} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div style={{ padding: ".4rem 0", display: "grid", gridTemplateRows: "auto auto 1fr auto", alignItems: "start" }}>
               <div
                 className="hero-badge"
                 style={{
@@ -728,212 +739,57 @@ const Home = () => {
 
       {/* Feature Cards with detailed content */}
       {/* ADD THIS NEW SECTION */}
-      <div className="algo-learning-updates-container" data-aos="fade-up" data-aos-duration="800">
-        <section className="algorithm-buttons" data-aos="fade-up" data-aos-delay="200">
-          <h2 className='buttons-heading'>Resources</h2>
-
-          {featuredResources.map((feature, index) => (
-            <Link
-              key={index}
-              to={feature.path}
-              className={`clean-button-link feature-${index + 1}`}
-              data-aos="fade-up"
-              data-aos-delay={`${300 + index * 100}`}
-              style={{
-                background: isLight ? "#ffffff" : "#0a0a0a",
-                border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
-                borderRadius: 12,
-                boxShadow: T.shadow,
-                color: isLight ? "#000000" : "#ffffff",
-                transition: "all 0.2s ease",
-                marginBottom: "1rem",
-                position: "relative",
-                padding: "1.5rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "1rem",
-                textDecoration: "none",
-                fontFamily: "'Inter', system-ui, sans-serif",
-              }}
-            >
-              <div className='button-icon' style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: "48px",
-                height: "48px",
-                borderRadius: "8px",
-                background: isLight ? "#f5f5f5" : "#1a1a1a",
-                border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
+      <div className="algo-marketing-grid">
+        
+        {/* Left Col */}
+        <div className="algo-col">
+          <h2 className="section-h2">Resources</h2>
+          <div className="section-sub">AVAILABLE MODULES</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {features.map((feature, i) => (
+              <Link key={i} to={feature.path} style={{
+                display: 'block', padding: '12px 16px', background: isLight ? '#ffffff' : '#111',
+                borderLeft: i === 0 ? '3px solid #000' : '3px solid transparent',
+                boxShadow: i === 0 ? '0 4px 12px rgba(0,0,0,0.05)' : 'none',
+                borderRadius: '4px', textDecoration: 'none',
+                marginLeft: i === 0 ? '-3px' : '0'
               }}>
-                <feature.icon
-                  size={24}
-                  color={isLight ? "#000000" : "#ffffff"}
-                />
-              </div>
-              <div style={{ flex: 1 }}>
-                <span
-                  className="feature-title"
-                  style={{
-                    fontWeight: 600,
-                    fontSize: "1rem",
-                    color: T.textPrimary,
-                    letterSpacing: "0px",
-                    display: "block",
-                    marginBottom: "0.25rem",
-                    fontFamily: "'Inter', system-ui, sans-serif",
-                  }}
-                >
-                  {feature.title}
-                </span>
-                <span
-                  style={{
-                    fontSize: "0.875rem",
-                    color: T.textSecondary,
-                    display: "block",
-                    fontFamily: "'Inter', system-ui, sans-serif",
-                  }}
-                >
-                  {feature.description}
-                </span>
-              </div>
-            </Link>
-          ))}
-
-          <Link
-            to="/learn"
-            className="resources-more-link"
-            data-aos="fade-up"
-            data-aos-delay="550"
-          >
-            <span>More Resources</span>
-            <ArrowRight size={16} />
-          </Link>
-        </section>
-
-        <div
-          className='vertical-steps-container'
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          <h2 className='steps-heading'>Learning paths</h2>
-          {learningPaths.map((path, index) => (
-            <div key={index} className={`step-button step-${index + 1}`} data-aos="fade-up" data-aos-delay={`${300 + index * 150}`}>
-              <div className='step-content-wrapper'>
-                <div className='step-text'>
-                  <span className='step-title'>{path.title}</span>
-                  <p className='step-description'>{path.desc}</p>
-                  <div>
-                    <div className='step-duration-tag'>{path.duration}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-
-        </div>
-        {/* Enhanced Activity Feed */}
-        <div
-          className="activity-feed"
-          style={{
-            backgroundColor: isLight ? "#ffffff" : "#0a0a0a",
-            padding: "1.5rem",
-            borderRadius: "12px",
-            boxShadow: T.shadow,
-            border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
-            transition: "all 0.3s ease",
-          }}
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          <h2 className='activity-title'>
-            Recent Updates
-          </h2>
-
-          <div className="!mx-auto w-[99%] flex flex-col gap-2">
-            {recentUpdates.map((update, index) => (
-              <div
-                key={index}
-                style={{
-                  display: "flex",
-                  gap: "1rem",
-                  alignItems: "flex-start",
-                  backgroundColor: isLight ? "#fafafa" : "#000000",
-                  border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
-                  padding: "1rem",
-                  borderRadius: "8px",
-                  transition: "all 0.2s ease",
-                  cursor: "pointer",
-                }}
-                data-aos="fade-up"
-                data-aos-delay={`${300 + index * 100}`}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = isLight ? "#f5f5f5" : "#1a1a1a";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = isLight ? "#fafafa" : "#000000";
-                }}
-              >
-                {/* Icon */}
-                <div
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "8px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: isLight ? "#000000" : "#ffffff",
-                    backgroundColor: isLight ? "#f5f5f5" : "#1a1a1a",
-                    border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
-                    flexShrink: 0,
-                  }}
-                >
-                  {update.type === "new" && <Sparkles size={18} />}
-                  {update.type === "update" && <Code size={18} />}
-                  {update.type === "feature" && <Star size={18} />}
-                  {update.type === "community" && <Users size={18} />}
-                </div>
-
-                {/* Content */}
-                <div style={{ flex: 1 }} className="!mx-auto">
-                  <h4
-                    style={{
-                      color: T.textPrimary,
-                      fontWeight: 500,
-                      margin: 0,
-                      fontFamily: "'Inter', system-ui, sans-serif",
-                      fontSize: "0.95rem",
-                    }}
-                  >
-                    {update.title}
-                  </h4>
-                  <p
-                    style={{
-                      color: T.textSecondary,
-                      marginTop: "0.25rem",
-                      fontSize: "0.875rem",
-                      fontFamily: "'Inter', system-ui, sans-serif",
-                    }}
-                  >
-                    {update.description}
-                  </p>
-                  <span
-                    style={{
-                      color: T.subText,
-                      fontSize: "0.75rem",
-                      marginTop: "0.25rem",
-                      display: "block",
-                    }}
-                  >
-                    {update.time}
-                  </span>
-                </div>
-              </div>
+                 <div style={{ fontWeight: 700, color: i === 0 ? T.textPrimary : T.textSecondary, fontSize: '0.95rem' }}>{feature.title}</div>
+                 <div style={{ fontSize: '0.8rem', color: T.textSecondary, marginTop: '2px' }}>{feature.description.slice(0,35)}...</div>
+              </Link>
             ))}
           </div>
         </div>
 
+        {/* Middle Col */}
+        <div className="algo-col">
+          <h2 className="section-h2">Learning Paths</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', marginTop: '1.5rem' }}>
+            {learningPaths.map((path, i) => (
+               <div key={i} style={{ borderBottom: i !== learningPaths.length-1 ? '1px solid #e5e5e5' : 'none', paddingBottom: i !== learningPaths.length-1 ? '2.5rem' : '0' }}>
+                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div>
+                       <h3 style={{ fontStyle: 'italic', fontWeight: 800, fontSize: '1.5rem', margin: 0, color: '#000' }}>{path.title}</h3>
+                       <p style={{ color: T.textSecondary, fontSize: '0.95rem', marginTop: '0.8rem', maxWidth: '85%', lineHeight: 1.5 }}>{path.desc}</p>
+                    </div>
+                    <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
+                       <div style={{ fontSize: '2rem', fontWeight: 900, lineHeight: 1, letterSpacing: '-0.5px', color: '#000', whiteSpace: 'nowrap' }}>{path.duration.split(' ')[0].replace('–', ' – ')}</div>
+                       <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '1px', color: T.textSecondary, marginTop: '4px' }}>WEEKS<br/>DURATION</div>
+                    </div>
+                 </div>
+                 {/* Placeholder image box */}
+                 <div style={{ marginTop: '1.5rem', height: '220px', background: 'linear-gradient(45deg, #111, #333)', borderRadius: '6px', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '100%', height: '100%', opacity: 0.5, backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                    <div style={{ position: 'absolute', bottom: '12px', left: '12px', background: '#000', color: '#fff', fontSize: '0.7rem', fontWeight: 700, padding: '6px 10px', letterSpacing: '1px', borderRadius: '4px' }}>
+                       {i === 0 ? 'CORE PATH' : 'EXPERT LEVEL'}
+                    </div>
+                 </div>
+                 <Link to="/learn" style={{ display: 'inline-block', marginTop: '1.2rem', fontSize: '0.8rem', fontWeight: 800, color: '#000', textDecoration: 'none', borderBottom: '2px solid #000', paddingBottom: '2px', letterSpacing: '1px' }}>VIEW MODULES &rarr;</Link>
+               </div>
+            ))}
+          </div>
+        </div>
+        
       </div>
 
       {/* Problem of the Day Modal */}
