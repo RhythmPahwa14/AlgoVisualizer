@@ -285,7 +285,7 @@ const Navbar = () => {
         <div className="navbar-container">
           {/* Logo */}
           <Link to="/" className="navbar-logo flex items-center gap-2">
-          <img src="/logo.jpg" alt="AlgoVisualizer Logo" className="logo-img" />
+          <img src="/logo.png" alt="AlgoVisualizer Logo" className="logo-img" />
           <span className="logo-text navbar-label">
             Algo<span>Visualizer</span>
           </span>
@@ -330,8 +330,11 @@ const Navbar = () => {
           className={`mobile-menu-button ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle navigation menu"
+          style={{ color: "#000000" }}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen
+            ? <X size={24} color="#000000" style={{ stroke: "#000000" }} />
+            : <Menu size={24} color="#000000" style={{ stroke: "#000000" }} />}
         </button>
       </div>
 

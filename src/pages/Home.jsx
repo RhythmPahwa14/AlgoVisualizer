@@ -443,7 +443,7 @@ const Home = () => {
       {/* hero heading */}
       <TypewriterHeading />
       {/* ===== Hero ===== */}
-      <section style={{ ...container, padding: "4.25rem 1.5rem 2rem" }} data-aos="fade-up" data-aos-duration="800">
+      <section style={{ ...container, padding: "2rem 1.5rem 1.75rem" }} data-aos="fade-up" data-aos-duration="800">
         <div style={{ ...inner }}>
           <div className="hero-grid">
             {/* LEFT: Bubble Sort */}
@@ -610,7 +610,7 @@ const Home = () => {
             </div>
 
             {/* RIGHT: copy */}
-            <div style={{ padding: ".4rem 0", display: "grid", gridTemplateRows: "auto auto 1fr auto", alignItems: "start" }}>
+            <div style={{ padding: ".4rem 0", display: "grid", gridTemplateRows: "auto auto auto auto auto", alignItems: "start" }}>
               <div
                 className="hero-badge"
                 style={{
@@ -636,7 +636,7 @@ const Home = () => {
                 className="hero-title"
                 style={{
                   marginTop: "1.5rem", 
-                  lineHeight: 1.1, 
+                  lineHeight: 1.1,
                   fontSize: "clamp(32px, 5vw, 52px)",
                   fontWeight: 800, 
                   letterSpacing: "-1px",
@@ -650,7 +650,8 @@ const Home = () => {
               </h1>
 
               <p className="hero-subtitle" style={{ 
-                marginTop: "1rem", 
+                marginTop: "0.45rem", 
+                marginBottom: "0.2rem",
                 color: T.textSecondary, 
                 maxWidth: 560, 
                 fontSize: "1rem", 
@@ -660,12 +661,12 @@ const Home = () => {
                 Learn by seeing. Trace every step, compare complexity, and build intuition fast.
               </p>
 
-              <div className="hero-features" style={{ marginTop: "1.5rem", display: "flex", gap: ".8rem", flexWrap: "wrap" }}>
+              <div className="hero-features" style={{ marginTop: "0.35rem", display: "flex", gap: ".6rem", flexWrap: "wrap" }}>
                 <div className="feature-highlight" style={{ 
                   background: isLight ? "#ffffff" : "#000000", 
                   border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
                   borderRadius: "4px",
-                  padding: "8px 14px",
+                  padding: "7px 12px",
                   display: "flex",
                   alignItems: "center",
                   gap: "8px",
@@ -677,7 +678,7 @@ const Home = () => {
                   background: isLight ? "#ffffff" : "#000000", 
                   border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
                   borderRadius: "4px",
-                  padding: "8px 14px",
+                  padding: "7px 12px",
                   display: "flex",
                   alignItems: "center",
                   gap: "8px",
@@ -689,7 +690,7 @@ const Home = () => {
                   background: isLight ? "#ffffff" : "#000000", 
                   border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
                   borderRadius: "4px",
-                  padding: "8px 14px",
+                  padding: "7px 12px",
                   display: "flex",
                   alignItems: "center",
                   gap: "8px",
@@ -699,12 +700,12 @@ const Home = () => {
                 }}><Target size={16} /><span>HANDS-ON PRACTICE</span></div>
               </div>
 
-              <div style={{ marginTop: "1.8rem", display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
+              <div style={{ marginTop: "0.75rem", display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap" }}>
                 <Link to="/login" className="btn-primary-new" style={{
                   background: isLight ? "#000000" : "#ffffff",
                   color: isLight ? "#ffffff" : "#000000",
                   border: "none",
-                  padding: "12px 24px",
+                  padding: "10px 20px",
                   borderRadius: "4px",
                   fontWeight: 600,
                   fontSize: "0.875rem",
@@ -719,7 +720,7 @@ const Home = () => {
                   background: isLight ? "#ffffff" : "#000000",
                   color: isLight ? "#000000" : "#ffffff",
                   border: `1px solid ${isLight ? "#e5e5e5" : "#333333"}`,
-                  padding: "12px 24px",
+                  padding: "10px 20px",
                   borderRadius: "4px",
                   fontWeight: 600,
                   fontSize: "0.875rem",

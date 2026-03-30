@@ -258,17 +258,61 @@ const Header = () => {
                             onClick={toggleMobileMenu} 
                             aria-label="Toggle menu" 
                             aria-expanded={isMobileMenuOpen}
+                            style={{
+                                color: '#000000',
+                                display: 'inline-flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '4px',
+                                width: '40px',
+                                height: '40px'
+                            }}
                         >
-                            <span className="bar bar1"></span>
-                            <span className="bar bar2"></span>
-                            <span className="bar bar3"></span>
+                            <span
+                                className="bar bar1"
+                                style={{
+                                    display: 'block',
+                                    width: '18px',
+                                    height: '2px',
+                                    borderRadius: '2px',
+                                    backgroundColor: '#000000'
+                                }}
+                            ></span>
+                            <span
+                                className="bar bar2"
+                                style={{
+                                    display: 'block',
+                                    width: '18px',
+                                    height: '2px',
+                                    borderRadius: '2px',
+                                    backgroundColor: '#000000'
+                                }}
+                            ></span>
+                            <span
+                                className="bar bar3"
+                                style={{
+                                    display: 'block',
+                                    width: '18px',
+                                    height: '2px',
+                                    borderRadius: '2px',
+                                    backgroundColor: '#000000'
+                                }}
+                            ></span>
                         </button>
                     </div>
                 </div>
             </header>
 
             {/* Mobile Menu Overlay */}
-            <div className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`} onClick={toggleMobileMenu} />
+            <div
+                className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`}
+                onClick={toggleMobileMenu}
+                style={{
+                    backdropFilter: 'none',
+                    WebkitBackdropFilter: 'none',
+                }}
+            />
 
             {/* Mobile Navigation */}
             <nav className={`nav-links-mobile ${isMobileMenuOpen ? 'active' : ''}`} aria-label="Mobile Navigation">

@@ -597,8 +597,10 @@ body {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.35);
-  z-index: 1100;
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  z-index: 1300;
 }
 
 .navbar-backdrop.active {
@@ -616,6 +618,7 @@ body {
 
   .navbar {
     height: 68px !important;
+    z-index: 1400 !important;
   }
 
   .navbar-container {
@@ -641,12 +644,25 @@ body {
     border: 1px solid var(--card-border);
     background: rgba(255, 255, 255, 0.92);
     border-radius: 10px;
-    color: var(--text-color);
+    color: #000000 !important;
     cursor: pointer;
-    z-index: 1300;
+    z-index: 1450;
     position: relative;
     margin-left: auto;
     margin-right: 0;
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+
+  .navbar .mobile-menu-button.active {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: var(--card-border) !important;
+  }
+
+  .navbar .mobile-menu-button svg {
+    color: #000000 !important;
+    stroke: #000000 !important;
   }
 
   .mobile-menu {
@@ -666,7 +682,7 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: transform 0.22s ease, opacity 0.22s ease;
-    z-index: 1250;
+    z-index: 1350;
     padding: 0.5rem 0.75rem 1rem;
   }
 
@@ -730,8 +746,9 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 1.05rem;
-    text-align: center;
-    justify-content: center;
+    text-align: left;
+    justify-content: flex-start;
+    white-space: nowrap;
   }
 
   .mobile-menu-link.active,
@@ -756,6 +773,6 @@ body {
     border-top: 1px solid var(--border-color);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
