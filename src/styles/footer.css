@@ -766,10 +766,12 @@ footer {
   gap: 6px;
   white-space: normal;
   flex-wrap: wrap;
+  font-size: clamp(12px, 2vw, 14px);
+  line-height: 1.35;
 }
 
 .footer-made-with .heart-icon {
-  font-size: 1.5rem;       
+  font-size: 1.15rem;
   color: #000000;
   animation: heartbeat 2s infinite;
 }
