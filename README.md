@@ -318,7 +318,7 @@ The code implementations are ideal for:
 - ** Self-learners** exploring algorithmic concepts
 - ** Project Developers** needing quick algorithm implementations
 
-### <img src="https://api.iconify.design/feather:lightbulb.svg?color=%233b82f6" width="16" height="16" alt="Tips icon" /> **Pro Tips**
+### <img src="https://api.iconify.design/feather:zap.svg?color=%233b82f6" width="16" height="16" alt="Tips icon" /> **Pro Tips**
 
 - **Compare Languages**: Switch between languages to see different implementation approaches
 - **Study Patterns**: Notice how similar algorithms are structured across languages
@@ -517,89 +517,39 @@ Below is the complete folder structure of the **AlgoVisualizer** project:
 
 ```bash
 AlgoVisualizer/
-Γö£ΓöÇΓöÇ .github/                            # GitHub-related configurations
-Γöé   Γö£ΓöÇΓöÇ ISSUE_TEMPLATE/                 # Templates for creating new issues
-Γöé   Γö£ΓöÇΓöÇ workflows/                      # GitHub Actions CI/CD workflows
-Γöé   ΓööΓöÇΓöÇ pull_request_template.md        # Template for pull requests
-Γöé
-Γö£ΓöÇΓöÇ .idea/                              # JetBrains IDE (WebStorm/IntelliJ) project settings
-Γöé   Γö£ΓöÇΓöÇ inspectionProfiles/             # Code inspection rules
-Γöé   Γö£ΓöÇΓöÇ misc.xml
-Γöé   Γö£ΓöÇΓöÇ modules.xml
-Γöé   ΓööΓöÇΓöÇ vcs.xml
-Γöé
-Γö£ΓöÇΓöÇ Backend/                            # Backend code (Node.js + Express)
-Γöé   ΓööΓöÇΓöÇ src/
-Γöé       ΓööΓöÇΓöÇ routes/
-Γöé           Γö£ΓöÇΓöÇ auth.js                 # Authentication routes
-Γöé           Γö£ΓöÇΓöÇ authController.js       # Handles authentication logic
-Γöé           ΓööΓöÇΓöÇ emailService.js         # Email sending service
-Γöé
-Γö£ΓöÇΓöÇ docs/                               # Documentation files
-Γöé   ΓööΓöÇΓöÇ AUTO_UNASSIGN_GUIDE.md          # Guide for auto-unassignment workflow
-Γöé
-Γö£ΓöÇΓöÇ public/                             # Static assets served directly
-Γöé   Γö£ΓöÇΓöÇ sample-data/                    # Example/sample dataset
-Γöé   Γö£ΓöÇΓöÇ black favicon.png
-Γöé   Γö£ΓöÇΓöÇ _redirects                      # Netlify redirects configuration
-Γöé   Γö£ΓöÇΓöÇ favicon.ico
-Γöé   Γö£ΓöÇΓöÇ logo.png
-Γöé   Γö£ΓöÇΓöÇ white favicon.png
-Γöé   Γö£ΓöÇΓöÇ manifest.json                   # Web app manifest
-Γöé   ΓööΓöÇΓöÇ robots.txt                      # SEO and crawling rules
-Γöé
-Γö£ΓöÇΓöÇ src/                                # Main frontend (React + Vite) source folder
-Γöé   Γö£ΓöÇΓöÇ algorithms/                     # All algorithm visualizations (sorting, searching, etc.)
-Γöé   Γö£ΓöÇΓöÇ assets/                         # Static assets like images and GIFs
-Γöé   Γöé   Γö£ΓöÇΓöÇ blog/                       # Blog-related assets
-Γöé   Γöé   Γö£ΓöÇΓöÇ gssoc logo.png
-Γöé   Γöé   ΓööΓöÇΓöÇ statistics.gif
-Γöé   Γö£ΓöÇΓöÇ components/                     # Reusable React UI components
-Γöé   Γö£ΓöÇΓöÇ contexts/                       # React Context (Theme, Auth, etc.)
-Γöé   Γö£ΓöÇΓöÇ data/                           # Static/dynamic JSON or mock data
-Γöé   Γö£ΓöÇΓöÇ docs/                           # Frontend documentation files
-Γöé   Γö£ΓöÇΓöÇ hooks/                          # Custom React hooks
-Γöé   Γö£ΓöÇΓöÇ pages/                          # Page-level components (Home, About, etc.)
-Γöé   Γö£ΓöÇΓöÇ routes/                         # Route definitions for navigation
-Γöé   Γö£ΓöÇΓöÇ searching/                      # Searching algorithms visualization
-Γöé   Γö£ΓöÇΓöÇ services/                       # API and helper service files
-Γöé   Γö£ΓöÇΓöÇ styles/                         # CSS/Tailwind styling files
-Γöé   Γö£ΓöÇΓöÇ utils/                          # Utility/helper functions
-Γöé   Γö£ΓöÇΓöÇ App.jsx                         # Root React component
-Γöé   Γö£ΓöÇΓöÇ IntroSection.jsx                # Homepage intro component
-Γöé   Γö£ΓöÇΓöÇ ScrollToTop.jsx                 # Scroll to top behavior
-Γöé   Γö£ΓöÇΓöÇ TAILWIND_DOCS.md                # Documentation for Tailwind usage
-Γöé   Γö£ΓöÇΓöÇ ThemeContext.jsx                # Context for light/dark mode
-Γöé   Γö£ΓöÇΓöÇ main.css                        # Global stylesheet
-Γöé   Γö£ΓöÇΓöÇ main.jsx                        # Application entry file
-Γöé   Γö£ΓöÇΓöÇ navigatetotop.js                # Script for navigation top behavior
-Γöé   Γö£ΓöÇΓöÇ reportWebVitals.js              # Performance metrics
-Γöé   ΓööΓöÇΓöÇ setupTests.js                   # Test setup configuration
-Γöé
-Γö£ΓöÇΓöÇ .env.example                        # Example environment configuration
-Γö£ΓöÇΓöÇ .env.production                     # Production environment configuration
-Γö£ΓöÇΓöÇ .gitignore                          # Files/folders ignored by Git
-Γö£ΓöÇΓöÇ .prettierrc                         # Prettier code formatting configuration
-Γö£ΓöÇΓöÇ .vercelignore                       # Ignore files for Vercel deployment
-Γöé
-Γö£ΓöÇΓöÇ BACK_TO_TOP_DOCUMENTATION.md        # Documentation for back-to-top feature
-Γö£ΓöÇΓöÇ CODE_OF_CONDUCT.md                  # Contributor code of conduct
-Γö£ΓöÇΓöÇ CONTRIBUTING.md                     # Guidelines for contributing
-Γö£ΓöÇΓöÇ EXPORT_FEATURES.md                  # Documentation of export features
-Γö£ΓöÇΓöÇ LICENSE                             # Project license
-Γö£ΓöÇΓöÇ README.md                           # Main project documentation
-Γö£ΓöÇΓöÇ SECURITY.md                         # Security guidelines
-Γö£ΓöÇΓöÇ USER_INPUT_DOCUMENTATION.md         # Documentation on user inputs
-Γöé
-Γö£ΓöÇΓöÇ desktop.ini                         # System file (can be ignored)
-Γö£ΓöÇΓöÇ index.html                          # Main HTML file for React app
-Γö£ΓöÇΓöÇ package-lock.json                   # Auto-generated dependency lock file
-Γö£ΓöÇΓöÇ package.json                        # Project dependencies and scripts
-Γö£ΓöÇΓöÇ sorting-refactor-issue.md           # Issue template for sorting refactor
-Γö£ΓöÇΓöÇ sorting-refactor-pr.md              # PR template for sorting refactor
-Γö£ΓöÇΓöÇ ter                                 # (Possibly temp/test folder)
-Γö£ΓöÇΓöÇ vercel.json                         # Vercel deployment configuration
-ΓööΓöÇΓöÇ vite.config.js                      # Vite configuration file for React build
+|- .github/                                  # GitHub-related configurations
+|  |- ISSUE_TEMPLATE/
+|  |- workflows/
+|  `- pull_request_template.md
+|- Backend/
+|  `- src/
+|     `- routes/
+|- build/
+|- docs/
+|- public/
+|  `- sample-data/
+|- src/
+|  |- algorithms/
+|  |- assets/
+|  |- components/
+|  |- contexts/
+|  |- data/
+|  |- docs/
+|  |- hooks/
+|  |- integration/
+|  |- pages/
+|  |- recommendation/
+|  |- routes/
+|  |- searching/
+|  |- services/
+|  |- storage/
+|  |- styles/
+|  |- ui/
+|  `- utils/
+|- tests/
+|- README.md
+|- package.json
+`- vite.config.js
 ```
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
@@ -709,8 +659,6 @@ git push origin main
 <img width="1888" height="829" alt="Screenshot 2025-10-13 210440" src="https://github.com/user-attachments/assets/0cdad087-7975-4a8a-8664-7e849243c088" />
 
 <img width="1898" height="786" alt="Screenshot 2025-10-13 210501" src="https://github.com/user-attachments/assets/8cb76638-0c6e-4ddc-81b1-e2aaa25ec5db" />
-
-<img width="1896" height="831" alt="Screenshot 2025-10-13 210521" src="https://github.com/user-attachments/assets/02bcba5e-754d-40f4-adb4-068a2ba0f958" />
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
@@ -939,7 +887,7 @@ This project is licensed under the MIT License - see the [`License`](https://git
 
 <div align="center">
   <a href="https://github.com/RhythmPahwa14/AlgoVisualizer/stargazers">
-    <img src="https://reporoster.com/stars/RhythmPahwa14/AlgoVisualizer?type=svg&limit=100&names=false" alt="Stargazers" />
+    <img src="https://img.shields.io/github/stars/RhythmPahwa14/AlgoVisualizer?style=for-the-badge&logo=github&color=2563eb" alt="Stargazers" />
   </a>
 </div>
 
@@ -949,7 +897,7 @@ This project is licensed under the MIT License - see the [`License`](https://git
 
 <div align="center">
   <a href="https://github.com/RhythmPahwa14/AlgoVisualizer/members">
-    <img src="https://reporoster.com/forks/RhythmPahwa14/AlgoVisualizer?type=svg&limit=100&names=false" alt="Forkers" />
+    <img src="https://img.shields.io/github/forks/RhythmPahwa14/AlgoVisualizer?style=for-the-badge&logo=github&color=2563eb" alt="Forkers" />
   </a>
 </div>
 
