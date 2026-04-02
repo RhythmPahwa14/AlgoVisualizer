@@ -11,8 +11,8 @@
 /* Hero Section */
 .cheatsheet-hero {
   text-align: center;
-  margin-bottom: 3rem;
-  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem 1rem;
 }
 
 .cheatsheet-title {
@@ -750,25 +750,103 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .cheatsheet-container [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   .cheatsheet-container {
-    padding: 1rem;
-    padding-top: 80px;
+    padding: 0.75rem;
+    padding-top: 24px;
+  }
+
+  .cheatsheet-hero {
+    margin-bottom: 1.25rem;
+    padding: 0.75rem 0.25rem 1rem;
   }
 
   .cheatsheet-title {
-    font-size: 2rem;
+    font-size: 1.65rem;
+    gap: 0.6rem;
   }
 
   .title-icon {
-    font-size: 2rem;
+    font-size: 1.65rem;
   }
 
   .cheatsheet-subtitle {
     font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .cheatsheet-controls {
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
+
+  .category-filters,
+  .quick-reference-section {
+    gap: 0.5rem;
+  }
+
+  .category-btn,
+  .reference-btn {
+    width: auto;
+    justify-content: center;
+  }
+
+  .category-filters {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .category-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 0.6rem 0.95rem;
+    font-size: 0.8rem;
+  }
+
+  .quick-reference-section {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .quick-reference-section::-webkit-scrollbar {
+    display: none;
+  }
+
+  .reference-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 0.7rem 0.95rem;
   }
 
   .cards-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .bigo-reference,
+  .tips-section {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .bigo-grid,
@@ -800,26 +878,57 @@
   .properties-grid {
     grid-template-columns: 1fr;
   }
+
+  .cheatsheet-content {
+    gap: 2rem;
+  }
+
+  .content-section {
+    scroll-margin-top: 90px;
+  }
 }
 
 @media (max-width: 480px) {
+  .cheatsheet-container {
+    padding-top: 12px;
+  }
+
+  .cheatsheet-hero {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+  }
+
   .cheatsheet-title {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     flex-direction: column;
     gap: 0.5rem;
   }
 
+  .cheatsheet-subtitle {
+    display: none;
+  }
+
   .search-input {
-    padding: 0.875rem 0.875rem 0.875rem 3rem;
+    padding: 0.8rem 0.85rem 0.8rem 2.65rem;
+    font-size: 0.95rem;
   }
 
   .reference-btn {
-    padding: 0.75rem 1.25rem;
+    padding: 0.8rem 1rem;
     font-size: 0.875rem;
+  }
+
+  .category-btn {
+    padding: 0.55rem 0.8rem;
+    font-size: 0.75rem;
   }
 
   .algo-card {
     padding: 1rem;
+  }
+
+  .cheatsheet-content {
+    gap: 1.5rem;
   }
 }
 

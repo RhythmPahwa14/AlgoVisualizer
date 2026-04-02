@@ -3,11 +3,11 @@ import "../styles/privacy.css";
 import { Link } from "react-router-dom";
 
 const Privacy = () => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [openSection, setOpenSection] = useState(null);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
+    const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
     document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);
@@ -89,7 +89,13 @@ const Privacy = () => {
         <div className="privacy-hero">
           <div className="hero-icon">
             <h1 className="hero-title">
-              <span>🛡️</span>Privacy Policy
+              <span className="hero-title-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
+                  <path d="M9.5 12.5l1.8 1.8 3.6-3.6" />
+                </svg>
+              </span>
+              Privacy Policy
             </h1>
           </div>
           <div className="last-updated">
@@ -102,7 +108,7 @@ const Privacy = () => {
         </div>
 
         <div className="privacy-sections">
-          <p style={{color: 'white', marginBottom: '1rem'}}>
+          <p style={{color: 'var(--text-primary)', marginBottom: '1rem'}}>
             {/* Debug - Open section: {openSection || 'none'} */}
           </p>
           

@@ -158,10 +158,10 @@ const AnalyticsDashboard = () => {
   if (!events) return <div>Loading analytics...</div>;
 
   return (
-    <div className="w-full flex justify-center px-4 sm:px-6 py-6">
+    <div className="w-full flex justify-center px-3 sm:px-6 py-5 sm:py-6">
       <div className="max-w-6xl w-full mx-auto">
         <h1
-          className="font-extrabold text-5xl md:text-6xl mb-6 text-center"
+          className="font-extrabold text-2xl sm:text-4xl md:text-6xl mb-5 sm:mb-6 text-center"
           style={{
             color: "#000000",
             letterSpacing: "-0.025em",
@@ -172,11 +172,23 @@ const AnalyticsDashboard = () => {
           ALGORITHM ANALYTICS DASHBOARD
         </h1>
 
-        <div className="max-h-[85vh] overflow-y-auto">
-          <div style={{ display: "flex", gap: 12, alignItems: "center", margin: "1rem 0" }}>
-            <label>
+        <div className="w-full">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+              gap: 12,
+              alignItems: "end",
+              margin: "1rem 0",
+            }}
+          >
+            <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               Algorithm:
-              <select value={algorithmFilter} onChange={(e) => setAlgorithmFilter(e.target.value)} style={{ marginLeft: 8 }}>
+              <select
+                value={algorithmFilter}
+                onChange={(e) => setAlgorithmFilter(e.target.value)}
+                style={{ width: "100%", marginLeft: 0 }}
+              >
                 <option value="all">All</option>
                 {algorithms.map((a) => (
                   <option key={a} value={a}>{a}</option>
@@ -184,22 +196,32 @@ const AnalyticsDashboard = () => {
               </select>
             </label>
 
-            <label>
+            <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               From:
-              <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} style={{ marginLeft: 8 }} />
+              <input
+                type="date"
+                value={fromDate}
+                onChange={(e) => setFromDate(e.target.value)}
+                style={{ width: "100%", marginLeft: 0 }}
+              />
             </label>
 
-            <label>
+            <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               To:
-              <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} style={{ marginLeft: 8 }} />
+              <input
+                type="date"
+                value={toDate}
+                onChange={(e) => setToDate(e.target.value)}
+                style={{ width: "100%", marginLeft: 0 }}
+              />
             </label>
 
             <ShowResultsButton filtered={filtered} />
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: 16 }}>
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-4">
             <div>
-              <section style={{ height: 320, margin: "1rem 0" }}>
+              <section style={{ height: 300, margin: "1rem 0" }}>
                 <h3>Average Time Spent (per algorithm)</h3>
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={avgTimePerAlgo} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
@@ -214,7 +236,7 @@ const AnalyticsDashboard = () => {
 
               <section style={{ height: 320, margin: "1rem 0" }}>
                 <h3>Step Completion (sessions reaching step index)</h3>
-                <div style={{ height: 300 }}>
+                <div style={{ height: 290 }}>
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={completionChartData.reduce((acc, alg) => {
                       alg.counts.forEach((count, idx) => {
@@ -237,7 +259,7 @@ const AnalyticsDashboard = () => {
               </section>
             </div>
 
-            <aside>
+            <aside className="lg:sticky lg:top-4 self-start">
               <section style={{ marginBottom: 16 }}>
                 <h3>Key Metrics</h3>
                 <div>Average Time (s): {metrics.avgTime.toFixed(2)}</div>
@@ -276,7 +298,7 @@ const ShowResultsButton = ({ filtered }) => {
   const [show, setShow] = useState(false);
   return (
     <>
-      <button onClick={() => setShow((s) => !s)} style={{ marginLeft: 12 }}>
+      <button onClick={() => setShow((s) => !s)} style={{ marginLeft: 0, width: "100%" }}>
         {show ? "Hide Results" : `Show Results (${filtered.length})`}
       </button>
       {show && <ResultsTable filtered={filtered} />}
@@ -295,8 +317,8 @@ const ResultsSection = ({ filtered }) => {
 
 const ResultsTable = ({ filtered }) => {
   return (
-    <div style={{ maxHeight: 360, overflow: "auto", border: "1px solid #eee", borderRadius: 6, margin: "0 auto", textAlign: "left" }}>
-      <table style={{ width: "auto", minWidth: "70%", borderCollapse: "collapse", display: "table", margin: "0 auto" }}>
+    <div style={{ maxHeight: 360, overflow: "auto", border: "1px solid #eee", borderRadius: 6, margin: "0 auto", textAlign: "left", width: "100%" }}>
+      <table style={{ width: "100%", minWidth: 760, borderCollapse: "collapse", display: "table", margin: "0 auto" }}>
         <thead>
           <tr>
             <th style={{ textAlign: "left", borderBottom: "1px solid #ddd", padding: 8 }}>Timestamp</th>

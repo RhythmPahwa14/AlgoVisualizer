@@ -7,7 +7,7 @@
   --accent-primary: #000000;
   --accent-secondary: #333333;
   --border-color: #cbd5e1;
-   --btn-toggle-color: #94a3b8
+  --btn-toggle-color: #94a3b8;
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
@@ -19,34 +19,42 @@
   --accent-primary: #000000;
   --accent-secondary: #333333;
   --border-color: #334155;
-   --btn-toggle-color: #cbd5e1;
+  --btn-toggle-color: #cbd5e1;
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
 .terms-container {
   min-height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
   background: var(--bg-primary);
   color: var(--text-primary);
   padding: 2rem;
   transition: background-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .terms-content {
-  max-width: 900px;
+  width: min(100%, 900px);
   margin: 0 auto;
 }
 
 .terms-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
 }
 
 .header-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
@@ -57,8 +65,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent-primary);
-  color: white;
+  background: #f3f4f6;
+  color: #000000;
   border-radius: 8px;
 }
 
@@ -70,28 +78,29 @@
 .header-text h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  color: var(--text-primary);
+  color: #000000 !important;
 }
 
 .header-text p {
-  color: var(--text-secondary);
+  color: #111111;
 }
 
 .effective-date {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  margin-top: 0.5rem;
 }
 
 .date-label {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: #374151;
   margin-bottom: 0.25rem;
 }
 
 .date-value {
   font-weight: 600;
-  color: var(--text-primary);
+  color: #000000;
 }
 
 .quick-nav {

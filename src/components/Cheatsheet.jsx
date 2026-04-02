@@ -332,17 +332,19 @@ const Cheatsheet = () => {
     );
   };
 
-  const renderAdvancedTechnique = (technique, index) => {
-    const expanded = isExpanded('advanced', index);
+  const renderAdvancedTechnique = (technique, category, index) => {
+    const sectionKey = category || 'advancedAlgorithms';
+    const itemIndex = Number.isFinite(index) ? index : 0;
+    const expanded = isExpanded(sectionKey, itemIndex);
     
     return (
       <div 
-        key={`advanced-${index}`}
+        key={`${sectionKey}-${itemIndex}`}
         className="algo-card advanced-card"
         data-aos="fade-up"
-        data-aos-delay={index * 50}
+        data-aos-delay={itemIndex * 50}
       >
-        <div className="algo-card-header" onClick={() => toggleExpand('advanced', index)}>
+        <div className="algo-card-header" onClick={() => toggleExpand(sectionKey, itemIndex)}>
           <div className="algo-title-section">
             <h3 className="algo-name">{technique.name}</h3>
             <span className="category-tag">{technique.category}</span>

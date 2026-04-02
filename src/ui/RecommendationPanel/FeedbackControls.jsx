@@ -36,32 +36,32 @@ const FeedbackControls = ({ onFeedback }) => {
         </div>
       ) : (
         <>
-          <div className="flex space-x-4 mb-4">
+          <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
             <button
               onClick={() => setFeedback('positive')}
-              className={`flex-1 py-3 px-4 rounded-lg border transition-colors ${
+              className={`flex min-h-[96px] w-full items-center justify-center rounded-lg border px-4 py-3 text-center transition-colors ${
                 feedback === 'positive'
                   ? 'bg-green-100 border-green-500 text-green-700'
                   : 'bg-white border-gray-300 text-gray-700 hover:bg-green-50'
               }`}
             >
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center gap-1">
                 <span className="text-2xl">👍</span>
-                <span className="mt-1 font-medium">Helpful</span>
+                <span className="font-medium">Helpful</span>
               </div>
             </button>
             
             <button
               onClick={() => setFeedback('negative')}
-              className={`flex-1 py-3 px-4 rounded-lg border transition-colors ${
+              className={`flex min-h-[96px] w-full items-center justify-center rounded-lg border px-4 py-3 text-center transition-colors ${
                 feedback === 'negative'
                   ? 'bg-red-100 border-red-500 text-red-700'
                   : 'bg-white border-gray-300 text-gray-700 hover:bg-red-50'
               }`}
             >
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center gap-1">
                 <span className="text-2xl">👎</span>
-                <span className="mt-1 font-medium">Not Helpful</span>
+                <span className="font-medium">Not Helpful</span>
               </div>
             </button>
           </div>

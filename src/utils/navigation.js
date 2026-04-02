@@ -27,9 +27,7 @@ export const navbarNavigationItems = [
     icon: "Users",
     dropdown: [
       { path: "/community", label: "Community" },
-      { path: "/contribute", label: "Contribute" },
-      { path: "/contributors", label: "Contributors" },
-      { path: "/contributor-leaderboard", label: "Leaderboard" }
+      { path: "/contributors", label: "Contributors" }
     ]
   },
   { path: "/analytics", label: "Analytics", icon: "BarChart3" },
@@ -41,14 +39,12 @@ export const navbarNavigationItems = [
       { path: "/quiz", label: "Quiz" },
       { path: "/documentation", label: "Documentation" },
       { path: "/performance", label: "Performance Analyzer" },
-      { path: "/recommendations", label: "Algorithm Recommendations" },
       { path: "/performance/docs", label: "Performance Docs" },
       { path: "/notes/java", label: "Java Notes" },
       { path: "/notes/python", label: "Python Notes" },
       { path: "/notes/cpp", label: "C++ Notes" },
       { path: "/notes/c", label: "C Notes" },
       { path: "/notes/javascript", label: "JavaScript Notes" },
-      { path: "/notes/rust", label: "Rust Notes" }
     ]
   }
 ];
@@ -275,7 +271,6 @@ export const learnSections = [
       { path: "/game-search", label: "Game Search Algorithms", category: "Other", tags: ["game search", "algorithms"] },
       { path: "/branchbound-overview", label: "Branch & Bound (Overview)", category: "Other", tags: ["branch and bound", "overview"] },
       { path: "/branchbound", label: "Branch & Bound", category: "Other", tags: ["branch and bound", "algorithms"] },
-      { path: "/recommendations", label: "Algorithm Recommendations", category: "Other", tags: ["recommendations", "machine learning", "ai"] },
     ],
   },
 ];
