@@ -365,13 +365,15 @@
   border-radius: 10px;
   text-decoration: none;
   font-weight: 700;
-  background: var(--accent);
-  color: #0b1020;
-  box-shadow: 0 8px 18px color-mix(in oklab, var(--accent) 35%, transparent);
+  background: #111111;
+  color: #ffffff;
+  border: 1px solid #111111;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
 }
 
 .feature-cta:hover {
-  background: color-mix(in oklab, var(--accent) 85%, white);
+  background: #000000;
+  color: #ffffff;
 }
 
 /* Optional: ensure page background actually applies behind the layout */

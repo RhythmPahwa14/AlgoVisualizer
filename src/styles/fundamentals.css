@@ -6,17 +6,18 @@
   font-size: 3rem;
   margin-bottom: 1rem;
   font-weight: 800;
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .funda-desc {
   font-size: 1.2rem;
   max-width: 700px;
   margin: 0 auto;
   opacity: 0.9;
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .card {
-  background:#b3cdf8;
+  background: #ffffff;
+  color: #000000;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
   border: 1px solid rgba(15, 23, 42, 0.03);
@@ -31,12 +32,25 @@
 }
 
 h2 {
+  color: #000000;
   margin-bottom: 1rem;
   font-weight: 700;
   font-size: 1.2em;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  justify-content: flex-start !important;
+}
+
+.card h2 i,
+.card h2 .note-inline-icon {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.card h2 {
+  display: inline-flex !important;
+  width: auto;
 }
 
 h3 {
@@ -49,6 +63,7 @@ h3 {
 } */
 
 p{
+  color: #000000;
   font-size: 1.2em;
 }
 .code-container {
@@ -72,9 +87,14 @@ p{
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--code-text, #374151);
-  border: none;
+  min-width: auto !important;
+  width: auto !important;
+  max-width: max-content;
+  white-space: nowrap;
+  z-index: 2;
+  background: #111111;
+  color: #ffffff !important;
+  border: 1px solid #111111;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
@@ -84,11 +104,13 @@ p{
 }
 
 .copy-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #000000;
+  color: #ffffff !important;
 }
 
 .copy-btn.copied {
-  background: #10b981;
+  background: #111111;
+  color: #ffffff !important;
 }
 
 code {
@@ -104,11 +126,27 @@ ul {
 }
 
 li {
+  color: #000000;
   margin-bottom: 0.5rem;
 }
 
 strong {
-  color: #1664e0;
+  color: #000000;
+}
+
+.note-inline-icon {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.25em;
+  vertical-align: -0.125em;
+  color: currentColor;
+}
+
+.note-inline-icon svg {
+  width: 1em;
+  height: 1em;
+  display: block;
 }
  
 .menu-btn{

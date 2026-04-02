@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 
 const CollectionsSection = ({ copyCode, copiedCode }) => (
   <section style={{ marginBottom: "2rem" }}>
@@ -34,7 +34,7 @@ const CollectionsSection = ({ copyCode, copiedCode }) => (
         </pre>
       </div>
 
-      <h3>🔹 List Interface</h3>
+      <h3><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> List Interface</h3>
       <p>Ordered collection that allows duplicate elements. Elements can be accessed by index.</p>
       
       <div style={{overflowX: 'auto', margin: '1rem 0'}}>
@@ -66,7 +66,7 @@ const CollectionsSection = ({ copyCode, copiedCode }) => (
         </table>
       </div>
 
-      <h3>🔹 Set Interface</h3>
+      <h3><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Set Interface</h3>
       <p>Collection that contains no duplicate elements. Models mathematical set abstraction.</p>
       
       <div style={{overflowX: 'auto', margin: '1rem 0'}}>
@@ -98,10 +98,10 @@ const CollectionsSection = ({ copyCode, copiedCode }) => (
         </table>
       </div>
 
-      <h3>🔹 Queue Interface</h3>
+      <h3><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Queue Interface</h3>
       <p>Collection designed for holding elements prior to processing. Typically FIFO (First-In-First-Out).</p>
 
-      <h3>🔹 Map Interface</h3>
+      <h3><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Map Interface</h3>
       <p>Object that maps keys to values. Cannot contain duplicate keys.</p>
 
       <div style={{overflowX: 'auto', margin: '1rem 0'}}>
@@ -333,16 +333,16 @@ public class CollectionsExample {
       </div>
 
       <div style={{background: '#e0f2fe', borderLeft: '4px solid #0284c7', padding: '1rem 1.5rem', margin: '1.5rem 0', borderRadius: '0 12px 12px 0'}}>
-        <strong>💡 Choosing the Right Collection:</strong>
+        <strong><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Choosing the Right Collection:</strong>
         <ul style={{marginTop: '0.5rem', marginBottom: 0}}>
-          <li>Need fast access by index? → <code>ArrayList</code></li>
-          <li>Frequent insertions/deletions? → <code>LinkedList</code></li>
-          <li>Need unique elements? → <code>HashSet</code></li>
-          <li>Need sorted unique elements? → <code>TreeSet</code></li>
-          <li>Need key-value pairs? → <code>HashMap</code></li>
-          <li>Need sorted keys? → <code>TreeMap</code></li>
-          <li>Need FIFO processing? → <code>Queue</code> with <code>LinkedList</code></li>
-          <li>Need priority-based processing? → <code>PriorityQueue</code></li>
+          <li>Need fast access by index? â†’ <code>ArrayList</code></li>
+          <li>Frequent insertions/deletions? â†’ <code>LinkedList</code></li>
+          <li>Need unique elements? â†’ <code>HashSet</code></li>
+          <li>Need sorted unique elements? â†’ <code>TreeSet</code></li>
+          <li>Need key-value pairs? â†’ <code>HashMap</code></li>
+          <li>Need sorted keys? â†’ <code>TreeMap</code></li>
+          <li>Need FIFO processing? â†’ <code>Queue</code> with <code>LinkedList</code></li>
+          <li>Need priority-based processing? â†’ <code>PriorityQueue</code></li>
         </ul>
       </div>
 
@@ -357,8 +357,8 @@ public class CollectionsExample {
         <li><code>iterator()</code> - Returns an iterator</li>
       </ul>
 
-      <p style={{ fontSize: "0.9rem", color: "#555", marginTop: "1rem" }}>
-        🎯 <strong>Best Practice:</strong> Always program to the interface (List, Set, Map) rather than the implementation (ArrayList, HashSet, HashMap) 
+      <p style={{ fontSize: "0.9rem", color: "#000", marginTop: "1rem" }}>
+        <span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> <strong>Best Practice:</strong> Always program to the interface (List, Set, Map) rather than the implementation (ArrayList, HashSet, HashMap) 
         for better flexibility and maintainability.
       </p>
     </div>
@@ -366,3 +366,4 @@ public class CollectionsExample {
 );
 
 export default CollectionsSection;
+

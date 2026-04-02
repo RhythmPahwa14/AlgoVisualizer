@@ -435,10 +435,11 @@ const Fundamentals = () => {
           textAlign: "center",
           marginBottom: "3rem",
           padding: "2rem 0",
-          background:"linear-gradient(135deg, #a78bfa, #60a5fa)",
-          color: "white",
+          background: "#ffffff",
+          color: "#000000",
           borderRadius: "12px",
-          boxShadow: "0 10px 25px rgba(79, 70, 229, 0.3)",
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.08)",
+          border: "1px solid rgba(0, 0, 0, 0.12)",
         }}
       >
         <h1 className="funda-header" 
@@ -533,9 +534,9 @@ const Fundamentals = () => {
           position: absolute;
           top: 0.75rem;
           right: 0.75rem;
-          background: rgba(255, 255, 255, 0.1);
-          color: var(--code-text, #374151);
-          border: none;
+          background: #111111;
+          color: #ffffff;
+          border: 1px solid #111111;
           padding: 0.5rem 1rem;
           border-radius: 6px;
           cursor: pointer;
@@ -545,11 +546,13 @@ const Fundamentals = () => {
         }
 
         .copy-btn:hover {
-          background: rgba(255, 255, 255, 0.2);
+          background: #000000;
+          color: #ffffff;
         }
 
         .copy-btn.copied {
-          background: #10b981;
+          background: #111111;
+          color: #ffffff;
         }
 
         code {

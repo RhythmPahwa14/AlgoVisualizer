@@ -11,7 +11,7 @@ const ControlFlowSection = ({ copyCode, copiedCode }) => (
         Java provides decision-making structures (if, switch) and looping structures (for, while, do-while).
       </p>
 
-      <h3>🔹 Decision Making Statements</h3>
+      <h3><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Decision Making Statements</h3>
 
       <h4>1. if Statement</h4>
       <p>Executes a block of code only if a specified condition is true.</p>
@@ -259,7 +259,7 @@ String dayName = switch (day) {
 System.out.println("Day: " + dayName);`}</pre>
       </div>
 
-      <h3>🔹 Looping Statements</h3>
+      <h3><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Looping Statements</h3>
 
       <h4>1. for Loop</h4>
       <p>Executes a block of code a specified number of times.</p>
@@ -413,7 +413,7 @@ do {
 } while (j < 5); // Condition is false, but runs once`}</pre>
       </div>
 
-      <h3>🔹 Jump Statements</h3>
+      <h3><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Jump Statements</h3>
 
       <h4>break Statement</h4>
       <p>Exits the loop or switch statement.</p>
@@ -582,7 +582,7 @@ for (int i = 1; i <= 5; i++) {
       </div>
 
       <div style={{background: '#e0f2fe', borderLeft: '4px solid #0284c7', padding: '1rem 1.5rem', margin: '1.5rem 0', borderRadius: '0 12px 12px 0'}}>
-        <strong>💡 Best Practices:</strong>
+        <strong><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Best Practices:</strong>
         <ul style={{marginTop: '0.5rem', marginBottom: 0}}>
           <li>Use <code>for</code> loop when you know the number of iterations</li>
           <li>Use <code>while</code> loop when iterations depend on a condition</li>

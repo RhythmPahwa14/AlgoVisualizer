@@ -40,11 +40,11 @@ const IntroSection = ({ copyCode, copiedCode }) => (
 
       <h3>Why Learn Java?</h3>
       <ul>
-        <li>🌍 <strong>Universal:</strong> Used in Android development, enterprise applications, web servers, big data, and more</li>
-        <li>💼 <strong>High Demand:</strong> One of the most in-demand programming languages in the job market</li>
-        <li>🏗️ <strong>Robust Ecosystem:</strong> Vast collection of frameworks like Spring, Hibernate, and libraries</li>
-        <li>📚 <strong>Great Learning Curve:</strong> Excellent for understanding programming fundamentals and OOP concepts</li>
-        <li>🚀 <strong>Performance:</strong> JIT (Just-In-Time) compiler provides near-native performance</li>
+        <li><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> <strong>Universal:</strong> Used in Android development, enterprise applications, web servers, big data, and more</li>
+        <li><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> <strong>High Demand:</strong> One of the most in-demand programming languages in the job market</li>
+        <li><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> <strong>Robust Ecosystem:</strong> Vast collection of frameworks like Spring, Hibernate, and libraries</li>
+        <li><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> <strong>Great Learning Curve:</strong> Excellent for understanding programming fundamentals and OOP concepts</li>
+        <li><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> <strong>Performance:</strong> JIT (Just-In-Time) compiler provides near-native performance</li>
       </ul>
 
       <h3>Java Program Execution Flow</h3>
@@ -93,7 +93,7 @@ public class HelloWorld {
       </div>
 
       <div style={{background: '#e0f2fe', borderLeft: '4px solid #0284c7', padding: '1rem 1.5rem', margin: '1rem 0', borderRadius: '0 12px 12px 0'}}>
-        <strong>💡 Code Breakdown:</strong>
+        <strong><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Code Breakdown:</strong>
         <ul style={{marginTop: '0.5rem', marginBottom: 0}}>
           <li><code>public class HelloWorld</code> - Declares a public class named HelloWorld</li>
           <li><code>public static void main(String[] args)</code> - Entry point of the program</li>
@@ -111,7 +111,7 @@ public class HelloWorld {
           color:"#374151",
         }}
       >
-        <strong>📌 Note:</strong> Java was first released by Sun Microsystems in
+        <strong><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Note:</strong> Java was first released by Sun Microsystems in
         1995 (created by James Gosling) and is now stewarded by Oracle and the OpenJDK community.
         Current LTS versions include Java 8, 11, 17, and 21.
       </div>

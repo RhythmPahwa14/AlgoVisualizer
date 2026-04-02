@@ -86,10 +86,11 @@ const Fundamentals = () => {
           textAlign: "center",
           marginBottom: "3rem",
           padding: "2rem 0",
-          background: "linear-gradient(135deg, #f59e0b, #eab308)",
-          color: "white",
+          background: "#ffffff",
+          color: "#000000",
           borderRadius: "12px",
-          boxShadow: "0 10px 25px rgba(245, 158, 11, 0.3)",
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.08)",
+          border: "1px solid rgba(0, 0, 0, 0.12)",
         }}
       >
         <h1 style={{ fontSize: "3rem", marginBottom: "1rem", fontWeight: 800 }}>
@@ -123,7 +124,7 @@ const Fundamentals = () => {
         <h3 style={{ marginTop: 0, color: "var(--text-primary)" }}>
           <i
             className="fas fa-bookmark"
-            style={{ marginRight: "0.5rem", color: "#f59e0b" }}
+            style={{ marginRight: "0.5rem", color: "#000000" }}
           ></i>
           Contents
         </h3>
@@ -134,9 +135,9 @@ const Fundamentals = () => {
               onClick={() => setActiveTab(section.id)}
               style={{
                 background:
-                  activeTab === section.id ? "#f59e0b" : "transparent",
-                color: activeTab === section.id ? "white" : "#f59e0b",
-                border: "2px solid #f59e0b",
+                  activeTab === section.id ? "#000000" : "transparent",
+                color: activeTab === section.id ? "#ffffff" : "#000000",
+                border: "2px solid #000000",
                 padding: "0.5rem 1rem",
                 borderRadius: "6px",
                 cursor: "pointer",

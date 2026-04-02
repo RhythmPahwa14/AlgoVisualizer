@@ -57,10 +57,11 @@ const PythonFundamentals = () => {
           textAlign: "center",
           marginBottom: "3rem",
           padding: "2rem 0",
-          background: "linear-gradient(135deg, #4f46e5, #4338ca)",
-          color: "white",
+          background: "#ffffff",
+          color: "#000000",
           borderRadius: "12px",
-          boxShadow: "0 10px 25px rgba(79, 70, 229, 0.3)"
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.08)",
+          border: "1px solid rgba(0, 0, 0, 0.12)"
         }}
       >
         <h1 style={{ fontSize: "3rem", marginBottom: "1rem", fontWeight: 800 }}>Python Fundamentals</h1>
@@ -86,7 +87,7 @@ const PythonFundamentals = () => {
         marginBottom: "2rem"
       }}>
         <h3 style={{ marginTop: 0, color: "#0f172a" }}>
-          <i className="fas fa-bookmark" style={{ marginRight: "0.5rem", color: "#4f46e5" }}></i>
+          <i className="fas fa-bookmark" style={{ marginRight: "0.5rem", color: "#000000" }}></i>
           Contents
         </h3>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
@@ -95,9 +96,9 @@ const PythonFundamentals = () => {
               key={item.id}
               onClick={() => setActiveTab(item.id)}
               style={{
-                background: activeTab === item.id ? "#4f46e5" : "transparent",
-                color: activeTab === item.id ? "white" : "#4f46e5",
-                border: "2px solid #4f46e5",
+                background: activeTab === item.id ? "#000000" : "transparent",
+                color: activeTab === item.id ? "#ffffff" : "#000000",
+                border: "2px solid #000000",
                 padding: "0.5rem 1rem",
                 borderRadius: "6px",
                 cursor: "pointer",
@@ -121,14 +122,14 @@ const PythonFundamentals = () => {
         .card { background: var(--card-bg, #ffffff); border-radius: 12px; box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04); border: 1px solid rgba(15, 23, 42, 0.03); padding: 1.5rem; margin-bottom: 2rem; transition: all 0.3s ease; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(16, 24, 40, 0.1); }
         h2 { color: var(--code-text, #1e293b); margin-bottom: 1rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
-        h3 { color: #4f46e5; margin: 1.5rem 0 0.5rem; font-weight: 600; }
+        h3 { color: #000000; margin: 1.5rem 0 0.5rem; font-weight: 600; }
         .code-container { position: relative; margin: 1.5rem 0; border-radius: 12px; overflow: hidden; }
         .code-container pre { background: var(--code-bg, #0b1220); color: var(--code-text, #f8fafc); padding: 1.5rem; overflow-x: auto; border-radius: 12px; font-family: "Courier New", monospace; line-height: 1.5; font-size: 0.95rem; }
         p { color: var(--code-text, #374151); }
-        .copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255,255,255,0.1); color: var(--code-text, #374151); border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s ease; backdrop-filter: blur(10px); }
-        .copy-btn:hover { background: rgba(255,255,255,0.2); }
-        .copy-btn.copied { background: #10b981; }
-        code { background-color: #e0e7ff; color: #4338ca; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: "Courier New", monospace; font-size: 0.9rem; }
+        .copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: #111111; color: #ffffff; border: 1px solid #111111; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        .copy-btn:hover { background: #000000; color: #ffffff; }
+        .copy-btn.copied { background: #111111; color: #ffffff; }
+        code { background-color: #f3f4f6; color: #111111; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: "Courier New", monospace; font-size: 0.9rem; }
         ul { padding-left: 1.5rem; margin-bottom: 1rem; color: var(--code-text, #374151); }
         li { color: var(--code-text, #374151); margin-bottom: 0.5rem; }
         strong { color: var(--code-text, #374151); }

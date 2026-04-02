@@ -94,8 +94,8 @@ const Feature = () => {
             <div
               key={i}
               style={{
-                background: "linear-gradient(135deg, #1f2937 0%, #111827 100%)",
-                border: "1px solid #374151",
+                background: "#ffffff",
+                border: "1px solid #d1d5db",
                 borderRadius: "12px",
                 padding: "2rem",
                 transition: "all 0.3s ease",
@@ -106,12 +106,12 @@ const Feature = () => {
               onMouseEnter={(e) => {
                 e.target.style.transform = "translateY(-4px)";
                 e.target.style.boxShadow = "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)";
-                e.target.style.borderColor = "#f97316";
+                e.target.style.borderColor = "#111111";
               }}
               onMouseLeave={(e) => {
                 e.target.style.transform = "translateY(0)";
                 e.target.style.boxShadow = "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)";
-                e.target.style.borderColor = "#374151";
+                e.target.style.borderColor = "#d1d5db";
               }}
             >
               {/* Icon */}
@@ -123,9 +123,10 @@ const Feature = () => {
                 justifyContent: "center",
                 width: "60px",
                 height: "60px",
-                background: "linear-gradient(135deg, #f97316, #ea580c)",
+                background: "#111111",
                 borderRadius: "12px",
-                boxShadow: "0 4px 8px rgba(249, 115, 22, 0.3)"
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                color: "#ffffff"
               }}>
                 {feature.icon}
               </div>
@@ -133,7 +134,7 @@ const Feature = () => {
               {/* Title */}
               <h3 style={{ 
                 fontSize: "1.5rem", 
-                color: "#f9fafb",
+                color: "#111111",
                 marginBottom: "0.75rem",
                 fontWeight: "600"
               }}>
@@ -143,7 +144,7 @@ const Feature = () => {
               {/* Description */}
               <p style={{ 
                 fontSize: "0.95rem", 
-                color: "#d1d5db", 
+                color: "#374151", 
                 lineHeight: "1.6",
                 margin: "0"
               }}>
@@ -157,7 +158,7 @@ const Feature = () => {
                 right: "0",
                 width: "100px",
                 height: "100px",
-                background: "linear-gradient(135deg, rgba(249, 115, 22, 0.1), transparent)",
+                background: "linear-gradient(135deg, rgba(17, 17, 17, 0.08), transparent)",
                 borderRadius: "0 12px 0 100px",
                 pointerEvents: "none"
               }} />
@@ -194,8 +195,8 @@ const Feature = () => {
             <div style={{
               display: "grid",
               gridTemplateColumns: "1fr 2fr",
-              background: "linear-gradient(135deg, #f97316, #ea580c)",
-              color: "white",
+              background: "#111111",
+              color: "#ffffff",
               padding: "1rem 2rem",
               fontWeight: "600",
               fontSize: "1.1rem"

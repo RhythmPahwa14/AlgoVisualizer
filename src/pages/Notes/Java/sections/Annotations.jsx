@@ -5,7 +5,7 @@ const Annotations = (copyCode, copiedCode) => {
     <div>
       <div className="card">
         <h2 style={{ textAlign: "center", fontSize: "2.3rem" }}>
-          🏷️Annotations in java
+          <span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span>Annotations in java
         </h2>
         <p>
           Annotations in Java are metadata — information about the code that
@@ -16,7 +16,7 @@ const Annotations = (copyCode, copiedCode) => {
         <div style={{ margin: "2rem 2rem" }}>
           <ul>
             <li>
-              <h3>🔍 1. What Are Annotations?</h3>
+              <h3><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> 1. What Are Annotations?</h3>
             </li>
             <p style={{ margin: ".4rem 2rem" }}>
               An annotation starts with @ followed by its name. It can be
@@ -51,7 +51,7 @@ void display() {
           </ul>
           <ul>
             <li>
-              <h3>⚙️ 2. Built-in Annotations</h3>
+              <h3><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> 2. Built-in Annotations</h3>
             </li>
             <table className="info-table">
               <thead>
@@ -83,7 +83,7 @@ void display() {
           <ul>
             <li>
               {" "}
-              <h3>🧩 3. Custom Annotations</h3>
+              <h3><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> 3. Custom Annotations</h3>
               <p>
                 You can define your own annotations using{" "}
                 <code>@interface</code>.
