@@ -37,7 +37,6 @@ import GraphDijkstra from "./pages/GraphDijkstra";
 import GraphAStar from "./pages/GraphAStar";
 import Quiz from "./pages/Quiz";
 import Settings from "./pages/Settings";
-import Blog from "./pages/Blog";
 import CommunityLanding from "./pages/CommunityLanding";
 
 // ✅ Bellman-Ford Algorithm Page
@@ -65,8 +64,6 @@ import JavaScriptVariablesAndDataTypes from "./pages/Notes/JavaScript/VariablesA
 // Next.js Notes
 import NextJsFundamentals from "./pages/Notes/NextJs/Fundamentals.jsx";
 
-// Rust Notes
-import RustFundamentals from "./pages/Notes/Rust/Fundamentals";
 
 // Algorithm Pages
 import DPOverview from "./pages/DPOverview";
@@ -126,7 +123,6 @@ import TrieVisualizer from "./components/Trie/TrieVisualizer";
 import AlgorithmComparison from "./components/AlgorithmComparison";
 import GraphComparison from "./components/GraphComparison";
 import Contributors from "./components/Contributors";
-import Contribute from "./components/Contribute";
 import Cheatsheet from "./components/Cheatsheet";
 import AlgorithmComparisonTable from './components/AlgorithmComparisonTable';
 
@@ -143,14 +139,10 @@ import About from "./components/about";
 import Contact from "./components/contact";
 import PrivacyPolicy from "./components/Privacy";
 import TermsOfService from "./components/terms";
-import CookiePolicy from "./components/cookie-policy";
 import FAQ from "./pages/FAQ";
 import ContributorLeaderboard from "./pages/ContributorLeaderboard";
 import AlgorithmDocumentation from "./pages/Documentation";
 import CodeEditor from "./pages/CodeEditor";
-
-// ✅ Algorithm Recommendation System
-import AlgorithmRecommendationDemo from "./pages/AlgorithmRecommendationDemo";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -205,9 +197,6 @@ const App = () => {
 
                   <main className="main-content page-content">
                     <Routes>
-                      {/* Algorithm Recommendation System */}
-                      <Route path="/recommendations" element={<AlgorithmRecommendationDemo />} />
-
                       {/* Home */}
                       <Route path="/" element={<Home />} />
                       <Route path="/login" element={<Login />} />
@@ -343,15 +332,12 @@ const App = () => {
 
                       {/* Other Pages */}
                       <Route path="/quiz" element={<Quiz />} />
-                      <Route path="/blog" element={<Blog />} />
                       <Route path="/community" element={<CommunityLanding />} />
                       <Route path="/contributors" element={<Contributors />} />
-                      <Route path="/contribute" element={<Contribute />} />
                       <Route path="/about" element={<About />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/terms" element={<TermsOfService />} />
                       <Route path="/privacy" element={<PrivacyPolicy />} />
-                      <Route path="/cookies" element={<CookiePolicy />} />
                       <Route path="/documentation" element={<AlgorithmDocumentation />} />
                       <Route path="/faq" element={<FAQ />} />
                       <Route path="/contributor-leaderboard" element={<ContributorLeaderboard />} />
@@ -402,9 +388,6 @@ const App = () => {
                       <Route path="/cheatsheet" element={<Cheatsheet />} />
                       <Route path="/algorithm-comparison-table" element={<AlgorithmComparisonTable />} />
                       <Route path="/notes/MERN/MERNFundamentals" element={<MERNFundamentals />} />
-                      <Route path="/notes/rust" element={<Navigate to="/notes/rust/fundamentals" replace />} />
-                      <Route path="/notes/rust/fundamentals" element={<RustFundamentals />} />
-
                       {/* Learning & Settings */}
                       <Route path="/learn" element={<LearnLanding />} />
                       <Route path="/progress" element={<ProgressTracker topics={["Sorting", "Graphs", "DP"]} />} />

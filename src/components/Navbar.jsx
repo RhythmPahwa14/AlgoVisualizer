@@ -44,7 +44,7 @@ const ICON_COMPONENTS = {
 };
 
 // Desktop Nav Item
-const DesktopNavItem = ({
+const DesktopNavItem = React.forwardRef(({
   item,
   index,
   isOpen,
@@ -56,12 +56,13 @@ const DesktopNavItem = ({
   getIcon,
   selectedCommunity,
   setSelectedCommunity
-}) => {
+}, ref) => {
   if (item.dropdown) {
     return (
       <div
         className="navbar-item dropdown"
         key={index}
+        ref={ref}
         onMouseEnter={() => openDropdown(index)}
         onMouseLeave={closeDropdownDelayed}
       >
@@ -116,6 +117,7 @@ const DesktopNavItem = ({
       className={`navbar-link ${isActive(item.path) ? "active" : ""}`}
       data-tooltip={item.label}
       key={index}
+      ref={ref}
     >
       {item.icon &&
         React.createElement(getIcon(item.icon), {
@@ -125,7 +127,9 @@ const DesktopNavItem = ({
       <span className="navbar-label">{item.label}</span>
     </Link>
   );
-};
+});
+
+DesktopNavItem.displayName = "DesktopNavItem";
 
 // Mobile Nav Item
 const MobileNavItem = ({ item, index, isOpen, toggleDropdown, isActive, getIcon, closeMenu }) => {

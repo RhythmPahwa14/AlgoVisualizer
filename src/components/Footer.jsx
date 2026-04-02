@@ -7,7 +7,7 @@ import "../styles/footer.css";
 import logo from "/logo.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { navigationLinks, resourceLinks, socialLinks, techPills } from "../utils/footerData";
+import { navigationLinks, resourceLinks, techPills } from "../utils/footerData";
 
 // Sub-component for rendering footer links
 const FooterLink = ({ to, icon: Icon, children }) => (
@@ -17,13 +17,6 @@ const FooterLink = ({ to, icon: Icon, children }) => (
       {children}
     </Link>
   </li>
-);
-
-// Sub-component for rendering social links
-const SocialLink = ({ href, icon: Icon, title }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="social-link" title={title}>
-    <Icon />
-  </a>
 );
 
 // Sub-component for rendering tech pills
@@ -203,11 +196,6 @@ const Footer = () => {
                 <span className="logo-text">AlgoVisualizer</span>
               </div>
               <p className="brand-tagline">Visualize algorithms. Master coding. Elevate skills.</p>
-              <div className="social-links brand-social-links">
-                {socialLinks.map((link, index) => (
-                  <SocialLink key={index} href={link.href} icon={link.icon} title={link.title} />
-                ))}
-              </div>
             </div>
 
             <div className="tech-pills">
@@ -285,18 +273,17 @@ const Footer = () => {
               <div className="footer-separator">•</div>
               <div className="footer-credits">
                 <p className="para-text footer-made-with">
-                  <span>Made with</span>
+                  <span>Made with love</span>
                   <FaHeart className="heart-icon" />
                   <span>
                     by{" "}
                     <a href="https://github.com/rhythmpahwa14" target="_blank" rel="noopener noreferrer">
                     Rhythm Pahwa
                     </a>{" "}
-                    and{" "}
+                    &{" "}
                     <a href="https://github.com/sandeepvashishtha" target="_blank" rel="noopener noreferrer">
                     Sandeep Vashishtha
-                    </a>{" "}
-                    and amazing contributors
+                    </a>
                   </span>
                 </p>
               </div>
@@ -307,8 +294,6 @@ const Footer = () => {
                 <Link to="/privacy">Privacy Policy</Link>
                 <span className="legal-separator">|</span>
                 <Link to="/terms">Terms of Service</Link>
-                <span className="legal-separator">|</span>
-                <Link to="/cookies">Cookie Policy</Link>
               </div>
             </div>
           </div>

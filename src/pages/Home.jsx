@@ -420,7 +420,6 @@ const Home = () => {
     { title: "Cheatsheet", path: "/cheatsheet", description: "Quick reference cards", icon: BookOpen },
     { title: "Quiz", path: "/quiz", description: "Practice with timed quizzes", icon: Brain },
     { title: "Performance Analyzer", path: "/performance", description: "Compare runtime and memory", icon: BarChart3 },
-    { title: "Algorithm Recommendations", path: "/recommendations", description: "Get the best-fit algorithm", icon: Sparkles },
     { title: "Java Notes", path: "/notes/java", description: "Structured Java learning path", icon: Code },
     { title: "Python Notes", path: "/notes/python", description: "Python basics to advanced", icon: Braces },
   ];

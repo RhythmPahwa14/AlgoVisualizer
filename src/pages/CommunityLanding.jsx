@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Users,
-  Trophy,
   Star,
   Github,
   UserPlus,
-  Award,
   ArrowRight,
 } from "lucide-react";
 import "../styles/global-theme.css";
@@ -107,19 +105,19 @@ const CommunityLanding = () => {
         >
           {[
             {
-              bg: "linear-gradient(135deg, #4f46e5 10%, #7c3aed 100%)",
+              bg: "linear-gradient(135deg, #000000 10%, #1f2937 100%)",
               icon: <Users size={28} style={{ marginBottom: "1rem", opacity: 0.9 }} />,
               value: "100+",
               label: "Contributors"
             },
             {
-              bg: "linear-gradient(135deg, #16a34a 10%, #22c55e 100%)",
+              bg: "linear-gradient(135deg, #111827 10%, #374151 100%)",
               icon: <Github size={28} style={{ marginBottom: "1rem", opacity: 0.9 }} />,
               value: "500+",
               label: "Commits"
             },
             {
-              bg: "linear-gradient(135deg, #dc2626 10%, #f59e0b 100%)",
+              bg: "linear-gradient(135deg, #1f2937 10%, #4b5563 100%)",
               icon: <Star size={28} style={{ marginBottom: "1rem", opacity: 0.9 }} />,
               value: "50+",
               label: "Projects"
@@ -205,7 +203,7 @@ const CommunityLanding = () => {
               <Users
                 size={40}
                 style={{
-                  color: "var(--theme-accent)",
+                  color: "#000000",
                   opacity: 0.1,
                 }}
               />
@@ -224,7 +222,7 @@ const CommunityLanding = () => {
                   style={{
                     padding: "0.75rem",
                     borderRadius: "12px",
-                    background: "linear-gradient(135deg, #4f46e5 10%, #7c3aed 100%)",
+                    background: "linear-gradient(135deg, #000000 10%, #1f2937 100%)",
                     color: "white",
                     flexShrink: 0,
                   }}
@@ -336,7 +334,7 @@ const CommunityLanding = () => {
               <UserPlus
                 size={40}
                 style={{
-                  color: "var(--theme-accent)",
+                  color: "#000000",
                   opacity: 0.1,
                 }}
               />
@@ -355,7 +353,7 @@ const CommunityLanding = () => {
                   style={{
                     padding: "0.75rem",
                     borderRadius: "12px",
-                    background: "linear-gradient(135deg, #16a34a 10%, #22c55e 100%)",
+                    background: "linear-gradient(135deg, #111827 10%, #374151 100%)",
                     color: "white",
                     flexShrink: 0,
                   }}
@@ -452,144 +450,6 @@ const CommunityLanding = () => {
             </div>
           </motion.div>
 
-          {/* Leaderboard Card */}
-          <motion.div
-            variants={cardVariants}
-            whileHover="hover"
-            className="theme-card"
-            style={{
-              cursor: "pointer",
-              position: "relative",
-              overflow: "hidden",
-              minHeight: "320px",
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                padding: "0.75rem",
-              }}
-            >
-              <Trophy
-                size={40}
-                style={{
-                  color: "var(--theme-accent)",
-                  opacity: 0.1,
-                }}
-              />
-            </div>
-
-            <div style={{ position: "relative", zIndex: 1, height: "100%" }}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.75rem",
-                  marginBottom: "1rem",
-                }}
-              >
-                <div
-                  style={{
-                    padding: "0.75rem",
-                    borderRadius: "12px",
-                    background: "linear-gradient(135deg, #dc2626 10%, #f59e0b 100%)",
-                    color: "white",
-                    flexShrink: 0,
-                  }}
-                >
-                  <Trophy size={20} />
-                </div>
-                <h3
-                  style={{
-                    fontSize: "clamp(1.25rem, 4vw, 1.5rem)",
-                    fontWeight: "700",
-                    color: "var(--theme-text-primary)",
-                    margin: 0,
-                    lineHeight: "1.3",
-                  }}
-                >
-                  Leaderboard
-                </h3>
-              </div>
-
-              <p
-                style={{
-                  color: "var(--theme-text-secondary)",
-                  lineHeight: "1.6",
-                  marginBottom: "1.5rem",
-                  fontSize: "clamp(0.9rem, 2vw, 1rem)",
-                }}
-              >
-                See the top contributors in our GSSoC'25 leaderboard! Track
-                points, view rankings, and celebrate the achievements of our
-                community members.
-              </p>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "0.5rem",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                <span
-                  style={{
-                    padding: "0.25rem 0.5rem",
-                    background: "var(--theme-bg)",
-                    borderRadius: "12px",
-                    fontSize: "0.75rem",
-                    color: "var(--theme-text-secondary)",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  GSSoC'25 Rankings
-                </span>
-                <span
-                  style={{
-                    padding: "0.25rem 0.5rem",
-                    background: "var(--theme-bg)",
-                    borderRadius: "12px",
-                    fontSize: "0.75rem",
-                    color: "var(--theme-text-secondary)",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Points System
-                </span>
-                <span
-                  style={{
-                    padding: "0.25rem 0.5rem",
-                    background: "var(--theme-bg)",
-                    borderRadius: "12px",
-                    fontSize: "0.75rem",
-                    color: "var(--theme-text-secondary)",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Top Performers
-                </span>
-              </div>
-
-              <div style={{ marginTop: "auto" }}>
-                <Link
-                  to="/contributor-leaderboard"
-                  className="btn btn-secondary"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    textDecoration: "none"
-                  }}
-                >
-                  <Trophy size={14} />
-                  View Leaderboard
-                </Link>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Call to Action */}

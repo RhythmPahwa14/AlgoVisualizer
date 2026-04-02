@@ -926,16 +926,16 @@ footer {
   }
   
   .footer-content {
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(25px, 5vw, 40px);
-    padding: 0 clamp(20px, 5vw, 35px);
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 16px;
   }
   
   .brand-column {
-    grid-column: span 2;
+    grid-column: span 1;
     text-align: center;
     order: 1;
-    padding: 0 0 20px 0;
+    padding: 0 0 14px 0;
     border-bottom: 1px solid var(--border-primary);
   }
   
@@ -954,6 +954,28 @@ footer {
   .logo-wrapper {
     justify-content: center;
   }
+
+  .footer-credits,
+  .footer-made-with {
+    justify-content: center;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  .footer-made-with {
+    gap: 3px;
+    font-size: 12px;
+  }
+
+  .footer-made-with span,
+  .footer-made-with a {
+    white-space: normal;
+  }
+
+  .footer-made-with .heart-icon {
+    margin: 0 2px;
+    flex: 0 0 auto;
+  }
   
   .brand-tagline {
     text-align: center;
@@ -962,6 +984,26 @@ footer {
   }
   
   .tech-pills {
+    justify-content: center;
+  }
+
+  .column-title {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+  }
+
+  .column-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+
+  .footer-links a {
     justify-content: center;
   }
   
@@ -1045,12 +1087,15 @@ footer {
   
   .brand-header {
     margin-bottom: 20px;
+    align-items: center;
+    text-align: center;
   }
   
   .logo-wrapper {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 10px;
   }
   
   .logo-image {
@@ -1066,6 +1111,7 @@ footer {
   .brand-tagline {
     font-size: 14px;
     margin-top: 10px;
+    max-width: none;
   }
   
   .tech-pills {
@@ -1104,6 +1150,11 @@ footer {
   .footer-credits p {
     font-size: 12px;
     line-height: 1.5;
+  }
+
+  .footer-made-with {
+    font-size: 11px;
+    max-width: 100%;
   }
   
   .footer-divider {
@@ -1159,6 +1210,22 @@ footer {
   
   .logo-wrapper {
     gap: 6px;
+  }
+
+  .footer-credits,
+  .footer-made-with {
+    justify-content: center;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  .footer-made-with {
+    font-size: 10px;
+    gap: 2px;
+  }
+
+  .footer-made-with .heart-icon {
+    margin: 0 1px;
   }
   
   .logo-image {
