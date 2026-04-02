@@ -7,7 +7,7 @@ const VariableAndDataTypes = () => {
         Variables & Data Types in JavaScript
       </h1>
        {/*JavaScript Variables*/}
-      <section style={{ marginBottom: "1.5rem", padding: "1.25rem", borderRadius: "12px", background: "var(--card-bg, linear-gradient(180deg,#ffffff, #fbfdff))", boxShadow: "var(--card-shadow, 0 6px 18px rgba(16,24,40,0.04))", border: "var(--card-border, 1px solid rgba(15,23,42,0.03))" }}>
+      <section style={{ marginBottom: "1.5rem", padding: "1.25rem", borderRadius: "12px", background: "var(--card-bg, #ffffff)", boxShadow: "var(--card-shadow, 0 6px 18px rgba(16,24,40,0.04))", border: "var(--card-border, 1px solid rgba(15,23,42,0.03))" }}>
         <h2 style={{ color: "var(--text-title, #0f172a)", marginBottom: "0.5rem", fontWeight: 700 }}>
           3.JavaScript Variables
         </h2>

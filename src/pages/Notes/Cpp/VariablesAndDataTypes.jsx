@@ -186,9 +186,9 @@ int main() {
           background: var(--card-bg, #ffffff);
           border-radius: 12px;
           box-shadow: var(--card-shadow, 0 6px 18px rgba(16, 24, 40, 0.04));
-          border: var(--card-border, 1px solid rgba(15, 23, 42, 0.03));
-          padding: 1.5rem;
-          margin-bottom: 2rem;
+          background: #111111;
+          color: #ffffff;
+          border: 1px solid #111111;
           transition: all 0.3s ease;
         }
 
@@ -198,11 +198,13 @@ int main() {
         }
 
         h2 {
-          color: var(--code-text);
+          background: #000000;
+          color: #ffffff;
           margin-bottom: 1rem;
           font-weight: 700;
           display: flex;
-          align-items: center;
+          background: #111111;
+          color: #ffffff;
           gap: 0.5rem;
         }
 
@@ -234,9 +236,9 @@ int main() {
           position: absolute;
           top: 0.75rem;
           right: 0.75rem;
-          background: rgba(255, 255, 255, 0.1);
-          color: var(--code-text);
-          border: none;
+          background: #111111;
+          color: #ffffff;
+          border: 1px solid #111111;
           padding: 0.5rem 1rem;
           border-radius: 6px;
           cursor: pointer;
@@ -246,11 +248,13 @@ int main() {
         }
 
         .copy-btn:hover {
-          background: rgba(255, 255, 255, 0.2);
+          background: #000000;
+          color: #ffffff;
         }
 
         .copy-btn.copied {
-          background: #10b981;
+          background: #111111;
+          color: #ffffff;
         }
 
         ul {

@@ -5,7 +5,7 @@ const Abstract = ({ copyCode, copiedCode }) => {
     <div>
       <div className="card">
         <h2 style={{ textAlign: "center", fontSize: "2.3rem" }}>
-          🧩 Abstraction in Java
+          <span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Abstraction in Java
         </h2>
         <p>
           Abstraction is the process of hiding implementation details and
@@ -26,7 +26,7 @@ const Abstract = ({ copyCode, copiedCode }) => {
         </ul>
 
         {/* abstract classes */}
-        <h2>🏗️ 1. Abstract Classes</h2>
+        <h2><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> 1. Abstract Classes</h2>
         <p>
           An abstract class is a class that cannot be instantiated directly —
           it’s meant to be inherited.{" "}
@@ -104,7 +104,7 @@ public class Main {
                 `}
           </pre>
         </div>
-        <h2>💡 Key Points </h2>
+        <h2><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Key Points </h2>
         <ul>
           <li style={{ listStyle: "inside", listStyleType: "circle" }}>
             An abstract class can have both abstract and non-abstract methods.{" "}
@@ -123,7 +123,7 @@ public class Main {
 
         {/* interface */}
         <h2 style={{ borderTop: "2px solid #fff", paddingTop: "1.4rem" }}>
-          🧩 2. Interfaces
+          <span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> 2. Interfaces
         </h2>
         <p>
           An interface defines a contract of methods that a class must
@@ -195,7 +195,7 @@ public class Main {
           </pre>
         </div>
 
-        <h1 style={{fontSize:"2rem" , color:"#fff"}}>🎯 When to Use</h1>
+        <h1 style={{fontSize:"2rem" , color:"#fff"}}><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> When to Use</h1>
         <ul>
           <li>Use abstract classes when classes share code or state. </li>
           <li>

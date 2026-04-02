@@ -15,7 +15,7 @@ const SetupSection = ({ copyCode, copiedCode }) => (
       <h3>Step 1: Install Java Development Kit (JDK)</h3>
       
       <div style={{background: '#f0f9ff', border: '1px solid #bae6fd', padding: '1rem', margin: '1rem 0', borderRadius: '8px'}}>
-        <h4 style={{marginTop: 0}}>🔹 Choose Your JDK Distribution</h4>
+        <h4 style={{marginTop: 0}}><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Choose Your JDK Distribution</h4>
         <ul style={{marginBottom: 0}}>
           <li><strong>Oracle JDK:</strong> Official JDK from Oracle (Commercial license for production)</li>
           <li><strong>OpenJDK:</strong> Free and open-source implementation (Recommended for learning)</li>
@@ -26,12 +26,12 @@ const SetupSection = ({ copyCode, copiedCode }) => (
 
       <h4>Download Links:</h4>
       <ul>
-        <li>🔗 <strong>Oracle JDK:</strong> <a href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener noreferrer">oracle.com/java</a></li>
-        <li>🔗 <strong>OpenJDK:</strong> <a href="https://jdk.java.net/" target="_blank" rel="noopener noreferrer">jdk.java.net</a></li>
-        <li>🔗 <strong>Adoptium (Recommended):</strong> <a href="https://adoptium.net/" target="_blank" rel="noopener noreferrer">adoptium.net</a></li>
+        <li><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> <strong>Oracle JDK:</strong> <a href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener noreferrer">oracle.com/java</a></li>
+        <li><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> <strong>OpenJDK:</strong> <a href="https://jdk.java.net/" target="_blank" rel="noopener noreferrer">jdk.java.net</a></li>
+        <li><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> <strong>Adoptium (Recommended):</strong> <a href="https://adoptium.net/" target="_blank" rel="noopener noreferrer">adoptium.net</a></li>
       </ul>
 
-      <h4>🔹 Installation Steps</h4>
+      <h4><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Installation Steps</h4>
       <div style={{background: '#fef3c7', border: '1px solid #fde68a', padding: '1rem', margin: '1rem 0', borderRadius: '8px'}}>
         <strong>Windows:</strong>
         <ol style={{marginTop: '0.5rem', marginBottom: 0}}>
@@ -182,7 +182,7 @@ java HelloWorld`}</pre>
       </ul>
 
       <div style={{background: '#e0f2fe', borderLeft: '4px solid #0284c7', padding: '1rem 1.5rem', margin: '1.5rem 0', borderRadius: '0 12px 12px 0'}}>
-        <strong>💡 Pro Tips:</strong>
+        <strong><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Pro Tips:</strong>
         <ul style={{marginTop: '0.5rem', marginBottom: 0}}>
           <li>Always use LTS (Long-Term Support) versions for production: Java 8, 11, 17, or 21</li>
           <li>For learning, Java 17 or 21 is recommended (modern features + stable)</li>
@@ -192,7 +192,7 @@ java HelloWorld`}</pre>
       </div>
 
       <div style={{background: '#fff7ed', borderLeft: '4px solid #f59e0b', padding: '1rem 1.5rem', margin: '1.5rem 0', borderRadius: '0 12px 12px 0', color: '#374151'}}>
-        <strong>⚠️ Common Setup Issues:</strong>
+        <strong><span className="note-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-4 12.75c.75.54 1.25 1.33 1.35 2.23l.03.27h5.24l.03-.27c.1-.9.6-1.69 1.35-2.23A7 7 0 0 0 12 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M9.5 19.5h5M10 22h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></span> Common Setup Issues:</strong>
         <ul style={{marginTop: '0.5rem', marginBottom: 0}}>
           <li><strong>"java is not recognized":</strong> JAVA_HOME not set or not in PATH</li>
           <li><strong>"class not found":</strong> Ensure filename matches class name exactly</li>

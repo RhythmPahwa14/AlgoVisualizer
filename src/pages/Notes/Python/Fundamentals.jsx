@@ -23,10 +23,11 @@ const PythonFundamentals = () => {
           textAlign: "center",
           marginBottom: "3rem",
           padding: "2rem 0",
-          background: "linear-gradient(135deg, #a78bfa, #60a5fa)",
-          color: "white",
+          background: "#ffffff",
+          color: "#000000",
           borderRadius: "12px",
-          boxShadow: "0 10px 25px rgba(79, 70, 229, 0.3)"
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.08)",
+          border: "1px solid rgba(0, 0, 0, 0.12)"
         }}
       >
         <h1 style={{ fontSize: "3rem", marginBottom: "1rem", fontWeight: 800 }}>
@@ -54,7 +55,7 @@ const PythonFundamentals = () => {
         }}
       >
         <h3 style={{ marginTop: 0, color: "var(--text-primary)" }}>
-          <i className="fas fa-bookmark" style={{ marginRight: "0.5rem", color: "#4f46e5" }}></i>
+          <i className="fas fa-bookmark" style={{ marginRight: "0.5rem", color: "#000000" }}></i>
           Contents
         </h3>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
@@ -87,9 +88,9 @@ const PythonFundamentals = () => {
               key={item.id}
               onClick={() => setActiveTab(item.id)}
               style={{
-                background: activeTab === item.id ? "#7670eeff" : "transparent",
-                color: activeTab === item.id ? "white" : "#4f46e5",
-                border: "2px solid #817becff",
+                background: activeTab === item.id ? "#000000" : "transparent",
+                color: activeTab === item.id ? "#ffffff" : "#000000",
+                border: "2px solid #000000",
                 padding: "0.5rem 1rem",
                 borderRadius: "6px",
                 cursor: "pointer",
@@ -116,7 +117,7 @@ const PythonFundamentals = () => {
               <li><strong>Extensive Libraries:</strong> Standard library plus thousands of third-party packages</li>
               <li><strong>Cross-Platform:</strong> Works on Windows, Linux, macOS</li>
             </ul>
-            <div style={{ background: "var(--card-bg, #ffffff)", borderLeft: "4px solid #f59e0b", padding: "1rem 1.5rem", margin: "1.5rem 0", borderRadius: "0 12px 12px 0" }}>
+            <div style={{ background: "var(--card-bg, #ffffff)", borderLeft: "4px solid #000000", padding: "1rem 1.5rem", margin: "1.5rem 0", borderRadius: "0 12px 12px 0" }}>
               <strong>Note:</strong> Python is widely used in web development, data science, automation, AI, and more.
             </div>
           </div>

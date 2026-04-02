@@ -1,5 +1,5 @@
 import React from "react";
-import CodeRunnerJava from "../../../components/CodeRunnerJava";  // ✅ use new name
+import CodeRunnerJava from "../../../components/CodeRunnerJava";
 
 const JavaBasics = () => {
   return (

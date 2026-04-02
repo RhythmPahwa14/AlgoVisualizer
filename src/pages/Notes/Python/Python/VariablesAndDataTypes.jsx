@@ -3,7 +3,7 @@ import React from "react";
 const PythonVariablesAndDataTypes = () => {
   return (
   <div className="notes-page" style={{ padding: "2rem", maxWidth: "1100px", margin: "0 auto" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "1.5rem", color: "#4f46e5" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "1.5rem", color: "#000000" }}>
         Python Variables and Data Types
       </h1>
 

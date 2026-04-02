@@ -59,10 +59,11 @@ const CppFundamentals = () => {
           textAlign: "center",
           marginBottom: "3rem",
           padding: "2rem 0",
-          background: "linear-gradient(135deg, #4f46e5, #4338ca)",
-          color: "white",
+          background: "#ffffff",
+          color: "#000000",
           borderRadius: "12px",
-          boxShadow: "0 10px 25px rgba(79, 70, 229, 0.3)"
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.08)",
+          border: "1px solid rgba(0, 0, 0, 0.12)"
         }}
       >
         <h1 style={{ fontSize: "3rem", marginBottom: "1rem", fontWeight: 800 }}>
@@ -90,7 +91,7 @@ const CppFundamentals = () => {
         }}
       >
         <h3 style={{ marginTop: 0, color: "var(--text-primary)" }}>
-          <i className="fas fa-bookmark" style={{ marginRight: "0.5rem", color: "#4f46e5" }}></i>
+          <i className="fas fa-bookmark" style={{ marginRight: "0.5rem", color: "#000000" }}></i>
           Contents
         </h3>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
@@ -99,9 +100,9 @@ const CppFundamentals = () => {
               key={section.id}
               onClick={() => setActiveTab(section.id)}
               style={{
-                background: activeTab === section.id ? "#4f46e5" : "transparent",
-                color: activeTab === section.id ? "white" : "#4f46e5",
-                border: "2px solid #4f46e5",
+                background: activeTab === section.id ? "#000000" : "transparent",
+                color: activeTab === section.id ? "#ffffff" : "#000000",
+                border: "2px solid #000000",
                 padding: "0.5rem 1rem",
                 borderRadius: "6px",
                 cursor: "pointer",
