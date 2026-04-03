@@ -633,12 +633,12 @@
   font-weight: 700;
 }
 
-.property-value.yes {
-  color: #00C853;
+.cheatsheet-container .property-value.yes {
+  color: #000000;
 }
 
-.property-value.no {
-  color: #FF3D00;
+.cheatsheet-container .property-value.no {
+  color: #000000;
 }
 
 /* Lists */
@@ -679,15 +679,19 @@
   color: var(--text-secondary);
 }
 
-.check-icon {
-  color: #00C853;
-  margin-top: 0.25rem;
+.cheatsheet-container .pros-tick-icon {
+  color: #000000;
+  font-size: 0.9rem;
+  line-height: 1;
+  margin-top: 0.2rem;
   flex-shrink: 0;
 }
 
-.times-icon {
-  color: #FF3D00;
-  margin-top: 0.25rem;
+.cheatsheet-container .cons-cross-icon {
+  color: #000000;
+  font-size: 0.9rem;
+  line-height: 1;
+  margin-top: 0.2rem;
   flex-shrink: 0;
 }
 
