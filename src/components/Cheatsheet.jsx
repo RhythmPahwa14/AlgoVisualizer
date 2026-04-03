@@ -227,7 +227,7 @@ const Cheatsheet = () => {
                 <h4>Advantages</h4>
                 <ul className="pros-list">
                   {algorithm.pros.map((pro, idx) => (
-                    <li key={idx}><FaCheck className="check-icon" /> {pro}</li>
+                    <li key={idx}><FaCheck className="pros-tick-icon" /> {pro}</li>
                   ))}
                 </ul>
               </div>
@@ -238,7 +238,7 @@ const Cheatsheet = () => {
                 <h4>Disadvantages</h4>
                 <ul className="cons-list">
                   {algorithm.cons.map((con, idx) => (
-                    <li key={idx}><FaTimes className="times-icon" /> {con}</li>
+                    <li key={idx}><FaTimes className="cons-cross-icon" /> {con}</li>
                   ))}
                 </ul>
               </div>
@@ -310,7 +310,7 @@ const Cheatsheet = () => {
                 <h4>Advantages</h4>
                 <ul className="pros-list">
                   {structure.pros.map((pro, idx) => (
-                    <li key={idx}><FaCheck className="check-icon" /> {pro}</li>
+                    <li key={idx}><FaCheck className="pros-tick-icon" /> {pro}</li>
                   ))}
                 </ul>
               </div>
@@ -321,7 +321,7 @@ const Cheatsheet = () => {
                 <h4>Disadvantages</h4>
                 <ul className="cons-list">
                   {structure.cons.map((con, idx) => (
-                    <li key={idx}><FaTimes className="times-icon" /> {con}</li>
+                    <li key={idx}><FaTimes className="cons-cross-icon" /> {con}</li>
                   ))}
                 </ul>
               </div>
