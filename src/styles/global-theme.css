@@ -1484,10 +1484,16 @@
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: var(--theme-accent);
-  color: white;
-  border-color: var(--theme-accent);
+  background: var(--theme-btn-secondary-bg) !important;
+  color: var(--theme-btn-secondary-text) !important;
+  border-color: #000000 !important;
   transform: translateY(-2px);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: transparent !important;
+  color: inherit !important;
+  border-color: #000000 !important;
 }
 
 .btn:disabled {

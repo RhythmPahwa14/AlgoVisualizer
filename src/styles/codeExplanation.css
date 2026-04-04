@@ -3,36 +3,36 @@
 ========================= */
 :root {
   /* Dark Theme Values */
-  --ce-overlay-bg: rgba(15, 23, 42, 0.95);
+  --ce-overlay-bg: transparent;
   --ce-modal-bg: #1e293b;
   --ce-text-primary: #e2e8f0;
   --ce-text-secondary: #cbd5e1;
   --ce-border: #334155;
-  --ce-code-bg: #0f172a;
+  --ce-code-bg: #0b1220;
   --ce-line-num: #94a3b8;
   --ce-btn-bg: #334155;
   --ce-btn-hover: #475569;
   --ce-btn-disabled: #1e293b;
   --ce-accent: #000000;
   --ce-accent-text: white;
-  --ce-code-text: #94a3b8;
+  --ce-code-text: #ffffff;
 }
 
 [data-theme="light"] {
   /* Light Theme Values */
-  --ce-overlay-bg: rgba(241, 245, 249, 0.95);
+  --ce-overlay-bg: transparent;
   --ce-modal-bg: #ffffff;
   --ce-text-primary: #1e293b;
   --ce-text-secondary: #475569;
   --ce-border: #e2e8f0;
-  --ce-code-bg: #f8fafc; /* This fixes the invisible text issue */
+  --ce-code-bg: #f8fafc;
   --ce-line-num: #94a3b8;
   --ce-btn-bg: #e2e8f0;
   --ce-btn-hover: #cbd5e1;
   --ce-btn-disabled: #f1f5f9;
   --ce-accent: #000000;
   --ce-accent-text: white;
-  --ce-code-text: #334155;
+  --ce-code-text: #ffffff;
 }
 
 /* =========================
@@ -44,7 +44,14 @@
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: var(--ce-overlay-bg);
-  display: flex; justify-content: center; align-items: center;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 16px;
+  box-sizing: border-box;
   z-index: 1000;
 }
 
@@ -52,24 +59,45 @@
   background: var(--ce-modal-bg);
   color: var(--ce-text-primary);
   border-radius: 16px;
-  width: 80%;
-  max-width: 900px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 20px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.1); 
+  width: min(94vw, 980px);
+  max-height: calc(100vh - 32px);
+  overflow: hidden;
+  padding: 22px;
+  margin-top: 0;
+  transform: translateY(90px);
+  border: 1px solid var(--ce-border);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 .code-explanation-header {
   display: flex; justify-content: space-between; align-items: center;
   border-bottom: 1px solid var(--ce-border);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  position: relative;
+  padding-right: 40px;
+}
+
+.code-explanation-content {
+  max-height: calc(100vh - 190px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.code-explanation-header h2 {
+  margin: 0;
+  color: var(--ce-text-primary);
 }
 
 .close-button {
   background: #ef4444; border: none; border-radius: 50%;
   width: 28px; height: 28px; cursor: pointer;
   font-size: 16px; color: white;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-shrink: 0;
   transition: 0.2s;
 }
 .close-button:hover { background: #dc2626; }
@@ -88,6 +116,15 @@
 }
 .lang-tab.active { background: var(--ce-accent);
   color: var(--ce-accent-text);
+}
+
+.algorithm-description {
+  color: var(--ce-text-secondary);
+  line-height: 1.65;
+}
+
+.algorithm-description p {
+  margin: 0 0 6px;
 }
 
 .code-section-header {
@@ -129,14 +166,29 @@
 
 .code-block {
   background: var(--ce-code-bg);
+  border: 1px solid var(--ce-border);
   border-radius: 12px;
-  padding: 12px;
+  padding: 14px;
   margin: 10px 0;
-  overflow-x: auto;
+  overflow: auto;
+  max-height: 320px;
   font-family: "Courier New", monospace;
 }
+
+.code-block pre {
+  margin: 0;
+}
+
+.code-block code,
+.code-block pre,
+.code-block .code-line,
+.code-block .line-text {
+  color: #ffffff !important;
+}
+
 .code-line {
   display: flex; align-items: baseline;
+  min-height: 1.5rem;
 }
 .line-number {
   width: 30px;
@@ -148,14 +200,15 @@
   user-select: none;
 }
 .current-line {
-  background: rgba(14, 165, 233, 0.15);
-  border-left: 3px solid var(--ce-accent);
+  background: rgba(14, 165, 233, 0.2);
+  border-left: 3px solid #38bdf8;
   border-radius: 4px;
   padding-left: 6px;
 }
 
 .line-text {
   color: var(--ce-code-text);
+  font-weight: 500;
 }
 
 .step-controls button {
@@ -167,6 +220,33 @@
 }
 .step-controls button:hover { background: var(--ce-btn-hover); }
 .step-controls button:disabled { background: var(--ce-btn-disabled); opacity: 0.5; cursor: not-allowed; }
+
+.step-explanation-section h3,
+.code-section h3 {
+  color: var(--ce-text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.playback-speed,
+.step-progress,
+.keyboard-shortcuts {
+  color: var(--ce-text-secondary);
+}
+
+.playback-speed {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.playback-speed input[type="range"] {
+  flex: 1;
+}
+
+.step-progress {
+  margin-top: 8px;
+}
 
 .progress-bar {
   background: var(--ce-border);
@@ -189,6 +269,26 @@
   border-left: 4px solid var(--ce-accent);
 }
 
+.step-code {
+  margin-top: 8px;
+  border: 1px solid var(--ce-border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.step-code pre,
+.step-code code {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #ffffff !important;
+}
+
+.keyboard-shortcuts {
+  margin-top: 10px;
+  font-size: 0.86rem;
+}
+
 /* =========================
    Responsive Design
 ========================= */
@@ -206,11 +306,23 @@
 }
 
 @media (max-width: 768px) {
+  .code-explanation-overlay {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding-top: 24px;
+  }
+
   .code-explanation-modal {
     width: 95%;
     max-width: 100%;
     padding: 14px;
     border-radius: 12px;
+    margin-top: 0;
+    transform: none;
+  }
+
+  .code-explanation-content {
+    max-height: calc(100vh - 150px);
   }
 
   .code-block {
@@ -231,18 +343,27 @@
 }
 
 @media (max-width: 480px) {
+  .code-explanation-overlay {
+    padding: 0;
+  }
+
   .code-explanation-modal {
     width: 100%;
     height: 100%;
     max-height: 100vh;
     border-radius: 0;
     margin: 0;
+    overflow: hidden;
+  }
+
+  .code-explanation-content {
+    max-height: calc(100vh - 120px);
   }
 
   .code-explanation-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
   }
 
   .lang-tabs {

@@ -138,7 +138,9 @@
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: var(--button-secondary-hover);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  border-color: #000000;
   transform: translateY(-1px);
 }
 

@@ -196,6 +196,19 @@
   flex-wrap: wrap;
 }
 
+/* Searching page: make sample action buttons black with white text */
+.input-panel.searching-input-panel .sample-actions .btn {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.input-panel.searching-input-panel .sample-actions .btn:hover:not(:disabled) {
+  background: #1f2937;
+  border-color: #1f2937;
+  color: #ffffff;
+}
+
 .sample-preview {
   background: var(--background-code, #f6f8fa);
   border: 1px solid var(--border-primary, #e1e4e8);
@@ -277,8 +290,9 @@
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: var(--background-hover, #f6f8fa);
-  border-color: var(--border-hover, #d1d5da);
+  background: var(--background-secondary, #ffffff);
+  color: var(--text-primary, #24292e);
+  border-color: #000000;
 }
 
 .btn-outline {

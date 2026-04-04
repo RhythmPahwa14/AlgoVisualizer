@@ -130,6 +130,7 @@ import AlgorithmComparisonTable from './components/AlgorithmComparisonTable';
 import PerformanceDashboard from "./components/PerformanceDashboard";
 import PerformanceDocs from "./pages/PerformanceDocs";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
+import ComplexityAnalysisPage from "./pages/ComplexityAnalysisPage";
 
 // Static / Info Pages
 import Login from "./pages/Login";
@@ -170,7 +171,6 @@ const App = () => {
 
   const showComplexityBoxOn = [
     "/sorting",
-    "/searching",
     "/data-structures",
     "/graph",
     "/graph/bfs",
@@ -328,6 +328,7 @@ const App = () => {
                       {/* Performance Dashboard */}
                       <Route path="/performance" element={<PerformanceDashboard />} />
                       <Route path="/performance/docs" element={<PerformanceDocs />} />
+                      <Route path="/complexity-analysis" element={<ComplexityAnalysisPage />} />
                       <Route path="/analytics" element={<AnalyticsDashboard />} />
 
                       {/* Other Pages */}
