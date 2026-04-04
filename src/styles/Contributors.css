@@ -598,10 +598,10 @@
 }
 
 .btn-secondary:hover {
-  background: var(--card-bg); 
-  border-color: var(--primary-color); 
+  background: var(--hover-bg);
+  border-color: #000000;
   transform: translateY(-2px);
-  color: var(--primary-color); 
+  color: var(--text-color);
 }
 
 /* ------------------------

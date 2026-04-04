@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Film, Video } from 'lucide-react';
 import SimpleVisualizationExporter from '../utils/simpleExporter';
 
 // Configuration constants for better maintainability
@@ -101,7 +102,11 @@ const SimpleExportControls = ({ containerId }) => {
           <button
             className="btn btn-primary" 
             onClick={handleStartRecording}
-            style={{ backgroundColor: 'var(--theme-status-success)', borderColor: 'var(--theme-status-success)' }}
+            style={{
+              backgroundColor: 'var(--theme-status-success, #000000)',
+              borderColor: 'var(--theme-status-success, #000000)',
+              color: '#ffffff'
+            }}
           >
             Start Recording
           </button>
@@ -109,7 +114,11 @@ const SimpleExportControls = ({ containerId }) => {
           <button
             className="btn btn-primary" 
             onClick={handleStopRecording}
-            style={{ backgroundColor: 'var(--theme-status-danger)', borderColor: 'var(--theme-status-danger)' }}
+            style={{
+              backgroundColor: 'var(--theme-status-danger, #111111)',
+              borderColor: 'var(--theme-status-danger, #111111)',
+              color: '#ffffff'
+            }}
           >
             Stop Recording
           </button>
@@ -121,14 +130,16 @@ const SimpleExportControls = ({ containerId }) => {
             disabled={frameCount === 0 || isRecording}
             className="btn btn-secondary" 
           >
-            🎞️ Export GIF
+            <Film size={16} aria-hidden="true" />
+            Export GIF
           </button>
           <button
             onClick={handleExportVideo}
             disabled={frameCount === 0 || isRecording}
             className="btn btn-secondary" 
           >
-            📹 Export Video
+            <Video size={16} aria-hidden="true" />
+            Export Video
           </button>
         </div>
       </div>

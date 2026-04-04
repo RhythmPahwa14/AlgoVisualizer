@@ -25,7 +25,7 @@ function AlgoVisualizer({
   runToken, // increments when user clicks Run -> triggers a new run
   onFinished, // callback at end (optional)
   height = 280,
-  barColor = "#4f46e5", // indigo
+  barColor = "#4b5563", // neutral gray
 }) {
   const containerRef = useRef(null);
   const [items, setItems] = useState([]); // [{id, value, index}]
@@ -413,12 +413,12 @@ function AlgoVisualizer({
         const isHigh = renderIndex === active.high;
 
         let bg = barColor;
-        if (isFound) bg = "#16a34a"; // green
-        else if (isMid) bg = "#f59e0b"; // amber
-        else if (isLow || isHigh) bg = "#0284c7"; // blue
-        else if (isCycleStart) bg = "#dc2626"; // red - cycle start
-        else if (isCyclePos) bg = "#9333ea"; // purple - cycle position
-        else if (isCompare) bg = "#ef4444"; // red
+        if (isFound) bg = "#111827"; // darkest
+        else if (isMid) bg = "#6b7280";
+        else if (isLow || isHigh) bg = "#9ca3af";
+        else if (isCycleStart) bg = "#374151";
+        else if (isCyclePos) bg = "#4b5563";
+        else if (isCompare) bg = "#1f2937";
 
         return (
           <div
@@ -455,7 +455,16 @@ function AlgoVisualizer({
 
 function Legend({ color, label }) {
   return (
-    <span className="inline-flex items-center gap-2">
+    <span
+      className="inline-flex items-center gap-2"
+      style={{
+        padding: "4px 10px",
+        borderRadius: 999,
+        background: "#f3f4f6",
+        border: "1px solid #e5e7eb",
+        lineHeight: 1.2,
+      }}
+    >
       <span
         style={{
           width: 10,
@@ -545,6 +554,9 @@ export default function AlgorithmComparison() {
         choose two algorithms to compare side by side.
       </p>
 
+      {/** Shared action button dimensions keep both panels perfectly aligned */}
+      
+
       {/* toolbar */}
       <div
         className="mb-6"
@@ -561,7 +573,7 @@ export default function AlgorithmComparison() {
           <select
             value={mode}
             onChange={(e) => setMode(e.target.value)}
-            className="p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-800 bg-white text-gray-900"
             aria-label="Algorithm type"
           >
             <option value="sorting">Sorting</option>
@@ -582,7 +594,7 @@ export default function AlgorithmComparison() {
 
         <button
           onClick={swap}
-          className="px-3 py-2 rounded-xl bg-white/10 text-white/90 hover:bg-white/20 active:bg-white/25 transition text-sm font-medium"
+          className="px-5 py-2.5 rounded-2xl bg-black text-white hover:bg-gray-800 active:bg-gray-900 transition text-sm font-semibold shadow-sm"
           title="Swap algorithms and inputs"
         >
           Swap Left ↔ Right
@@ -593,7 +605,7 @@ export default function AlgorithmComparison() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, minmax(520px, 620px))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
           gap: "2rem",
           justifyContent: "center",
           alignItems: "start",
@@ -603,7 +615,7 @@ export default function AlgorithmComparison() {
         {/* LEFT */}
         <section
           className="bg-white rounded-3xl shadow-xl"
-          style={{ padding: 20, minHeight: 560 }}
+          style={{ padding: 20, minHeight: 560, width: "100%", maxWidth: 620, marginInline: "auto" }}
         >
           <header className="pb-4 border-b">
             <div className="flex items-center justify-between gap-3">
@@ -616,7 +628,7 @@ export default function AlgorithmComparison() {
               <select
                 value={leftAlgo}
                 onChange={(e) => setLeftAlgo(e.target.value)}
-                className="p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-800 bg-white text-gray-900"
                 aria-label="Left algorithm"
               >
                 {options.map((a) => (
@@ -626,7 +638,7 @@ export default function AlgorithmComparison() {
                 ))}
               </select>
             </div>
-            <div className="mt-3 flex items-center gap-2">
+            <div className="mt-3 flex items-center gap-2 flex-wrap">
               <input
                 type="text"
                 placeholder={
@@ -642,14 +654,16 @@ export default function AlgorithmComparison() {
               />
               <button
                 onClick={() => setRunL((n) => n + 1)}
-                className="px-3 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition text-sm font-medium"
+                className="rounded-2xl bg-black text-white hover:bg-gray-800 active:bg-gray-900 transition text-sm font-semibold shadow-sm"
+                style={{ width: 120, height: 44, flex: "0 0 120px" }}
                 disabled={badLeft || leftArr.length === 0}
               >
                 Run
               </button>
               <button
                 onClick={() => setRunL((n) => n + 1)} // re-run acts as reset+run since engine rebuilds from items state
-                className="px-3 py-2 rounded-lg bg-white text-gray-800 border hover:bg-gray-50 transition text-sm font-medium"
+                className="rounded-2xl bg-gray-200 text-gray-900 border border-gray-300 hover:bg-gray-300 active:bg-gray-400 transition text-sm font-semibold"
+                style={{ width: 120, height: 44, flex: "0 0 120px" }}
                 title="Re-run from the beginning"
               >
                 Reset
@@ -673,19 +687,19 @@ export default function AlgorithmComparison() {
           </div>
 
           {/* legend */}
-          <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-gray-600">
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-gray-700">
             {mode === "sorting" ? (
               <>
-                <Legend color="#ef4444" label="Compare" />
-                <Legend color="#dc2626" label="Cycle Start" />
-                <Legend color="#9333ea" label="Cycle Pos" />
-                <Legend color="#4f46e5" label="Bar" />
+                <Legend color="#1f2937" label="Compare" />
+                <Legend color="#374151" label="Cycle Start" />
+                <Legend color="#4b5563" label="Cycle Pos" />
+                <Legend color="#6b7280" label="Bar" />
               </>
             ) : (
               <>
-                <Legend color="#0284c7" label="Low / High" />
-                <Legend color="#f59e0b" label="Mid" />
-                <Legend color="#16a34a" label="Found" />
+                <Legend color="#9ca3af" label="Low / High" />
+                <Legend color="#6b7280" label="Mid" />
+                <Legend color="#111827" label="Found" />
               </>
             )}
           </div>
@@ -694,7 +708,7 @@ export default function AlgorithmComparison() {
         {/* RIGHT */}
         <section
           className="bg-white rounded-3xl shadow-xl"
-          style={{ padding: 20, minHeight: 560 }}
+          style={{ padding: 20, minHeight: 560, width: "100%", maxWidth: 620, marginInline: "auto" }}
         >
           <header className="pb-4 border-b">
             <div className="flex items-center justify-between gap-3">
@@ -707,7 +721,7 @@ export default function AlgorithmComparison() {
               <select
                 value={rightAlgo}
                 onChange={(e) => setRightAlgo(e.target.value)}
-                className="p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-800 bg-white text-gray-900"
                 aria-label="Right algorithm"
               >
                 {options.map((a) => (
@@ -717,7 +731,7 @@ export default function AlgorithmComparison() {
                 ))}
               </select>
             </div>
-            <div className="mt-3 flex items-center gap-2">
+            <div className="mt-3 flex items-center gap-2 flex-wrap">
               <input
                 type="text"
                 placeholder={
@@ -732,14 +746,16 @@ export default function AlgorithmComparison() {
               />
               <button
                 onClick={() => setRunR((n) => n + 1)}
-                className="px-3 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition text-sm font-medium"
+                className="rounded-2xl bg-black text-white hover:bg-gray-800 active:bg-gray-900 transition text-sm font-semibold shadow-sm"
+                style={{ width: 120, height: 44, flex: "0 0 120px" }}
                 disabled={badRight || rightArr.length === 0}
               >
                 Run
               </button>
               <button
                 onClick={() => setRunR((n) => n + 1)}
-                className="px-3 py-2 rounded-lg bg-white text-gray-800 border hover:bg-gray-50 transition text-sm font-medium"
+                className="rounded-2xl bg-gray-200 text-gray-900 border border-gray-300 hover:bg-gray-300 active:bg-gray-400 transition text-sm font-semibold"
+                style={{ width: 120, height: 44, flex: "0 0 120px" }}
                 title="Re-run from the beginning"
               >
                 Reset
@@ -763,19 +779,19 @@ export default function AlgorithmComparison() {
           </div>
 
           {/* legend */}
-          <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-gray-600">
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-gray-700">
             {mode === "sorting" ? (
               <>
-                <Legend color="#ef4444" label="Compare" />
-                <Legend color="#dc2626" label="Cycle Start" />
-                <Legend color="#9333ea" label="Cycle Pos" />
-                <Legend color="#4f46e5" label="Bar" />
+                <Legend color="#1f2937" label="Compare" />
+                <Legend color="#374151" label="Cycle Start" />
+                <Legend color="#4b5563" label="Cycle Pos" />
+                <Legend color="#6b7280" label="Bar" />
               </>
             ) : (
               <>
-                <Legend color="#0284c7" label="Low / High" />
-                <Legend color="#f59e0b" label="Mid" />
-                <Legend color="#16a34a" label="Found" />
+                <Legend color="#9ca3af" label="Low / High" />
+                <Legend color="#6b7280" label="Mid" />
+                <Legend color="#111827" label="Found" />
               </>
             )}
           </div>

@@ -7,6 +7,7 @@ import "../styles/global-theme.css";
 import { useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { getSampleData, getValidationRule } from "../data/sampleData";
+import { FaChartBar, FaListOl } from "react-icons/fa";
 // ⬇️ removed: AOS imports (AOS is initialized in App.jsx)
 
 const ALGORITHM_PSEUDOCODE = {
@@ -488,7 +489,10 @@ const Searching = () => {
                 alignItems: "flex-end",
                 height: "100%",
                 gap: gapValue,
-                marginTop: "2rem"
+                marginTop: "2rem",
+                overflowX: isMobile ? "auto" : "visible",
+                width: "100%",
+                paddingBottom: isMobile ? "8px" : "0",
               }}
             >
               {(() => {
@@ -496,9 +500,8 @@ const Searching = () => {
                 const maxVal = Math.max(...data, 1);
                 return data.map((num, idx) => {
                   const maxBarWidth = isTabletOrBelow ? 20 : 28;
-                  const baseWidth = Math.floor((isTabletOrBelow ? 360 : 600) / Math.max(data.length, 1));
+                  const baseWidth = Math.floor((isMobile ? 280 : isTabletOrBelow ? 360 : 600) / Math.max(data.length, 1));
                   const barWidth = Math.max(isTabletOrBelow ? 10 : 12, Math.min(maxBarWidth, baseWidth));
-                  const stepColors = steps.length > 0 ? getStepColorArray() : [];
                   const heightPx = Math.max(40, Math.round((num / maxVal) * 200));
                   return (
                     <div
@@ -506,8 +509,8 @@ const Searching = () => {
                       style={{
                         height: `${heightPx}px`,
                         width: `${barWidth}px`,
-                        backgroundColor: stepColors[idx] || "#66ccff",
-                        border: `1px solid ${stepColors[idx] || "#66ccff"}`,
+                        backgroundColor: "#000000",
+                        border: "1px solid #000000",
                         borderRadius: "6px 6px 0 0",
                         display: "flex",
                         flexDirection: "column",
@@ -517,7 +520,7 @@ const Searching = () => {
                         fontSize: barFontSize,
                         padding: "4px 2px",
                         transition: "all 0.3s ease",
-                        boxShadow: `0 4px 12px ${(stepColors[idx] || "#66ccff")}30`,
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.25)",
                         position: "relative",
                         cursor: "default",
                         color: "#ffffff",
@@ -538,19 +541,30 @@ const Searching = () => {
               <div
                 style={{
                   position: "absolute",
-                  top: "30px",
+                  top: isMobile ? "16px" : "30px",
                   left: "50%",
                   transform: "translateX(-50%)",
-                  color: "#66ccff",
-                  fontSize: "12px",
+                  color: "#ffffff",
+                  fontSize: isMobile ? "11px" : "12px",
                   fontWeight: "600",
-                  background: "rgba(26, 26, 46, 0.8)",
-                  padding: "6px 12px",
+                  background: "#000000",
+                  padding: isMobile ? "5px 10px" : "6px 12px",
                   borderRadius: "6px",
-                  border: "1px solid rgba(102, 204, 255, 0.3)",
+                  border: "1px solid #1f2937",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  whiteSpace: "nowrap",
+                  opacity: 1,
+                  textShadow: "0 1px 1px rgba(0, 0, 0, 0.6)",
+                  zIndex: 2,
                 }}
               >
-                Array Size: {steps[currentStep]?.array?.length ?? array.length} | Step Mode
+                <FaChartBar aria-hidden="true" style={{ color: "#ffffff" }} />
+                <span style={{ color: "#ffffff" }}>Array Size: {steps[currentStep]?.array?.length ?? array.length}</span>
+                <span style={{ color: "#ffffff" }}>|</span>
+                <FaListOl aria-hidden="true" style={{ color: "#ffffff" }} />
+                <span style={{ color: "#ffffff" }}>Step Mode</span>
               </div>
 
           {algorithm === "binarySearch" && steps[currentStep]?.text && (

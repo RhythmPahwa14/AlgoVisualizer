@@ -21,7 +21,7 @@ body {
   line-height: 1.6;
 }
 
-button {
+button:not([class]) {
   background-color: var(--button-primary-bg);
   color: var(--button-primary-text);
   border: none;
@@ -33,12 +33,12 @@ button {
   transition: var(--transition-fast);
 }
 
-button:hover:not(:disabled) {
+button:not([class]):hover:not(:disabled) {
   background-color: var(--button-primary-hover);
   transform: translateY(-1px);
 }
 
-button:disabled {
+button:not([class]):disabled {
   background-color: var(--surface-disabled);
   cursor: not-allowed;
 }
@@ -93,7 +93,7 @@ select {
   outline: none;
 }
 
-button {
+button:not([class]) {
   background-color: #000000;
   color: #ffffff;
   border: 1px solid #333333;
@@ -112,11 +112,11 @@ button[style*="background"] {
   color: inherit;
 }
 
-button:hover:not(:disabled) {
+button:not([class]):hover:not(:disabled) {
   opacity: 0.9;
 }
 
-button:disabled {
+button:not([class]):disabled {
   background-color: #cccccc;
   cursor: not-allowed;
 }

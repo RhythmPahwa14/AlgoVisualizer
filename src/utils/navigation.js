@@ -40,6 +40,7 @@ export const navbarNavigationItems = [
       { path: "/documentation", label: "Documentation" },
       { path: "/performance", label: "Performance Analyzer" },
       { path: "/performance/docs", label: "Performance Docs" },
+      { path: "/complexity-analysis", label: "Complexity Analysis" },
       { path: "/notes/java", label: "Java Notes" },
       { path: "/notes/python", label: "Python Notes" },
       { path: "/notes/cpp", label: "C++ Notes" },

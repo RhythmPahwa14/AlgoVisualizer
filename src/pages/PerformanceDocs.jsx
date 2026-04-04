@@ -16,7 +16,7 @@ const boxStyle = {
 const hoverStyle = {
   transform: 'translateY(-6px)',
   boxShadow: '0 8px 16px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06)',
-  borderColor: 'var(--primary, #007bff)',
+	borderColor: '#000000',
 };
 
 
@@ -68,7 +68,10 @@ const PerformanceDocs = () => {
         <h1
           className="font-extrabold text-7xl md:text-8xl lg:text-9xl mb-10 text-center"
           style={{
-            color: 'var(--primary, #007bff)',
+						color: '#000000',
+						textAlign: 'center',
+						marginLeft: 'auto',
+						marginRight: 'auto',
             letterSpacing: '-0.025em',
             lineHeight: '1.1',
             textShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
