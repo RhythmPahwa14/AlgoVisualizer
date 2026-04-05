@@ -64,7 +64,7 @@
   overflow: hidden;
   padding: 22px;
   margin-top: 0;
-  transform: translateY(90px);
+  transform: translateY(800px);
   border: 1px solid var(--ce-border);
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }

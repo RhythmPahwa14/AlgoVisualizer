@@ -209,6 +209,19 @@
   color: #ffffff;
 }
 
+.input-panel.searching-input-panel .sample-data-header h4 {
+  color: #ffffff;
+}
+
+.input-panel.searching-input-panel .sample-preview {
+  background: #111827;
+  border-color: #374151;
+}
+
+.input-panel.searching-input-panel .sample-preview pre {
+  color: #ffffff;
+}
+
 .sample-preview {
   background: var(--background-code, #f6f8fa);
   border: 1px solid var(--border-primary, #e1e4e8);
