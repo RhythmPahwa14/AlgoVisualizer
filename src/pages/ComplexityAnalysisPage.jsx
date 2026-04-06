@@ -114,7 +114,7 @@ export default function ComplexityAnalysisPage() {
     <div className="theme-container complexity-page" data-aos="fade-up">
       <h1 className="theme-title">Complexity Analysis</h1>
       <p className="complexity-subtitle">
-        Sorting, Searching, and Data Structure complexity overview with grayscale bars.
+        Sorting, Searching, and Data Structure complexity overview.
       </p>
 
       <div className="complexity-legend" aria-label="Complexity bar color legend">
