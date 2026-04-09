@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/footer.css";
-import logo from "/logo.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { navigationLinks, resourceLinks, techPills } from "../utils/footerData";
@@ -185,14 +184,6 @@ const Footer = () => {
           >
             <div className="brand-header">
               <div className="logo-wrapper">
-                <img
-                  src={logo}
-                  alt="AlgoVisualizer Logo"
-                  className="logo-image"
-                  onError={(e) => {
-                    e.target.style.display = "none";
-                  }}
-                />
                 <span className="logo-text">AlgoVisualizer</span>
               </div>
               <p className="brand-tagline">Visualize algorithms. Master coding. Elevate skills.</p>

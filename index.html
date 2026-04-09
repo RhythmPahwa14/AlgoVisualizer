@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/black%20favicon.png" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/png" href="/white%20favicon.png" media="(prefers-color-scheme: dark)" />
-  <link id="dynamic-favicon" rel="icon" type="image/png" href="/black%20favicon.png" />
+  <link rel="icon" type="image/png" href="/black%20favicon.png?v=2" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="/white%20favicon.png?v=2" media="(prefers-color-scheme: dark)" />
+  <link rel="shortcut icon" type="image/png" href="/black%20favicon.png?v=2" />
+  <link id="dynamic-favicon" rel="icon" type="image/png" href="/black%20favicon.png?v=2" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AlgoVisualizer - Algorithm Visualization Tool</title>
 
@@ -14,7 +15,7 @@
       var applyFavicon = function () {
         var favicon = document.getElementById('dynamic-favicon');
         if (!favicon) return;
-        favicon.setAttribute('href', media.matches ? '/white%20favicon.png' : '/black%20favicon.png');
+        favicon.setAttribute('href', media.matches ? '/white%20favicon.png?v=2' : '/black%20favicon.png?v=2');
       };
       applyFavicon();
       if (media.addEventListener) {

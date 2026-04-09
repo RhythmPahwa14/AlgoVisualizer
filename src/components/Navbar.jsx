@@ -286,7 +286,6 @@ const Navbar = () => {
         <div className="navbar-container">
           {/* Logo */}
           <Link to="/" className="navbar-logo flex items-center gap-2">
-          <img src="/logo.png" alt="AlgoVisualizer Logo" className="logo-img" />
           <span className="logo-text navbar-label">
             Algo<span>Visualizer</span>
           </span>
