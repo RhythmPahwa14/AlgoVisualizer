@@ -126,8 +126,8 @@ const PythonFundamentals = () => {
         .code-container { position: relative; margin: 1.5rem 0; border-radius: 12px; overflow: hidden; }
         .code-container pre { background: var(--code-bg, #0b1220); color: var(--code-text, #f8fafc); padding: 1.5rem; overflow-x: auto; border-radius: 12px; font-family: "Courier New", monospace; line-height: 1.5; font-size: 0.95rem; }
         p { color: var(--code-text, #374151); }
-        .copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: #111111; color: #ffffff; border: 1px solid #111111; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s ease; backdrop-filter: blur(10px); }
-        .copy-btn:hover { background: #000000; color: #ffffff; }
+        .copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(0,0,0,0.6); color: #ffffff; border: 1px solid rgba(255,255,255,0.06); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s ease; backdrop-filter: blur(10px); }
+        .copy-btn:hover { background: rgba(0,0,0,0.85); color: #ffffff; }
         .copy-btn.copied { background: #111111; color: #ffffff; }
         code { background-color: #f3f4f6; color: #111111; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: "Courier New", monospace; font-size: 0.9rem; }
         ul { padding-left: 1.5rem; margin-bottom: 1rem; color: var(--code-text, #374151); }
