@@ -262,22 +262,6 @@ const Footer = () => {
                 <p>&copy; {new Date().getFullYear()} AlgoVisualizer. All rights reserved.</p>
               </div>
               <div className="footer-separator">•</div>
-              <div className="footer-credits">
-                <p className="para-text footer-made-with">
-                  <span>Made with love</span>
-                  <FaHeart className="heart-icon" />
-                  <span>
-                    by{" "}
-                    <a href="https://github.com/rhythmpahwa14" target="_blank" rel="noopener noreferrer">
-                    Rhythm Pahwa
-                    </a>{" "}
-                    &{" "}
-                    <a href="https://github.com/sandeepvashishtha" target="_blank" rel="noopener noreferrer">
-                    Sandeep Vashishtha
-                    </a>
-                  </span>
-                </p>
-              </div>
             </div>
 
             <div className="footer-legal-row">
