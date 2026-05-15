@@ -91,6 +91,22 @@ export const learnSections = [
         label: "Binary Tree visualization",
         category: "Data Structures",
         tags: ["tree", "binary tree", "nodes"]
+      },
+      {
+        path: "/data-structures/heap",
+        label: "Heap Visualizer",
+        description: "Interactive min-heap and max-heap with animated heapify-up and heapify-down operations.",
+        category: "Data Structures",
+        keywords: "heap min-heap max-heap heapify priority queue insert extract",
+        tags: ["heap", "min-heap", "max-heap", "heapify", "priority queue", "tree", "data structure"]
+      },
+      {
+        path: "/heap-overview",
+        label: "Heap (Overview)",
+        description: "Theory page covering heap properties, complexity, heapify-up vs heapify-down, and real-world use cases.",
+        category: "Data Structures",
+        keywords: "heap overview min-heap max-heap heapify properties complexity use cases",
+        tags: ["heap", "overview", "min-heap", "max-heap", "heapify", "priority queue", "complexity"]
       }
     ]
   },
