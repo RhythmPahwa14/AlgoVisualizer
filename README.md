@@ -205,12 +205,13 @@ Foster algorithmic thinking through interactive learning and community contribut
 - **Jump Search** - Block-based search optimization
 - **Exponential Search** - Combination of binary and unbounded search
 
-### <img src="https://api.iconify.design/feather:database.svg?color=%233b82f6" width="16" height="16" alt="Data structures icon" /> Data Structures (6 Total)
+### <img src="https://api.iconify.design/feather:database.svg?color=%233b82f6" width="16" height="16" alt="Data structures icon" /> Data Structures (7 Total)
 - **Stack** - LIFO (Last In, First Out) operations
 - **Queue** - FIFO (First In, First Out) operations
 - **Linked List** - Dynamic linear data structure
 - **Binary Tree** - Hierarchical tree structure
 - **Binary Search Tree** - Ordered binary tree with search properties
+- **Heap** - Min-heap & max-heap with heapify-up / heapify-down visualizations
 - **Graph Algorithms** - Network and connectivity visualizations
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
@@ -756,7 +757,7 @@ Meet our amazing contributors:
 <h2 id="project-stats"><img src="https://api.iconify.design/feather:pie-chart.svg?color=%233b82f6" width="18" height="18" alt="Project stats icon" /> Project Stats</h2>
 
 - **15+ Algorithms** implemented with visualizations
-- **6 Data Structures** with interactive operations
+- **7 Data Structures** with interactive operations
 - **Mobile Responsive** design for all devices
 - **Modern Tech Stack** with React 18 and Vite
 - **Export Capabilities** for educational content creation

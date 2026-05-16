@@ -326,6 +326,21 @@ const algorithmDatabase = {
         implemented: true
       },
       {
+        name: "Heap",
+        id: "heap",
+        description:
+          "A complete binary tree satisfying the heap property. Min-heap: parent ≤ children; Max-heap: parent ≥ children. Enables O(1) peek and O(log n) insert / extract-min / extract-max.",
+        timeComplexity: {
+          insert: "O(log n)",
+          extractMin: "O(log n)",
+          peek: "O(1)",
+          buildHeap: "O(n)",
+          averaget: "O(log n)"
+        },
+        spaceComplexity: "O(n)",
+        implemented: true
+      },
+      {
         name: "Trie",
         id: "trie",
         description:
